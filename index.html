@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Mi Menú Semanal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose:       #e8b4b8;
+  --rose-deep:  #c97d87;
+  --rose-dark:  #9e4f5a;
+  --blush:      #fdf0f2;
+  --blush2:     #f8e1e5;
+  --mauve:      #7b5ea7;
+  --mauve-light:#ede6f7;
+  --gold:       #d4956a;
+  --gold-light: #fdf0e6;
+  --teal:       #4a9b8f;
+  --teal-light: #e2f4f2;
+  --text:       #2d1f24;
+  --text-muted: #9e7a82;
+  --border:     #f0d8dc;
+  --white:      #ffffff;
+  --bg:         #fef8f9;
+  --r:          14px;
+  --r-sm:       9px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px}
+header{background:linear-gradient(135deg,#9e4f5a 0%,#7a3a45 55%,#7b5ea7 100%);padding:1.1rem 1.25rem 0;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(158,79,90,.25)}
+header h1{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:.75rem}
+.header-tabs{display:flex;overflow-x:auto;scrollbar-width:none}
+.header-tabs::-webkit-scrollbar{display:none}
+.tab-btn{background:none;border:none;color:rgba(255,255,255,.6);font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:600;padding:.55rem 1rem;cursor:pointer;border-bottom:2.5px solid transparent;transition:all .2s;white-space:nowrap;letter-spacing:.04em;text-transform:uppercase}
+.tab-btn.active{color:white;border-bottom-color:var(--rose)}
+.view{display:none;padding:1.1rem}
+.view.active{display:block}
+
+/* LOADING */
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 1rem;color:var(--text-muted);gap:1rem}
+.spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--rose-deep);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* WEEK NAV */
+.week-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem;background:white;border-radius:var(--r);padding:.65rem 1rem;border:1px solid var(--border);box-shadow:0 2px 10px rgba(158,79,90,.07)}
+.week-nav button{background:var(--blush2);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1.1rem;color:var(--rose-dark);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.week-nav button:hover{background:var(--rose-deep);color:white}
+.week-nav span{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:500;color:var(--rose-dark);font-style:italic}
+
+/* CALENDAR GRID */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:0;background:white;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 16px rgba(158,79,90,.09);margin-bottom:.9rem}
+.cal-head{background:linear-gradient(135deg,#9e4f5a,#7a3a45);color:white;text-align:center;padding:.5rem 2px;font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.cal-cell{border-right:1px solid var(--border);border-top:1px solid var(--border);min-height:84px;cursor:pointer;transition:background .15s;position:relative}
+.cal-cell:nth-child(7n){border-right:none}
+.cal-cell:hover{background:var(--blush)}
+.cal-cell.today .cal-num{background:var(--rose-dark);color:white;border-radius:50%}
+.cal-cell.has-food{background:var(--blush)}
+.cal-cell.selected{background:var(--blush2);outline:2px solid var(--rose-deep);outline-offset:-2px;z-index:1}
+.cal-num{font-size:.72rem;font-weight:700;width:22px;height:22px;display:flex;align-items:center;justify-content:center;margin:4px auto 2px}
+.cal-dots{display:flex;flex-direction:column;gap:2px;padding:0 4px 2px;align-items:center}
+.cal-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.dot-desayuno{background:#f0a56a}
+.dot-comida{background:var(--teal)}
+.dot-cena{background:var(--mauve)}
+.dot-snack{background:var(--rose-deep)}
+.cal-kcal{font-size:.56rem;font-weight:700;color:var(--rose-dark);text-align:center;line-height:1;padding-bottom:3px}
+
+/* DAY PANEL */
+.day-panel{background:white;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;box-shadow:0 4px 20px rgba(158,79,90,.1);margin-bottom:1rem}
+.day-panel-head{background:linear-gradient(135deg,var(--rose-deep),var(--rose-dark));padding:.8rem 1.1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.day-panel-title{font-family:'Playfair Display',serif;color:white;font-size:1rem;font-weight:500;font-style:italic}
+.day-totals{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.total-chip{font-size:.67rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(255,255,255,.2);color:white;white-space:nowrap}
+.total-chip.kcal-chip{background:rgba(255,255,255,.35)}
+.meal-item{display:flex;align-items:center;gap:.7rem;padding:.6rem 1.1rem;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.meal-item:last-child{border-bottom:none}
+.meal-item:hover{background:var(--blush)}
+.meal-icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.mi-desayuno{background:#fff0e0}
+.mi-comida{background:var(--teal-light)}
+.mi-cena{background:var(--mauve-light)}
+.mi-snack{background:var(--blush2)}
+.meal-info{flex:1;min-width:0}
+.meal-name-t{font-size:.88rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meal-name-t.empty{color:var(--text-muted);font-weight:400;font-style:italic}
+.meal-macros-r{display:flex;gap:5px;margin-top:3px;flex-wrap:wrap}
+.mm{font-size:.67rem;font-weight:700;padding:2px 6px;border-radius:10px}
+.mm-k{background:#fde8e0;color:#a83a20}
+.mm-p{background:var(--teal-light);color:#1f6e63}
+.mm-c{background:#fff3e0;color:#7a4800}
+.mm-g{background:var(--mauve-light);color:#4a2a80}
+
+/* RECIPES */
+.sub-tabs{display:flex;background:white;border-radius:var(--r);border:1px solid var(--border);padding:4px;margin-bottom:1rem;gap:4px;box-shadow:0 2px 8px rgba(158,79,90,.06)}
+.sub-tab{flex:1;text-align:center;padding:.42rem .25rem;border-radius:var(--r-sm);font-size:.75rem;font-weight:600;cursor:pointer;border:none;background:none;color:var(--text-muted);transition:all .2s}
+.sub-tab.active{background:linear-gradient(135deg,var(--rose-dark),#7a3a45);color:white}
+.recipes-grid{display:flex;flex-direction:column;gap:.7rem}
+.recipe-card{background:white;border-radius:var(--r);border:1px solid var(--border);padding:1rem 1.1rem;cursor:pointer;transition:all .2s;box-shadow:0 2px 10px rgba(158,79,90,.06)}
+.recipe-card:hover{border-color:var(--rose-deep);box-shadow:0 4px 18px rgba(158,79,90,.13);transform:translateY(-1px)}
+.recipe-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem}
+.recipe-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:500;flex:1;margin-right:.5rem;line-height:1.3}
+.recipe-time{font-size:.7rem;color:var(--text-muted);background:var(--gold-light);padding:2px 8px;border-radius:20px;white-space:nowrap;font-weight:600}
+.recipe-desc{font-size:.81rem;color:var(--text-muted);margin-bottom:.7rem;line-height:1.45}
+.macro-row{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.mbox{border-radius:8px;padding:5px 4px;text-align:center}
+.mbox .mv{font-size:.82rem;font-weight:700;display:block}
+.mbox .ml{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-top:1px}
+.mb-k{background:#fde8e0}.mb-k .mv{color:#a83a20}.mb-k .ml{color:#c05030}
+.mb-p{background:var(--teal-light)}.mb-p .mv{color:#1f6e63}.mb-p .ml{color:#2d8a7d}
+.mb-c{background:#fff3e0}.mb-c .mv{color:#7a4800}.mb-c .ml{color:#9a6000}
+.mb-g{background:var(--mauve-light)}.mb-g .mv{color:#4a2a80}.mb-g .ml{color:#6a4a9a}
+
+/* SHOPPING */
+.info-bar{background:white;border-radius:var(--r);border:1px solid var(--border);padding:.75rem 1rem;margin-bottom:.75rem;font-size:.82rem;color:var(--text-muted);box-shadow:0 2px 8px rgba(158,79,90,.05)}
+.shop-item{background:white;border-radius:var(--r-sm);border:1px solid var(--border);display:flex;align-items:center;gap:.75rem;padding:.6rem .9rem;margin-bottom:6px;cursor:pointer;transition:all .2s}
+.shop-item:hover{border-color:var(--rose)}
+.shop-item.checked{opacity:.5}
+.shop-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--rose-deep);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.shop-item.checked .shop-check{background:var(--rose-dark);border-color:var(--rose-dark)}
+.shop-item.checked .shop-check::after{content:'✓';color:white;font-size:.7rem;font-weight:700}
+.shop-item.checked .stxt{text-decoration:line-through;color:var(--text-muted)}
+.stxt{font-size:.9rem;font-weight:500;flex:1}
+.sqty{font-size:.78rem;color:var(--text-muted)}
+.btn-reset{width:100%;background:none;border:1px solid var(--border);border-radius:var(--r-sm);padding:.6rem;font-family:'Nunito',sans-serif;font-size:.83rem;color:var(--text-muted);cursor:pointer;margin-top:.75rem;transition:all .2s}
+.btn-reset:hover{background:var(--blush);color:var(--rose-dark)}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(45,31,36,.5);z-index:200;padding:1rem;overflow-y:auto;backdrop-filter:blur(3px)}
+.modal-overlay.open{display:flex;align-items:flex-start;justify-content:center}
+.modal{background:white;border-radius:var(--r);width:100%;max-width:480px;margin-top:2rem;margin-bottom:2rem;overflow:hidden;box-shadow:0 20px 60px rgba(45,31,36,.25)}
+.modal-head{background:linear-gradient(135deg,var(--rose-deep),var(--rose-dark));color:white;padding:1.1rem 1.25rem;display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem}
+.modal-head h2{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;line-height:1.3;font-style:italic}
+.modal-close{background:rgba(255,255,255,.2);border:none;color:white;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.9rem;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.modal-body{padding:1.1rem 1.25rem}
+.modal-macros{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1rem}
+.mm-box{border-radius:10px;padding:8px 4px;text-align:center}
+.mm-box .v{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;display:block}
+.mm-box .l{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-top:2px}
+.sec-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin:1rem 0 .4rem}
+.ing-list{list-style:none}
+.ing-list li{padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.85rem;display:flex;justify-content:space-between;align-items:center}
+.ing-list li:last-child{border-bottom:none}
+.ing-qty{color:var(--text-muted);font-size:.8rem}
+.steps-ol{list-style:none;counter-reset:s}
+.steps-ol li{counter-increment:s;padding:.55rem 0 .55rem 2.2rem;border-bottom:1px solid var(--border);font-size:.85rem;line-height:1.5;position:relative;color:var(--text)}
+.steps-ol li:last-child{border-bottom:none}
+.steps-ol li::before{content:counter(s);position:absolute;left:0;top:.55rem;width:20px;height:20px;background:linear-gradient(135deg,var(--rose-deep),var(--rose-dark));color:white;border-radius:50%;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--text-muted)}
+.empty-state .ei{font-size:2.5rem;margin-bottom:.75rem}
+.empty-state p{font-size:.88rem;line-height:1.5}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>✨ Mi Menú</h1>
+  <div class="header-tabs">
+    <button class="tab-btn active" onclick="showView('calendario',this)">Calendario</button>
+    <button class="tab-btn" onclick="showView('recetas',this)">Recetas</button>
+    <button class="tab-btn" onclick="showView('compra',this)">Compra</button>
+  </div>
+</header>
+
+<div id="view-calendario" class="view active">
+  <div id="cal-loading" class="loading"><div class="spinner"></div><span>Cargando menú...</span></div>
+  <div id="cal-content" style="display:none">
+    <div class="week-nav">
+      <button onclick="prevWeek()">‹</button>
+      <span id="week-label"></span>
+      <button onclick="nextWeek()">›</button>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+    <div class="day-panel" id="day-panel" style="display:none"></div>
+  </div>
+</div>
+
+<div id="view-recetas" class="view">
+  <div class="sub-tabs">
+    <button class="sub-tab active" onclick="filterR('desayuno',this)">Desayuno</button>
+    <button class="sub-tab" onclick="filterR('comida',this)">Comida</button>
+    <button class="sub-tab" onclick="filterR('cena',this)">Cena</button>
+    <button class="sub-tab" onclick="filterR('snack',this)">Snack</button>
+    <button class="sub-tab" onclick="filterR('todas',this)">Todas</button>
+  </div>
+  <div id="recipes-container" class="recipes-grid"></div>
+</div>
+
+<div id="view-compra" class="view">
+  <div class="info-bar">🛒 Lista generada del menú semanal. Toca para marcar lo comprado.</div>
+  <div id="shopping-container"></div>
+</div>
+
+<div class="modal-overlay" id="modal" onclick="closeOut(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="modal-title"></h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const DIAS=['lunes','martes','miercoles','jueves','viernes','sabado','domingo'];
+const DIAS_S={lunes:'L',martes:'M',miercoles:'X',jueves:'J',viernes:'V',sabado:'S',domingo:'D'};
+const DIAS_L={lunes:'Lunes',martes:'Martes',miercoles:'Miércoles',jueves:'Jueves',viernes:'Viernes',sabado:'Sábado',domingo:'Domingo'};
+const TIPOS=['desayuno','comida','cena','snack'];
+const TIPO_I={desayuno:'☀️',comida:'🍽️',cena:'🌙',snack:'🍎'};
+
+let DATA=null,weekOffset=0,selectedDay=null,checkedItems={},recipeFilter='desayuno';
+
+async function loadData(){
+  try{
+    const r=await fetch('data.json?t='+Date.now());
+    DATA=await r.json();
+  }catch(e){ DATA={recetas:[],menu:{}}; }
+  document.getElementById('cal-loading').style.display='none';
+  document.getElementById('cal-content').style.display='block';
+  renderCal();
+  renderRecipes('desayuno');
+}
+
+function getR(id){ return DATA.recetas.find(r=>r.id===id)||null; }
+
+function showView(name,btn){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('view-'+name).classList.add('active');
+  btn.classList.add('active');
+  if(name==='compra') renderShopping();
+}
+
+function getWeekStart(off){
+  const t=new Date(),d=t.getDay(),diff=d===0?-6:1-d,m=new Date(t);
+  m.setDate(t.getDate()+diff+off*7); return m;
+}
+
+function prevWeek(){weekOffset--;renderCal();}
+function nextWeek(){weekOffset++;renderCal();}
+
+function renderCal(){
+  const mon=getWeekStart(weekOffset);
+  const today=new Date(); today.setHours(0,0,0,0);
+  const end=new Date(mon); end.setDate(mon.getDate()+6);
+  const fmt=d=>d.toLocaleDateString('es-ES',{day:'numeric',month:'short'});
+  document.getElementById('week-label').textContent=fmt(mon)+' — '+fmt(end);
+
+  const heads=DIAS.map(d=>`<div class="cal-head">${DIAS_S[d]}</div>`).join('');
+  const cells=DIAS.map((dia,i)=>{
+    const date=new Date(mon); date.setDate(mon.getDate()+i); date.setHours(0,0,0,0);
+    const dm=DATA.menu[dia]||{};
+    let kcal=0;
+    const dots=TIPOS.map(t=>{
+      const r=getR(dm[t]); if(!r) return '';
+      kcal+=r.kcal||0;
+      return `<div class="cal-dot dot-${t}"></div>`;
+    }).join('');
+    const isToday=date.getTime()===today.getTime();
+    const isSel=selectedDay===dia;
+    return `<div class="cal-cell ${isToday?'today':''} ${kcal>0?'has-food':''} ${isSel?'selected':''}" onclick="selectDay('${dia}')">
+      <div class="cal-num">${date.getDate()}</div>
+      <div class="cal-dots">${dots}</div>
+      ${kcal>0?`<div class="cal-kcal">${kcal}</div>`:''}
+    </div>`;
+  }).join('');
+
+  document.getElementById('cal-grid').innerHTML=heads+cells;
+
+  const panel=document.getElementById('day-panel');
+  if(selectedDay){ renderDayPanel(selectedDay); panel.style.display='block'; }
+  else panel.style.display='none';
+}
+
+function selectDay(dia){
+  selectedDay=selectedDay===dia?null:dia;
+  renderCal();
+  if(selectedDay){
+    setTimeout(()=>document.getElementById('day-panel').scrollIntoView({behavior:'smooth',block:'nearest'}),60);
+  }
+}
+
+function renderDayPanel(dia){
+  const dm=DATA.menu[dia]||{};
+  let tk=0,tp=0,tc=0,tg=0;
+  TIPOS.forEach(t=>{const r=getR(dm[t]);if(r){tk+=r.kcal||0;tp+=r.proteinas||0;tc+=r.carbos||0;tg+=r.grasas||0;}});
+  const meals=TIPOS.map(tipo=>{
+    const r=getR(dm[tipo]);
+    return `<div class="meal-item" ${r?`onclick="openModal('${r.id}')"`:''}>
+      <div class="meal-icon mi-${tipo}">${TIPO_I[tipo]}</div>
+      <div class="meal-info">
+        <div class="meal-name-t ${!r?'empty':''}">${r?r.nombre:'Sin asignar'}</div>
+        ${r?`<div class="meal-macros-r">
+          <span class="mm mm-k">${r.kcal} kcal</span>
+          <span class="mm mm-p">P: ${r.proteinas}g</span>
+          <span class="mm mm-c">CH: ${r.carbos}g</span>
+          <span class="mm mm-g">G: ${r.grasas}g</span>
+        </div>`:''}
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('day-panel').innerHTML=`
+    <div class="day-panel-head">
+      <span class="day-panel-title">${DIAS_L[dia]}</span>
+      <div class="day-totals">
+        ${tk>0?`<span class="total-chip kcal-chip">${tk} kcal</span><span class="total-chip">P: ${tp}g</span><span class="total-chip">CH: ${tc}g</span><span class="total-chip">G: ${tg}g</span>`:`<span class="total-chip">Sin planificar</span>`}
+      </div>
+    </div>
+    <div>${meals}</div>
+  `;
+}
+
+function filterR(tipo,btn){
+  recipeFilter=tipo;
+  document.querySelectorAll('.sub-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRecipes(tipo);
+}
+
+function renderRecipes(tipo){
+  const cont=document.getElementById('recipes-container');
+  const list=tipo==='todas'?DATA.recetas:DATA.recetas.filter(r=>r.tipo===tipo);
+  if(!list.length){
+    cont.innerHTML=`<div class="empty-state"><div class="ei">📋</div><p>No hay recetas de este tipo todavía.</p></div>`;
+    return;
+  }
+  cont.innerHTML=list.map(r=>`
+    <div class="recipe-card" onclick="openModal('${r.id}')">
+      <div class="recipe-top">
+        <div class="recipe-name">${r.nombre}</div>
+        ${r.tiempo?`<span class="recipe-time">⏱ ${r.tiempo}</span>`:''}
+      </div>
+      ${r.descripcion?`<div class="recipe-desc">${r.descripcion}</div>`:''}
+      <div class="macro-row">
+        <div class="mbox mb-k"><span class="mv">${r.kcal}</span><span class="ml">kcal</span></div>
+        <div class="mbox mb-p"><span class="mv">${r.proteinas}g</span><span class="ml">prot</span></div>
+        <div class="mbox mb-c"><span class="mv">${r.carbos}g</span><span class="ml">carbos</span></div>
+        <div class="mbox mb-g"><span class="mv">${r.grasas}g</span><span class="ml">grasas</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderShopping(){
+  const cont=document.getElementById('shopping-container');
+  const map={};
+  Object.values(DATA.menu).forEach(dm=>{
+    TIPOS.forEach(t=>{
+      const r=getR(dm[t]);
+      if(r&&r.ingredientes) r.ingredientes.forEach(i=>{
+        const key=i.nombre.toLowerCase().trim();
+        if(!map[key]) map[key]={nombre:i.nombre,qtys:[]};
+        map[key].qtys.push(i.cantidad);
+      });
+    });
+  });
+  const sorted=Object.values(map).sort((a,b)=>a.nombre.localeCompare(b.nombre));
+  if(!sorted.length){
+    cont.innerHTML=`<div class="empty-state"><div class="ei">🛒</div><p>No hay ingredientes en el menú.</p></div>`;
+    return;
+  }
+  cont.innerHTML=sorted.map(i=>{
+    const k=i.nombre,ch=!!checkedItems[k],qty=[...new Set(i.qtys)].join(', ');
+    return `<div class="shop-item ${ch?'checked':''}" onclick="toggleCheck('${k.replace(/'/g,"\\'")}')">
+      <div class="shop-check"></div><span class="stxt">${i.nombre}</span><span class="sqty">${qty}</span>
+    </div>`;
+  }).join('')+`<button class="btn-reset" onclick="resetShop()">↺ Desmarcar todo</button>`;
+}
+
+function toggleCheck(k){checkedItems[k]=!checkedItems[k];renderShopping();}
+function resetShop(){checkedItems={};renderShopping();}
+
+function openModal(id){
+  const r=getR(id); if(!r) return;
+  document.getElementById('modal-title').textContent=r.nombre;
+  document.getElementById('modal-body').innerHTML=`
+    <div class="modal-macros">
+      <div class="mm-box mb-k"><span class="v">${r.kcal}</span><span class="l">kcal</span></div>
+      <div class="mm-box mb-p"><span class="v">${r.proteinas}g</span><span class="l">prot</span></div>
+      <div class="mm-box mb-c"><span class="v">${r.carbos}g</span><span class="l">carbos</span></div>
+      <div class="mm-box mb-g"><span class="v">${r.grasas}g</span><span class="l">grasas</span></div>
+    </div>
+    ${r.descripcion?`<p style="font-size:.84rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.5">${r.descripcion}</p>`:''}
+    ${r.tiempo?`<p style="font-size:.8rem;color:var(--gold);margin-bottom:1rem;font-weight:700">⏱ ${r.tiempo}</p>`:''}
+    ${r.ingredientes?.length?`<div class="sec-lbl">Ingredientes</div>
+      <ul class="ing-list">${r.ingredientes.map(i=>`<li><span>${i.nombre}</span><span class="ing-qty">${i.cantidad}</span></li>`).join('')}</ul>`:''}
+    ${r.pasos?.length?`<div class="sec-lbl">Preparación</div>
+      <ol class="steps-ol">${r.pasos.map(p=>`<li>${p}</li>`).join('')}</ol>`:''}
+  `;
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeOut(e){if(e.target===document.getElementById('modal')) closeModal();}
+function closeModal(){document.getElementById('modal').classList.remove('open');}
+
+loadData();
+</script>
+</body>
+</html>

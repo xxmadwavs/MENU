@@ -1,0 +1,88 @@
+{
+  "recetas": [
+    {
+      "id": "r1",
+      "nombre": "Avena con frutas",
+      "tipo": "desayuno",
+      "tiempo": "10 min",
+      "descripcion": "Desayuno nutritivo y rápido con avena, plátano y frutos rojos.",
+      "kcal": 320,
+      "proteinas": 12,
+      "carbos": 55,
+      "grasas": 7,
+      "ingredientes": [
+        { "nombre": "Avena", "cantidad": "60g", "kcal": 218, "proteinas": 8, "carbos": 37, "grasas": 4 },
+        { "nombre": "Leche o bebida vegetal", "cantidad": "200ml", "kcal": 60, "proteinas": 3, "carbos": 7, "grasas": 2 },
+        { "nombre": "Plátano", "cantidad": "1 unidad", "kcal": 30, "proteinas": 0.5, "carbos": 9, "grasas": 0.1 },
+        { "nombre": "Frutos rojos", "cantidad": "100g", "kcal": 7, "proteinas": 0.3, "carbos": 1.5, "grasas": 0 },
+        { "nombre": "Miel", "cantidad": "1 cucharadita", "kcal": 5, "proteinas": 0.1, "carbos": 1.4, "grasas": 0 }
+      ],
+      "pasos": [
+        "Calentar la leche en un cazo a fuego medio.",
+        "Añadir la avena y remover durante 3-4 minutos.",
+        "Servir en un bol y decorar con el plátano en rodajas y los frutos rojos.",
+        "Terminar con un hilo de miel."
+      ]
+    },
+    {
+      "id": "r2",
+      "nombre": "Pollo al limón con verduras",
+      "tipo": "comida",
+      "tiempo": "30 min",
+      "descripcion": "Pechuga de pollo jugosa con limón, ajo y verduras de temporada.",
+      "kcal": 480,
+      "proteinas": 42,
+      "carbos": 25,
+      "grasas": 18,
+      "ingredientes": [
+        { "nombre": "Pechuga de pollo", "cantidad": "200g", "kcal": 220, "proteinas": 40, "carbos": 0, "grasas": 5 },
+        { "nombre": "Limón", "cantidad": "1 unidad", "kcal": 8, "proteinas": 0.3, "carbos": 2.5, "grasas": 0.1 },
+        { "nombre": "Ajo", "cantidad": "2 dientes", "kcal": 9, "proteinas": 0.4, "carbos": 2, "grasas": 0 },
+        { "nombre": "Brócoli", "cantidad": "150g", "kcal": 51, "proteinas": 4, "carbos": 6, "grasas": 0.6 },
+        { "nombre": "Zanahoria", "cantidad": "1 unidad", "kcal": 25, "proteinas": 0.6, "carbos": 6, "grasas": 0.1 },
+        { "nombre": "Aceite de oliva", "cantidad": "1 cda", "kcal": 119, "proteinas": 0, "carbos": 0, "grasas": 13.5 }
+      ],
+      "pasos": [
+        "Marinar el pollo con zumo de limón, ajo picado, sal y pimienta 15 min.",
+        "Cocer el brócoli y la zanahoria al vapor 8 minutos.",
+        "Cocinar el pollo en sartén con aceite 6-7 minutos por cada lado.",
+        "Servir el pollo con las verduras y decorar con rodajas de limón."
+      ]
+    },
+    {
+      "id": "r3",
+      "nombre": "Ensalada mediterránea",
+      "tipo": "cena",
+      "tiempo": "15 min",
+      "descripcion": "Ensalada fresca con tomate, pepino, aceitunas y queso feta.",
+      "kcal": 280,
+      "proteinas": 11,
+      "carbos": 18,
+      "grasas": 19,
+      "ingredientes": [
+        { "nombre": "Tomate", "cantidad": "2 unidades", "kcal": 36, "proteinas": 1.5, "carbos": 7, "grasas": 0.4 },
+        { "nombre": "Pepino", "cantidad": "1/2 unidad", "kcal": 8, "proteinas": 0.3, "carbos": 1.5, "grasas": 0.1 },
+        { "nombre": "Aceitunas negras", "cantidad": "50g", "kcal": 62, "proteinas": 0.4, "carbos": 1.6, "grasas": 6.3 },
+        { "nombre": "Queso feta", "cantidad": "80g", "kcal": 212, "proteinas": 11, "carbos": 1.2, "grasas": 18 },
+        { "nombre": "Cebolla morada", "cantidad": "1/4 unidad", "kcal": 11, "proteinas": 0.3, "carbos": 2.5, "grasas": 0 },
+        { "nombre": "Aceite de oliva", "cantidad": "2 cdas", "kcal": 238, "proteinas": 0, "carbos": 0, "grasas": 27 },
+        { "nombre": "Orégano", "cantidad": "1 pizca", "kcal": 1, "proteinas": 0.1, "carbos": 0.2, "grasas": 0 }
+      ],
+      "pasos": [
+        "Cortar el tomate y el pepino en dados.",
+        "Añadir la cebolla morada en juliana fina y las aceitunas.",
+        "Desmigar el feta por encima.",
+        "Aliñar con aceite, orégano, sal y pimienta al gusto."
+      ]
+    }
+  ],
+  "menu": {
+    "lunes":    { "desayuno": "r1", "comida": "r2", "cena": "r3", "snack": null },
+    "martes":   { "desayuno": "r1", "comida": null, "cena": "r2", "snack": null },
+    "miercoles":{ "desayuno": null, "comida": "r3", "cena": null,  "snack": null },
+    "jueves":   { "desayuno": "r1", "comida": "r2", "cena": "r3", "snack": null },
+    "viernes":  { "desayuno": null, "comida": "r2", "cena": "r3", "snack": null },
+    "sabado":   { "desayuno": "r1", "comida": null, "cena": "r2", "snack": null },
+    "domingo":  { "desayuno": "r1", "comida": "r3", "cena": "r2", "snack": null }
+  }
+}

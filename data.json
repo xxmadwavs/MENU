@@ -1,73 +1,292 @@
 {
   "ingredientes": [
-    { "id": "i1", "nombre": "Avena", "unidad": "60g", "kcal": 218, "proteinas": 8, "carbos": 37, "grasas": 4 },
-    { "id": "i2", "nombre": "Leche o bebida vegetal", "unidad": "200ml", "kcal": 60, "proteinas": 3, "carbos": 7, "grasas": 2 },
-    { "id": "i3", "nombre": "Plátano", "unidad": "1 unidad", "kcal": 89, "proteinas": 1.1, "carbos": 23, "grasas": 0.3 },
-    { "id": "i4", "nombre": "Frutos rojos", "unidad": "100g", "kcal": 57, "proteinas": 1.4, "carbos": 13, "grasas": 0.5 },
-    { "id": "i5", "nombre": "Miel", "unidad": "1 cucharadita", "kcal": 21, "proteinas": 0, "carbos": 5.7, "grasas": 0 },
-    { "id": "i6", "nombre": "Pechuga de pollo", "unidad": "100g", "kcal": 110, "proteinas": 23, "carbos": 0, "grasas": 1.2 },
-    { "id": "i7", "nombre": "Limón", "unidad": "1 unidad", "kcal": 17, "proteinas": 0.6, "carbos": 5, "grasas": 0.1 },
-    { "id": "i8", "nombre": "Ajo", "unidad": "1 diente", "kcal": 4, "proteinas": 0.2, "carbos": 1, "grasas": 0 },
-    { "id": "i9", "nombre": "Brócoli", "unidad": "100g", "kcal": 34, "proteinas": 2.8, "carbos": 4, "grasas": 0.4 },
-    { "id": "i10", "nombre": "Zanahoria", "unidad": "1 unidad mediana", "kcal": 25, "proteinas": 0.6, "carbos": 6, "grasas": 0.1 },
-    { "id": "i11", "nombre": "Aceite de oliva", "unidad": "1 cucharada", "kcal": 119, "proteinas": 0, "carbos": 0, "grasas": 13.5 },
-    { "id": "i12", "nombre": "Tomate", "unidad": "1 unidad mediana", "kcal": 18, "proteinas": 0.9, "carbos": 3.5, "grasas": 0.2 },
-    { "id": "i13", "nombre": "Pepino", "unidad": "1/2 unidad", "kcal": 8, "proteinas": 0.3, "carbos": 1.5, "grasas": 0.1 },
-    { "id": "i14", "nombre": "Aceitunas negras", "unidad": "50g", "kcal": 62, "proteinas": 0.4, "carbos": 1.6, "grasas": 6.3 },
-    { "id": "i15", "nombre": "Queso feta", "unidad": "50g", "kcal": 133, "proteinas": 7, "carbos": 0.8, "grasas": 11 },
-    { "id": "i16", "nombre": "Cebolla morada", "unidad": "1/4 unidad", "kcal": 11, "proteinas": 0.3, "carbos": 2.5, "grasas": 0 },
-    { "id": "i17", "nombre": "Huevo", "unidad": "1 unidad L", "kcal": 70, "proteinas": 6, "carbos": 0.4, "grasas": 5 }
-  ],
-  "recetas": [
     {
-      "id": "r1", "nombre": "Avena con frutas", "tipo": "desayuno", "tiempo": "10 min",
-      "descripcion": "Desayuno nutritivo y rápido con avena, plátano y frutos rojos.",
-      "kcal": 320, "proteinas": 12, "carbos": 55, "grasas": 7,
-      "ingredientes": [
-        { "nombre": "Avena", "cantidad": "60g", "kcal": 218, "proteinas": 8, "carbos": 37, "grasas": 4 },
-        { "nombre": "Leche o bebida vegetal", "cantidad": "200ml", "kcal": 60, "proteinas": 3, "carbos": 7, "grasas": 2 },
-        { "nombre": "Plátano", "cantidad": "1 unidad", "kcal": 30, "proteinas": 0.5, "carbos": 9, "grasas": 0.1 },
-        { "nombre": "Frutos rojos", "cantidad": "100g", "kcal": 7, "proteinas": 0.3, "carbos": 1.5, "grasas": 0 },
-        { "nombre": "Miel", "cantidad": "1 cucharadita", "kcal": 5, "proteinas": 0.1, "carbos": 1.4, "grasas": 0 }
-      ],
-      "pasos": ["Calentar la leche en un cazo a fuego medio.", "Añadir la avena y remover durante 3-4 minutos.", "Servir en un bol y decorar con el plátano en rodajas y los frutos rojos.", "Terminar con un hilo de miel."]
+      "id": "i17776415324908qbh",
+      "nombre": "Pechuga de pollo",
+      "unidad": "100g",
+      "kcal": 110,
+      "proteinas": 23,
+      "carbos": 0,
+      "grasas": 1.2
     },
     {
-      "id": "r2", "nombre": "Pollo al limón con verduras", "tipo": "comida", "tiempo": "30 min",
-      "descripcion": "Pechuga de pollo jugosa con limón, ajo y verduras de temporada.",
-      "kcal": 480, "proteinas": 42, "carbos": 25, "grasas": 18,
-      "ingredientes": [
-        { "nombre": "Pechuga de pollo", "cantidad": "200g", "kcal": 220, "proteinas": 40, "carbos": 0, "grasas": 5 },
-        { "nombre": "Limón", "cantidad": "1 unidad", "kcal": 8, "proteinas": 0.3, "carbos": 2.5, "grasas": 0.1 },
-        { "nombre": "Ajo", "cantidad": "2 dientes", "kcal": 9, "proteinas": 0.4, "carbos": 2, "grasas": 0 },
-        { "nombre": "Brócoli", "cantidad": "150g", "kcal": 51, "proteinas": 4, "carbos": 6, "grasas": 0.6 },
-        { "nombre": "Zanahoria", "cantidad": "1 unidad", "kcal": 25, "proteinas": 0.6, "carbos": 6, "grasas": 0.1 },
-        { "nombre": "Aceite de oliva", "cantidad": "1 cda", "kcal": 119, "proteinas": 0, "carbos": 0, "grasas": 13.5 }
-      ],
-      "pasos": ["Marinar el pollo con zumo de limón, ajo picado, sal y pimienta 15 min.", "Cocer el brócoli y la zanahoria al vapor 8 minutos.", "Cocinar el pollo en sartén con aceite 6-7 minutos por cada lado.", "Servir el pollo con las verduras y decorar con rodajas de limón."]
+      "id": "i1777641579472x4xg",
+      "nombre": "Tortitas de arroz (Gullón)",
+      "unidad": "1 unidad",
+      "kcal": 27,
+      "proteinas": 0.6,
+      "carbos": 6,
+      "grasas": 0
     },
     {
-      "id": "r3", "nombre": "Ensalada mediterránea", "tipo": "cena", "tiempo": "15 min",
-      "descripcion": "Ensalada fresca con tomate, pepino, aceitunas y queso feta.",
-      "kcal": 280, "proteinas": 11, "carbos": 18, "grasas": 19,
-      "ingredientes": [
-        { "nombre": "Tomate", "cantidad": "2 unidades", "kcal": 36, "proteinas": 1.5, "carbos": 7, "grasas": 0.4 },
-        { "nombre": "Pepino", "cantidad": "1/2 unidad", "kcal": 8, "proteinas": 0.3, "carbos": 1.5, "grasas": 0.1 },
-        { "nombre": "Aceitunas negras", "cantidad": "50g", "kcal": 62, "proteinas": 0.4, "carbos": 1.6, "grasas": 6.3 },
-        { "nombre": "Queso feta", "cantidad": "80g", "kcal": 212, "proteinas": 11, "carbos": 1.2, "grasas": 18 },
-        { "nombre": "Cebolla morada", "cantidad": "1/4 unidad", "kcal": 11, "proteinas": 0.3, "carbos": 2.5, "grasas": 0 },
-        { "nombre": "Aceite de oliva", "cantidad": "2 cdas", "kcal": 238, "proteinas": 0, "carbos": 0, "grasas": 27 }
-      ],
-      "pasos": ["Cortar el tomate y el pepino en dados.", "Añadir la cebolla morada en juliana fina y las aceitunas.", "Desmigar el feta por encima.", "Aliñar con aceite, orégano, sal y pimienta al gusto."]
+      "id": "i17776416247150h74",
+      "nombre": "Lomo de cerdo",
+      "unidad": "100 g",
+      "kcal": 136,
+      "proteinas": 20.5,
+      "carbos": 0,
+      "grasas": 5.4
+    },
+    {
+      "id": "i177764165967129bk",
+      "nombre": "Filete de ternera",
+      "unidad": "100 g",
+      "kcal": 159,
+      "proteinas": 27.4,
+      "carbos": 0,
+      "grasas": 4.6
+    },
+    {
+      "id": "i1777641719371lz0b",
+      "nombre": "Aceite",
+      "unidad": "100 ml",
+      "kcal": 819,
+      "proteinas": 0,
+      "carbos": 0,
+      "grasas": 91
+    },
+    {
+      "id": "i1777641762307d8j9",
+      "nombre": "Almendra cruda",
+      "unidad": "100 g",
+      "kcal": 579,
+      "proteinas": 21.1,
+      "carbos": 21.5,
+      "grasas": 49.9
+    },
+    {
+      "id": "i1777641799173dc8r",
+      "nombre": "Arroz Blanco",
+      "unidad": "100 g",
+      "kcal": 349,
+      "proteinas": 8,
+      "carbos": 76,
+      "grasas": 1.2
+    },
+    {
+      "id": "i17776418453419s55",
+      "nombre": "Batata/Boniato",
+      "unidad": "100 g",
+      "kcal": 86,
+      "proteinas": 1.6,
+      "carbos": 20,
+      "grasas": 0.1
+    },
+    {
+      "id": "i1777641889094f0cz",
+      "nombre": "Barra pan integral 30%",
+      "unidad": "100g",
+      "kcal": 260,
+      "proteinas": 8,
+      "carbos": 50,
+      "grasas": 2
+    },
+    {
+      "id": "i17776419305202ypn",
+      "nombre": "Bolitas mozzarella",
+      "unidad": "100g",
+      "kcal": 194,
+      "proteinas": 15,
+      "carbos": 2,
+      "grasas": 14
+    },
+    {
+      "id": "i17776419643467co2",
+      "nombre": "Brocoli (congelado)",
+      "unidad": "100g",
+      "kcal": 28,
+      "proteinas": 2.7,
+      "carbos": 2.8,
+      "grasas": 8
+    },
+    {
+      "id": "i1777641995748j9n6",
+      "nombre": "Calabacin",
+      "unidad": "100g",
+      "kcal": 16,
+      "proteinas": 1.2,
+      "carbos": 3.3,
+      "grasas": 0.1
+    },
+    {
+      "id": "i1777642026398dtwx",
+      "nombre": "Cacao puro",
+      "unidad": "100g",
+      "kcal": 275,
+      "proteinas": 25.5,
+      "carbos": 16.3,
+      "grasas": 16
+    },
+    {
+      "id": "i17776420627193ojd",
+      "nombre": "Caldo cocido",
+      "unidad": "100ml",
+      "kcal": 7,
+      "proteinas": 0.5,
+      "carbos": 0.5,
+      "grasas": 0
+    },
+    {
+      "id": "i1777642086404csoe",
+      "nombre": "Caldo pescado",
+      "unidad": "100ml",
+      "kcal": 4,
+      "proteinas": 0.4,
+      "carbos": 0.5,
+      "grasas": 0
+    },
+    {
+      "id": "i1777642108364qe0v",
+      "nombre": "Caldo pollo",
+      "unidad": "100ml",
+      "kcal": 5,
+      "proteinas": 0,
+      "carbos": 0.6,
+      "grasas": 0
+    },
+    {
+      "id": "i1777642136368kv3o",
+      "nombre": "Carne picada vacuno",
+      "unidad": "100g",
+      "kcal": 190,
+      "proteinas": 18,
+      "carbos": 2.4,
+      "grasas": 12
+    },
+    {
+      "id": "i1777642170188ak5h",
+      "nombre": "Carne Picada Pollo",
+      "unidad": "100g",
+      "kcal": 132,
+      "proteinas": 18,
+      "carbos": 0.5,
+      "grasas": 6.6
+    },
+    {
+      "id": "i1777642203473lhm0",
+      "nombre": "Carne picada pavo y pollo",
+      "unidad": "100g",
+      "kcal": 152,
+      "proteinas": 15,
+      "carbos": 1,
+      "grasas": 9.9
+    },
+    {
+      "id": "i1777642239017mnyz",
+      "nombre": "Cebolla (congelada)",
+      "unidad": "100g",
+      "kcal": 38,
+      "proteinas": 1.2,
+      "carbos": 8.6,
+      "grasas": 0.3
+    },
+    {
+      "id": "i17776422725988nwy",
+      "nombre": "Chocolate 85%",
+      "unidad": "1 unidad",
+      "kcal": 45,
+      "proteinas": 0.9,
+      "carbos": 2.6,
+      "grasas": 3.2
+    },
+    {
+      "id": "i1777642309852tf21",
+      "nombre": "Crema verdura proteína",
+      "unidad": "100g",
+      "kcal": 36,
+      "proteinas": 1.9,
+      "carbos": 4.5,
+      "grasas": 1
+    },
+    {
+      "id": "i177764233377484on",
+      "nombre": "Lechuga",
+      "unidad": "100g",
+      "kcal": 14,
+      "proteinas": 0.9,
+      "carbos": 2.9,
+      "grasas": 0.1
+    },
+    {
+      "id": "i1777642364226eyvt",
+      "nombre": "Espagueti (garofalo)",
+      "unidad": "100g",
+      "kcal": 251,
+      "proteinas": 14,
+      "carbos": 70,
+      "grasas": 1
+    },
+    {
+      "id": "i1777642411212vcyv",
+      "nombre": "Espinacas (congeladas)",
+      "unidad": "26",
+      "kcal": 26,
+      "proteinas": 3.1,
+      "carbos": 0.5,
+      "grasas": 0.8
+    },
+    {
+      "id": "i1777642455049ws6g",
+      "nombre": "Gambas (congeladas)",
+      "unidad": "100g",
+      "kcal": 30,
+      "proteinas": 6,
+      "carbos": 1.4,
+      "grasas": 0.1
+    },
+    {
+      "id": "i1777642479984oyzm",
+      "nombre": "Garbanzos (bote)",
+      "unidad": "100g",
+      "kcal": 95,
+      "proteinas": 5.4,
+      "carbos": 12,
+      "grasas": 2
     }
   ],
+  "recetas": [],
   "menu": {
-    "lunes":    { "desayuno": "r1", "comida": "r2", "cena": "r3", "snack": null },
-    "martes":   { "desayuno": "r1", "comida": null, "cena": "r2", "snack": null },
-    "miercoles":{ "desayuno": null, "comida": "r3", "cena": null,  "snack": null },
-    "jueves":   { "desayuno": "r1", "comida": "r2", "cena": "r3", "snack": null },
-    "viernes":  { "desayuno": null, "comida": "r2", "cena": "r3", "snack": null },
-    "sabado":   { "desayuno": "r1", "comida": null, "cena": "r2", "snack": null },
-    "domingo":  { "desayuno": "r1", "comida": "r3", "cena": "r2", "snack": null }
+    "lunes": {
+      "desayuno": null,
+      "comida": null,
+      "cena": null,
+      "snack": null
+    },
+    "martes": {
+      "desayuno": null,
+      "comida": null,
+      "cena": null,
+      "snack": null
+    },
+    "miercoles": {
+      "desayuno": null,
+      "comida": null,
+      "cena": null,
+      "snack": null
+    },
+    "jueves": {
+      "desayuno": null,
+      "comida": null,
+      "cena": null,
+      "snack": null
+    },
+    "viernes": {
+      "desayuno": null,
+      "comida": null,
+      "cena": null,
+      "snack": null
+    },
+    "sabado": {
+      "desayuno": null,
+      "comida": null,
+      "cena": null,
+      "snack": null
+    },
+    "domingo": {
+      "desayuno": null,
+      "comida": null,
+      "cena": null,
+      "snack": null
+    }
   }
 }

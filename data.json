@@ -1,15 +1,28 @@
 {
+  "ingredientes": [
+    { "id": "i1", "nombre": "Avena", "unidad": "60g", "kcal": 218, "proteinas": 8, "carbos": 37, "grasas": 4 },
+    { "id": "i2", "nombre": "Leche o bebida vegetal", "unidad": "200ml", "kcal": 60, "proteinas": 3, "carbos": 7, "grasas": 2 },
+    { "id": "i3", "nombre": "Plátano", "unidad": "1 unidad", "kcal": 89, "proteinas": 1.1, "carbos": 23, "grasas": 0.3 },
+    { "id": "i4", "nombre": "Frutos rojos", "unidad": "100g", "kcal": 57, "proteinas": 1.4, "carbos": 13, "grasas": 0.5 },
+    { "id": "i5", "nombre": "Miel", "unidad": "1 cucharadita", "kcal": 21, "proteinas": 0, "carbos": 5.7, "grasas": 0 },
+    { "id": "i6", "nombre": "Pechuga de pollo", "unidad": "100g", "kcal": 110, "proteinas": 23, "carbos": 0, "grasas": 1.2 },
+    { "id": "i7", "nombre": "Limón", "unidad": "1 unidad", "kcal": 17, "proteinas": 0.6, "carbos": 5, "grasas": 0.1 },
+    { "id": "i8", "nombre": "Ajo", "unidad": "1 diente", "kcal": 4, "proteinas": 0.2, "carbos": 1, "grasas": 0 },
+    { "id": "i9", "nombre": "Brócoli", "unidad": "100g", "kcal": 34, "proteinas": 2.8, "carbos": 4, "grasas": 0.4 },
+    { "id": "i10", "nombre": "Zanahoria", "unidad": "1 unidad mediana", "kcal": 25, "proteinas": 0.6, "carbos": 6, "grasas": 0.1 },
+    { "id": "i11", "nombre": "Aceite de oliva", "unidad": "1 cucharada", "kcal": 119, "proteinas": 0, "carbos": 0, "grasas": 13.5 },
+    { "id": "i12", "nombre": "Tomate", "unidad": "1 unidad mediana", "kcal": 18, "proteinas": 0.9, "carbos": 3.5, "grasas": 0.2 },
+    { "id": "i13", "nombre": "Pepino", "unidad": "1/2 unidad", "kcal": 8, "proteinas": 0.3, "carbos": 1.5, "grasas": 0.1 },
+    { "id": "i14", "nombre": "Aceitunas negras", "unidad": "50g", "kcal": 62, "proteinas": 0.4, "carbos": 1.6, "grasas": 6.3 },
+    { "id": "i15", "nombre": "Queso feta", "unidad": "50g", "kcal": 133, "proteinas": 7, "carbos": 0.8, "grasas": 11 },
+    { "id": "i16", "nombre": "Cebolla morada", "unidad": "1/4 unidad", "kcal": 11, "proteinas": 0.3, "carbos": 2.5, "grasas": 0 },
+    { "id": "i17", "nombre": "Huevo", "unidad": "1 unidad L", "kcal": 70, "proteinas": 6, "carbos": 0.4, "grasas": 5 }
+  ],
   "recetas": [
     {
-      "id": "r1",
-      "nombre": "Avena con frutas",
-      "tipo": "desayuno",
-      "tiempo": "10 min",
+      "id": "r1", "nombre": "Avena con frutas", "tipo": "desayuno", "tiempo": "10 min",
       "descripcion": "Desayuno nutritivo y rápido con avena, plátano y frutos rojos.",
-      "kcal": 320,
-      "proteinas": 12,
-      "carbos": 55,
-      "grasas": 7,
+      "kcal": 320, "proteinas": 12, "carbos": 55, "grasas": 7,
       "ingredientes": [
         { "nombre": "Avena", "cantidad": "60g", "kcal": 218, "proteinas": 8, "carbos": 37, "grasas": 4 },
         { "nombre": "Leche o bebida vegetal", "cantidad": "200ml", "kcal": 60, "proteinas": 3, "carbos": 7, "grasas": 2 },
@@ -17,23 +30,12 @@
         { "nombre": "Frutos rojos", "cantidad": "100g", "kcal": 7, "proteinas": 0.3, "carbos": 1.5, "grasas": 0 },
         { "nombre": "Miel", "cantidad": "1 cucharadita", "kcal": 5, "proteinas": 0.1, "carbos": 1.4, "grasas": 0 }
       ],
-      "pasos": [
-        "Calentar la leche en un cazo a fuego medio.",
-        "Añadir la avena y remover durante 3-4 minutos.",
-        "Servir en un bol y decorar con el plátano en rodajas y los frutos rojos.",
-        "Terminar con un hilo de miel."
-      ]
+      "pasos": ["Calentar la leche en un cazo a fuego medio.", "Añadir la avena y remover durante 3-4 minutos.", "Servir en un bol y decorar con el plátano en rodajas y los frutos rojos.", "Terminar con un hilo de miel."]
     },
     {
-      "id": "r2",
-      "nombre": "Pollo al limón con verduras",
-      "tipo": "comida",
-      "tiempo": "30 min",
+      "id": "r2", "nombre": "Pollo al limón con verduras", "tipo": "comida", "tiempo": "30 min",
       "descripcion": "Pechuga de pollo jugosa con limón, ajo y verduras de temporada.",
-      "kcal": 480,
-      "proteinas": 42,
-      "carbos": 25,
-      "grasas": 18,
+      "kcal": 480, "proteinas": 42, "carbos": 25, "grasas": 18,
       "ingredientes": [
         { "nombre": "Pechuga de pollo", "cantidad": "200g", "kcal": 220, "proteinas": 40, "carbos": 0, "grasas": 5 },
         { "nombre": "Limón", "cantidad": "1 unidad", "kcal": 8, "proteinas": 0.3, "carbos": 2.5, "grasas": 0.1 },
@@ -42,38 +44,21 @@
         { "nombre": "Zanahoria", "cantidad": "1 unidad", "kcal": 25, "proteinas": 0.6, "carbos": 6, "grasas": 0.1 },
         { "nombre": "Aceite de oliva", "cantidad": "1 cda", "kcal": 119, "proteinas": 0, "carbos": 0, "grasas": 13.5 }
       ],
-      "pasos": [
-        "Marinar el pollo con zumo de limón, ajo picado, sal y pimienta 15 min.",
-        "Cocer el brócoli y la zanahoria al vapor 8 minutos.",
-        "Cocinar el pollo en sartén con aceite 6-7 minutos por cada lado.",
-        "Servir el pollo con las verduras y decorar con rodajas de limón."
-      ]
+      "pasos": ["Marinar el pollo con zumo de limón, ajo picado, sal y pimienta 15 min.", "Cocer el brócoli y la zanahoria al vapor 8 minutos.", "Cocinar el pollo en sartén con aceite 6-7 minutos por cada lado.", "Servir el pollo con las verduras y decorar con rodajas de limón."]
     },
     {
-      "id": "r3",
-      "nombre": "Ensalada mediterránea",
-      "tipo": "cena",
-      "tiempo": "15 min",
+      "id": "r3", "nombre": "Ensalada mediterránea", "tipo": "cena", "tiempo": "15 min",
       "descripcion": "Ensalada fresca con tomate, pepino, aceitunas y queso feta.",
-      "kcal": 280,
-      "proteinas": 11,
-      "carbos": 18,
-      "grasas": 19,
+      "kcal": 280, "proteinas": 11, "carbos": 18, "grasas": 19,
       "ingredientes": [
         { "nombre": "Tomate", "cantidad": "2 unidades", "kcal": 36, "proteinas": 1.5, "carbos": 7, "grasas": 0.4 },
         { "nombre": "Pepino", "cantidad": "1/2 unidad", "kcal": 8, "proteinas": 0.3, "carbos": 1.5, "grasas": 0.1 },
         { "nombre": "Aceitunas negras", "cantidad": "50g", "kcal": 62, "proteinas": 0.4, "carbos": 1.6, "grasas": 6.3 },
         { "nombre": "Queso feta", "cantidad": "80g", "kcal": 212, "proteinas": 11, "carbos": 1.2, "grasas": 18 },
         { "nombre": "Cebolla morada", "cantidad": "1/4 unidad", "kcal": 11, "proteinas": 0.3, "carbos": 2.5, "grasas": 0 },
-        { "nombre": "Aceite de oliva", "cantidad": "2 cdas", "kcal": 238, "proteinas": 0, "carbos": 0, "grasas": 27 },
-        { "nombre": "Orégano", "cantidad": "1 pizca", "kcal": 1, "proteinas": 0.1, "carbos": 0.2, "grasas": 0 }
+        { "nombre": "Aceite de oliva", "cantidad": "2 cdas", "kcal": 238, "proteinas": 0, "carbos": 0, "grasas": 27 }
       ],
-      "pasos": [
-        "Cortar el tomate y el pepino en dados.",
-        "Añadir la cebolla morada en juliana fina y las aceitunas.",
-        "Desmigar el feta por encima.",
-        "Aliñar con aceite, orégano, sal y pimienta al gusto."
-      ]
+      "pasos": ["Cortar el tomate y el pepino en dados.", "Añadir la cebolla morada en juliana fina y las aceitunas.", "Desmigar el feta por encima.", "Aliñar con aceite, orégano, sal y pimienta al gusto."]
     }
   ],
   "menu": {

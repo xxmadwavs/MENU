@@ -84,6 +84,14 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
 .btn-add-row{width:100%;background:var(--blush);border:1px dashed var(--rose);border-radius:var(--r-sm);padding:.45rem;font-family:'Nunito',sans-serif;font-size:.8rem;color:var(--rose-dark);cursor:pointer;font-weight:600;margin-top:4px;transition:background .2s}
 .btn-add-row:hover{background:var(--blush2)}
 
+/* Library ingredient quantity field — highlight to show it's auto-calc */
+.ing-row[data-from-library="1"] input[type=text]:nth-child(2){
+  border-color:var(--teal);background:#f0faf9;font-weight:600;color:#1f6e63;
+}
+.ing-row[data-from-library="1"] input[type=number]{
+  background:var(--blush);color:var(--text-muted);
+}
+
 /* INGREDIENT SELECTOR DROPDOWN */
 .ing-selector-wrap{position:relative;display:flex;gap:4px;margin-bottom:.5rem}
 .ing-selector-wrap select{flex:1}
@@ -520,7 +528,7 @@ function addIngFromLibrary(){
   const sel=document.getElementById('ing-library-select');
   const id=sel.value; if(!id) return;
   const i=DATA.ingredientes.find(x=>x.id===id); if(!i) return;
-  addIngRow(i.nombre, i.unidad, i.kcal, i.proteinas, i.carbos, i.grasas);
+  addIngRow(i.nombre, i.unidad, i.kcal, i.proteinas, i.carbos, i.grasas, i);
   sel.value='';
   updateMacroPreview();
 }
@@ -591,7 +599,10 @@ function openEditRecipeModal(id){
   document.getElementById('f-grasas').value=r.grasas||'';
 
   const ingC=document.getElementById('ing-container'); ingC.innerHTML='';
-  (r.ingredientes||[]).forEach(i=>addIngRow(i.nombre,i.cantidad,i.kcal,i.proteinas,i.carbos,i.grasas));
+  (r.ingredientes||[]).forEach(i=>{
+    const libIng=DATA.ingredientes.find(x=>x.nombre.toLowerCase()===i.nombre.toLowerCase());
+    addIngRow(i.nombre,i.cantidad,i.kcal,i.proteinas,i.carbos,i.grasas,libIng||null);
+  });
   if(!r.ingredientes?.length) addIngRow();
 
   const stC=document.getElementById('steps-container'); stC.innerHTML='';
@@ -603,20 +614,66 @@ function openEditRecipeModal(id){
   document.getElementById('recipe-modal').classList.add('open');
 }
 
-function addIngRow(nombre='',cantidad='',kcal='',prot='',carb='',gras=''){
+function addIngRow(nombre='',cantidad='',kcal='',prot='',carb='',gras='', baseData=null){
   const cont=document.getElementById('ing-container');
   const row=document.createElement('div');
   row.className='ing-row';
+
+  // If baseData provided (from library), store base values and parse base quantity number
+  if(baseData){
+    row.dataset.baseKcal = baseData.kcal;
+    row.dataset.baseProt = baseData.proteinas;
+    row.dataset.baseCarb = baseData.carbos;
+    row.dataset.baseGras = baseData.grasas;
+    // Extract numeric part from unidad string (e.g. "100g" -> 100, "1 unidad" -> 1)
+    const numMatch = String(baseData.unidad).match(/^[\d.]+/);
+    row.dataset.baseQty = numMatch ? parseFloat(numMatch[0]) : 1;
+    // Extract unit suffix (e.g. "100g" -> "g", "1 unidad" -> " unidad")
+    row.dataset.baseUnit = String(baseData.unidad).replace(/^[\d.]+/,'').trim();
+    row.dataset.fromLibrary = '1';
+  }
+
+  const cantInput = `<input type="text" placeholder="Cant." value="${esc(cantidad)}" ${baseData?'oninput="recalcLibIng(this)"':''}>`;
+
   row.innerHTML=`
     <input type="text" placeholder="Ingrediente" value="${esc(nombre)}" oninput="updateMacroPreview()">
-    <input type="text" placeholder="Cant." value="${esc(cantidad)}">
-    <input type="number" placeholder="0" min="0" value="${kcal!==''?kcal:''}" step="0.1" oninput="updateMacroPreview()">
-    <input type="number" placeholder="0" min="0" value="${prot!==''?prot:''}" step="0.1" oninput="updateMacroPreview()">
-    <input type="number" placeholder="0" min="0" value="${carb!==''?carb:''}" step="0.1" oninput="updateMacroPreview()">
-    <input type="number" placeholder="0" min="0" value="${gras!==''?gras:''}" step="0.1" oninput="updateMacroPreview()">
+    ${cantInput}
+    <input type="number" placeholder="0" min="0" value="${kcal!==''?kcal:''}" step="0.1" oninput="if(!this.closest('.ing-row').dataset.fromLibrary)updateMacroPreview();">
+    <input type="number" placeholder="0" min="0" value="${prot!==''?prot:''}" step="0.1" oninput="if(!this.closest('.ing-row').dataset.fromLibrary)updateMacroPreview();">
+    <input type="number" placeholder="0" min="0" value="${carb!==''?carb:''}" step="0.1" oninput="if(!this.closest('.ing-row').dataset.fromLibrary)updateMacroPreview();">
+    <input type="number" placeholder="0" min="0" value="${gras!==''?gras:''}" step="0.1" oninput="if(!this.closest('.ing-row').dataset.fromLibrary)updateMacroPreview();">
     <button class="ing-del-btn" onclick="this.parentElement.remove();updateMacroPreview()">✕</button>
   `;
   cont.appendChild(row);
+}
+
+function recalcLibIng(cantInput){
+  const row = cantInput.closest('.ing-row');
+  if(!row.dataset.fromLibrary) return;
+
+  const baseQty = parseFloat(row.dataset.baseQty) || 1;
+  const baseUnit = row.dataset.baseUnit || '';
+  const baseKcal = parseFloat(row.dataset.baseKcal) || 0;
+  const baseProt = parseFloat(row.dataset.baseProt) || 0;
+  const baseCarb = parseFloat(row.dataset.baseCarb) || 0;
+  const baseGras = parseFloat(row.dataset.baseGras) || 0;
+
+  // Parse the entered quantity number (strip any unit suffix)
+  const rawVal = cantInput.value.replace(/[^0-9.]/g,'');
+  const enteredQty = parseFloat(rawVal);
+
+  const nums = row.querySelectorAll('input[type=number]');
+  if(!isNaN(enteredQty) && enteredQty > 0){
+    const ratio = enteredQty / baseQty;
+    const rnd = v => Math.round(v * ratio * 10) / 10;
+    nums[0].value = rnd(baseKcal);
+    nums[1].value = rnd(baseProt);
+    nums[2].value = rnd(baseCarb);
+    nums[3].value = rnd(baseGras);
+  } else {
+    nums[0].value = ''; nums[1].value = ''; nums[2].value = ''; nums[3].value = '';
+  }
+  updateMacroPreview();
 }
 
 function addStepRow(text=''){

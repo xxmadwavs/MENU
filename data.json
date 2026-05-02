@@ -242,6 +242,177 @@
       "proteinas": 5.4,
       "carbos": 12,
       "grasas": 2
+    },
+    {
+      "id": "i1777715323549q252",
+      "nombre": "Albondigas de pollo",
+      "unidad": "100g",
+      "kcal": 112,
+      "proteinas": 20,
+      "carbos": 1.2,
+      "grasas": 3
+    },
+    {
+      "id": "i1777715381980saao",
+      "nombre": "Gochujang",
+      "unidad": "100",
+      "kcal": 210,
+      "proteinas": 4,
+      "carbos": 46,
+      "grasas": 1
+    },
+    {
+      "id": "i1777715427434j5zq",
+      "nombre": "Hamburguesa pollo",
+      "unidad": "100g",
+      "kcal": 132,
+      "proteinas": 18,
+      "carbos": 0.5,
+      "grasas": 6.6
+    },
+    {
+      "id": "i1777715458098wtyv",
+      "nombre": "Harina Avena",
+      "unidad": "100",
+      "kcal": 371,
+      "proteinas": 9.9,
+      "carbos": 57.1,
+      "grasas": 8
+    },
+    {
+      "id": "i1777715494132fyjw",
+      "nombre": "Leche evaporada",
+      "unidad": "100ml",
+      "kcal": 117,
+      "proteinas": 6.3,
+      "carbos": 9.4,
+      "grasas": 6
+    },
+    {
+      "id": "i1777715521540pad6",
+      "nombre": "Leche almendras",
+      "unidad": "100ml",
+      "kcal": 13,
+      "proteinas": 0.5,
+      "carbos": 0.2,
+      "grasas": 1.1
+    },
+    {
+      "id": "i1777715547538i4df",
+      "nombre": "Leche semi",
+      "unidad": "100ml",
+      "kcal": 46,
+      "proteinas": 3.1,
+      "carbos": 4.7,
+      "grasas": 1.6
+    },
+    {
+      "id": "i1777715580939f5ls",
+      "nombre": "Merluza",
+      "unidad": "100g",
+      "kcal": 98,
+      "proteinas": 15.2,
+      "carbos": 2,
+      "grasas": 3
+    },
+    {
+      "id": "i1777715617489aoma",
+      "nombre": "Muesli 0% Carrefour",
+      "unidad": "100g",
+      "kcal": 413,
+      "proteinas": 7.5,
+      "carbos": 67,
+      "grasas": 14
+    },
+    {
+      "id": "i1777715656570dl3x",
+      "nombre": "Pan molde integral",
+      "unidad": "100g",
+      "kcal": 244,
+      "proteinas": 10.3,
+      "carbos": 41.1,
+      "grasas": 2.9
+    },
+    {
+      "id": "i1777715699680ofdj",
+      "nombre": "Patatas bote",
+      "unidad": "100g",
+      "kcal": 85,
+      "proteinas": 2,
+      "carbos": 18,
+      "grasas": 0.5
+    },
+    {
+      "id": "i1777715733115spg8",
+      "nombre": "Pasta lentejas",
+      "unidad": "100g",
+      "kcal": 347,
+      "proteinas": 26,
+      "carbos": 49,
+      "grasas": 2.5
+    },
+    {
+      "id": "i1777715782421anx9",
+      "nombre": "Pavo 93%",
+      "unidad": "100g",
+      "kcal": 104,
+      "proteinas": 23,
+      "carbos": 0.5,
+      "grasas": 1.1
+    },
+    {
+      "id": "i1777715874205nn06",
+      "nombre": "Rigatoni (Garofalo)",
+      "unidad": "100g",
+      "kcal": 351,
+      "proteinas": 14,
+      "carbos": 70,
+      "grasas": 1
+    },
+    {
+      "id": "i1777715896683wpix",
+      "nombre": "Soja",
+      "unidad": "100ml",
+      "kcal": 77,
+      "proteinas": 10,
+      "carbos": 3.2,
+      "grasas": 0
+    },
+    {
+      "id": "i17777159170064y5u",
+      "nombre": "Sriracha",
+      "unidad": "100g",
+      "kcal": 106,
+      "proteinas": 2,
+      "carbos": 21,
+      "grasas": 1
+    },
+    {
+      "id": "i17777159659292e8h",
+      "nombre": "Tira calamar",
+      "unidad": "100g",
+      "kcal": 49,
+      "proteinas": 11,
+      "carbos": 0,
+      "grasas": 0.5
+    },
+    {
+      "id": "i1777715990502iurl",
+      "nombre": "Tomate triturado",
+      "unidad": "100g",
+      "kcal": 27,
+      "proteinas": 1,
+      "carbos": 4.9,
+      "grasas": 0
+    },
+    {
+      "id": "i1777716029975nr9i",
+      "nombre": "Yogur griego light",
+      "unidad": "125g",
+      "kcal": 73,
+      "proteinas": 7.3,
+      "carbos": 5.3,
+      "grasas": 2.5
     }
   ],
   "recetas": [],

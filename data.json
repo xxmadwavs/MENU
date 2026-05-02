@@ -413,48 +413,350 @@
       "proteinas": 7.3,
       "carbos": 5.3,
       "grasas": 2.5
+    },
+    {
+      "id": "i1777716904200d5kk",
+      "nombre": "Mozzarella",
+      "unidad": "100g",
+      "kcal": 293,
+      "proteinas": 25,
+      "carbos": 1,
+      "grasas": 21
+    },
+    {
+      "id": "i1777717542489nkac",
+      "nombre": "Miel",
+      "unidad": "100g",
+      "kcal": 304,
+      "proteinas": 0.3,
+      "carbos": 82.4,
+      "grasas": 0
+    },
+    {
+      "id": "i1777717804438xdq6",
+      "nombre": "Pesto (gallo)",
+      "unidad": "100g",
+      "kcal": 44,
+      "proteinas": 5.8,
+      "carbos": 9,
+      "grasas": 46
     }
   ],
-  "recetas": [],
+  "recetas": [
+    {
+      "id": "r17777168509747vr8",
+      "nombre": "Sandwich mixto",
+      "tipo": "desayuno",
+      "tiempo": "5 min",
+      "descripcion": "",
+      "kcal": 267,
+      "proteinas": 25,
+      "carbos": 25.2,
+      "grasas": 6.6,
+      "ingredientes": [
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "60g",
+          "kcal": 146.4,
+          "proteinas": 6.2,
+          "carbos": 24.7,
+          "grasas": 1.7
+        },
+        {
+          "nombre": "Pavo 93%",
+          "cantidad": "60g",
+          "kcal": 62.4,
+          "proteinas": 13.8,
+          "carbos": 0.3,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Mozzarella",
+          "cantidad": "20g",
+          "kcal": 58.6,
+          "proteinas": 5,
+          "carbos": 0.2,
+          "grasas": 4.2
+        }
+      ],
+      "pasos": [
+        "Coloca el jamón y el queso entre las rebanadas de pan.",
+        "Tuesta en una sartén a fuego medio o sandwichera hasta que esté dorado."
+      ]
+    },
+    {
+      "id": "r1777717424539appz",
+      "nombre": "Panqueques de Avena",
+      "tipo": "desayuno",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 320,
+      "proteinas": 26.8,
+      "carbos": 28.1,
+      "grasas": 10.2,
+      "ingredientes": [
+        {
+          "nombre": "Harina Avena",
+          "cantidad": "40g",
+          "kcal": 148.4,
+          "proteinas": 4,
+          "carbos": 22.8,
+          "grasas": 3.2
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "50ml",
+          "kcal": 23,
+          "proteinas": 1.6,
+          "carbos": 2.4,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Huevo M",
+          "cantidad": "53g",
+          "kcal": 73,
+          "proteinas": 7,
+          "carbos": 0.5,
+          "grasas": 5.3
+        },
+        {
+          "nombre": "Proteína",
+          "cantidad": "20g",
+          "kcal": 76,
+          "proteinas": 14.2,
+          "carbos": 2.4,
+          "grasas": 0.9
+        }
+      ],
+      "pasos": [
+        "Coloca todos los ingredientes en una licuadora y procesa durante 1min hasta que tenga un consistencia líquida",
+        "Engrasa ligeramente una sartén antiadherente, caliéntela, luego vierta 1/2 de la taza de mezcla en el centro de la sartén caliente",
+        "Cuando pequeñas burbujas aparezcan por todas partes, voltea el panqueque hasta que ambos lados estén dorados. Repite el proceso hasta que se haya usado toda la mezcla"
+      ]
+    },
+    {
+      "id": "r17777175037187vko",
+      "nombre": "Bowl pancakes arándano",
+      "tipo": "desayuno",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 355,
+      "proteinas": 28.4,
+      "carbos": 34.8,
+      "grasas": 10.6,
+      "ingredientes": [
+        {
+          "nombre": "Huevo M",
+          "cantidad": "53g",
+          "kcal": 73,
+          "proteinas": 6.9,
+          "carbos": 0.5,
+          "grasas": 5.3
+        },
+        {
+          "nombre": "Yogur griego light",
+          "cantidad": "50g",
+          "kcal": 29.2,
+          "proteinas": 2.9,
+          "carbos": 2.1,
+          "grasas": 1
+        },
+        {
+          "nombre": "Harina Avena",
+          "cantidad": "35",
+          "kcal": 129.9,
+          "proteinas": 3.5,
+          "carbos": 20,
+          "grasas": 2.8
+        },
+        {
+          "nombre": "Miel",
+          "cantidad": "10g",
+          "kcal": 30.4,
+          "proteinas": 0,
+          "carbos": 8.2,
+          "grasas": 0
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "35ml",
+          "kcal": 16.1,
+          "proteinas": 1.1,
+          "carbos": 1.6,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Proteína",
+          "cantidad": "20g",
+          "kcal": 76,
+          "proteinas": 14,
+          "carbos": 2.4,
+          "grasas": 0.9
+        }
+      ],
+      "pasos": [
+        "En un tapper de cristal, mezcla los ingredientes en el siguiente orden:\nHuevo, Yogurt, Harina, Leche, Proteína, Levadura, Miel",
+        "Mételo en la Air Fryer y que se cocine durante 17min a 180ºC"
+      ]
+    },
+    {
+      "id": "r177771771594824um",
+      "nombre": "Tostada",
+      "tipo": "desayuno",
+      "tiempo": "5min",
+      "descripcion": "",
+      "kcal": 163,
+      "proteinas": 15,
+      "carbos": 12.7,
+      "grasas": 5.4,
+      "ingredientes": [
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "30g",
+          "kcal": 73.2,
+          "proteinas": 3.1,
+          "carbos": 12.3,
+          "grasas": 0.9
+        },
+        {
+          "nombre": "Pavo 93%",
+          "cantidad": "30g",
+          "kcal": 31.2,
+          "proteinas": 6.9,
+          "carbos": 0.2,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Mozzarella",
+          "cantidad": "20g",
+          "kcal": 58.6,
+          "proteinas": 5,
+          "carbos": 0.2,
+          "grasas": 4.2
+        }
+      ],
+      "pasos": []
+    },
+    {
+      "id": "r177771786909724md",
+      "nombre": "Pasta pollo y pesto basil",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 350,
+      "proteinas": 45.5,
+      "carbos": 50.8,
+      "grasas": 11.7,
+      "ingredientes": [
+        {
+          "nombre": "Espagueti (garofalo)",
+          "cantidad": "70g",
+          "kcal": 175.7,
+          "proteinas": 9.8,
+          "carbos": 49,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "150g",
+          "kcal": 165,
+          "proteinas": 34.5,
+          "carbos": 0,
+          "grasas": 1.8
+        },
+        {
+          "nombre": "Pesto (gallo)",
+          "cantidad": "20g",
+          "kcal": 8.8,
+          "proteinas": 1.2,
+          "carbos": 1.8,
+          "grasas": 9.2
+        }
+      ],
+      "pasos": []
+    },
+    {
+      "id": "r1777717943430cd3n",
+      "nombre": "Albóndiga con arroz",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 385,
+      "proteinas": 35,
+      "carbos": 49.1,
+      "grasas": 5.3,
+      "ingredientes": [
+        {
+          "nombre": "Albondigas de pollo",
+          "cantidad": "150g",
+          "kcal": 168,
+          "proteinas": 30,
+          "carbos": 1.8,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "20g",
+          "kcal": 7.6,
+          "proteinas": 0.2,
+          "carbos": 1.7,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "60 g",
+          "kcal": 209.4,
+          "proteinas": 4.8,
+          "carbos": 45.6,
+          "grasas": 0.7
+        }
+      ],
+      "pasos": [
+        "Cocer el arroz",
+        "Sofreir la cebolla",
+        "Hacer las albóndigas en la sartén y añadir un poco de agua"
+      ]
+    }
+  ],
   "menu": {
     "lunes": {
-      "desayuno": null,
+      "desayuno": "r17777168509747vr8",
       "comida": null,
       "cena": null,
       "snack": null
     },
     "martes": {
-      "desayuno": null,
+      "desayuno": "r177771771594824um",
       "comida": null,
       "cena": null,
       "snack": null
     },
     "miercoles": {
-      "desayuno": null,
+      "desayuno": "r17777175037187vko",
       "comida": null,
       "cena": null,
       "snack": null
     },
     "jueves": {
-      "desayuno": null,
-      "comida": null,
+      "desayuno": "r177771771594824um",
+      "comida": "r1777717943430cd3n",
       "cena": null,
       "snack": null
     },
     "viernes": {
-      "desayuno": null,
+      "desayuno": "r17777168509747vr8",
       "comida": null,
       "cena": null,
       "snack": null
     },
     "sabado": {
-      "desayuno": null,
+      "desayuno": "r1777717424539appz",
       "comida": null,
       "cena": null,
       "snack": null
     },
     "domingo": {
-      "desayuno": null,
+      "desayuno": "r1777717424539appz",
       "comida": null,
       "cena": null,
       "snack": null

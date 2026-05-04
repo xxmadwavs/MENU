@@ -716,19 +716,254 @@
         "Sofreir la cebolla",
         "Hacer las albóndigas en la sartén y añadir un poco de agua"
       ]
+    },
+    {
+      "id": "r1777888202989ab8y",
+      "nombre": "Arroz caldoso con marisco",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 375,
+      "proteinas": 24.6,
+      "carbos": 59.2,
+      "grasas": 4.2,
+      "ingredientes": [
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "70 g",
+          "kcal": 244.3,
+          "proteinas": 5.6,
+          "carbos": 53.2,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Gambas (congeladas)",
+          "cantidad": "100g",
+          "kcal": 30,
+          "proteinas": 6,
+          "carbos": 1.4,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "30g",
+          "kcal": 11.4,
+          "proteinas": 0.4,
+          "carbos": 2.6,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Tira calamar",
+          "cantidad": "100g",
+          "kcal": 49,
+          "proteinas": 11,
+          "carbos": 0,
+          "grasas": 0.5
+        },
+        {
+          "nombre": "Caldo pescado",
+          "cantidad": "400ml",
+          "kcal": 16,
+          "proteinas": 1.6,
+          "carbos": 2,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "3 ml",
+          "kcal": 24.6,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 2.7
+        }
+      ],
+      "pasos": [
+        "Sofríe la cebolla, luego añade los calamares y las gambas.",
+        "Incorpora el arroz y cubre con caldo de pescado.",
+        "Cocina a fuego lento hasta que el arroz esté en su punto."
+      ]
+    },
+    {
+      "id": "r1777888341170jo7n",
+      "nombre": "Quesadilla pavo y mozzarella",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 261,
+      "proteinas": 17.2,
+      "carbos": 28.3,
+      "grasas": 8,
+      "ingredientes": [
+        {
+          "nombre": "Tortillas integrales",
+          "cantidad": "58g",
+          "kcal": 171,
+          "proteinas": 5.3,
+          "carbos": 27.9,
+          "grasas": 3.5
+        },
+        {
+          "nombre": "Pavo 93%",
+          "cantidad": "30g",
+          "kcal": 31.2,
+          "proteinas": 6.9,
+          "carbos": 0.2,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Mozzarella",
+          "cantidad": "20g",
+          "kcal": 58.6,
+          "proteinas": 5,
+          "carbos": 0.2,
+          "grasas": 4.2
+        }
+      ],
+      "pasos": []
+    },
+    {
+      "id": "r1777888458490bpmw",
+      "nombre": "Tortilla",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 284,
+      "proteinas": 19.2,
+      "carbos": 25.7,
+      "grasas": 11.7,
+      "ingredientes": [
+        {
+          "nombre": "Huevos",
+          "cantidad": "2",
+          "kcal": 138,
+          "proteinas": 13,
+          "carbos": 1,
+          "grasas": 10
+        },
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "60g",
+          "kcal": 146.4,
+          "proteinas": 6.2,
+          "carbos": 24.7,
+          "grasas": 1.7
+        }
+      ],
+      "pasos": []
+    },
+    {
+      "id": "r1777888570833gg2b",
+      "nombre": "Pizza calabacín, pavo y queso",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 208,
+      "proteinas": 30.9,
+      "carbos": 9.8,
+      "grasas": 5.5,
+      "ingredientes": [
+        {
+          "nombre": "Calabacin",
+          "cantidad": "200g",
+          "kcal": 32,
+          "proteinas": 2.4,
+          "carbos": 6.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Pavo 93%",
+          "cantidad": "100g",
+          "kcal": 104,
+          "proteinas": 23,
+          "carbos": 0.5,
+          "grasas": 1.1
+        },
+        {
+          "nombre": "Mozzarella",
+          "cantidad": "20g",
+          "kcal": 58.6,
+          "proteinas": 5,
+          "carbos": 0.2,
+          "grasas": 4.2
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "50g",
+          "kcal": 13.5,
+          "proteinas": 0.5,
+          "carbos": 2.5,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Precalentar horno a 180º",
+        "Cortar el calabacín en rodajas y poner en una bandeja con aceite y sal",
+        "Meter el calabacín al horno a 180º, 5min",
+        "Añadir los ingredientes, y al horno 180º, 5min"
+      ]
+    },
+    {
+      "id": "r1777888761775jwh2",
+      "nombre": "Pasta fresca con boloñesa (pollo)",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 455,
+      "proteinas": 27.4,
+      "carbos": 39.6,
+      "grasas": 19.7,
+      "ingredientes": [
+        {
+          "nombre": "Ravioli de ricotta y espinacas",
+          "cantidad": "100",
+          "kcal": 298,
+          "proteinas": 8.5,
+          "carbos": 34,
+          "grasas": 13
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "50g",
+          "kcal": 13.5,
+          "proteinas": 0.5,
+          "carbos": 2.5,
+          "grasas": 0
+        },
+        {
+          "nombre": "Carne Picada Pollo",
+          "cantidad": "100g",
+          "kcal": 132,
+          "proteinas": 18,
+          "carbos": 0.5,
+          "grasas": 6.6
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "30g",
+          "kcal": 11.4,
+          "proteinas": 0.4,
+          "carbos": 2.6,
+          "grasas": 0.1
+        }
+      ],
+      "pasos": [
+        "Sofríe la cebolla",
+        "Añade la carne picada y cuando esté hecha, añade el tomate frito",
+        "Cuece la pasta"
+      ]
     }
   ],
   "menu": {
     "lunes": {
       "desayuno": "r17777168509747vr8",
-      "comida": null,
-      "cena": null,
+      "comida": "r1777888202989ab8y",
+      "cena": "r1777888341170jo7n",
       "snack": null
     },
     "martes": {
       "desayuno": "r177771771594824um",
-      "comida": null,
-      "cena": null,
+      "comida": "r1777888761775jwh2",
+      "cena": "r1777888570833gg2b",
       "snack": null
     },
     "miercoles": {

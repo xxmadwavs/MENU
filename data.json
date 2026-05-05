@@ -908,10 +908,10 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 455,
-      "proteinas": 27.4,
-      "carbos": 39.6,
-      "grasas": 19.7,
+      "kcal": 481,
+      "proteinas": 31,
+      "carbos": 39.7,
+      "grasas": 21,
       "ingredientes": [
         {
           "nombre": "Ravioli de ricotta y espinacas",
@@ -931,11 +931,11 @@
         },
         {
           "nombre": "Carne Picada Pollo",
-          "cantidad": "100g",
-          "kcal": 132,
-          "proteinas": 18,
-          "carbos": 0.5,
-          "grasas": 6.6
+          "cantidad": "120g",
+          "kcal": 158.4,
+          "proteinas": 21.6,
+          "carbos": 0.6,
+          "grasas": 7.9
         },
         {
           "nombre": "Cebolla (congelada)",
@@ -955,7 +955,7 @@
   ],
   "menu": {
     "lunes": {
-      "desayuno": "r17777168509747vr8",
+      "desayuno": "r177771771594824um",
       "comida": "r1777888202989ab8y",
       "cena": "r1777888341170jo7n",
       "snack": null

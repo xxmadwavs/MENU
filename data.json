@@ -908,18 +908,18 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 481,
-      "proteinas": 31,
-      "carbos": 39.7,
-      "grasas": 21,
+      "kcal": 556,
+      "proteinas": 33.1,
+      "carbos": 430.7,
+      "grasas": 24.3,
       "ingredientes": [
         {
           "nombre": "Ravioli de ricotta y espinacas",
-          "cantidad": "100",
-          "kcal": 298,
-          "proteinas": 8.5,
-          "carbos": 34,
-          "grasas": 13
+          "cantidad": "125g",
+          "kcal": 372.5,
+          "proteinas": 10.63,
+          "carbos": 425,
+          "grasas": 16.25
         },
         {
           "nombre": "Tomate triturado",

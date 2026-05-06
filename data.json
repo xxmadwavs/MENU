@@ -219,7 +219,7 @@
     {
       "id": "i1777642411212vcyv",
       "nombre": "Espinacas (congeladas)",
-      "unidad": "26",
+      "unidad": "100g",
       "kcal": 26,
       "proteinas": 3.1,
       "carbos": 0.5,
@@ -440,6 +440,15 @@
       "proteinas": 5.8,
       "carbos": 9,
       "grasas": 46
+    },
+    {
+      "id": "i1778065147570mi9c",
+      "nombre": "Espinacas frescas",
+      "unidad": "100g",
+      "kcal": 23,
+      "proteinas": 2.5,
+      "carbos": 3.6,
+      "grasas": 0.4
     }
   ],
   "recetas": [
@@ -951,6 +960,66 @@
         "Añade la carne picada y cuando esté hecha, añade el tomate frito",
         "Cuece la pasta"
       ]
+    },
+    {
+      "id": "r1778065085369zff6",
+      "nombre": "Pollo cremoso con brócoli, espinacas y arroz",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 472,
+      "proteinas": 46,
+      "carbos": 54.8,
+      "grasas": 10.3,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "150g",
+          "kcal": 165,
+          "proteinas": 34.5,
+          "carbos": 0,
+          "grasas": 1.8
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "60 g",
+          "kcal": 209.4,
+          "proteinas": 4.8,
+          "carbos": 45.6,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "50g",
+          "kcal": 14,
+          "proteinas": 1.4,
+          "carbos": 1.4,
+          "grasas": 4
+        },
+        {
+          "nombre": "Espinacas frescas",
+          "cantidad": "60g",
+          "kcal": 13.8,
+          "proteinas": 1.5,
+          "carbos": 2.2,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Leche evaporada",
+          "cantidad": "60ml",
+          "kcal": 70.2,
+          "proteinas": 3.8,
+          "carbos": 5.6,
+          "grasas": 3.6
+        }
+      ],
+      "pasos": [
+        "Sazonar el pollo: Corta 150 grams pechuga de pollo en dados medianos. Sázona con 0.5 teaspoons pimentón ahumado, 1 pinch sal y pimienta negra y 1 tablespoons zumo de limón. Deja reposar 5 minutos.",
+        "Dorar el ajo: Calienta 1 teaspoons aceite de oliva virgen extra en una sartén a fuego medio. Dora los 2 dientes de ajo laminados 1-2 minutos hasta que estén fragantes.",
+        "Cocinar pollo y brócoli: Sube el fuego y cocina el pollo sazonado 4-5 minutos hasta que esté bien dorado. Mientras, cuece el brócoli al vapor 3 minutos — tiene que quedar al dente, con color verde vivo.",
+        "Crear la salsa cremosa: Baja el fuego. Añade las 60 grams espinacas frescas y los 60 milliliters leche evaporada desnatada. Remueve 2 minutos hasta que las espinacas se marchiten y la salsa espese ligeramente.",
+        "Montar y servir: Pon el 60 grams arroz cocido de base en el bol, el brócoli al lado y encima el pollo con toda la salsita. Un toque más de limón si te gusta."
+      ]
     }
   ],
   "menu": {
@@ -967,8 +1036,8 @@
       "snack": null
     },
     "miercoles": {
-      "desayuno": "r17777175037187vko",
-      "comida": null,
+      "desayuno": "r177771771594824um",
+      "comida": "r1778065085369zff6",
       "cena": null,
       "snack": null
     },

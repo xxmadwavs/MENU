@@ -449,6 +449,15 @@
       "proteinas": 2.5,
       "carbos": 3.6,
       "grasas": 0.4
+    },
+    {
+      "id": "i17780691299141cku",
+      "nombre": "Zanahoria",
+      "unidad": "100g",
+      "kcal": 41,
+      "proteinas": 0.9,
+      "carbos": 9.6,
+      "grasas": 0.2
     }
   ],
   "recetas": [
@@ -1020,6 +1029,381 @@
         "Crear la salsa cremosa: Baja el fuego. Añade las 60 grams espinacas frescas y los 60 milliliters leche evaporada desnatada. Remueve 2 minutos hasta que las espinacas se marchiten y la salsa espese ligeramente.",
         "Montar y servir: Pon el 60 grams arroz cocido de base en el bol, el brócoli al lado y encima el pollo con toda la salsita. Un toque más de limón si te gusta."
       ]
+    },
+    {
+      "id": "r1778065868745a791",
+      "nombre": "Albondigas con patatas asadas",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 371,
+      "proteinas": 34.8,
+      "carbos": 44.9,
+      "grasas": 5.8,
+      "ingredientes": [
+        {
+          "nombre": "Albondigas de pollo",
+          "cantidad": "150g",
+          "kcal": 168,
+          "proteinas": 30,
+          "carbos": 1.8,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "20g",
+          "kcal": 7.6,
+          "proteinas": 0.2,
+          "carbos": 1.7,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Patatas bote",
+          "cantidad": "230g",
+          "kcal": 195.5,
+          "proteinas": 4.6,
+          "carbos": 41.4,
+          "grasas": 1.2
+        }
+      ],
+      "pasos": []
+    },
+    {
+      "id": "r17780661188061b9a",
+      "nombre": "Tortilla de espinacas y tomate",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 223,
+      "proteinas": 18.9,
+      "carbos": 6.1,
+      "grasas": 13.9,
+      "ingredientes": [
+        {
+          "nombre": "Espinacas frescas",
+          "cantidad": "80g",
+          "kcal": 18.4,
+          "proteinas": 2,
+          "carbos": 2.9,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Huevo M",
+          "cantidad": "3",
+          "kcal": 195,
+          "proteinas": 16.5,
+          "carbos": 1.2,
+          "grasas": 13.5
+        },
+        {
+          "nombre": "Tomate cherry",
+          "cantidad": "50g",
+          "kcal": 10,
+          "proteinas": 0.4,
+          "carbos": 2,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Pimienta",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Saltea el ajo y las espinacas en aceite 2-3 min hasta marchitar.",
+        "Añade el tomate en dados, cocina 1 min más.",
+        "Bate los huevos, sazona y vierte sobre la mezcla.",
+        "Cuaja a fuego medio-bajo 3 min por lado."
+      ]
+    },
+    {
+      "id": "r177806887494410gv",
+      "nombre": "Pollo al curry cremoso con arroz",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 487,
+      "proteinas": 44.9,
+      "carbos": 57.4,
+      "grasas": 7.5,
+      "ingredientes": [
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "60 g",
+          "kcal": 209.4,
+          "proteinas": 4.8,
+          "carbos": 45.6,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "150g",
+          "kcal": 165,
+          "proteinas": 34.5,
+          "carbos": 0,
+          "grasas": 1.8
+        },
+        {
+          "nombre": "Leche evaporada",
+          "cantidad": "80ml",
+          "kcal": 93.6,
+          "proteinas": 5,
+          "carbos": 7.5,
+          "grasas": 4.8
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "50g",
+          "kcal": 19,
+          "proteinas": 0.6,
+          "carbos": 4.3,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Curry",
+          "cantidad": "1 cdta",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Cúrcuma",
+          "cantidad": "1/2 cdta",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Comino",
+          "cantidad": "1/2 cdta",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Sofríe la cebolla y el ajo picados en aceite 3 min.",
+        "Añade el pollo en dados y dora 4 min.",
+        "Incorpora el curry, la cúrcuma y el comino. Remueve 1 min para que las especias se tuesten.",
+        "Vierte la leche evaporada y cocina a fuego bajo 6-8 min hasta que la salsa espese.",
+        "Sirve sobre el arroz cocido."
+      ]
+    },
+    {
+      "id": "r1778069003030zhaz",
+      "nombre": "Pasta con salsa de ajo y leche evaporada",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 434,
+      "proteinas": 49.3,
+      "carbos": 56.5,
+      "grasas": 7.3,
+      "ingredientes": [
+        {
+          "nombre": "Espagueti (garofalo)",
+          "cantidad": "70g",
+          "kcal": 175.7,
+          "proteinas": 9.8,
+          "carbos": 49,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "150g",
+          "kcal": 165,
+          "proteinas": 34.5,
+          "carbos": 0,
+          "grasas": 1.8
+        },
+        {
+          "nombre": "Leche evaporada",
+          "cantidad": "80ml",
+          "kcal": 93.6,
+          "proteinas": 5,
+          "carbos": 7.5,
+          "grasas": 4.8
+        },
+        {
+          "nombre": "Ajo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Perejil",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece la pasta en agua con sal según el paquete.",
+        "Mientras, lamina los ajos y dóralos en aceite a fuego muy bajo 4-5 min. Añade el pollo",
+        "Añade la leche evaporada, pimienta y sal. Reduce 2-3 min hasta que espese ligeramente.",
+        "Escurre la pasta reservando 2 cdas del agua de cocción.",
+        "Mezcla la pasta con la salsa, añade el agua reservada si hace falta para ligar. Termina con perejil y parmesano."
+      ]
+    },
+    {
+      "id": "r17780691011827hcl",
+      "nombre": "Pollo al air fryer con patata y zanahoria",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 328,
+      "proteinas": 40.3,
+      "carbos": 33,
+      "grasas": 2.8,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "160g",
+          "kcal": 176,
+          "proteinas": 36.8,
+          "carbos": 0,
+          "grasas": 1.9
+        },
+        {
+          "nombre": "Patatas bote",
+          "cantidad": "130g",
+          "kcal": 110.5,
+          "proteinas": 2.6,
+          "carbos": 23.4,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "100g",
+          "kcal": 41,
+          "proteinas": 0.9,
+          "carbos": 9.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Romero",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Tomillo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Ajo en polvo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Limón",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Mezcla patata y zanahoria con aceite, ajo en polvo y romero.",
+        "Pon las verduras en el air fryer a 200°C durante 10 min.",
+        "Mientras, marina la pechuga con tomillo, sal y limón.",
+        "Añade el pollo al air fryer junto a las verduras y cocina 12-15 min más, dando la vuelta al pollo a mitad."
+      ]
+    },
+    {
+      "id": "r17780693652442tft",
+      "nombre": "Merluza al vapor con calabacín salteado",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 208,
+      "proteinas": 29.8,
+      "carbos": 10.2,
+      "grasas": 5.6,
+      "ingredientes": [
+        {
+          "nombre": "Merluza",
+          "cantidad": "180g",
+          "kcal": 176.4,
+          "proteinas": 27.4,
+          "carbos": 3.6,
+          "grasas": 5.4
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "200g",
+          "kcal": 32,
+          "proteinas": 2.4,
+          "carbos": 6.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Ajo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Perejil",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Limon",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece la merluza al vapor 8-10 min",
+        "Saltea el calabacín en dados con ajo y aceite 4 min.",
+        "Añade perejil y zumo de limón.",
+        "Sirve el pescado sobre el calabacín."
+      ]
     }
   ],
   "menu": {
@@ -1038,13 +1422,13 @@
     "miercoles": {
       "desayuno": "r177771771594824um",
       "comida": "r1778065085369zff6",
-      "cena": null,
+      "cena": "r17780661188061b9a",
       "snack": null
     },
     "jueves": {
       "desayuno": "r177771771594824um",
-      "comida": "r1777717943430cd3n",
-      "cena": null,
+      "comida": "r1778065868745a791",
+      "cena": "r1777888458490bpmw",
       "snack": null
     },
     "viernes": {
@@ -1061,8 +1445,8 @@
     },
     "domingo": {
       "desayuno": "r1777717424539appz",
-      "comida": null,
-      "cena": null,
+      "comida": "r177806887494410gv",
+      "cena": "r17780693652442tft",
       "snack": null
     }
   }

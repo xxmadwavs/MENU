@@ -458,6 +458,24 @@
       "proteinas": 0.9,
       "carbos": 9.6,
       "grasas": 0.2
+    },
+    {
+      "id": "i1778952351819whou",
+      "nombre": "Tortilla harina de trigo integral",
+      "unidad": "100g",
+      "kcal": 288,
+      "proteinas": 9.2,
+      "carbos": 42,
+      "grasas": 7.3
+    },
+    {
+      "id": "i1778952660087a1wy",
+      "nombre": "Quinoa",
+      "unidad": "100g",
+      "kcal": 136,
+      "proteinas": 4.8,
+      "carbos": 23,
+      "grasas": 2.8
     }
   ],
   "recetas": [
@@ -1404,6 +1422,388 @@
         "Añade perejil y zumo de limón.",
         "Sirve el pescado sobre el calabacín."
       ]
+    },
+    {
+      "id": "r1778952103352kwln",
+      "nombre": "Galletas avena y pepitas chocolate",
+      "tipo": "desayuno",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 0,
+      "proteinas": 0,
+      "carbos": 0,
+      "grasas": 0,
+      "ingredientes": [],
+      "pasos": [
+        "Trocear la onza de chocolate",
+        "Mezcla la harina de avena con el huevo, la miel y los trozos de chocolate"
+      ]
+    },
+    {
+      "id": "r1778952553154tf4y",
+      "nombre": "Wrap de pollo c/ lechuga",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 317,
+      "proteinas": 45.4,
+      "carbos": 17.7,
+      "grasas": 5.1,
+      "ingredientes": [
+        {
+          "nombre": "Tortilla harina de trigo integral",
+          "cantidad": "40g",
+          "kcal": 115.2,
+          "proteinas": 3.7,
+          "carbos": 16.8,
+          "grasas": 2.9
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "180g",
+          "kcal": 198,
+          "proteinas": 41.4,
+          "carbos": 0,
+          "grasas": 2.2
+        },
+        {
+          "nombre": "Lechuga",
+          "cantidad": "30g",
+          "kcal": 4.2,
+          "proteinas": 0.3,
+          "carbos": 0.9,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cocina el pollo a la plancha y cortala en tiras",
+        "Coloca en la tortilla la lechuga"
+      ]
+    },
+    {
+      "id": "r1778952800119rh33",
+      "nombre": "Pollo y Quinoa",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 339,
+      "proteinas": 37.5,
+      "carbos": 33.8,
+      "grasas": 9.3,
+      "ingredientes": [
+        {
+          "nombre": "Quinoa",
+          "cantidad": "125g",
+          "kcal": 170,
+          "proteinas": 6,
+          "carbos": 28.8,
+          "grasas": 3.5
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "120g",
+          "kcal": 132,
+          "proteinas": 27.6,
+          "carbos": 0,
+          "grasas": 1.4
+        },
+        {
+          "nombre": "Espinacas frescas",
+          "cantidad": "100g",
+          "kcal": 23,
+          "proteinas": 2.5,
+          "carbos": 3.6,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "50g",
+          "kcal": 14,
+          "proteinas": 1.4,
+          "carbos": 1.4,
+          "grasas": 4
+        }
+      ],
+      "pasos": [
+        "Se cocinan las verduras y se añade el pollo"
+      ]
+    },
+    {
+      "id": "r1778953288624ctyf",
+      "nombre": "Pasta pollo y pesto espinacas",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 488,
+      "proteinas": 39.7,
+      "carbos": 50.2,
+      "grasas": 21,
+      "ingredientes": [
+        {
+          "nombre": "Espagueti (garofalo)",
+          "cantidad": "70g",
+          "kcal": 175.7,
+          "proteinas": 9.8,
+          "carbos": 49,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "100g",
+          "kcal": 110,
+          "proteinas": 23,
+          "carbos": 0,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Espinacas frescas",
+          "cantidad": "25g",
+          "kcal": 5.8,
+          "proteinas": 0.6,
+          "carbos": 0.9,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Mozzarella",
+          "cantidad": "25g",
+          "kcal": 73.3,
+          "proteinas": 6.3,
+          "carbos": 0.3,
+          "grasas": 5.3
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "15 ml",
+          "kcal": 122.9,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 13.7
+        }
+      ],
+      "pasos": [
+        "Hierve el agua y agregue la pasta",
+        "Mientras se hace la pasta, tritura los ingredientes de la salsa",
+        "En una sartén, pon la salsa y luego el pollo"
+      ]
+    },
+    {
+      "id": "r1778953431698jmue",
+      "nombre": "Tazon de pollo y arroz",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 426,
+      "proteinas": 45.3,
+      "carbos": 51.2,
+      "grasas": 8.7,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "160g",
+          "kcal": 176,
+          "proteinas": 36.8,
+          "carbos": 0,
+          "grasas": 1.9
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "60 g",
+          "kcal": 209.4,
+          "proteinas": 4.8,
+          "carbos": 45.6,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "75g",
+          "kcal": 21,
+          "proteinas": 2,
+          "carbos": 2.1,
+          "grasas": 6
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "100g",
+          "kcal": 16,
+          "proteinas": 1.2,
+          "carbos": 3.3,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Soja",
+          "cantidad": "5ml",
+          "kcal": 3.9,
+          "proteinas": 0.5,
+          "carbos": 0.2,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz",
+        "En una sarten, pon un poco de aceite cocina la verdura y luego añadele el pollo"
+      ]
+    },
+    {
+      "id": "r1778953711355y5uu",
+      "nombre": "Pollo con calabacín y arroz",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 441,
+      "proteinas": 42.5,
+      "carbos": 59.8,
+      "grasas": 2.8,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "150g",
+          "kcal": 165,
+          "proteinas": 34.5,
+          "carbos": 0,
+          "grasas": 1.8
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "70 g",
+          "kcal": 244.3,
+          "proteinas": 5.6,
+          "carbos": 53.2,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "200g",
+          "kcal": 32,
+          "proteinas": 2.4,
+          "carbos": 6.6,
+          "grasas": 0.2
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz",
+        "En una sarten, pon un poco de aceite cocina la verdura y luego añadele el pollo. Añade especias"
+      ]
+    },
+    {
+      "id": "r177895397657235wd",
+      "nombre": "Ensalada mediterranea con pasta",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 487,
+      "proteinas": 43.2,
+      "carbos": 35.9,
+      "grasas": 17.8,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "100g",
+          "kcal": 110,
+          "proteinas": 23,
+          "carbos": 0,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Pasta lentejas",
+          "cantidad": "40g",
+          "kcal": 138.8,
+          "proteinas": 10.4,
+          "carbos": 19.6,
+          "grasas": 1
+        },
+        {
+          "nombre": "Lechuga",
+          "cantidad": "200g",
+          "kcal": 28,
+          "proteinas": 1.8,
+          "carbos": 5.8,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Bolitas mozzarella",
+          "cantidad": "40g",
+          "kcal": 77.6,
+          "proteinas": 6,
+          "carbos": 0.8,
+          "grasas": 5.6
+        },
+        {
+          "nombre": "Miel",
+          "cantidad": "10g",
+          "kcal": 30.4,
+          "proteinas": 0,
+          "carbos": 8.2,
+          "grasas": 0
+        },
+        {
+          "nombre": "Yogur griego light",
+          "cantidad": "35g",
+          "kcal": 20.4,
+          "proteinas": 2,
+          "carbos": 1.5,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "zumo limon",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "10 ml",
+          "kcal": 81.9,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 9.1
+        }
+      ],
+      "pasos": []
+    },
+    {
+      "id": "r1778954226673rbq3",
+      "nombre": "Pollo a la naranja",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 456,
+      "proteinas": 47.1,
+      "carbos": 55.4,
+      "grasas": 3.7,
+      "ingredientes": [
+        {
+          "nombre": "Zumo de naranja",
+          "cantidad": "100",
+          "kcal": 45,
+          "proteinas": 0.7,
+          "carbos": 10.4,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "180g",
+          "kcal": 198,
+          "proteinas": 41.4,
+          "carbos": 0,
+          "grasas": 2.2
+        },
+        {
+          "nombre": "Patatas bote",
+          "cantidad": "250g",
+          "kcal": 212.5,
+          "proteinas": 5,
+          "carbos": 45,
+          "grasas": 1.3
+        }
+      ],
+      "pasos": [
+        "Corta la patata en dados pequeños, añade una gota de aceite y cocina a 190ºC por 15 min en la air frier",
+        "Exprime la naranja",
+        "Sazona el pollo, colócalo sobre las patatas y vierte el zumo de naranja por encima.",
+        "Cocina todo junto 10 min más a 180ºC."
+      ]
     }
   ],
   "menu": {
@@ -1416,7 +1816,7 @@
     "martes": {
       "desayuno": "r177771771594824um",
       "comida": "r1777888761775jwh2",
-      "cena": "r1777888570833gg2b",
+      "cena": "r1778952800119rh33",
       "snack": null
     },
     "miercoles": {
@@ -1433,14 +1833,14 @@
     },
     "viernes": {
       "desayuno": "r17777168509747vr8",
-      "comida": null,
-      "cena": null,
+      "comida": "r1778954226673rbq3",
+      "cena": "r1777888341170jo7n",
       "snack": null
     },
     "sabado": {
       "desayuno": "r1777717424539appz",
       "comida": null,
-      "cena": null,
+      "cena": "r1777888341170jo7n",
       "snack": null
     },
     "domingo": {

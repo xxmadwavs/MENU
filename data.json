@@ -3142,181 +3142,47 @@
     }
   ],
   "menu": {
-    "semana1": {
-      "lunes": {
-        "desayuno": "r177771771594824um",
-        "comida": "r1778953431698jmue",
-        "cena": "r1777888570833gg2b",
-        "snack": null
-      },
-      "martes": {
-        "desayuno": "r1779364080106wzcgsj",
-        "comida": "r177771786909724md",
-        "cena": "r1778952800119rh33",
-        "snack": null
-      },
-      "miercoles": {
-        "desayuno": "r1779364080132uq9e6b",
-        "comida": "r1779364080116jm1qn3",
-        "cena": "r17780693652442tft",
-        "snack": null
-      },
-      "jueves": {
-        "desayuno": "r17777168509747vr8",
-        "comida": "r1779364080112z6e2ed",
-        "cena": "r17780661188061b9a",
-        "snack": null
-      },
-      "viernes": {
-        "desayuno": "r1779364080106wzcgsj",
-        "comida": "r1778954226673rbq3",
-        "cena": "r1778952553154tf4y",
-        "snack": null
-      },
-      "sabado": {
-        "desayuno": "r1777717424539appz",
-        "comida": "r17793640801131hp1m2",
-        "cena": "r1777888341170jo7n",
-        "snack": "r17793640801056mzgxv"
-      },
-      "domingo": {
-        "desayuno": "r17777175037187vko",
-        "comida": "r1779364080127wwuouh",
-        "cena": "r1777888458490bpmw",
-        "snack": "r1779364080108icpmz0"
-      }
+    "lunes": {
+      "desayuno": "r177771771594824um",
+      "comida": "r1777888202989ab8y",
+      "cena": "r1777888341170jo7n",
+      "snack": null
     },
-    "semana2": {
-      "lunes": {
-        "desayuno": "r177771771594824um",
-        "comida": "r1779364080126s7zto5",
-        "cena": "r17780693652442tft",
-        "snack": null
-      },
-      "martes": {
-        "desayuno": "r1779364080132uq9e6b",
-        "comida": "r1778065868745a791",
-        "cena": "r17780661188061b9a",
-        "snack": null
-      },
-      "miercoles": {
-        "desayuno": "r1779364080106wzcgsj",
-        "comida": "r1778953711355y5uu",
-        "cena": "r1778952800119rh33",
-        "snack": null
-      },
-      "jueves": {
-        "desayuno": "r17777168509747vr8",
-        "comida": "r1779364080117vgw1j6",
-        "cena": "r1777888458490bpmw",
-        "snack": null
-      },
-      "viernes": {
-        "desayuno": "r177771771594824um",
-        "comida": "r1778069003030zhaz",
-        "cena": "r1779364080111d0vh59",
-        "snack": null
-      },
-      "sabado": {
-        "desayuno": "r1777717424539appz",
-        "comida": "r1779364080125c8c62m",
-        "cena": "r1778952553154tf4y",
-        "snack": "r1779364080108icpmz0"
-      },
-      "domingo": {
-        "desayuno": "r17777175037187vko",
-        "comida": "r1777888202989ab8y",
-        "cena": "r1777888341170jo7n",
-        "snack": "r17793640801056mzgxv"
-      }
+    "martes": {
+      "desayuno": "r177771771594824um",
+      "comida": "r1777888761775jwh2",
+      "cena": "r1778952800119rh33",
+      "snack": null
     },
-    "semana3": {
-      "lunes": {
-        "desayuno": "r1779364080132uq9e6b",
-        "comida": "r1779364080110x34ryv",
-        "cena": "r1777888570833gg2b",
-        "snack": null
-      },
-      "martes": {
-        "desayuno": "r1779364080106wzcgsj",
-        "comida": "r1779364080131rd2vlw",
-        "cena": "r17780693652442tft",
-        "snack": null
-      },
-      "miercoles": {
-        "desayuno": "r177771771594824um",
-        "comida": "r1778065085369zff6",
-        "cena": "r17780661188061b9a",
-        "snack": null
-      },
-      "jueves": {
-        "desayuno": "r17777168509747vr8",
-        "comida": "r1779364080118kqcaqc",
-        "cena": "r1777888458490bpmw",
-        "snack": null
-      },
-      "viernes": {
-        "desayuno": "r1779364080132uq9e6b",
-        "comida": "r177895397657235wd",
-        "cena": "r1778952553154tf4y",
-        "snack": null
-      },
-      "sabado": {
-        "desayuno": "r1777717424539appz",
-        "comida": "r1779364080121fya9yx",
-        "cena": "r1777888341170jo7n",
-        "snack": "r17793640801056mzgxv"
-      },
-      "domingo": {
-        "desayuno": "r17777175037187vko",
-        "comida": "r1779364080128ibts0q",
-        "cena": "r1779364080111d0vh59",
-        "snack": "r1779364080108icpmz0"
-      }
+    "miercoles": {
+      "desayuno": "r177771771594824um",
+      "comida": "r1778065085369zff6",
+      "cena": "r17780661188061b9a",
+      "snack": null
     },
-    "semana4": {
-      "lunes": {
-        "desayuno": "r177771771594824um",
-        "comida": "r1779364080123rfqokl",
-        "cena": "r1777888570833gg2b",
-        "snack": null
-      },
-      "martes": {
-        "desayuno": "r1779364080106wzcgsj",
-        "comida": "r1779364080119zgsg34",
-        "cena": "r17780661188061b9a",
-        "snack": null
-      },
-      "miercoles": {
-        "desayuno": "r1779364080132uq9e6b",
-        "comida": "r177806887494410gv",
-        "cena": "r1777888458490bpmw",
-        "snack": null
-      },
-      "jueves": {
-        "desayuno": "r17777168509747vr8",
-        "comida": "r1779364080120o3cshj",
-        "cena": "r1778952800119rh33",
-        "snack": null
-      },
-      "viernes": {
-        "desayuno": "r177771771594824um",
-        "comida": "r17793640801152n5bgq",
-        "cena": "r1778952553154tf4y",
-        "snack": null
-      },
-      "sabado": {
-        "desayuno": "r1777717424539appz",
-        "comida": "r1779364080124w0qhuh",
-        "cena": "r1779364080111d0vh59",
-        "snack": "r1779364080108icpmz0"
-      },
-      "domingo": {
-        "desayuno": "r17777175037187vko",
-        "comida": "r1778953288624ctyf",
-        "cena": "r1777888341170jo7n",
-        "snack": "r17793640801056mzgxv"
-      }
+    "jueves": {
+      "desayuno": "r177771771594824um",
+      "comida": "r1778065868745a791",
+      "cena": "r1777888458490bpmw",
+      "snack": null
+    },
+    "viernes": {
+      "desayuno": "r17777168509747vr8",
+      "comida": "r1778954226673rbq3",
+      "cena": "r1777888341170jo7n",
+      "snack": null
+    },
+    "sabado": {
+      "desayuno": "r1777717424539appz",
+      "comida": null,
+      "cena": "r1777888341170jo7n",
+      "snack": null
+    },
+    "domingo": {
+      "desayuno": "r1777717424539appz",
+      "comida": "r177806887494410gv",
+      "cena": "r17780693652442tft",
+      "snack": null
     }
   }
 }

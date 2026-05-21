@@ -151,7 +151,7 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
 
 .info-bar{background:linear-gradient(135deg,var(--blush2),var(--blush));border-radius:var(--r-sm);padding:.65rem 1rem;font-size:.8rem;color:var(--rose-dark);margin-bottom:.75rem;border-left:3px solid var(--rose-deep);font-weight:500;line-height:1.5}
 
-.float-btn{position:fixed;bottom:1.5rem;right:1.25rem;z-index:150;display:flex;gap:.5rem}
+.float-btn{position:fixed;bottom:1.5rem;right:1.25rem;z-index:150;display:flex;flex-direction:column;gap:.45rem;align-items:flex-end}
 
 .toast{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--rose-dark),#7a3a45);color:white;padding:.6rem 1.25rem;border-radius:20px;font-size:.85rem;z-index:500;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;font-weight:600}
 .toast.show{opacity:1}
@@ -187,6 +187,7 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
   </div>
   <div id="recipe-admin-list"></div>
   <div class="float-btn">
+    <button class="btn-teal" onclick="openImportModal()" style="background:linear-gradient(135deg,var(--teal),#2d7a6e)">📷 Importar receta</button>
     <button class="btn-primary" onclick="openNewRecipeModal()">+ Nueva receta</button>
   </div>
 </div>
@@ -354,6 +355,99 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
   </div>
 </div>
 
+<!-- ===== MODAL IMPORTAR RECETA ===== -->
+<div class="modal-overlay" id="import-modal" onclick="closeImportModalOut(event)">
+  <div class="modal">
+    <div class="modal-head" style="background:linear-gradient(135deg,var(--teal),#2d7a6e)">
+      <h2>📷 Importar receta</h2>
+      <button class="modal-close" onclick="closeImportModal()">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- TABS -->
+      <div style="display:flex;gap:4px;background:var(--blush);border-radius:var(--r-sm);padding:4px;margin-bottom:1rem">
+        <button id="itab-text" onclick="switchImportTab('text')"
+          style="flex:1;padding:.4rem;border:none;border-radius:8px;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--teal),#2d7a6e);color:white;transition:all .2s">
+          📋 Pegar texto
+        </button>
+        <button id="itab-photo" onclick="switchImportTab('photo')"
+          style="flex:1;padding:.4rem;border:none;border-radius:8px;font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;background:none;color:var(--text-muted);transition:all .2s">
+          📷 Subir foto
+        </button>
+      </div>
+
+      <!-- TAB: TEXTO -->
+      <div id="import-text-tab">
+        <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:.5rem;line-height:1.5">
+          Pega el texto de la receta. Se detectarán automáticamente los ingredientes y los pasos de preparación.
+        </p>
+        <div style="margin-bottom:.5rem">
+          <label>Nombre de la receta</label>
+          <input type="text" id="import-nombre" placeholder="Ej: Garbanzos con pollo y espinacas">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:.5rem">
+          <div>
+            <label>Tipo</label>
+            <select id="import-tipo">
+              <option value="desayuno">Desayuno</option>
+              <option value="comida" selected>Comida</option>
+              <option value="cena">Cena</option>
+              <option value="snack">Snack</option>
+            </select>
+          </div>
+          <div>
+            <label>Tiempo (opcional)</label>
+            <input type="text" id="import-tiempo" placeholder="Ej: 20 min">
+          </div>
+        </div>
+        <label>Texto de la receta</label>
+        <textarea id="import-raw-text" rows="10"
+          placeholder="Pega aquí el texto completo. Ejemplos de formatos detectados:&#10;&#10;• 200g garbanzos&#10;• 120g pollo (127kcal)&#10;• 30g cebolla (11kcal)&#10;&#10;1. Dorado: Rehoga el pollo...&#10;2. Caldo: Echa los garbanzos...&#10;&#10;Calorías: 477kcal&#10;Grasas: 10,7g&#10;Carbohidratos: 46,4g&#10;Proteínas: 43,4g"
+          style="font-size:.82rem;line-height:1.6;min-height:180px"></textarea>
+
+        <div id="import-preview" style="display:none;margin-top:.75rem">
+          <p style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--teal);margin-bottom:.4rem">Vista previa detectada</p>
+          <div id="import-preview-content" style="background:var(--teal-light);border-radius:var(--r-sm);padding:.75rem;font-size:.8rem;line-height:1.6;color:var(--text)"></div>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:1rem">
+          <button onclick="parseAndPreview()" class="btn-secondary" style="flex:1">🔍 Detectar</button>
+          <button onclick="importTextRecipe()" class="btn-teal" style="flex:1;justify-content:center;background:linear-gradient(135deg,var(--teal),#2d7a6e)">✓ Importar receta</button>
+        </div>
+      </div>
+
+      <!-- TAB: FOTO -->
+      <div id="import-photo-tab" style="display:none">
+        <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.5">
+          Sube una foto de la receta escrita a mano o impresa. Se copiará el texto visible y podrás editarlo manualmente en la pestaña "Pegar texto".
+        </p>
+        <div id="photo-drop-zone"
+          onclick="document.getElementById('photo-file-input').click()"
+          ondragover="photoDragOver(event)" ondragleave="photoDragLeave(event)" ondrop="photoDropFile(event)"
+          style="border:2px dashed var(--teal);border-radius:var(--r);padding:2rem 1rem;text-align:center;cursor:pointer;transition:all .2s;background:var(--teal-light)">
+          <div style="font-size:2.5rem;margin-bottom:.5rem">📷</div>
+          <strong style="font-size:.9rem;color:var(--text)">Toca para seleccionar imagen</strong>
+          <p style="font-size:.8rem;color:var(--text-muted);margin-top:.3rem">o arrastra una foto aquí</p>
+          <p style="font-size:.72rem;color:var(--text-muted);margin-top:.2rem">JPG, PNG, WEBP</p>
+        </div>
+        <input type="file" id="photo-file-input" accept="image/*" style="display:none" onchange="handlePhotoUpload(event)">
+
+        <div id="photo-preview-area" style="display:none;margin-top:1rem">
+          <img id="photo-preview-img" style="width:100%;border-radius:var(--r-sm);border:1px solid var(--border);margin-bottom:.75rem;max-height:280px;object-fit:contain">
+          <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:.5rem;line-height:1.5">
+            La imagen se ha cargado. Escribe el nombre de la receta y pega manualmente el texto que ves en la foto en la pestaña <strong>"Pegar texto"</strong>, o rellena directamente el formulario de nueva receta.
+          </p>
+          <div style="display:flex;gap:8px">
+            <button onclick="switchImportTab('text')" class="btn-teal" style="flex:1;justify-content:center;background:linear-gradient(135deg,var(--teal),#2d7a6e)">📋 Ir a pegar texto</button>
+            <button onclick="openNewRecipeModal();closeImportModal();" class="btn-secondary" style="flex:1">✏️ Rellenar manual</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
 // ===== ESTADO =====
 let DATA = {
@@ -401,9 +495,22 @@ function migrateData(d){
   if(!d.ingredientes) d.ingredientes=[];
   if(!d.recetas) d.recetas=[];
   if(!d.menu) d.menu={};
-  DIAS.forEach(dia=>{
-    if(!d.menu[dia]) d.menu[dia]={desayuno:null,comida:null,cena:null,snack:null};
-  });
+  // Support 4-week structure
+  const SEMANAS=['semana1','semana2','semana3','semana4'];
+  const hasSemanas=SEMANAS.some(s=>d.menu[s]);
+  if(hasSemanas){
+    SEMANAS.forEach(sem=>{
+      if(!d.menu[sem]) d.menu[sem]={};
+      DIAS.forEach(dia=>{
+        if(!d.menu[sem][dia]) d.menu[sem][dia]={desayuno:null,comida:null,cena:null,snack:null};
+      });
+    });
+  } else {
+    // Legacy flat structure
+    DIAS.forEach(dia=>{
+      if(!d.menu[dia]) d.menu[dia]={desayuno:null,comida:null,cena:null,snack:null};
+    });
+  }
   return d;
 }
 
@@ -767,6 +874,8 @@ function saveRecipe(){
 function deleteRecipe(id){
   if(!confirm('¿Eliminar esta receta?')) return;
   DATA.recetas=DATA.recetas.filter(r=>r.id!==id);
+  const SEMANAS4=['semana1','semana2','semana3','semana4'];
+  SEMANAS4.forEach(sem=>{ if(DATA.menu[sem]) DIAS.forEach(d=>TIPOS.forEach(t=>{ if(DATA.menu[sem][d]&&DATA.menu[sem][d][t]===id) DATA.menu[sem][d][t]=null; })); });
   DIAS.forEach(d=>TIPOS.forEach(t=>{ if(DATA.menu[d]&&DATA.menu[d][t]===id) DATA.menu[d][t]=null; }));
   renderRecipeList(adminFilter);
   toast('✓ Receta eliminada');
@@ -778,10 +887,20 @@ function closeRecipeModal(){ document.getElementById('recipe-modal').classList.r
 // =====================
 // MENÚ ADMIN
 // =====================
+const SEMANAS_ADMIN=['semana1','semana2','semana3','semana4'];
+const SEMANAS_L_ADMIN=['Semana 1','Semana 2','Semana 3','Semana 4'];
+let adminMenuSem=0;
+
 function renderMenuAdmin(){
   const cont=document.getElementById('menu-admin-list');
-  cont.innerHTML=DIAS.map(dia=>{
-    const dm=DATA.menu[dia]||{};
+  // Render week selector tabs
+  const tabs=`<div style="display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap">
+    ${SEMANAS_ADMIN.map((s,i)=>`<button onclick="setAdminMenuSem(${i})" style="padding:.35rem .85rem;border-radius:20px;border:1.5px solid ${i===adminMenuSem?'#9e4f5a':'#f0d8dc'};background:${i===adminMenuSem?'#9e4f5a':'white'};color:${i===adminMenuSem?'white':'#9e7a82'};font-family:Nunito,sans-serif;font-size:.8rem;font-weight:600;cursor:pointer">${SEMANAS_L_ADMIN[i]}</button>`).join('')}
+  </div>`;
+  const sem=SEMANAS_ADMIN[adminMenuSem];
+  if(!DATA.menu[sem]) DATA.menu[sem]={};
+  const days=DIAS.map(dia=>{
+    const dm=DATA.menu[sem][dia]||{};
     return `<div class="day-admin-card">
       <div class="day-admin-head">${DIAS_L[dia]}</div>
       <div class="day-admin-body">
@@ -790,7 +909,7 @@ function renderMenuAdmin(){
             <span class="day-tipo-lbl">${TIPOS_L[tipo]}</span>
             <select id="m-${dia}-${tipo}">
               <option value="">— Sin asignar —</option>
-              ${DATA.recetas.filter(r=>r.tipo===tipo)
+              ${DATA.recetas.filter(r=>r.tipo===tipo||r.tipo==='postre')
                 .map(r=>`<option value="${r.id}" ${dm[tipo]===r.id?'selected':''}>${r.nombre}</option>`)
                 .join('')}
             </select>
@@ -799,17 +918,22 @@ function renderMenuAdmin(){
       </div>
     </div>`;
   }).join('');
+  cont.innerHTML=tabs+days;
 }
 
+function setAdminMenuSem(idx){ adminMenuSem=idx; renderMenuAdmin(); }
+
 function saveMenu(){
+  const sem=SEMANAS_ADMIN[adminMenuSem];
+  if(!DATA.menu[sem]) DATA.menu[sem]={};
   DIAS.forEach(dia=>{
-    if(!DATA.menu[dia]) DATA.menu[dia]={};
+    if(!DATA.menu[sem][dia]) DATA.menu[sem][dia]={};
     TIPOS.forEach(tipo=>{
       const el=document.getElementById(`m-${dia}-${tipo}`);
-      DATA.menu[dia][tipo]=el?(el.value||null):null;
+      DATA.menu[sem][dia][tipo]=el?(el.value||null):null;
     });
   });
-  toast('✓ Menú guardado');
+  toast('✓ Menú '+SEMANAS_L_ADMIN[adminMenuSem]+' guardado');
 }
 
 // =====================
@@ -865,6 +989,212 @@ function dropFile(e){
     }catch(err){ alert('Archivo JSON inválido.'); }
   };
   reader.readAsText(file);
+}
+
+// =====================
+// IMPORTAR RECETA (texto / foto)
+// =====================
+function openImportModal(){
+  document.getElementById('import-modal').classList.add('open');
+  document.getElementById('import-raw-text').value='';
+  document.getElementById('import-nombre').value='';
+  document.getElementById('import-tiempo').value='';
+  document.getElementById('import-preview').style.display='none';
+  document.getElementById('photo-preview-area').style.display='none';
+  switchImportTab('text');
+}
+function closeImportModal(){ document.getElementById('import-modal').classList.remove('open'); }
+function closeImportModalOut(e){ if(e.target===document.getElementById('import-modal')) closeImportModal(); }
+
+function switchImportTab(tab){
+  document.getElementById('import-text-tab').style.display = tab==='text' ? 'block' : 'none';
+  document.getElementById('import-photo-tab').style.display = tab==='photo' ? 'block' : 'none';
+  const tBtn = document.getElementById('itab-text');
+  const pBtn = document.getElementById('itab-photo');
+  const activeStyle = 'background:linear-gradient(135deg,var(--teal),#2d7a6e);color:white';
+  const inactiveStyle = 'background:none;color:var(--text-muted)';
+  tBtn.style.cssText = (tab==='text' ? activeStyle : inactiveStyle) + ';flex:1;padding:.4rem;border:none;border-radius:8px;font-family:\'Nunito\',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s';
+  pBtn.style.cssText = (tab==='photo' ? activeStyle : inactiveStyle) + ';flex:1;padding:.4rem;border:none;border-radius:8px;font-family:\'Nunito\',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s';
+}
+
+// --- PARSER DE TEXTO ---
+function parseRecipeText(raw){
+  const lines = raw.split('\n').map(l=>l.trim()).filter(Boolean);
+  const ingredients = [];
+  const steps = [];
+  let totalKcal=0, totalProt=0, totalCarb=0, totalGras=0;
+
+  // Regex patterns
+  const ingPattern = /^[•\-\*]\s*(.+)/;
+  const stepNumPattern = /^(\d+)[.\)]\s*(.+)/;
+  const stepBulletPattern = /^[•\-\*]\s*(.+)/;
+
+  // Macro totals patterns (at end of recipe)
+  const kcalLineRE = /calor[ií]as?\s*:?\s*([\d,.]+)\s*kcal/i;
+  const protLineRE = /prote[ií]nas?\s*:?\s*([\d,.]+)\s*g/i;
+  const carbLineRE = /carbohidratos?\s*:?\s*([\d,.]+)\s*g/i;
+  const grasLineRE = /grasas?\s*:?\s*([\d,.]+)\s*g/i;
+
+  // Inline kcal in ingredient: "120g pollo (127kcal)"
+  const ingKcalRE = /\(([\d,.]+)\s*kcal\)/i;
+
+  // Detect sections
+  let inIngredients = false;
+  let inSteps = false;
+
+  const ingKeywords = /ingredientes?/i;
+  const stepKeywords = /procedimiento|preparaci[oó]n|elaboraci[oó]n|pasos?|instrucciones?/i;
+
+  for(let i=0; i<lines.length; i++){
+    const line = lines[i];
+
+    // Check for section headers
+    if(ingKeywords.test(line) && line.length < 30){ inIngredients=true; inSteps=false; continue; }
+    if(stepKeywords.test(line) && line.length < 30){ inSteps=true; inIngredients=false; continue; }
+
+    // Check for macro totals
+    if(kcalLineRE.test(line)){ totalKcal=parseFloat(line.match(kcalLineRE)[1].replace(',','.')); continue; }
+    if(protLineRE.test(line)){ totalProt=parseFloat(line.match(protLineRE)[1].replace(',','.')); continue; }
+    if(carbLineRE.test(line)){ totalCarb=parseFloat(line.match(carbLineRE)[1].replace(',','.')); continue; }
+    if(grasLineRE.test(line)){ totalGras=parseFloat(line.match(grasLineRE)[1].replace(',','.')); continue; }
+
+    // Auto-detect: numbered lines → steps
+    const numMatch = line.match(stepNumPattern);
+    if(numMatch){
+      inSteps=true; inIngredients=false;
+      steps.push(numMatch[2]);
+      continue;
+    }
+
+    // Bullet lines
+    const bulletMatch = line.match(ingPattern);
+    if(bulletMatch){
+      const content = bulletMatch[1];
+      // If we're in steps section, treat as step
+      if(inSteps){
+        steps.push(content);
+      } else {
+        // Parse ingredient: "200g garbanzos", "120g pollo (127kcal)"
+        const kcalInIng = content.match(ingKcalRE);
+        const ingKcal = kcalInIng ? parseFloat(kcalInIng[1].replace(',','.')) : 0;
+        const cleanContent = content.replace(ingKcalRE,'').trim();
+        // quantity: leading number+unit
+        const qtyMatch = cleanContent.match(/^([\d,.]+\s*(?:g|ml|kg|l|ud?s?\.?|uni?d?a?d?e?s?\.?|cucharad[as]?\.?|cdtas?\.?|cdas?\.?|tazas?\.?)?\s*)/i);
+        const cantidad = qtyMatch ? qtyMatch[1].trim() : '';
+        const nombre = cleanContent.slice(cantidad.length).trim()||cleanContent;
+        ingredients.push({ nombre, cantidad, kcal: ingKcal, proteinas:0, carbos:0, grasas:0 });
+        inIngredients=true;
+      }
+      continue;
+    }
+
+    // Plain text lines: if after PROCEDIMIENTO header and not a bullet, could be a step paragraph
+    if(inSteps && line.length > 15){
+      // Avoid adding section headers or macro lines as steps
+      if(!ingKeywords.test(line) && !stepKeywords.test(line)){
+        steps.push(line);
+      }
+    }
+  }
+
+  return { ingredients, steps, totalKcal, totalProt, totalCarb, totalGras };
+}
+
+function parseAndPreview(){
+  const raw = document.getElementById('import-raw-text').value;
+  if(!raw.trim()){ alert('Pega primero el texto de la receta'); return; }
+  const result = parseRecipeText(raw);
+  const prev = document.getElementById('import-preview');
+  const cont = document.getElementById('import-preview-content');
+
+  let html = '';
+  if(result.ingredients.length){
+    html += `<strong>🥦 Ingredientes detectados (${result.ingredients.length}):</strong><br>`;
+    result.ingredients.forEach(i=>{
+      html += `· ${i.cantidad ? i.cantidad+' ' : ''}${i.nombre}${i.kcal ? ' <em>('+i.kcal+' kcal)</em>' : ''}<br>`;
+    });
+    html += '<br>';
+  }
+  if(result.steps.length){
+    html += `<strong>📝 Pasos detectados (${result.steps.length}):</strong><br>`;
+    result.steps.forEach((s,i)=>{ html+=`${i+1}. ${s}<br>`; });
+    html += '<br>';
+  }
+  if(result.totalKcal){ html += `<strong>Totales:</strong> ${result.totalKcal} kcal · P:${result.totalProt}g · CH:${result.totalCarb}g · G:${result.totalGras}g`; }
+  if(!html){ html = 'No se detectaron ingredientes ni pasos. Revisa el formato del texto.'; }
+
+  cont.innerHTML = html;
+  prev.style.display='block';
+}
+
+function importTextRecipe(){
+  const nombre = document.getElementById('import-nombre').value.trim();
+  if(!nombre){ alert('Escribe el nombre de la receta antes de importar'); document.getElementById('import-nombre').focus(); return; }
+  const raw = document.getElementById('import-raw-text').value;
+  if(!raw.trim()){ alert('Pega el texto de la receta'); return; }
+
+  const result = parseRecipeText(raw);
+
+  // Open recipe modal pre-filled
+  editingRecipeId=null; macroManual=false;
+  document.getElementById('recipe-modal-title').textContent='Nueva receta (importada)';
+  document.getElementById('f-id').value='';
+  document.getElementById('f-nombre').value=nombre;
+  document.getElementById('f-tipo').value=document.getElementById('import-tipo').value;
+  document.getElementById('f-tiempo').value=document.getElementById('import-tiempo').value;
+  document.getElementById('f-desc').value='';
+
+  // Fill macros if detected
+  if(result.totalKcal){
+    macroManual=true;
+    document.getElementById('f-kcal').value=result.totalKcal;
+    document.getElementById('f-prot').value=result.totalProt;
+    document.getElementById('f-carbos').value=result.totalCarb;
+    document.getElementById('f-grasas').value=result.totalGras;
+    document.getElementById('prev-k').textContent=result.totalKcal;
+    document.getElementById('prev-p').textContent=result.totalProt+'g';
+    document.getElementById('prev-c').textContent=result.totalCarb+'g';
+    document.getElementById('prev-g').textContent=result.totalGras+'g';
+  }
+
+  // Fill ingredients
+  const ingC = document.getElementById('ing-container'); ingC.innerHTML='';
+  if(result.ingredients.length){
+    result.ingredients.forEach(i=>addIngRow(i.nombre,i.cantidad,i.kcal,0,0,0,null));
+  } else { addIngRow(); }
+
+  // Fill steps
+  const stC = document.getElementById('steps-container'); stC.innerHTML='';
+  if(result.steps.length){
+    result.steps.forEach(p=>addStepRow(p));
+  } else { addStepRow(); }
+
+  refreshIngLibrarySelect();
+  if(!result.totalKcal) updateMacroPreview();
+
+  closeImportModal();
+  document.getElementById('recipe-modal').classList.add('open');
+  toast('✓ Receta importada — revisa y guarda','linear-gradient(135deg,#4a9b8f,#2d7a6e)');
+}
+
+// --- FOTO ---
+function photoDragOver(e){ e.preventDefault(); document.getElementById('photo-drop-zone').style.background='var(--blush2)'; }
+function photoDragLeave(){ document.getElementById('photo-drop-zone').style.background='var(--teal-light)'; }
+function photoDropFile(e){
+  e.preventDefault();
+  document.getElementById('photo-drop-zone').style.background='var(--teal-light)';
+  const file = e.dataTransfer.files[0];
+  if(file && file.type.startsWith('image/')) loadPhotoPreview(file);
+}
+function handlePhotoUpload(e){ const f=e.target.files[0]; if(f) loadPhotoPreview(f); }
+function loadPhotoPreview(file){
+  const reader=new FileReader();
+  reader.onload=e=>{
+    document.getElementById('photo-preview-img').src=e.target.result;
+    document.getElementById('photo-preview-area').style.display='block';
+    document.getElementById('photo-drop-zone').style.display='none';
+  };
+  reader.readAsDataURL(file);
 }
 </script>
 </body>

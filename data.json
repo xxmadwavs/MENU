@@ -476,6 +476,69 @@
       "proteinas": 4.8,
       "carbos": 23,
       "grasas": 2.8
+    },
+    {
+      "nombre": "Huevo",
+      "unidad": "100g",
+      "kcal": 155,
+      "proteinas": 13,
+      "carbos": 1.1,
+      "grasas": 11,
+      "id": "i1779364080095j3yxzk"
+    },
+    {
+      "nombre": "Proteína en polvo",
+      "unidad": "100g",
+      "kcal": 380,
+      "proteinas": 75,
+      "carbos": 10,
+      "grasas": 5,
+      "id": "i1779364080096thv5xh"
+    },
+    {
+      "nombre": "Fresas congeladas",
+      "unidad": "100g",
+      "kcal": 32,
+      "proteinas": 0.7,
+      "carbos": 7.7,
+      "grasas": 0.3,
+      "id": "i1779364080097pi9l63"
+    },
+    {
+      "nombre": "Chía",
+      "unidad": "100g",
+      "kcal": 486,
+      "proteinas": 16.5,
+      "carbos": 42,
+      "grasas": 30.7,
+      "id": "i1779364080098yez9dh"
+    },
+    {
+      "nombre": "Crema de cacahuete",
+      "unidad": "100g",
+      "kcal": 589,
+      "proteinas": 25,
+      "carbos": 20,
+      "grasas": 50,
+      "id": "i1779364080099ae0u3j"
+    },
+    {
+      "nombre": "Gnocchi",
+      "unidad": "100g",
+      "kcal": 152,
+      "proteinas": 3.5,
+      "carbos": 32,
+      "grasas": 0.8,
+      "id": "i17793640801001t22vp"
+    },
+    {
+      "nombre": "Queso fresco",
+      "unidad": "100g",
+      "kcal": 98,
+      "proteinas": 13.5,
+      "carbos": 3,
+      "grasas": 3.5,
+      "id": "i17793640801023gqe0p"
     }
   ],
   "recetas": [
@@ -1442,7 +1505,7 @@
     {
       "id": "r1778952553154tf4y",
       "nombre": "Wrap de pollo c/ lechuga",
-      "tipo": "comida",
+      "tipo": "cena",
       "tiempo": "",
       "descripcion": "",
       "kcal": 317,
@@ -1804,50 +1867,1456 @@
         "Sazona el pollo, colócalo sobre las patatas y vierte el zumo de naranja por encima.",
         "Cocina todo junto 10 min más a 180ºC."
       ]
+    },
+    {
+      "id": "r1779364080103lhf1sc",
+      "nombre": "Brownie",
+      "tipo": "postre",
+      "tiempo": "20 min",
+      "descripcion": "Brownie fit hecho en air fryer con harina de avena y cacao.",
+      "kcal": 632,
+      "proteinas": 40.9,
+      "carbos": 43.9,
+      "grasas": 32.2,
+      "ingredientes": [
+        {
+          "nombre": "Huevo",
+          "cantidad": "180g",
+          "kcal": 279,
+          "proteinas": 23.4,
+          "carbos": 1.98,
+          "grasas": 19.8
+        },
+        {
+          "nombre": "Harina Avena",
+          "cantidad": "60g",
+          "kcal": 222.6,
+          "proteinas": 5.94,
+          "carbos": 34.26,
+          "grasas": 4.8
+        },
+        {
+          "nombre": "Cacao puro",
+          "cantidad": "45g",
+          "kcal": 123.75,
+          "proteinas": 11.47,
+          "carbos": 7.34,
+          "grasas": 7.2
+        },
+        {
+          "nombre": "Chocolate 85%",
+          "cantidad": "14g",
+          "kcal": 6.3,
+          "proteinas": 0.13,
+          "carbos": 0.36,
+          "grasas": 0.45
+        }
+      ],
+      "pasos": [
+        "Mezcla todos los ingredientes.",
+        "Mete en la air fryer a 180° durante 15 min."
+      ]
+    },
+    {
+      "id": "r1779364080104158l02",
+      "nombre": "Brownie sin huevo",
+      "tipo": "postre",
+      "tiempo": "5 min",
+      "descripcion": "Brownie rápido sin huevo hecho en microondas.",
+      "kcal": 410,
+      "proteinas": 37,
+      "carbos": 39.3,
+      "grasas": 11.3,
+      "ingredientes": [
+        {
+          "nombre": "Proteína en polvo",
+          "cantidad": "30g",
+          "kcal": 114,
+          "proteinas": 22.5,
+          "carbos": 3,
+          "grasas": 1.5
+        },
+        {
+          "nombre": "Cacao puro",
+          "cantidad": "30g",
+          "kcal": 82.5,
+          "proteinas": 7.65,
+          "carbos": 4.89,
+          "grasas": 4.8
+        },
+        {
+          "nombre": "Harina Avena",
+          "cantidad": "50g",
+          "kcal": 185.5,
+          "proteinas": 4.95,
+          "carbos": 28.55,
+          "grasas": 4
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "60g",
+          "kcal": 27.6,
+          "proteinas": 1.86,
+          "carbos": 2.82,
+          "grasas": 0.96
+        }
+      ],
+      "pasos": [
+        "Mezcla todos los ingredientes.",
+        "Mete en el microondas 1 min."
+      ]
+    },
+    {
+      "id": "r17793640801056mzgxv",
+      "nombre": "Fajita-Napolitana",
+      "tipo": "postre",
+      "tiempo": "10 min",
+      "descripcion": "Tortilla integral rellena de chocolate negro, tipo napolitana fit.",
+      "kcal": 182,
+      "proteinas": 5.7,
+      "carbos": 25.7,
+      "grasas": 5,
+      "ingredientes": [
+        {
+          "nombre": "Tortilla harina de trigo integral",
+          "cantidad": "60g",
+          "kcal": 172.8,
+          "proteinas": 5.52,
+          "carbos": 25.2,
+          "grasas": 4.38
+        },
+        {
+          "nombre": "Chocolate 85%",
+          "cantidad": "20g",
+          "kcal": 9,
+          "proteinas": 0.18,
+          "carbos": 0.52,
+          "grasas": 0.64
+        }
+      ],
+      "pasos": [
+        "Extiende la tortilla y coloca el chocolate en el centro formando una línea rectangular.",
+        "Dobla los lados cubriendo el chocolate.",
+        "Dobla la parte inferior hacia arriba y la superior hacia abajo.",
+        "Mete en la Air-fryer a 190° durante 5-6 min."
+      ]
+    },
+    {
+      "id": "r1779364080106wzcgsj",
+      "nombre": "Batido de Fresa y Proteína",
+      "tipo": "desayuno",
+      "tiempo": "5 min",
+      "descripcion": "Batido proteico con fresas congeladas y leche vegetal.",
+      "kcal": 212,
+      "proteinas": 25.4,
+      "carbos": 17.1,
+      "grasas": 5.7,
+      "ingredientes": [
+        {
+          "nombre": "Fresas congeladas",
+          "cantidad": "150g",
+          "kcal": 48,
+          "proteinas": 1.05,
+          "carbos": 11.55,
+          "grasas": 0.45
+        },
+        {
+          "nombre": "Proteína en polvo",
+          "cantidad": "30g",
+          "kcal": 114,
+          "proteinas": 22.5,
+          "carbos": 3,
+          "grasas": 1.5
+        },
+        {
+          "nombre": "Leche almendras",
+          "cantidad": "200g",
+          "kcal": 26,
+          "proteinas": 1,
+          "carbos": 0.4,
+          "grasas": 2.2
+        },
+        {
+          "nombre": "Chía",
+          "cantidad": "5g",
+          "kcal": 24.3,
+          "proteinas": 0.83,
+          "carbos": 2.1,
+          "grasas": 1.54
+        }
+      ],
+      "pasos": [
+        "Mezcle todos los ingredientes en una licuadora hasta obtener un batido homogéneo."
+      ]
+    },
+    {
+      "id": "r1779364080108icpmz0",
+      "nombre": "Bowl de Yogur con Cookie Dough",
+      "tipo": "postre",
+      "tiempo": "5 min",
+      "descripcion": "Bowl de yogur con trozos de masa tipo cookie dough fit.",
+      "kcal": 289,
+      "proteinas": 15,
+      "carbos": 29.5,
+      "grasas": 12.5,
+      "ingredientes": [
+        {
+          "nombre": "Yogur griego light",
+          "cantidad": "125g",
+          "kcal": 91.25,
+          "proteinas": 9.12,
+          "carbos": 6.62,
+          "grasas": 3.12
+        },
+        {
+          "nombre": "Harina Avena",
+          "cantidad": "20g",
+          "kcal": 74.2,
+          "proteinas": 1.98,
+          "carbos": 11.42,
+          "grasas": 1.6
+        },
+        {
+          "nombre": "Crema de cacahuete",
+          "cantidad": "15g",
+          "kcal": 88.35,
+          "proteinas": 3.75,
+          "carbos": 3,
+          "grasas": 7.5
+        },
+        {
+          "nombre": "Miel",
+          "cantidad": "10g",
+          "kcal": 30.4,
+          "proteinas": 0.03,
+          "carbos": 8.24,
+          "grasas": 0
+        },
+        {
+          "nombre": "Chocolate 85%",
+          "cantidad": "10g",
+          "kcal": 4.5,
+          "proteinas": 0.09,
+          "carbos": 0.26,
+          "grasas": 0.32
+        }
+      ],
+      "pasos": [
+        "En una taza pequeña, mezcla la harina de avena, la crema de cacahuete y la miel hasta formar una bola de masa.",
+        "Pon el yogur en un bol.",
+        "Rompe la bola de masa en trocitos y échalos sobre el yogur junto con las pepitas de chocolate."
+      ]
+    },
+    {
+      "id": "r1779364080109a1eqno",
+      "nombre": "Churros Fit al Horno con Chocolate Espeso",
+      "tipo": "postre",
+      "tiempo": "20 min",
+      "descripcion": "Churros saludables al horno con chocolate espeso de leche de almendras.",
+      "kcal": 342,
+      "proteinas": 10.8,
+      "carbos": 32.1,
+      "grasas": 17.9,
+      "ingredientes": [
+        {
+          "nombre": "Harina Avena",
+          "cantidad": "50g",
+          "kcal": 185.5,
+          "proteinas": 4.95,
+          "carbos": 28.55,
+          "grasas": 4
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "10g",
+          "kcal": 81.9,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 9.1
+        },
+        {
+          "nombre": "Leche almendras",
+          "cantidad": "150g",
+          "kcal": 19.5,
+          "proteinas": 0.75,
+          "carbos": 0.3,
+          "grasas": 1.65
+        },
+        {
+          "nombre": "Cacao puro",
+          "cantidad": "20g",
+          "kcal": 55,
+          "proteinas": 5.1,
+          "carbos": 3.26,
+          "grasas": 3.2
+        }
+      ],
+      "pasos": [
+        "Mezcla la harina de avena con el agua hirviendo, el aceite y la sal hasta hacer una masa que no se pegue.",
+        "Pon la masa en una manga pastelera y haz tiras sobre papel de horno. Hornea a 200°C unos 15 min.",
+        "Para el chocolate: calienta la leche de almendras con el cacao y maicena, removiendo hasta que espese."
+      ]
+    },
+    {
+      "id": "r1779364080110x34ryv",
+      "nombre": "Tiras de Pollo Crujientes",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Tiras de pechuga de pollo rebozadas en harina de avena y cocinadas a 190°C.",
+      "kcal": 530,
+      "proteinas": 52.3,
+      "carbos": 55.5,
+      "grasas": 8.5,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "180g",
+          "kcal": 198,
+          "proteinas": 41.4,
+          "carbos": 0,
+          "grasas": 2.16
+        },
+        {
+          "nombre": "Huevo",
+          "cantidad": "30g",
+          "kcal": 46.5,
+          "proteinas": 3.9,
+          "carbos": 0.33,
+          "grasas": 3.3
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "50g",
+          "kcal": 174.5,
+          "proteinas": 4,
+          "carbos": 38,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Harina Avena",
+          "cantidad": "30g",
+          "kcal": 111.3,
+          "proteinas": 2.97,
+          "carbos": 17.13,
+          "grasas": 2.4
+        }
+      ],
+      "pasos": [
+        "Corta la pechuga de pollo en tiras uniformes.",
+        "Sazona las tiras con una pizca de sal.",
+        "Pasa cada tira por la clara de huevo y luego por la harina de avena.",
+        "Cocina a 190°C durante 10-12 minutos, dándoles la vuelta a mitad del tiempo."
+      ]
+    },
+    {
+      "id": "r1779364080111d0vh59",
+      "nombre": "Mollete de Pollo a la Plancha",
+      "tipo": "cena",
+      "tiempo": "15 min",
+      "descripcion": "Pan pita relleno de pollo a la plancha con salsa de yogur y lechuga.",
+      "kcal": 375,
+      "proteinas": 35.8,
+      "carbos": 28.2,
+      "grasas": 11.2,
+      "ingredientes": [
+        {
+          "nombre": "Tortilla harina de trigo integral",
+          "cantidad": "60g",
+          "kcal": 172.8,
+          "proteinas": 5.52,
+          "carbos": 25.2,
+          "grasas": 4.38
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "120g",
+          "kcal": 132,
+          "proteinas": 27.6,
+          "carbos": 0,
+          "grasas": 1.44
+        },
+        {
+          "nombre": "Lechuga",
+          "cantidad": "50g",
+          "kcal": 7,
+          "proteinas": 0.45,
+          "carbos": 1.45,
+          "grasas": 0.05
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5g",
+          "kcal": 40.95,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.55
+        },
+        {
+          "nombre": "Yogur griego light",
+          "cantidad": "30g",
+          "kcal": 21.9,
+          "proteinas": 2.19,
+          "carbos": 1.59,
+          "grasas": 0.75
+        }
+      ],
+      "pasos": [
+        "Calentar una sartén con aceite. Cocinar el pollo hasta que no esté rosado.",
+        "Abrir el pan de pita y agregar la salsa de yogur y el pollo.",
+        "Cubrir con lechuga y servir."
+      ]
+    },
+    {
+      "id": "r1779364080112z6e2ed",
+      "nombre": "Garbanzos con pollo y espinacas",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Guiso de garbanzos con pollo, espinacas y caldo.",
+      "kcal": 441,
+      "proteinas": 42.3,
+      "carbos": 46,
+      "grasas": 6.4,
+      "ingredientes": [
+        {
+          "nombre": "Garbanzos (bote)",
+          "cantidad": "200g",
+          "kcal": 190,
+          "proteinas": 10.8,
+          "carbos": 24,
+          "grasas": 4
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "120g",
+          "kcal": 132,
+          "proteinas": 27.6,
+          "carbos": 0,
+          "grasas": 1.44
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "30g",
+          "kcal": 11.4,
+          "proteinas": 0.36,
+          "carbos": 2.58,
+          "grasas": 0.09
+        },
+        {
+          "nombre": "Caldo pollo",
+          "cantidad": "200g",
+          "kcal": 10,
+          "proteinas": 0,
+          "carbos": 1.2,
+          "grasas": 0
+        },
+        {
+          "nombre": "Espinacas (congeladas)",
+          "cantidad": "50g",
+          "kcal": 13,
+          "proteinas": 1.55,
+          "carbos": 0.25,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Patatas bote",
+          "cantidad": "100g",
+          "kcal": 85,
+          "proteinas": 2,
+          "carbos": 18,
+          "grasas": 0.5
+        }
+      ],
+      "pasos": [
+        "Rehoga el pollo con aceite y cebolla hasta que cojan color. Añade las especias.",
+        "Echa los garbanzos y el caldo de pollo. Deja que hierva unos 5 minutos.",
+        "Añade las espinacas al final, cuando queden solo 2 minutos para apagar el fuego."
+      ]
+    },
+    {
+      "id": "r17793640801131hp1m2",
+      "nombre": "Gnocchis con pollo y calabacín",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Gnocchis con pollo, zanahoria y calabacín en leche evaporada.",
+      "kcal": 431,
+      "proteinas": 30.7,
+      "carbos": 43.1,
+      "grasas": 14.2,
+      "ingredientes": [
+        {
+          "nombre": "Gnocchi",
+          "cantidad": "100g",
+          "kcal": 152,
+          "proteinas": 3.5,
+          "carbos": 32,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "100g",
+          "kcal": 110,
+          "proteinas": 23,
+          "carbos": 0,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "50g",
+          "kcal": 20.5,
+          "proteinas": 0.45,
+          "carbos": 4.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "50g",
+          "kcal": 8,
+          "proteinas": 0.6,
+          "carbos": 1.65,
+          "grasas": 0.05
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "10g",
+          "kcal": 81.9,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 9.1
+        },
+        {
+          "nombre": "Leche evaporada",
+          "cantidad": "50g",
+          "kcal": 58.5,
+          "proteinas": 3.15,
+          "carbos": 4.7,
+          "grasas": 3
+        }
+      ],
+      "pasos": [
+        "Cocina el pollo, una vez dorado, baja el fuego y añade las verduras y la leche evaporada.",
+        "Cocina los Gnocchis según el envase.",
+        "Mezcla los gnocchis con el pollo y las verduras."
+      ]
+    },
+    {
+      "id": "r17793640801152n5bgq",
+      "nombre": "Arroz con pollo y almendras",
+      "tipo": "comida",
+      "tiempo": "25 min",
+      "descripcion": "Arroz blanco con pollo sazonado y almendras.",
+      "kcal": 496,
+      "proteinas": 43.3,
+      "carbos": 56.4,
+      "grasas": 10.1,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "150g",
+          "kcal": 165,
+          "proteinas": 34.5,
+          "carbos": 0,
+          "grasas": 1.8
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "70g",
+          "kcal": 244.3,
+          "proteinas": 5.6,
+          "carbos": 53.2,
+          "grasas": 0.84
+        },
+        {
+          "nombre": "Almendra cruda",
+          "cantidad": "15g",
+          "kcal": 86.85,
+          "proteinas": 3.17,
+          "carbos": 3.23,
+          "grasas": 7.48
+        }
+      ],
+      "pasos": [
+        "Cocina el pollo con las especias en sartén hasta que esté dorado.",
+        "Cuece el arroz aparte.",
+        "Mezcla el arroz con el pollo y las almendras tostadas."
+      ]
+    },
+    {
+      "id": "r1779364080116jm1qn3",
+      "nombre": "Guiso de patatas y pollo",
+      "tipo": "comida",
+      "tiempo": "30 min",
+      "descripcion": "Guiso casero de pollo con patata, zanahoria y especias.",
+      "kcal": 402,
+      "proteinas": 45.2,
+      "carbos": 35.7,
+      "grasas": 7.6,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "180g",
+          "kcal": 198,
+          "proteinas": 41.4,
+          "carbos": 0,
+          "grasas": 2.16
+        },
+        {
+          "nombre": "Patatas bote",
+          "cantidad": "120g",
+          "kcal": 102,
+          "proteinas": 2.4,
+          "carbos": 21.6,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "30g",
+          "kcal": 11.4,
+          "proteinas": 0.36,
+          "carbos": 2.58,
+          "grasas": 0.09
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "120g",
+          "kcal": 49.2,
+          "proteinas": 1.08,
+          "carbos": 11.52,
+          "grasas": 0.24
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5g",
+          "kcal": 40.95,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.55
+        }
+      ],
+      "pasos": [
+        "Cocinar el pollo con la cebolla y zanahoria.",
+        "Sazonar con las especias.",
+        "Añadir la patata en trozos.",
+        "Añadir agua y dejar cocer todo junto."
+      ]
+    },
+    {
+      "id": "r1779364080117vgw1j6",
+      "nombre": "Wrap de res parrilla con queso",
+      "tipo": "comida",
+      "tiempo": "15 min",
+      "descripcion": "Tortilla integral rellena de ternera a la parrilla, lechuga y queso.",
+      "kcal": 457,
+      "proteinas": 36.2,
+      "carbos": 26.5,
+      "grasas": 20.9,
+      "ingredientes": [
+        {
+          "nombre": "Filete de ternera",
+          "cantidad": "100g",
+          "kcal": 159,
+          "proteinas": 27.4,
+          "carbos": 0,
+          "grasas": 4.6
+        },
+        {
+          "nombre": "Lechuga",
+          "cantidad": "30g",
+          "kcal": 4.2,
+          "proteinas": 0.27,
+          "carbos": 0.87,
+          "grasas": 0.03
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "10g",
+          "kcal": 81.9,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 9.1
+        },
+        {
+          "nombre": "Tortilla harina de trigo integral",
+          "cantidad": "60g",
+          "kcal": 172.8,
+          "proteinas": 5.52,
+          "carbos": 25.2,
+          "grasas": 4.38
+        },
+        {
+          "nombre": "Bolitas mozzarella",
+          "cantidad": "20g",
+          "kcal": 38.8,
+          "proteinas": 3,
+          "carbos": 0.4,
+          "grasas": 2.8
+        }
+      ],
+      "pasos": [
+        "Calienta aceite en sartén, agrega la carne y cocina a tu gusto.",
+        "Corta la carne en rodajas finas a lo largo del grano.",
+        "Rellena la tortilla con lechuga, carne y queso. Envuelve."
+      ]
+    },
+    {
+      "id": "r1779364080118kqcaqc",
+      "nombre": "Ternera, patata y brócoli",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Filete de ternera con patata asada y brócoli con especias.",
+      "kcal": 507,
+      "proteinas": 51.5,
+      "carbos": 50.6,
+      "grasas": 24.1,
+      "ingredientes": [
+        {
+          "nombre": "Filete de ternera",
+          "cantidad": "150g",
+          "kcal": 238.5,
+          "proteinas": 41.1,
+          "carbos": 0,
+          "grasas": 6.9
+        },
+        {
+          "nombre": "Patatas bote",
+          "cantidad": "250g",
+          "kcal": 212.5,
+          "proteinas": 5,
+          "carbos": 45,
+          "grasas": 1.25
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "200g",
+          "kcal": 56,
+          "proteinas": 5.4,
+          "carbos": 5.6,
+          "grasas": 16
+        }
+      ],
+      "pasos": [
+        "Cocina el brócoli con especias al vapor o salteado.",
+        "Prepara la patata para asar.",
+        "Haz los filetes de ternera a la plancha."
+      ]
+    },
+    {
+      "id": "r1779364080119zgsg34",
+      "nombre": "Pasta con carne picada y tomate",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Pasta tipo rigatoni con boloñesa de vacuno y salsa de tomate.",
+      "kcal": 511,
+      "proteinas": 32.1,
+      "carbos": 56.1,
+      "grasas": 17,
+      "ingredientes": [
+        {
+          "nombre": "Carne picada vacuno",
+          "cantidad": "120g",
+          "kcal": 228,
+          "proteinas": 21.6,
+          "carbos": 2.88,
+          "grasas": 14.4
+        },
+        {
+          "nombre": "Rigatoni (Garofalo)",
+          "cantidad": "70g",
+          "kcal": 245.7,
+          "proteinas": 9.8,
+          "carbos": 49,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "50g",
+          "kcal": 13.5,
+          "proteinas": 0.5,
+          "carbos": 2.45,
+          "grasas": 0
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "20g",
+          "kcal": 7.6,
+          "proteinas": 0.24,
+          "carbos": 1.72,
+          "grasas": 0.06
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "2g",
+          "kcal": 16.38,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 1.82
+        }
+      ],
+      "pasos": [
+        "Hierve el agua y cuando comience a hervir añade la pasta.",
+        "En una sartén, echa aceite y luego la carne picada.",
+        "Cuando esté la carne, echa la salsa de tomate y la cebolla."
+      ]
+    },
+    {
+      "id": "r1779364080120o3cshj",
+      "nombre": "Tacos de Ternera (Estilo Bowl)",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Bowl estilo tacos con ternera magra, arroz, lechuga y tomate.",
+      "kcal": 551,
+      "proteinas": 55.9,
+      "carbos": 57.1,
+      "grasas": 9.2,
+      "ingredientes": [
+        {
+          "nombre": "Filete de ternera",
+          "cantidad": "180g",
+          "kcal": 286.2,
+          "proteinas": 49.32,
+          "carbos": 0,
+          "grasas": 8.28
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "70g",
+          "kcal": 244.3,
+          "proteinas": 5.6,
+          "carbos": 53.2,
+          "grasas": 0.84
+        },
+        {
+          "nombre": "Lechuga",
+          "cantidad": "50g",
+          "kcal": 7,
+          "proteinas": 0.45,
+          "carbos": 1.45,
+          "grasas": 0.05
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "50g",
+          "kcal": 13.5,
+          "proteinas": 0.5,
+          "carbos": 2.45,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz en agua con sal.",
+        "Corta la ternera en tiras finas o dados y cocina en sartén.",
+        "En un bol, coloca el arroz como base, la carne encima y rodea con lechuga y tomate."
+      ]
+    },
+    {
+      "id": "r1779364080121fya9yx",
+      "nombre": "Fajita ternera",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Fajitas de ternera marinada con cebolla y calabacín.",
+      "kcal": 529,
+      "proteinas": 56.4,
+      "carbos": 32,
+      "grasas": 17.3,
+      "ingredientes": [
+        {
+          "nombre": "Filete de ternera",
+          "cantidad": "180g",
+          "kcal": 286.2,
+          "proteinas": 49.32,
+          "carbos": 0,
+          "grasas": 8.28
+        },
+        {
+          "nombre": "Tortilla harina de trigo integral",
+          "cantidad": "58g",
+          "kcal": 167,
+          "proteinas": 5.3,
+          "carbos": 24.4,
+          "grasas": 4.2
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "50g",
+          "kcal": 19,
+          "proteinas": 0.6,
+          "carbos": 4.3,
+          "grasas": 0.15
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "100g",
+          "kcal": 16,
+          "proteinas": 1.2,
+          "carbos": 3.3,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5g",
+          "kcal": 40.95,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.55
+        }
+      ],
+      "pasos": [
+        "Mezcla la ternera con las especias (marinado express).",
+        "Cocina la ternera a fuego fuerte 2-3 min. Reserva.",
+        "En la misma sartén, echa la cebolla y el calabacín.",
+        "Mezcla verduras y ternera. Sirve en las tortillas."
+      ]
+    },
+    {
+      "id": "r1779364080123rfqokl",
+      "nombre": "Salteado brochetas ternera y cebolla",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Salteado de ternera marinada con cebolla, estilo brocheta, acompañado de patata.",
+      "kcal": 518,
+      "proteinas": 54.9,
+      "carbos": 49.3,
+      "grasas": 9.7,
+      "ingredientes": [
+        {
+          "nombre": "Filete de ternera",
+          "cantidad": "180g",
+          "kcal": 286.2,
+          "proteinas": 49.32,
+          "carbos": 0,
+          "grasas": 8.28
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "50g",
+          "kcal": 19,
+          "proteinas": 0.6,
+          "carbos": 4.3,
+          "grasas": 0.15
+        },
+        {
+          "nombre": "Patatas bote",
+          "cantidad": "250g",
+          "kcal": 212.5,
+          "proteinas": 5,
+          "carbos": 45,
+          "grasas": 1.25
+        }
+      ],
+      "pasos": [
+        "Mezcla la ternera con las especias.",
+        "Cocina la ternera a fuego fuerte 2-3 min. Reserva.",
+        "En la misma sartén, echa la cebolla.",
+        "Mezcla la ternera y la cebolla. Sirve con patata."
+      ]
+    },
+    {
+      "id": "r1779364080124w0qhuh",
+      "nombre": "Salteado de ternera con verduras",
+      "tipo": "comida",
+      "tiempo": "25 min",
+      "descripcion": "Carne picada de vacuno salteada con calabacín, cebolla y salsa de soja sobre arroz.",
+      "kcal": 518,
+      "proteinas": 33.2,
+      "carbos": 44,
+      "grasas": 23.3,
+      "ingredientes": [
+        {
+          "nombre": "Carne picada vacuno",
+          "cantidad": "150g",
+          "kcal": 285,
+          "proteinas": 27,
+          "carbos": 3.6,
+          "grasas": 18
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "100g",
+          "kcal": 16,
+          "proteinas": 1.2,
+          "carbos": 3.3,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "30g",
+          "kcal": 11.4,
+          "proteinas": 0.36,
+          "carbos": 2.58,
+          "grasas": 0.09
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "45g",
+          "kcal": 157.05,
+          "proteinas": 3.6,
+          "carbos": 34.2,
+          "grasas": 0.54
+        },
+        {
+          "nombre": "Soja",
+          "cantidad": "10g",
+          "kcal": 7.7,
+          "proteinas": 1,
+          "carbos": 0.32,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5g",
+          "kcal": 40.95,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.55
+        }
+      ],
+      "pasos": [
+        "Cocina el arroz.",
+        "En una sartén, agrega aceite y la carne picada. Dora bien.",
+        "Agrega las verduras y salsa de soja. Saltea hasta que estén tiernas.",
+        "Sirve el arroz cubierto con el salteado."
+      ]
+    },
+    {
+      "id": "r1779364080125c8c62m",
+      "nombre": "Arroz con gambas al ajillo",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Arroz blanco con gambas salteadas en ajo y perejil.",
+      "kcal": 385,
+      "proteinas": 15.2,
+      "carbos": 77.7,
+      "grasas": 1.3,
+      "ingredientes": [
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "100g",
+          "kcal": 349,
+          "proteinas": 8,
+          "carbos": 76,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Gambas (congeladas)",
+          "cantidad": "120g",
+          "kcal": 36,
+          "proteinas": 7.2,
+          "carbos": 1.68,
+          "grasas": 0.12
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz.",
+        "En una sartén con aceite y ajo, saltea las gambas hasta que estén doradas.",
+        "Mezcla el arroz con las gambas y espolvorea perejil."
+      ]
+    },
+    {
+      "id": "r1779364080126s7zto5",
+      "nombre": "Merluza en salsa con calabacín y patata asada",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Merluza con salsa de limón y ajo en air fryer, con calabacín y patata asada al microondas.",
+      "kcal": 392,
+      "proteinas": 22.6,
+      "carbos": 53.6,
+      "grasas": 9.9,
+      "ingredientes": [
+        {
+          "nombre": "Merluza",
+          "cantidad": "100g",
+          "kcal": 98,
+          "proteinas": 15.2,
+          "carbos": 2,
+          "grasas": 3
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "200g",
+          "kcal": 32,
+          "proteinas": 2.4,
+          "carbos": 6.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Patatas bote",
+          "cantidad": "250g",
+          "kcal": 212.5,
+          "proteinas": 5,
+          "carbos": 45,
+          "grasas": 1.25
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "6g",
+          "kcal": 49.14,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 5.46
+        }
+      ],
+      "pasos": [
+        "Precalienta la airfryer a 180° durante 4 min.",
+        "Prepara la salsa y coloca el calabacín y la merluza en un recipiente.",
+        "Mete en la air fryer durante 10 min a 180°.",
+        "Envuelve la patata con papel de cocina mojado y mete al microondas 7 min."
+      ]
+    },
+    {
+      "id": "r1779364080127wwuouh",
+      "nombre": "Sepia a la plancha con ajo y perejil",
+      "tipo": "comida",
+      "tiempo": "15 min",
+      "descripcion": "Sepia a la plancha muy caliente con picada de ajo y perejil, acompañada de patata.",
+      "kcal": 347,
+      "proteinas": 25.9,
+      "carbos": 45,
+      "grasas": 6.8,
+      "ingredientes": [
+        {
+          "nombre": "Tira calamar",
+          "cantidad": "190g",
+          "kcal": 93.1,
+          "proteinas": 20.9,
+          "carbos": 0,
+          "grasas": 0.95
+        },
+        {
+          "nombre": "Patatas bote",
+          "cantidad": "250g",
+          "kcal": 212.5,
+          "proteinas": 5,
+          "carbos": 45,
+          "grasas": 1.25
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5g",
+          "kcal": 40.95,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.55
+        }
+      ],
+      "pasos": [
+        "Corta la sepia en dados o hazle cortes en forma de rombo.",
+        "Calienta la sartén al máximo y echa la sepia sin aceite.",
+        "Una vez dorada, añade el ajo picado, perejil y la gota de aceite.",
+        "Saltea 1 minuto más y sirve inmediatamente."
+      ]
+    },
+    {
+      "id": "r1779364080128ibts0q",
+      "nombre": "Batata rellena",
+      "tipo": "comida",
+      "tiempo": "20 min",
+      "descripcion": "Boniato cocido al microondas relleno de carne picada de pollo y mozzarella.",
+      "kcal": 343,
+      "proteinas": 24.2,
+      "carbos": 40.9,
+      "grasas": 9.6,
+      "ingredientes": [
+        {
+          "nombre": "Batata/Boniato",
+          "cantidad": "200g",
+          "kcal": 172,
+          "proteinas": 3.2,
+          "carbos": 40,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Carne Picada Pollo",
+          "cantidad": "100g",
+          "kcal": 132,
+          "proteinas": 18,
+          "carbos": 0.5,
+          "grasas": 6.6
+        },
+        {
+          "nombre": "Bolitas mozzarella",
+          "cantidad": "20g",
+          "kcal": 38.8,
+          "proteinas": 3,
+          "carbos": 0.4,
+          "grasas": 2.8
+        }
+      ],
+      "pasos": [
+        "Envuelve el boniato con papel de cocina mojado.",
+        "Mete el boniato en el microondas durante 10 min.",
+        "Cocina la carne en la sartén.",
+        "Abre el boniato y rellena con la carne y el queso."
+      ]
+    },
+    {
+      "id": "r1779364080131rd2vlw",
+      "nombre": "Barquitos de Carne a lo Mexicano",
+      "tipo": "comida",
+      "tiempo": "15 min",
+      "descripcion": "Barquitos de maíz rellenos de carne picada de pollo estilo mexicano con sriracha.",
+      "kcal": 396,
+      "proteinas": 33.1,
+      "carbos": 31.2,
+      "grasas": 14.5,
+      "ingredientes": [
+        {
+          "nombre": "Carne Picada Pollo",
+          "cantidad": "150g",
+          "kcal": 198,
+          "proteinas": 27,
+          "carbos": 0.75,
+          "grasas": 9.9
+        },
+        {
+          "nombre": "Tortilla harina de trigo integral",
+          "cantidad": "60g",
+          "kcal": 172.8,
+          "proteinas": 5.52,
+          "carbos": 25.2,
+          "grasas": 4.38
+        },
+        {
+          "nombre": "Sriracha",
+          "cantidad": "15g",
+          "kcal": 15.9,
+          "proteinas": 0.3,
+          "carbos": 3.15,
+          "grasas": 0.15
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "25g",
+          "kcal": 9.5,
+          "proteinas": 0.3,
+          "carbos": 2.15,
+          "grasas": 0.07
+        }
+      ],
+      "pasos": [
+        "Pica la cebolla y sofríe con aceite. Añade la carne picada y dora bien.",
+        "Añade el sazonador de tacos y la sriracha con un poco de agua. Reduce 2-3 min.",
+        "Calienta los barquitos en el microondas 30 segundos.",
+        "Rellena los barquitos con la carne."
+      ]
+    },
+    {
+      "id": "r1779364080132uq9e6b",
+      "nombre": "Tostada con batido proteico",
+      "tipo": "desayuno",
+      "tiempo": "5 min",
+      "descripcion": "Tostada de pan integral con loncha de pavo y batido de proteína.",
+      "kcal": 231,
+      "proteinas": 33,
+      "carbos": 17.5,
+      "grasas": 2.8,
+      "ingredientes": [
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "35g",
+          "kcal": 85.4,
+          "proteinas": 3.6,
+          "carbos": 14.38,
+          "grasas": 1.01
+        },
+        {
+          "nombre": "Pavo 93%",
+          "cantidad": "30g",
+          "kcal": 31.2,
+          "proteinas": 6.9,
+          "carbos": 0.15,
+          "grasas": 0.33
+        },
+        {
+          "nombre": "Proteína en polvo",
+          "cantidad": "30g",
+          "kcal": 114,
+          "proteinas": 22.5,
+          "carbos": 3,
+          "grasas": 1.5
+        }
+      ],
+      "pasos": [
+        "Tuesta la rebanada de pan.",
+        "Coloca la loncha de pavo encima.",
+        "Prepara el batido proteico aparte mezclando la proteína con agua o leche."
+      ]
     }
   ],
   "menu": {
-    "lunes": {
-      "desayuno": "r177771771594824um",
-      "comida": "r1777888202989ab8y",
-      "cena": "r1777888341170jo7n",
-      "snack": null
+    "semana1": {
+      "lunes": {
+        "desayuno": "r177771771594824um",
+        "comida": "r1778953431698jmue",
+        "cena": "r1777888570833gg2b",
+        "snack": null
+      },
+      "martes": {
+        "desayuno": "r1779364080106wzcgsj",
+        "comida": "r177771786909724md",
+        "cena": "r1778952800119rh33",
+        "snack": null
+      },
+      "miercoles": {
+        "desayuno": "r1779364080132uq9e6b",
+        "comida": "r1779364080116jm1qn3",
+        "cena": "r17780693652442tft",
+        "snack": null
+      },
+      "jueves": {
+        "desayuno": "r17777168509747vr8",
+        "comida": "r1779364080112z6e2ed",
+        "cena": "r17780661188061b9a",
+        "snack": null
+      },
+      "viernes": {
+        "desayuno": "r1779364080106wzcgsj",
+        "comida": "r1778954226673rbq3",
+        "cena": "r1778952553154tf4y",
+        "snack": null
+      },
+      "sabado": {
+        "desayuno": "r1777717424539appz",
+        "comida": "r17793640801131hp1m2",
+        "cena": "r1777888341170jo7n",
+        "snack": "r17793640801056mzgxv"
+      },
+      "domingo": {
+        "desayuno": "r17777175037187vko",
+        "comida": "r1779364080127wwuouh",
+        "cena": "r1777888458490bpmw",
+        "snack": "r1779364080108icpmz0"
+      }
     },
-    "martes": {
-      "desayuno": "r177771771594824um",
-      "comida": "r1777888761775jwh2",
-      "cena": "r1778952800119rh33",
-      "snack": null
+    "semana2": {
+      "lunes": {
+        "desayuno": "r177771771594824um",
+        "comida": "r1779364080126s7zto5",
+        "cena": "r17780693652442tft",
+        "snack": null
+      },
+      "martes": {
+        "desayuno": "r1779364080132uq9e6b",
+        "comida": "r1778065868745a791",
+        "cena": "r17780661188061b9a",
+        "snack": null
+      },
+      "miercoles": {
+        "desayuno": "r1779364080106wzcgsj",
+        "comida": "r1778953711355y5uu",
+        "cena": "r1778952800119rh33",
+        "snack": null
+      },
+      "jueves": {
+        "desayuno": "r17777168509747vr8",
+        "comida": "r1779364080117vgw1j6",
+        "cena": "r1777888458490bpmw",
+        "snack": null
+      },
+      "viernes": {
+        "desayuno": "r177771771594824um",
+        "comida": "r1778069003030zhaz",
+        "cena": "r1779364080111d0vh59",
+        "snack": null
+      },
+      "sabado": {
+        "desayuno": "r1777717424539appz",
+        "comida": "r1779364080125c8c62m",
+        "cena": "r1778952553154tf4y",
+        "snack": "r1779364080108icpmz0"
+      },
+      "domingo": {
+        "desayuno": "r17777175037187vko",
+        "comida": "r1777888202989ab8y",
+        "cena": "r1777888341170jo7n",
+        "snack": "r17793640801056mzgxv"
+      }
     },
-    "miercoles": {
-      "desayuno": "r177771771594824um",
-      "comida": "r1778065085369zff6",
-      "cena": "r17780661188061b9a",
-      "snack": null
+    "semana3": {
+      "lunes": {
+        "desayuno": "r1779364080132uq9e6b",
+        "comida": "r1779364080110x34ryv",
+        "cena": "r1777888570833gg2b",
+        "snack": null
+      },
+      "martes": {
+        "desayuno": "r1779364080106wzcgsj",
+        "comida": "r1779364080131rd2vlw",
+        "cena": "r17780693652442tft",
+        "snack": null
+      },
+      "miercoles": {
+        "desayuno": "r177771771594824um",
+        "comida": "r1778065085369zff6",
+        "cena": "r17780661188061b9a",
+        "snack": null
+      },
+      "jueves": {
+        "desayuno": "r17777168509747vr8",
+        "comida": "r1779364080118kqcaqc",
+        "cena": "r1777888458490bpmw",
+        "snack": null
+      },
+      "viernes": {
+        "desayuno": "r1779364080132uq9e6b",
+        "comida": "r177895397657235wd",
+        "cena": "r1778952553154tf4y",
+        "snack": null
+      },
+      "sabado": {
+        "desayuno": "r1777717424539appz",
+        "comida": "r1779364080121fya9yx",
+        "cena": "r1777888341170jo7n",
+        "snack": "r17793640801056mzgxv"
+      },
+      "domingo": {
+        "desayuno": "r17777175037187vko",
+        "comida": "r1779364080128ibts0q",
+        "cena": "r1779364080111d0vh59",
+        "snack": "r1779364080108icpmz0"
+      }
     },
-    "jueves": {
-      "desayuno": "r177771771594824um",
-      "comida": "r1778065868745a791",
-      "cena": "r1777888458490bpmw",
-      "snack": null
-    },
-    "viernes": {
-      "desayuno": "r17777168509747vr8",
-      "comida": "r1778954226673rbq3",
-      "cena": "r1777888341170jo7n",
-      "snack": null
-    },
-    "sabado": {
-      "desayuno": "r1777717424539appz",
-      "comida": null,
-      "cena": "r1777888341170jo7n",
-      "snack": null
-    },
-    "domingo": {
-      "desayuno": "r1777717424539appz",
-      "comida": "r177806887494410gv",
-      "cena": "r17780693652442tft",
-      "snack": null
+    "semana4": {
+      "lunes": {
+        "desayuno": "r177771771594824um",
+        "comida": "r1779364080123rfqokl",
+        "cena": "r1777888570833gg2b",
+        "snack": null
+      },
+      "martes": {
+        "desayuno": "r1779364080106wzcgsj",
+        "comida": "r1779364080119zgsg34",
+        "cena": "r17780661188061b9a",
+        "snack": null
+      },
+      "miercoles": {
+        "desayuno": "r1779364080132uq9e6b",
+        "comida": "r177806887494410gv",
+        "cena": "r1777888458490bpmw",
+        "snack": null
+      },
+      "jueves": {
+        "desayuno": "r17777168509747vr8",
+        "comida": "r1779364080120o3cshj",
+        "cena": "r1778952800119rh33",
+        "snack": null
+      },
+      "viernes": {
+        "desayuno": "r177771771594824um",
+        "comida": "r17793640801152n5bgq",
+        "cena": "r1778952553154tf4y",
+        "snack": null
+      },
+      "sabado": {
+        "desayuno": "r1777717424539appz",
+        "comida": "r1779364080124w0qhuh",
+        "cena": "r1779364080111d0vh59",
+        "snack": "r1779364080108icpmz0"
+      },
+      "domingo": {
+        "desayuno": "r17777175037187vko",
+        "comida": "r1778953288624ctyf",
+        "cena": "r1777888341170jo7n",
+        "snack": "r17793640801056mzgxv"
+      }
     }
   }
 }

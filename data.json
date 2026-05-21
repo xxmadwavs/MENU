@@ -3370,6 +3370,229 @@
         "En plancha caliente, cocina el filete al punto que prefieras.",
         "Sirve el filete junto al brócoli."
       ]
+    },
+    {
+      "id": "r1779367403186zo7rgm",
+      "nombre": "Lomo de cerdo con brócoli",
+      "tipo": "cena",
+      "tiempo": "15 min",
+      "descripcion": "Lomo a la plancha con brócoli al vapor. Rápido y muy proteico.",
+      "kcal": 342,
+      "proteinas": 42.3,
+      "carbos": 5.6,
+      "grasas": 30.2,
+      "ingredientes": [
+        {
+          "nombre": "Lomo de cerdo",
+          "cantidad": "180g",
+          "kcal": 244.8,
+          "proteinas": 36.9,
+          "carbos": 0.0,
+          "grasas": 9.7
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "200g",
+          "kcal": 56.0,
+          "proteinas": 5.4,
+          "carbos": 5.6,
+          "grasas": 16.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5g",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        }
+      ],
+      "pasos": [
+        "Sazona el lomo con sal, pimienta y ajo en polvo.",
+        "Cocina a la plancha 3-4 min por cada lado.",
+        "Cuece el brócoli al vapor o microondas 5-6 min.",
+        "Sirve con un chorrito de aceite sobre el brócoli."
+      ]
+    },
+    {
+      "id": "r1779367403189k1m8m4",
+      "nombre": "Gambas salteadas con espinacas",
+      "tipo": "cena",
+      "tiempo": "10 min",
+      "descripcion": "Gambas al ajillo con espinacas. Muy proteico, casi sin carbos.",
+      "kcal": 164,
+      "proteinas": 16.7,
+      "carbos": 3.6,
+      "grasas": 8.7,
+      "ingredientes": [
+        {
+          "nombre": "Gambas (congeladas)",
+          "cantidad": "200g",
+          "kcal": 60.0,
+          "proteinas": 12.0,
+          "carbos": 2.8,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Espinacas (congeladas)",
+          "cantidad": "150g",
+          "kcal": 39.0,
+          "proteinas": 4.7,
+          "carbos": 0.8,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "Calienta aceite en sartén con ajo laminado a fuego fuerte.",
+        "Añade las gambas y saltea 2-3 min hasta que cambien de color.",
+        "Incorpora las espinacas y remueve 1-2 min hasta que se reduzcan.",
+        "Sazona con sal y pimienta."
+      ]
+    },
+    {
+      "id": "r1779367403192tyz6z1",
+      "nombre": "Filete de ternera con calabacín",
+      "tipo": "cena",
+      "tiempo": "15 min",
+      "descripcion": "Filete de ternera a la plancha con calabacín salteado. Alto en proteína, mínimo carbos.",
+      "kcal": 375,
+      "proteinas": 52.3,
+      "carbos": 8.2,
+      "grasas": 14.0,
+      "ingredientes": [
+        {
+          "nombre": "Filete de ternera",
+          "cantidad": "180g",
+          "kcal": 286.2,
+          "proteinas": 49.3,
+          "carbos": 0.0,
+          "grasas": 8.3
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "250g",
+          "kcal": 40.0,
+          "proteinas": 3.0,
+          "carbos": 8.2,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "6g",
+          "kcal": 49.1,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 5.5
+        }
+      ],
+      "pasos": [
+        "Corta el calabacín en rodajas y saltéalo con aceite, sal y orégano.",
+        "En la misma plancha cocina el filete al punto que prefieras.",
+        "Sirve el filete sobre el calabacín."
+      ]
+    },
+    {
+      "id": "r17793674031958o1i2w",
+      "nombre": "Merluza al horno con espinacas",
+      "tipo": "cena",
+      "tiempo": "15 min",
+      "descripcion": "Merluza al horno con ajo y limón sobre cama de espinacas.",
+      "kcal": 284,
+      "proteinas": 35.1,
+      "carbos": 4.8,
+      "grasas": 12.7,
+      "ingredientes": [
+        {
+          "nombre": "Merluza",
+          "cantidad": "200g",
+          "kcal": 196.0,
+          "proteinas": 30.4,
+          "carbos": 4.0,
+          "grasas": 6.0
+        },
+        {
+          "nombre": "Espinacas (congeladas)",
+          "cantidad": "150g",
+          "kcal": 39.0,
+          "proteinas": 4.7,
+          "carbos": 0.8,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "6g",
+          "kcal": 49.1,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 5.5
+        }
+      ],
+      "pasos": [
+        "Precalienta el horno a 200°C.",
+        "Coloca la merluza en bandeja, sazona con sal, ajo y un chorrito de aceite.",
+        "Hornea 10-12 min.",
+        "Saltea las espinacas en sartén con una gota de aceite y sal.",
+        "Sirve la merluza sobre las espinacas."
+      ]
+    },
+    {
+      "id": "r17793674031987rzfqh",
+      "nombre": "Pechuga con queso fresco y brócoli",
+      "tipo": "cena",
+      "tiempo": "15 min",
+      "descripcion": "Pechuga a la plancha con queso fresco y brócoli. Proteína doble, sin carbos.",
+      "kcal": 357,
+      "proteinas": 54.8,
+      "carbos": 7.4,
+      "grasas": 23.7,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "170g",
+          "kcal": 187.0,
+          "proteinas": 39.1,
+          "carbos": 0.0,
+          "grasas": 2.0
+        },
+        {
+          "nombre": "Queso fresco",
+          "cantidad": "80g",
+          "kcal": 78.4,
+          "proteinas": 10.8,
+          "carbos": 2.4,
+          "grasas": 2.8
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "180g",
+          "kcal": 50.4,
+          "proteinas": 4.9,
+          "carbos": 5.0,
+          "grasas": 14.4
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5g",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        }
+      ],
+      "pasos": [
+        "Cocina la pechuga a la plancha con sal y especias.",
+        "Cuece el brócoli al vapor o microondas 5 min.",
+        "Corta el queso fresco en daditos.",
+        "Sirve la pechuga fileteada con el brócoli y el queso por encima."
+      ]
     }
   ],
   "menu": {
@@ -3377,43 +3600,43 @@
       "lunes": {
         "desayuno": "r177771771594824um",
         "comida": "r1778953431698jmue",
-        "cena": "r1777888570833gg2b",
+        "cena": "r177936689643289xv20",
         "snack": null
       },
       "martes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r177771786909724md",
-        "cena": "r1778952800119rh33",
+        "cena": "r17793668964348e7r2v",
         "snack": null
       },
       "miercoles": {
         "desayuno": "r1779364080132uq9e6b",
         "comida": "r1779364080116jm1qn3",
-        "cena": "r17780693652442tft",
+        "cena": "r1779366896436wquuus",
         "snack": null
       },
       "jueves": {
         "desayuno": "r17777168509747vr8",
         "comida": "r1779364080112z6e2ed",
-        "cena": "r17780661188061b9a",
+        "cena": "r1779366896439l59dkn",
         "snack": null
       },
       "viernes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1778954226673rbq3",
-        "cena": "r1778952553154tf4y",
+        "cena": "r1779366896441vjq91d",
         "snack": null
       },
       "sabado": {
         "desayuno": "r1777717424539appz",
         "comida": "r17793640801131hp1m2",
-        "cena": "r1777888341170jo7n",
+        "cena": "r1779367403186zo7rgm",
         "snack": "r17793640801056mzgxv"
       },
       "domingo": {
         "desayuno": "r17777175037187vko",
         "comida": "r1779364080127wwuouh",
-        "cena": "r1777888458490bpmw",
+        "cena": "r1779367403189k1m8m4",
         "snack": "r1779364080108icpmz0"
       }
     },
@@ -3421,43 +3644,43 @@
       "lunes": {
         "desayuno": "r177771771594824um",
         "comida": "r1779364080126s7zto5",
-        "cena": "r17780693652442tft",
+        "cena": "r1779366896436wquuus",
         "snack": null
       },
       "martes": {
         "desayuno": "r1779364080132uq9e6b",
         "comida": "r1778065868745a791",
-        "cena": "r17780661188061b9a",
+        "cena": "r1779366896439l59dkn",
         "snack": null
       },
       "miercoles": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1778953711355y5uu",
-        "cena": "r1778952800119rh33",
+        "cena": "r1779366896441vjq91d",
         "snack": null
       },
       "jueves": {
         "desayuno": "r17777168509747vr8",
         "comida": "r1779364080117vgw1j6",
-        "cena": "r1777888458490bpmw",
+        "cena": "r1779367403186zo7rgm",
         "snack": null
       },
       "viernes": {
         "desayuno": "r177771771594824um",
         "comida": "r1778069003030zhaz",
-        "cena": "r1779364080111d0vh59",
+        "cena": "r1779367403189k1m8m4",
         "snack": null
       },
       "sabado": {
         "desayuno": "r1777717424539appz",
         "comida": "r1779364080125c8c62m",
-        "cena": "r1778952553154tf4y",
+        "cena": "r1779367403192tyz6z1",
         "snack": "r1779364080108icpmz0"
       },
       "domingo": {
         "desayuno": "r17777175037187vko",
         "comida": "r1777888202989ab8y",
-        "cena": "r1777888341170jo7n",
+        "cena": "r17793674031958o1i2w",
         "snack": "r17793640801056mzgxv"
       }
     },
@@ -3465,43 +3688,43 @@
       "lunes": {
         "desayuno": "r1779364080132uq9e6b",
         "comida": "r1779364080110x34ryv",
-        "cena": "r1777888570833gg2b",
+        "cena": "r1779366896441vjq91d",
         "snack": null
       },
       "martes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1779364080131rd2vlw",
-        "cena": "r17780693652442tft",
+        "cena": "r1779367403186zo7rgm",
         "snack": null
       },
       "miercoles": {
         "desayuno": "r177771771594824um",
         "comida": "r1778065085369zff6",
-        "cena": "r17780661188061b9a",
+        "cena": "r1779367403189k1m8m4",
         "snack": null
       },
       "jueves": {
         "desayuno": "r17777168509747vr8",
         "comida": "r1779364080118kqcaqc",
-        "cena": "r1777888458490bpmw",
+        "cena": "r1779367403192tyz6z1",
         "snack": null
       },
       "viernes": {
         "desayuno": "r1779364080132uq9e6b",
         "comida": "r177895397657235wd",
-        "cena": "r1778952553154tf4y",
+        "cena": "r17793674031958o1i2w",
         "snack": null
       },
       "sabado": {
         "desayuno": "r1777717424539appz",
         "comida": "r1779364080121fya9yx",
-        "cena": "r1777888341170jo7n",
+        "cena": "r17793674031987rzfqh",
         "snack": "r17793640801056mzgxv"
       },
       "domingo": {
         "desayuno": "r17777175037187vko",
         "comida": "r1779364080128ibts0q",
-        "cena": "r1779364080111d0vh59",
+        "cena": "r177936689643289xv20",
         "snack": "r1779364080108icpmz0"
       }
     },
@@ -3509,43 +3732,43 @@
       "lunes": {
         "desayuno": "r177771771594824um",
         "comida": "r1779364080123rfqokl",
-        "cena": "r1777888570833gg2b",
+        "cena": "r1779367403189k1m8m4",
         "snack": null
       },
       "martes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1779364080119zgsg34",
-        "cena": "r17780661188061b9a",
+        "cena": "r1779367403192tyz6z1",
         "snack": null
       },
       "miercoles": {
         "desayuno": "r1779364080132uq9e6b",
         "comida": "r177806887494410gv",
-        "cena": "r1777888458490bpmw",
+        "cena": "r17793674031958o1i2w",
         "snack": null
       },
       "jueves": {
         "desayuno": "r17777168509747vr8",
         "comida": "r1779364080120o3cshj",
-        "cena": "r1778952800119rh33",
+        "cena": "r17793674031987rzfqh",
         "snack": null
       },
       "viernes": {
         "desayuno": "r177771771594824um",
         "comida": "r17793640801152n5bgq",
-        "cena": "r1778952553154tf4y",
+        "cena": "r177936689643289xv20",
         "snack": null
       },
       "sabado": {
         "desayuno": "r1777717424539appz",
         "comida": "r1779364080124w0qhuh",
-        "cena": "r1779364080111d0vh59",
+        "cena": "r17793668964348e7r2v",
         "snack": "r1779364080108icpmz0"
       },
       "domingo": {
         "desayuno": "r17777175037187vko",
         "comida": "r1778953288624ctyf",
-        "cena": "r1777888341170jo7n",
+        "cena": "r1779366896436wquuus",
         "snack": "r17793640801056mzgxv"
       }
     }

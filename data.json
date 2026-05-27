@@ -3593,6 +3593,617 @@
         "Corta el queso fresco en daditos.",
         "Sirve la pechuga fileteada con el brócoli y el queso por encima."
       ]
+    },
+    {
+      "id": "r_batch_s1_lunes",
+      "nombre": "Pollo al horno con brocoli y calabacin (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "40 min",
+      "descripcion": "Pechuga al horno con brocoli y calabacin. Bajo en carbos, alto en proteina.",
+      "kcal": 330,
+      "proteinas": 50.0,
+      "carbos": 8.0,
+      "grasas": 9.0,
+      "batch_cooking": true,
+      "dias_nevera": 3,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "200g",
+          "kcal": 220.0,
+          "proteinas": 46.0,
+          "carbos": 0.0,
+          "grasas": 2.4
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "200g",
+          "kcal": 56.0,
+          "proteinas": 5.4,
+          "carbos": 5.6,
+          "grasas": 16.0
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "150g",
+          "kcal": 24.0,
+          "proteinas": 1.8,
+          "carbos": 4.95,
+          "grasas": 0.15
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "El domingo: precalienta el horno a 200C.",
+        "Coloca la pechuga sazonada con sal, ajo y oregano en bandeja.",
+        "Anade el brocoli y el calabacin en dados con aceite y sal.",
+        "Hornea todo junto 35 min dando la vuelta a mitad.",
+        "Deja enfriar, divide en 3 tuppers. Conserva en nevera 3 dias.",
+        "Para servir: calienta 2-3 min en microondas."
+      ]
+    },
+    {
+      "id": "r_batch_s1_martes",
+      "nombre": "Albondigas de pollo con espinacas (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "30 min",
+      "descripcion": "Albondigas de pollo en salsa ligera con espinacas. Sin carbos innecesarios.",
+      "kcal": 310,
+      "proteinas": 44.0,
+      "carbos": 5.0,
+      "grasas": 11.5,
+      "batch_cooking": true,
+      "dias_nevera": 3,
+      "ingredientes": [
+        {
+          "nombre": "Albondigas de pollo",
+          "cantidad": "250g",
+          "kcal": 280.0,
+          "proteinas": 50.0,
+          "carbos": 3.0,
+          "grasas": 7.5
+        },
+        {
+          "nombre": "Espinacas (congeladas)",
+          "cantidad": "200g",
+          "kcal": 52.0,
+          "proteinas": 6.2,
+          "carbos": 1.0,
+          "grasas": 1.6
+        },
+        {
+          "nombre": "Caldo pollo",
+          "cantidad": "100ml",
+          "kcal": 5.0,
+          "proteinas": 0.0,
+          "carbos": 0.6,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "El domingo: dora las albondigas en sarten con aceite por todos lados.",
+        "Anade el caldo de pollo y las espinacas. Tapa y cocina 15 min a fuego suave.",
+        "Sazona con sal, pimienta y nuez moscada.",
+        "Deja enfriar, divide en 3 tuppers. Conserva en nevera 3 dias.",
+        "Para servir: calienta en sarten o microondas 3-4 min."
+      ]
+    },
+    {
+      "id": "r_batch_s1_miercoles",
+      "nombre": "Carne picada vacuno con calabacin (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "25 min",
+      "descripcion": "Salteado de carne picada con calabacin y tomate. Bajo en carbos y muy saciante.",
+      "kcal": 350,
+      "proteinas": 36.0,
+      "carbos": 8.0,
+      "grasas": 18.0,
+      "batch_cooking": true,
+      "dias_nevera": 3,
+      "ingredientes": [
+        {
+          "nombre": "Carne picada vacuno",
+          "cantidad": "180g",
+          "kcal": 342.0,
+          "proteinas": 32.4,
+          "carbos": 4.32,
+          "grasas": 21.6
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "250g",
+          "kcal": 40.0,
+          "proteinas": 3.0,
+          "carbos": 8.25,
+          "grasas": 0.25
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "100g",
+          "kcal": 27.0,
+          "proteinas": 1.0,
+          "carbos": 4.9,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "El domingo: saltea el calabacin en dados con aceite y sal 5 min. Reserva.",
+        "En la misma sarten dora la carne picada removiendo bien.",
+        "Incorpora el tomate, sal, comino y pimenton ahumado. Cocina 8 min.",
+        "Mezcla con el calabacin, deja enfriar y divide en 3 tuppers.",
+        "Para servir: calienta en sarten o microondas 3-4 min."
+      ]
+    },
+    {
+      "id": "r_batch_s2_lunes",
+      "nombre": "Lomo de cerdo con calabacin (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "30 min",
+      "descripcion": "Lomo de cerdo a la plancha con calabacin salteado. Solo 8g de carbos.",
+      "kcal": 370,
+      "proteinas": 44.0,
+      "carbos": 8.0,
+      "grasas": 17.5,
+      "batch_cooking": true,
+      "dias_nevera": 3,
+      "ingredientes": [
+        {
+          "nombre": "Lomo de cerdo",
+          "cantidad": "220g",
+          "kcal": 299.2,
+          "proteinas": 45.1,
+          "carbos": 0.0,
+          "grasas": 11.88
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "300g",
+          "kcal": 48.0,
+          "proteinas": 3.6,
+          "carbos": 9.9,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "El domingo: sazona el lomo con sal, pimienta y ajo en polvo.",
+        "Cocina a la plancha 4-5 min por lado.",
+        "En la misma sarten saltea el calabacin en rodajas con aceite y sal 5 min.",
+        "Deja enfriar, divide en 3 tuppers. Conserva en nevera 3 dias.",
+        "Para servir: calienta en microondas 2-3 min."
+      ]
+    },
+    {
+      "id": "r_batch_s2_martes",
+      "nombre": "Merluza al horno con brocoli (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "25 min",
+      "descripcion": "Merluza al horno con brocoli. Ligero, proteico y muy bajo en carbos.",
+      "kcal": 290,
+      "proteinas": 38.0,
+      "carbos": 7.0,
+      "grasas": 11.5,
+      "batch_cooking": true,
+      "dias_nevera": 2,
+      "ingredientes": [
+        {
+          "nombre": "Merluza",
+          "cantidad": "220g",
+          "kcal": 215.6,
+          "proteinas": 33.44,
+          "carbos": 4.4,
+          "grasas": 6.6
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "200g",
+          "kcal": 56.0,
+          "proteinas": 5.4,
+          "carbos": 5.6,
+          "grasas": 16.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "El domingo: precalienta el horno a 200C.",
+        "Coloca la merluza en bandeja con aceite, ajo, sal y limon.",
+        "Anade el brocoli alrededor con sal y aceite.",
+        "Hornea 12-15 min.",
+        "Deja enfriar, divide en 3 tuppers. Conserva en nevera maximo 2 dias.",
+        "Para servir: calienta en microondas 2 min."
+      ]
+    },
+    {
+      "id": "r_batch_s2_miercoles",
+      "nombre": "Carne picada de pollo con espinacas (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "25 min",
+      "descripcion": "Salteado de carne picada de pollo con espinacas. Solo 5g de carbos.",
+      "kcal": 310,
+      "proteinas": 42.0,
+      "carbos": 5.0,
+      "grasas": 13.5,
+      "batch_cooking": true,
+      "dias_nevera": 3,
+      "ingredientes": [
+        {
+          "nombre": "Carne Picada Pollo",
+          "cantidad": "220g",
+          "kcal": 290.4,
+          "proteinas": 39.6,
+          "carbos": 1.1,
+          "grasas": 14.52
+        },
+        {
+          "nombre": "Espinacas (congeladas)",
+          "cantidad": "200g",
+          "kcal": 52.0,
+          "proteinas": 6.2,
+          "carbos": 1.0,
+          "grasas": 1.6
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "El domingo: calienta aceite en sarten con ajo laminado.",
+        "Anade la carne picada y cocina removiendo hasta dorar, unos 8 min.",
+        "Incorpora las espinacas descongeladas y escurridas, saltea 3-4 min.",
+        "Sazona con sal, pimienta y nuez moscada.",
+        "Deja enfriar, divide en 3 tuppers. Conserva en nevera 3 dias.",
+        "Para servir: calienta en sarten o microondas 3 min."
+      ]
+    },
+    {
+      "id": "r_batch_s3_lunes",
+      "nombre": "Pavo con zanahoria y espinacas (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "30 min",
+      "descripcion": "Filete de pavo con zanahoria asada y espinacas salteadas. Sin cereales.",
+      "kcal": 320,
+      "proteinas": 48.0,
+      "carbos": 10.0,
+      "grasas": 7.5,
+      "batch_cooking": true,
+      "dias_nevera": 3,
+      "ingredientes": [
+        {
+          "nombre": "Pavo 93%",
+          "cantidad": "200g",
+          "kcal": 208.0,
+          "proteinas": 46.0,
+          "carbos": 1.0,
+          "grasas": 2.2
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "150g",
+          "kcal": 61.5,
+          "proteinas": 1.35,
+          "carbos": 14.4,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Espinacas (congeladas)",
+          "cantidad": "150g",
+          "kcal": 39.0,
+          "proteinas": 4.65,
+          "carbos": 0.75,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "El domingo: corta la zanahoria en bastones, alinya con aceite y sal y hornea 20 min a 200C.",
+        "Cocina el pavo a la plancha con sal y pimienta, 3-4 min por lado.",
+        "Saltea las espinacas con ajo y aceite 2-3 min.",
+        "Deja enfriar todo y divide en 3 tuppers. Conserva en nevera 3 dias.",
+        "Para servir: calienta en microondas 2-3 min."
+      ]
+    },
+    {
+      "id": "r_batch_s3_martes",
+      "nombre": "Ternera con calabacin y bolitas mozzarella (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "25 min",
+      "descripcion": "Filete de ternera con calabacin y mozzarella. Bajo en carbos y con grasas buenas.",
+      "kcal": 430,
+      "proteinas": 55.0,
+      "carbos": 6.0,
+      "grasas": 20.0,
+      "batch_cooking": true,
+      "dias_nevera": 3,
+      "ingredientes": [
+        {
+          "nombre": "Filete de ternera",
+          "cantidad": "180g",
+          "kcal": 286.2,
+          "proteinas": 49.32,
+          "carbos": 0.0,
+          "grasas": 8.28
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "200g",
+          "kcal": 32.0,
+          "proteinas": 2.4,
+          "carbos": 6.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Bolitas mozzarella",
+          "cantidad": "50g",
+          "kcal": 97.0,
+          "proteinas": 7.5,
+          "carbos": 1.0,
+          "grasas": 7.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "El domingo: saltea el calabacin en rodajas con aceite y sal hasta dorar, 5 min.",
+        "Cocina los filetes a la plancha al punto deseado.",
+        "Deja enfriar, coloca en 3 tuppers con el calabacin y las bolitas de mozzarella encima.",
+        "Conserva en nevera 3 dias.",
+        "Para servir: calienta en sarten o microondas, la mozzarella se funde ligeramente."
+      ]
+    },
+    {
+      "id": "r_batch_s3_miercoles",
+      "nombre": "Carne picada pavo con brocoli (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "25 min",
+      "descripcion": "Carne picada de pavo y pollo salteada con brocoli. Muy proteico, minimos carbos.",
+      "kcal": 330,
+      "proteinas": 42.0,
+      "carbos": 7.0,
+      "grasas": 14.0,
+      "batch_cooking": true,
+      "dias_nevera": 3,
+      "ingredientes": [
+        {
+          "nombre": "Carne picada pavo y pollo",
+          "cantidad": "200g",
+          "kcal": 304.0,
+          "proteinas": 30.0,
+          "carbos": 2.0,
+          "grasas": 19.8
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "200g",
+          "kcal": 56.0,
+          "proteinas": 5.4,
+          "carbos": 5.6,
+          "grasas": 16.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "El domingo: cuece el brocoli al vapor 5 min. Reserva.",
+        "Dora la carne picada en sarten con aceite, ajo, sal y pimenton.",
+        "Mezcla con el brocoli y saltea junto 2-3 min.",
+        "Deja enfriar, divide en 3 tuppers. Conserva en nevera 3 dias.",
+        "Para servir: calienta en sarten o microondas 3 min."
+      ]
+    },
+    {
+      "id": "r_batch_s4_lunes",
+      "nombre": "Gambas con espinacas y calabacin (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "20 min",
+      "descripcion": "Gambas salteadas con espinacas y calabacin. Ligero, rapido y bajo en carbos.",
+      "kcal": 250,
+      "proteinas": 28.0,
+      "carbos": 7.0,
+      "grasas": 10.0,
+      "batch_cooking": true,
+      "dias_nevera": 2,
+      "ingredientes": [
+        {
+          "nombre": "Gambas (congeladas)",
+          "cantidad": "250g",
+          "kcal": 75.0,
+          "proteinas": 15.0,
+          "carbos": 3.5,
+          "grasas": 0.25
+        },
+        {
+          "nombre": "Espinacas (congeladas)",
+          "cantidad": "150g",
+          "kcal": 39.0,
+          "proteinas": 4.65,
+          "carbos": 0.75,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "150g",
+          "kcal": 24.0,
+          "proteinas": 1.8,
+          "carbos": 4.95,
+          "grasas": 0.15
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "10g",
+          "kcal": 81.9,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 9.1
+        }
+      ],
+      "pasos": [
+        "El domingo: saltea el calabacin en rodajas con aceite y ajo 3 min.",
+        "Anade las gambas y cocina 2-3 min hasta que cambien de color.",
+        "Incorpora las espinacas y saltea 2 min mas. Sazona.",
+        "Deja enfriar, divide en 3 tuppers. Conserva en nevera maximo 2 dias.",
+        "Para servir: calienta en sarten a fuego suave 3 min."
+      ]
+    },
+    {
+      "id": "r_batch_s4_martes",
+      "nombre": "Hamburguesa de pollo con brocoli (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "25 min",
+      "descripcion": "Hamburguesa de pollo a la plancha con brocoli al vapor. Solo 6g de carbos.",
+      "kcal": 345,
+      "proteinas": 48.0,
+      "carbos": 6.0,
+      "grasas": 13.0,
+      "batch_cooking": true,
+      "dias_nevera": 3,
+      "ingredientes": [
+        {
+          "nombre": "Hamburguesa pollo",
+          "cantidad": "220g",
+          "kcal": 290.4,
+          "proteinas": 39.6,
+          "carbos": 1.1,
+          "grasas": 14.52
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "200g",
+          "kcal": 56.0,
+          "proteinas": 5.4,
+          "carbos": 5.6,
+          "grasas": 16.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5g",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.55
+        }
+      ],
+      "pasos": [
+        "El domingo: cocina las hamburguesas a la plancha con aceite, 4 min por lado.",
+        "Cuece el brocoli al vapor o microondas 5-6 min.",
+        "Sazona el brocoli con sal y un chorrito de aceite.",
+        "Deja enfriar, divide en 3 tuppers. Conserva en nevera 3 dias.",
+        "Para servir: calienta en microondas 2-3 min."
+      ]
+    },
+    {
+      "id": "r_batch_s4_miercoles",
+      "nombre": "Merluza con espinacas y mozzarella (batch cooking)",
+      "tipo": "cena",
+      "tiempo": "20 min",
+      "descripcion": "Merluza a la plancha sobre cama de espinacas con mozzarella gratinada. Minimos carbos.",
+      "kcal": 360,
+      "proteinas": 44.0,
+      "carbos": 4.0,
+      "grasas": 17.0,
+      "batch_cooking": true,
+      "dias_nevera": 2,
+      "ingredientes": [
+        {
+          "nombre": "Merluza",
+          "cantidad": "200g",
+          "kcal": 196.0,
+          "proteinas": 30.4,
+          "carbos": 4.0,
+          "grasas": 6.0
+        },
+        {
+          "nombre": "Espinacas (congeladas)",
+          "cantidad": "200g",
+          "kcal": 52.0,
+          "proteinas": 6.2,
+          "carbos": 1.0,
+          "grasas": 1.6
+        },
+        {
+          "nombre": "Bolitas mozzarella",
+          "cantidad": "60g",
+          "kcal": 116.4,
+          "proteinas": 9.0,
+          "carbos": 1.2,
+          "grasas": 8.4
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "8g",
+          "kcal": 65.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.3
+        }
+      ],
+      "pasos": [
+        "El domingo: saltea las espinacas con ajo y aceite 3 min. Reserva en tupper.",
+        "Cocina la merluza a la plancha con sal 3 min por lado.",
+        "Coloca la merluza sobre las espinacas y anade la mozzarella encima.",
+        "Conserva en nevera maximo 2 dias.",
+        "Para servir: calienta en microondas 2 min o en horno 5 min para gratinar."
+      ]
     }
   ],
   "menu": {
@@ -3600,19 +4211,19 @@
       "lunes": {
         "desayuno": "r177771771594824um",
         "comida": "r1778953431698jmue",
-        "cena": "r177936689643289xv20",
+        "cena": "r_batch_s1_lunes",
         "snack": null
       },
       "martes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r177771786909724md",
-        "cena": "r17793668964348e7r2v",
+        "cena": "r_batch_s1_martes",
         "snack": null
       },
       "miercoles": {
         "desayuno": "r1779364080132uq9e6b",
         "comida": "r1779364080116jm1qn3",
-        "cena": "r1779366896436wquuus",
+        "cena": "r_batch_s1_miercoles",
         "snack": null
       },
       "jueves": {
@@ -3644,19 +4255,19 @@
       "lunes": {
         "desayuno": "r177771771594824um",
         "comida": "r1779364080126s7zto5",
-        "cena": "r1779366896436wquuus",
+        "cena": "r_batch_s2_lunes",
         "snack": null
       },
       "martes": {
         "desayuno": "r1779364080132uq9e6b",
         "comida": "r1778065868745a791",
-        "cena": "r1779366896439l59dkn",
+        "cena": "r_batch_s2_martes",
         "snack": null
       },
       "miercoles": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1778953711355y5uu",
-        "cena": "r1779366896441vjq91d",
+        "cena": "r_batch_s2_miercoles",
         "snack": null
       },
       "jueves": {
@@ -3688,19 +4299,19 @@
       "lunes": {
         "desayuno": "r1779364080132uq9e6b",
         "comida": "r1779364080110x34ryv",
-        "cena": "r1779366896441vjq91d",
+        "cena": "r_batch_s3_lunes",
         "snack": null
       },
       "martes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1779364080131rd2vlw",
-        "cena": "r1779367403186zo7rgm",
+        "cena": "r_batch_s3_martes",
         "snack": null
       },
       "miercoles": {
         "desayuno": "r177771771594824um",
         "comida": "r1778065085369zff6",
-        "cena": "r1779367403189k1m8m4",
+        "cena": "r_batch_s3_miercoles",
         "snack": null
       },
       "jueves": {
@@ -3732,19 +4343,19 @@
       "lunes": {
         "desayuno": "r177771771594824um",
         "comida": "r1779364080123rfqokl",
-        "cena": "r1779367403189k1m8m4",
+        "cena": "r_batch_s4_lunes",
         "snack": null
       },
       "martes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1779364080119zgsg34",
-        "cena": "r1779367403192tyz6z1",
+        "cena": "r_batch_s4_martes",
         "snack": null
       },
       "miercoles": {
         "desayuno": "r1779364080132uq9e6b",
         "comida": "r177806887494410gv",
-        "cena": "r17793674031958o1i2w",
+        "cena": "r_batch_s4_miercoles",
         "snack": null
       },
       "jueves": {

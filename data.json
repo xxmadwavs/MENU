@@ -539,6 +539,24 @@
       "carbos": 3,
       "grasas": 3.5,
       "id": "i17793640801023gqe0p"
+    },
+    {
+      "id": "i1780222605517aex1",
+      "nombre": "Patata",
+      "unidad": "100g",
+      "kcal": 85,
+      "proteinas": 2,
+      "carbos": 18,
+      "grasas": 0.2
+    },
+    {
+      "id": "i1780222675239k567",
+      "nombre": "Corn Flake",
+      "unidad": "100g",
+      "kcal": 372,
+      "proteinas": 8.3,
+      "carbos": 80,
+      "grasas": 1.2
     }
   ],
   "recetas": [
@@ -700,22 +718,22 @@
     },
     {
       "id": "r177771771594824um",
-      "nombre": "Tostada",
+      "nombre": "Tostadas",
       "tipo": "desayuno",
       "tiempo": "5min",
       "descripcion": "",
-      "kcal": 163,
-      "proteinas": 15,
-      "carbos": 12.7,
-      "grasas": 5.4,
+      "kcal": 295,
+      "proteinas": 23.1,
+      "carbos": 25.3,
+      "grasas": 10.4,
       "ingredientes": [
         {
           "nombre": "Pan molde integral",
-          "cantidad": "30g",
-          "kcal": 73.2,
-          "proteinas": 3.1,
-          "carbos": 12.3,
-          "grasas": 0.9
+          "cantidad": "60g",
+          "kcal": 146.4,
+          "proteinas": 6.2,
+          "carbos": 24.7,
+          "grasas": 1.7
         },
         {
           "nombre": "Pavo 93%",
@@ -727,11 +745,11 @@
         },
         {
           "nombre": "Mozzarella",
-          "cantidad": "20g",
-          "kcal": 58.6,
-          "proteinas": 5,
-          "carbos": 0.2,
-          "grasas": 4.2
+          "cantidad": "40g",
+          "kcal": 117.2,
+          "proteinas": 10,
+          "carbos": 0.4,
+          "grasas": 8.4
         }
       ],
       "pasos": []
@@ -3156,14 +3174,14 @@
           "cantidad": "220g",
           "kcal": 107.8,
           "proteinas": 24.2,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 1.1
         },
         {
           "nombre": "Calabacin",
           "cantidad": "250g",
-          "kcal": 40.0,
-          "proteinas": 3.0,
+          "kcal": 40,
+          "proteinas": 3,
           "carbos": 8.2,
           "grasas": 0.2
         },
@@ -3171,8 +3189,8 @@
           "nombre": "Aceite",
           "cantidad": "6g",
           "kcal": 49.1,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 5.5
         }
       ],
@@ -3197,15 +3215,15 @@
         {
           "nombre": "Pavo 93%",
           "cantidad": "200g",
-          "kcal": 208.0,
-          "proteinas": 46.0,
-          "carbos": 1.0,
+          "kcal": 208,
+          "proteinas": 46,
+          "carbos": 1,
           "grasas": 2.2
         },
         {
           "nombre": "Espinacas (congeladas)",
           "cantidad": "150g",
-          "kcal": 39.0,
+          "kcal": 39,
           "proteinas": 4.7,
           "carbos": 0.8,
           "grasas": 1.2
@@ -3214,8 +3232,8 @@
           "nombre": "Aceite",
           "cantidad": "6g",
           "kcal": 49.1,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 5.5
         }
       ],
@@ -3241,14 +3259,14 @@
           "nombre": "Albondigas de pollo",
           "cantidad": "180g",
           "kcal": 201.6,
-          "proteinas": 36.0,
+          "proteinas": 36,
           "carbos": 2.2,
           "grasas": 5.4
         },
         {
           "nombre": "Calabacin",
           "cantidad": "200g",
-          "kcal": 32.0,
+          "kcal": 32,
           "proteinas": 2.4,
           "carbos": 6.6,
           "grasas": 0.2
@@ -3256,9 +3274,9 @@
         {
           "nombre": "Aceite",
           "cantidad": "5g",
-          "kcal": 41.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 4.5
         }
       ],
@@ -3285,13 +3303,13 @@
           "cantidad": "160g",
           "kcal": 217.6,
           "proteinas": 32.8,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 8.6
         },
         {
           "nombre": "Espinacas (congeladas)",
           "cantidad": "150g",
-          "kcal": 39.0,
+          "kcal": 39,
           "proteinas": 4.7,
           "carbos": 0.8,
           "grasas": 1.2
@@ -3307,9 +3325,9 @@
         {
           "nombre": "Aceite",
           "cantidad": "5g",
-          "kcal": 41.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 4.5
         }
       ],
@@ -3336,16 +3354,16 @@
           "cantidad": "180g",
           "kcal": 286.2,
           "proteinas": 49.3,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 8.3
         },
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56.0,
+          "kcal": 56,
           "proteinas": 5.4,
           "carbos": 5.6,
-          "grasas": 16.0
+          "grasas": 16
         },
         {
           "nombre": "Soja",
@@ -3353,14 +3371,14 @@
           "kcal": 11.5,
           "proteinas": 1.5,
           "carbos": 0.5,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
           "cantidad": "5g",
-          "kcal": 41.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 4.5
         }
       ],
@@ -3387,23 +3405,23 @@
           "cantidad": "180g",
           "kcal": 244.8,
           "proteinas": 36.9,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 9.7
         },
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56.0,
+          "kcal": 56,
           "proteinas": 5.4,
           "carbos": 5.6,
-          "grasas": 16.0
+          "grasas": 16
         },
         {
           "nombre": "Aceite",
           "cantidad": "5g",
-          "kcal": 41.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 4.5
         }
       ],
@@ -3428,15 +3446,15 @@
         {
           "nombre": "Gambas (congeladas)",
           "cantidad": "200g",
-          "kcal": 60.0,
-          "proteinas": 12.0,
+          "kcal": 60,
+          "proteinas": 12,
           "carbos": 2.8,
           "grasas": 0.2
         },
         {
           "nombre": "Espinacas (congeladas)",
           "cantidad": "150g",
-          "kcal": 39.0,
+          "kcal": 39,
           "proteinas": 4.7,
           "carbos": 0.8,
           "grasas": 1.2
@@ -3445,8 +3463,8 @@
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -3466,21 +3484,21 @@
       "kcal": 375,
       "proteinas": 52.3,
       "carbos": 8.2,
-      "grasas": 14.0,
+      "grasas": 14,
       "ingredientes": [
         {
           "nombre": "Filete de ternera",
           "cantidad": "180g",
           "kcal": 286.2,
           "proteinas": 49.3,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 8.3
         },
         {
           "nombre": "Calabacin",
           "cantidad": "250g",
-          "kcal": 40.0,
-          "proteinas": 3.0,
+          "kcal": 40,
+          "proteinas": 3,
           "carbos": 8.2,
           "grasas": 0.2
         },
@@ -3488,8 +3506,8 @@
           "nombre": "Aceite",
           "cantidad": "6g",
           "kcal": 49.1,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 5.5
         }
       ],
@@ -3513,15 +3531,15 @@
         {
           "nombre": "Merluza",
           "cantidad": "200g",
-          "kcal": 196.0,
+          "kcal": 196,
           "proteinas": 30.4,
-          "carbos": 4.0,
-          "grasas": 6.0
+          "carbos": 4,
+          "grasas": 6
         },
         {
           "nombre": "Espinacas (congeladas)",
           "cantidad": "150g",
-          "kcal": 39.0,
+          "kcal": 39,
           "proteinas": 4.7,
           "carbos": 0.8,
           "grasas": 1.2
@@ -3530,8 +3548,8 @@
           "nombre": "Aceite",
           "cantidad": "6g",
           "kcal": 49.1,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 5.5
         }
       ],
@@ -3557,10 +3575,10 @@
         {
           "nombre": "Pechuga de pollo",
           "cantidad": "170g",
-          "kcal": 187.0,
+          "kcal": 187,
           "proteinas": 39.1,
-          "carbos": 0.0,
-          "grasas": 2.0
+          "carbos": 0,
+          "grasas": 2
         },
         {
           "nombre": "Queso fresco",
@@ -3575,15 +3593,15 @@
           "cantidad": "180g",
           "kcal": 50.4,
           "proteinas": 4.9,
-          "carbos": 5.0,
+          "carbos": 5,
           "grasas": 14.4
         },
         {
           "nombre": "Aceite",
           "cantidad": "5g",
-          "kcal": 41.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 4.5
         }
       ],
@@ -3601,32 +3619,32 @@
       "tiempo": "40 min",
       "descripcion": "Pechuga al horno con brocoli y calabacin. Bajo en carbos, alto en proteina.",
       "kcal": 330,
-      "proteinas": 50.0,
-      "carbos": 8.0,
-      "grasas": 9.0,
+      "proteinas": 50,
+      "carbos": 8,
+      "grasas": 9,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
           "cantidad": "200g",
-          "kcal": 220.0,
-          "proteinas": 46.0,
-          "carbos": 0.0,
+          "kcal": 220,
+          "proteinas": 46,
+          "carbos": 0,
           "grasas": 2.4
         },
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56.0,
+          "kcal": 56,
           "proteinas": 5.4,
           "carbos": 5.6,
-          "grasas": 16.0
+          "grasas": 16
         },
         {
           "nombre": "Calabacin",
           "cantidad": "150g",
-          "kcal": 24.0,
+          "kcal": 24,
           "proteinas": 1.8,
           "carbos": 4.95,
           "grasas": 0.15
@@ -3635,8 +3653,8 @@
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -3656,8 +3674,8 @@
       "tiempo": "30 min",
       "descripcion": "Albondigas de pollo en salsa ligera con espinacas. Sin carbos innecesarios.",
       "kcal": 310,
-      "proteinas": 44.0,
-      "carbos": 5.0,
+      "proteinas": 44,
+      "carbos": 5,
       "grasas": 11.5,
       "batch_cooking": true,
       "dias_nevera": 3,
@@ -3665,33 +3683,33 @@
         {
           "nombre": "Albondigas de pollo",
           "cantidad": "250g",
-          "kcal": 280.0,
-          "proteinas": 50.0,
-          "carbos": 3.0,
+          "kcal": 280,
+          "proteinas": 50,
+          "carbos": 3,
           "grasas": 7.5
         },
         {
           "nombre": "Espinacas (congeladas)",
           "cantidad": "200g",
-          "kcal": 52.0,
+          "kcal": 52,
           "proteinas": 6.2,
-          "carbos": 1.0,
+          "carbos": 1,
           "grasas": 1.6
         },
         {
           "nombre": "Caldo pollo",
           "cantidad": "100ml",
-          "kcal": 5.0,
-          "proteinas": 0.0,
+          "kcal": 5,
+          "proteinas": 0,
           "carbos": 0.6,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -3710,16 +3728,16 @@
       "tiempo": "25 min",
       "descripcion": "Salteado de carne picada con calabacin y tomate. Bajo en carbos y muy saciante.",
       "kcal": 350,
-      "proteinas": 36.0,
-      "carbos": 8.0,
-      "grasas": 18.0,
+      "proteinas": 36,
+      "carbos": 8,
+      "grasas": 18,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
         {
           "nombre": "Carne picada vacuno",
           "cantidad": "180g",
-          "kcal": 342.0,
+          "kcal": 342,
           "proteinas": 32.4,
           "carbos": 4.32,
           "grasas": 21.6
@@ -3727,25 +3745,25 @@
         {
           "nombre": "Calabacin",
           "cantidad": "250g",
-          "kcal": 40.0,
-          "proteinas": 3.0,
+          "kcal": 40,
+          "proteinas": 3,
           "carbos": 8.25,
           "grasas": 0.25
         },
         {
           "nombre": "Tomate triturado",
           "cantidad": "100g",
-          "kcal": 27.0,
-          "proteinas": 1.0,
+          "kcal": 27,
+          "proteinas": 1,
           "carbos": 4.9,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -3764,8 +3782,8 @@
       "tiempo": "30 min",
       "descripcion": "Lomo de cerdo a la plancha con calabacin salteado. Solo 8g de carbos.",
       "kcal": 370,
-      "proteinas": 44.0,
-      "carbos": 8.0,
+      "proteinas": 44,
+      "carbos": 8,
       "grasas": 17.5,
       "batch_cooking": true,
       "dias_nevera": 3,
@@ -3775,13 +3793,13 @@
           "cantidad": "220g",
           "kcal": 299.2,
           "proteinas": 45.1,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 11.88
         },
         {
           "nombre": "Calabacin",
           "cantidad": "300g",
-          "kcal": 48.0,
+          "kcal": 48,
           "proteinas": 3.6,
           "carbos": 9.9,
           "grasas": 0.3
@@ -3790,8 +3808,8 @@
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -3810,8 +3828,8 @@
       "tiempo": "25 min",
       "descripcion": "Merluza al horno con brocoli. Ligero, proteico y muy bajo en carbos.",
       "kcal": 290,
-      "proteinas": 38.0,
-      "carbos": 7.0,
+      "proteinas": 38,
+      "carbos": 7,
       "grasas": 11.5,
       "batch_cooking": true,
       "dias_nevera": 2,
@@ -3827,17 +3845,17 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56.0,
+          "kcal": 56,
           "proteinas": 5.4,
           "carbos": 5.6,
-          "grasas": 16.0
+          "grasas": 16
         },
         {
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -3857,8 +3875,8 @@
       "tiempo": "25 min",
       "descripcion": "Salteado de carne picada de pollo con espinacas. Solo 5g de carbos.",
       "kcal": 310,
-      "proteinas": 42.0,
-      "carbos": 5.0,
+      "proteinas": 42,
+      "carbos": 5,
       "grasas": 13.5,
       "batch_cooking": true,
       "dias_nevera": 3,
@@ -3874,17 +3892,17 @@
         {
           "nombre": "Espinacas (congeladas)",
           "cantidad": "200g",
-          "kcal": 52.0,
+          "kcal": 52,
           "proteinas": 6.2,
-          "carbos": 1.0,
+          "carbos": 1,
           "grasas": 1.6
         },
         {
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -3904,8 +3922,8 @@
       "tiempo": "30 min",
       "descripcion": "Filete de pavo con zanahoria asada y espinacas salteadas. Sin cereales.",
       "kcal": 320,
-      "proteinas": 48.0,
-      "carbos": 10.0,
+      "proteinas": 48,
+      "carbos": 10,
       "grasas": 7.5,
       "batch_cooking": true,
       "dias_nevera": 3,
@@ -3913,9 +3931,9 @@
         {
           "nombre": "Pavo 93%",
           "cantidad": "200g",
-          "kcal": 208.0,
-          "proteinas": 46.0,
-          "carbos": 1.0,
+          "kcal": 208,
+          "proteinas": 46,
+          "carbos": 1,
           "grasas": 2.2
         },
         {
@@ -3929,7 +3947,7 @@
         {
           "nombre": "Espinacas (congeladas)",
           "cantidad": "150g",
-          "kcal": 39.0,
+          "kcal": 39,
           "proteinas": 4.65,
           "carbos": 0.75,
           "grasas": 1.2
@@ -3938,8 +3956,8 @@
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -3958,9 +3976,9 @@
       "tiempo": "25 min",
       "descripcion": "Filete de ternera con calabacin y mozzarella. Bajo en carbos y con grasas buenas.",
       "kcal": 430,
-      "proteinas": 55.0,
-      "carbos": 6.0,
-      "grasas": 20.0,
+      "proteinas": 55,
+      "carbos": 6,
+      "grasas": 20,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -3969,13 +3987,13 @@
           "cantidad": "180g",
           "kcal": 286.2,
           "proteinas": 49.32,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 8.28
         },
         {
           "nombre": "Calabacin",
           "cantidad": "200g",
-          "kcal": 32.0,
+          "kcal": 32,
           "proteinas": 2.4,
           "carbos": 6.6,
           "grasas": 0.2
@@ -3983,17 +4001,17 @@
         {
           "nombre": "Bolitas mozzarella",
           "cantidad": "50g",
-          "kcal": 97.0,
+          "kcal": 97,
           "proteinas": 7.5,
-          "carbos": 1.0,
-          "grasas": 7.0
+          "carbos": 1,
+          "grasas": 7
         },
         {
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -4012,34 +4030,34 @@
       "tiempo": "25 min",
       "descripcion": "Carne picada de pavo y pollo salteada con brocoli. Muy proteico, minimos carbos.",
       "kcal": 330,
-      "proteinas": 42.0,
-      "carbos": 7.0,
-      "grasas": 14.0,
+      "proteinas": 42,
+      "carbos": 7,
+      "grasas": 14,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
         {
           "nombre": "Carne picada pavo y pollo",
           "cantidad": "200g",
-          "kcal": 304.0,
-          "proteinas": 30.0,
-          "carbos": 2.0,
+          "kcal": 304,
+          "proteinas": 30,
+          "carbos": 2,
           "grasas": 19.8
         },
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56.0,
+          "kcal": 56,
           "proteinas": 5.4,
           "carbos": 5.6,
-          "grasas": 16.0
+          "grasas": 16
         },
         {
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -4058,24 +4076,24 @@
       "tiempo": "20 min",
       "descripcion": "Gambas salteadas con espinacas y calabacin. Ligero, rapido y bajo en carbos.",
       "kcal": 250,
-      "proteinas": 28.0,
-      "carbos": 7.0,
-      "grasas": 10.0,
+      "proteinas": 28,
+      "carbos": 7,
+      "grasas": 10,
       "batch_cooking": true,
       "dias_nevera": 2,
       "ingredientes": [
         {
           "nombre": "Gambas (congeladas)",
           "cantidad": "250g",
-          "kcal": 75.0,
-          "proteinas": 15.0,
+          "kcal": 75,
+          "proteinas": 15,
           "carbos": 3.5,
           "grasas": 0.25
         },
         {
           "nombre": "Espinacas (congeladas)",
           "cantidad": "150g",
-          "kcal": 39.0,
+          "kcal": 39,
           "proteinas": 4.65,
           "carbos": 0.75,
           "grasas": 1.2
@@ -4083,7 +4101,7 @@
         {
           "nombre": "Calabacin",
           "cantidad": "150g",
-          "kcal": 24.0,
+          "kcal": 24,
           "proteinas": 1.8,
           "carbos": 4.95,
           "grasas": 0.15
@@ -4092,8 +4110,8 @@
           "nombre": "Aceite",
           "cantidad": "10g",
           "kcal": 81.9,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 9.1
         }
       ],
@@ -4112,9 +4130,9 @@
       "tiempo": "25 min",
       "descripcion": "Hamburguesa de pollo a la plancha con brocoli al vapor. Solo 6g de carbos.",
       "kcal": 345,
-      "proteinas": 48.0,
-      "carbos": 6.0,
-      "grasas": 13.0,
+      "proteinas": 48,
+      "carbos": 6,
+      "grasas": 13,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -4129,17 +4147,17 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56.0,
+          "kcal": 56,
           "proteinas": 5.4,
           "carbos": 5.6,
-          "grasas": 16.0
+          "grasas": 16
         },
         {
           "nombre": "Aceite",
           "cantidad": "5g",
-          "kcal": 41.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 4.55
         }
       ],
@@ -4158,33 +4176,33 @@
       "tiempo": "20 min",
       "descripcion": "Merluza a la plancha sobre cama de espinacas con mozzarella gratinada. Minimos carbos.",
       "kcal": 360,
-      "proteinas": 44.0,
-      "carbos": 4.0,
-      "grasas": 17.0,
+      "proteinas": 44,
+      "carbos": 4,
+      "grasas": 17,
       "batch_cooking": true,
       "dias_nevera": 2,
       "ingredientes": [
         {
           "nombre": "Merluza",
           "cantidad": "200g",
-          "kcal": 196.0,
+          "kcal": 196,
           "proteinas": 30.4,
-          "carbos": 4.0,
-          "grasas": 6.0
+          "carbos": 4,
+          "grasas": 6
         },
         {
           "nombre": "Espinacas (congeladas)",
           "cantidad": "200g",
-          "kcal": 52.0,
+          "kcal": 52,
           "proteinas": 6.2,
-          "carbos": 1.0,
+          "carbos": 1,
           "grasas": 1.6
         },
         {
           "nombre": "Bolitas mozzarella",
           "cantidad": "60g",
           "kcal": 116.4,
-          "proteinas": 9.0,
+          "proteinas": 9,
           "carbos": 1.2,
           "grasas": 8.4
         },
@@ -4192,8 +4210,8 @@
           "nombre": "Aceite",
           "cantidad": "8g",
           "kcal": 65.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 7.3
         }
       ],
@@ -4203,6 +4221,70 @@
         "Coloca la merluza sobre las espinacas y anade la mozzarella encima.",
         "Conserva en nevera maximo 2 dias.",
         "Para servir: calienta en microondas 2 min o en horno 5 min para gratinar."
+      ]
+    },
+    {
+      "id": "r1780222943452h5g1",
+      "nombre": "Nuggets + Patatas fritas",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 533,
+      "proteinas": 47.1,
+      "carbos": 52.6,
+      "grasas": 12.8,
+      "ingredientes": [
+        {
+          "nombre": "Aceite",
+          "cantidad": "5 ml",
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.6
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "200g",
+          "kcal": 170,
+          "proteinas": 4,
+          "carbos": 36,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "150g",
+          "kcal": 165,
+          "proteinas": 34.5,
+          "carbos": 0,
+          "grasas": 1.8
+        },
+        {
+          "nombre": "Huevo",
+          "cantidad": "53g",
+          "kcal": 82.2,
+          "proteinas": 6.9,
+          "carbos": 0.6,
+          "grasas": 5.8
+        },
+        {
+          "nombre": "Corn Flake",
+          "cantidad": "20g",
+          "kcal": 74.4,
+          "proteinas": 1.7,
+          "carbos": 16,
+          "grasas": 0.2
+        }
+      ],
+      "pasos": [
+        "Remojar las patatas (empezar aquí): Corta las patatas en bastones de 0,5 cm. Sumérgelas en agua fría durante 20–30 minutos. Mientras esperan, prepara los nuggets.",
+        "Preparar y rebotar los nuggets: Corta 150 grams pechuga de pollo en trozos o tiras. Tritúra 20 grams corn flakes sin azúcar (triturados groseramente) en una bolsa. Monta 3 platos: 1️⃣ 1 tablespoons harina de avena o integral con la mitad de 0.5 teaspoons sal (dividida entre ambas recetas), 0.3 teaspoons pimienta negra y 0.1 teaspoons orégano seco. 2️⃣ 1 claras de huevo grandes batidas. 3️⃣ 20 grams corn flakes sin azúcar (triturados groseramente) con la mitad de 0.4 teaspoons ajo en polvo (dividido entre ambas recetas) y 0.4 teaspoons pimentón dulce o ahumado (dividido). Reboza cada pieza: harina → clara → corn flakes. Reserva en la nevera.",
+        "Reposar nuggets en nevera: Deja los nuggets rebozados en la nevera al menos 10–15 minutos para que el rebozado se fije bien. Aprovecha para secar las patatas.",
+        "Aliñar las patatas: Escurre y seca muy bien los bastones con papel de cocina. Mézclalos con 0.5 tablespoons aceite de oliva virgen extra (para patatas), la otra mitad de 0.5 teaspoons sal (dividida entre ambas recetas), 0.4 teaspoons ajo en polvo (dividido entre ambas recetas), 0.4 teaspoons pimentón dulce o ahumado (dividido) y 0.3 teaspoons pimienta negra. Remueve bien.",
+        "🥔 TANDA 1 — Patatas (primera vuelta): Precalienta el air fryer a 200 °C 3 minutos. Mete SOLO las patatas en una sola capa. Cocina 15 minutos a 200 °C.",
+        "🥔 Agitar patatas + 🍗 Meter nuggets: Al acabar los 15 min: agita las patatas y empújalas hacia un lado de la cesta (o usa la rejilla superior si tu air fryer tiene doble nivel). Coloca los nuggets en el espacio restante o en la bandeja superior. Si tu air fryer es pequeño, saca las patatas a un plato y tápalas con papel de aluminio mientras cocinas los nuggets — las reintroducirás al final.",
+        "🍗 Nuggets + 🥔 Patatas juntos — 10 min: Cocina todo junto a 200 °C durante 10 minutos.",
+        "Dar la vuelta a los nuggets — 5–7 min finales: Dale la vuelta a los nuggets con cuidado. Cocina 5–7 minutos más hasta que estén dorados. Las patatas terminarán perfectas al mismo tiempo.",
+        "Servir todo caliente: Saca patatas y nuggets a la vez y sirve inmediatamente. Acompáñalos con salsa de yogur, mostaza o kétchup casero sin azúcar."
       ]
     }
   ],
@@ -4245,10 +4327,10 @@
         "snack": "r17793640801056mzgxv"
       },
       "domingo": {
-        "desayuno": "r17777175037187vko",
-        "comida": "r1779364080127wwuouh",
+        "desayuno": "r177771771594824um",
+        "comida": "r1780222943452h5g1",
         "cena": "r1779367403189k1m8m4",
-        "snack": "r1779364080108icpmz0"
+        "snack": null
       }
     },
     "semana2": {

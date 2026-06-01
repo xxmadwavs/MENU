@@ -223,7 +223,18 @@ const TIPO_I={desayuno:'☀️',comida:'🍽️',cena:'🌙',snack:'🍎'};
 const SEMANAS=['semana1','semana2','semana3','semana4'];
 const SEM_L=['Semana 1','Semana 2','Semana 3','Semana 4'];
 
-let DATA=null, currentWeek=0, selectedDay=null, checkedItems={}, recipeFilter='desayuno', shopWeek=0;
+// Semana 1 empezó el lunes 26 de mayo de 2026
+const SEMANA1_INICIO = new Date(2026, 4, 26); // mes 4 = mayo (0-indexed)
+
+function calcCurrentWeek(){
+  const hoy = new Date(); hoy.setHours(0,0,0,0);
+  const diffMs = hoy - SEMANA1_INICIO;
+  const diffDias = Math.floor(diffMs / (1000*60*60*24));
+  const semanaNum = Math.floor(diffDias / 7);
+  return ((semanaNum % 4) + 4) % 4; // siempre 0-3, funciona aunque sea negativo
+}
+
+let DATA=null, currentWeek=calcCurrentWeek(), selectedDay=null, checkedItems={}, recipeFilter='desayuno', shopWeek=calcCurrentWeek();
 
 async function loadData(){
   try{

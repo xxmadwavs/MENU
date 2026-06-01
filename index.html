@@ -223,8 +223,8 @@ const TIPO_I={desayuno:'☀️',comida:'🍽️',cena:'🌙',snack:'🍎'};
 const SEMANAS=['semana1','semana2','semana3','semana4'];
 const SEM_L=['Semana 1','Semana 2','Semana 3','Semana 4'];
 
-// Semana 1 empezó el lunes 26 de mayo de 2026
-const SEMANA1_INICIO = new Date(2026, 4, 26); // mes 4 = mayo (0-indexed)
+// Semana 1 empezó el domingo 25 de mayo de 2026
+const SEMANA1_INICIO = new Date(2026, 4, 25); // mes 4 = mayo (0-indexed)
 
 function calcCurrentWeek(){
   const hoy = new Date(); hoy.setHours(0,0,0,0);
@@ -272,11 +272,13 @@ function showView(name,btn){
 }
 
 function getWeekMonday(weekIdx){
-  // Week 0 = current real week, week 1 = next, etc.
-  // But we display cyclically semana1-4 regardless of real date
-  const t=new Date(), d=t.getDay(), diff=d===0?-6:1-d;
-  const mon=new Date(t);
-  mon.setDate(t.getDate()+diff+(weekIdx*7));
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  const diffDias=Math.floor((hoy-SEMANA1_INICIO)/(1000*60*60*24));
+  const semanaActual=Math.floor(diffDias/7);
+  const offsetSemanas=weekIdx-(semanaActual%4);
+  const d=hoy.getDay(), diff=d===0?-6:1-d;
+  const mon=new Date(hoy);
+  mon.setDate(hoy.getDate()+diff+(offsetSemanas*7));
   mon.setHours(0,0,0,0);
   return mon;
 }

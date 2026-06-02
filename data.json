@@ -4458,6 +4458,142 @@
         "Añade ajo picado y perejil al final.",
         "Sirve el calamar sobre el calabacín."
       ]
+    },
+    {
+      "id": "r_new_vchldiujr7tx",
+      "nombre": "Tostadas con pavo y mozzarella",
+      "tipo": "desayuno",
+      "tiempo": "5 min",
+      "descripcion": "Tostadas de pan integral con pavo y mozzarella fundida.",
+      "kcal": 349.4,
+      "proteinas": 32.0,
+      "carbos": 25.5,
+      "grasas": 12.5,
+      "ingredientes": [
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "60g",
+          "kcal": 146.4,
+          "proteinas": 6.2,
+          "carbos": 24.7,
+          "grasas": 1.7
+        },
+        {
+          "nombre": "Pavo 93%",
+          "cantidad": "60g",
+          "kcal": 62.4,
+          "proteinas": 13.8,
+          "carbos": 0.3,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Mozzarella",
+          "cantidad": "48g",
+          "kcal": 140.6,
+          "proteinas": 12.0,
+          "carbos": 0.5,
+          "grasas": 10.1
+        }
+      ],
+      "pasos": [
+        "Tuesta las rebanadas de pan.",
+        "Coloca el pavo encima y añade la mozzarella.",
+        "Mete 1-2 min en el microondas o gratina hasta que el queso se funda."
+      ]
+    },
+    {
+      "id": "r_new_bj89z290fk6u",
+      "nombre": "Tortilla con tostada",
+      "tipo": "desayuno",
+      "tiempo": "5 min",
+      "descripcion": "Tortilla francesa con tostada de pan integral.",
+      "kcal": 339.5,
+      "proteinas": 19.5,
+      "carbos": 23.8,
+      "grasas": 17.8,
+      "ingredientes": [
+        {
+          "nombre": "Huevo",
+          "cantidad": "106g",
+          "kcal": 164.3,
+          "proteinas": 13.8,
+          "carbos": 1.2,
+          "grasas": 11.7
+        },
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "55g",
+          "kcal": 134.2,
+          "proteinas": 5.7,
+          "carbos": 22.6,
+          "grasas": 1.6
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5g",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        }
+      ],
+      "pasos": [
+        "Bate los huevos con una pizca de sal.",
+        "Calienta una sartén con el aceite a fuego medio.",
+        "Vierte los huevos y cuaja la tortilla al punto que te guste.",
+        "Sirve con la tostada de pan integral."
+      ]
+    },
+    {
+      "id": "r_new_43jarliugaws",
+      "nombre": "Tostadas con huevo revuelto y pavo",
+      "tipo": "desayuno",
+      "tiempo": "5 min",
+      "descripcion": "Tostadas de pan integral con huevo revuelto y pavo.",
+      "kcal": 351.2,
+      "proteinas": 27.6,
+      "carbos": 23.7,
+      "grasas": 15.5,
+      "ingredientes": [
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "55g",
+          "kcal": 134.2,
+          "proteinas": 5.7,
+          "carbos": 22.6,
+          "grasas": 1.6
+        },
+        {
+          "nombre": "Huevo",
+          "cantidad": "80g",
+          "kcal": 124.0,
+          "proteinas": 10.4,
+          "carbos": 0.9,
+          "grasas": 8.8
+        },
+        {
+          "nombre": "Pavo 93%",
+          "cantidad": "50g",
+          "kcal": 52.0,
+          "proteinas": 11.5,
+          "carbos": 0.2,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5g",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        }
+      ],
+      "pasos": [
+        "Tuesta las rebanadas de pan.",
+        "En una sartén con un poco de aceite, añade el pavo troceado y saltéalo 1 min.",
+        "Bate los huevos, viértelos en la sartén y remueve a fuego bajo hasta que cuajen.",
+        "Sirve encima de las tostadas."
+      ]
     }
   ],
   "menu": {

@@ -94,10 +94,10 @@
       "id": "i17776419643467co2",
       "nombre": "Brocoli (congelado)",
       "unidad": "100g",
-      "kcal": 28,
-      "proteinas": 2.7,
-      "carbos": 2.8,
-      "grasas": 8
+      "kcal": 34,
+      "proteinas": 2.8,
+      "carbos": 7.0,
+      "grasas": 0.4
     },
     {
       "id": "i1777641995748j9n6",
@@ -229,10 +229,10 @@
       "id": "i1777642455049ws6g",
       "nombre": "Gambas (congeladas)",
       "unidad": "100g",
-      "kcal": 30,
-      "proteinas": 6,
-      "carbos": 1.4,
-      "grasas": 0.1
+      "kcal": 71,
+      "proteinas": 15.0,
+      "carbos": 0.3,
+      "grasas": 0.6
     },
     {
       "id": "i1777642479984oyzm",
@@ -436,10 +436,10 @@
       "id": "i1777717804438xdq6",
       "nombre": "Pesto (gallo)",
       "unidad": "100g",
-      "kcal": 44,
-      "proteinas": 5.8,
-      "carbos": 9,
-      "grasas": 46
+      "kcal": 493,
+      "proteinas": 4.5,
+      "carbos": 3.5,
+      "grasas": 51.0
     },
     {
       "id": "i1778065147570mi9c",
@@ -566,8 +566,8 @@
       "tipo": "desayuno",
       "tiempo": "5 min",
       "descripcion": "",
-      "kcal": 267,
-      "proteinas": 25,
+      "kcal": 267.4,
+      "proteinas": 25.0,
       "carbos": 25.2,
       "grasas": 6.6,
       "ingredientes": [
@@ -607,7 +607,7 @@
       "tipo": "desayuno",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 320,
+      "kcal": 320.4,
       "proteinas": 26.8,
       "carbos": 28.1,
       "grasas": 10.2,
@@ -657,7 +657,7 @@
       "tipo": "desayuno",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 355,
+      "kcal": 354.6,
       "proteinas": 28.4,
       "carbos": 34.8,
       "grasas": 10.6,
@@ -722,7 +722,7 @@
       "tipo": "desayuno",
       "tiempo": "5min",
       "descripcion": "",
-      "kcal": 295,
+      "kcal": 294.8,
       "proteinas": 23.1,
       "carbos": 25.3,
       "grasas": 10.4,
@@ -760,10 +760,10 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 350,
-      "proteinas": 45.5,
-      "carbos": 50.8,
-      "grasas": 11.7,
+      "kcal": 439.3,
+      "proteinas": 45.2,
+      "carbos": 49.7,
+      "grasas": 12.7,
       "ingredientes": [
         {
           "nombre": "Espagueti (garofalo)",
@@ -784,10 +784,10 @@
         {
           "nombre": "Pesto (gallo)",
           "cantidad": "20g",
-          "kcal": 8.8,
-          "proteinas": 1.2,
-          "carbos": 1.8,
-          "grasas": 9.2
+          "kcal": 98.6,
+          "proteinas": 0.9,
+          "carbos": 0.7,
+          "grasas": 10.2
         }
       ],
       "pasos": []
@@ -798,8 +798,8 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 385,
-      "proteinas": 35,
+      "kcal": 385.0,
+      "proteinas": 35.0,
       "carbos": 49.1,
       "grasas": 5.3,
       "ingredientes": [
@@ -840,10 +840,10 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 375,
-      "proteinas": 24.6,
-      "carbos": 59.2,
-      "grasas": 4.2,
+      "kcal": 416.3,
+      "proteinas": 33.6,
+      "carbos": 58.1,
+      "grasas": 4.7,
       "ingredientes": [
         {
           "nombre": "Arroz Blanco",
@@ -856,10 +856,10 @@
         {
           "nombre": "Gambas (congeladas)",
           "cantidad": "100g",
-          "kcal": 30,
-          "proteinas": 6,
-          "carbos": 1.4,
-          "grasas": 0.1
+          "kcal": 71.0,
+          "proteinas": 15.0,
+          "carbos": 0.3,
+          "grasas": 0.6
         },
         {
           "nombre": "Cebolla (congelada)",
@@ -906,10 +906,10 @@
       "tipo": "cena",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 261,
+      "kcal": 260.8,
       "proteinas": 17.2,
       "carbos": 28.3,
-      "grasas": 8,
+      "grasas": 8.0,
       "ingredientes": [
         {
           "nombre": "Tortillas integrales",
@@ -944,7 +944,7 @@
       "tipo": "cena",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 284,
+      "kcal": 284.4,
       "proteinas": 19.2,
       "carbos": 25.7,
       "grasas": 11.7,
@@ -974,7 +974,7 @@
       "tipo": "cena",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 208,
+      "kcal": 208.1,
       "proteinas": 30.9,
       "carbos": 9.8,
       "grasas": 5.5,
@@ -1025,10 +1025,10 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 556,
+      "kcal": 555.8,
       "proteinas": 33.1,
       "carbos": 48.2,
-      "grasas": 24.3,
+      "grasas": 24.2,
       "ingredientes": [
         {
           "nombre": "Ravioli de ricotta y espinacas",
@@ -1075,10 +1075,10 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 472,
-      "proteinas": 46,
-      "carbos": 54.8,
-      "grasas": 10.3,
+      "kcal": 475.4,
+      "proteinas": 46.0,
+      "carbos": 56.9,
+      "grasas": 6.5,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
@@ -1099,10 +1099,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "50g",
-          "kcal": 14,
+          "kcal": 17.0,
           "proteinas": 1.4,
-          "carbos": 1.4,
-          "grasas": 4
+          "carbos": 3.5,
+          "grasas": 0.2
         },
         {
           "nombre": "Espinacas frescas",
@@ -1135,7 +1135,7 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 371,
+      "kcal": 371.1,
       "proteinas": 34.8,
       "carbos": 44.9,
       "grasas": 5.8,
@@ -1173,7 +1173,7 @@
       "tipo": "cena",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 223,
+      "kcal": 223.4,
       "proteinas": 18.9,
       "carbos": 6.1,
       "grasas": 13.9,
@@ -1240,7 +1240,7 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 487,
+      "kcal": 487.0,
       "proteinas": 44.9,
       "carbos": 57.4,
       "grasas": 7.5,
@@ -1316,7 +1316,7 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 434,
+      "kcal": 434.3,
       "proteinas": 49.3,
       "carbos": 56.5,
       "grasas": 7.3,
@@ -1376,9 +1376,9 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 328,
+      "kcal": 327.5,
       "proteinas": 40.3,
-      "carbos": 33,
+      "carbos": 33.0,
       "grasas": 2.8,
       "ingredientes": [
         {
@@ -1451,7 +1451,7 @@
       "tipo": "cena",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 208,
+      "kcal": 208.4,
       "proteinas": 29.8,
       "carbos": 10.2,
       "grasas": 5.6,
@@ -1526,7 +1526,7 @@
       "tipo": "cena",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 317,
+      "kcal": 317.4,
       "proteinas": 45.4,
       "carbos": 17.7,
       "grasas": 5.1,
@@ -1567,10 +1567,10 @@
       "tipo": "cena",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 339,
+      "kcal": 342.0,
       "proteinas": 37.5,
-      "carbos": 33.8,
-      "grasas": 9.3,
+      "carbos": 35.9,
+      "grasas": 5.5,
       "ingredientes": [
         {
           "nombre": "Quinoa",
@@ -1599,10 +1599,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "50g",
-          "kcal": 14,
+          "kcal": 17.0,
           "proteinas": 1.4,
-          "carbos": 1.4,
-          "grasas": 4
+          "carbos": 3.5,
+          "grasas": 0.2
         }
       ],
       "pasos": [
@@ -1615,10 +1615,10 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 488,
+      "kcal": 487.7,
       "proteinas": 39.7,
       "carbos": 50.2,
-      "grasas": 21,
+      "grasas": 21.0,
       "ingredientes": [
         {
           "nombre": "Espagueti (garofalo)",
@@ -1673,10 +1673,10 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 426,
-      "proteinas": 45.3,
-      "carbos": 51.2,
-      "grasas": 8.7,
+      "kcal": 430.8,
+      "proteinas": 45.4,
+      "carbos": 54.3,
+      "grasas": 3.0,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
@@ -1697,10 +1697,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "75g",
-          "kcal": 21,
-          "proteinas": 2,
-          "carbos": 2.1,
-          "grasas": 6
+          "kcal": 25.5,
+          "proteinas": 2.1,
+          "carbos": 5.2,
+          "grasas": 0.3
         },
         {
           "nombre": "Calabacin",
@@ -1730,7 +1730,7 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 441,
+      "kcal": 441.3,
       "proteinas": 42.5,
       "carbos": 59.8,
       "grasas": 2.8,
@@ -1771,7 +1771,7 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 487,
+      "kcal": 487.1,
       "proteinas": 43.2,
       "carbos": 35.9,
       "grasas": 17.8,
@@ -1849,7 +1849,7 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 456,
+      "kcal": 455.5,
       "proteinas": 47.1,
       "carbos": 55.4,
       "grasas": 3.7,
@@ -1892,7 +1892,7 @@
       "tipo": "postre",
       "tiempo": "20 min",
       "descripcion": "Brownie fit hecho en air fryer con harina de avena y cacao.",
-      "kcal": 632,
+      "kcal": 631.6,
       "proteinas": 40.9,
       "carbos": 43.9,
       "grasas": 32.2,
@@ -1941,8 +1941,8 @@
       "tipo": "postre",
       "tiempo": "5 min",
       "descripcion": "Brownie rápido sin huevo hecho en microondas.",
-      "kcal": 410,
-      "proteinas": 37,
+      "kcal": 409.6,
+      "proteinas": 37.0,
       "carbos": 39.3,
       "grasas": 11.3,
       "ingredientes": [
@@ -1990,10 +1990,10 @@
       "tipo": "postre",
       "tiempo": "10 min",
       "descripcion": "Tortilla integral rellena de chocolate negro, tipo napolitana fit.",
-      "kcal": 182,
+      "kcal": 181.8,
       "proteinas": 5.7,
       "carbos": 25.7,
-      "grasas": 5,
+      "grasas": 5.0,
       "ingredientes": [
         {
           "nombre": "Tortilla harina de trigo integral",
@@ -2025,7 +2025,7 @@
       "tipo": "desayuno",
       "tiempo": "5 min",
       "descripcion": "Batido proteico con fresas congeladas y leche vegetal.",
-      "kcal": 212,
+      "kcal": 212.3,
       "proteinas": 25.4,
       "carbos": 17.1,
       "grasas": 5.7,
@@ -2073,8 +2073,8 @@
       "tipo": "postre",
       "tiempo": "5 min",
       "descripcion": "Bowl de yogur con trozos de masa tipo cookie dough fit.",
-      "kcal": 289,
-      "proteinas": 15,
+      "kcal": 288.7,
+      "proteinas": 15.0,
       "carbos": 29.5,
       "grasas": 12.5,
       "ingredientes": [
@@ -2131,7 +2131,7 @@
       "tipo": "postre",
       "tiempo": "20 min",
       "descripcion": "Churros saludables al horno con chocolate espeso de leche de almendras.",
-      "kcal": 342,
+      "kcal": 341.9,
       "proteinas": 10.8,
       "carbos": 32.1,
       "grasas": 17.9,
@@ -2181,7 +2181,7 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Tiras de pechuga de pollo rebozadas en harina de avena y cocinadas a 190°C.",
-      "kcal": 530,
+      "kcal": 530.3,
       "proteinas": 52.3,
       "carbos": 55.5,
       "grasas": 8.5,
@@ -2232,7 +2232,7 @@
       "tipo": "cena",
       "tiempo": "15 min",
       "descripcion": "Pan pita relleno de pollo a la plancha con salsa de yogur y lechuga.",
-      "kcal": 375,
+      "kcal": 374.7,
       "proteinas": 35.8,
       "carbos": 28.2,
       "grasas": 11.2,
@@ -2290,9 +2290,9 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Guiso de garbanzos con pollo, espinacas y caldo.",
-      "kcal": 441,
+      "kcal": 441.4,
       "proteinas": 42.3,
-      "carbos": 46,
+      "carbos": 46.0,
       "grasas": 6.4,
       "ingredientes": [
         {
@@ -2356,7 +2356,7 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Gnocchis con pollo, zanahoria y calabacín en leche evaporada.",
-      "kcal": 431,
+      "kcal": 430.9,
       "proteinas": 30.7,
       "carbos": 43.1,
       "grasas": 14.2,
@@ -2422,7 +2422,7 @@
       "tipo": "comida",
       "tiempo": "25 min",
       "descripcion": "Arroz blanco con pollo sazonado y almendras.",
-      "kcal": 496,
+      "kcal": 496.1,
       "proteinas": 43.3,
       "carbos": 56.4,
       "grasas": 10.1,
@@ -2464,7 +2464,7 @@
       "tipo": "comida",
       "tiempo": "30 min",
       "descripcion": "Guiso casero de pollo con patata, zanahoria y especias.",
-      "kcal": 402,
+      "kcal": 401.5,
       "proteinas": 45.2,
       "carbos": 35.7,
       "grasas": 7.6,
@@ -2523,7 +2523,7 @@
       "tipo": "comida",
       "tiempo": "15 min",
       "descripcion": "Tortilla integral rellena de ternera a la parrilla, lechuga y queso.",
-      "kcal": 457,
+      "kcal": 456.7,
       "proteinas": 36.2,
       "carbos": 26.5,
       "grasas": 20.9,
@@ -2581,10 +2581,10 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Filete de ternera con patata asada y brócoli con especias.",
-      "kcal": 507,
-      "proteinas": 51.5,
-      "carbos": 50.6,
-      "grasas": 24.1,
+      "kcal": 519.0,
+      "proteinas": 51.7,
+      "carbos": 59.0,
+      "grasas": 9.0,
       "ingredientes": [
         {
           "nombre": "Filete de ternera",
@@ -2605,10 +2605,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56,
-          "proteinas": 5.4,
-          "carbos": 5.6,
-          "grasas": 16
+          "kcal": 68.0,
+          "proteinas": 5.6,
+          "carbos": 14.0,
+          "grasas": 0.8
         }
       ],
       "pasos": [
@@ -2623,10 +2623,10 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Pasta tipo rigatoni con boloñesa de vacuno y salsa de tomate.",
-      "kcal": 511,
+      "kcal": 511.2,
       "proteinas": 32.1,
       "carbos": 56.1,
-      "grasas": 17,
+      "grasas": 17.0,
       "ingredientes": [
         {
           "nombre": "Carne picada vacuno",
@@ -2681,7 +2681,7 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Bowl estilo tacos con ternera magra, arroz, lechuga y tomate.",
-      "kcal": 551,
+      "kcal": 551.0,
       "proteinas": 55.9,
       "carbos": 57.1,
       "grasas": 9.2,
@@ -2731,9 +2731,9 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Fajitas de ternera marinada con cebolla y calabacín.",
-      "kcal": 529,
+      "kcal": 529.1,
       "proteinas": 56.4,
-      "carbos": 32,
+      "carbos": 32.0,
       "grasas": 17.3,
       "ingredientes": [
         {
@@ -2790,7 +2790,7 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Salteado de ternera marinada con cebolla, estilo brocheta, acompañado de patata.",
-      "kcal": 518,
+      "kcal": 517.7,
       "proteinas": 54.9,
       "carbos": 49.3,
       "grasas": 9.7,
@@ -2833,9 +2833,9 @@
       "tipo": "comida",
       "tiempo": "25 min",
       "descripcion": "Carne picada de vacuno salteada con calabacín, cebolla y salsa de soja sobre arroz.",
-      "kcal": 518,
+      "kcal": 518.1,
       "proteinas": 33.2,
-      "carbos": 44,
+      "carbos": 44.0,
       "grasas": 23.3,
       "ingredientes": [
         {
@@ -2900,10 +2900,10 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Arroz blanco con gambas salteadas en ajo y perejil.",
-      "kcal": 385,
-      "proteinas": 15.2,
-      "carbos": 77.7,
-      "grasas": 1.3,
+      "kcal": 434.2,
+      "proteinas": 26.0,
+      "carbos": 76.4,
+      "grasas": 1.9,
       "ingredientes": [
         {
           "nombre": "Arroz Blanco",
@@ -2916,10 +2916,10 @@
         {
           "nombre": "Gambas (congeladas)",
           "cantidad": "120g",
-          "kcal": 36,
-          "proteinas": 7.2,
-          "carbos": 1.68,
-          "grasas": 0.12
+          "kcal": 85.2,
+          "proteinas": 18.0,
+          "carbos": 0.4,
+          "grasas": 0.7
         }
       ],
       "pasos": [
@@ -2934,7 +2934,7 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Merluza con salsa de limón y ajo en air fryer, con calabacín y patata asada al microondas.",
-      "kcal": 392,
+      "kcal": 391.6,
       "proteinas": 22.6,
       "carbos": 53.6,
       "grasas": 9.9,
@@ -2985,7 +2985,7 @@
       "tipo": "comida",
       "tiempo": "15 min",
       "descripcion": "Sepia a la plancha muy caliente con picada de ajo y perejil, acompañada de patata.",
-      "kcal": 347,
+      "kcal": 346.6,
       "proteinas": 25.9,
       "carbos": 45,
       "grasas": 6.8,
@@ -3028,7 +3028,7 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Boniato cocido al microondas relleno de carne picada de pollo y mozzarella.",
-      "kcal": 343,
+      "kcal": 342.8,
       "proteinas": 24.2,
       "carbos": 40.9,
       "grasas": 9.6,
@@ -3071,7 +3071,7 @@
       "tipo": "comida",
       "tiempo": "15 min",
       "descripcion": "Barquitos de maíz rellenos de carne picada de pollo estilo mexicano con sriracha.",
-      "kcal": 396,
+      "kcal": 396.2,
       "proteinas": 33.1,
       "carbos": 31.2,
       "grasas": 14.5,
@@ -3122,8 +3122,8 @@
       "tipo": "desayuno",
       "tiempo": "5 min",
       "descripcion": "Tostada de pan integral con loncha de pavo y batido de proteína.",
-      "kcal": 231,
-      "proteinas": 33,
+      "kcal": 230.6,
+      "proteinas": 33.0,
       "carbos": 17.5,
       "grasas": 2.8,
       "ingredientes": [
@@ -3164,7 +3164,7 @@
       "tipo": "cena",
       "tiempo": "15 min",
       "descripcion": "Tiras de calamar a la plancha con calabacín salteado. Sin carbos, muy proteico.",
-      "kcal": 197,
+      "kcal": 196.9,
       "proteinas": 27.2,
       "carbos": 8.2,
       "grasas": 6.8,
@@ -3207,7 +3207,7 @@
       "tipo": "cena",
       "tiempo": "10 min",
       "descripcion": "Filetes de pavo a la plancha sobre cama de espinacas salteadas. Muy proteico y sin apenas carbos.",
-      "kcal": 296,
+      "kcal": 296.1,
       "proteinas": 50.7,
       "carbos": 1.8,
       "grasas": 8.9,
@@ -3250,7 +3250,7 @@
       "tipo": "cena",
       "tiempo": "15 min",
       "descripcion": "Albóndigas de pollo en sartén con calabacín. Proteico, fácil y sin carbos.",
-      "kcal": 275,
+      "kcal": 274.6,
       "proteinas": 38.4,
       "carbos": 8.8,
       "grasas": 10.1,
@@ -3293,7 +3293,7 @@
       "tipo": "cena",
       "tiempo": "15 min",
       "descripcion": "Lomo a la plancha sobre espinacas salteadas con queso fresco. Proteína triple, casi sin carbos.",
-      "kcal": 356,
+      "kcal": 356.4,
       "proteinas": 45.6,
       "carbos": 2.6,
       "grasas": 16.4,
@@ -3344,10 +3344,10 @@
       "tipo": "cena",
       "tiempo": "15 min",
       "descripcion": "Filete de ternera a la plancha con brócoli salteado en salsa de soja. Muy proteico y sin carbos.",
-      "kcal": 395,
-      "proteinas": 56.2,
-      "carbos": 6.1,
-      "grasas": 28.8,
+      "kcal": 406.7,
+      "proteinas": 56.4,
+      "carbos": 14.5,
+      "grasas": 13.6,
       "ingredientes": [
         {
           "nombre": "Filete de ternera",
@@ -3360,10 +3360,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56,
-          "proteinas": 5.4,
-          "carbos": 5.6,
-          "grasas": 16
+          "kcal": 68.0,
+          "proteinas": 5.6,
+          "carbos": 14.0,
+          "grasas": 0.8
         },
         {
           "nombre": "Soja",
@@ -3395,10 +3395,10 @@
       "tipo": "cena",
       "tiempo": "15 min",
       "descripcion": "Lomo a la plancha con brócoli al vapor. Rápido y muy proteico.",
-      "kcal": 342,
-      "proteinas": 42.3,
-      "carbos": 5.6,
-      "grasas": 30.2,
+      "kcal": 353.8,
+      "proteinas": 42.5,
+      "carbos": 14.0,
+      "grasas": 15.0,
       "ingredientes": [
         {
           "nombre": "Lomo de cerdo",
@@ -3411,10 +3411,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56,
-          "proteinas": 5.4,
-          "carbos": 5.6,
-          "grasas": 16
+          "kcal": 68.0,
+          "proteinas": 5.6,
+          "carbos": 14.0,
+          "grasas": 0.8
         },
         {
           "nombre": "Aceite",
@@ -3438,18 +3438,18 @@
       "tipo": "cena",
       "tiempo": "10 min",
       "descripcion": "Gambas al ajillo con espinacas. Muy proteico, casi sin carbos.",
-      "kcal": 164,
-      "proteinas": 16.7,
-      "carbos": 3.6,
-      "grasas": 8.7,
+      "kcal": 246.5,
+      "proteinas": 34.7,
+      "carbos": 1.4,
+      "grasas": 9.7,
       "ingredientes": [
         {
           "nombre": "Gambas (congeladas)",
           "cantidad": "200g",
-          "kcal": 60,
-          "proteinas": 12,
-          "carbos": 2.8,
-          "grasas": 0.2
+          "kcal": 142.0,
+          "proteinas": 30.0,
+          "carbos": 0.6,
+          "grasas": 1.2
         },
         {
           "nombre": "Espinacas (congeladas)",
@@ -3481,10 +3481,10 @@
       "tipo": "cena",
       "tiempo": "15 min",
       "descripcion": "Filete de ternera a la plancha con calabacín salteado. Alto en proteína, mínimo carbos.",
-      "kcal": 375,
+      "kcal": 375.3,
       "proteinas": 52.3,
       "carbos": 8.2,
-      "grasas": 14,
+      "grasas": 14.0,
       "ingredientes": [
         {
           "nombre": "Filete de ternera",
@@ -3523,7 +3523,7 @@
       "tipo": "cena",
       "tiempo": "15 min",
       "descripcion": "Merluza al horno con ajo y limón sobre cama de espinacas.",
-      "kcal": 284,
+      "kcal": 284.1,
       "proteinas": 35.1,
       "carbos": 4.8,
       "grasas": 12.7,
@@ -3567,10 +3567,10 @@
       "tipo": "cena",
       "tiempo": "15 min",
       "descripcion": "Pechuga a la plancha con queso fresco y brócoli. Proteína doble, sin carbos.",
-      "kcal": 357,
-      "proteinas": 54.8,
-      "carbos": 7.4,
-      "grasas": 23.7,
+      "kcal": 367.6,
+      "proteinas": 54.9,
+      "carbos": 15.0,
+      "grasas": 10.0,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
@@ -3591,10 +3591,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "180g",
-          "kcal": 50.4,
-          "proteinas": 4.9,
-          "carbos": 5,
-          "grasas": 14.4
+          "kcal": 61.2,
+          "proteinas": 5.0,
+          "carbos": 12.6,
+          "grasas": 0.7
         },
         {
           "nombre": "Aceite",
@@ -3618,10 +3618,10 @@
       "tipo": "cena",
       "tiempo": "40 min",
       "descripcion": "Pechuga al horno con brocoli y calabacin. Bajo en carbos, alto en proteina.",
-      "kcal": 330,
-      "proteinas": 50,
-      "carbos": 8,
-      "grasas": 9,
+      "kcal": 377.5,
+      "proteinas": 53.4,
+      "carbos": 18.9,
+      "grasas": 10.7,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -3636,10 +3636,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56,
-          "proteinas": 5.4,
-          "carbos": 5.6,
-          "grasas": 16
+          "kcal": 68.0,
+          "proteinas": 5.6,
+          "carbos": 14.0,
+          "grasas": 0.8
         },
         {
           "nombre": "Calabacin",
@@ -3673,10 +3673,10 @@
       "tipo": "cena",
       "tiempo": "30 min",
       "descripcion": "Albondigas de pollo en salsa ligera con espinacas. Sin carbos innecesarios.",
-      "kcal": 310,
-      "proteinas": 44,
-      "carbos": 5,
-      "grasas": 11.5,
+      "kcal": 402.5,
+      "proteinas": 56.2,
+      "carbos": 4.6,
+      "grasas": 16.4,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -3727,10 +3727,10 @@
       "tipo": "cena",
       "tiempo": "25 min",
       "descripcion": "Salteado de carne picada con calabacin y tomate. Bajo en carbos y muy saciante.",
-      "kcal": 350,
-      "proteinas": 36,
-      "carbos": 8,
-      "grasas": 18,
+      "kcal": 474.5,
+      "proteinas": 36.4,
+      "carbos": 17.5,
+      "grasas": 29.2,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -3781,10 +3781,10 @@
       "tipo": "cena",
       "tiempo": "30 min",
       "descripcion": "Lomo de cerdo a la plancha con calabacin salteado. Solo 8g de carbos.",
-      "kcal": 370,
-      "proteinas": 44,
-      "carbos": 8,
-      "grasas": 17.5,
+      "kcal": 412.7,
+      "proteinas": 48.7,
+      "carbos": 9.9,
+      "grasas": 19.5,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -3827,10 +3827,10 @@
       "tipo": "cena",
       "tiempo": "25 min",
       "descripcion": "Merluza al horno con brocoli. Ligero, proteico y muy bajo en carbos.",
-      "kcal": 290,
-      "proteinas": 38,
-      "carbos": 7,
-      "grasas": 11.5,
+      "kcal": 349.1,
+      "proteinas": 39.0,
+      "carbos": 18.4,
+      "grasas": 14.7,
       "batch_cooking": true,
       "dias_nevera": 2,
       "ingredientes": [
@@ -3845,10 +3845,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56,
-          "proteinas": 5.4,
-          "carbos": 5.6,
-          "grasas": 16
+          "kcal": 68.0,
+          "proteinas": 5.6,
+          "carbos": 14.0,
+          "grasas": 0.8
         },
         {
           "nombre": "Aceite",
@@ -3874,10 +3874,10 @@
       "tipo": "cena",
       "tiempo": "25 min",
       "descripcion": "Salteado de carne picada de pollo con espinacas. Solo 5g de carbos.",
-      "kcal": 310,
-      "proteinas": 42,
-      "carbos": 5,
-      "grasas": 13.5,
+      "kcal": 407.9,
+      "proteinas": 45.8,
+      "carbos": 2.1,
+      "grasas": 23.4,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -3921,10 +3921,10 @@
       "tipo": "cena",
       "tiempo": "30 min",
       "descripcion": "Filete de pavo con zanahoria asada y espinacas salteadas. Sin cereales.",
-      "kcal": 320,
-      "proteinas": 48,
-      "carbos": 10,
-      "grasas": 7.5,
+      "kcal": 374.0,
+      "proteinas": 52.0,
+      "carbos": 16.1,
+      "grasas": 11.0,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -3975,10 +3975,10 @@
       "tipo": "cena",
       "tiempo": "25 min",
       "descripcion": "Filete de ternera con calabacin y mozzarella. Bajo en carbos y con grasas buenas.",
-      "kcal": 430,
-      "proteinas": 55,
-      "carbos": 6,
-      "grasas": 20,
+      "kcal": 480.7,
+      "proteinas": 59.2,
+      "carbos": 7.6,
+      "grasas": 22.8,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -4029,10 +4029,10 @@
       "tipo": "cena",
       "tiempo": "25 min",
       "descripcion": "Carne picada de pavo y pollo salteada con brocoli. Muy proteico, minimos carbos.",
-      "kcal": 330,
-      "proteinas": 42,
-      "carbos": 7,
-      "grasas": 14,
+      "kcal": 437.5,
+      "proteinas": 35.6,
+      "carbos": 16.0,
+      "grasas": 27.9,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -4047,10 +4047,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56,
-          "proteinas": 5.4,
-          "carbos": 5.6,
-          "grasas": 16
+          "kcal": 68.0,
+          "proteinas": 5.6,
+          "carbos": 14.0,
+          "grasas": 0.8
         },
         {
           "nombre": "Aceite",
@@ -4075,20 +4075,20 @@
       "tipo": "cena",
       "tiempo": "20 min",
       "descripcion": "Gambas salteadas con espinacas y calabacin. Ligero, rapido y bajo en carbos.",
-      "kcal": 250,
-      "proteinas": 28,
-      "carbos": 7,
-      "grasas": 10,
+      "kcal": 322.4,
+      "proteinas": 44.0,
+      "carbos": 6.5,
+      "grasas": 11.9,
       "batch_cooking": true,
       "dias_nevera": 2,
       "ingredientes": [
         {
           "nombre": "Gambas (congeladas)",
           "cantidad": "250g",
-          "kcal": 75,
-          "proteinas": 15,
-          "carbos": 3.5,
-          "grasas": 0.25
+          "kcal": 177.5,
+          "proteinas": 37.5,
+          "carbos": 0.8,
+          "grasas": 1.5
         },
         {
           "nombre": "Espinacas (congeladas)",
@@ -4129,10 +4129,10 @@
       "tipo": "cena",
       "tiempo": "25 min",
       "descripcion": "Hamburguesa de pollo a la plancha con brocoli al vapor. Solo 6g de carbos.",
-      "kcal": 345,
-      "proteinas": 48,
-      "carbos": 6,
-      "grasas": 13,
+      "kcal": 399.4,
+      "proteinas": 45.2,
+      "carbos": 15.1,
+      "grasas": 19.9,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -4147,10 +4147,10 @@
         {
           "nombre": "Brocoli (congelado)",
           "cantidad": "200g",
-          "kcal": 56,
-          "proteinas": 5.4,
-          "carbos": 5.6,
-          "grasas": 16
+          "kcal": 68.0,
+          "proteinas": 5.6,
+          "carbos": 14.0,
+          "grasas": 0.8
         },
         {
           "nombre": "Aceite",
@@ -4175,10 +4175,10 @@
       "tipo": "cena",
       "tiempo": "20 min",
       "descripcion": "Merluza a la plancha sobre cama de espinacas con mozzarella gratinada. Minimos carbos.",
-      "kcal": 360,
-      "proteinas": 44,
-      "carbos": 4,
-      "grasas": 17,
+      "kcal": 429.9,
+      "proteinas": 45.6,
+      "carbos": 6.2,
+      "grasas": 23.3,
       "batch_cooking": true,
       "dias_nevera": 2,
       "ingredientes": [
@@ -4229,7 +4229,7 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 533,
+      "kcal": 532.6,
       "proteinas": 47.1,
       "carbos": 52.6,
       "grasas": 12.8,

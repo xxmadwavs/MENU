@@ -70,6 +70,7 @@ header h1{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;
 .dot-comida{background:var(--teal)}
 .dot-cena{background:var(--mauve)}
 .dot-snack{background:var(--rose-deep)}
+.dot-postre{background:#c2659e}
 .cal-kcal{font-size:.56rem;font-weight:700;color:var(--rose-dark);text-align:center;line-height:1;padding-bottom:3px}
 
 /* DAY PANEL */
@@ -323,6 +324,9 @@ function renderCal(){
       kcal+=r.kcal||0;
       return `<div class="cal-dot dot-${t}"></div>`;
     }).join('');
+    // add postres
+    const rpc=getR(dm['postre_comida']); if(rpc) kcal+=rpc.kcal||0;
+    const rpce=getR(dm['postre_cena']); if(rpce) kcal+=rpce.kcal||0;
     const isToday=date.getTime()===today.getTime();
     const isSel=selectedDay===dia;
     return `<div class="cal-cell ${isToday?'today':''} ${kcal>0?'has-food':''} ${isSel?'selected':''}" onclick="selectDay('${dia}')">
@@ -350,9 +354,13 @@ function renderDayPanel(dia){
   const dm=getMenuDia(dia);
   let tk=0,tp=0,tc=0,tg=0;
   TIPOS.forEach(t=>{const r=getR(dm[t]);if(r){tk+=r.kcal||0;tp+=r.proteinas||0;tc+=r.carbos||0;tg+=r.grasas||0;}});
-  const meals=TIPOS.map(tipo=>{
+  // include postre in totals (postre_comida and postre_cena may be same id but counted twice)
+  ['postre_comida','postre_cena'].forEach(k=>{const r=getR(dm[k]);if(r){tk+=r.kcal||0;tp+=r.proteinas||0;tc+=r.carbos||0;tg+=r.grasas||0;}});
+  // build meal rows inserting postre after comida and after cena
+  let mealsHtml='';
+  TIPOS.forEach(tipo=>{
     const r=getR(dm[tipo]);
-    return `<div class="meal-item" ${r?`onclick="openModal('${r.id}')"`:''}>
+    mealsHtml+=`<div class="meal-item" ${r?`onclick="openModal('${r.id}')"`:''}>
       <div class="meal-icon mi-${tipo}">${TIPO_I[tipo]}</div>
       <div class="meal-info">
         <div class="meal-name-t ${!r?'empty':''}">${r?r.nombre:'Sin asignar'}</div>
@@ -364,7 +372,25 @@ function renderDayPanel(dia){
         </div>`:''}
       </div>
     </div>`;
-  }).join('');
+    // insert postre after comida and after cena
+    const pKey = tipo==='comida'?'postre_comida': tipo==='cena'?'postre_cena':null;
+    if(pKey){
+      const rp=getR(dm[pKey]);
+      if(rp) mealsHtml+=`<div class="meal-item" onclick="openModal('${rp.id}')" style="padding-left:2.5rem;background:var(--blush);">
+        <div class="meal-icon" style="background:#f9e6f0;font-size:.75rem;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;">🍮</div>
+        <div class="meal-info">
+          <div class="meal-name-t" style="font-size:.8rem;color:var(--text-muted);">Postre · ${rp.nombre}</div>
+          <div class="meal-macros-r">
+            <span class="mm mm-k">${rp.kcal} kcal</span>
+            <span class="mm mm-p">P: ${rp.proteinas}g</span>
+            <span class="mm mm-c">CH: ${rp.carbos}g</span>
+            <span class="mm mm-g">G: ${rp.grasas}g</span>
+          </div>
+        </div>
+      </div>`;
+    }
+  });
+  const meals=mealsHtml;
   document.getElementById('day-panel').innerHTML=`
     <div class="day-panel-head">
       <span class="day-panel-title">${DIAS_L[dia]}</span>

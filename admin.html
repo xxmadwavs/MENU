@@ -63,6 +63,7 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
 .b-comida{background:var(--teal-light);color:#1f6e63}
 .b-cena{background:var(--mauve-light);color:#4a2a80}
 .b-snack{background:var(--blush2);color:var(--rose-dark)}
+.b-postre{background:#f9e6f0;color:#7b3060}
 .recipe-actions{display:flex;gap:5px;flex-shrink:0}
 
 /* MACRO PREVIEW */
@@ -184,6 +185,7 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
     <button class="sub-tab" onclick="filterAdmin('comida',this)">Comida</button>
     <button class="sub-tab" onclick="filterAdmin('cena',this)">Cena</button>
     <button class="sub-tab" onclick="filterAdmin('snack',this)">Snack</button>
+    <button class="sub-tab" onclick="filterAdmin('postre',this)">Postre</button>
   </div>
   <div id="recipe-admin-list"></div>
   <div class="float-btn">
@@ -263,11 +265,7 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
             <option value="comida">Comida</option>
             <option value="cena">Cena</option>
             <option value="snack">Snack</option>
-          </select>
-        </div>
-        <div>
-          <label>Tiempo</label>
-          <input type="text" id="f-tiempo" placeholder="Ej: 20 min">
+            <option value="postre">Postre</option>
         </div>
       </div>
 
@@ -393,10 +391,7 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
               <option value="comida" selected>Comida</option>
               <option value="cena">Cena</option>
               <option value="snack">Snack</option>
-            </select>
-          </div>
-          <div>
-            <label>Tiempo (opcional)</label>
+              <option value="postre">Postre</option>
             <input type="text" id="import-tiempo" placeholder="Ej: 20 min">
           </div>
         </div>
@@ -502,7 +497,8 @@ function migrateData(d){
     SEMANAS.forEach(sem=>{
       if(!d.menu[sem]) d.menu[sem]={};
       DIAS.forEach(dia=>{
-        if(!d.menu[sem][dia]) d.menu[sem][dia]={desayuno:null,comida:null,cena:null,snack:null};
+        if(!d.menu[sem][dia]) d.menu[sem][dia]={desayuno:null,comida:null,postre_comida:null,cena:null,postre_cena:null,snack:null};
+        else { if(d.menu[sem][dia].postre_comida===undefined) d.menu[sem][dia].postre_comida=null; if(d.menu[sem][dia].postre_cena===undefined) d.menu[sem][dia].postre_cena=null; }
       });
     });
   } else {
@@ -899,18 +895,26 @@ function renderMenuAdmin(){
   </div>`;
   const sem=SEMANAS_ADMIN[adminMenuSem];
   if(!DATA.menu[sem]) DATA.menu[sem]={};
+  const TIPOS_POSTRE=[
+    {key:'desayuno',label:'Desayuno',src:'desayuno'},
+    {key:'comida',label:'Comida',src:'comida'},
+    {key:'postre_comida',label:'↳ Postre comida',src:'postre'},
+    {key:'cena',label:'Cena',src:'cena'},
+    {key:'postre_cena',label:'↳ Postre cena',src:'postre'},
+    {key:'snack',label:'Snack',src:'snack'},
+  ];
   const days=DIAS.map(dia=>{
     const dm=DATA.menu[sem][dia]||{};
     return `<div class="day-admin-card">
       <div class="day-admin-head">${DIAS_L[dia]}</div>
       <div class="day-admin-body">
-        ${TIPOS.map(tipo=>`
-          <div class="day-row">
-            <span class="day-tipo-lbl">${TIPOS_L[tipo]}</span>
-            <select id="m-${dia}-${tipo}">
+        ${TIPOS_POSTRE.map(({key,label,src})=>`
+          <div class="day-row" ${src==='postre'?'style="background:var(--blush);border-radius:6px;padding:2px 4px;"':''}>
+            <span class="day-tipo-lbl" ${src==='postre'?'style="color:var(--rose-deep);font-size:.65rem;"':''}>${label}</span>
+            <select id="m-${dia}-${key}">
               <option value="">— Sin asignar —</option>
-              ${DATA.recetas.filter(r=>r.tipo===tipo||r.tipo==='postre')
-                .map(r=>`<option value="${r.id}" ${dm[tipo]===r.id?'selected':''}>${r.nombre}</option>`)
+              ${DATA.recetas.filter(r=>r.tipo===src)
+                .map(r=>`<option value="${r.id}" ${dm[key]===r.id?'selected':''}>${r.nombre}</option>`)
                 .join('')}
             </select>
           </div>
@@ -926,11 +930,12 @@ function setAdminMenuSem(idx){ adminMenuSem=idx; renderMenuAdmin(); }
 function saveMenu(){
   const sem=SEMANAS_ADMIN[adminMenuSem];
   if(!DATA.menu[sem]) DATA.menu[sem]={};
+  const ALL_KEYS=['desayuno','comida','postre_comida','cena','postre_cena','snack'];
   DIAS.forEach(dia=>{
     if(!DATA.menu[sem][dia]) DATA.menu[sem][dia]={};
-    TIPOS.forEach(tipo=>{
-      const el=document.getElementById(`m-${dia}-${tipo}`);
-      DATA.menu[sem][dia][tipo]=el?(el.value||null):null;
+    ALL_KEYS.forEach(key=>{
+      const el=document.getElementById(`m-${dia}-${key}`);
+      DATA.menu[sem][dia][key]=el?(el.value||null):null;
     });
   });
   toast('✓ Menú '+SEMANAS_L_ADMIN[adminMenuSem]+' guardado');

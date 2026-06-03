@@ -557,6 +557,24 @@
       "proteinas": 8.3,
       "carbos": 80,
       "grasas": 1.2
+    },
+    {
+      "id": "i_yogur_griego_125g",
+      "nombre": "Yogur griego light",
+      "unidad": "125g",
+      "kcal": 73,
+      "proteinas": 7.3,
+      "carbos": 5.3,
+      "grasas": 2.5
+    },
+    {
+      "id": "i_yogur_proteico_125g",
+      "nombre": "Yogur proteico",
+      "unidad": "125g",
+      "kcal": 51,
+      "proteinas": 8.2,
+      "carbos": 4.5,
+      "grasas": 0
     }
   ],
   "recetas": [
@@ -4594,6 +4612,54 @@
         "Bate los huevos, viértelos en la sartén y remueve a fuego bajo hasta que cuajen.",
         "Sirve encima de las tostadas."
       ]
+    },
+    {
+      "id": "r_postre_yogur_griego",
+      "nombre": "Yogur griego (postre)",
+      "tipo": "postre",
+      "tiempo": "0 min",
+      "descripcion": "Yogur griego light 125g como postre.",
+      "kcal": 73,
+      "proteinas": 7.3,
+      "carbos": 5.3,
+      "grasas": 2.5,
+      "ingredientes": [
+        {
+          "nombre": "Yogur griego light",
+          "cantidad": "125g",
+          "kcal": 73,
+          "proteinas": 7.3,
+          "carbos": 5.3,
+          "grasas": 2.5
+        }
+      ],
+      "pasos": [
+        "Servir el yogur griego frío directamente del bote."
+      ]
+    },
+    {
+      "id": "r_postre_yogur_proteico",
+      "nombre": "Yogur proteico (postre)",
+      "tipo": "postre",
+      "tiempo": "0 min",
+      "descripcion": "Yogur proteico 125g como postre.",
+      "kcal": 51,
+      "proteinas": 8.2,
+      "carbos": 4.5,
+      "grasas": 0,
+      "ingredientes": [
+        {
+          "nombre": "Yogur proteico",
+          "cantidad": "125g",
+          "kcal": 51,
+          "proteinas": 8.2,
+          "carbos": 4.5,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Servir el yogur proteico frío directamente del bote."
+      ]
     }
   ],
   "menu": {
@@ -4602,43 +4668,57 @@
         "desayuno": "r177771771594824um",
         "comida": "r1778953431698jmue",
         "cena": "r_batch_s1_lunes",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "martes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r177771786909724md",
         "cena": "r_batch_s1_martes",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "miercoles": {
         "desayuno": "r_new_bj89z290fk6u",
         "comida": "r1779364080116jm1qn3",
         "cena": "r_batch_s1_miercoles",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "jueves": {
         "desayuno": "r17777168509747vr8",
         "comida": "r1779364080112z6e2ed",
         "cena": "r1779366896439l59dkn",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "viernes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1778954226673rbq3",
         "cena": "r1779366896441vjq91d",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "sabado": {
         "desayuno": "r1777717424539appz",
         "comida": "r17793640801131hp1m2",
         "cena": "r1779367403186zo7rgm",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "domingo": {
         "desayuno": "r177771771594824um",
         "comida": "r1780222943452h5g1",
         "cena": "r1779367403189k1m8m4_scaled_semana1_domingo",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       }
     },
     "semana2": {
@@ -4646,43 +4726,57 @@
         "desayuno": "r177771771594824um",
         "comida": "r1779364080126s7zto5",
         "cena": "r_batch_s2_lunes",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "martes": {
         "desayuno": "r_new_bj89z290fk6u",
         "comida": "r1778065868745a791",
         "cena": "r_batch_s2_martes",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "miercoles": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1778953711355y5uu",
         "cena": "r_batch_s2_miercoles",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "jueves": {
         "desayuno": "r17777168509747vr8",
         "comida": "r1779364080117vgw1j6",
         "cena": "r1779367403186zo7rgm",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "viernes": {
         "desayuno": "r177771771594824um",
         "comida": "r1778069003030zhaz",
         "cena": "r1779367403189k1m8m4_scaled_semana2_viernes",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "sabado": {
         "desayuno": "r1777717424539appz",
         "comida": "r1779364080125c8c62m",
         "cena": "r1779367403192tyz6z1",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "domingo": {
         "desayuno": "r17777175037187vko",
         "comida": "r1777888202989ab8y",
         "cena": "r17793674031958o1i2w",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       }
     },
     "semana3": {
@@ -4690,43 +4784,57 @@
         "desayuno": "r_new_bj89z290fk6u",
         "comida": "r1779364080110x34ryv",
         "cena": "r_batch_s3_lunes",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "martes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1779364080131rd2vlw",
         "cena": "r_batch_s3_martes",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "miercoles": {
         "desayuno": "r177771771594824um",
         "comida": "r1778065085369zff6",
         "cena": "r_batch_s3_miercoles",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "jueves": {
         "desayuno": "r17777168509747vr8",
         "comida": "r1779364080118kqcaqc",
         "cena": "r1779367403192tyz6z1",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "viernes": {
         "desayuno": "r_new_bj89z290fk6u",
         "comida": "r177895397657235wd",
         "cena": "r17793674031958o1i2w",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "sabado": {
         "desayuno": "r1777717424539appz",
         "comida": "r1779364080121fya9yx",
         "cena": "r17793674031987rzfqh",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "domingo": {
         "desayuno": "r17777175037187vko",
         "comida": "r1779364080128ibts0q",
         "cena": "r177936689643289xv20_scaled_semana3_domingo",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       }
     },
     "semana4": {
@@ -4734,43 +4842,57 @@
         "desayuno": "r177771771594824um",
         "comida": "r1779364080123rfqokl",
         "cena": "r_batch_s4_lunes",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "martes": {
         "desayuno": "r1779364080106wzcgsj",
         "comida": "r1779364080119zgsg34",
         "cena": "r_batch_s4_martes",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "miercoles": {
         "desayuno": "r_new_vchldiujr7tx",
         "comida": "r177806887494410gv",
         "cena": "r_batch_s4_miercoles",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "jueves": {
         "desayuno": "r17777168509747vr8",
         "comida": "r1779364080120o3cshj",
         "cena": "r17793674031987rzfqh",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "viernes": {
         "desayuno": "r177771771594824um",
         "comida": "r17793640801152n5bgq",
         "cena": "r177936689643289xv20_scaled_semana4_viernes",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       },
       "sabado": {
         "desayuno": "r1777717424539appz",
         "comida": "r1779364080124w0qhuh",
         "cena": "r17793668964348e7r2v",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_proteico",
+        "postre_cena": "r_postre_yogur_proteico"
       },
       "domingo": {
         "desayuno": "r17777175037187vko",
         "comida": "r1778953288624ctyf",
         "cena": "r1779366896436wquuus",
-        "snack": null
+        "snack": null,
+        "postre_comida": "r_postre_yogur_griego",
+        "postre_cena": "r_postre_yogur_griego"
       }
     }
   }

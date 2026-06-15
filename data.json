@@ -584,9 +584,62 @@
       "proteinas": 0.9,
       "carbos": 3.9,
       "grasas": 0.2
+    },
+    {
+      "id": "i_tomate_natural",
+      "nombre": "Tomate natural",
+      "unidad": "100g",
+      "kcal": 18,
+      "proteinas": 0.9,
+      "carbos": 3.9,
+      "grasas": 0.2
     }
   ],
   "recetas": [
+    {
+      "id": "r_salsa_tomate_natural",
+      "nombre": "Salsa de tomate natural casera",
+      "tiempo": "20 min",
+      "descripcion": "Salsa de tomate hecha con tomate natural fresco. Usa esta proporción: por cada 100g de tomate triturado de lata que pedía la receta, prepara con ~250g de tomate natural.",
+      "kcal": 45,
+      "proteinas": 2.3,
+      "carbos": 9.8,
+      "grasas": 0.5,
+      "ingredientes": [
+        {
+          "nombre": "Tomate natural",
+          "cantidad": "250g",
+          "kcal": 45,
+          "proteinas": 2.3,
+          "carbos": 9.8,
+          "grasas": 0.5
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "3ml",
+          "kcal": 24.6,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 2.7
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "al gusto",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Lava y trocea los tomates naturales en cuartos, retirando el pedúnculo.",
+        "Pon a calentar el aceite en una sartén a fuego medio.",
+        "Añade los tomates troceados y una pizca de sal.",
+        "Cocina a fuego medio-bajo durante 15-20 min, aplastando con una cuchara de madera hasta que el tomate pierda el agua y quede una salsa espesa.",
+        "Opcional: pasa por el pasapurés o trituradora para una textura más fina.",
+        "PROPORCIÓN: 250g de tomate natural equivalen a ~100g de tomate triturado de lata."
+      ]
+    },
     {
       "id": "r17777168509747vr8",
       "nombre": "Sandwich mixto",
@@ -1001,10 +1054,10 @@
       "tipo": "cena",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 208.1,
-      "proteinas": 30.9,
-      "carbos": 9.8,
-      "grasas": 5.5,
+      "kcal": 217.1,
+      "proteinas": 31.5,
+      "carbos": 12.2,
+      "grasas": 5.7,
       "ingredientes": [
         {
           "nombre": "Calabacin",
@@ -1031,15 +1084,16 @@
           "grasas": 4.2
         },
         {
-          "nombre": "Tomate triturado",
-          "cantidad": "50g",
-          "kcal": 13.5,
-          "proteinas": 0.5,
-          "carbos": 2.5,
-          "grasas": 0
+          "nombre": "Tomate natural (para salsa casera)",
+          "cantidad": "125.0g",
+          "kcal": 22.5,
+          "proteinas": 1.1,
+          "carbos": 4.9,
+          "grasas": 0.2
         }
       ],
       "pasos": [
+        "Para la salsa: usa 125.0g de tomate natural fresco. Trocea, sofríe con unas gotas de aceite a fuego medio-bajo 15-20 min hasta reducir, y tritúralo. Equivale a los 50.0g de tomate triturado de lata.",
         "Precalentar horno a 180º",
         "Cortar el calabacín en rodajas y poner en una bandeja con aceite y sal",
         "Meter el calabacín al horno a 180º, 5min",
@@ -1052,10 +1106,10 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 555.8,
-      "proteinas": 33.1,
-      "carbos": 48.2,
-      "grasas": 24.2,
+      "kcal": 564.8,
+      "proteinas": 33.7,
+      "carbos": 50.6,
+      "grasas": 24.4,
       "ingredientes": [
         {
           "nombre": "Ravioli de ricotta y espinacas",
@@ -1066,12 +1120,12 @@
           "grasas": 16.25
         },
         {
-          "nombre": "Tomate triturado",
-          "cantidad": "50g",
-          "kcal": 13.5,
-          "proteinas": 0.5,
-          "carbos": 2.5,
-          "grasas": 0
+          "nombre": "Tomate natural (para salsa casera)",
+          "cantidad": "125.0g",
+          "kcal": 22.5,
+          "proteinas": 1.1,
+          "carbos": 4.9,
+          "grasas": 0.2
         },
         {
           "nombre": "Carne Picada Pollo",
@@ -1091,6 +1145,7 @@
         }
       ],
       "pasos": [
+        "Para la salsa: usa 125.0g de tomate natural fresco. Trocea, sofríe con unas gotas de aceite a fuego medio-bajo 15-20 min hasta reducir, y tritúralo. Equivale a los 50.0g de tomate triturado de lata.",
         "Sofríe la cebolla",
         "Añade la carne picada y cuando esté hecha, añade el tomate frito",
         "Cuece la pasta"
@@ -2650,18 +2705,18 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Pasta tipo rigatoni con boloñesa de vacuno y salsa de tomate.",
-      "kcal": 559.7,
-      "proteinas": 35.2,
-      "carbos": 61.5,
-      "grasas": 18.7,
+      "kcal": 569.7,
+      "proteinas": 46.1,
+      "carbos": 62.0,
+      "grasas": 15.7,
       "ingredientes": [
         {
-          "nombre": "Carne picada vacuno",
-          "cantidad": "131g",
-          "kcal": 249.7,
-          "proteinas": 23.7,
-          "carbos": 3.2,
-          "grasas": 15.8
+          "nombre": "Carne Picada Pollo",
+          "cantidad": "188.6g",
+          "kcal": 249.0,
+          "proteinas": 33.9,
+          "carbos": 0.9,
+          "grasas": 12.4
         },
         {
           "nombre": "Rigatoni (Garofalo)",
@@ -2672,12 +2727,12 @@
           "grasas": 0.8
         },
         {
-          "nombre": "Tomate triturado",
-          "cantidad": "55g",
-          "kcal": 14.8,
-          "proteinas": 0.5,
-          "carbos": 2.7,
-          "grasas": 0.0
+          "nombre": "Tomate natural (para salsa casera)",
+          "cantidad": "137.5g",
+          "kcal": 24.8,
+          "proteinas": 1.2,
+          "carbos": 5.4,
+          "grasas": 0.3
         },
         {
           "nombre": "Cebolla (congelada)",
@@ -2697,6 +2752,7 @@
         }
       ],
       "pasos": [
+        "Para la salsa: usa 137.5g de tomate natural fresco. Trocea, sofríe con unas gotas de aceite a fuego medio-bajo 15-20 min hasta reducir, y tritúralo. Equivale a los 55.0g de tomate triturado de lata.",
         "Hierve el agua y cuando comience a hervir añade la pasta.",
         "En una sartén, echa aceite y luego la carne picada.",
         "Cuando esté la carne, echa la salsa de tomate y la cebolla."
@@ -2708,10 +2764,10 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Bowl estilo tacos con ternera magra, arroz, lechuga y tomate.",
-      "kcal": 559.8,
-      "proteinas": 56.8,
-      "carbos": 58.1,
-      "grasas": 9.4,
+      "kcal": 568.9,
+      "proteinas": 57.4,
+      "carbos": 60.6,
+      "grasas": 9.7,
       "ingredientes": [
         {
           "nombre": "Filete de ternera",
@@ -2738,15 +2794,16 @@
           "grasas": 0.1
         },
         {
-          "nombre": "Tomate triturado",
-          "cantidad": "51g",
-          "kcal": 13.7,
-          "proteinas": 0.5,
-          "carbos": 2.5,
-          "grasas": 0.0
+          "nombre": "Tomate natural (para salsa casera)",
+          "cantidad": "127.5g",
+          "kcal": 22.9,
+          "proteinas": 1.1,
+          "carbos": 5.0,
+          "grasas": 0.3
         }
       ],
       "pasos": [
+        "Para la salsa: usa 127.5g de tomate natural fresco. Trocea, sofríe con unas gotas de aceite a fuego medio-bajo 15-20 min hasta reducir, y tritúralo. Equivale a los 51.0g de tomate triturado de lata.",
         "Cuece el arroz en agua con sal.",
         "Corta la ternera en tiras finas o dados y cocina en sartén.",
         "En un bol, coloca el arroz como base, la carne encima y rodea con lechuga y tomate."
@@ -3754,10 +3811,10 @@
       "tipo": "cena",
       "tiempo": "25 min",
       "descripcion": "Salteado de carne picada con calabacin y tomate. Bajo en carbos y muy saciante.",
-      "kcal": 490.2,
-      "proteinas": 37.6,
-      "carbos": 18.1,
-      "grasas": 30.1,
+      "kcal": 508.8,
+      "proteinas": 38.9,
+      "carbos": 23.1,
+      "grasas": 30.6,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -3778,12 +3835,12 @@
           "grasas": 0.3
         },
         {
-          "nombre": "Tomate triturado",
-          "cantidad": "103g",
-          "kcal": 27.9,
-          "proteinas": 1.0,
-          "carbos": 5.1,
-          "grasas": 0.0
+          "nombre": "Tomate natural (para salsa casera)",
+          "cantidad": "257.5g",
+          "kcal": 46.4,
+          "proteinas": 2.3,
+          "carbos": 10.0,
+          "grasas": 0.5
         },
         {
           "nombre": "Aceite",
@@ -3795,6 +3852,7 @@
         }
       ],
       "pasos": [
+        "Para la salsa: usa 257.5g de tomate natural fresco. Trocea, sofríe con unas gotas de aceite a fuego medio-bajo 15-20 min hasta reducir, y tritúralo. Equivale a los 103.0g de tomate triturado de lata.",
         "El domingo: saltea el calabacin en dados con aceite y sal 5 min. Reserva.",
         "En la misma sarten dora la carne picada removiendo bien.",
         "Incorpora el tomate, sal, comino y pimenton ahumado. Cocina 8 min.",
@@ -4955,10 +5013,10 @@
       "tipo": "cena",
       "tiempo": "25 min",
       "descripcion": "Salteado de carne picada con calabacin y tomate. Bajo en carbos y muy saciante.",
-      "kcal": 426.8,
-      "proteinas": 32.7,
-      "carbos": 15.8,
-      "grasas": 26.2,
+      "kcal": 443.0,
+      "proteinas": 33.8,
+      "carbos": 20.1,
+      "grasas": 26.6,
       "batch_cooking": true,
       "dias_nevera": 3,
       "ingredientes": [
@@ -4979,12 +5037,12 @@
           "grasas": 0.3
         },
         {
-          "nombre": "Tomate triturado",
-          "cantidad": "89.7g",
-          "kcal": 24.3,
-          "proteinas": 0.9,
-          "carbos": 4.4,
-          "grasas": 0.0
+          "nombre": "Tomate natural (para salsa casera)",
+          "cantidad": "224.2g",
+          "kcal": 40.4,
+          "proteinas": 2.0,
+          "carbos": 8.7,
+          "grasas": 0.4
         },
         {
           "nombre": "Aceite",
@@ -4996,6 +5054,7 @@
         }
       ],
       "pasos": [
+        "Para la salsa: usa 224.2g de tomate natural fresco. Trocea, sofríe con unas gotas de aceite a fuego medio-bajo 15-20 min hasta reducir, y tritúralo. Equivale a los 89.7g de tomate triturado de lata.",
         "El domingo: saltea el calabacin en dados con aceite y sal 5 min. Reserva.",
         "En la misma sarten dora la carne picada removiendo bien.",
         "Incorpora el tomate, sal, comino y pimenton ahumado. Cocina 8 min.",
@@ -7039,18 +7098,18 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Pasta tipo rigatoni con boloñesa de vacuno y salsa de tomate.",
-      "kcal": 511.0,
-      "proteinas": 32.1,
-      "carbos": 56.1,
-      "grasas": 17.1,
+      "kcal": 520.1,
+      "proteinas": 42.2,
+      "carbos": 56.5,
+      "grasas": 14.4,
       "ingredientes": [
         {
-          "nombre": "Carne picada vacuno",
-          "cantidad": "119.6g",
-          "kcal": 228.0,
-          "proteinas": 21.6,
-          "carbos": 2.9,
-          "grasas": 14.4
+          "nombre": "Carne Picada Pollo",
+          "cantidad": "172.2g",
+          "kcal": 227.3,
+          "proteinas": 31.0,
+          "carbos": 0.9,
+          "grasas": 11.4
         },
         {
           "nombre": "Rigatoni (Garofalo)",
@@ -7061,12 +7120,12 @@
           "grasas": 0.7
         },
         {
-          "nombre": "Tomate triturado",
-          "cantidad": "50.2g",
-          "kcal": 13.5,
-          "proteinas": 0.5,
-          "carbos": 2.5,
-          "grasas": 0.0
+          "nombre": "Tomate natural (para salsa casera)",
+          "cantidad": "125.5g",
+          "kcal": 22.6,
+          "proteinas": 1.1,
+          "carbos": 4.9,
+          "grasas": 0.3
         },
         {
           "nombre": "Cebolla (congelada)",
@@ -7086,6 +7145,7 @@
         }
       ],
       "pasos": [
+        "Para la salsa: usa 125.5g de tomate natural fresco. Trocea, sofríe con unas gotas de aceite a fuego medio-bajo 15-20 min hasta reducir, y tritúralo. Equivale a los 50.2g de tomate triturado de lata.",
         "Hierve el agua y cuando comience a hervir añade la pasta.",
         "En una sartén, echa aceite y luego la carne picada.",
         "Cuando esté la carne, echa la salsa de tomate y la cebolla."
@@ -7289,10 +7349,10 @@
       "tipo": "comida",
       "tiempo": "20 min",
       "descripcion": "Bowl estilo tacos con ternera magra, arroz, lechuga y tomate.",
-      "kcal": 505.5,
-      "proteinas": 51.3,
-      "carbos": 52.5,
-      "grasas": 8.5,
+      "kcal": 513.8,
+      "proteinas": 51.8,
+      "carbos": 54.7,
+      "grasas": 8.7,
       "ingredientes": [
         {
           "nombre": "Filete de ternera",
@@ -7319,15 +7379,16 @@
           "grasas": 0.1
         },
         {
-          "nombre": "Tomate triturado",
-          "cantidad": "46.1g",
-          "kcal": 12.4,
-          "proteinas": 0.5,
-          "carbos": 2.3,
-          "grasas": 0.0
+          "nombre": "Tomate natural (para salsa casera)",
+          "cantidad": "115.2g",
+          "kcal": 20.7,
+          "proteinas": 1.0,
+          "carbos": 4.5,
+          "grasas": 0.2
         }
       ],
       "pasos": [
+        "Para la salsa: usa 115.2g de tomate natural fresco. Trocea, sofríe con unas gotas de aceite a fuego medio-bajo 15-20 min hasta reducir, y tritúralo. Equivale a los 46.1g de tomate triturado de lata.",
         "Cuece el arroz en agua con sal.",
         "Corta la ternera en tiras finas o dados y cocina en sartén.",
         "En un bol, coloca el arroz como base, la carne encima y rodea con lechuga y tomate."

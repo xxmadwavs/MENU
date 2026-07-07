@@ -3,182 +3,288 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Mi Menú Mensual</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Mi Menú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root {
-  --rose:       #e8b4b8;
-  --rose-deep:  #c97d87;
-  --rose-dark:  #9e4f5a;
-  --blush:      #fdf0f2;
-  --blush2:     #f8e1e5;
-  --mauve:      #7b5ea7;
-  --mauve-light:#ede6f7;
-  --gold:       #d4956a;
-  --gold-light: #fdf0e6;
-  --teal:       #4a9b8f;
-  --teal-light: #e2f4f2;
-  --text:       #2d1f24;
-  --text-muted: #9e7a82;
-  --border:     #f0d8dc;
-  --white:      #ffffff;
-  --bg:         #fef8f9;
-  --r:          14px;
-  --r-sm:       9px;
+:root{
+  /* despensa / jardín — paleta propia */
+  --paper:       #f3efe2;
+  --paper-raised:#fffdf8;
+  --ink:         #262b1f;
+  --ink-soft:    #71715f;
+  --line:        #e2dbc4;
+
+  --green:       #33472c;
+  --green-deep:  #23301e;
+  --green-light: #e7ebdd;
+
+  --gold:        #cf9a3e;
+  --gold-deep:   #a97928;
+  --gold-light:  #f8ecd2;
+
+  --clay:        #b3573d;
+  --clay-light:  #f6e3da;
+
+  --plum:        #6c4569;
+  --plum-light:  #ece2ea;
+
+  --sage:        #728a5d;
+  --sage-light:  #e7edde;
+
+  --berry:       #a24f68;
+  --berry-light: #f4e1e7;
+
+  --r:    18px;
+  --r-sm: 11px;
+  --shadow: 0 3px 14px rgba(38,43,31,.07);
+  --shadow-lg: 0 10px 34px rgba(38,43,31,.14);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px}
-header{background:linear-gradient(135deg,#9e4f5a 0%,#7a3a45 55%,#7b5ea7 100%);padding:1.1rem 1.25rem 0;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(158,79,90,.25)}
-header h1{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:.75rem}
-.header-tabs{display:flex;overflow-x:auto;scrollbar-width:none}
-.header-tabs::-webkit-scrollbar{display:none}
-.tab-btn{background:none;border:none;color:rgba(255,255,255,.6);font-family:'Nunito',sans-serif;font-size:.8rem;font-weight:600;padding:.55rem 1rem;cursor:pointer;border-bottom:2.5px solid transparent;transition:all .2s;white-space:nowrap;letter-spacing:.04em;text-transform:uppercase}
-.tab-btn.active{color:white;border-bottom-color:var(--rose)}
-.view{display:none;padding:1.1rem}
+html{-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--paper);
+  background-image:radial-gradient(circle at 100% 0%, rgba(207,154,62,.08), transparent 45%);
+  color:var(--ink);
+  min-height:100vh;
+  font-size:15px;
+  padding-bottom:74px;
+}
+h1,h2,.font-display{font-family:'Fraunces',serif}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* HEADER */
+header{
+  background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 100%);
+  padding:1.15rem 1.25rem 1.3rem;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 6px 20px rgba(35,48,30,.22);
+  border-bottom:3px solid var(--gold);
+}
+.brand{display:flex;align-items:center;gap:.7rem}
+.brand-mark{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(255,255,255,.1);border:1.5px solid rgba(207,154,62,.5);
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;
+}
+header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;line-height:1.1}
+.brand-sub{font-size:.72rem;color:rgba(251,246,234,.65);margin-top:2px;text-transform:capitalize;letter-spacing:.02em}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;z-index:150;
+  background:var(--paper-raised);
+  border-top:1px solid var(--line);
+  display:flex;
+  box-shadow:0 -6px 20px rgba(38,43,31,.08);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.nav-btn{
+  flex:1;background:none;border:none;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:.6rem .25rem .55rem;
+  color:var(--ink-soft);font-family:'Inter',sans-serif;font-size:.66rem;font-weight:600;
+  letter-spacing:.02em;position:relative;transition:color .15s;
+}
+.nav-btn .nav-icon{font-size:1.15rem;transition:transform .18s}
+.nav-btn.active{color:var(--green)}
+.nav-btn.active .nav-icon{transform:translateY(-2px)}
+.nav-btn.active::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:26px;height:3px;border-radius:0 0 4px 4px;background:var(--gold);
+}
+
+.view{display:none;padding:1.05rem 1.1rem 1.5rem}
 .view.active{display:block}
 
 /* LOADING */
-.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 1rem;color:var(--text-muted);gap:1rem}
-.spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--rose-deep);border-radius:50%;animation:spin .8s linear infinite}
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4.5rem 1rem;color:var(--ink-soft);gap:1rem}
+.spinner{width:32px;height:32px;border:3px solid var(--line);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* WEEK NAV */
-.week-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem;background:white;border-radius:var(--r);padding:.65rem 1rem;border:1px solid var(--border);box-shadow:0 2px 10px rgba(158,79,90,.07)}
-.week-nav button{background:var(--blush2);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1.1rem;color:var(--rose-dark);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
-.week-nav button:hover{background:var(--rose-deep);color:white}
-.week-nav button:disabled{opacity:.3;cursor:default}
-.week-nav button:disabled:hover{background:var(--blush2);color:var(--rose-dark)}
-.week-nav-center{display:flex;flex-direction:column;align-items:center;gap:2px}
-.week-nav-label{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:500;color:var(--rose-dark);font-style:italic}
-.week-nav-dots{display:flex;gap:5px}
-.week-dot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:all .2s;cursor:pointer}
-.week-dot.active{background:var(--rose-dark);transform:scale(1.2)}
+.week-nav{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem;
+  background:var(--paper-raised);border-radius:var(--r);padding:.6rem .7rem;
+  border:1px solid var(--line);box-shadow:var(--shadow);
+}
+.week-nav button{
+  background:var(--green-light);border:none;width:34px;height:34px;border-radius:50%;
+  cursor:pointer;font-size:1.15rem;color:var(--green);display:flex;align-items:center;justify-content:center;
+  transition:all .18s;flex-shrink:0;
+}
+.week-nav button:hover{background:var(--green);color:#fff}
+.week-nav button:disabled{opacity:.28;cursor:default}
+.week-nav button:disabled:hover{background:var(--green-light);color:var(--green)}
+.week-nav-center{display:flex;flex-direction:column;align-items:center;gap:4px}
+.week-nav-label{font-family:'Fraunces',serif;font-size:.95rem;font-weight:600;color:var(--green-deep);font-style:italic}
+.week-nav-range{font-size:.66rem;color:var(--ink-soft);font-weight:500;letter-spacing:.01em}
+.week-nav-dots{display:flex;gap:6px}
+.week-dot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:all .2s;cursor:pointer}
+.week-dot.active{background:var(--gold-deep);transform:scale(1.25)}
 
 /* CALENDAR GRID */
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:0;background:white;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 16px rgba(158,79,90,.09);margin-bottom:.9rem}
-.cal-head{background:linear-gradient(135deg,#9e4f5a,#7a3a45);color:white;text-align:center;padding:.5rem 2px;font-size:.65rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
-.cal-cell{border-right:1px solid var(--border);border-top:1px solid var(--border);min-height:84px;cursor:pointer;transition:background .15s;position:relative}
+.cal-grid{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:0;background:var(--paper-raised);
+  border-radius:var(--r);border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow);margin-bottom:.85rem;
+}
+.cal-head{
+  background:var(--green);color:#f2ecda;text-align:center;padding:.5rem 2px;
+  font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+}
+.cal-cell{
+  border-right:1px solid var(--line);border-top:1px solid var(--line);
+  min-height:78px;cursor:pointer;transition:background .15s;position:relative;
+  display:flex;flex-direction:column;align-items:center;padding-top:5px;
+}
 .cal-cell:nth-child(7n){border-right:none}
-.cal-cell:hover{background:var(--blush)}
-.cal-cell.today .cal-num{background:var(--rose-dark);color:white;border-radius:50%}
-.cal-cell.has-food{background:var(--blush)}
-.cal-cell.selected{background:var(--blush2);outline:2px solid var(--rose-deep);outline-offset:-2px;z-index:1}
-.cal-num{font-size:.72rem;font-weight:700;width:22px;height:22px;display:flex;align-items:center;justify-content:center;margin:4px auto 2px}
-.cal-dots{display:flex;flex-direction:column;gap:2px;padding:0 4px 2px;align-items:center}
+.cal-cell:hover{background:var(--gold-light)}
+.cal-cell.today .cal-num{background:var(--gold-deep);color:#fff}
+.cal-cell.has-food{background:#faf6ea}
+.cal-cell.selected{background:var(--green-light);box-shadow:inset 0 0 0 2px var(--green);z-index:1}
+.cal-num{font-size:.72rem;font-weight:700;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink)}
+.cal-dots{display:flex;gap:3px;padding:5px 0 3px;flex-wrap:wrap;justify-content:center;max-width:34px}
 .cal-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
-.dot-desayuno{background:#f0a56a}
-.dot-comida{background:var(--teal)}
-.dot-cena{background:var(--mauve)}
-.dot-snack{background:var(--rose-deep)}
-.dot-postre{background:#c2659e}
-.cal-kcal{font-size:.56rem;font-weight:700;color:var(--rose-dark);text-align:center;line-height:1;padding-bottom:3px}
+.dot-desayuno{background:var(--gold-deep)}
+.dot-comida{background:var(--sage)}
+.dot-cena{background:var(--plum)}
+.dot-snack{background:var(--clay)}
+.dot-postre{background:var(--berry)}
+.cal-kcal{font-size:.6rem;font-weight:700;font-family:'IBM Plex Mono',monospace;color:var(--ink-soft);text-align:center;line-height:1;padding-bottom:5px}
 
 /* DAY PANEL */
-.day-panel{background:white;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;box-shadow:0 4px 20px rgba(158,79,90,.1);margin-bottom:1rem}
-.day-panel-head{background:linear-gradient(135deg,var(--rose-deep),var(--rose-dark));padding:.8rem 1.1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
-.day-panel-title{font-family:'Playfair Display',serif;color:white;font-size:1rem;font-weight:500;font-style:italic}
-.day-totals{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
-.total-chip{font-size:.67rem;font-weight:700;padding:3px 8px;border-radius:20px;background:rgba(255,255,255,.2);color:white;white-space:nowrap}
-.total-chip.kcal-chip{background:rgba(255,255,255,.35)}
-.meal-item{display:flex;align-items:center;gap:.7rem;padding:.6rem 1.1rem;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.day-panel{background:var(--paper-raised);border-radius:var(--r);border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:1rem}
+.day-panel-head{
+  background:linear-gradient(150deg,var(--green),var(--green-deep));
+  padding:.95rem 1.1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+}
+.day-panel-title{font-family:'Fraunces',serif;color:#fbf6ea;font-size:1.05rem;font-weight:600;font-style:italic;flex-shrink:0}
+.day-ring-wrap{display:flex;align-items:center;gap:.8rem;margin-left:auto}
+.day-ring{flex-shrink:0}
+.day-kcal-num{font-family:'IBM Plex Mono',monospace;font-size:1.05rem;font-weight:600;fill:#fbf6ea}
+.day-macro-legend{display:flex;flex-direction:column;gap:3px}
+.dml-row{display:flex;align-items:center;gap:5px;font-size:.66rem;color:rgba(251,246,234,.85);font-weight:600}
+.dml-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dml-row .mono{color:#fbf6ea}
+.day-empty-badge{font-size:.72rem;color:rgba(251,246,234,.7);font-style:italic;margin-left:auto}
+
+.meal-item{display:flex;align-items:center;gap:.75rem;padding:.65rem 1.1rem;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
 .meal-item:last-child{border-bottom:none}
-.meal-item:hover{background:var(--blush)}
-.meal-icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
-.mi-desayuno{background:#fff0e0}
-.mi-comida{background:var(--teal-light)}
-.mi-cena{background:var(--mauve-light)}
-.mi-snack{background:var(--blush2)}
+.meal-item:hover{background:var(--gold-light)}
+.meal-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.mi-desayuno{background:var(--gold-light)}
+.mi-comida{background:var(--sage-light)}
+.mi-cena{background:var(--plum-light)}
+.mi-snack{background:var(--clay-light)}
 .meal-info{flex:1;min-width:0}
-.meal-name-t{font-size:.88rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.meal-name-t.empty{color:var(--text-muted);font-weight:400;font-style:italic}
-.meal-macros-r{display:flex;gap:5px;margin-top:3px;flex-wrap:wrap}
-.mm{font-size:.67rem;font-weight:700;padding:2px 6px;border-radius:10px}
-.mm-k{background:#fde8e0;color:#a83a20}
-.mm-p{background:var(--teal-light);color:#1f6e63}
-.mm-c{background:#fff3e0;color:#7a4800}
-.mm-g{background:var(--mauve-light);color:#4a2a80}
+.meal-type-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--ink-soft);margin-bottom:1px}
+.meal-name-t{font-size:.9rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meal-name-t.empty{color:var(--ink-soft);font-weight:400;font-style:italic}
+.meal-macros-r{display:flex;gap:5px;margin-top:4px;flex-wrap:wrap}
+.mm{font-size:.65rem;font-weight:700;font-family:'IBM Plex Mono',monospace;padding:2px 6px;border-radius:8px}
+.mm-k{background:var(--clay-light);color:#8a3d27}
+.mm-p{background:var(--sage-light);color:#3f5c2c}
+.mm-c{background:var(--gold-light);color:#8a6416}
+.mm-g{background:var(--plum-light);color:#523153}
 
 /* RECIPES */
-.sub-tabs{display:flex;background:white;border-radius:var(--r);border:1px solid var(--border);padding:4px;margin-bottom:1rem;gap:4px;box-shadow:0 2px 8px rgba(158,79,90,.06)}
-.sub-tab{flex:1;text-align:center;padding:.42rem .25rem;border-radius:var(--r-sm);font-size:.75rem;font-weight:600;cursor:pointer;border:none;background:none;color:var(--text-muted);transition:all .2s}
-.sub-tab.active{background:linear-gradient(135deg,var(--rose-dark),#7a3a45);color:white}
+.recipe-search{
+  width:100%;background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r-sm);
+  padding:.65rem .9rem;font-family:'Inter',sans-serif;font-size:.85rem;color:var(--ink);margin-bottom:.7rem;
+  box-shadow:var(--shadow);
+}
+.recipe-search:focus{outline:none;border-color:var(--green)}
+.recipe-search::placeholder{color:var(--ink-soft)}
+.sub-tabs{display:flex;background:var(--paper-raised);border-radius:var(--r);border:1px solid var(--line);padding:4px;margin-bottom:1rem;gap:3px;box-shadow:var(--shadow);overflow-x:auto}
+.sub-tab{flex:1;text-align:center;padding:.45rem .2rem;border-radius:var(--r-sm);font-size:.72rem;font-weight:700;cursor:pointer;border:none;background:none;color:var(--ink-soft);transition:all .2s;white-space:nowrap}
+.sub-tab.active{background:var(--green);color:#fbf6ea}
+.recipe-count{font-size:.72rem;color:var(--ink-soft);font-weight:600;margin:0 0 .6rem 2px}
 .recipes-grid{display:flex;flex-direction:column;gap:.7rem}
-.recipe-card{background:white;border-radius:var(--r);border:1px solid var(--border);padding:1rem 1.1rem;cursor:pointer;transition:all .2s;box-shadow:0 2px 10px rgba(158,79,90,.06)}
-.recipe-card:hover{border-color:var(--rose-deep);box-shadow:0 4px 18px rgba(158,79,90,.13);transform:translateY(-1px)}
-.recipe-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem}
-.recipe-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:500;flex:1;margin-right:.5rem;line-height:1.3}
-.recipe-time{font-size:.7rem;color:var(--text-muted);background:var(--gold-light);padding:2px 8px;border-radius:20px;white-space:nowrap;font-weight:600}
-.recipe-desc{font-size:.81rem;color:var(--text-muted);margin-bottom:.7rem;line-height:1.45}
+.recipe-card{background:var(--paper-raised);border-radius:var(--r);border:1px solid var(--line);padding:1rem 1.1rem;cursor:pointer;transition:all .18s;box-shadow:var(--shadow);border-left:4px solid var(--gold)}
+.recipe-card:hover{border-color:var(--line);box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.recipe-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem;gap:.5rem}
+.recipe-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;flex:1;line-height:1.3}
+.recipe-time{font-size:.68rem;color:var(--gold-deep);background:var(--gold-light);padding:2px 8px;border-radius:20px;white-space:nowrap;font-weight:700;font-family:'IBM Plex Mono',monospace}
+.recipe-desc{font-size:.81rem;color:var(--ink-soft);margin-bottom:.75rem;line-height:1.5}
 .macro-row{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
-.mbox{border-radius:8px;padding:5px 4px;text-align:center}
-.mbox .mv{font-size:.82rem;font-weight:700;display:block}
-.mbox .ml{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-top:1px}
-.mb-k{background:#fde8e0}.mb-k .mv{color:#a83a20}.mb-k .ml{color:#c05030}
-.mb-p{background:var(--teal-light)}.mb-p .mv{color:#1f6e63}.mb-p .ml{color:#2d8a7d}
-.mb-c{background:#fff3e0}.mb-c .mv{color:#7a4800}.mb-c .ml{color:#9a6000}
-.mb-g{background:var(--mauve-light)}.mb-g .mv{color:#4a2a80}.mb-g .ml{color:#6a4a9a}
+.mbox{border-radius:9px;padding:6px 4px;text-align:center}
+.mbox .mv{font-size:.85rem;font-weight:700;display:block;font-family:'IBM Plex Mono',monospace}
+.mbox .ml{font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-top:2px}
+.mb-k{background:var(--clay-light)}.mb-k .mv{color:#8a3d27}.mb-k .ml{color:#a3503a}
+.mb-p{background:var(--sage-light)}.mb-p .mv{color:#3f5c2c}.mb-p .ml{color:#597a45}
+.mb-c{background:var(--gold-light)}.mb-c .mv{color:#8a6416}.mb-c .ml{color:#a97e20}
+.mb-g{background:var(--plum-light)}.mb-g .mv{color:#523153}.mb-g .ml{color:#6c4569}
 
 /* SHOPPING */
 .shop-week-tabs{display:flex;gap:6px;margin-bottom:.75rem;flex-wrap:wrap}
-.shop-week-btn{padding:.35rem .75rem;border-radius:20px;border:1.5px solid var(--border);background:white;font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all .2s}
-.shop-week-btn.active{background:var(--rose-dark);border-color:var(--rose-dark);color:white}
-.info-bar{background:white;border-radius:var(--r);border:1px solid var(--border);padding:.75rem 1rem;margin-bottom:.75rem;font-size:.82rem;color:var(--text-muted);box-shadow:0 2px 8px rgba(158,79,90,.05)}
-.shop-item{background:white;border-radius:var(--r-sm);border:1px solid var(--border);display:flex;align-items:center;gap:.75rem;padding:.6rem .9rem;margin-bottom:6px;cursor:pointer;transition:all .2s}
-.shop-item:hover{border-color:var(--rose)}
+.shop-week-btn{padding:.4rem .85rem;border-radius:20px;border:1.5px solid var(--line);background:var(--paper-raised);font-family:'Inter',sans-serif;font-size:.76rem;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:all .2s}
+.shop-week-btn.active{background:var(--green);border-color:var(--green);color:#fbf6ea}
+.info-bar{background:var(--gold-light);border-radius:var(--r);border:1px solid var(--line);padding:.7rem 1rem;margin-bottom:.75rem;font-size:.8rem;color:var(--gold-deep);font-weight:600;box-shadow:var(--shadow)}
+.shop-progress{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r);padding:.7rem 1rem;margin-bottom:.75rem;box-shadow:var(--shadow)}
+.shop-progress-top{display:flex;justify-content:space-between;font-size:.75rem;font-weight:700;color:var(--ink-soft);margin-bottom:.4rem}
+.shop-progress-bar{height:7px;border-radius:6px;background:var(--line);overflow:hidden}
+.shop-progress-fill{height:100%;background:var(--green);border-radius:6px;transition:width .25s}
+.shop-item{background:var(--paper-raised);border-radius:var(--r-sm);border:1px solid var(--line);display:flex;align-items:center;gap:.75rem;padding:.65rem .9rem;margin-bottom:6px;cursor:pointer;transition:all .18s}
+.shop-item:hover{border-color:var(--gold)}
 .shop-item.checked{opacity:.5}
-.shop-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--rose-deep);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.shop-item.checked .shop-check{background:var(--rose-dark);border-color:var(--rose-dark)}
-.shop-item.checked .shop-check::after{content:'✓';color:white;font-size:.7rem;font-weight:700}
-.shop-item.checked .stxt{text-decoration:line-through;color:var(--text-muted)}
-.stxt{font-size:.9rem;font-weight:500;flex:1}
-.sqty{font-size:.78rem;color:var(--text-muted)}
-.btn-reset{width:100%;background:none;border:1px solid var(--border);border-radius:var(--r-sm);padding:.6rem;font-family:'Nunito',sans-serif;font-size:.83rem;color:var(--text-muted);cursor:pointer;margin-top:.75rem;transition:all .2s}
-.btn-reset:hover{background:var(--blush);color:var(--rose-dark)}
+.shop-check{width:22px;height:22px;border-radius:7px;border:2px solid var(--green);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.shop-item.checked .shop-check{background:var(--green);border-color:var(--green)}
+.shop-item.checked .shop-check::after{content:'✓';color:#fbf6ea;font-size:.72rem;font-weight:700}
+.shop-item.checked .stxt{text-decoration:line-through;color:var(--ink-soft)}
+.stxt{font-size:.9rem;font-weight:600;flex:1}
+.sqty{font-size:.76rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace}
+.btn-reset{width:100%;background:none;border:1.5px dashed var(--line);border-radius:var(--r-sm);padding:.65rem;font-family:'Inter',sans-serif;font-size:.83rem;font-weight:600;color:var(--ink-soft);cursor:pointer;margin-top:.75rem;transition:all .2s}
+.btn-reset:hover{background:var(--clay-light);color:var(--clay);border-color:var(--clay)}
 
 /* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(45,31,36,.5);z-index:200;padding:1rem;overflow-y:auto;backdrop-filter:blur(3px)}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(35,30,20,.55);z-index:200;padding:1rem;overflow-y:auto;backdrop-filter:blur(3px)}
 .modal-overlay.open{display:flex;align-items:flex-start;justify-content:center}
-.modal{background:white;border-radius:var(--r);width:100%;max-width:480px;margin-top:2rem;margin-bottom:2rem;overflow:hidden;box-shadow:0 20px 60px rgba(45,31,36,.25)}
-.modal-head{background:linear-gradient(135deg,var(--rose-deep),var(--rose-dark));color:white;padding:1.1rem 1.25rem;display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem}
-.modal-head h2{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;line-height:1.3;font-style:italic}
-.modal-close{background:rgba(255,255,255,.2);border:none;color:white;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.9rem;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-.modal-body{padding:1.1rem 1.25rem}
+.modal{background:var(--paper-raised);border-radius:var(--r);width:100%;max-width:480px;margin-top:2rem;margin-bottom:2rem;overflow:hidden;box-shadow:0 24px 60px rgba(35,30,20,.3)}
+.modal-head{background:linear-gradient(150deg,var(--green),var(--green-deep));color:#fbf6ea;padding:1.15rem 1.25rem;display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;border-bottom:3px solid var(--gold)}
+.modal-head h2{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;line-height:1.3;font-style:italic}
+.modal-close{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fbf6ea;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.9rem;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.modal-body{padding:1.15rem 1.25rem}
 .modal-macros{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1rem}
-.mm-box{border-radius:10px;padding:8px 4px;text-align:center}
-.mm-box .v{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;display:block}
+.mm-box{border-radius:11px;padding:9px 4px;text-align:center}
+.mm-box .v{font-family:'IBM Plex Mono',monospace;font-size:1.1rem;font-weight:600;display:block}
 .mm-box .l{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-top:2px}
-.sec-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-muted);margin:1rem 0 .4rem}
+.sec-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:1.1rem 0 .5rem;display:flex;align-items:center;gap:.4rem}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--line)}
 .ing-list{list-style:none}
-.ing-list li{padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.85rem;display:flex;justify-content:space-between;align-items:center}
+.ing-list li{padding:.45rem 0;border-bottom:1px solid var(--line);font-size:.86rem;display:flex;justify-content:space-between;align-items:center}
 .ing-list li:last-child{border-bottom:none}
-.ing-qty{color:var(--text-muted);font-size:.8rem}
+.ing-qty{color:var(--ink-soft);font-size:.8rem;font-family:'IBM Plex Mono',monospace}
 .steps-ol{list-style:none;counter-reset:s}
-.steps-ol li{counter-increment:s;padding:.55rem 0 .55rem 2.2rem;border-bottom:1px solid var(--border);font-size:.85rem;line-height:1.5;position:relative;color:var(--text)}
+.steps-ol li{counter-increment:s;padding:.6rem 0 .6rem 2.3rem;border-bottom:1px solid var(--line);font-size:.86rem;line-height:1.55;position:relative;color:var(--ink)}
 .steps-ol li:last-child{border-bottom:none}
-.steps-ol li::before{content:counter(s);position:absolute;left:0;top:.55rem;width:20px;height:20px;background:linear-gradient(135deg,var(--rose-deep),var(--rose-dark));color:white;border-radius:50%;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center}
-.empty-state{text-align:center;padding:3rem 1rem;color:var(--text-muted)}
-.empty-state .ei{font-size:2.5rem;margin-bottom:.75rem}
-.empty-state p{font-size:.88rem;line-height:1.5}
+.steps-ol li::before{content:counter(s);position:absolute;left:0;top:.6rem;width:21px;height:21px;background:var(--green);color:#fbf6ea;border-radius:50%;font-size:.66rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace}
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--ink-soft)}
+.empty-state .ei{font-size:2.4rem;margin-bottom:.75rem;opacity:.85}
+.empty-state p{font-size:.9rem;line-height:1.55;max-width:280px;margin:0 auto}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>✨ Mi Menú</h1>
-  <div class="header-tabs">
-    <button class="tab-btn active" onclick="showView('calendario',this)">Calendario</button>
-    <button class="tab-btn" onclick="showView('recetas',this)">Recetas</button>
-    <button class="tab-btn" onclick="showView('compra',this)">Compra</button>
+  <div class="brand">
+    <span class="brand-mark">🌿</span>
+    <div>
+      <h1>Mi Menú</h1>
+      <p class="brand-sub" id="today-label"></p>
+    </div>
   </div>
 </header>
 
+<main>
 <div id="view-calendario" class="view active">
-  <div id="cal-loading" class="loading"><div class="spinner"></div><span>Cargando menú...</span></div>
+  <div id="cal-loading" class="loading"><div class="spinner"></div><span>Cargando menú…</span></div>
   <div id="cal-content" style="display:none">
     <div class="week-nav">
       <button id="btn-prev" onclick="prevWeek()">‹</button>
       <div class="week-nav-center">
         <span class="week-nav-label" id="week-label"></span>
+        <span class="week-nav-range" id="week-range"></span>
         <div class="week-nav-dots" id="week-dots"></div>
       </div>
       <button id="btn-next" onclick="nextWeek()">›</button>
@@ -189,6 +295,7 @@ header h1{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;
 </div>
 
 <div id="view-recetas" class="view">
+  <input type="search" id="recipe-search" class="recipe-search" placeholder="Buscar receta por nombre…" oninput="renderRecipes(recipeFilter)">
   <div class="sub-tabs">
     <button class="sub-tab active" onclick="filterR('desayuno',this)">Desayuno</button>
     <button class="sub-tab" onclick="filterR('comida',this)">Comida</button>
@@ -196,14 +303,26 @@ header h1{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;
     <button class="sub-tab" onclick="filterR('postre',this)">Postre</button>
     <button class="sub-tab" onclick="filterR('todas',this)">Todas</button>
   </div>
+  <div class="recipe-count" id="recipe-count"></div>
   <div id="recipes-container" class="recipes-grid"></div>
 </div>
 
 <div id="view-compra" class="view">
   <div class="shop-week-tabs" id="shop-week-tabs"></div>
-  <div class="info-bar">🛒 Lista de la semana seleccionada. Toca para marcar lo comprado.</div>
+  <div class="shop-progress" id="shop-progress" style="display:none">
+    <div class="shop-progress-top"><span id="shop-progress-label"></span><span id="shop-progress-pct" class="mono"></span></div>
+    <div class="shop-progress-bar"><div class="shop-progress-fill" id="shop-progress-fill"></div></div>
+  </div>
+  <div class="info-bar">🧺 Lista de la semana seleccionada. Toca un ingrediente para marcarlo como comprado.</div>
   <div id="shopping-container"></div>
 </div>
+</main>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" onclick="showView('calendario',this)"><span class="nav-icon">🗓️</span><span>Calendario</span></button>
+  <button class="nav-btn" onclick="showView('recetas',this)"><span class="nav-icon">📖</span><span>Recetas</span></button>
+  <button class="nav-btn" onclick="showView('compra',this)"><span class="nav-icon">🧺</span><span>Compra</span></button>
+</nav>
 
 <div class="modal-overlay" id="modal" onclick="closeOut(event)">
   <div class="modal">
@@ -242,8 +361,7 @@ async function loadData(){
     const r=await fetch('data.json?t='+Date.now());
     DATA=await r.json();
   }catch(e){ DATA={recetas:[],menu:{}}; }
-  // Detect which week we're in (0-indexed) based on real date
-  // Start from Monday of current week, map to semana1..4 cyclically
+  document.getElementById('today-label').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
   document.getElementById('cal-loading').style.display='none';
   document.getElementById('cal-content').style.display='block';
   renderWeekDots();
@@ -260,13 +378,12 @@ function getMenuDia(dia){
   const sem=getCurrentSemana();
   const menu=DATA.menu;
   if(menu[sem]) return menu[sem][dia]||{};
-  // fallback legacy flat structure
   return menu[dia]||{};
 }
 
 function showView(name,btn){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('view-'+name).classList.add('active');
   btn.classList.add('active');
   if(name==='compra') renderShopping();
@@ -311,6 +428,7 @@ function renderCal(){
   const fmt=d=>d.toLocaleDateString('es-ES',{day:'numeric',month:'short'});
 
   document.getElementById('week-label').textContent=SEM_L[currentWeek];
+  document.getElementById('week-range').textContent=fmt(mon)+' – '+fmt(end);
   document.getElementById('btn-prev').disabled=currentWeek===0;
   document.getElementById('btn-next').disabled=currentWeek===3;
 
@@ -324,9 +442,8 @@ function renderCal(){
       kcal+=r.kcal||0;
       return `<div class="cal-dot dot-${t}"></div>`;
     }).join('');
-    // add postres
-    const rpc=getR(dm['postre_comida']); if(rpc) kcal+=rpc.kcal||0;
-    const rpce=getR(dm['postre_cena']); if(rpce) kcal+=rpce.kcal||0;
+    const rpc=getR(dm['postre_comida']); if(rpc){kcal+=rpc.kcal||0;}
+    const rpce=getR(dm['postre_cena']); if(rpce){kcal+=rpce.kcal||0;}
     const isToday=date.getTime()===today.getTime();
     const isSel=selectedDay===dia;
     return `<div class="cal-cell ${isToday?'today':''} ${kcal>0?'has-food':''} ${isSel?'selected':''}" onclick="selectDay('${dia}')">
@@ -350,19 +467,50 @@ function selectDay(dia){
   }
 }
 
+// Anillo SVG de reparto calórico entre proteína / carbos / grasas (kcal aportadas por cada macro)
+function macroRingSVG(tp,tc,tg,tk,size){
+  size=size||64;
+  const r=size/2-6, cx=size/2, cy=size/2, C=2*Math.PI*r;
+  const kP=tp*4, kC=tc*4, kG=tg*9, total=kP+kC+kG;
+  if(total<=0){
+    return `<svg class="day-ring" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="7"/>
+      <text x="${cx}" y="${cy+4}" text-anchor="middle" class="day-kcal-num" font-size="11">--</text>
+    </svg>`;
+  }
+  const segs=[
+    {v:kP,color:'var(--sage)'},
+    {v:kC,color:'var(--gold)'},
+    {v:kG,color:'var(--plum)'}
+  ];
+  let offset=0, arcs='';
+  segs.forEach(s=>{
+    const len=(s.v/total)*C;
+    arcs+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.color}" stroke-width="7"
+      stroke-dasharray="${len} ${C-len}" stroke-dashoffset="${-offset}" stroke-linecap="round" transform="rotate(-90 ${cx} ${cy})"/>`;
+    offset+=len;
+  });
+  return `<svg class="day-ring" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="7"/>
+    ${arcs}
+    <text x="${cx}" y="${cy-3}" text-anchor="middle" class="day-kcal-num" font-size="14">${Math.round(tk)}</text>
+    <text x="${cx}" y="${cy+11}" text-anchor="middle" fill="rgba(251,246,234,.7)" font-size="7" font-family="Inter,sans-serif" font-weight="700" letter-spacing="0.05em">KCAL</text>
+  </svg>`;
+}
+
 function renderDayPanel(dia){
   const dm=getMenuDia(dia);
   let tk=0,tp=0,tc=0,tg=0;
   TIPOS.forEach(t=>{const r=getR(dm[t]);if(r){tk+=r.kcal||0;tp+=r.proteinas||0;tc+=r.carbos||0;tg+=r.grasas||0;}});
-  // include postre in totals (postre_comida and postre_cena may be same id but counted twice)
   ['postre_comida','postre_cena'].forEach(k=>{const r=getR(dm[k]);if(r){tk+=r.kcal||0;tp+=r.proteinas||0;tc+=r.carbos||0;tg+=r.grasas||0;}});
-  // build meal rows inserting postre after comida and after cena
+
   let mealsHtml='';
   TIPOS.forEach(tipo=>{
     const r=getR(dm[tipo]);
     mealsHtml+=`<div class="meal-item" ${r?`onclick="openModal('${r.id}')"`:''}>
       <div class="meal-icon mi-${tipo}">${TIPO_I[tipo]}</div>
       <div class="meal-info">
+        <div class="meal-type-label">${tipo}</div>
         <div class="meal-name-t ${!r?'empty':''}">${r?r.nombre:'Sin asignar'}</div>
         ${r?`<div class="meal-macros-r">
           <span class="mm mm-k">${r.kcal} kcal</span>
@@ -372,14 +520,14 @@ function renderDayPanel(dia){
         </div>`:''}
       </div>
     </div>`;
-    // insert postre after comida and after cena
     const pKey = tipo==='comida'?'postre_comida': tipo==='cena'?'postre_cena':null;
     if(pKey){
       const rp=getR(dm[pKey]);
-      if(rp) mealsHtml+=`<div class="meal-item" onclick="openModal('${rp.id}')" style="padding-left:2.5rem;background:var(--blush);">
-        <div class="meal-icon" style="background:#f9e6f0;font-size:.75rem;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;">🍮</div>
+      if(rp) mealsHtml+=`<div class="meal-item" onclick="openModal('${rp.id}')" style="padding-left:2.6rem;background:var(--berry-light);">
+        <div class="meal-icon" style="background:#fff;font-size:.8rem;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;">🍮</div>
         <div class="meal-info">
-          <div class="meal-name-t" style="font-size:.8rem;color:var(--text-muted);">Postre · ${rp.nombre}</div>
+          <div class="meal-type-label">postre</div>
+          <div class="meal-name-t" style="font-size:.85rem;">${rp.nombre}</div>
           <div class="meal-macros-r">
             <span class="mm mm-k">${rp.kcal} kcal</span>
             <span class="mm mm-p">P: ${rp.proteinas}g</span>
@@ -390,15 +538,21 @@ function renderDayPanel(dia){
       </div>`;
     }
   });
-  const meals=mealsHtml;
+
   document.getElementById('day-panel').innerHTML=`
     <div class="day-panel-head">
       <span class="day-panel-title">${DIAS_L[dia]}</span>
-      <div class="day-totals">
-        ${tk>0?`<span class="total-chip kcal-chip">${Math.round(tk)} kcal</span><span class="total-chip">P: ${Math.round(tp)}g</span><span class="total-chip">CH: ${Math.round(tc)}g</span><span class="total-chip">G: ${Math.round(tg)}g</span>`:`<span class="total-chip">Sin planificar</span>`}
-      </div>
+      ${tk>0?`
+      <div class="day-ring-wrap">
+        ${macroRingSVG(tp,tc,tg,tk,60)}
+        <div class="day-macro-legend">
+          <div class="dml-row"><span class="dml-dot" style="background:var(--sage)"></span>Prot <span class="mono">${Math.round(tp)}g</span></div>
+          <div class="dml-row"><span class="dml-dot" style="background:var(--gold)"></span>Carb <span class="mono">${Math.round(tc)}g</span></div>
+          <div class="dml-row"><span class="dml-dot" style="background:var(--plum)"></span>Gras <span class="mono">${Math.round(tg)}g</span></div>
+        </div>
+      </div>`:`<span class="day-empty-badge">Sin planificar</span>`}
     </div>
-    <div>${meals}</div>
+    <div>${mealsHtml}</div>
   `;
 }
 
@@ -411,9 +565,12 @@ function filterR(tipo,btn){
 
 function renderRecipes(tipo){
   const cont=document.getElementById('recipes-container');
-  const list=tipo==='todas'?DATA.recetas:DATA.recetas.filter(r=>r.tipo===tipo);
+  const q=(document.getElementById('recipe-search').value||'').toLowerCase().trim();
+  let list=tipo==='todas'?DATA.recetas:DATA.recetas.filter(r=>r.tipo===tipo);
+  if(q) list=list.filter(r=>(r.nombre||'').toLowerCase().includes(q));
+  document.getElementById('recipe-count').textContent=list.length===1?'1 receta':`${list.length} recetas`;
   if(!list.length){
-    cont.innerHTML=`<div class="empty-state"><div class="ei">📋</div><p>No hay recetas de este tipo todavía.</p></div>`;
+    cont.innerHTML=`<div class="empty-state"><div class="ei">🌱</div><p>${q?'Ninguna receta coincide con tu búsqueda.':'Todavía no hay recetas guardadas de este tipo. Añádelas desde el panel de administración.'}</p></div>`;
     return;
   }
   cont.innerHTML=list.map(r=>`
@@ -461,10 +618,17 @@ function renderShopping(){
     });
   });
   const sorted=Object.values(map).sort((a,b)=>a.nombre.localeCompare(b.nombre));
+  const progEl=document.getElementById('shop-progress');
   if(!sorted.length){
-    cont.innerHTML=`<div class="empty-state"><div class="ei">🛒</div><p>No hay ingredientes en el menú.</p></div>`;
+    progEl.style.display='none';
+    cont.innerHTML=`<div class="empty-state"><div class="ei">🧺</div><p>No hay ingredientes en el menú de esta semana todavía.</p></div>`;
     return;
   }
+  const checkedCount=sorted.filter(i=>checkedItems[i.nombre]).length;
+  progEl.style.display='block';
+  document.getElementById('shop-progress-label').textContent=`${checkedCount} de ${sorted.length} comprados`;
+  document.getElementById('shop-progress-pct').textContent=Math.round((checkedCount/sorted.length)*100)+'%';
+  document.getElementById('shop-progress-fill').style.width=Math.round((checkedCount/sorted.length)*100)+'%';
   cont.innerHTML=sorted.map(i=>{
     const k=i.nombre, ch=!!checkedItems[k], qty=[...new Set(i.qtys)].join(', ');
     return `<div class="shop-item ${ch?'checked':''}" onclick="toggleCheck('${k.replace(/'/g,"\\'")}')">
@@ -486,8 +650,8 @@ function openModal(id){
       <div class="mm-box mb-c"><span class="v">${r.carbos}g</span><span class="l">carbos</span></div>
       <div class="mm-box mb-g"><span class="v">${r.grasas}g</span><span class="l">grasas</span></div>
     </div>
-    ${r.descripcion?`<p style="font-size:.84rem;color:var(--text-muted);margin-bottom:.75rem;line-height:1.5">${r.descripcion}</p>`:''}
-    ${r.tiempo?`<p style="font-size:.8rem;color:var(--gold);margin-bottom:1rem;font-weight:700">⏱ ${r.tiempo}</p>`:''}
+    ${r.descripcion?`<p style="font-size:.86rem;color:var(--ink-soft);margin-bottom:.75rem;line-height:1.55">${r.descripcion}</p>`:''}
+    ${r.tiempo?`<p style="font-size:.8rem;color:var(--gold-deep);margin-bottom:1rem;font-weight:700">⏱ ${r.tiempo}</p>`:''}
     ${r.ingredientes?.length?`<div class="sec-lbl">Ingredientes</div>
       <ul class="ing-list">${r.ingredientes.map(i=>`<li><span>${i.nombre}</span><span class="ing-qty">${i.cantidad}</span></li>`).join('')}</ul>`:''}
     ${r.pasos?.length?`<div class="sec-lbl">Preparación</div>

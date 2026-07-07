@@ -665,6 +665,24 @@
       "proteinas": 21.7,
       "carbos": 0,
       "grasas": 4.5
+    },
+    {
+      "id": "i1783436182755xw41",
+      "nombre": "Judias pintas cocidas",
+      "unidad": "100g",
+      "kcal": 95,
+      "proteinas": 6.2,
+      "carbos": 13,
+      "grasas": 0.7
+    },
+    {
+      "id": "i1783436565921hx7q",
+      "nombre": "Solomillo de cerdo",
+      "unidad": "100g",
+      "kcal": 104,
+      "proteinas": 19.5,
+      "carbos": 1.5,
+      "grasas": 2.2
     }
   ],
   "recetas": [
@@ -1201,6 +1219,204 @@
         "Pica la cebolla y sofríe con aceite. Añade la carne picada y dora bien.",
         "Añade el sazonador de tacos"
       ]
+    },
+    {
+      "id": "r17834360145643n7k",
+      "nombre": "Burrito de pollo",
+      "tipo": "comida",
+      "tiempo": "25",
+      "descripcion": "",
+      "kcal": 492,
+      "proteinas": 53.7,
+      "carbos": 43.3,
+      "grasas": 8,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "180g",
+          "kcal": 198,
+          "proteinas": 41.4,
+          "carbos": 0,
+          "grasas": 2.2
+        },
+        {
+          "nombre": "Tortilla harina de trigo integral",
+          "cantidad": "70g",
+          "kcal": 201.6,
+          "proteinas": 6.4,
+          "carbos": 29.4,
+          "grasas": 5.1
+        },
+        {
+          "nombre": "Lechuga",
+          "cantidad": "40g",
+          "kcal": 5.6,
+          "proteinas": 0.4,
+          "carbos": 1.2,
+          "grasas": 0
+        },
+        {
+          "nombre": "Tomate natural",
+          "cantidad": "60g",
+          "kcal": 10.8,
+          "proteinas": 0.5,
+          "carbos": 2.3,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Judias pintas cocidas",
+          "cantidad": "80g",
+          "kcal": 76,
+          "proteinas": 5,
+          "carbos": 10.4,
+          "grasas": 0.6
+        }
+      ],
+      "pasos": [
+        "Corta el pollo en tiras. Condimenta con sal y pimienta. Cocina 10 minutos en sartén.",
+        "Añade las judías negras. Incorpora el pollo. Agrega lechuga y tomate."
+      ]
+    },
+    {
+      "id": "r1783436456557ulxz",
+      "nombre": "Albóndigas de pollo con arroz y salsa de tomate casera",
+      "tipo": "comida",
+      "tiempo": "25",
+      "descripcion": "",
+      "kcal": 555,
+      "proteinas": 47.6,
+      "carbos": 63.8,
+      "grasas": 11.5,
+      "ingredientes": [
+        {
+          "nombre": "Albondigas de pollo",
+          "cantidad": "200g",
+          "kcal": 224,
+          "proteinas": 40,
+          "carbos": 2.4,
+          "grasas": 6
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "60 g",
+          "kcal": 209.4,
+          "proteinas": 4.8,
+          "carbos": 45.6,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "200g",
+          "kcal": 54,
+          "proteinas": 2,
+          "carbos": 9.8,
+          "grasas": 0
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "70g",
+          "kcal": 26.6,
+          "proteinas": 0.8,
+          "carbos": 6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.6
+        },
+        {
+          "nombre": "Orégano",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cocer el arroz",
+        "PREPARAR LA SALSA\nPica la cebolla muy fina.\nCalienta el aceite.\nCocina la cebolla 6 minutos.\nAñade el tomate.\nIncorpora el orégano.\nCocina a fuego medio durante 10 minutos.",
+        "Dorar las albondigas y añadir la salsa"
+      ]
+    },
+    {
+      "id": "r1783436820322xfra",
+      "nombre": "Solomillo de cerdo con boniato y zanahoria asada",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "kcal": 569,
+      "proteinas": 45.2,
+      "carbos": 77.4,
+      "grasas": 9.6,
+      "ingredientes": [
+        {
+          "nombre": "Solomillo de cerdo",
+          "cantidad": "200g",
+          "kcal": 208,
+          "proteinas": 39,
+          "carbos": 3,
+          "grasas": 4.4
+        },
+        {
+          "nombre": "Batata/Boniato",
+          "cantidad": "300 g",
+          "kcal": 258,
+          "proteinas": 4.8,
+          "carbos": 60,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "150g",
+          "kcal": 61.5,
+          "proteinas": 1.4,
+          "carbos": 14.4,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5 ml",
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.6
+        },
+        {
+          "nombre": "Romero",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Precalienta la air fryer a 200°C.",
+        "Coloca el boniato en cubos y la zanahoria en rodajas. Añade aceite y romero. Mezcla bien. Hornea durante 35 minutos. Remueve a mitad del tiempo.",
+        "Calienta una sartén. Salpimenta la carne. Cocina 4 minutos por cada lado.",
+        "Baja el fuego. Cocina 3 minutos más. Deja reposar 5 minutos."
+      ]
     }
   ],
   "menu": {
@@ -1248,7 +1464,123 @@
     },
     "semana1": {
       "lunes": {
+        "desayuno": "r1783416344197uysz",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "martes": {
+        "desayuno": "r178342655835041jb",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "miercoles": {
+        "desayuno": "r1783426608931zhkv",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "jueves": {
+        "desayuno": "r1783427391045k33n",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "viernes": {
+        "desayuno": "r1783427712306hxkz",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "sabado": {
+        "desayuno": "r1783426503814knhn",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "domingo": {
+        "desayuno": "r1783433696400z1v7",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      }
+    },
+    "semana2": {
+      "lunes": {
+        "desayuno": "r1783426608931zhkv",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "martes": {
+        "desayuno": "r178342655835041jb",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "miercoles": {
+        "desayuno": "r1783427391045k33n",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "jueves": {
+        "desayuno": "r1783416344197uysz",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "viernes": {
         "desayuno": null,
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "sabado": {
+        "desayuno": "r1783426503814knhn",
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      },
+      "domingo": {
+        "desayuno": null,
+        "comida": null,
+        "postre_comida": null,
+        "cena": null,
+        "postre_cena": null,
+        "snack": null
+      }
+    },
+    "semana3": {
+      "lunes": {
+        "desayuno": "r1783427712306hxkz",
         "comida": null,
         "postre_comida": null,
         "cena": null,
@@ -1272,7 +1604,7 @@
         "snack": null
       },
       "jueves": {
-        "desayuno": null,
+        "desayuno": "r178342655835041jb",
         "comida": null,
         "postre_comida": null,
         "cena": null,
@@ -1280,7 +1612,7 @@
         "snack": null
       },
       "viernes": {
-        "desayuno": null,
+        "desayuno": "r1783433696400z1v7",
         "comida": null,
         "postre_comida": null,
         "cena": null,
@@ -1288,132 +1620,16 @@
         "snack": null
       },
       "sabado": {
-        "desayuno": null,
-        "comida": null,
+        "desayuno": "r1783426503814knhn",
+        "comida": "r17834360145643n7k",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "domingo": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      }
-    },
-    "semana2": {
-      "lunes": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "martes": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "miercoles": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "jueves": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "viernes": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "sabado": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "domingo": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      }
-    },
-    "semana3": {
-      "lunes": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "martes": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "miercoles": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "jueves": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "viernes": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "sabado": {
-        "desayuno": null,
-        "comida": null,
-        "postre_comida": null,
-        "cena": null,
-        "postre_cena": null,
-        "snack": null
-      },
-      "domingo": {
-        "desayuno": null,
-        "comida": null,
+        "desayuno": "r1783427391045k33n",
+        "comida": "r1783436820322xfra",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -1422,7 +1638,7 @@
     },
     "semana4": {
       "lunes": {
-        "desayuno": null,
+        "desayuno": "r1783427712306hxkz",
         "comida": null,
         "postre_comida": null,
         "cena": null,
@@ -1430,7 +1646,7 @@
         "snack": null
       },
       "martes": {
-        "desayuno": null,
+        "desayuno": "r1783427391045k33n",
         "comida": null,
         "postre_comida": null,
         "cena": null,
@@ -1438,7 +1654,7 @@
         "snack": null
       },
       "miercoles": {
-        "desayuno": null,
+        "desayuno": "r1783426608931zhkv",
         "comida": null,
         "postre_comida": null,
         "cena": null,
@@ -1446,7 +1662,7 @@
         "snack": null
       },
       "jueves": {
-        "desayuno": null,
+        "desayuno": "r1783433696400z1v7",
         "comida": null,
         "postre_comida": null,
         "cena": null,
@@ -1454,7 +1670,7 @@
         "snack": null
       },
       "viernes": {
-        "desayuno": null,
+        "desayuno": "r1783416344197uysz",
         "comida": null,
         "postre_comida": null,
         "cena": null,
@@ -1462,7 +1678,7 @@
         "snack": null
       },
       "sabado": {
-        "desayuno": null,
+        "desayuno": "r178342655835041jb",
         "comida": null,
         "postre_comida": null,
         "cena": null,
@@ -1470,7 +1686,7 @@
         "snack": null
       },
       "domingo": {
-        "desayuno": null,
+        "desayuno": "r1783426503814knhn",
         "comida": null,
         "postre_comida": null,
         "cena": null,

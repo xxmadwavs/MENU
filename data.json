@@ -962,6 +962,15 @@
       "proteinas": 16,
       "carbos": 3,
       "grasas": 13
+    },
+    {
+      "id": "i1785324561050o9tv",
+      "nombre": "noodles de trigo",
+      "unidad": "100g",
+      "kcal": 350,
+      "proteinas": 10,
+      "carbos": 76,
+      "grasas": 0.7
     }
   ],
   "recetas": [
@@ -2423,74 +2432,66 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Wok de pollo con noodles y verduras ajustado a 500 kcal",
-      "kcal": 836.5,
-      "proteinas": 48.9,
-      "carbos": 127.6,
-      "grasas": 17.2,
+      "kcal": 553,
+      "proteinas": 47,
+      "carbos": 74.9,
+      "grasas": 7.7,
       "ingredientes": [
         {
-          "nombre": "Noodles integrales",
-          "cantidad": "107g",
-          "kcal": 372.67,
-          "proteinas": 15,
-          "carbos": 76.06,
-          "grasas": 2.68
-        },
-        {
           "nombre": "Pechuga de pollo",
-          "cantidad": "105.2g",
-          "kcal": 115.7,
-          "proteinas": 24.2,
+          "cantidad": "150g",
+          "kcal": 165,
+          "proteinas": 34.5,
           "carbos": 0,
-          "grasas": 1.26
+          "grasas": 1.8
         },
         {
           "nombre": "Brocoli (congelado)",
-          "cantidad": "133.8g",
-          "kcal": 45.46,
-          "proteinas": 3.74,
-          "carbos": 9.37,
-          "grasas": 0.54
+          "cantidad": "100g",
+          "kcal": 34,
+          "proteinas": 2.8,
+          "carbos": 7,
+          "grasas": 0.4
         },
         {
           "nombre": "Zanahoria",
-          "cantidad": "107g",
-          "kcal": 43.99,
-          "proteinas": 0.96,
-          "carbos": 10.29,
-          "grasas": 0.21
+          "cantidad": "100g",
+          "kcal": 41,
+          "proteinas": 0.9,
+          "carbos": 9.6,
+          "grasas": 0.2
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "67g",
-          "kcal": 25.35,
-          "proteinas": 0.8,
-          "carbos": 5.76,
+          "cantidad": "50g",
+          "kcal": 19,
+          "proteinas": 0.6,
+          "carbos": 4.3,
           "grasas": 0.2
         },
         {
           "nombre": "Salsa de soja baja en sal",
-          "cantidad": "20ml",
-          "kcal": 10.63,
-          "proteinas": 1.6,
-          "carbos": 1.01,
-          "grasas": 0.02
+          "cantidad": "15ml",
+          "kcal": 8,
+          "proteinas": 1.2,
+          "carbos": 0.8,
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
-          "cantidad": "13ml",
-          "kcal": 107.52,
+          "cantidad": "5ml",
+          "kcal": 41,
           "proteinas": 0,
           "carbos": 0,
-          "grasas": 11.94
+          "grasas": 4.6
         },
         {
-          "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "33g",
-          "kcal": 115.2,
-          "proteinas": 2.64,
-          "carbos": 25.08,
-          "grasas": 0.4
+          "nombre": "noodles de trigo",
+          "cantidad": "70g",
+          "kcal": 245,
+          "proteinas": 7,
+          "carbos": 53.2,
+          "grasas": 0.5
         }
       ],
       "pasos": [

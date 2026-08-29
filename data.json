@@ -1290,42 +1290,42 @@
       "tipo": "comida",
       "tiempo": "25",
       "descripcion": "",
-      "kcal": 848.8,
-      "proteinas": 53.4,
-      "carbos": 119.8,
-      "grasas": 19.2,
+      "kcal": 550.0,
+      "proteinas": 34.5,
+      "carbos": 77.6,
+      "grasas": 12.4,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "148.4g",
-          "kcal": 163.28,
-          "proteinas": 34.14,
-          "carbos": 0,
-          "grasas": 1.81
+          "cantidad": "96.2g",
+          "kcal": 105.8,
+          "proteinas": 22.1,
+          "carbos": 0.0,
+          "grasas": 1.2
         },
         {
           "nombre": "Arroz Blanco",
-          "cantidad": "128 g",
-          "kcal": 447,
-          "proteinas": 10.25,
-          "carbos": 97.34,
-          "grasas": 1.6
+          "cantidad": "82.9g",
+          "kcal": 289.7,
+          "proteinas": 6.6,
+          "carbos": 63.1,
+          "grasas": 1.0
         },
         {
           "nombre": "Brocoli (congelado)",
-          "cantidad": "320.2g",
-          "kcal": 108.87,
-          "proteinas": 8.97,
-          "carbos": 22.41,
-          "grasas": 1.28
+          "cantidad": "207.5g",
+          "kcal": 70.5,
+          "proteinas": 5.8,
+          "carbos": 14.5,
+          "grasas": 0.8
         },
         {
           "nombre": "Aceite",
-          "cantidad": "15.8 ml",
-          "kcal": 129.61,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 14.54
+          "cantidad": "10.2ml",
+          "kcal": 84.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 9.4
         },
         {
           "nombre": "Sal",
@@ -1366,34 +1366,34 @@
       "tipo": "comida",
       "tiempo": "45",
       "descripcion": "",
-      "kcal": 851,
-      "proteinas": 46.8,
-      "carbos": 126.8,
-      "grasas": 14,
+      "kcal": 550.0,
+      "proteinas": 30.2,
+      "carbos": 82.0,
+      "grasas": 9.1,
       "ingredientes": [
         {
           "nombre": "Ternera magra",
-          "cantidad": "150.4g",
-          "kcal": 200,
-          "proteinas": 32.67,
-          "carbos": 0,
-          "grasas": 6.77
+          "cantidad": "97.2g",
+          "kcal": 129.3,
+          "proteinas": 21.1,
+          "carbos": 0.0,
+          "grasas": 4.4
         },
         {
           "nombre": "Patata",
-          "cantidad": "704.7g",
-          "kcal": 599.01,
-          "proteinas": 14.09,
-          "carbos": 126.85,
-          "grasas": 1.41
+          "cantidad": "455.5g",
+          "kcal": 387.1,
+          "proteinas": 9.1,
+          "carbos": 82.0,
+          "grasas": 0.9
         },
         {
           "nombre": "Aceite",
-          "cantidad": "6.3 ml",
-          "kcal": 51.97,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 5.83
+          "cantidad": "4.1ml",
+          "kcal": 33.6,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 3.8
         },
         {
           "nombre": "Sal",
@@ -1473,42 +1473,42 @@
       "tipo": "comida",
       "tiempo": "15",
       "descripcion": "",
-      "kcal": 933,
-      "proteinas": 54,
-      "carbos": 116.8,
-      "grasas": 25.1,
+      "kcal": 550.0,
+      "proteinas": 31.8,
+      "carbos": 68.9,
+      "grasas": 14.7,
       "ingredientes": [
         {
           "nombre": "Carne Picada Pollo",
-          "cantidad": "188.8g",
-          "kcal": 249.29,
-          "proteinas": 33.97,
-          "carbos": 0.97,
-          "grasas": 12.46
+          "cantidad": "111.3g",
+          "kcal": 147.0,
+          "proteinas": 20.0,
+          "carbos": 0.6,
+          "grasas": 7.3
         },
         {
           "nombre": "Tortilla harina de trigo integral",
-          "cantidad": "161g",
-          "kcal": 463.68,
-          "proteinas": 14.72,
-          "carbos": 67.62,
-          "grasas": 11.73
+          "cantidad": "94.9g",
+          "kcal": 273.3,
+          "proteinas": 8.7,
+          "carbos": 39.9,
+          "grasas": 6.9
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "73.6g",
-          "kcal": 28.06,
-          "proteinas": 0.92,
-          "carbos": 6.44,
-          "grasas": 0.23
+          "cantidad": "43.4g",
+          "kcal": 16.5,
+          "proteinas": 0.5,
+          "carbos": 3.8,
+          "grasas": 0.1
         },
         {
           "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "55g",
-          "kcal": 192,
-          "proteinas": 4.4,
-          "carbos": 41.8,
-          "grasas": 0.66
+          "cantidad": "32.4g",
+          "kcal": 113.2,
+          "proteinas": 2.6,
+          "carbos": 24.6,
+          "grasas": 0.4
         }
       ],
       "pasos": [
@@ -1523,58 +1523,58 @@
       "tipo": "comida",
       "tiempo": "25",
       "descripcion": "",
-      "kcal": 973,
-      "proteinas": 57.2,
-      "carbos": 138.4,
-      "grasas": 15.3,
+      "kcal": 550.0,
+      "proteinas": 32.3,
+      "carbos": 78.2,
+      "grasas": 8.5,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "108g",
-          "kcal": 118.8,
-          "proteinas": 24.84,
-          "carbos": 0,
-          "grasas": 1.32
+          "cantidad": "61g",
+          "kcal": 67.2,
+          "proteinas": 14.0,
+          "carbos": 0.0,
+          "grasas": 0.7
         },
         {
           "nombre": "Tortilla harina de trigo integral",
-          "cantidad": "161g",
-          "kcal": 463.68,
-          "proteinas": 14.72,
-          "carbos": 67.62,
-          "grasas": 11.73
+          "cantidad": "91g",
+          "kcal": 262.1,
+          "proteinas": 8.3,
+          "carbos": 38.2,
+          "grasas": 6.6
         },
         {
           "nombre": "Lechuga",
-          "cantidad": "92g",
-          "kcal": 12.88,
-          "proteinas": 0.92,
-          "carbos": 2.76,
-          "grasas": 0
+          "cantidad": "52g",
+          "kcal": 7.3,
+          "proteinas": 0.5,
+          "carbos": 1.6,
+          "grasas": 0.0
         },
         {
           "nombre": "Tomate natural",
-          "cantidad": "138g",
-          "kcal": 24.84,
-          "proteinas": 1.15,
-          "carbos": 5.29,
-          "grasas": 0.23
+          "cantidad": "78g",
+          "kcal": 14.0,
+          "proteinas": 0.7,
+          "carbos": 3.0,
+          "grasas": 0.1
         },
         {
           "nombre": "Judias pintas cocidas",
-          "cantidad": "184g",
-          "kcal": 174.8,
-          "proteinas": 11.5,
-          "carbos": 23.92,
-          "grasas": 1.38
+          "cantidad": "104g",
+          "kcal": 98.8,
+          "proteinas": 6.5,
+          "carbos": 13.5,
+          "grasas": 0.8
         },
         {
           "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "51g",
-          "kcal": 178,
-          "proteinas": 4.08,
-          "carbos": 38.76,
-          "grasas": 0.61
+          "cantidad": "28.8g",
+          "kcal": 100.6,
+          "proteinas": 2.3,
+          "carbos": 21.9,
+          "grasas": 0.3
         }
       ],
       "pasos": [
@@ -1589,50 +1589,50 @@
       "tipo": "comida",
       "tiempo": "25",
       "descripcion": "",
-      "kcal": 937.5,
-      "proteinas": 60,
-      "carbos": 119.9,
-      "grasas": 23,
+      "kcal": 550.0,
+      "proteinas": 35.2,
+      "carbos": 70.3,
+      "grasas": 13.5,
       "ingredientes": [
         {
           "nombre": "Albondigas de pollo",
-          "cantidad": "227.7g",
-          "kcal": 255.05,
-          "proteinas": 45.54,
-          "carbos": 2.73,
-          "grasas": 6.83
+          "cantidad": "133.6g",
+          "kcal": 149.6,
+          "proteinas": 26.7,
+          "carbos": 1.6,
+          "grasas": 4.0
         },
         {
           "nombre": "Arroz Blanco",
-          "cantidad": "114.5 g",
-          "kcal": 399.53,
-          "proteinas": 9.16,
-          "carbos": 87,
-          "grasas": 1.34
+          "cantidad": "67.2g",
+          "kcal": 234.4,
+          "proteinas": 5.4,
+          "carbos": 51.0,
+          "grasas": 0.8
         },
         {
           "nombre": "Tomate triturado",
-          "cantidad": "381.6g",
-          "kcal": 103.03,
-          "proteinas": 3.82,
-          "carbos": 18.7,
-          "grasas": 0
+          "cantidad": "223.9g",
+          "kcal": 60.4,
+          "proteinas": 2.2,
+          "carbos": 11.0,
+          "grasas": 0.0
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "133.6g",
-          "kcal": 50.75,
-          "proteinas": 1.53,
-          "carbos": 11.45,
-          "grasas": 0.38
+          "cantidad": "78.4g",
+          "kcal": 29.8,
+          "proteinas": 0.9,
+          "carbos": 6.7,
+          "grasas": 0.2
         },
         {
           "nombre": "Aceite",
-          "cantidad": "15.7ml",
-          "kcal": 129.13,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 14.49
+          "cantidad": "9.2ml",
+          "kcal": 75.8,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 8.5
         },
         {
           "nombre": "Orégano",
@@ -1655,42 +1655,42 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 872.9,
-      "proteinas": 47.3,
-      "carbos": 133.4,
-      "grasas": 18.4,
+      "kcal": 550.0,
+      "proteinas": 29.8,
+      "carbos": 84.1,
+      "grasas": 11.5,
       "ingredientes": [
         {
           "nombre": "Solomillo de cerdo",
-          "cantidad": "187g",
-          "kcal": 194.37,
-          "proteinas": 36.45,
-          "carbos": 2.8,
-          "grasas": 4.11
+          "cantidad": "117.8g",
+          "kcal": 122.5,
+          "proteinas": 23.0,
+          "carbos": 1.8,
+          "grasas": 2.6
         },
         {
           "nombre": "Batata/Boniato",
-          "cantidad": "526.7 g",
-          "kcal": 452.93,
-          "proteinas": 8.43,
-          "carbos": 105.33,
-          "grasas": 0.53
+          "cantidad": "331.8g",
+          "kcal": 285.4,
+          "proteinas": 5.3,
+          "carbos": 66.4,
+          "grasas": 0.3
         },
         {
           "nombre": "Zanahoria",
-          "cantidad": "263.3g",
-          "kcal": 107.97,
-          "proteinas": 2.46,
-          "carbos": 25.28,
-          "grasas": 0.53
+          "cantidad": "165.9g",
+          "kcal": 68.0,
+          "proteinas": 1.5,
+          "carbos": 15.9,
+          "grasas": 0.3
         },
         {
           "nombre": "Aceite",
-          "cantidad": "14.4 ml",
-          "kcal": 117.67,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 13.2
+          "cantidad": "9.1ml",
+          "kcal": 74.1,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 8.3
         },
         {
           "nombre": "Romero",
@@ -1730,130 +1730,130 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Burrito de chili de carne picada de pollo con judías pintas, especias y tortilla integral (844 kcal)",
-      "kcal": 843.9,
-      "proteinas": 43.3,
-      "carbos": 113,
-      "grasas": 23.3,
+      "kcal": 549.8,
+      "proteinas": 28.3,
+      "carbos": 73.7,
+      "grasas": 15.0,
       "ingredientes": [
         {
           "nombre": "Carne Picada Pollo",
-          "cantidad": "89.4g",
-          "kcal": 117.64,
-          "proteinas": 16.05,
-          "carbos": 0.44,
-          "grasas": 5.88
+          "cantidad": "58.3g",
+          "kcal": 76.7,
+          "proteinas": 10.5,
+          "carbos": 0.3,
+          "grasas": 3.8
         },
         {
           "nombre": "Judias pintas cocidas",
-          "cantidad": "135.7g",
-          "kcal": 128.8,
-          "proteinas": 8.39,
-          "carbos": 17.62,
-          "grasas": 0.94
+          "cantidad": "88.4g",
+          "kcal": 83.9,
+          "proteinas": 5.5,
+          "carbos": 11.5,
+          "grasas": 0.6
         },
         {
           "nombre": "Tomate natural",
-          "cantidad": "306g",
-          "kcal": 54.97,
-          "proteinas": 2.74,
-          "carbos": 11.89,
-          "grasas": 0.62
+          "cantidad": "199.4g",
+          "kcal": 35.8,
+          "proteinas": 1.8,
+          "carbos": 7.7,
+          "grasas": 0.4
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "119.6g",
-          "kcal": 45.08,
-          "proteinas": 1.43,
-          "carbos": 10.21,
-          "grasas": 0.34
+          "cantidad": "77.9g",
+          "kcal": 29.4,
+          "proteinas": 0.9,
+          "carbos": 6.7,
+          "grasas": 0.2
         },
         {
           "nombre": "Aceite",
-          "cantidad": "5.9ml",
-          "kcal": 48.49,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 5.39
+          "cantidad": "3.8ml",
+          "kcal": 31.6,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 3.5
         },
         {
           "nombre": "Tortilla harina de trigo integral",
-          "cantidad": "119.6g",
-          "kcal": 341.78,
-          "proteinas": 10.92,
-          "carbos": 49.84,
-          "grasas": 8.67
+          "cantidad": "77.9g",
+          "kcal": 222.7,
+          "proteinas": 7.1,
+          "carbos": 32.5,
+          "grasas": 5.7
         },
         {
           "nombre": "Zanahoria",
-          "cantidad": "85g",
-          "kcal": 34.73,
-          "proteinas": 0.76,
-          "carbos": 8.12,
-          "grasas": 0.16
+          "cantidad": "55.4g",
+          "kcal": 22.6,
+          "proteinas": 0.5,
+          "carbos": 5.3,
+          "grasas": 0.1
         },
         {
           "nombre": "Ajo fresco",
-          "cantidad": "10g (aprox 2.3 diente y medio)",
-          "kcal": 15.18,
-          "proteinas": 0.64,
-          "carbos": 3.33,
-          "grasas": 0.05
+          "cantidad": "6.5g (aprox 2.3 diente y medio)",
+          "kcal": 9.9,
+          "proteinas": 0.4,
+          "carbos": 2.2,
+          "grasas": 0.0
         },
         {
           "nombre": "Ajo en polvo",
-          "cantidad": "3.9 cdta",
-          "kcal": 16.79,
-          "proteinas": 0.85,
-          "carbos": 3.68,
-          "grasas": 0.05
+          "cantidad": "2.5cdta",
+          "kcal": 10.9,
+          "proteinas": 0.6,
+          "carbos": 2.4,
+          "grasas": 0.0
         },
         {
           "nombre": "Cebolla en polvo",
-          "cantidad": "3.9 cdta",
-          "kcal": 14.03,
-          "proteinas": 0.44,
-          "carbos": 3.27,
-          "grasas": 0.05
+          "cantidad": "2.5cdta",
+          "kcal": 9.1,
+          "proteinas": 0.3,
+          "carbos": 2.1,
+          "grasas": 0.0
         },
         {
           "nombre": "Comino molido",
-          "cantidad": "3.9 cdta",
-          "kcal": 12.88,
-          "proteinas": 0.62,
-          "carbos": 1.52,
-          "grasas": 0.76
+          "cantidad": "2.5cdta",
+          "kcal": 8.4,
+          "proteinas": 0.4,
+          "carbos": 1.0,
+          "grasas": 0.5
         },
         {
           "nombre": "Oregano seco",
-          "cantidad": "3.9 cdta",
-          "kcal": 4.37,
-          "proteinas": 0.14,
-          "carbos": 1.1,
-          "grasas": 0.07
+          "cantidad": "2.5cdta",
+          "kcal": 2.8,
+          "proteinas": 0.1,
+          "carbos": 0.7,
+          "grasas": 0.0
         },
         {
           "nombre": "Cayena molida",
-          "cantidad": "1.8 cdta",
-          "kcal": 5.06,
-          "proteinas": 0.18,
-          "carbos": 0.92,
-          "grasas": 0.28
+          "cantidad": "1.2cdta",
+          "kcal": 3.3,
+          "proteinas": 0.1,
+          "carbos": 0.6,
+          "grasas": 0.2
         },
         {
           "nombre": "Pimienta negra molida",
           "cantidad": "al gusto",
-          "kcal": 4.14,
-          "proteinas": 0.16,
-          "carbos": 1.03,
-          "grasas": 0.05
+          "kcal": 2.7,
+          "proteinas": 0.1,
+          "carbos": 0.7,
+          "grasas": 0.0
         },
         {
           "nombre": "Sal",
           "cantidad": "al gusto",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
+          "kcal": 0.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 0.0
         }
       ],
       "pasos": [
@@ -1870,66 +1870,66 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Pollo al curry ligero con arroz ajustado a 500 kcal",
-      "kcal": 892.7,
-      "proteinas": 54.2,
-      "carbos": 126.6,
-      "grasas": 19,
+      "kcal": 549.9,
+      "proteinas": 33.4,
+      "carbos": 78.0,
+      "grasas": 11.7,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "123g",
-          "kcal": 135.36,
-          "proteinas": 28.3,
-          "carbos": 0,
-          "grasas": 1.48
+          "cantidad": "75.8g",
+          "kcal": 83.4,
+          "proteinas": 17.4,
+          "carbos": 0.0,
+          "grasas": 0.9
         },
         {
           "nombre": "Arroz Blanco",
-          "cantidad": "133.4g",
-          "kcal": 465.49,
-          "proteinas": 10.68,
-          "carbos": 101.39,
-          "grasas": 1.6
+          "cantidad": "82.2g",
+          "kcal": 286.8,
+          "proteinas": 6.6,
+          "carbos": 62.5,
+          "grasas": 1.0
         },
         {
           "nombre": "Yogur griego light",
-          "cantidad": "166.7g",
-          "kcal": 121.75,
-          "proteinas": 12.17,
-          "carbos": 8.84,
-          "grasas": 4.16
+          "cantidad": "102.7g",
+          "kcal": 75.0,
+          "proteinas": 7.5,
+          "carbos": 5.4,
+          "grasas": 2.6
         },
         {
           "nombre": "Curry en polvo",
-          "cantidad": "10.7g",
-          "kcal": 34.73,
-          "proteinas": 1.52,
-          "carbos": 5.94,
-          "grasas": 1.5
+          "cantidad": "6.6g",
+          "kcal": 21.4,
+          "proteinas": 0.9,
+          "carbos": 3.7,
+          "grasas": 0.9
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "106.6g",
-          "kcal": 40.45,
-          "proteinas": 1.28,
-          "carbos": 9.16,
-          "grasas": 0.32
+          "cantidad": "65.7g",
+          "kcal": 24.9,
+          "proteinas": 0.8,
+          "carbos": 5.6,
+          "grasas": 0.2
         },
         {
           "nombre": "Ajo fresco",
-          "cantidad": "3.9g",
-          "kcal": 5.92,
-          "proteinas": 0.26,
-          "carbos": 1.3,
-          "grasas": 0.02
+          "cantidad": "2.4g",
+          "kcal": 3.6,
+          "proteinas": 0.2,
+          "carbos": 0.8,
+          "grasas": 0.0
         },
         {
           "nombre": "Aceite",
-          "cantidad": "11ml",
-          "kcal": 88.96,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 9.89
+          "cantidad": "6.8ml",
+          "kcal": 54.8,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 6.1
         }
       ],
       "pasos": [
@@ -1946,74 +1946,74 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Paella ligera de pollo ajustado a 500 kcal",
-      "kcal": 1060.2,
-      "proteinas": 58.3,
-      "carbos": 169.9,
-      "grasas": 14.9,
+      "kcal": 549.9,
+      "proteinas": 30.2,
+      "carbos": 88.1,
+      "grasas": 7.7,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "149.8g",
-          "kcal": 164.79,
-          "proteinas": 34.45,
-          "carbos": 0,
-          "grasas": 1.8
+          "cantidad": "77.7g",
+          "kcal": 85.5,
+          "proteinas": 17.9,
+          "carbos": 0.0,
+          "grasas": 0.9
         },
         {
           "nombre": "Arroz Blanco",
-          "cantidad": "148.7g",
-          "kcal": 518.79,
-          "proteinas": 11.88,
-          "carbos": 112.98,
-          "grasas": 1.79
+          "cantidad": "77.1g",
+          "kcal": 269.1,
+          "proteinas": 6.2,
+          "carbos": 58.6,
+          "grasas": 0.9
         },
         {
           "nombre": "Tomate triturado",
-          "cantidad": "178.5g",
-          "kcal": 48.13,
-          "proteinas": 1.79,
-          "carbos": 8.75,
-          "grasas": 0
+          "cantidad": "92.6g",
+          "kcal": 25.0,
+          "proteinas": 0.9,
+          "carbos": 4.5,
+          "grasas": 0.0
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "104g",
-          "kcal": 39.61,
-          "proteinas": 1.26,
-          "carbos": 8.97,
-          "grasas": 0.32
+          "cantidad": "54g",
+          "kcal": 20.5,
+          "proteinas": 0.7,
+          "carbos": 4.7,
+          "grasas": 0.2
         },
         {
           "nombre": "Guisantes",
-          "cantidad": "118.8g",
-          "kcal": 96.26,
-          "proteinas": 6.41,
-          "carbos": 17.23,
-          "grasas": 0.47
+          "cantidad": "61.6g",
+          "kcal": 49.9,
+          "proteinas": 3.3,
+          "carbos": 8.9,
+          "grasas": 0.2
         },
         {
           "nombre": "Ajo fresco",
-          "cantidad": "4.5g",
-          "kcal": 6.6,
-          "proteinas": 0.28,
-          "carbos": 1.47,
-          "grasas": 0.02
+          "cantidad": "2.3g",
+          "kcal": 3.4,
+          "proteinas": 0.1,
+          "carbos": 0.8,
+          "grasas": 0.0
         },
         {
           "nombre": "Aceite",
-          "cantidad": "11.2ml",
-          "kcal": 91.84,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 10.21
+          "cantidad": "5.8ml",
+          "kcal": 47.6,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 5.3
         },
         {
           "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "27g",
-          "kcal": 94.2,
-          "proteinas": 2.16,
-          "carbos": 20.52,
-          "grasas": 0.32
+          "cantidad": "14g",
+          "kcal": 48.9,
+          "proteinas": 1.1,
+          "carbos": 10.6,
+          "grasas": 0.2
         }
       ],
       "pasos": [
@@ -2030,90 +2030,90 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Rigattoni con carne picada de pollo ajustado a 500 kcal",
-      "kcal": 770.8,
-      "proteinas": 43.9,
-      "carbos": 115.3,
-      "grasas": 15.8,
+      "kcal": 549.9,
+      "proteinas": 31.5,
+      "carbos": 82.2,
+      "grasas": 11.2,
       "ingredientes": [
         {
           "nombre": "Rigatoni (Garofalo)",
-          "cantidad": "131.7g",
-          "kcal": 462.4,
-          "proteinas": 18.44,
-          "carbos": 92.2,
-          "grasas": 1.32
+          "cantidad": "94g",
+          "kcal": 329.9,
+          "proteinas": 13.2,
+          "carbos": 65.8,
+          "grasas": 0.9
         },
         {
           "nombre": "Carne Picada Pollo",
-          "cantidad": "117.3g",
-          "kcal": 154.77,
-          "proteinas": 21.11,
-          "carbos": 0.59,
-          "grasas": 7.74
+          "cantidad": "83.7g",
+          "kcal": 110.4,
+          "proteinas": 15.1,
+          "carbos": 0.4,
+          "grasas": 5.5
         },
         {
           "nombre": "Tomate natural",
-          "cantidad": "263.6g",
-          "kcal": 47.51,
-          "proteinas": 2.37,
-          "carbos": 10.28,
-          "grasas": 0.52
+          "cantidad": "188.1g",
+          "kcal": 33.9,
+          "proteinas": 1.7,
+          "carbos": 7.3,
+          "grasas": 0.4
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "92.2g",
-          "kcal": 35.02,
-          "proteinas": 1.1,
-          "carbos": 7.94,
-          "grasas": 0.28
+          "cantidad": "65.8g",
+          "kcal": 25.0,
+          "proteinas": 0.8,
+          "carbos": 5.7,
+          "grasas": 0.2
         },
         {
           "nombre": "Ajo fresco",
-          "cantidad": "3.9g",
-          "kcal": 5.78,
-          "proteinas": 0.24,
-          "carbos": 1.29,
-          "grasas": 0.02
+          "cantidad": "2.8g",
+          "kcal": 4.1,
+          "proteinas": 0.2,
+          "carbos": 0.9,
+          "grasas": 0.0
         },
         {
           "nombre": "Aceite",
-          "cantidad": "6.3ml",
-          "kcal": 51.76,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 5.75
+          "cantidad": "4.5ml",
+          "kcal": 36.9,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.1
         },
         {
           "nombre": "Oregano seco",
-          "cantidad": "2.6g",
-          "kcal": 6.89,
-          "proteinas": 0.24,
-          "carbos": 1.79,
-          "grasas": 0.11
+          "cantidad": "1.9g",
+          "kcal": 4.9,
+          "proteinas": 0.2,
+          "carbos": 1.3,
+          "grasas": 0.1
         },
         {
           "nombre": "Albahaca seca",
-          "cantidad": "1.3g",
-          "kcal": 3.35,
-          "proteinas": 0.3,
-          "carbos": 0.35,
-          "grasas": 0.06
+          "cantidad": "0.9g",
+          "kcal": 2.4,
+          "proteinas": 0.2,
+          "carbos": 0.2,
+          "grasas": 0.0
         },
         {
           "nombre": "Sal",
-          "cantidad": "1.4g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
+          "cantidad": "1g",
+          "kcal": 0.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 0.0
         },
         {
           "nombre": "Pimienta negra molida",
-          "cantidad": "1.3g",
-          "kcal": 3.35,
-          "proteinas": 0.13,
-          "carbos": 0.84,
-          "grasas": 0.04
+          "cantidad": "0.9g",
+          "kcal": 2.4,
+          "proteinas": 0.1,
+          "carbos": 0.6,
+          "grasas": 0.0
         }
       ],
       "pasos": [
@@ -2130,82 +2130,82 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Fajitas de pollo y calabacín ajustado a 500 kcal",
-      "kcal": 657.2,
-      "proteinas": 40.6,
-      "carbos": 85.5,
-      "grasas": 15.7,
+      "kcal": 550.1,
+      "proteinas": 33.8,
+      "carbos": 71.6,
+      "grasas": 13.0,
       "ingredientes": [
         {
           "nombre": "Tortilla harina de trigo integral",
-          "cantidad": "139.3g",
-          "kcal": 401.35,
-          "proteinas": 12.82,
-          "carbos": 58.52,
-          "grasas": 10.17
+          "cantidad": "116.6g",
+          "kcal": 335.9,
+          "proteinas": 10.7,
+          "carbos": 49.0,
+          "grasas": 8.5
         },
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "93.2g",
-          "kcal": 102.48,
-          "proteinas": 21.43,
-          "carbos": 0,
-          "grasas": 1.12
+          "cantidad": "78g",
+          "kcal": 85.8,
+          "proteinas": 17.9,
+          "carbos": 0.0,
+          "grasas": 0.9
         },
         {
           "nombre": "Calabacin",
-          "cantidad": "232.2g",
-          "kcal": 37.12,
-          "proteinas": 2.78,
-          "carbos": 7.66,
-          "grasas": 0.23
+          "cantidad": "194.3g",
+          "kcal": 31.1,
+          "proteinas": 2.3,
+          "carbos": 6.4,
+          "grasas": 0.2
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "123.7g",
-          "kcal": 46.99,
-          "proteinas": 1.49,
-          "carbos": 10.63,
-          "grasas": 0.38
+          "cantidad": "103.5g",
+          "kcal": 39.3,
+          "proteinas": 1.2,
+          "carbos": 8.9,
+          "grasas": 0.3
         },
         {
           "nombre": "Tomate natural",
-          "cantidad": "123.7g",
-          "kcal": 22.24,
-          "proteinas": 1.11,
-          "carbos": 4.82,
-          "grasas": 0.25
+          "cantidad": "103.5g",
+          "kcal": 18.6,
+          "proteinas": 0.9,
+          "carbos": 4.0,
+          "grasas": 0.2
         },
         {
           "nombre": "Aceite",
-          "cantidad": "3.4ml",
-          "kcal": 28.16,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 3.13
+          "cantidad": "2.8ml",
+          "kcal": 23.6,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 2.6
         },
         {
           "nombre": "Pimenton dulce",
-          "cantidad": "3g",
-          "kcal": 8.79,
-          "proteinas": 0.43,
-          "carbos": 1.69,
-          "grasas": 0.39
+          "cantidad": "2.5g",
+          "kcal": 7.4,
+          "proteinas": 0.4,
+          "carbos": 1.4,
+          "grasas": 0.3
         },
         {
           "nombre": "Ajo en polvo",
-          "cantidad": "3g",
-          "kcal": 10.04,
-          "proteinas": 0.5,
-          "carbos": 2.22,
-          "grasas": 0.02
+          "cantidad": "2.5g",
+          "kcal": 8.4,
+          "proteinas": 0.4,
+          "carbos": 1.9,
+          "grasas": 0.0
         },
         {
           "nombre": "Sal",
-          "cantidad": "1.7g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
+          "cantidad": "1.4g",
+          "kcal": 0.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 0.0
         }
       ],
       "pasos": [
@@ -2222,58 +2222,58 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Arroz tres delicias fitness ajustado a 500 kcal",
-      "kcal": 745.3,
-      "proteinas": 45.1,
-      "carbos": 118,
-      "grasas": 9.9,
+      "kcal": 550.0,
+      "proteinas": 33.2,
+      "carbos": 87.1,
+      "grasas": 7.3,
       "ingredientes": [
         {
           "nombre": "Arroz Blanco",
-          "cantidad": "122.5g",
-          "kcal": 427.69,
-          "proteinas": 9.8,
-          "carbos": 93.13,
-          "grasas": 1.46
+          "cantidad": "90.4g",
+          "kcal": 315.6,
+          "proteinas": 7.2,
+          "carbos": 68.7,
+          "grasas": 1.1
         },
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "87.8g",
-          "kcal": 96.53,
-          "proteinas": 20.18,
-          "carbos": 0,
-          "grasas": 1.06
+          "cantidad": "64.8g",
+          "kcal": 71.2,
+          "proteinas": 14.9,
+          "carbos": 0.0,
+          "grasas": 0.8
         },
         {
           "nombre": "Huevo",
-          "cantidad": "61.3g",
-          "kcal": 94.97,
-          "proteinas": 7.96,
-          "carbos": 0.68,
-          "grasas": 6.74
+          "cantidad": "45.2g",
+          "kcal": 70.1,
+          "proteinas": 5.9,
+          "carbos": 0.5,
+          "grasas": 5.0
         },
         {
           "nombre": "Zanahoria",
-          "cantidad": "98g",
-          "kcal": 40.16,
-          "proteinas": 0.88,
-          "carbos": 9.41,
-          "grasas": 0.2
+          "cantidad": "72.3g",
+          "kcal": 29.6,
+          "proteinas": 0.6,
+          "carbos": 6.9,
+          "grasas": 0.1
         },
         {
           "nombre": "Guisantes",
-          "cantidad": "98g",
-          "kcal": 79.48,
-          "proteinas": 5.29,
-          "carbos": 14.21,
-          "grasas": 0.39
+          "cantidad": "72.3g",
+          "kcal": 58.7,
+          "proteinas": 3.9,
+          "carbos": 10.5,
+          "grasas": 0.3
         },
         {
           "nombre": "Salsa de soja baja en sal",
-          "cantidad": "12.3ml",
-          "kcal": 6.47,
-          "proteinas": 0.99,
-          "carbos": 0.61,
-          "grasas": 0.02
+          "cantidad": "9.1ml",
+          "kcal": 4.8,
+          "proteinas": 0.7,
+          "carbos": 0.5,
+          "grasas": 0.0
         }
       ],
       "pasos": [
@@ -2290,58 +2290,58 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Pollo con cuscús y verduras ajustado a 500 kcal",
-      "kcal": 761.6,
-      "proteinas": 50.6,
-      "carbos": 108.9,
-      "grasas": 12.4,
+      "kcal": 550.0,
+      "proteinas": 36.5,
+      "carbos": 78.6,
+      "grasas": 8.9,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "137.3g",
-          "kcal": 151.01,
-          "proteinas": 31.57,
-          "carbos": 0,
-          "grasas": 1.65
+          "cantidad": "99.2g",
+          "kcal": 109.1,
+          "proteinas": 22.8,
+          "carbos": 0.0,
+          "grasas": 1.2
         },
         {
           "nombre": "Cuscus",
-          "cantidad": "122.5g",
-          "kcal": 460.44,
-          "proteinas": 15.68,
-          "carbos": 94.79,
-          "grasas": 0.74
+          "cantidad": "88.5g",
+          "kcal": 332.5,
+          "proteinas": 11.3,
+          "carbos": 68.5,
+          "grasas": 0.5
         },
         {
           "nombre": "Calabacin",
-          "cantidad": "122.5g",
-          "kcal": 19.62,
-          "proteinas": 1.47,
-          "carbos": 4.04,
-          "grasas": 0.11
+          "cantidad": "88.5g",
+          "kcal": 14.2,
+          "proteinas": 1.1,
+          "carbos": 2.9,
+          "grasas": 0.1
         },
         {
           "nombre": "Tomate natural",
-          "cantidad": "122.5g",
-          "kcal": 22.07,
-          "proteinas": 1.1,
-          "carbos": 4.77,
-          "grasas": 0.25
+          "cantidad": "88.5g",
+          "kcal": 15.9,
+          "proteinas": 0.8,
+          "carbos": 3.4,
+          "grasas": 0.2
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "61.2g",
-          "kcal": 23.22,
-          "proteinas": 0.74,
-          "carbos": 5.26,
-          "grasas": 0.18
+          "cantidad": "44.2g",
+          "kcal": 16.8,
+          "proteinas": 0.5,
+          "carbos": 3.8,
+          "grasas": 0.1
         },
         {
           "nombre": "Aceite",
-          "cantidad": "10.4ml",
-          "kcal": 85.19,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 9.48
+          "cantidad": "7.5ml",
+          "kcal": 61.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 6.8
         }
       ],
       "pasos": [
@@ -2357,66 +2357,66 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Hamburguesa fitness de pollo con patatas al horno ajustado a 500 kcal",
-      "kcal": 789.5,
-      "proteinas": 33.4,
-      "carbos": 132.9,
-      "grasas": 12,
+      "kcal": 550.0,
+      "proteinas": 23.2,
+      "carbos": 92.7,
+      "grasas": 8.4,
       "ingredientes": [
         {
           "nombre": "Carne Picada Pollo",
-          "cantidad": "86g",
-          "kcal": 113.52,
-          "proteinas": 15.47,
-          "carbos": 0.43,
-          "grasas": 5.68
+          "cantidad": "59.9g",
+          "kcal": 79.1,
+          "proteinas": 10.8,
+          "carbos": 0.3,
+          "grasas": 4.0
         },
         {
           "nombre": "Barra pan integral 30%",
-          "cantidad": "99g",
-          "kcal": 257.14,
-          "proteinas": 7.91,
-          "carbos": 49.45,
-          "grasas": 1.98
+          "cantidad": "69g",
+          "kcal": 179.1,
+          "proteinas": 5.5,
+          "carbos": 34.5,
+          "grasas": 1.4
         },
         {
           "nombre": "Patata",
-          "cantidad": "412g",
-          "kcal": 350.06,
-          "proteinas": 8.23,
-          "carbos": 74.15,
-          "grasas": 0.83
+          "cantidad": "287g",
+          "kcal": 243.9,
+          "proteinas": 5.7,
+          "carbos": 51.7,
+          "grasas": 0.6
         },
         {
           "nombre": "Tomate natural",
-          "cantidad": "82.3g",
-          "kcal": 14.72,
-          "proteinas": 0.74,
-          "carbos": 3.22,
-          "grasas": 0.16
+          "cantidad": "57.3g",
+          "kcal": 10.3,
+          "proteinas": 0.5,
+          "carbos": 2.2,
+          "grasas": 0.1
         },
         {
           "nombre": "Lechuga",
-          "cantidad": "49.4g",
-          "kcal": 6.9,
-          "proteinas": 0.44,
-          "carbos": 1.43,
-          "grasas": 0.05
+          "cantidad": "34.4g",
+          "kcal": 4.8,
+          "proteinas": 0.3,
+          "carbos": 1.0,
+          "grasas": 0.0
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "49.4g",
-          "kcal": 18.86,
-          "proteinas": 0.6,
-          "carbos": 4.25,
-          "grasas": 0.14
+          "cantidad": "34.4g",
+          "kcal": 13.1,
+          "proteinas": 0.4,
+          "carbos": 3.0,
+          "grasas": 0.1
         },
         {
           "nombre": "Aceite",
-          "cantidad": "3.4ml",
-          "kcal": 28.26,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 3.14
+          "cantidad": "2.4ml",
+          "kcal": 19.7,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 2.2
         }
       ],
       "pasos": [
@@ -2432,65 +2432,65 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Wok de pollo con noodles y verduras ajustado a 500 kcal",
-      "kcal": 553,
-      "proteinas": 47,
-      "carbos": 74.9,
+      "kcal": 550.1,
+      "proteinas": 46.8,
+      "carbos": 74.5,
       "grasas": 7.7,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "150g",
-          "kcal": 165,
-          "proteinas": 34.5,
-          "carbos": 0,
+          "cantidad": "149.2g",
+          "kcal": 164.1,
+          "proteinas": 34.3,
+          "carbos": 0.0,
           "grasas": 1.8
         },
         {
           "nombre": "Brocoli (congelado)",
-          "cantidad": "100g",
-          "kcal": 34,
+          "cantidad": "99.5g",
+          "kcal": 33.8,
           "proteinas": 2.8,
-          "carbos": 7,
+          "carbos": 7.0,
           "grasas": 0.4
         },
         {
           "nombre": "Zanahoria",
-          "cantidad": "100g",
-          "kcal": 41,
+          "cantidad": "99.5g",
+          "kcal": 40.8,
           "proteinas": 0.9,
-          "carbos": 9.6,
+          "carbos": 9.5,
           "grasas": 0.2
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "50g",
-          "kcal": 19,
+          "cantidad": "49.7g",
+          "kcal": 18.9,
           "proteinas": 0.6,
           "carbos": 4.3,
           "grasas": 0.2
         },
         {
           "nombre": "Salsa de soja baja en sal",
-          "cantidad": "15ml",
-          "kcal": 8,
+          "cantidad": "14.9ml",
+          "kcal": 8.0,
           "proteinas": 1.2,
           "carbos": 0.8,
-          "grasas": 0
+          "grasas": 0.0
         },
         {
           "nombre": "Aceite",
           "cantidad": "5ml",
-          "kcal": 41,
-          "proteinas": 0,
-          "carbos": 0,
+          "kcal": 40.8,
+          "proteinas": 0.0,
+          "carbos": 0.0,
           "grasas": 4.6
         },
         {
           "nombre": "noodles de trigo",
-          "cantidad": "70g",
-          "kcal": 245,
-          "proteinas": 7,
-          "carbos": 53.2,
+          "cantidad": "69.6g",
+          "kcal": 243.7,
+          "proteinas": 7.0,
+          "carbos": 52.9,
           "grasas": 0.5
         }
       ],
@@ -2508,82 +2508,82 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Lasaña fitness de pollo ajustado a 500 kcal",
-      "kcal": 794.2,
-      "proteinas": 48.6,
-      "carbos": 114.7,
-      "grasas": 15.6,
+      "kcal": 550.0,
+      "proteinas": 33.6,
+      "carbos": 79.4,
+      "grasas": 10.7,
       "ingredientes": [
         {
           "nombre": "Placas de lasana integral",
-          "cantidad": "134.8g",
-          "kcal": 451.57,
-          "proteinas": 17.52,
-          "carbos": 84.91,
-          "grasas": 3.37
+          "cantidad": "93.4g",
+          "kcal": 312.7,
+          "proteinas": 12.1,
+          "carbos": 58.8,
+          "grasas": 2.3
         },
         {
           "nombre": "Carne Picada Pollo",
-          "cantidad": "79.4g",
-          "kcal": 104.88,
-          "proteinas": 14.3,
-          "carbos": 0.4,
-          "grasas": 5.24
+          "cantidad": "55g",
+          "kcal": 72.6,
+          "proteinas": 9.9,
+          "carbos": 0.3,
+          "grasas": 3.6
         },
         {
           "nombre": "Tomate triturado",
-          "cantidad": "224.6g",
-          "kcal": 60.6,
-          "proteinas": 2.25,
-          "carbos": 11,
-          "grasas": 0
+          "cantidad": "155.5g",
+          "kcal": 42.0,
+          "proteinas": 1.6,
+          "carbos": 7.6,
+          "grasas": 0.0
         },
         {
           "nombre": "Calabacin",
-          "cantidad": "168.5g",
-          "kcal": 26.91,
-          "proteinas": 2.01,
-          "carbos": 5.55,
-          "grasas": 0.17
+          "cantidad": "116.7g",
+          "kcal": 18.6,
+          "proteinas": 1.4,
+          "carbos": 3.8,
+          "grasas": 0.1
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "112.3g",
-          "kcal": 42.59,
-          "proteinas": 1.36,
-          "carbos": 9.66,
-          "grasas": 0.34
+          "cantidad": "77.8g",
+          "kcal": 29.5,
+          "proteinas": 0.9,
+          "carbos": 6.7,
+          "grasas": 0.2
         },
         {
           "nombre": "Queso rallado light",
-          "cantidad": "45g",
-          "kcal": 98.75,
-          "proteinas": 10.79,
-          "carbos": 0.89,
-          "grasas": 6.29
+          "cantidad": "31.2g",
+          "kcal": 68.4,
+          "proteinas": 7.5,
+          "carbos": 0.6,
+          "grasas": 4.4
         },
         {
           "nombre": "Oregano seco",
-          "cantidad": "2.3g",
-          "kcal": 6.15,
-          "proteinas": 0.21,
-          "carbos": 1.61,
-          "grasas": 0.11
+          "cantidad": "1.6g",
+          "kcal": 4.3,
+          "proteinas": 0.1,
+          "carbos": 1.1,
+          "grasas": 0.1
         },
         {
           "nombre": "Sal",
-          "cantidad": "1.1g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
+          "cantidad": "0.8g",
+          "kcal": 0.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 0.0
         },
         {
           "nombre": "Pimienta negra molida",
-          "cantidad": "1.1g",
-          "kcal": 2.75,
-          "proteinas": 0.11,
-          "carbos": 0.68,
-          "grasas": 0.04
+          "cantidad": "0.8g",
+          "kcal": 1.9,
+          "proteinas": 0.1,
+          "carbos": 0.5,
+          "grasas": 0.0
         }
       ],
       "pasos": [
@@ -2603,58 +2603,58 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Arroz frito fitness con huevo y pollo ajustado a 500 kcal",
-      "kcal": 827.7,
-      "proteinas": 49.2,
-      "carbos": 119.9,
-      "grasas": 16.5,
+      "kcal": 550.0,
+      "proteinas": 32.7,
+      "carbos": 79.6,
+      "grasas": 11.0,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "69.5g",
-          "kcal": 76.45,
-          "proteinas": 15.98,
-          "carbos": 0,
-          "grasas": 0.83
+          "cantidad": "46.2g",
+          "kcal": 50.8,
+          "proteinas": 10.6,
+          "carbos": 0.0,
+          "grasas": 0.6
         },
         {
           "nombre": "Arroz Blanco",
-          "cantidad": "123.7g",
-          "kcal": 431.8,
-          "proteinas": 9.9,
-          "carbos": 94.05,
-          "grasas": 1.49
+          "cantidad": "82.2g",
+          "kcal": 286.9,
+          "proteinas": 6.6,
+          "carbos": 62.5,
+          "grasas": 1.0
         },
         {
           "nombre": "Huevo",
-          "cantidad": "123.7g",
-          "kcal": 191.89,
-          "proteinas": 16.08,
-          "carbos": 1.35,
-          "grasas": 13.61
+          "cantidad": "82.2g",
+          "kcal": 127.5,
+          "proteinas": 10.7,
+          "carbos": 0.9,
+          "grasas": 9.0
         },
         {
           "nombre": "Zanahoria",
-          "cantidad": "99g",
-          "kcal": 40.65,
-          "proteinas": 0.9,
-          "carbos": 9.5,
-          "grasas": 0.2
+          "cantidad": "65.8g",
+          "kcal": 27.0,
+          "proteinas": 0.6,
+          "carbos": 6.3,
+          "grasas": 0.1
         },
         {
           "nombre": "Guisantes",
-          "cantidad": "99g",
-          "kcal": 80.3,
-          "proteinas": 5.34,
-          "carbos": 14.37,
-          "grasas": 0.4
+          "cantidad": "65.8g",
+          "kcal": 53.4,
+          "proteinas": 3.5,
+          "carbos": 9.5,
+          "grasas": 0.3
         },
         {
           "nombre": "Salsa de soja baja en sal",
-          "cantidad": "12.4ml",
-          "kcal": 6.58,
-          "proteinas": 1,
-          "carbos": 0.62,
-          "grasas": 0.02
+          "cantidad": "8.2ml",
+          "kcal": 4.4,
+          "proteinas": 0.7,
+          "carbos": 0.4,
+          "grasas": 0.0
         }
       ],
       "pasos": [
@@ -2672,82 +2672,82 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Canelones de pollo ajustado a 500 kcal",
-      "kcal": 745.6,
-      "proteinas": 41.9,
-      "carbos": 104.2,
-      "grasas": 18.8,
+      "kcal": 550.0,
+      "proteinas": 30.9,
+      "carbos": 76.9,
+      "grasas": 13.8,
       "ingredientes": [
         {
           "nombre": "Placas de canelones",
-          "cantidad": "115.3g",
-          "kcal": 403.8,
-          "proteinas": 14.41,
-          "carbos": 83.05,
-          "grasas": 1.73
+          "cantidad": "85.1g",
+          "kcal": 297.9,
+          "proteinas": 10.6,
+          "carbos": 61.3,
+          "grasas": 1.3
         },
         {
           "nombre": "Carne Picada Pollo",
-          "cantidad": "72.6g",
-          "kcal": 95.82,
-          "proteinas": 13.07,
-          "carbos": 0.36,
-          "grasas": 4.79
+          "cantidad": "53.6g",
+          "kcal": 70.7,
+          "proteinas": 9.6,
+          "carbos": 0.3,
+          "grasas": 3.5
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "115.3g",
-          "kcal": 43.85,
-          "proteinas": 1.39,
-          "carbos": 9.91,
-          "grasas": 0.34
+          "cantidad": "85.1g",
+          "kcal": 32.3,
+          "proteinas": 1.0,
+          "carbos": 7.3,
+          "grasas": 0.3
         },
         {
           "nombre": "Tomate triturado",
-          "cantidad": "173g",
-          "kcal": 46.71,
-          "proteinas": 1.73,
-          "carbos": 8.46,
-          "grasas": 0
+          "cantidad": "127.6g",
+          "kcal": 34.5,
+          "proteinas": 1.3,
+          "carbos": 6.2,
+          "grasas": 0.0
         },
         {
           "nombre": "Queso rallado light",
-          "cantidad": "46g",
-          "kcal": 101.43,
-          "proteinas": 11.08,
-          "carbos": 0.92,
-          "grasas": 6.46
+          "cantidad": "33.9g",
+          "kcal": 74.8,
+          "proteinas": 8.2,
+          "carbos": 0.7,
+          "grasas": 4.8
         },
         {
           "nombre": "Aceite",
-          "cantidad": "5.9ml",
-          "kcal": 48.09,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 5.34
+          "cantidad": "4.4ml",
+          "kcal": 35.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 3.9
         },
         {
           "nombre": "Sal",
-          "cantidad": "1.2g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
+          "cantidad": "0.9g",
+          "kcal": 0.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 0.0
         },
         {
           "nombre": "Pimienta negra molida",
-          "cantidad": "1.1g",
-          "kcal": 2.86,
-          "proteinas": 0.11,
-          "carbos": 0.72,
-          "grasas": 0.04
+          "cantidad": "0.8g",
+          "kcal": 2.1,
+          "proteinas": 0.1,
+          "carbos": 0.5,
+          "grasas": 0.0
         },
         {
           "nombre": "Oregano seco",
-          "cantidad": "1.1g",
-          "kcal": 3.05,
+          "cantidad": "0.8g",
+          "kcal": 2.2,
           "proteinas": 0.1,
-          "carbos": 0.78,
-          "grasas": 0.06
+          "carbos": 0.6,
+          "grasas": 0.0
         }
       ],
       "pasos": [
@@ -2766,42 +2766,42 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Ñoquis con pollo y tomate ajustado a 500 kcal",
-      "kcal": 808.2,
-      "proteinas": 55,
-      "carbos": 98,
-      "grasas": 18.5,
+      "kcal": 550.0,
+      "proteinas": 37.4,
+      "carbos": 66.7,
+      "grasas": 12.5,
       "ingredientes": [
         {
           "nombre": "Gnocchi",
-          "cantidad": "265.5g",
-          "kcal": 403.59,
-          "proteinas": 9.29,
-          "carbos": 84.97,
-          "grasas": 2.12
+          "cantidad": "180.7g",
+          "kcal": 274.7,
+          "proteinas": 6.3,
+          "carbos": 57.8,
+          "grasas": 1.4
         },
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "187g",
-          "kcal": 205.71,
-          "proteinas": 43.01,
-          "carbos": 0,
-          "grasas": 2.25
+          "cantidad": "127.3g",
+          "kcal": 140.0,
+          "proteinas": 29.3,
+          "carbos": 0.0,
+          "grasas": 1.5
         },
         {
           "nombre": "Tomate triturado",
-          "cantidad": "265.5g",
-          "kcal": 71.72,
-          "proteinas": 2.65,
-          "carbos": 13.02,
-          "grasas": 0
+          "cantidad": "180.7g",
+          "kcal": 48.8,
+          "proteinas": 1.8,
+          "carbos": 8.9,
+          "grasas": 0.0
         },
         {
           "nombre": "Aceite",
-          "cantidad": "15.5ml",
-          "kcal": 127.13,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 14.12
+          "cantidad": "10.5ml",
+          "kcal": 86.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 9.6
         }
       ],
       "pasos": [
@@ -2817,50 +2817,50 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Pechuga de pollo rellena de queso light y espinacas ajustado a 500 kcal",
-      "kcal": 809.9,
-      "proteinas": 59.2,
-      "carbos": 97.6,
-      "grasas": 19.4,
+      "kcal": 550.0,
+      "proteinas": 40.2,
+      "carbos": 66.3,
+      "grasas": 13.3,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "178.4g",
-          "kcal": 196.2,
-          "proteinas": 41.03,
-          "carbos": 0,
-          "grasas": 2.14
+          "cantidad": "121.2g",
+          "kcal": 133.2,
+          "proteinas": 27.9,
+          "carbos": 0.0,
+          "grasas": 1.5
         },
         {
           "nombre": "Queso Light Philadelphia",
-          "cantidad": "64.6g",
-          "kcal": 99.38,
-          "proteinas": 3.81,
-          "carbos": 2.84,
-          "grasas": 7.75
+          "cantidad": "43.9g",
+          "kcal": 67.5,
+          "proteinas": 2.6,
+          "carbos": 1.9,
+          "grasas": 5.3
         },
         {
           "nombre": "Espinacas frescas",
-          "cantidad": "205.2g",
-          "kcal": 47.15,
-          "proteinas": 5.13,
-          "carbos": 7.38,
-          "grasas": 0.83
+          "cantidad": "139.4g",
+          "kcal": 32.0,
+          "proteinas": 3.5,
+          "carbos": 5.0,
+          "grasas": 0.6
         },
         {
           "nombre": "Aceite",
-          "cantidad": "8ml",
-          "kcal": 65.75,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 7.3
+          "cantidad": "5.4ml",
+          "kcal": 44.7,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 5.0
         },
         {
           "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "115g",
-          "kcal": 401.4,
-          "proteinas": 9.2,
-          "carbos": 87.4,
-          "grasas": 1.38
+          "cantidad": "78.1g",
+          "kcal": 272.6,
+          "proteinas": 6.2,
+          "carbos": 59.4,
+          "grasas": 0.9
         }
       ],
       "pasos": [
@@ -2878,58 +2878,58 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Risotto ligero de pollo ajustado a 500 kcal",
-      "kcal": 702.4,
-      "proteinas": 37.6,
-      "carbos": 109,
-      "grasas": 11.2,
+      "kcal": 550.1,
+      "proteinas": 29.4,
+      "carbos": 85.4,
+      "grasas": 8.6,
       "ingredientes": [
         {
           "nombre": "Arroz Blanco",
-          "cantidad": "132.4g",
-          "kcal": 461.97,
-          "proteinas": 10.59,
-          "carbos": 100.62,
-          "grasas": 1.59
+          "cantidad": "103.7g",
+          "kcal": 361.7,
+          "proteinas": 8.3,
+          "carbos": 78.8,
+          "grasas": 1.2
         },
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "77g",
-          "kcal": 84.65,
-          "proteinas": 17.7,
-          "carbos": 0,
-          "grasas": 0.92
+          "cantidad": "60.3g",
+          "kcal": 66.3,
+          "proteinas": 13.9,
+          "carbos": 0.0,
+          "grasas": 0.7
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "66.2g",
-          "kcal": 25.23,
-          "proteinas": 0.8,
-          "carbos": 5.69,
-          "grasas": 0.19
+          "cantidad": "51.8g",
+          "kcal": 19.8,
+          "proteinas": 0.6,
+          "carbos": 4.5,
+          "grasas": 0.1
         },
         {
           "nombre": "Caldo pollo",
-          "cantidad": "397ml",
-          "kcal": 19.88,
-          "proteinas": 0,
-          "carbos": 2.39,
-          "grasas": 0
+          "cantidad": "310.8ml",
+          "kcal": 15.6,
+          "proteinas": 0.0,
+          "carbos": 1.9,
+          "grasas": 0.0
         },
         {
           "nombre": "Queso parmesano light",
-          "cantidad": "26.4g",
-          "kcal": 84.69,
-          "proteinas": 8.47,
-          "carbos": 0.26,
-          "grasas": 5.55
+          "cantidad": "20.7g",
+          "kcal": 66.3,
+          "proteinas": 6.6,
+          "carbos": 0.2,
+          "grasas": 4.3
         },
         {
           "nombre": "Aceite",
-          "cantidad": "3.2ml",
-          "kcal": 26.03,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 2.9
+          "cantidad": "2.5ml",
+          "kcal": 20.4,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 2.3
         }
       ],
       "pasos": [
@@ -2947,42 +2947,42 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Tortellini de pollo con salsa ligera ajustado a 500 kcal",
-      "kcal": 802.4,
-      "proteinas": 34.5,
-      "carbos": 93.8,
-      "grasas": 28.9,
+      "kcal": 550.0,
+      "proteinas": 23.7,
+      "carbos": 64.3,
+      "grasas": 19.9,
       "ingredientes": [
         {
           "nombre": "Tortellini (Giovanni Rana)",
-          "cantidad": "272.7g",
-          "kcal": 681.86,
-          "proteinas": 27.27,
-          "carbos": 87.27,
-          "grasas": 21.83
+          "cantidad": "186.9g",
+          "kcal": 467.4,
+          "proteinas": 18.7,
+          "carbos": 59.8,
+          "grasas": 15.0
         },
         {
           "nombre": "Tomate triturado",
-          "cantidad": "124g",
-          "kcal": 33.48,
-          "proteinas": 1.25,
-          "carbos": 6.07,
-          "grasas": 0
+          "cantidad": "85g",
+          "kcal": 22.9,
+          "proteinas": 0.9,
+          "carbos": 4.2,
+          "grasas": 0.0
         },
         {
           "nombre": "Queso rallado light",
-          "cantidad": "24.8g",
-          "kcal": 54.48,
-          "proteinas": 5.94,
-          "carbos": 0.49,
-          "grasas": 3.46
+          "cantidad": "17g",
+          "kcal": 37.3,
+          "proteinas": 4.1,
+          "carbos": 0.3,
+          "grasas": 2.4
         },
         {
           "nombre": "Aceite",
-          "cantidad": "4ml",
-          "kcal": 32.61,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 3.63
+          "cantidad": "2.7ml",
+          "kcal": 22.4,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 2.5
         }
       ],
       "pasos": [
@@ -2998,66 +2998,66 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Muslos de pollo al horno con patatas ajustado a 500 kcal",
-      "kcal": 756.8,
-      "proteinas": 38.7,
-      "carbos": 98.6,
-      "grasas": 20.7,
+      "kcal": 550.1,
+      "proteinas": 28.1,
+      "carbos": 71.7,
+      "grasas": 15.1,
       "ingredientes": [
         {
           "nombre": "Muslo de pollo (sin piel)",
-          "cantidad": "152g",
-          "kcal": 227.85,
-          "proteinas": 27.34,
-          "carbos": 0,
-          "grasas": 12.15
+          "cantidad": "110.5g",
+          "kcal": 165.6,
+          "proteinas": 19.9,
+          "carbos": 0.0,
+          "grasas": 8.8
         },
         {
           "nombre": "Patata",
-          "cantidad": "442.3g",
-          "kcal": 376.05,
-          "proteinas": 8.85,
-          "carbos": 79.6,
-          "grasas": 0.87
+          "cantidad": "321.4g",
+          "kcal": 273.3,
+          "proteinas": 6.4,
+          "carbos": 57.8,
+          "grasas": 0.6
         },
         {
           "nombre": "Aceite",
-          "cantidad": "8.1ml",
-          "kcal": 66.4,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 7.38
+          "cantidad": "5.9ml",
+          "kcal": 48.3,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 5.4
         },
         {
           "nombre": "Sal",
-          "cantidad": "1.9g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
+          "cantidad": "1.4g",
+          "kcal": 0.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 0.0
         },
         {
           "nombre": "Pimienta negra molida",
-          "cantidad": "2.3g",
-          "kcal": 5.75,
-          "proteinas": 0.23,
-          "carbos": 1.47,
-          "grasas": 0.07
+          "cantidad": "1.7g",
+          "kcal": 4.2,
+          "proteinas": 0.2,
+          "carbos": 1.1,
+          "grasas": 0.1
         },
         {
           "nombre": "Ajo en polvo",
-          "cantidad": "4.4g",
-          "kcal": 14.49,
-          "proteinas": 0.74,
-          "carbos": 3.17,
-          "grasas": 0.02
+          "cantidad": "3.2g",
+          "kcal": 10.5,
+          "proteinas": 0.5,
+          "carbos": 2.3,
+          "grasas": 0.0
         },
         {
           "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "19g",
-          "kcal": 66.3,
-          "proteinas": 1.52,
-          "carbos": 14.44,
-          "grasas": 0.23
+          "cantidad": "13.8g",
+          "kcal": 48.2,
+          "proteinas": 1.1,
+          "carbos": 10.5,
+          "grasas": 0.2
         }
       ],
       "pasos": [
@@ -3072,58 +3072,58 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Cuscús con carne picada de ternera ajustado a 500 kcal",
-      "kcal": 757,
-      "proteinas": 42.3,
-      "carbos": 88.1,
-      "grasas": 25.9,
+      "kcal": 549.9,
+      "proteinas": 30.7,
+      "carbos": 64.0,
+      "grasas": 18.8,
       "ingredientes": [
         {
           "nombre": "Cuscus",
-          "cantidad": "88.7g",
-          "kcal": 333.47,
-          "proteinas": 11.35,
-          "carbos": 68.67,
-          "grasas": 0.53
+          "cantidad": "64.4g",
+          "kcal": 242.3,
+          "proteinas": 8.2,
+          "carbos": 49.9,
+          "grasas": 0.4
         },
         {
           "nombre": "Carne picada vacuno",
-          "cantidad": "159.6g",
-          "kcal": 303.21,
-          "proteinas": 28.73,
-          "carbos": 3.83,
-          "grasas": 19.15
+          "cantidad": "116g",
+          "kcal": 220.3,
+          "proteinas": 20.9,
+          "carbos": 2.8,
+          "grasas": 13.9
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "62g",
-          "kcal": 23.59,
-          "proteinas": 0.74,
-          "carbos": 5.33,
-          "grasas": 0.19
+          "cantidad": "45g",
+          "kcal": 17.1,
+          "proteinas": 0.5,
+          "carbos": 3.9,
+          "grasas": 0.1
         },
         {
           "nombre": "Tomate natural",
-          "cantidad": "88.7g",
-          "kcal": 16.02,
-          "proteinas": 0.8,
-          "carbos": 3.46,
-          "grasas": 0.18
+          "cantidad": "64.4g",
+          "kcal": 11.6,
+          "proteinas": 0.6,
+          "carbos": 2.5,
+          "grasas": 0.1
         },
         {
           "nombre": "Zanahoria",
-          "cantidad": "71g",
-          "kcal": 29.07,
-          "proteinas": 0.64,
-          "carbos": 6.81,
-          "grasas": 0.15
+          "cantidad": "51.6g",
+          "kcal": 21.1,
+          "proteinas": 0.5,
+          "carbos": 4.9,
+          "grasas": 0.1
         },
         {
           "nombre": "Aceite",
-          "cantidad": "6.3ml",
-          "kcal": 51.61,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 5.73
+          "cantidad": "4.6ml",
+          "kcal": 37.5,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.2
         }
       ],
       "pasos": [
@@ -3140,74 +3140,74 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Guiso de garbanzos con pollo ajustado a 500 kcal",
-      "kcal": 749.5,
-      "proteinas": 46,
-      "carbos": 80.4,
-      "grasas": 24.5,
+      "kcal": 550.0,
+      "proteinas": 33.8,
+      "carbos": 59.1,
+      "grasas": 18.1,
       "ingredientes": [
         {
           "nombre": "Garbanzos (bote)",
-          "cantidad": "265.8g",
-          "kcal": 252.5,
-          "proteinas": 14.35,
-          "carbos": 31.89,
-          "grasas": 5.31
+          "cantidad": "195g",
+          "kcal": 185.3,
+          "proteinas": 10.5,
+          "carbos": 23.4,
+          "grasas": 3.9
         },
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "111.8g",
-          "kcal": 123.03,
-          "proteinas": 25.72,
-          "carbos": 0,
-          "grasas": 1.35
+          "cantidad": "82g",
+          "kcal": 90.3,
+          "proteinas": 18.9,
+          "carbos": 0.0,
+          "grasas": 1.0
         },
         {
           "nombre": "Zanahoria",
-          "cantidad": "141.8g",
-          "kcal": 58.07,
-          "proteinas": 1.28,
-          "carbos": 13.61,
-          "grasas": 0.28
+          "cantidad": "104.1g",
+          "kcal": 42.6,
+          "proteinas": 0.9,
+          "carbos": 10.0,
+          "grasas": 0.2
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "124g",
-          "kcal": 47.1,
-          "proteinas": 1.48,
-          "carbos": 10.67,
-          "grasas": 0.37
+          "cantidad": "91g",
+          "kcal": 34.6,
+          "proteinas": 1.1,
+          "carbos": 7.8,
+          "grasas": 0.3
         },
         {
           "nombre": "Tomate natural",
-          "cantidad": "177g",
-          "kcal": 31.81,
-          "proteinas": 1.59,
-          "carbos": 6.9,
-          "grasas": 0.36
+          "cantidad": "129.9g",
+          "kcal": 23.3,
+          "proteinas": 1.2,
+          "carbos": 5.1,
+          "grasas": 0.3
         },
         {
           "nombre": "Caldo pollo",
-          "cantidad": "354.3ml",
-          "kcal": 17.76,
-          "proteinas": 0,
-          "carbos": 2.13,
-          "grasas": 0
+          "cantidad": "260ml",
+          "kcal": 13.0,
+          "proteinas": 0.0,
+          "carbos": 1.6,
+          "grasas": 0.0
         },
         {
           "nombre": "Aceite",
-          "cantidad": "18.2ml",
-          "kcal": 149.44,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 16.61
+          "cantidad": "13.4ml",
+          "kcal": 109.7,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 12.2
         },
         {
           "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "20g",
-          "kcal": 69.8,
-          "proteinas": 1.6,
-          "carbos": 15.2,
-          "grasas": 0.24
+          "cantidad": "14.7g",
+          "kcal": 51.2,
+          "proteinas": 1.2,
+          "carbos": 11.2,
+          "grasas": 0.2
         }
       ],
       "pasos": [
@@ -3225,50 +3225,50 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Solomillo de cerdo con arroz al limón ajustado a 500 kcal",
-      "kcal": 504,
-      "proteinas": 37.1,
-      "carbos": 68.8,
-      "grasas": 9.1,
+      "kcal": 550.0,
+      "proteinas": 40.5,
+      "carbos": 75.1,
+      "grasas": 9.9,
       "ingredientes": [
         {
           "nombre": "Solomillo de cerdo",
-          "cantidad": "154g",
-          "kcal": 160.33,
-          "proteinas": 30.06,
-          "carbos": 2.31,
-          "grasas": 3.39
+          "cantidad": "168g",
+          "kcal": 174.9,
+          "proteinas": 32.8,
+          "carbos": 2.5,
+          "grasas": 3.7
         },
         {
           "nombre": "Arroz Blanco",
-          "cantidad": "85g",
-          "kcal": 296.7,
-          "proteinas": 6.8,
-          "carbos": 64.6,
-          "grasas": 1
+          "cantidad": "92.7g",
+          "kcal": 323.7,
+          "proteinas": 7.4,
+          "carbos": 70.5,
+          "grasas": 1.1
         },
         {
           "nombre": "Limon",
-          "cantidad": "18.5g",
-          "kcal": 5.31,
+          "cantidad": "20.2g",
+          "kcal": 5.8,
           "proteinas": 0.2,
-          "carbos": 1.72,
-          "grasas": 0.06
+          "carbos": 1.9,
+          "grasas": 0.1
         },
         {
           "nombre": "Perejil fresco",
-          "cantidad": "2.4g",
-          "kcal": 0.86,
-          "proteinas": 0.07,
-          "carbos": 0.14,
-          "grasas": 0.01
+          "cantidad": "2.6g",
+          "kcal": 0.9,
+          "proteinas": 0.1,
+          "carbos": 0.2,
+          "grasas": 0.0
         },
         {
           "nombre": "Aceite",
-          "cantidad": "5ml",
-          "kcal": 41,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 4.6
+          "cantidad": "5.5ml",
+          "kcal": 44.7,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 5.0
         }
       ],
       "pasos": [
@@ -3285,74 +3285,74 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Pollo mediterráneo al horno ajustado a 500 kcal",
-      "kcal": 935.2,
-      "proteinas": 60.8,
-      "carbos": 136.6,
-      "grasas": 19,
+      "kcal": 549.8,
+      "proteinas": 35.7,
+      "carbos": 80.4,
+      "grasas": 11.2,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "145.8g",
-          "kcal": 160.37,
-          "proteinas": 33.53,
-          "carbos": 0,
-          "grasas": 1.75
+          "cantidad": "85.7g",
+          "kcal": 94.3,
+          "proteinas": 19.7,
+          "carbos": 0.0,
+          "grasas": 1.0
         },
         {
           "nombre": "Tomate natural",
-          "cantidad": "464.8g",
-          "kcal": 83.72,
-          "proteinas": 4.19,
-          "carbos": 18.12,
-          "grasas": 0.92
+          "cantidad": "273.4g",
+          "kcal": 49.2,
+          "proteinas": 2.5,
+          "carbos": 10.7,
+          "grasas": 0.5
         },
         {
           "nombre": "Calabacin",
-          "cantidad": "372g",
-          "kcal": 59.57,
-          "proteinas": 4.46,
-          "carbos": 12.28,
-          "grasas": 0.37
+          "cantidad": "218.8g",
+          "kcal": 35.0,
+          "proteinas": 2.6,
+          "carbos": 7.2,
+          "grasas": 0.2
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "217g",
-          "kcal": 82.34,
-          "proteinas": 2.6,
-          "carbos": 18.65,
-          "grasas": 0.64
+          "cantidad": "127.6g",
+          "kcal": 48.4,
+          "proteinas": 1.5,
+          "carbos": 11.0,
+          "grasas": 0.4
         },
         {
           "nombre": "Oregano seco",
-          "cantidad": "6.2g",
-          "kcal": 16.56,
-          "proteinas": 0.55,
-          "carbos": 4.28,
-          "grasas": 0.28
+          "cantidad": "3.6g",
+          "kcal": 9.7,
+          "proteinas": 0.3,
+          "carbos": 2.5,
+          "grasas": 0.2
         },
         {
           "nombre": "Mozzarella light",
-          "cantidad": "24.3g",
-          "kcal": 43.68,
-          "proteinas": 6.8,
-          "carbos": 0.49,
-          "grasas": 1.7
+          "cantidad": "14.3g",
+          "kcal": 25.7,
+          "proteinas": 4.0,
+          "carbos": 0.3,
+          "grasas": 1.0
         },
         {
           "nombre": "Aceite",
-          "cantidad": "13.2ml",
-          "kcal": 108.54,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 12.06
+          "cantidad": "7.8ml",
+          "kcal": 63.8,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 7.1
         },
         {
           "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "109g",
-          "kcal": 380.4,
-          "proteinas": 8.72,
-          "carbos": 82.84,
-          "grasas": 1.31
+          "cantidad": "64.1g",
+          "kcal": 223.7,
+          "proteinas": 5.1,
+          "carbos": 48.7,
+          "grasas": 0.8
         }
       ],
       "pasos": [
@@ -5837,114 +5837,114 @@
       "tipo": "comida",
       "tiempo": "25",
       "descripcion": "",
-      "kcal": 886.1,
-      "proteinas": 68.5,
-      "carbos": 147.6,
-      "grasas": 21.2,
+      "kcal": 550.0,
+      "proteinas": 42.5,
+      "carbos": 91.8,
+      "grasas": 13.1,
       "ingredientes": [
         {
           "nombre": "Espagueti (garofalo)",
-          "cantidad": "161g",
-          "kcal": 404.11,
-          "proteinas": 22.54,
-          "carbos": 112.7,
-          "grasas": 1.61
+          "cantidad": "99.9g",
+          "kcal": 250.8,
+          "proteinas": 14.0,
+          "carbos": 70.0,
+          "grasas": 1.0
         },
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "108g",
-          "kcal": 118.8,
-          "proteinas": 24.84,
-          "carbos": 0,
-          "grasas": 1.3
+          "cantidad": "67g",
+          "kcal": 73.7,
+          "proteinas": 15.4,
+          "carbos": 0.0,
+          "grasas": 0.8
         },
         {
           "nombre": "Queso fresco batido 0%",
-          "cantidad": "60g",
-          "kcal": 27,
-          "proteinas": 4.8,
-          "carbos": 2.4,
-          "grasas": 0
+          "cantidad": "37.2g",
+          "kcal": 16.8,
+          "proteinas": 3.0,
+          "carbos": 1.5,
+          "grasas": 0.0
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "138g",
-          "kcal": 52.44,
-          "proteinas": 1.66,
-          "carbos": 11.87,
-          "grasas": 0.41
+          "cantidad": "85.7g",
+          "kcal": 32.5,
+          "proteinas": 1.0,
+          "carbos": 7.4,
+          "grasas": 0.3
         },
         {
           "nombre": "Ajo fresco",
-          "cantidad": "4.6 dientes (23g)",
-          "kcal": 34.27,
-          "proteinas": 1.47,
-          "carbos": 7.59,
-          "grasas": 0.11
+          "cantidad": "2.9dientes (23g)",
+          "kcal": 21.3,
+          "proteinas": 0.9,
+          "carbos": 4.7,
+          "grasas": 0.1
         },
         {
           "nombre": "Limon",
-          "cantidad": "46ml de zumo (46g)",
-          "kcal": 13.34,
-          "proteinas": 0.51,
-          "carbos": 4.28,
-          "grasas": 0.14
+          "cantidad": "28.6ml de zumo (46g)",
+          "kcal": 8.3,
+          "proteinas": 0.3,
+          "carbos": 2.7,
+          "grasas": 0.1
         },
         {
           "nombre": "Queso parmesano light",
-          "cantidad": "34.5g, rallado",
-          "kcal": 110.4,
-          "proteinas": 11.04,
-          "carbos": 0.34,
-          "grasas": 7.24
+          "cantidad": "21.4g, rallado",
+          "kcal": 68.5,
+          "proteinas": 6.9,
+          "carbos": 0.2,
+          "grasas": 4.5
         },
         {
           "nombre": "Aceite",
-          "cantidad": "11ml",
-          "kcal": 90.1,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 10
+          "cantidad": "6.8ml",
+          "kcal": 55.9,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 6.2
         },
         {
           "nombre": "Oregano seco",
-          "cantidad": "2.3 cucharadita (4.6g)",
-          "kcal": 12.19,
-          "proteinas": 0.41,
-          "carbos": 3.17,
-          "grasas": 0.21
+          "cantidad": "1.4cucharadita (4.6g)",
+          "kcal": 7.6,
+          "proteinas": 0.3,
+          "carbos": 2.0,
+          "grasas": 0.1
         },
         {
           "nombre": "Ajo en polvo",
-          "cantidad": "2.3 cucharadita (4.6g)",
-          "kcal": 15.18,
-          "proteinas": 0.76,
-          "carbos": 3.33,
-          "grasas": 0.02
+          "cantidad": "1.4cucharadita (4.6g)",
+          "kcal": 9.4,
+          "proteinas": 0.5,
+          "carbos": 2.1,
+          "grasas": 0.0
         },
         {
           "nombre": "Pimienta negra molida",
           "cantidad": "al gusto (2.3g)",
-          "kcal": 5.75,
-          "proteinas": 0.23,
-          "carbos": 1.47,
-          "grasas": 0.07
+          "kcal": 3.6,
+          "proteinas": 0.1,
+          "carbos": 0.9,
+          "grasas": 0.0
         },
         {
           "nombre": "Sal",
           "cantidad": "al gusto (1g)",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
+          "kcal": 0.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 0.0
         },
         {
           "nombre": "Perejil fresco",
-          "cantidad": "2.3 cucharada, opcional (6.9g)",
-          "kcal": 2.53,
-          "proteinas": 0.21,
-          "carbos": 0.41,
-          "grasas": 0.05
+          "cantidad": "1.4cucharada, opcional (6.9g)",
+          "kcal": 1.6,
+          "proteinas": 0.1,
+          "carbos": 0.3,
+          "grasas": 0.0
         }
       ],
       "pasos": [

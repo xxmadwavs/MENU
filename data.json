@@ -857,12 +857,12 @@
     },
     {
       "id": "i1783883600938ohyi",
-      "nombre": "Tortellini (Giovanni Rana)",
+      "nombre": "Tortellini queso y jamón (Giovanni Rana)",
       "unidad": "100g",
-      "kcal": 250,
-      "proteinas": 10,
-      "carbos": 32,
-      "grasas": 8
+      "kcal": 269,
+      "proteinas": 12,
+      "carbos": 26,
+      "grasas": 12
     },
     {
       "id": "i1783883600938pp77",
@@ -2947,18 +2947,26 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Tortellini de pollo con salsa ligera ajustado a 500 kcal",
-      "kcal": 550.0,
-      "proteinas": 23.7,
-      "carbos": 64.3,
-      "grasas": 19.9,
+      "kcal": 499.3,
+      "proteinas": 41.7,
+      "carbos": 34.1,
+      "grasas": 19.8,
       "ingredientes": [
         {
-          "nombre": "Tortellini (Giovanni Rana)",
-          "cantidad": "186.9g",
-          "kcal": 467.4,
-          "proteinas": 18.7,
-          "carbos": 59.8,
-          "grasas": 15.0
+          "nombre": "Tortellini queso y jamón (Giovanni Rana)",
+          "cantidad": "114g",
+          "kcal": 306.7,
+          "proteinas": 13.7,
+          "carbos": 29.6,
+          "grasas": 13.7
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "100g",
+          "kcal": 110.0,
+          "proteinas": 23.0,
+          "carbos": 0.0,
+          "grasas": 1.2
         },
         {
           "nombre": "Tomate triturado",
@@ -2987,7 +2995,8 @@
       ],
       "pasos": [
         "Cuece los tortellini en agua hirviendo con sal según el tiempo indicado en el envase (los frescos suelen necesitar solo 2-4 minutos).",
-        "Mientras, calienta el aceite y el tomate triturado en una sartén 5 minutos, sazonando a tu gusto.",
+        "Mientras, corta la pechuga de pollo en dados y cocínala en una sartén con unas gotas de aceite hasta que esté dorada y hecha por dentro.",
+        "Añade el tomate triturado a la sartén con el pollo y cocina 5 minutos más, sazonando a tu gusto.",
         "Escurre los tortellini e incorpóralos a la salsa, mezclando con cuidado para no romperlos.",
         "Sirve con el queso rallado light por encima."
       ]

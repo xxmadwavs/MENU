@@ -3293,43 +3293,43 @@
       "nombre": "Pollo mediterráneo al horno",
       "tipo": "comida",
       "tiempo": "",
-      "descripcion": "Pollo mediterráneo al horno ajustado a 500 kcal",
-      "kcal": 549.8,
-      "proteinas": 35.7,
-      "carbos": 80.4,
-      "grasas": 11.2,
+      "descripcion": "Pollo mediterráneo al horno con arroz integrado, más arroz y menos proteína, ajustado a ~550 kcal",
+      "kcal": 553.9,
+      "proteinas": 43.9,
+      "carbos": 75.7,
+      "grasas": 8.8,
       "ingredientes": [
         {
           "nombre": "Pechuga de pollo",
-          "cantidad": "85.7g",
-          "kcal": 94.3,
-          "proteinas": 19.7,
+          "cantidad": "130g",
+          "kcal": 143.0,
+          "proteinas": 29.9,
           "carbos": 0.0,
-          "grasas": 1.0
+          "grasas": 1.56
         },
         {
           "nombre": "Tomate natural",
-          "cantidad": "273.4g",
-          "kcal": 49.2,
-          "proteinas": 2.5,
-          "carbos": 10.7,
-          "grasas": 0.5
+          "cantidad": "150g",
+          "kcal": 27.0,
+          "proteinas": 1.4,
+          "carbos": 5.9,
+          "grasas": 0.27
         },
         {
           "nombre": "Calabacin",
-          "cantidad": "218.8g",
-          "kcal": 35.0,
-          "proteinas": 2.6,
-          "carbos": 7.2,
-          "grasas": 0.2
+          "cantidad": "120g",
+          "kcal": 19.2,
+          "proteinas": 1.44,
+          "carbos": 3.96,
+          "grasas": 0.12
         },
         {
           "nombre": "Cebolla (congelada)",
-          "cantidad": "127.6g",
-          "kcal": 48.4,
-          "proteinas": 1.5,
-          "carbos": 11.0,
-          "grasas": 0.4
+          "cantidad": "70g",
+          "kcal": 26.6,
+          "proteinas": 0.84,
+          "carbos": 6.02,
+          "grasas": 0.21
         },
         {
           "nombre": "Oregano seco",
@@ -3349,27 +3349,27 @@
         },
         {
           "nombre": "Aceite",
-          "cantidad": "7.8ml",
-          "kcal": 63.8,
+          "cantidad": "5ml",
+          "kcal": 40.95,
           "proteinas": 0.0,
           "carbos": 0.0,
-          "grasas": 7.1
+          "grasas": 4.55
         },
         {
-          "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "64.1g",
-          "kcal": 223.7,
-          "proteinas": 5.1,
-          "carbos": 48.7,
-          "grasas": 0.8
+          "nombre": "Arroz Blanco (incorporado a la receta)",
+          "cantidad": "75g",
+          "kcal": 261.75,
+          "proteinas": 6.0,
+          "carbos": 57.0,
+          "grasas": 0.9
         }
       ],
       "pasos": [
         "Corta el pollo, el tomate, el calabacín y la cebolla en trozos.",
-        "Mezcla todo en un bol con el aceite y el orégano.",
-        "Colócalo en un molde apto para air fryer y reparte la mozzarella light por encima.",
-        "Air fryer: cocina a 180°C durante 18-20 minutos, removiendo a mitad de cocción, hasta que el pollo esté hecho y la mozzarella fundida y dorada.",
-        "Añade 109 g de arroz blanco cocido como guarnición extra para completar los macros del día."
+        "Mezcla el pollo y las verduras en un bol con el aceite y el orégano.",
+        "Cuece el arroz aparte y resérvalo.",
+        "Coloca el pollo y las verduras en un molde apto para air fryer, incorpora el arroz ya cocido mezclándolo bien con el resto, y reparte la mozzarella light por encima.",
+        "Air fryer: cocina a 180°C durante 18-20 minutos, removiendo a mitad de cocción, hasta que el pollo esté hecho y la mozzarella fundida y dorada."
       ]
     },
     {

@@ -262,6 +262,69 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .empty-state{text-align:center;padding:3rem 1rem;color:var(--ink-soft)}
 .empty-state .ei{font-size:2.4rem;margin-bottom:.75rem;opacity:.85}
 .empty-state p{font-size:.9rem;line-height:1.55;max-width:280px;margin:0 auto}
+
+/* REGISTRO REAL */
+.day-real-row{display:flex;align-items:center;gap:8px;padding:.55rem 1.1rem;background:var(--gold-light);border-bottom:1px solid var(--line);font-size:.76rem;font-weight:700;color:var(--gold-deep)}
+.day-real-row .drr-icon{font-size:.85rem}
+.day-real-row .mono{margin-left:auto}
+.cal-check{position:absolute;top:3px;right:4px;width:13px;height:13px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#fff;font-weight:700}
+.meal-item{position:relative}
+.meal-body{display:flex;align-items:center;gap:.75rem;flex:1;min-width:0;cursor:pointer}
+.reg-badge{display:inline-flex;align-items:center;gap:3px;font-size:.6rem;font-weight:700;padding:2px 7px;border-radius:20px;margin-top:4px}
+.rb-como_plan{background:var(--sage-light);color:#3f5c2c}
+.rb-otra_receta{background:var(--gold-light);color:#8a6416}
+.rb-libre{background:var(--plum-light);color:#523153}
+.rb-no_comido{background:var(--clay-light);color:#8a3d27}
+.reg-edit-btn{flex-shrink:0;background:var(--paper);border:1.5px solid var(--line);width:32px;height:32px;border-radius:9px;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.reg-edit-btn:hover{border-color:var(--gold);background:var(--gold-light)}
+.postre-toggle-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.65rem 1.1rem;border-bottom:1px solid var(--line);background:var(--berry-light)}
+.postre-toggle-row .ptr-label{font-size:.8rem;font-weight:600;color:var(--ink)}
+.ptr-add-btn{background:var(--berry);color:#fff;border:none;border-radius:20px;padding:.4rem .85rem;font-size:.72rem;font-weight:700;cursor:pointer}
+
+/* modal registro */
+.rg-src-tabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem}
+.rg-src-tab{flex:1;min-width:100px;text-align:center;padding:.5rem .3rem;border-radius:var(--r-sm);font-size:.7rem;font-weight:700;cursor:pointer;border:1.5px solid var(--line);background:var(--paper);color:var(--ink-soft);transition:all .18s}
+.rg-src-tab.active{background:var(--green);border-color:var(--green);color:#fbf6ea}
+.rg-ref-card{background:var(--gold-light);border-radius:var(--r-sm);padding:.65rem .8rem;margin-bottom:1rem;font-size:.78rem;color:var(--gold-deep)}
+.rg-ref-card b{font-family:'Fraunces',serif;font-style:italic}
+.rg-recipe-picker{max-height:200px;overflow-y:auto;border:1px solid var(--line);border-radius:var(--r-sm);margin-bottom:.9rem}
+.rg-rp-item{padding:.6rem .8rem;border-bottom:1px solid var(--line);cursor:pointer;font-size:.83rem;display:flex;justify-content:space-between;gap:.5rem}
+.rg-rp-item:last-child{border-bottom:none}
+.rg-rp-item:hover{background:var(--gold-light)}
+.rg-rp-item.picked{background:var(--sage-light);font-weight:700}
+.rg-rp-item .rpk{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft)}
+.ring-row{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;border-bottom:1px solid var(--line)}
+.ring-row:last-child{border-bottom:none}
+.ring-name{flex:1;font-size:.83rem;font-weight:600;min-width:0}
+.ring-name .orig{display:block;font-size:.68rem;font-weight:500;color:var(--ink-soft);margin-top:1px}
+.ring-qty{width:64px;flex-shrink:0}
+.ring-qty input{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:.35rem .4rem;font-size:.78rem;text-align:center;font-family:'IBM Plex Mono',monospace}
+.ring-qty input:focus{outline:none;border-color:var(--green)}
+.ring-kcal{width:52px;flex-shrink:0;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft)}
+.ring-skip{flex-shrink:0;width:26px;height:26px;border-radius:7px;border:1.5px solid var(--line);background:var(--paper);cursor:pointer;font-size:.72rem;display:flex;align-items:center;justify-content:center}
+.ring-skip.on{background:var(--clay);border-color:var(--clay);color:#fff}
+.ring-row.skipped .ring-name{opacity:.4;text-decoration:line-through}
+.rg-add-extra{width:100%;background:none;border:1.5px dashed var(--line);border-radius:var(--r-sm);padding:.55rem;font-size:.78rem;font-weight:600;color:var(--ink-soft);cursor:pointer;margin-top:.6rem}
+.rg-add-extra:hover{border-color:var(--green);color:var(--green)}
+.rg-extra-row{display:grid;grid-template-columns:1.3fr .6fr .6fr .6fr .6fr auto;gap:5px;padding:.5rem 0;border-bottom:1px solid var(--line);align-items:center}
+.rg-extra-row input{border:1.5px solid var(--line);border-radius:7px;padding:.35rem;font-size:.72rem;width:100%}
+.rg-extra-del{background:var(--clay-light);color:var(--clay);border:none;width:24px;height:24px;border-radius:6px;cursor:pointer;font-size:.7rem}
+.rg-totals{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:1rem 0;padding:.75rem;background:var(--green-light);border-radius:var(--r-sm)}
+.rg-totals .tv{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:.95rem;color:var(--green-deep);display:block;text-align:center}
+.rg-totals .tl{font-size:.58rem;text-transform:uppercase;letter-spacing:.04em;color:var(--green-deep);opacity:.7;display:block;text-align:center;margin-top:2px}
+.rg-field{margin-bottom:.8rem}
+.rg-field label{display:block;font-size:.72rem;font-weight:700;color:var(--ink-soft);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.03em}
+.rg-field input,.rg-field textarea{width:100%;border:1.5px solid var(--line);border-radius:var(--r-sm);padding:.55rem .7rem;font-family:'Inter',sans-serif;font-size:.86rem}
+.rg-field input:focus,.rg-field textarea:focus{outline:none;border-color:var(--green)}
+.rg-macro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.rg-empty-msg{text-align:center;padding:1.5rem 1rem;color:var(--ink-soft);font-size:.85rem}
+.rg-actions{display:flex;gap:8px;margin-top:1.1rem}
+.rg-btn{flex:1;border:none;border-radius:var(--r-sm);padding:.75rem;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .15s}
+.rg-btn-save{background:var(--green);color:#fbf6ea}
+.rg-btn-save:hover{background:var(--green-deep)}
+.rg-btn-del{background:var(--clay-light);color:var(--clay)}
+.rg-btn-del:hover{background:var(--clay);color:#fff}
+.rg-saving{opacity:.55;pointer-events:none}
 </style>
 </head>
 <body>
@@ -334,6 +397,17 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
   </div>
 </div>
 
+<div class="modal-overlay" id="rg-modal" onclick="closeRgOut(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="rg-modal-title"></h2>
+      <button class="modal-close" onclick="closeRgModal()">✕</button>
+    </div>
+    <div class="modal-body" id="rg-modal-body"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const DIAS=['lunes','martes','miercoles','jueves','viernes','sabado','domingo'];
 const DIAS_S={lunes:'L',martes:'M',miercoles:'X',jueves:'J',viernes:'V',sabado:'S',domingo:'D'};
@@ -354,7 +428,42 @@ function calcCurrentWeek(){
   return ((semanaNum % 4) + 4) % 4; // siempre 0-3, funciona aunque sea negativo
 }
 
+// ── Supabase (registro real de lo comido) ──
+const SUPABASE_URL = 'TU_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'TU_SUPABASE_ANON_KEY';
+let sb=null;
+try{ sb=window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); }catch(e){ console.warn('Supabase no configurado todavía', e); }
+
+const POSTRE_KEY={comida:'postre_comida',cena:'postre_cena'};
+
 let DATA=null, currentWeek=calcCurrentWeek(), selectedDay=null, checkedItems={}, recipeFilter='desayuno', shopWeek=calcCurrentWeek();
+let REGISTRO={}; // 'YYYY-MM-DD|tipo' -> row
+let rgState=null; // estado del modal de registro abierto
+
+function isoDate(d){
+  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
+function getFechaDia(dia,weekIdx){
+  const idx=DIAS.indexOf(dia);
+  const mon=getWeekMonday(weekIdx==null?currentWeek:weekIdx);
+  const d=new Date(mon); d.setDate(mon.getDate()+idx);
+  return isoDate(d);
+}
+function regKey(fecha,tipo){ return fecha+'|'+tipo; }
+
+async function loadRegistroRango(){
+  if(!sb) return;
+  try{
+    const mondays=[0,1,2,3].map(getWeekMonday);
+    const min=new Date(Math.min(...mondays.map(d=>d.getTime())));
+    const max=new Date(Math.max(...mondays.map(d=>d.getTime()))); max.setDate(max.getDate()+6);
+    const {data,error}=await sb.from('registro_diario').select('*').gte('fecha',isoDate(min)).lte('fecha',isoDate(max));
+    if(error){ console.warn('Error cargando registro:',error.message); return; }
+    REGISTRO={};
+    (data||[]).forEach(row=>{ REGISTRO[regKey(row.fecha,row.tipo)]=row; });
+  }catch(e){ console.warn('Error cargando registro:',e); }
+}
 
 async function loadData(){
   try{
@@ -362,6 +471,7 @@ async function loadData(){
     DATA=await r.json();
   }catch(e){ DATA={recetas:[],menu:{}}; }
   document.getElementById('today-label').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+  await loadRegistroRango();
   document.getElementById('cal-loading').style.display='none';
   document.getElementById('cal-content').style.display='block';
   renderWeekDots();
@@ -371,6 +481,26 @@ async function loadData(){
 }
 
 function getR(id){ return DATA.recetas.find(r=>r.id===id)||null; }
+
+// Combina lo planificado con el registro real guardado: si hay registro para un hueco, manda;
+// si no, se asume lo planificado como estimación.
+function computeRealDia(dia,fecha,dm){
+  dm=dm||getMenuDia(dia);
+  let kcal=0,proteinas=0,carbos=0,grasas=0;
+  const slots={};
+  const todosTipos=TIPOS.concat(['postre_comida','postre_cena']);
+  todosTipos.forEach(t=>{
+    const reg=REGISTRO[regKey(fecha,t)];
+    const planR=getR(dm[t]);
+    let s;
+    if(reg){ s={source:'registro',estado:reg.estado,kcal:reg.kcal||0,proteinas:reg.proteinas||0,carbos:reg.carbos||0,grasas:reg.grasas||0}; }
+    else if(planR){ s={source:'plan',estado:null,kcal:planR.kcal||0,proteinas:planR.proteinas||0,carbos:planR.carbos||0,grasas:planR.grasas||0}; }
+    else{ s={source:'none',estado:null,kcal:0,proteinas:0,carbos:0,grasas:0}; }
+    slots[t]=s;
+    kcal+=s.kcal; proteinas+=s.proteinas; carbos+=s.carbos; grasas+=s.grasas;
+  });
+  return {kcal,proteinas,carbos,grasas,slots};
+}
 
 function getCurrentSemana(){ return SEMANAS[currentWeek % SEMANAS.length]; }
 
@@ -435,19 +565,20 @@ function renderCal(){
   const heads=DIAS.map(d=>`<div class="cal-head">${DIAS_S[d]}</div>`).join('');
   const cells=DIAS.map((dia,i)=>{
     const date=new Date(mon); date.setDate(mon.getDate()+i); date.setHours(0,0,0,0);
+    const fecha=isoDate(date);
     const dm=getMenuDia(dia);
-    let kcal=0;
+    const {kcal}=computeRealDia(dia,fecha,dm);
     const dots=TIPOS.map(t=>{
-      const r=getR(dm[t]); if(!r) return '';
-      kcal+=r.kcal||0;
+      const r=getR(dm[t]);
+      if(!r && !REGISTRO[regKey(fecha,t)]) return '';
       return `<div class="cal-dot dot-${t}"></div>`;
     }).join('');
-    const rpc=getR(dm['postre_comida']); if(rpc){kcal+=rpc.kcal||0;}
-    const rpce=getR(dm['postre_cena']); if(rpce){kcal+=rpce.kcal||0;}
+    const tieneRegistro=TIPOS.concat(['postre_comida','postre_cena']).some(t=>REGISTRO[regKey(fecha,t)]);
     const isToday=date.getTime()===today.getTime();
     const isSel=selectedDay===dia;
     return `<div class="cal-cell ${isToday?'today':''} ${kcal>0?'has-food':''} ${isSel?'selected':''}" onclick="selectDay('${dia}')">
       <div class="cal-num">${date.getDate()}</div>
+      ${tieneRegistro?'<div class="cal-check">✓</div>':''}
       <div class="cal-dots">${dots}</div>
       ${kcal>0?`<div class="cal-kcal">${kcal}</div>`:''}
     </div>`;
@@ -498,44 +629,57 @@ function macroRingSVG(tp,tc,tg,tk,size){
   </svg>`;
 }
 
+const RB_LABEL={como_plan:'✓ Como el plan',otra_receta:'🔄 Otra receta',libre:'✏️ Libre',no_comido:'🚫 No comido'};
+
+function mealItemHtml(tipo,dia,fecha,dm,esPostre){
+  const r=getR(dm[tipo]);
+  const reg=REGISTRO[regKey(fecha,tipo)];
+  const nombreMostrado = reg ? (reg.estado==='no_comido'?'No comido':(reg.receta_nombre||reg.nombre_libre||'—')) : (r?r.nombre:'Sin asignar');
+  const s=reg?{kcal:reg.kcal,proteinas:reg.proteinas,carbos:reg.carbos,grasas:reg.grasas}:r;
+  const tieneDatos=!!s && !(reg&&reg.estado==='no_comido');
+  const badge=reg?`<span class="reg-badge rb-${reg.estado}">${RB_LABEL[reg.estado]}</span>`:'';
+  const clickable = reg? (reg.estado!=='no_comido'&&reg.estado!=='libre') : !!r;
+  const clickId = reg ? (reg.estado==='otra_receta'?reg.receta_id:(r?r.id:null)) : (r?r.id:null);
+  return `<div class="meal-item">
+    <div class="meal-body" ${clickable&&clickId?`onclick="openModal('${clickId}')"`:''}>
+      <div class="meal-icon mi-${esPostre?'postre':tipo}" style="${esPostre?'background:#fff;font-size:.8rem;width:28px;height:28px;':''}">${esPostre?'🍮':TIPO_I[tipo]}</div>
+      <div class="meal-info">
+        <div class="meal-type-label">${esPostre?'postre':tipo}</div>
+        <div class="meal-name-t ${!s?'empty':''}">${nombreMostrado}</div>
+        ${tieneDatos?`<div class="meal-macros-r">
+          <span class="mm mm-k">${Math.round(s.kcal)} kcal</span>
+          <span class="mm mm-p">P: ${s.proteinas}g</span>
+          <span class="mm mm-c">CH: ${s.carbos}g</span>
+          <span class="mm mm-g">G: ${s.grasas}g</span>
+        </div>`:''}
+        ${badge}
+      </div>
+    </div>
+    <button class="reg-edit-btn" title="Registrar lo que comiste realmente" onclick="openRgModal('${tipo}','${dia}','${fecha}')">✎</button>
+  </div>`;
+}
+
 function renderDayPanel(dia){
+  const fecha=getFechaDia(dia);
   const dm=getMenuDia(dia);
-  let tk=0,tp=0,tc=0,tg=0;
-  TIPOS.forEach(t=>{const r=getR(dm[t]);if(r){tk+=r.kcal||0;tp+=r.proteinas||0;tc+=r.carbos||0;tg+=r.grasas||0;}});
-  ['postre_comida','postre_cena'].forEach(k=>{const r=getR(dm[k]);if(r){tk+=r.kcal||0;tp+=r.proteinas||0;tc+=r.carbos||0;tg+=r.grasas||0;}});
+  const {kcal:tk,proteinas:tp,carbos:tc,grasas:tg}=computeRealDia(dia,fecha,dm);
+  const hayRegistro=TIPOS.concat(['postre_comida','postre_cena']).some(t=>REGISTRO[regKey(fecha,t)]);
 
   let mealsHtml='';
   TIPOS.forEach(tipo=>{
-    const r=getR(dm[tipo]);
-    mealsHtml+=`<div class="meal-item" ${r?`onclick="openModal('${r.id}')"`:''}>
-      <div class="meal-icon mi-${tipo}">${TIPO_I[tipo]}</div>
-      <div class="meal-info">
-        <div class="meal-type-label">${tipo}</div>
-        <div class="meal-name-t ${!r?'empty':''}">${r?r.nombre:'Sin asignar'}</div>
-        ${r?`<div class="meal-macros-r">
-          <span class="mm mm-k">${r.kcal} kcal</span>
-          <span class="mm mm-p">P: ${r.proteinas}g</span>
-          <span class="mm mm-c">CH: ${r.carbos}g</span>
-          <span class="mm mm-g">G: ${r.grasas}g</span>
-        </div>`:''}
-      </div>
-    </div>`;
-    const pKey = tipo==='comida'?'postre_comida': tipo==='cena'?'postre_cena':null;
+    mealsHtml+=mealItemHtml(tipo,dia,fecha,dm,false);
+    const pKey=POSTRE_KEY[tipo];
     if(pKey){
       const rp=getR(dm[pKey]);
-      if(rp) mealsHtml+=`<div class="meal-item" onclick="openModal('${rp.id}')" style="padding-left:2.6rem;background:var(--berry-light);">
-        <div class="meal-icon" style="background:#fff;font-size:.8rem;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;">🍮</div>
-        <div class="meal-info">
-          <div class="meal-type-label">postre</div>
-          <div class="meal-name-t" style="font-size:.85rem;">${rp.nombre}</div>
-          <div class="meal-macros-r">
-            <span class="mm mm-k">${rp.kcal} kcal</span>
-            <span class="mm mm-p">P: ${rp.proteinas}g</span>
-            <span class="mm mm-c">CH: ${rp.carbos}g</span>
-            <span class="mm mm-g">G: ${rp.grasas}g</span>
-          </div>
-        </div>
-      </div>`;
+      const regp=REGISTRO[regKey(fecha,pKey)];
+      if(rp||regp){
+        mealsHtml+=mealItemHtml(pKey,dia,fecha,dm,true).replace('class="meal-item"','class="meal-item" style="background:var(--berry-light);"');
+      } else {
+        mealsHtml+=`<div class="postre-toggle-row">
+          <span class="ptr-label">🍮 Sin postre planificado</span>
+          <button class="ptr-add-btn" onclick="openRgModal('${pKey}','${dia}','${fecha}')">+ Añadir postre</button>
+        </div>`;
+      }
     }
   });
 
@@ -552,6 +696,7 @@ function renderDayPanel(dia){
         </div>
       </div>`:`<span class="day-empty-badge">Sin planificar</span>`}
     </div>
+    ${hayRegistro?`<div class="day-real-row"><span class="drr-icon">📔</span> Incluye lo que registraste como comido real <span class="mono">${Math.round(tk)} kcal</span></div>`:''}
     <div>${mealsHtml}</div>
   `;
 }
@@ -662,6 +807,230 @@ function openModal(id){
 
 function closeOut(e){if(e.target===document.getElementById('modal')) closeModal();}
 function closeModal(){document.getElementById('modal').classList.remove('open');}
+
+/* ══════════ REGISTRO REAL (lo que de verdad has comido) ══════════ */
+
+function parseLeadingNum(s){
+  if(s===null||s===undefined) return null;
+  const m=String(s).match(/[\d]+([.,]\d+)?/);
+  return m?parseFloat(m[0].replace(',','.')):null;
+}
+function calcRowMacros(row){
+  const orig=parseLeadingNum(row.cantidad_orig);
+  const real=parseLeadingNum(row.cantidad_real);
+  const factor= row.skip?0:((orig&&orig>0&&real!==null)?real/orig:1);
+  return {
+    kcal:(row.kcal_orig||0)*factor, proteinas:(row.proteinas_orig||0)*factor,
+    carbos:(row.carbos_orig||0)*factor, grasas:(row.grasas_orig||0)*factor
+  };
+}
+function ingredientesDesdeReceta(rec){
+  return (rec.ingredientes||[]).map(i=>({
+    nombre:i.nombre, cantidad_orig:i.cantidad, cantidad_real:i.cantidad,
+    kcal_orig:i.kcal||0, proteinas_orig:i.proteinas||0, carbos_orig:i.carbos||0, grasas_orig:i.grasas||0, skip:false
+  }));
+}
+
+function openRgModal(tipo,dia,fecha){
+  const dm=getMenuDia(dia);
+  const planR=getR(dm[tipo]);
+  const reg=REGISTRO[regKey(fecha,tipo)];
+  const esPostre=tipo.indexOf('postre_')===0;
+
+  rgState={tipo,dia,fecha,esPostre,planR,fuente:null,ingredientes:[],extras:[],
+    libre:{nombre:'',kcal:0,proteinas:0,carbos:0,grasas:0}, otraRecetaId:null, notas:'', buscando:''};
+
+  if(reg){
+    rgState.fuente=reg.estado;
+    rgState.notas=reg.notas||'';
+    if(reg.estado==='como_plan'||reg.estado==='otra_receta'){
+      const baseId=reg.estado==='otra_receta'?reg.receta_id:(planR?planR.id:null);
+      rgState.otraRecetaId=reg.estado==='otra_receta'?reg.receta_id:null;
+      const arr=(reg.ingredientes||[]).filter(x=>!x.extra).map(x=>({...x}));
+      const extras=(reg.ingredientes||[]).filter(x=>x.extra).map(x=>({...x}));
+      rgState.ingredientes=arr.length?arr:(planR?ingredientesDesdeReceta(planR):[]);
+      rgState.extras=extras;
+    } else if(reg.estado==='libre'){
+      rgState.libre={nombre:reg.nombre_libre||'',kcal:reg.kcal||0,proteinas:reg.proteinas||0,carbos:reg.carbos||0,grasas:reg.grasas||0};
+    }
+  } else {
+    rgState.fuente=planR?'como_plan':'libre';
+    if(planR) rgState.ingredientes=ingredientesDesdeReceta(planR);
+  }
+
+  const fechaFmt=new Date(fecha+'T00:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+  document.getElementById('rg-modal-title').textContent=`${TIPO_I[tipo]||'🍮'} ${(tipo.replace('postre_','postre ')).replace('_',' ')} · ${fechaFmt}`;
+  renderRgModalBody();
+  document.getElementById('rg-modal').classList.add('open');
+}
+function closeRgOut(e){ if(e.target===document.getElementById('rg-modal')) closeRgModal(); }
+function closeRgModal(){ document.getElementById('rg-modal').classList.remove('open'); rgState=null; }
+
+function setRgFuente(f){
+  rgState.fuente=f;
+  if(f==='como_plan'&&rgState.planR){ rgState.ingredientes=ingredientesDesdeReceta(rgState.planR); rgState.extras=[]; rgState.otraRecetaId=null; }
+  if(f==='otra_receta'){ rgState.ingredientes=[]; rgState.extras=[]; rgState.buscando=''; }
+  renderRgModalBody();
+}
+function rgPickReceta(id){
+  const rec=getR(id); if(!rec) return;
+  rgState.otraRecetaId=id;
+  rgState.ingredientes=ingredientesDesdeReceta(rec);
+  rgState.extras=[];
+  renderRgModalBody();
+}
+function rgToggleSkip(idx){ rgState.ingredientes[idx].skip=!rgState.ingredientes[idx].skip; renderRgModalBody(); }
+function rgUpdateQty(idx,val){ rgState.ingredientes[idx].cantidad_real=val; updateRgRowDisplay(idx); updateRgTotalsDisplay(); }
+function rgAddExtra(){ rgState.extras.push({nombre:'',cantidad_orig:'',cantidad_real:'',kcal:0,proteinas:0,carbos:0,grasas:0,extra:true}); renderRgModalBody(); }
+function rgDelExtra(idx){ rgState.extras.splice(idx,1); renderRgModalBody(); updateRgTotalsDisplay(); }
+function rgUpdateExtra(idx,field,val){
+  rgState.extras[idx][field] = (['kcal','proteinas','carbos','grasas'].includes(field)) ? (parseFloat(val)||0) : val;
+  updateRgTotalsDisplay();
+}
+function rgUpdateLibre(field,val){
+  rgState.libre[field] = (field==='nombre')?val:(parseFloat(val)||0);
+  updateRgTotalsDisplay();
+}
+function rgSearchRecetas(q){ rgState.buscando=q; renderRgModalBody(); }
+
+function updateRgRowDisplay(idx){
+  const el=document.getElementById('ring-kcal-'+idx);
+  if(el){ const m=calcRowMacros(rgState.ingredientes[idx]); el.textContent=Math.round(m.kcal)+' kcal'; }
+  const row=document.getElementById('ring-row-'+idx);
+  if(row) row.classList.toggle('skipped',!!rgState.ingredientes[idx].skip);
+}
+
+function rgComputeTotals(){
+  if(!rgState) return {kcal:0,proteinas:0,carbos:0,grasas:0};
+  if(rgState.fuente==='no_comido') return {kcal:0,proteinas:0,carbos:0,grasas:0};
+  if(rgState.fuente==='libre') return {kcal:rgState.libre.kcal||0,proteinas:rgState.libre.proteinas||0,carbos:rgState.libre.carbos||0,grasas:rgState.libre.grasas||0};
+  let kcal=0,proteinas=0,carbos=0,grasas=0;
+  rgState.ingredientes.forEach(r=>{const m=calcRowMacros(r);kcal+=m.kcal;proteinas+=m.proteinas;carbos+=m.carbos;grasas+=m.grasas;});
+  (rgState.extras||[]).forEach(e=>{kcal+=e.kcal||0;proteinas+=e.proteinas||0;carbos+=e.carbos||0;grasas+=e.grasas||0;});
+  return {kcal,proteinas,carbos,grasas};
+}
+function updateRgTotalsDisplay(){
+  const t=rgComputeTotals();
+  const set=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent=v;};
+  set('rg-tot-kcal',Math.round(t.kcal));
+  set('rg-tot-p',Math.round(t.proteinas)+'g');
+  set('rg-tot-c',Math.round(t.carbos)+'g');
+  set('rg-tot-g',Math.round(t.grasas)+'g');
+}
+
+function renderRgModalBody(){
+  const s=rgState;
+  let tabs=`<div class="rg-src-tabs">`;
+  if(s.planR) tabs+=`<div class="rg-src-tab ${s.fuente==='como_plan'?'active':''}" onclick="setRgFuente('como_plan')">✓ Como el plan</div>`;
+  tabs+=`<div class="rg-src-tab ${s.fuente==='otra_receta'?'active':''}" onclick="setRgFuente('otra_receta')">🔄 Otra receta</div>`;
+  tabs+=`<div class="rg-src-tab ${s.fuente==='libre'?'active':''}" onclick="setRgFuente('libre')">✏️ Libre</div>`;
+  tabs+=`<div class="rg-src-tab ${s.fuente==='no_comido'?'active':''}" onclick="setRgFuente('no_comido')">🚫 No comí</div>`;
+  tabs+=`</div>`;
+
+  let body='';
+  if(s.fuente==='como_plan'||s.fuente==='otra_receta'){
+    if(s.fuente==='otra_receta'){
+      body+=`<div class="rg-field"><label>Buscar receta</label><input type="text" placeholder="Nombre de la receta…" value="${s.buscando||''}" oninput="rgSearchRecetas(this.value)"></div>`;
+      const q=(s.buscando||'').toLowerCase().trim();
+      const list=DATA.recetas.filter(r=>!q||r.nombre.toLowerCase().includes(q)).slice(0,40);
+      body+=`<div class="rg-recipe-picker">${list.map(r=>`<div class="rg-rp-item ${s.otraRecetaId===r.id?'picked':''}" onclick="rgPickReceta('${r.id}')"><span>${r.nombre}</span><span class="rpk">${r.kcal} kcal</span></div>`).join('')||'<div class="rg-rp-item">Sin resultados</div>'}</div>`;
+    } else if(s.planR){
+      body+=`<div class="rg-ref-card">Plan original: <b>${s.planR.nombre}</b> — ${s.planR.kcal} kcal</div>`;
+    }
+    if(s.ingredientes.length){
+      body+=s.ingredientes.map((row,idx)=>{
+        const m=calcRowMacros(row);
+        return `<div class="ring-row ${row.skip?'skipped':''}" id="ring-row-${idx}">
+          <div class="ring-name">${row.nombre}<span class="orig">plan: ${row.cantidad_orig}</span></div>
+          <div class="ring-qty"><input type="text" value="${row.cantidad_real}" oninput="rgUpdateQty(${idx},this.value)"></div>
+          <div class="ring-kcal" id="ring-kcal-${idx}">${Math.round(m.kcal)} kcal</div>
+          <button class="ring-skip ${row.skip?'on':''}" onclick="rgToggleSkip(${idx})" title="No lo comí">🚫</button>
+        </div>`;
+      }).join('');
+    }
+    if(s.extras&&s.extras.length){
+      body+=s.extras.map((e,idx)=>`<div class="rg-extra-row">
+        <input type="text" placeholder="Ingrediente extra" value="${e.nombre}" oninput="rgUpdateExtra(${idx},'nombre',this.value)">
+        <input type="text" placeholder="cant." value="${e.cantidad_real||''}" oninput="rgUpdateExtra(${idx},'cantidad_real',this.value)">
+        <input type="number" placeholder="kcal" value="${e.kcal||''}" oninput="rgUpdateExtra(${idx},'kcal',this.value)">
+        <input type="number" placeholder="prot" value="${e.proteinas||''}" oninput="rgUpdateExtra(${idx},'proteinas',this.value)">
+        <input type="number" placeholder="gras" value="${e.grasas||''}" oninput="rgUpdateExtra(${idx},'grasas',this.value)">
+        <button class="rg-extra-del" onclick="rgDelExtra(${idx})">✕</button>
+      </div>`).join('');
+    }
+    if(s.ingredientes.length||s.fuente==='como_plan'||s.otraRecetaId) body+=`<button class="rg-add-extra" onclick="rgAddExtra()">+ Añadir ingrediente que no estaba en la receta</button>`;
+  } else if(s.fuente==='libre'){
+    body+=`
+      <div class="rg-field"><label>¿Qué comiste?</label><input type="text" id="rg-libre-nombre" value="${s.libre.nombre}" placeholder="Ej. Tostada con aguacate" oninput="rgUpdateLibre('nombre',this.value)"></div>
+      <div class="rg-macro-grid">
+        <div class="rg-field"><label>Kcal</label><input type="number" value="${s.libre.kcal||''}" oninput="rgUpdateLibre('kcal',this.value)"></div>
+        <div class="rg-field"><label>Prot (g)</label><input type="number" value="${s.libre.proteinas||''}" oninput="rgUpdateLibre('proteinas',this.value)"></div>
+        <div class="rg-field"><label>Carb (g)</label><input type="number" value="${s.libre.carbos||''}" oninput="rgUpdateLibre('carbos',this.value)"></div>
+        <div class="rg-field"><label>Gras (g)</label><input type="number" value="${s.libre.grasas||''}" oninput="rgUpdateLibre('grasas',this.value)"></div>
+      </div>`;
+  } else if(s.fuente==='no_comido'){
+    body+=`<div class="rg-empty-msg">🚫 Se registrará como que no comiste esto, sin sumar calorías al día.</div>`;
+  }
+
+  const totalsHtml = s.fuente==='no_comido' ? '' : `
+    <div class="rg-totals">
+      <div><span class="tv" id="rg-tot-kcal">0</span><span class="tl">kcal</span></div>
+      <div><span class="tv" id="rg-tot-p">0g</span><span class="tl">prot</span></div>
+      <div><span class="tv" id="rg-tot-c">0g</span><span class="tl">carb</span></div>
+      <div><span class="tv" id="rg-tot-g">0g</span><span class="tl">gras</span></div>
+    </div>`;
+
+  const existeReg=!!REGISTRO[regKey(s.fecha,s.tipo)];
+  document.getElementById('rg-modal-body').innerHTML = tabs + body + totalsHtml + `
+    <div class="rg-actions">
+      ${existeReg?`<button class="rg-btn rg-btn-del" onclick="deleteRegistro()">Quitar registro</button>`:''}
+      <button class="rg-btn rg-btn-save" onclick="saveRegistro()">Guardar</button>
+    </div>`;
+  updateRgTotalsDisplay();
+}
+
+async function saveRegistro(){
+  const s=rgState; if(!s) return;
+  if(!sb){ alert('Falta configurar Supabase (SUPABASE_URL / SUPABASE_ANON_KEY) en el código.'); return; }
+  if(s.fuente==='otra_receta'&&!s.otraRecetaId&&!s.ingredientes.length){ alert('Elige una receta primero.'); return; }
+
+  const t=rgComputeTotals();
+  const recNombre = s.fuente==='como_plan'?(s.planR?s.planR.nombre:null) : s.fuente==='otra_receta'?(getR(s.otraRecetaId)?.nombre||null) : null;
+  const ingredientesGuardar = (s.fuente==='como_plan'||s.fuente==='otra_receta') ? [...s.ingredientes,...(s.extras||[])] : null;
+
+  const row={
+    fecha:s.fecha, tipo:s.tipo, estado:s.fuente,
+    receta_id: s.fuente==='otra_receta'?s.otraRecetaId:(s.fuente==='como_plan'&&s.planR?s.planR.id:null),
+    receta_nombre: recNombre,
+    nombre_libre: s.fuente==='libre'?(s.libre.nombre||null):null,
+    ingredientes: ingredientesGuardar,
+    kcal:t.kcal, proteinas:t.proteinas, carbos:t.carbos, grasas:t.grasas,
+    notas: s.notas||null,
+    updated_at: new Date().toISOString()
+  };
+
+  const body=document.getElementById('rg-modal-body'); body.classList.add('rg-saving');
+  try{
+    const {data,error}=await sb.from('registro_diario').upsert(row,{onConflict:'fecha,tipo'}).select().single();
+    if(error){ alert('No se pudo guardar: '+error.message); return; }
+    REGISTRO[regKey(s.fecha,s.tipo)]=data;
+    closeRgModal();
+    renderCal();
+  }catch(e){ alert('No se pudo guardar: '+e.message); }
+  finally{ body.classList.remove('rg-saving'); }
+}
+
+async function deleteRegistro(){
+  const s=rgState; if(!s||!sb) return;
+  if(!confirm('¿Quitar este registro y volver a lo planificado?')) return;
+  try{
+    const {error}=await sb.from('registro_diario').delete().eq('fecha',s.fecha).eq('tipo',s.tipo);
+    if(error){ alert('No se pudo borrar: '+error.message); return; }
+    delete REGISTRO[regKey(s.fecha,s.tipo)];
+    closeRgModal();
+    renderCal();
+  }catch(e){ alert('No se pudo borrar: '+e.message); }
+}
 
 loadData();
 </script>

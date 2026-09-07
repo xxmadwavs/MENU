@@ -452,6 +452,21 @@ function getFechaDia(dia,weekIdx){
 }
 function regKey(fecha,tipo){ return fecha+'|'+tipo; }
 
+// Borra el registro real de semanas que ya han terminado: cuando entras en la app
+// y ha empezado una nueva semana natural, los días de la semana pasada dejan de
+// tener registro guardado y vuelven a mostrar solo lo planificado en data.json.
+async function purgeRegistroAntiguo(){
+  if(!sb) return;
+  try{
+    const hoy=new Date(); hoy.setHours(0,0,0,0);
+    const d=hoy.getDay(), diff=d===0?-6:1-d;
+    const monday=new Date(hoy); monday.setDate(hoy.getDate()+diff);
+    const corte=isoDate(monday);
+    const {error}=await sb.from('registro_diario').delete().lt('fecha',corte);
+    if(error) console.warn('No se pudo purgar registro antiguo:',error.message);
+  }catch(e){ console.warn('No se pudo purgar registro antiguo:',e); }
+}
+
 async function loadRegistroRango(){
   if(!sb) return;
   try{
@@ -471,6 +486,7 @@ async function loadData(){
     DATA=await r.json();
   }catch(e){ DATA={recetas:[],menu:{}}; }
   document.getElementById('today-label').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+  await purgeRegistroAntiguo();
   await loadRegistroRango();
   document.getElementById('cal-loading').style.display='none';
   document.getElementById('cal-content').style.display='block';

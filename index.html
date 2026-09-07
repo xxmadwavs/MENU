@@ -429,7 +429,7 @@ function calcCurrentWeek(){
 }
 
 // ── Supabase (registro real de lo comido) ──
-const SUPABASE_URL = 'https://loigbzqckpapaxugudjx.supabase.co/rest/v1/';
+const SUPABASE_URL = 'https://loigbzqckpapaxugudjx.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvaWdienFja3BhcGF4dWd1ZGp4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg3NzY5MzgsImV4cCI6MjEwNDM1MjkzOH0.JeH7_Dxae0sRX5qdpWnB3o0eTcJ_0rr6x7-5ZHbUObc';
 let sb=null;
 try{ sb=window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); }catch(e){ console.warn('Supabase no configurado todavía', e); }

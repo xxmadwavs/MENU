@@ -553,10 +553,10 @@ function renderIngLib(){
         <div class="ing-lib-name">${i.nombre}</div>
         <div class="ing-lib-macros">
           <span style="color:var(--text-muted);font-size:.7rem">por ${i.unidad} →</span>
-          <span class="ing-lib-macro ilm-k">${i.kcal} kcal</span>
-          <span class="ing-lib-macro ilm-p">P: ${i.proteinas}g</span>
-          <span class="ing-lib-macro ilm-c">CH: ${i.carbos}g</span>
-          <span class="ing-lib-macro ilm-g">G: ${i.grasas}g</span>
+          <span class="ing-lib-macro ilm-k">${Math.round(i.kcal)} kcal</span>
+          <span class="ing-lib-macro ilm-p">P: ${Math.round(i.proteinas)}g</span>
+          <span class="ing-lib-macro ilm-c">CH: ${Math.round(i.carbos)}g</span>
+          <span class="ing-lib-macro ilm-g">G: ${Math.round(i.grasas)}g</span>
         </div>
       </div>
       <div style="display:flex;gap:5px;flex-shrink:0">
@@ -670,7 +670,7 @@ function renderRecipeList(tipo){
         <div class="recipe-item-name">${r.nombre}</div>
         <div class="recipe-item-meta">
           <span class="tipo-badge b-${r.tipo}">${r.tipo}</span>
-          ${r.kcal} kcal · P:${r.proteinas}g · CH:${r.carbos}g · G:${r.grasas}g
+          ${Math.round(r.kcal)} kcal · P:${Math.round(r.proteinas)}g · CH:${Math.round(r.carbos)}g · G:${Math.round(r.grasas)}g
         </div>
       </div>
       <div class="recipe-actions">

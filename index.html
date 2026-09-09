@@ -325,6 +325,48 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .rg-btn-del{background:var(--clay-light);color:var(--clay)}
 .rg-btn-del:hover{background:var(--clay);color:#fff}
 .rg-saving{opacity:.55;pointer-events:none}
+
+/* DIARIO */
+.diario-chart-card{background:var(--paper-raised);border-radius:var(--r);border:1px solid var(--line);box-shadow:var(--shadow);padding:.95rem .9rem .7rem;margin-bottom:.85rem}
+.diario-chart-title{font-family:'Fraunces',serif;font-style:italic;font-size:.95rem;font-weight:600;color:var(--green-deep);margin-bottom:.3rem}
+.diario-chart-sub{font-size:.68rem;color:var(--ink-soft);margin-bottom:.5rem}
+.diario-chart-empty{text-align:center;padding:1.6rem 1rem;color:var(--ink-soft);font-size:.82rem}
+
+.diario-setup{background:var(--gold-light);border:1px dashed var(--gold-deep);border-radius:var(--r-sm);padding:.85rem;font-size:.8rem;color:var(--ink);margin-bottom:.85rem}
+.diario-setup p{margin-bottom:.6rem;color:var(--green-deep);font-weight:600}
+.diario-setup .rg-field{margin-bottom:.55rem}
+
+.diario-day-card{background:var(--paper-raised);border-radius:var(--r);border:1px solid var(--line);box-shadow:var(--shadow-lg);padding:1rem 1.05rem;margin-bottom:.85rem}
+.ddc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem}
+.ddc-head button{background:var(--green-light);border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:1rem;color:var(--green);flex-shrink:0}
+.ddc-date{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:.98rem;color:var(--green-deep);text-align:center;text-transform:capitalize}
+.ddc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cycle-badge{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;padding:.3rem .65rem;border-radius:20px;background:var(--berry-light);color:var(--berry);margin-bottom:.7rem}
+.btn-regla{width:100%;padding:.6rem;border-radius:var(--r-sm);border:1.5px dashed var(--berry);background:var(--berry-light);color:var(--berry);font-weight:700;font-size:.76rem;cursor:pointer;margin:.5rem 0 .8rem}
+.btn-regla:hover{background:var(--berry);color:#fff}
+.diario-balance-row{display:flex;justify-content:space-between;align-items:baseline;font-family:'IBM Plex Mono',monospace;padding:.4rem 0;border-top:1px dashed var(--line)}
+.diario-balance-row .dbl{font-size:.72rem;color:var(--ink-soft)}
+.diario-balance-row .dbv{font-weight:700;font-size:.88rem}
+.diario-balance-row .dbv.pos{color:var(--sage)}
+.diario-balance-row .dbv.neg{color:var(--clay)}
+.diario-no-gasto{font-size:.74rem;color:var(--ink-soft);padding:.5rem 0;border-top:1px dashed var(--line)}
+
+.diario-resumen{display:flex;gap:8px;margin-bottom:.85rem}
+.dr-box{flex:1;background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r-sm);padding:.6rem .5rem;text-align:center;box-shadow:var(--shadow)}
+.dr-box .drv{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:.92rem;color:var(--green-deep);display:block}
+.dr-box .drl{font-size:.6rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft);display:block;margin-top:2px}
+
+.dm-list{background:var(--paper-raised);border-radius:var(--r);border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow)}
+.dm-row{display:grid;grid-template-columns:30px 1fr 1fr 1.3fr;align-items:center;gap:6px;padding:.55rem .8rem;border-top:1px solid var(--line);font-size:.75rem;cursor:pointer;transition:background .15s}
+.dm-row:first-child{border-top:none}
+.dm-row:hover{background:var(--gold-light)}
+.dm-row.sel{background:var(--green-light);box-shadow:inset 0 0 0 2px var(--green)}
+.dm-d{font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--ink-soft)}
+.dm-peso,.dm-pasos{font-family:'IBM Plex Mono',monospace;color:var(--ink)}
+.dm-def{font-family:'IBM Plex Mono',monospace;font-weight:700;text-align:right}
+.dm-def.pos{color:var(--sage)}
+.dm-def.neg{color:var(--clay)}
+.dm-def.na{color:var(--line)}
 </style>
 </head>
 <body>
@@ -379,12 +421,17 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
   <div class="info-bar">🧺 Lista de la semana seleccionada. Toca un ingrediente para marcarlo como comprado.</div>
   <div id="shopping-container"></div>
 </div>
+
+<div id="view-diario" class="view">
+  <div id="diario-content"></div>
+</div>
 </main>
 
 <nav class="bottom-nav">
   <button class="nav-btn active" onclick="showView('calendario',this)"><span class="nav-icon">🗓️</span><span>Calendario</span></button>
   <button class="nav-btn" onclick="showView('recetas',this)"><span class="nav-icon">📖</span><span>Recetas</span></button>
   <button class="nav-btn" onclick="showView('compra',this)"><span class="nav-icon">🧺</span><span>Compra</span></button>
+  <button class="nav-btn" onclick="showView('diario',this)"><span class="nav-icon">📉</span><span>Diario</span></button>
 </nav>
 
 <div class="modal-overlay" id="modal" onclick="closeOut(event)">
@@ -438,7 +485,16 @@ const POSTRE_KEY={comida:'postre_comida',cena:'postre_cena'};
 
 let DATA=null, currentWeek=calcCurrentWeek(), selectedDay=null, checkedItems={}, recipeFilter='desayuno', shopWeek=calcCurrentWeek();
 let REGISTRO={}; // 'YYYY-MM-DD|tipo' -> row
+let INGREDIENTES_EXTRA=[]; // ingredientes nuevos guardados en Supabase (además de los de data.json)
 let rgState=null; // estado del modal de registro abierto
+
+// ── Diario (peso, pasos, déficit, ciclo) ──
+let PERFIL=null;
+let DIARIO={};   // 'YYYY-MM-DD' -> {fecha,peso,pasos,notas}
+let CICLOS=[];    // [{fecha_inicio,notas}]
+let diarioMonthDate=new Date(); diarioMonthDate.setDate(1); diarioMonthDate.setHours(0,0,0,0);
+let diarioSelectedFecha=isoDate(new Date());
+let diarioSaveTimer=null;
 
 function isoDate(d){
   const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
@@ -451,6 +507,7 @@ function getFechaDia(dia,weekIdx){
   return isoDate(d);
 }
 function regKey(fecha,tipo){ return fecha+'|'+tipo; }
+function catalogoIngredientes(){ return (DATA.ingredientes||[]).concat(INGREDIENTES_EXTRA||[]); }
 
 async function loadRegistroRango(){
   if(!sb) return;
@@ -465,19 +522,54 @@ async function loadRegistroRango(){
   }catch(e){ console.warn('Error cargando registro:',e); }
 }
 
+async function loadPerfil(){
+  if(!sb) return;
+  try{
+    const {data,error}=await sb.from('perfil').select('*').eq('id',1).single();
+    if(!error) PERFIL=data;
+  }catch(e){ console.warn('No se pudo cargar el perfil:',e); }
+}
+async function loadDiario(){
+  if(!sb) return;
+  try{
+    const {data,error}=await sb.from('diario').select('*');
+    if(error) return;
+    DIARIO={};
+    (data||[]).forEach(r=>{ DIARIO[r.fecha]=r; });
+  }catch(e){ console.warn('No se pudo cargar el diario:',e); }
+}
+async function loadCiclos(){
+  if(!sb) return;
+  try{
+    const {data,error}=await sb.from('ciclo').select('*').order('fecha_inicio');
+    if(!error) CICLOS=data||[];
+  }catch(e){ console.warn('No se pudieron cargar los ciclos:',e); }
+}
+
+async function loadIngredientesExtra(){
+  if(!sb) return;
+  try{
+    const {data,error}=await sb.from('ingredientes').select('*');
+    if(error){ console.warn('Error cargando ingredientes guardados:',error.message); return; }
+    INGREDIENTES_EXTRA=data||[];
+  }catch(e){ console.warn('Error cargando ingredientes guardados:',e); }
+}
+
 async function loadData(){
   try{
     const r=await fetch('data.json?t='+Date.now());
     DATA=await r.json();
   }catch(e){ DATA={recetas:[],menu:{}}; }
   document.getElementById('today-label').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
-  await loadRegistroRango();
+  await Promise.all([loadRegistroRango(), loadIngredientesExtra(), loadPerfil(), loadDiario(), loadCiclos()]);
   document.getElementById('cal-loading').style.display='none';
   document.getElementById('cal-content').style.display='block';
   renderWeekDots();
   renderCal();
   renderRecipes('desayuno');
   renderShopTabs();
+  await recalibrarGastoSiToca();
+  renderDiario();
 }
 
 function getR(id){ return DATA.recetas.find(r=>r.id===id)||null; }
@@ -500,6 +592,371 @@ function computeRealDia(dia,fecha,dm){
     kcal+=s.kcal; proteinas+=s.proteinas; carbos+=s.carbos; grasas+=s.grasas;
   });
   return {kcal,proteinas,carbos,grasas,slots};
+}
+
+// ── Diario: helpers que funcionan para CUALQUIER fecha, sin depender ──
+// ── de la semana seleccionada en la pestaña Calendario. ──
+const DIA_KEY_POR_JS_DAY=['domingo','lunes','martes','miercoles','jueves','viernes','sabado'];
+
+function weekIndexForDate(date){
+  const diffDias=Math.floor((date-SEMANA1_INICIO)/(1000*60*60*24));
+  const semanaNum=Math.floor(diffDias/7);
+  return ((semanaNum%4)+4)%4;
+}
+function menuDelDia(fechaISO){
+  const date=new Date(fechaISO+'T00:00:00');
+  const dia=DIA_KEY_POR_JS_DAY[date.getDay()];
+  const sem=SEMANAS[weekIndexForDate(date)];
+  const menu=DATA.menu||{};
+  const dm=(menu[sem]?menu[sem][dia]:menu[dia])||{};
+  return {dia,dm};
+}
+function kcalConsumidasFecha(fechaISO){
+  const {dia,dm}=menuDelDia(fechaISO);
+  return computeRealDia(dia,fechaISO,dm).kcal;
+}
+
+// Último peso conocido en o antes de la fecha (o el más próximo si no hay ninguno anterior)
+function pesoParaFecha(fechaISO){
+  if(DIARIO[fechaISO] && DIARIO[fechaISO].peso!=null) return DIARIO[fechaISO].peso;
+  const anteriores=Object.keys(DIARIO).filter(f=>DIARIO[f].peso!=null && f<=fechaISO).sort();
+  if(anteriores.length) return DIARIO[anteriores[anteriores.length-1]].peso;
+  const cualquiera=Object.keys(DIARIO).filter(f=>DIARIO[f].peso!=null).sort();
+  return cualquiera.length?DIARIO[cualquiera[0]].peso:null;
+}
+function edadPerfil(){
+  if(!PERFIL||!PERFIL.fecha_nacimiento) return null;
+  const hoy=new Date(), nac=new Date(PERFIL.fecha_nacimiento+'T00:00:00');
+  let edad=hoy.getFullYear()-nac.getFullYear();
+  const m=hoy.getMonth()-nac.getMonth();
+  if(m<0||(m===0&&hoy.getDate()<nac.getDate())) edad--;
+  return edad;
+}
+// Gasto calórico del día SIN el ajuste aprendido (Mifflin-St Jeor + pasos)
+function gastoBaseFecha(fechaISO){
+  const edad=edadPerfil();
+  const peso=pesoParaFecha(fechaISO);
+  if(!PERFIL||!PERFIL.altura_cm||edad==null||peso==null) return null;
+  const bmr=10*peso+6.25*PERFIL.altura_cm-5*edad-161; // fórmula mujer
+  const pasos=(DIARIO[fechaISO]&&DIARIO[fechaISO].pasos)||0;
+  const kcalPasos=pasos*0.04*(peso/70);
+  return bmr*1.1+kcalPasos;
+}
+// Gasto estimado final: base + corrección aprendida de las recalibraciones
+function gastoEstimadoFecha(fechaISO){
+  const base=gastoBaseFecha(fechaISO);
+  if(base==null) return null;
+  return base+(PERFIL&&PERFIL.ajuste_gasto_kcal||0);
+}
+// balance<0 → déficit (bien) · balance>0 → superávit
+function balanceFecha(fechaISO){
+  const gasto=gastoEstimadoFecha(fechaISO);
+  if(gasto==null) return null;
+  return kcalConsumidasFecha(fechaISO)-gasto;
+}
+
+// Info del ciclo para una fecha: día del ciclo y fase estimada
+function cicloInfoFecha(fechaISO){
+  if(!CICLOS.length) return null;
+  const date=new Date(fechaISO+'T00:00:00');
+  let ultimo=null;
+  CICLOS.forEach(c=>{
+    const ci=new Date(c.fecha_inicio+'T00:00:00');
+    if(ci<=date && (!ultimo||ci>new Date(ultimo.fecha_inicio+'T00:00:00'))) ultimo=c;
+  });
+  if(!ultimo) return null;
+  const diaCiclo=Math.floor((date-new Date(ultimo.fecha_inicio+'T00:00:00'))/(1000*60*60*24))+1;
+  const dur=(PERFIL&&PERFIL.duracion_ciclo_media)||28;
+  const mid=Math.round(dur/2);
+  let fase='folicular', emoji='🌷';
+  if(diaCiclo>=mid-1 && diaCiclo<=mid+1){ fase='ovulacion'; emoji='🌕'; }
+  else if(diaCiclo>mid+1){ fase='lutea'; emoji='🌙'; }
+  return {diaCiclo,fase,emoji,inicio:ultimo.fecha_inicio};
+}
+
+async function registrarInicioRegla(fechaISO){
+  if(!sb) return;
+  if(!confirm('¿Marcar el '+fechaISO+' como día 1 del ciclo?')) return;
+  try{
+    const {error}=await sb.from('ciclo').upsert({fecha_inicio:fechaISO},{onConflict:'fecha_inicio'});
+    if(error){ alert('No se pudo guardar: '+error.message); return; }
+    await loadCiclos();
+    await recalibrarDuracionCiclo();
+    renderDiario();
+  }catch(e){ alert('No se pudo guardar: '+e.message); }
+}
+async function recalibrarDuracionCiclo(){
+  if(!sb||CICLOS.length<2) return;
+  const fechas=CICLOS.map(c=>new Date(c.fecha_inicio+'T00:00:00')).sort((a,b)=>a-b);
+  const diffs=[]; for(let i=1;i<fechas.length;i++) diffs.push(Math.round((fechas[i]-fechas[i-1])/(1000*60*60*24)));
+  const media=diffs.reduce((a,b)=>a+b,0)/diffs.length;
+  if(media>=15&&media<=45){
+    try{
+      await sb.from('perfil').update({duracion_ciclo_media:media}).eq('id',1);
+      if(PERFIL) PERFIL.duracion_ciclo_media=media;
+    }catch(e){ console.warn('No se pudo recalibrar la duración del ciclo:',e); }
+  }
+}
+
+// Recalibración semanal del gasto estimado: compara cómo ha variado tu peso real
+// contra lo que predecía el déficit registrado, y ajusta ajuste_gasto_kcal poco a poco.
+async function recalibrarGastoSiToca(){
+  if(!sb||!PERFIL) return;
+  const hoy=isoDate(new Date());
+  if(PERFIL.ultima_recalibracion){
+    const dias=Math.floor((new Date(hoy)-new Date(PERFIL.ultima_recalibracion))/(1000*60*60*24));
+    if(dias<7) return;
+  }
+  const ventana=[]; for(let i=13;i>=0;i--){ const d=new Date(); d.setDate(d.getDate()-i); ventana.push(isoDate(d)); }
+  const puntos=ventana.map(f=>{
+    const row=DIARIO[f];
+    if(!row||row.peso==null) return null;
+    const gastoBase=gastoBaseFecha(f);
+    if(gastoBase==null) return null;
+    const ciclo=cicloInfoFecha(f);
+    return {fecha:f,peso:row.peso,lutea:ciclo&&ciclo.fase==='lutea',gastoBase,kcalCons:kcalConsumidasFecha(f)};
+  }).filter(Boolean);
+  if(puntos.length<8) return; // no hay suficiente histórico todavía
+
+  const peso_w=p=>p.lutea?0.4:1; // pesa menos los días de fase lútea (retención de agua)
+  const mediaPonderada=arr=>{ let sw=0,sv=0; arr.forEach(p=>{const w=peso_w(p); sw+=w; sv+=p.peso*w;}); return sw?sv/sw:null; };
+  const mitad=Math.floor(puntos.length/2);
+  const pesoIni=mediaPonderada(puntos.slice(0,mitad)), pesoFin=mediaPonderada(puntos.slice(mitad));
+  if(pesoIni==null||pesoFin==null) return;
+
+  const cambioKcalReal=(pesoFin-pesoIni)*7700;
+  const deficitEstimadoAcum=puntos.reduce((s,p)=>s+(p.gastoBase+(PERFIL.ajuste_gasto_kcal||0)-p.kcalCons),0);
+  const errorKcal=(-cambioKcalReal)-deficitEstimadoAcum;
+  const correccionDiaria=errorKcal/puntos.length;
+  let nuevoAjuste=(PERFIL.ajuste_gasto_kcal||0)+correccionDiaria*0.5; // aplicar solo la mitad, para suavizar
+  nuevoAjuste=Math.max(-500,Math.min(500,nuevoAjuste));
+
+  try{
+    await sb.from('perfil').update({ajuste_gasto_kcal:nuevoAjuste,ultima_recalibracion:hoy}).eq('id',1);
+    PERFIL.ajuste_gasto_kcal=nuevoAjuste; PERFIL.ultima_recalibracion=hoy;
+  }catch(e){ console.warn('No se pudo recalibrar el gasto:',e); }
+}
+
+// ── Guardado ──
+async function guardarPerfilBasico(){
+  if(!sb) return;
+  const altura=parseFloat(document.getElementById('pf-altura').value)||null;
+  const fnac=document.getElementById('pf-fnac').value||null;
+  if(!altura||!fnac){ alert('Rellena altura y fecha de nacimiento.'); return; }
+  try{
+    const {data,error}=await sb.from('perfil').update({altura_cm:altura,fecha_nacimiento:fnac}).eq('id',1).select().single();
+    if(error){ alert('No se pudo guardar: '+error.message); return; }
+    PERFIL=data; renderDiario();
+  }catch(e){ alert('No se pudo guardar: '+e.message); }
+}
+function diarioAutoSave(){ clearTimeout(diarioSaveTimer); diarioSaveTimer=setTimeout(guardarDiarioDia,600); }
+async function guardarDiarioDia(){
+  if(!sb) return;
+  const fecha=diarioSelectedFecha;
+  const pesoEl=document.getElementById('dd-peso'), pasosEl=document.getElementById('dd-pasos'), notasEl=document.getElementById('dd-notas');
+  const row={
+    fecha,
+    peso: pesoEl&&pesoEl.value!==''?parseFloat(pesoEl.value):null,
+    pasos: pasosEl&&pasosEl.value!==''?parseInt(pasosEl.value):null,
+    notas: (notasEl&&notasEl.value)||null,
+    updated_at:new Date().toISOString()
+  };
+  try{
+    const {data,error}=await sb.from('diario').upsert(row,{onConflict:'fecha'}).select().single();
+    if(error){ console.warn('No se pudo guardar el diario:',error.message); return; }
+    DIARIO[fecha]=data;
+    renderDiario();
+  }catch(e){ console.warn('No se pudo guardar el diario:',e); }
+}
+
+// ── Navegación día / mes ──
+function selectDiarioDay(fechaISO){ diarioSelectedFecha=fechaISO; renderDiario(); }
+function diarioPrevDay(){
+  const d=new Date(diarioSelectedFecha+'T00:00:00'); d.setDate(d.getDate()-1);
+  diarioSelectedFecha=isoDate(d);
+  if(d.getMonth()!==diarioMonthDate.getMonth()||d.getFullYear()!==diarioMonthDate.getFullYear()){ diarioMonthDate=new Date(d.getFullYear(),d.getMonth(),1); }
+  renderDiario();
+}
+function diarioNextDay(){
+  const d=new Date(diarioSelectedFecha+'T00:00:00'); d.setDate(d.getDate()+1);
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  if(d>hoy) return;
+  diarioSelectedFecha=isoDate(d);
+  if(d.getMonth()!==diarioMonthDate.getMonth()||d.getFullYear()!==diarioMonthDate.getFullYear()){ diarioMonthDate=new Date(d.getFullYear(),d.getMonth(),1); }
+  renderDiario();
+}
+function diarioPrevMonth(){ diarioMonthDate=new Date(diarioMonthDate.getFullYear(),diarioMonthDate.getMonth()-1,1); renderDiario(); }
+function diarioNextMonth(){
+  const hoy=new Date();
+  if(diarioMonthDate.getFullYear()===hoy.getFullYear()&&diarioMonthDate.getMonth()===hoy.getMonth()) return;
+  diarioMonthDate=new Date(diarioMonthDate.getFullYear(),diarioMonthDate.getMonth()+1,1);
+  renderDiario();
+}
+
+// ── Gráfico de peso: línea continua de TODO el historial, con sombreado ──
+// ── de fase lútea, para que el "reset" mensual no la corte nunca.        ──
+function pesoChartSVG(){
+  const puntos=Object.values(DIARIO).filter(r=>r.peso!=null).sort((a,b)=>a.fecha<b.fecha?-1:1);
+  if(puntos.length<2) return null;
+  const W=680,H=170,padL=34,padR=10,padT=14,padB=22;
+  const fechas=puntos.map(p=>new Date(p.fecha+'T00:00:00').getTime());
+  const minX=Math.min(...fechas), maxX=Math.max(...fechas);
+  const pesos=puntos.map(p=>p.peso);
+  let minY=Math.min(...pesos)-0.4, maxY=Math.max(...pesos)+0.4;
+  if(maxY-minY<1){ const c=(maxY+minY)/2; minY=c-0.5; maxY=c+0.5; }
+  const xScale=t=> maxX===minX ? (W-padL-padR)/2+padL : padL+(t-minX)/(maxX-minX)*(W-padL-padR);
+  const yScale=v=> H-padB-(v-minY)/(maxY-minY)*(H-padT-padB);
+
+  // sombreado de fase lútea por ciclo
+  let shading='';
+  if(CICLOS.length){
+    const ordenados=CICLOS.map(c=>c.fecha_inicio).sort();
+    const dur=(PERFIL&&PERFIL.duracion_ciclo_media)||28;
+    ordenados.forEach((inicio,i)=>{
+      const dStart=new Date(inicio+'T00:00:00');
+      const luteaStart=new Date(dStart); luteaStart.setDate(luteaStart.getDate()+Math.round(dur/2)+1);
+      const fin=i<ordenados.length-1?new Date(ordenados[i+1]+'T00:00:00'):new Date(dStart.getTime()+dur*86400000);
+      if(luteaStart.getTime()>=fin.getTime()) return;
+      const x1=xScale(Math.max(luteaStart.getTime(),minX)), x2=xScale(Math.min(fin.getTime(),maxX));
+      if(x2>x1) shading+=`<rect x="${x1.toFixed(1)}" y="${padT}" width="${(x2-x1).toFixed(1)}" height="${H-padT-padB}" fill="var(--berry-light)" opacity=".6"/>`;
+    });
+  }
+  const puntoPath=puntos.map((p,i)=>`${i===0?'M':'L'}${xScale(new Date(p.fecha+'T00:00:00').getTime()).toFixed(1)},${yScale(p.peso).toFixed(1)}`).join(' ');
+  const dots=CICLOS.map(c=>{
+    const t=new Date(c.fecha_inicio+'T00:00:00').getTime();
+    if(t<minX||t>maxX) return '';
+    return `<circle cx="${xScale(t).toFixed(1)}" cy="${padT+4}" r="3" fill="var(--berry)"/>`;
+  }).join('');
+  const fmtEje=d=>new Date(d).toLocaleDateString('es-ES',{day:'numeric',month:'short'});
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block">
+    ${shading}
+    <line x1="${padL}" y1="${yScale(minY+ (maxY-minY)/2).toFixed(1)}" x2="${W-padR}" y2="${yScale(minY+(maxY-minY)/2).toFixed(1)}" stroke="var(--line)" stroke-dasharray="3,3"/>
+    <path d="${puntoPath}" fill="none" stroke="var(--sage)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+    ${dots}
+    <text x="${padL}" y="${H-6}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${fmtEje(minX)}</text>
+    <text x="${W-padR}" y="${H-6}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${fmtEje(maxX)}</text>
+    <text x="${padL}" y="${padT+8}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${maxY.toFixed(1)}</text>
+    <text x="${padL}" y="${H-padB}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${minY.toFixed(1)}</text>
+  </svg>`;
+}
+
+function renderDiarioChart(){
+  const svg=pesoChartSVG();
+  return `<div class="diario-chart-card">
+    <div class="diario-chart-title">Evolución del peso</div>
+    ${CICLOS.length?'<div class="diario-chart-sub">🌸 sombreado = fase lútea estimada · • = inicio de ciclo</div>':''}
+    ${svg?svg:'<div class="diario-chart-empty">Registra tu peso unos días para ver la tendencia aquí.</div>'}
+  </div>`;
+}
+
+function renderDiarioDayCard(){
+  const fecha=diarioSelectedFecha;
+  const row=DIARIO[fecha]||{};
+  const date=new Date(fecha+'T00:00:00');
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  const esHoy=date.getTime()===hoy.getTime();
+  const label=(esHoy?'Hoy · ':'')+date.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+  const ciclo=cicloInfoFecha(fecha);
+  const gasto=gastoEstimadoFecha(fecha), cons=kcalConsumidasFecha(fecha);
+  const balance=gasto!=null?Math.round(cons-gasto):null;
+
+  let macrosHtml;
+  if(!PERFIL||!PERFIL.altura_cm||!PERFIL.fecha_nacimiento){
+    macrosHtml=`<div class="diario-setup">
+      <p>Para calcular tu gasto automático necesito tu altura y fecha de nacimiento (solo una vez):</p>
+      <div class="rg-field"><label>Altura (cm)</label><input type="number" id="pf-altura" placeholder="165"></div>
+      <div class="rg-field"><label>Fecha de nacimiento</label><input type="date" id="pf-fnac"></div>
+      <button class="rg-btn rg-btn-save" style="width:100%" onclick="guardarPerfilBasico()">Guardar</button>
+    </div>`;
+  }else{
+    macrosHtml=`
+      <div class="diario-balance-row"><span class="dbl">Consumidas</span><span class="dbv mono">${Math.round(cons)} kcal</span></div>
+      <div class="diario-balance-row"><span class="dbl">Gasto estimado</span><span class="dbv mono">${gasto!=null?Math.round(gasto):'—'} kcal</span></div>
+      <div class="diario-balance-row"><span class="dbl">${balance!=null&&balance<=0?'Déficit':'Superávit'}</span><span class="dbv mono ${balance!=null&&balance<=0?'pos':'neg'}">${balance!=null?Math.abs(balance):'—'} kcal</span></div>
+    `;
+  }
+
+  return `<div class="diario-day-card">
+    <div class="ddc-head">
+      <button onclick="diarioPrevDay()">‹</button>
+      <div class="ddc-date">${label}</div>
+      <button onclick="diarioNextDay()" ${esHoy?'style="visibility:hidden"':''}>›</button>
+    </div>
+    ${ciclo?`<span class="cycle-badge">${ciclo.emoji} Día ${ciclo.diaCiclo} del ciclo · fase ${ciclo.fase}</span>`:''}
+    <div class="ddc-grid">
+      <div class="rg-field"><label>Peso (kg)</label><input type="number" step="0.1" id="dd-peso" value="${row.peso!=null?row.peso:''}" placeholder="—" oninput="diarioAutoSave()"></div>
+      <div class="rg-field"><label>Pasos</label><input type="number" step="1" id="dd-pasos" value="${row.pasos!=null?row.pasos:''}" placeholder="—" oninput="diarioAutoSave()"></div>
+    </div>
+    <button class="btn-regla" onclick="registrarInicioRegla('${fecha}')">🔴 Hoy empezó la regla</button>
+    ${macrosHtml}
+    <div class="rg-field" style="margin-top:.7rem"><label>Notas</label><textarea id="dd-notas" rows="2" oninput="diarioAutoSave()" placeholder="Cómo te sientes, algo que anotar...">${row.notas||''}</textarea></div>
+  </div>`;
+}
+
+function renderDiarioResumenMes(){
+  const y=diarioMonthDate.getFullYear(), m=diarioMonthDate.getMonth();
+  const conPeso=Object.keys(DIARIO).filter(f=>{
+    const d=new Date(f+'T00:00:00'); return d.getFullYear()===y&&d.getMonth()===m&&DIARIO[f].peso!=null;
+  }).sort();
+  let cambioTxt='—';
+  if(conPeso.length>=2){
+    const cambio=DIARIO[conPeso[conPeso.length-1]].peso-DIARIO[conPeso[0]].peso;
+    cambioTxt=(cambio>=0?'+':'')+cambio.toFixed(1)+' kg';
+  }
+  const diasConDatos=Object.keys(DIARIO).filter(f=>{
+    const d=new Date(f+'T00:00:00'); return d.getFullYear()===y&&d.getMonth()===m&&(DIARIO[f].peso!=null||DIARIO[f].pasos!=null);
+  });
+  const balances=diasConDatos.map(f=>balanceFecha(f)).filter(b=>b!=null);
+  const balanceMedio=balances.length?Math.round(balances.reduce((a,b)=>a+b,0)/balances.length):null;
+  return `<div class="diario-resumen">
+    <div class="dr-box"><span class="drv">${cambioTxt}</span><span class="drl">peso este mes</span></div>
+    <div class="dr-box"><span class="drv">${diasConDatos.length}</span><span class="drl">días registrados</span></div>
+    <div class="dr-box"><span class="drv">${balanceMedio!=null?(balanceMedio<=0?'−':'+')+Math.abs(balanceMedio):'—'}</span><span class="drl">balance medio</span></div>
+  </div>`;
+}
+
+function renderDiarioMesLista(){
+  const y=diarioMonthDate.getFullYear(), m=diarioMonthDate.getMonth();
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  const esMesActual=y===hoy.getFullYear()&&m===hoy.getMonth();
+  const ultimoDiaMes=new Date(y,m+1,0).getDate();
+  const finalDia=esMesActual?hoy.getDate():ultimoDiaMes;
+  let rows='';
+  for(let d=finalDia; d>=1; d--){
+    const date=new Date(y,m,d);
+    const fecha=isoDate(date);
+    const row=DIARIO[fecha];
+    const gasto=gastoEstimadoFecha(fecha);
+    const cons=kcalConsumidasFecha(fecha);
+    const balance=gasto!=null?Math.round(cons-gasto):null;
+    const ciclo=cicloInfoFecha(fecha);
+    rows+=`<div class="dm-row ${fecha===diarioSelectedFecha?'sel':''}" onclick="selectDiarioDay('${fecha}')">
+      <span class="dm-d">${d}${ciclo&&ciclo.diaCiclo===1?' 🔴':''}</span>
+      <span class="dm-peso">${row&&row.peso!=null?row.peso+'kg':'—'}</span>
+      <span class="dm-pasos">${row&&row.pasos!=null?row.pasos:'—'}</span>
+      <span class="dm-def ${balance==null?'na':(balance<=0?'pos':'neg')}">${balance==null?'—':(balance<=0?'−':'+')+Math.abs(balance)+' kcal'}</span>
+    </div>`;
+  }
+  return `<div class="dm-list">${rows}</div>`;
+}
+
+function renderDiario(){
+  const el=document.getElementById('diario-content');
+  if(!DATA||!el) return;
+  const mesLabel=diarioMonthDate.toLocaleDateString('es-ES',{month:'long',year:'numeric'});
+  const hoy=new Date();
+  const esMesActual=diarioMonthDate.getFullYear()===hoy.getFullYear()&&diarioMonthDate.getMonth()===hoy.getMonth();
+  el.innerHTML=`
+    ${renderDiarioChart()}
+    ${renderDiarioDayCard()}
+    <div class="week-nav">
+      <button onclick="diarioPrevMonth()">‹</button>
+      <div class="week-nav-center"><span class="week-nav-label" style="text-transform:capitalize">${mesLabel}</span></div>
+      <button onclick="diarioNextMonth()" ${esMesActual?'disabled':''}>›</button>
+    </div>
+    ${renderDiarioResumenMes()}
+    ${renderDiarioMesLista()}
+  `;
 }
 
 function getCurrentSemana(){ return SEMANAS[currentWeek % SEMANAS.length]; }
@@ -580,7 +1037,7 @@ function renderCal(){
       <div class="cal-num">${date.getDate()}</div>
       ${tieneRegistro?'<div class="cal-check">✓</div>':''}
       <div class="cal-dots">${dots}</div>
-      ${kcal>0?`<div class="cal-kcal">${kcal}</div>`:''}
+      ${kcal>0?`<div class="cal-kcal">${Math.round(kcal)}</div>`:''}
     </div>`;
   }).join('');
 
@@ -648,9 +1105,9 @@ function mealItemHtml(tipo,dia,fecha,dm,esPostre){
         <div class="meal-name-t ${!s?'empty':''}">${nombreMostrado}</div>
         ${tieneDatos?`<div class="meal-macros-r">
           <span class="mm mm-k">${Math.round(s.kcal)} kcal</span>
-          <span class="mm mm-p">P: ${s.proteinas}g</span>
-          <span class="mm mm-c">CH: ${s.carbos}g</span>
-          <span class="mm mm-g">G: ${s.grasas}g</span>
+          <span class="mm mm-p">P: ${Math.round(s.proteinas)}g</span>
+          <span class="mm mm-c">CH: ${Math.round(s.carbos)}g</span>
+          <span class="mm mm-g">G: ${Math.round(s.grasas)}g</span>
         </div>`:''}
         ${badge}
       </div>
@@ -726,10 +1183,10 @@ function renderRecipes(tipo){
       </div>
       ${r.descripcion?`<div class="recipe-desc">${r.descripcion}</div>`:''}
       <div class="macro-row">
-        <div class="mbox mb-k"><span class="mv">${r.kcal}</span><span class="ml">kcal</span></div>
-        <div class="mbox mb-p"><span class="mv">${r.proteinas}g</span><span class="ml">prot</span></div>
-        <div class="mbox mb-c"><span class="mv">${r.carbos}g</span><span class="ml">carbos</span></div>
-        <div class="mbox mb-g"><span class="mv">${r.grasas}g</span><span class="ml">grasas</span></div>
+        <div class="mbox mb-k"><span class="mv">${Math.round(r.kcal)}</span><span class="ml">kcal</span></div>
+        <div class="mbox mb-p"><span class="mv">${Math.round(r.proteinas)}g</span><span class="ml">prot</span></div>
+        <div class="mbox mb-c"><span class="mv">${Math.round(r.carbos)}g</span><span class="ml">carbos</span></div>
+        <div class="mbox mb-g"><span class="mv">${Math.round(r.grasas)}g</span><span class="ml">grasas</span></div>
       </div>
     </div>
   `).join('');
@@ -790,10 +1247,10 @@ function openModal(id){
   document.getElementById('modal-title').textContent=r.nombre;
   document.getElementById('modal-body').innerHTML=`
     <div class="modal-macros">
-      <div class="mm-box mb-k"><span class="v">${r.kcal}</span><span class="l">kcal</span></div>
-      <div class="mm-box mb-p"><span class="v">${r.proteinas}g</span><span class="l">prot</span></div>
-      <div class="mm-box mb-c"><span class="v">${r.carbos}g</span><span class="l">carbos</span></div>
-      <div class="mm-box mb-g"><span class="v">${r.grasas}g</span><span class="l">grasas</span></div>
+      <div class="mm-box mb-k"><span class="v">${Math.round(r.kcal)}</span><span class="l">kcal</span></div>
+      <div class="mm-box mb-p"><span class="v">${Math.round(r.proteinas)}g</span><span class="l">prot</span></div>
+      <div class="mm-box mb-c"><span class="v">${Math.round(r.carbos)}g</span><span class="l">carbos</span></div>
+      <div class="mm-box mb-g"><span class="v">${Math.round(r.grasas)}g</span><span class="l">grasas</span></div>
     </div>
     ${r.descripcion?`<p style="font-size:.86rem;color:var(--ink-soft);margin-bottom:.75rem;line-height:1.55">${r.descripcion}</p>`:''}
     ${r.tiempo?`<p style="font-size:.8rem;color:var(--gold-deep);margin-bottom:1rem;font-weight:700">⏱ ${r.tiempo}</p>`:''}
@@ -882,6 +1339,11 @@ function rgToggleSkip(idx){ rgState.ingredientes[idx].skip=!rgState.ingredientes
 function rgUpdateQty(idx,val){ rgState.ingredientes[idx].cantidad_real=val; updateRgRowDisplay(idx); updateRgTotalsDisplay(); }
 function rgDelIngrediente(idx){ rgState.ingredientes.splice(idx,1); renderRgModalBody(); }
 function rgAddExtra(){ rgState.extras.push({nombre:'',cantidad_orig:'',cantidad_real:'',kcal:0,proteinas:0,carbos:0,grasas:0,extra:true}); renderRgModalBody(); }
+function rgAddExtraConNombre(nombre){
+  rgState.extras.push({nombre,cantidad_orig:'',cantidad_real:'',kcal:0,proteinas:0,carbos:0,grasas:0,extra:true});
+  rgState.buscandoIng='';
+  renderRgModalBody();
+}
 function rgDelExtra(idx){ rgState.extras.splice(idx,1); renderRgModalBody(); updateRgTotalsDisplay(); }
 function rgUpdateExtra(idx,field,val){
   rgState.extras[idx][field] = (['kcal','proteinas','carbos','grasas'].includes(field)) ? (parseFloat(val)||0) : val;
@@ -891,7 +1353,7 @@ function rgUpdateLibreNombre(val){ rgState.libreNombre=val; }
 function rgSearchRecetas(q){ rgState.buscando=q; renderRgModalBody(); }
 function rgSearchIngredientes(q){ rgState.buscandoIng=q; renderRgModalBody(); }
 function rgAddIngredienteCatalogo(id){
-  const ing=(DATA.ingredientes||[]).find(i=>i.id===id); if(!ing) return;
+  const ing=catalogoIngredientes().find(i=>i.id===id); if(!ing) return;
   rgState.ingredientes.push({nombre:ing.nombre, cantidad_orig:ing.unidad, cantidad_real:ing.unidad,
     kcal_orig:ing.kcal||0, proteinas_orig:ing.proteinas||0, carbos_orig:ing.carbos||0, grasas_orig:ing.grasas||0,
     skip:false, origen:'catalogo'});
@@ -943,17 +1405,22 @@ function renderRgModalBody(){
       body+=`<div class="rg-field"><label>Buscar receta</label><input type="text" id="rg-search-receta" placeholder="Nombre de la receta…" value="${s.buscando||''}" oninput="rgSearchRecetas(this.value)"></div>`;
       const q=(s.buscando||'').toLowerCase().trim();
       const list=DATA.recetas.filter(r=>!q||r.nombre.toLowerCase().includes(q)).slice(0,40);
-      body+=`<div class="rg-recipe-picker">${list.map(r=>`<div class="rg-rp-item ${s.otraRecetaId===r.id?'picked':''}" onclick="rgPickReceta('${r.id}')"><span>${r.nombre}</span><span class="rpk">${r.kcal} kcal</span></div>`).join('')||'<div class="rg-rp-item">Sin resultados</div>'}</div>`;
+      body+=`<div class="rg-recipe-picker">${list.map(r=>`<div class="rg-rp-item ${s.otraRecetaId===r.id?'picked':''}" onclick="rgPickReceta('${r.id}')"><span>${r.nombre}</span><span class="rpk">${Math.round(r.kcal)} kcal</span></div>`).join('')||'<div class="rg-rp-item">Sin resultados</div>'}</div>`;
     } else if(s.fuente==='libre'){
       body+=`<div class="rg-field"><label>¿Qué comiste? (nombre, opcional)</label><input type="text" id="rg-libre-nombre" value="${s.libreNombre||''}" placeholder="Ej. Ensalada improvisada" oninput="rgUpdateLibreNombre(this.value)"></div>`;
-      body+=`<div class="rg-field"><label>Buscar ingrediente del catálogo</label><input type="text" id="rg-search-ingrediente" placeholder="Ej. arroz, pollo…" value="${s.buscandoIng||''}" oninput="rgSearchIngredientes(this.value)"></div>`;
-      const qi=(s.buscandoIng||'').toLowerCase().trim();
-      if(qi){
-        const listi=(DATA.ingredientes||[]).filter(i=>i.nombre.toLowerCase().includes(qi)).slice(0,30);
-        body+=`<div class="rg-recipe-picker">${listi.map(i=>`<div class="rg-rp-item" onclick="rgAddIngredienteCatalogo('${i.id}')"><span>${i.nombre}</span><span class="rpk">${i.unidad} · ${i.kcal} kcal</span></div>`).join('')||'<div class="rg-rp-item">Sin resultados</div>'}</div>`;
-      }
     } else if(s.planR){
-      body+=`<div class="rg-ref-card">Plan original: <b>${s.planR.nombre}</b> — ${s.planR.kcal} kcal</div>`;
+      body+=`<div class="rg-ref-card">Plan original: <b>${s.planR.nombre}</b> — ${Math.round(s.planR.kcal)} kcal</div>`;
+    }
+    // buscador de ingredientes del catálogo (data.json + Supabase), disponible en cualquier modo
+    body+=`<div class="rg-field"><label>Añadir ingrediente del catálogo</label><input type="text" id="rg-search-ingrediente" placeholder="Ej. arroz, pollo, gelatina…" value="${s.buscandoIng||''}" oninput="rgSearchIngredientes(this.value)"></div>`;
+    const qi=(s.buscandoIng||'').toLowerCase().trim();
+    if(qi){
+      const listi=catalogoIngredientes().filter(i=>i.nombre.toLowerCase().includes(qi)).slice(0,30);
+      if(listi.length){
+        body+=`<div class="rg-recipe-picker">${listi.map(i=>`<div class="rg-rp-item" onclick="rgAddIngredienteCatalogo('${i.id}')"><span>${i.nombre}</span><span class="rpk">${i.unidad} · ${Math.round(i.kcal)} kcal</span></div>`).join('')}</div>`;
+      } else {
+        body+=`<div class="rg-recipe-picker"><div class="rg-rp-item" onclick="rgAddExtraConNombre('${qi.replace(/'/g,"\\'")}')"><span>Sin resultados para «${s.buscandoIng}»</span><span class="rpk">+ crear nuevo</span></div></div>`;
+      }
     }
     if(s.ingredientes.length){
       body+=s.ingredientes.map((row,idx)=>{
@@ -982,8 +1449,7 @@ function renderRgModalBody(){
         <button class="rg-extra-del" onclick="rgDelExtra(${idx})">✕</button>
       </div>`).join('');
     }
-    const extraLabel = s.fuente==='libre' ? '+ Añadir ingrediente que no está en el catálogo (a mano)' : '+ Añadir ingrediente que no estaba en la receta';
-    if(s.ingredientes.length||s.fuente==='como_plan'||s.otraRecetaId||s.fuente==='libre') body+=`<button class="rg-add-extra" onclick="rgAddExtra()">${extraLabel}</button>`;
+    body+=`<button class="rg-add-extra" onclick="rgAddExtra()">+ Añadir ingrediente a mano (sin catálogo)</button>`;
   } else if(s.fuente==='no_comido'){
     body+=`<div class="rg-empty-msg">🚫 Se registrará como que no comiste esto, sin sumar calorías al día.</div>`;
   }
@@ -1035,10 +1501,38 @@ async function saveRegistro(){
     const {data,error}=await sb.from('registro_diario').upsert(row,{onConflict:'fecha,tipo'}).select().single();
     if(error){ alert('No se pudo guardar: '+error.message); return; }
     REGISTRO[regKey(s.fecha,s.tipo)]=data;
+    await guardarIngredientesNuevos(s.extras);
     closeRgModal();
     renderCal();
   }catch(e){ alert('No se pudo guardar: '+e.message); }
   finally{ body.classList.remove('rg-saving'); }
+}
+
+// Guarda en Supabase los ingredientes escritos a mano que todavía no existían en el
+// catálogo (ni en data.json ni en los ya guardados antes), para que a partir de ahora
+// salgan en el buscador.
+async function guardarIngredientesNuevos(extras){
+  if(!sb || !extras || !extras.length) return;
+  const existentes=new Set(catalogoIngredientes().map(i=>i.nombre.trim().toLowerCase()));
+  const vistos=new Set();
+  const nuevos=[];
+  extras.forEach(e=>{
+    const nombre=(e.nombre||'').trim();
+    const clave=nombre.toLowerCase();
+    if(!nombre || existentes.has(clave) || vistos.has(clave)) return;
+    vistos.add(clave);
+    nuevos.push({
+      nombre,
+      unidad:(e.cantidad_real&&String(e.cantidad_real).trim())||'1 unidad',
+      kcal:e.kcal||0, proteinas:e.proteinas||0, carbos:e.carbos||0, grasas:e.grasas||0
+    });
+  });
+  if(!nuevos.length) return;
+  try{
+    const {data,error}=await sb.from('ingredientes').insert(nuevos).select();
+    if(error){ console.warn('No se pudieron guardar ingredientes nuevos:',error.message); return; }
+    if(data) INGREDIENTES_EXTRA=INGREDIENTES_EXTRA.concat(data);
+  }catch(e){ console.warn('No se pudieron guardar ingredientes nuevos:',e); }
 }
 
 async function deleteRegistro(){

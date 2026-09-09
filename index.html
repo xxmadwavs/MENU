@@ -54,6 +54,47 @@ body{
 h1,h2,.font-display{font-family:'Fraunces',serif}
 .mono{font-family:'IBM Plex Mono',monospace}
 
+/* MICRO-LABEL unificado — mismo tratamiento tipográfico para toda etiqueta pequeña en mayúsculas;
+   el color (no el tamaño) distingue "esto es una etiqueta" de "esto es un dato" */
+.cal-head,
+.meal-type-label,
+.mbox .ml,
+.mm-box .l,
+.sec-lbl,
+.rg-totals .tl,
+.rg-field label,
+.dti-body label,
+.dms-l,
+.dbh-label,
+.dr-box .drl{
+  font-size:.64rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.045em;
+  color:var(--ink-soft);
+}
+
+/* INPUTS unificados — mismo tratamiento visual que el resto de tarjetas de la app */
+.rg-field input,.rg-field textarea,
+.recipe-search,
+.ring-qty input,
+.rg-extra-row input{
+  background:var(--paper);
+  border:1.5px solid var(--line);
+  border-radius:var(--r-sm);
+  color:var(--ink);
+  font-family:'Inter',sans-serif;
+  box-shadow:inset 0 1px 3px rgba(38,43,31,.05);
+  transition:border-color .15s, box-shadow .15s;
+}
+.rg-field input:focus,.rg-field textarea:focus,
+.recipe-search:focus,
+.ring-qty input:focus,
+.rg-extra-row input:focus{
+  outline:none;border-color:var(--green);
+  box-shadow:inset 0 1px 3px rgba(38,43,31,.05), 0 0 0 3px var(--green-light);
+}
+
 /* HEADER */
 header{
   background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 100%);
@@ -66,8 +107,9 @@ header{
 .brand-mark{
   width:38px;height:38px;border-radius:10px;
   background:rgba(255,255,255,.1);border:1.5px solid rgba(207,154,62,.5);
-  display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold-light);
 }
+.brand-mark svg{display:block}
 header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;line-height:1.1}
 .brand-sub{font-size:.72rem;color:rgba(251,246,234,.65);margin-top:2px;text-transform:capitalize;letter-spacing:.02em}
 
@@ -87,7 +129,8 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
   color:var(--ink-soft);font-family:'Inter',sans-serif;font-size:.66rem;font-weight:600;
   letter-spacing:.02em;position:relative;transition:color .15s;
 }
-.nav-btn .nav-icon{font-size:1.15rem;transition:transform .18s}
+.nav-btn .nav-icon{display:flex;transition:transform .18s}
+.nav-btn .nav-icon svg{display:block}
 .nav-btn.active{color:var(--green)}
 .nav-btn.active .nav-icon{transform:translateY(-2px)}
 .nav-btn.active::before{
@@ -122,7 +165,7 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .week-nav-range{font-size:.66rem;color:var(--ink-soft);font-weight:500;letter-spacing:.01em}
 .week-nav-dots{display:flex;gap:6px}
 .week-dot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:all .2s;cursor:pointer}
-.week-dot.active{background:var(--gold-deep);transform:scale(1.25)}
+.week-dot.active{background:var(--green);transform:scale(1.25)}
 
 /* CALENDAR GRID */
 .cal-grid{
@@ -131,7 +174,7 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 }
 .cal-head{
   background:var(--green);color:#f2ecda;text-align:center;padding:.5rem 2px;
-  font-size:.62rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  letter-spacing:.07em;
 }
 .cal-cell{
   border-right:1px solid var(--line);border-top:1px solid var(--line);
@@ -139,8 +182,8 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
   display:flex;flex-direction:column;align-items:center;padding-top:5px;
 }
 .cal-cell:nth-child(7n){border-right:none}
-.cal-cell:hover{background:var(--gold-light)}
-.cal-cell.today .cal-num{background:var(--gold-deep);color:#fff}
+.cal-cell:hover{background:var(--green-light)}
+.cal-cell.today .cal-num{background:var(--green-deep);color:#fff}
 .cal-cell.has-food{background:#faf6ea}
 .cal-cell.selected{background:var(--green-light);box-shadow:inset 0 0 0 2px var(--green);z-index:1}
 .cal-num{font-size:.72rem;font-weight:700;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink)}
@@ -171,14 +214,15 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 
 .meal-item{display:flex;align-items:center;gap:.75rem;padding:.65rem 1.1rem;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
 .meal-item:last-child{border-bottom:none}
-.meal-item:hover{background:var(--gold-light)}
-.meal-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.meal-item:hover{background:var(--green-light)}
+.meal-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.meal-icon svg{display:block}
 .mi-desayuno{background:var(--gold-light)}
 .mi-comida{background:var(--sage-light)}
 .mi-cena{background:var(--plum-light)}
 .mi-snack{background:var(--clay-light)}
 .meal-info{flex:1;min-width:0}
-.meal-type-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;color:var(--ink-soft);margin-bottom:1px}
+.meal-type-label{margin-bottom:1px}
 .meal-name-t{font-size:.9rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .meal-name-t.empty{color:var(--ink-soft);font-weight:400;font-style:italic}
 .meal-macros-r{display:flex;gap:5px;margin-top:4px;flex-wrap:wrap}
@@ -190,11 +234,8 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 
 /* RECIPES */
 .recipe-search{
-  width:100%;background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r-sm);
-  padding:.65rem .9rem;font-family:'Inter',sans-serif;font-size:.85rem;color:var(--ink);margin-bottom:.7rem;
-  box-shadow:var(--shadow);
+  width:100%;padding:.65rem .9rem;font-size:.85rem;margin-bottom:.7rem;
 }
-.recipe-search:focus{outline:none;border-color:var(--green)}
 .recipe-search::placeholder{color:var(--ink-soft)}
 .sub-tabs{display:flex;background:var(--paper-raised);border-radius:var(--r);border:1px solid var(--line);padding:4px;margin-bottom:1rem;gap:3px;box-shadow:var(--shadow);overflow-x:auto}
 .sub-tab{flex:1;text-align:center;padding:.45rem .2rem;border-radius:var(--r-sm);font-size:.72rem;font-weight:700;cursor:pointer;border:none;background:none;color:var(--ink-soft);transition:all .2s;white-space:nowrap}
@@ -205,12 +246,12 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .recipe-card:hover{border-color:var(--line);box-shadow:var(--shadow-lg);transform:translateY(-1px)}
 .recipe-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem;gap:.5rem}
 .recipe-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;flex:1;line-height:1.3}
-.recipe-time{font-size:.68rem;color:var(--gold-deep);background:var(--gold-light);padding:2px 8px;border-radius:20px;white-space:nowrap;font-weight:700;font-family:'IBM Plex Mono',monospace}
+.recipe-time{font-size:.68rem;color:#3f5c2c;background:var(--sage-light);padding:2px 8px;border-radius:20px;white-space:nowrap;font-weight:700;font-family:'IBM Plex Mono',monospace}
 .recipe-desc{font-size:.81rem;color:var(--ink-soft);margin-bottom:.75rem;line-height:1.5}
 .macro-row{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
 .mbox{border-radius:9px;padding:6px 4px;text-align:center}
 .mbox .mv{font-size:.85rem;font-weight:700;display:block;font-family:'IBM Plex Mono',monospace}
-.mbox .ml{font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-top:2px}
+.mbox .ml{display:block;margin-top:2px}
 .mb-k{background:var(--clay-light)}.mb-k .mv{color:#8a3d27}.mb-k .ml{color:#a3503a}
 .mb-p{background:var(--sage-light)}.mb-p .mv{color:#3f5c2c}.mb-p .ml{color:#597a45}
 .mb-c{background:var(--gold-light)}.mb-c .mv{color:#8a6416}.mb-c .ml{color:#a97e20}
@@ -220,13 +261,13 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .shop-week-tabs{display:flex;gap:6px;margin-bottom:.75rem;flex-wrap:wrap}
 .shop-week-btn{padding:.4rem .85rem;border-radius:20px;border:1.5px solid var(--line);background:var(--paper-raised);font-family:'Inter',sans-serif;font-size:.76rem;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:all .2s}
 .shop-week-btn.active{background:var(--green);border-color:var(--green);color:#fbf6ea}
-.info-bar{background:var(--gold-light);border-radius:var(--r);border:1px solid var(--line);padding:.7rem 1rem;margin-bottom:.75rem;font-size:.8rem;color:var(--gold-deep);font-weight:600;box-shadow:var(--shadow)}
+.info-bar{background:var(--sage-light);border-radius:var(--r);border:1px solid var(--line);padding:.7rem 1rem;margin-bottom:.75rem;font-size:.8rem;color:#3f5c2c;font-weight:600;box-shadow:var(--shadow)}
 .shop-progress{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r);padding:.7rem 1rem;margin-bottom:.75rem;box-shadow:var(--shadow)}
 .shop-progress-top{display:flex;justify-content:space-between;font-size:.75rem;font-weight:700;color:var(--ink-soft);margin-bottom:.4rem}
 .shop-progress-bar{height:7px;border-radius:6px;background:var(--line);overflow:hidden}
 .shop-progress-fill{height:100%;background:var(--green);border-radius:6px;transition:width .25s}
 .shop-item{background:var(--paper-raised);border-radius:var(--r-sm);border:1px solid var(--line);display:flex;align-items:center;gap:.75rem;padding:.65rem .9rem;margin-bottom:6px;cursor:pointer;transition:all .18s}
-.shop-item:hover{border-color:var(--gold)}
+.shop-item:hover{border-color:var(--green)}
 .shop-item.checked{opacity:.5}
 .shop-check{width:22px;height:22px;border-radius:7px;border:2px solid var(--green);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .shop-item.checked .shop-check{background:var(--green);border-color:var(--green)}
@@ -248,8 +289,8 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .modal-macros{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1rem}
 .mm-box{border-radius:11px;padding:9px 4px;text-align:center}
 .mm-box .v{font-family:'IBM Plex Mono',monospace;font-size:1.1rem;font-weight:600;display:block}
-.mm-box .l{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:block;margin-top:2px}
-.sec-lbl{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin:1.1rem 0 .5rem;display:flex;align-items:center;gap:.4rem}
+.mm-box .l{display:block;margin-top:2px}
+.sec-lbl{margin:1.1rem 0 .5rem;display:flex;align-items:center;gap:.4rem}
 .sec-lbl::after{content:'';flex:1;height:1px;background:var(--line)}
 .ing-list{list-style:none}
 .ing-list li{padding:.45rem 0;border-bottom:1px solid var(--line);font-size:.86rem;display:flex;justify-content:space-between;align-items:center}
@@ -264,7 +305,7 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .empty-state p{font-size:.9rem;line-height:1.55;max-width:280px;margin:0 auto}
 
 /* REGISTRO REAL */
-.day-real-row{display:flex;align-items:center;gap:8px;padding:.55rem 1.1rem;background:var(--gold-light);border-bottom:1px solid var(--line);font-size:.76rem;font-weight:700;color:var(--gold-deep)}
+.day-real-row{display:flex;align-items:center;gap:8px;padding:.55rem 1.1rem;background:var(--sage-light);border-bottom:1px solid var(--line);font-size:.76rem;font-weight:700;color:#3f5c2c}
 .day-real-row .drr-icon{font-size:.85rem}
 .day-real-row .mono{margin-left:auto}
 .cal-check{position:absolute;top:3px;right:4px;width:13px;height:13px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#fff;font-weight:700}
@@ -276,7 +317,7 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .rb-libre{background:var(--plum-light);color:#523153}
 .rb-no_comido{background:var(--clay-light);color:#8a3d27}
 .reg-edit-btn{flex-shrink:0;background:var(--paper);border:1.5px solid var(--line);width:32px;height:32px;border-radius:9px;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.reg-edit-btn:hover{border-color:var(--gold);background:var(--gold-light)}
+.reg-edit-btn:hover{border-color:var(--green);background:var(--green-light)}
 .postre-toggle-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.65rem 1.1rem;border-bottom:1px solid var(--line);background:var(--berry-light)}
 .postre-toggle-row .ptr-label{font-size:.8rem;font-weight:600;color:var(--ink)}
 .ptr-add-btn{background:var(--berry);color:#fff;border:none;border-radius:20px;padding:.4rem .85rem;font-size:.72rem;font-weight:700;cursor:pointer}
@@ -285,12 +326,12 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .rg-src-tabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem}
 .rg-src-tab{flex:1;min-width:100px;text-align:center;padding:.5rem .3rem;border-radius:var(--r-sm);font-size:.7rem;font-weight:700;cursor:pointer;border:1.5px solid var(--line);background:var(--paper);color:var(--ink-soft);transition:all .18s}
 .rg-src-tab.active{background:var(--green);border-color:var(--green);color:#fbf6ea}
-.rg-ref-card{background:var(--gold-light);border-radius:var(--r-sm);padding:.65rem .8rem;margin-bottom:1rem;font-size:.78rem;color:var(--gold-deep)}
+.rg-ref-card{background:var(--sage-light);border-radius:var(--r-sm);padding:.65rem .8rem;margin-bottom:1rem;font-size:.78rem;color:#3f5c2c}
 .rg-ref-card b{font-family:'Fraunces',serif;font-style:italic}
 .rg-recipe-picker{max-height:200px;overflow-y:auto;border:1px solid var(--line);border-radius:var(--r-sm);margin-bottom:.9rem}
 .rg-rp-item{padding:.6rem .8rem;border-bottom:1px solid var(--line);cursor:pointer;font-size:.83rem;display:flex;justify-content:space-between;gap:.5rem}
 .rg-rp-item:last-child{border-bottom:none}
-.rg-rp-item:hover{background:var(--gold-light)}
+.rg-rp-item:hover{background:var(--green-light)}
 .rg-rp-item.picked{background:var(--sage-light);font-weight:700}
 .rg-rp-item .rpk{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft)}
 .ring-row{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;border-bottom:1px solid var(--line)}
@@ -298,8 +339,7 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .ring-name{flex:1;font-size:.83rem;font-weight:600;min-width:0}
 .ring-name .orig{display:block;font-size:.68rem;font-weight:500;color:var(--ink-soft);margin-top:1px}
 .ring-qty{width:64px;flex-shrink:0}
-.ring-qty input{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:.35rem .4rem;font-size:.78rem;text-align:center;font-family:'IBM Plex Mono',monospace}
-.ring-qty input:focus{outline:none;border-color:var(--green)}
+.ring-qty input{width:100%;border-radius:8px;padding:.35rem .4rem;font-size:.78rem;text-align:center;font-family:'IBM Plex Mono',monospace}
 .ring-kcal{width:52px;flex-shrink:0;text-align:right;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft)}
 .ring-skip{flex-shrink:0;width:26px;height:26px;border-radius:7px;border:1.5px solid var(--line);background:var(--paper);cursor:pointer;font-size:.72rem;display:flex;align-items:center;justify-content:center}
 .ring-skip.on{background:var(--clay);border-color:var(--clay);color:#fff}
@@ -307,15 +347,14 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .rg-add-extra{width:100%;background:none;border:1.5px dashed var(--line);border-radius:var(--r-sm);padding:.55rem;font-size:.78rem;font-weight:600;color:var(--ink-soft);cursor:pointer;margin-top:.6rem}
 .rg-add-extra:hover{border-color:var(--green);color:var(--green)}
 .rg-extra-row{display:grid;grid-template-columns:1.1fr .55fr .5fr .5fr .5fr .5fr auto;gap:5px;padding:.5rem 0;border-bottom:1px solid var(--line);align-items:center}
-.rg-extra-row input{border:1.5px solid var(--line);border-radius:7px;padding:.35rem;font-size:.72rem;width:100%}
+.rg-extra-row input{border-radius:7px;padding:.35rem;font-size:.72rem;width:100%}
 .rg-extra-del{background:var(--clay-light);color:var(--clay);border:none;width:24px;height:24px;border-radius:6px;cursor:pointer;font-size:.7rem}
 .rg-totals{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:1rem 0;padding:.75rem;background:var(--green-light);border-radius:var(--r-sm)}
 .rg-totals .tv{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:.95rem;color:var(--green-deep);display:block;text-align:center}
-.rg-totals .tl{font-size:.58rem;text-transform:uppercase;letter-spacing:.04em;color:var(--green-deep);opacity:.7;display:block;text-align:center;margin-top:2px}
+.rg-totals .tl{color:var(--green-deep);opacity:.7;display:block;text-align:center;margin-top:2px}
 .rg-field{margin-bottom:.8rem}
-.rg-field label{display:block;font-size:.72rem;font-weight:700;color:var(--ink-soft);margin-bottom:.3rem;text-transform:uppercase;letter-spacing:.03em}
-.rg-field input,.rg-field textarea{width:100%;border:1.5px solid var(--line);border-radius:var(--r-sm);padding:.55rem .7rem;font-family:'Inter',sans-serif;font-size:.86rem}
-.rg-field input:focus,.rg-field textarea:focus{outline:none;border-color:var(--green)}
+.rg-field label{display:block;margin-bottom:.3rem}
+.rg-field input,.rg-field textarea{width:100%;padding:.55rem .7rem;font-size:.86rem}
 .rg-macro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .rg-empty-msg{text-align:center;padding:1.5rem 1rem;color:var(--ink-soft);font-size:.85rem}
 .rg-actions{display:flex;gap:8px;margin-top:1.1rem}
@@ -332,7 +371,7 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .diario-chart-sub{font-size:.68rem;color:var(--ink-soft);margin-bottom:.5rem}
 .diario-chart-empty{text-align:center;padding:1.6rem 1rem;color:var(--ink-soft);font-size:.82rem}
 
-.diario-setup{background:var(--gold-light);border:1px dashed var(--gold-deep);border-radius:var(--r-sm);padding:.85rem;font-size:.8rem;color:var(--ink);margin-bottom:.85rem}
+.diario-setup{background:var(--sage-light);border:1px dashed var(--sage);border-radius:var(--r-sm);padding:.85rem;font-size:.8rem;color:var(--ink);margin-bottom:.85rem}
 .diario-setup p{margin-bottom:.6rem;color:var(--green-deep);font-weight:600}
 .diario-setup .rg-field{margin-bottom:.55rem}
 
@@ -342,8 +381,21 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .ddc-date{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:.98rem;color:var(--green-deep);text-align:center;text-transform:capitalize}
 .ddc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .cycle-badge{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;padding:.3rem .65rem;border-radius:20px;background:var(--berry-light);color:var(--berry);margin-bottom:.7rem}
-.btn-regla{width:100%;padding:.6rem;border-radius:var(--r-sm);border:1.5px dashed var(--berry);background:var(--berry-light);color:var(--berry);font-weight:700;font-size:.76rem;cursor:pointer;margin:.5rem 0 .8rem}
-.btn-regla:hover{background:var(--berry);color:#fff}
+
+/* tarjeta agrupada de seguimiento diario (peso/pasos/gimnasio/cardio) */
+.ddc-track-card{background:var(--green-light);border-radius:var(--r);border:1px solid var(--line);padding:.7rem;margin-bottom:.85rem;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.ddc-track-item{display:flex;align-items:center;gap:.6rem;background:var(--paper-raised);border-radius:var(--r-sm);padding:.5rem .6rem;box-shadow:var(--shadow);transition:box-shadow .15s}
+.ddc-track-item:focus-within{box-shadow:0 0 0 2px var(--green)}
+.dti-icon{font-size:1rem;width:30px;height:30px;border-radius:9px;background:var(--paper);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dti-body{flex:1;min-width:0}
+.dti-body label{display:block;margin-bottom:1px}
+.dti-body input{width:100%;border:none;background:none;padding:0;font-family:'IBM Plex Mono',monospace;font-size:.9rem;font-weight:600;color:var(--ink)}
+.dti-body input:focus{outline:none}
+.dti-body input::placeholder{color:var(--ink-soft);font-weight:400;font-family:'Inter',sans-serif;font-size:.78rem}
+
+.btn-regla{width:100%;padding:.55rem;border-radius:20px;border:1.5px solid var(--berry-light);background:var(--berry-light);color:var(--berry);font-weight:700;font-size:.76rem;cursor:pointer;margin:.5rem 0 .8rem;transition:all .18s}
+.btn-regla:hover{background:var(--berry);color:#fff;border-color:var(--berry)}
+
 .diario-balance-row{display:flex;justify-content:space-between;align-items:baseline;font-family:'IBM Plex Mono',monospace;padding:.4rem 0;border-top:1px dashed var(--line)}
 .diario-balance-row .dbl{font-size:.72rem;color:var(--ink-soft)}
 .diario-balance-row .dbv{font-weight:700;font-size:.88rem}
@@ -351,15 +403,29 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .diario-balance-row .dbv.neg{color:var(--clay)}
 .diario-no-gasto{font-size:.74rem;color:var(--ink-soft);padding:.5rem 0;border-top:1px dashed var(--line)}
 
+/* balance del día — el dato protagonista */
+.ddc-mini-stats{display:flex;gap:8px;margin-bottom:.55rem}
+.dms-item{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-sm);padding:.5rem .5rem;text-align:center}
+.dms-l{display:block;font-size:.58rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft);font-weight:700;margin-bottom:2px}
+.dms-v{display:block;font-size:.8rem;font-weight:700;color:var(--ink)}
+.ddc-balance-hero{display:flex;flex-direction:column;align-items:center;gap:1px;border-radius:var(--r);padding:.85rem 1rem;text-align:center}
+.ddc-balance-hero.pos{background:var(--sage-light)}
+.ddc-balance-hero.neg{background:var(--clay-light)}
+.ddc-balance-hero.pos .dbh-label{color:#3f5c2c}
+.ddc-balance-hero.neg .dbh-label{color:#8a3d27}
+.dbh-value{font-family:'IBM Plex Mono',monospace;font-size:1.55rem;font-weight:700;line-height:1.2}
+.ddc-balance-hero.pos .dbh-value{color:var(--sage)}
+.ddc-balance-hero.neg .dbh-value{color:var(--clay)}
+
 .diario-resumen{display:flex;gap:8px;margin-bottom:.85rem}
 .dr-box{flex:1;background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r-sm);padding:.6rem .5rem;text-align:center;box-shadow:var(--shadow)}
 .dr-box .drv{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:.92rem;color:var(--green-deep);display:block}
-.dr-box .drl{font-size:.6rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink-soft);display:block;margin-top:2px}
+.dr-box .drl{display:block;margin-top:2px}
 
 .dm-list{background:var(--paper-raised);border-radius:var(--r);border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow)}
 .dm-row{display:grid;grid-template-columns:30px 1fr 1fr 1.3fr;align-items:center;gap:6px;padding:.55rem .8rem;border-top:1px solid var(--line);font-size:.75rem;cursor:pointer;transition:background .15s}
 .dm-row:first-child{border-top:none}
-.dm-row:hover{background:var(--gold-light)}
+.dm-row:hover{background:var(--green-light)}
 .dm-row.sel{background:var(--green-light);box-shadow:inset 0 0 0 2px var(--green)}
 .dm-d{font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--ink-soft)}
 .dm-peso,.dm-pasos{font-family:'IBM Plex Mono',monospace;color:var(--ink)}
@@ -373,7 +439,7 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 
 <header>
   <div class="brand">
-    <span class="brand-mark">🌿</span>
+    <span class="brand-mark"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16C4 9 9 4 16 4c0 7-5 12-12 12Z"/><path d="M4.5 15.5c2-4 5-7 9-9"/></svg></span>
     <div>
       <h1>Mi Menú</h1>
       <p class="brand-sub" id="today-label"></p>
@@ -428,10 +494,10 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 </main>
 
 <nav class="bottom-nav">
-  <button class="nav-btn active" onclick="showView('calendario',this)"><span class="nav-icon">🗓️</span><span>Calendario</span></button>
-  <button class="nav-btn" onclick="showView('recetas',this)"><span class="nav-icon">📖</span><span>Recetas</span></button>
-  <button class="nav-btn" onclick="showView('compra',this)"><span class="nav-icon">🧺</span><span>Compra</span></button>
-  <button class="nav-btn" onclick="showView('diario',this)"><span class="nav-icon">📉</span><span>Diario</span></button>
+  <button class="nav-btn active" onclick="showView('calendario',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.3" width="14" height="12.2" rx="2.2"/><path d="M3 8.2h14"/><path d="M7 2.6v3.2M13 2.6v3.2"/></svg></span><span>Calendario</span></button>
+  <button class="nav-btn" onclick="showView('recetas',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.6c-1.5-1.1-3.6-1.6-6.2-1.6v11c2.6 0 4.7.5 6.2 1.6m0-11c1.5-1.1 3.6-1.6 6.2-1.6v11c-2.6 0-4.7.5-6.2 1.6m0-11v11"/></svg></span><span>Recetas</span></button>
+  <button class="nav-btn" onclick="showView('compra',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.3 8h13.4l-1.2 8a1.6 1.6 0 0 1-1.6 1.4H6.1A1.6 1.6 0 0 1 4.5 16L3.3 8Z"/><path d="M6.7 8 8.2 3.3M13.3 8 11.8 3.3M8 11.2v3.6M12 11.2v3.6"/></svg></span><span>Compra</span></button>
+  <button class="nav-btn" onclick="showView('diario',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5l5.3 5.8L11 8.6l6 6.2"/><path d="M17.3 10.6v4.2h-4.3"/></svg></span><span>Diario</span></button>
 </nav>
 
 <div class="modal-overlay" id="modal" onclick="closeOut(event)">
@@ -461,6 +527,12 @@ const DIAS_S={lunes:'L',martes:'M',miercoles:'X',jueves:'J',viernes:'V',sabado:'
 const DIAS_L={lunes:'Lunes',martes:'Martes',miercoles:'Miércoles',jueves:'Jueves',viernes:'Viernes',sabado:'Sábado',domingo:'Domingo'};
 const TIPOS=['desayuno','comida','cena','snack'];
 const TIPO_I={desayuno:'☀️',comida:'🍽️',cena:'🌙',snack:'🍎'};
+const ICON_TIPO={
+  desayuno:'<svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10" cy="10" r="3.2"/><path d="M10 3v1.7M10 15.3V17M17 10h-1.7M4.7 10H3M15.1 4.9l-1.2 1.2M6.1 13.9 4.9 15.1M15.1 15.1l-1.2-1.2M6.1 6.1 4.9 4.9"/></svg>',
+  comida:'<svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10" cy="10" r="6.7"/><circle cx="10" cy="10" r="2.7"/></svg>',
+  cena:'<svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15.6 12.6A6.1 6.1 0 1 1 7.4 4.4a5.1 5.1 0 0 0 8.2 8.2Z"/></svg>',
+  snack:'<svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 7.4c1-1.7 3.1-2.3 4.6-1.2 1.6 1.1 2 3.7.7 6.1-1.3 2.4-3.3 4.6-5.3 4.6s-4-2.2-5.3-4.6c-1.3-2.4-.9-5 .7-6.1 1.5-1.1 3.6-.5 4.6 1.2Z"/><path d="M10 7.4V5.4c0-.9.6-1.5 1.4-1.7"/></svg>'
+};
 const SEMANAS=['semana1','semana2','semana3','semana4'];
 const SEM_L=['Semana 1','Semana 2','Semana 3','Semana 4'];
 
@@ -888,10 +960,17 @@ function renderDiarioDayCard(){
     </div>`;
   }else{
     const gastoLabel=gastoEsDeApp(fecha)?'Gasto (según tu app/reloj)':'Gasto estimado';
+    const esDeficit=balance!=null&&balance<=0;
+    const heroCls=esDeficit?'pos':'neg';
     macrosHtml=`
-      <div class="diario-balance-row"><span class="dbl">Consumidas</span><span class="dbv mono">${Math.round(cons)} kcal</span></div>
-      <div class="diario-balance-row"><span class="dbl">${gastoLabel}</span><span class="dbv mono">${gasto!=null?Math.round(gasto):'—'} kcal</span></div>
-      <div class="diario-balance-row"><span class="dbl">${balance!=null&&balance<=0?'Déficit':'Superávit'}</span><span class="dbv mono ${balance!=null&&balance<=0?'pos':'neg'}">${balance!=null?Math.abs(balance):'—'} kcal</span></div>
+      <div class="ddc-mini-stats">
+        <div class="dms-item"><span class="dms-l">Consumidas</span><span class="dms-v mono">${Math.round(cons)} kcal</span></div>
+        <div class="dms-item"><span class="dms-l">${gastoLabel}</span><span class="dms-v mono">${gasto!=null?Math.round(gasto):'—'} kcal</span></div>
+      </div>
+      ${balance!=null?`<div class="ddc-balance-hero ${heroCls}">
+        <span class="dbh-label">${esDeficit?'Déficit':'Superávit'}</span>
+        <span class="dbh-value">${Math.abs(balance)} kcal</span>
+      </div>`:`<div class="diario-no-gasto">Añade tus datos para ver el balance del día.</div>`}
     `;
   }
 
@@ -902,16 +981,26 @@ function renderDiarioDayCard(){
       <button onclick="diarioNextDay()" ${esHoy?'style="visibility:hidden"':''}>›</button>
     </div>
     ${ciclo?`<span class="cycle-badge">${ciclo.emoji} Día ${ciclo.diaCiclo} del ciclo · fase ${ciclo.fase}</span>`:''}
-    <div class="ddc-grid">
-      <div class="rg-field"><label>Peso (kg)</label><input type="number" step="0.1" id="dd-peso" value="${row.peso!=null?row.peso:''}" placeholder="—" oninput="diarioAutoSave()"></div>
-      <div class="rg-field"><label>Pasos</label><input type="number" step="1" id="dd-pasos" value="${row.pasos!=null?row.pasos:''}" placeholder="—" oninput="diarioAutoSave()"></div>
-    </div>
-    <div class="ddc-grid">
-      <div class="rg-field"><label>Gimnasio (min)</label><input type="number" step="1" id="dd-gym" value="${row.gimnasio_min!=null?row.gimnasio_min:''}" placeholder="—" oninput="diarioAutoSave()"></div>
-      <div class="rg-field"><label>Cardio (min)</label><input type="number" step="1" id="dd-cardio" value="${row.cardio_min!=null?row.cardio_min:''}" placeholder="—" oninput="diarioAutoSave()"></div>
+    <div class="ddc-track-card">
+      <div class="ddc-track-item">
+        <span class="dti-icon">⚖️</span>
+        <div class="dti-body"><label for="dd-peso">Peso (kg)</label><input type="number" step="0.1" id="dd-peso" value="${row.peso!=null?row.peso:''}" placeholder="—" oninput="diarioAutoSave()"></div>
+      </div>
+      <div class="ddc-track-item">
+        <span class="dti-icon">👣</span>
+        <div class="dti-body"><label for="dd-pasos">Pasos</label><input type="number" step="1" id="dd-pasos" value="${row.pasos!=null?row.pasos:''}" placeholder="—" oninput="diarioAutoSave()"></div>
+      </div>
+      <div class="ddc-track-item">
+        <span class="dti-icon">🏋️</span>
+        <div class="dti-body"><label for="dd-gym">Gimnasio (min)</label><input type="number" step="1" id="dd-gym" value="${row.gimnasio_min!=null?row.gimnasio_min:''}" placeholder="—" oninput="diarioAutoSave()"></div>
+      </div>
+      <div class="ddc-track-item">
+        <span class="dti-icon">🏃</span>
+        <div class="dti-body"><label for="dd-cardio">Cardio (min)</label><input type="number" step="1" id="dd-cardio" value="${row.cardio_min!=null?row.cardio_min:''}" placeholder="—" oninput="diarioAutoSave()"></div>
+      </div>
     </div>
     <div class="rg-field"><label>Kcal según tu app/reloj (opcional)</label><input type="number" step="1" id="dd-kcalapp" value="${row.kcal_app!=null?row.kcal_app:''}" placeholder="Si lo rellenas, sustituye a la estimación" oninput="diarioAutoSave()"></div>
-    <button class="btn-regla" onclick="registrarInicioRegla('${fecha}')">🔴 Hoy empezó la regla</button>
+    <button class="btn-regla" onclick="registrarInicioRegla('${fecha}')">🌸 Hoy empezó la regla</button>
     ${macrosHtml}
     <div class="rg-field" style="margin-top:.7rem"><label>Notas</label><textarea id="dd-notas" rows="2" oninput="diarioAutoSave()" placeholder="Cómo te sientes, algo que anotar...">${row.notas||''}</textarea></div>
   </div>`;
@@ -1124,7 +1213,7 @@ function mealItemHtml(tipo,dia,fecha,dm,esPostre){
   const clickId = reg ? (reg.estado==='otra_receta'?reg.receta_id:(r?r.id:null)) : (r?r.id:null);
   return `<div class="meal-item">
     <div class="meal-body" ${clickable&&clickId?`onclick="openModal('${clickId}')"`:''}>
-      <div class="meal-icon mi-${esPostre?'postre':tipo}" style="${esPostre?'background:#fff;font-size:.8rem;width:28px;height:28px;':''}">${esPostre?'🍮':TIPO_I[tipo]}</div>
+      <div class="meal-icon mi-${esPostre?'postre':tipo}" style="${esPostre?'background:#fff;font-size:.8rem;width:28px;height:28px;':''}">${esPostre?'🍮':ICON_TIPO[tipo]}</div>
       <div class="meal-info">
         <div class="meal-type-label">${esPostre?'postre':tipo}</div>
         <div class="meal-name-t ${!s?'empty':''}">${nombreMostrado}</div>
@@ -1278,7 +1367,7 @@ function openModal(id){
       <div class="mm-box mb-g"><span class="v">${Math.round(r.grasas)}g</span><span class="l">grasas</span></div>
     </div>
     ${r.descripcion?`<p style="font-size:.86rem;color:var(--ink-soft);margin-bottom:.75rem;line-height:1.55">${r.descripcion}</p>`:''}
-    ${r.tiempo?`<p style="font-size:.8rem;color:var(--gold-deep);margin-bottom:1rem;font-weight:700">⏱ ${r.tiempo}</p>`:''}
+    ${r.tiempo?`<p style="font-size:.8rem;color:#3f5c2c;margin-bottom:1rem;font-weight:700">⏱ ${r.tiempo}</p>`:''}
     ${r.ingredientes?.length?`<div class="sec-lbl">Ingredientes</div>
       <ul class="ing-list">${r.ingredientes.map(i=>`<li><span>${i.nombre}</span><span class="ing-qty">${i.cantidad}</span></li>`).join('')}</ul>`:''}
     ${r.pasos?.length?`<div class="sec-lbl">Preparación</div>

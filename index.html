@@ -402,6 +402,8 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .diario-balance-row .dbv.pos{color:var(--sage)}
 .diario-balance-row .dbv.neg{color:var(--clay)}
 .diario-no-gasto{font-size:.74rem;color:var(--ink-soft);padding:.5rem 0;border-top:1px dashed var(--line)}
+.ddc-nota-sutil{font-size:.7rem;color:var(--ink-soft);margin-bottom:.3rem}
+.ddc-objetivo-line{font-size:.72rem;color:var(--ink-soft);text-align:center;margin-top:.35rem}
 
 /* balance del día — el dato protagonista */
 .ddc-mini-stats{display:flex;gap:8px;margin-bottom:.55rem}
@@ -687,14 +689,25 @@ function kcalConsumidasFecha(fechaISO){
   const {dia,dm}=menuDelDia(fechaISO);
   return computeRealDia(dia,fechaISO,dm).kcal;
 }
+function proteinasConsumidasFecha(fechaISO){
+  const {dia,dm}=menuDelDia(fechaISO);
+  return computeRealDia(dia,fechaISO,dm).proteinas;
+}
 
+// Info de peso para una fecha: el propio dato de ese día, o si no hay,
+// el último conocido anterior (o el más próximo). Indica si es "de hoy" o arrastrado.
+function pesoInfoFecha(fechaISO){
+  if(DIARIO[fechaISO] && DIARIO[fechaISO].peso!=null) return {peso:DIARIO[fechaISO].peso,deHoy:true,fecha:fechaISO};
+  const anteriores=Object.keys(DIARIO).filter(f=>DIARIO[f].peso!=null && f<=fechaISO).sort();
+  if(anteriores.length){ const f=anteriores[anteriores.length-1]; return {peso:DIARIO[f].peso,deHoy:false,fecha:f}; }
+  const cualquiera=Object.keys(DIARIO).filter(f=>DIARIO[f].peso!=null).sort();
+  if(cualquiera.length) return {peso:DIARIO[cualquiera[0]].peso,deHoy:false,fecha:cualquiera[0]};
+  return null;
+}
 // Último peso conocido en o antes de la fecha (o el más próximo si no hay ninguno anterior)
 function pesoParaFecha(fechaISO){
-  if(DIARIO[fechaISO] && DIARIO[fechaISO].peso!=null) return DIARIO[fechaISO].peso;
-  const anteriores=Object.keys(DIARIO).filter(f=>DIARIO[f].peso!=null && f<=fechaISO).sort();
-  if(anteriores.length) return DIARIO[anteriores[anteriores.length-1]].peso;
-  const cualquiera=Object.keys(DIARIO).filter(f=>DIARIO[f].peso!=null).sort();
-  return cualquiera.length?DIARIO[cualquiera[0]].peso:null;
+  const info=pesoInfoFecha(fechaISO);
+  return info?info.peso:null;
 }
 function edadPerfil(){
   if(!PERFIL||!PERFIL.fecha_nacimiento) return null;
@@ -747,6 +760,19 @@ function balanceFecha(fechaISO){
   const gasto=gastoEstimadoFecha(fechaISO);
   if(gasto==null) return null;
   return kcalConsumidasFecha(fechaISO)-gasto;
+}
+// Balance diario objetivo (kcal), a partir del ritmo de cambio de peso deseado (kg/semana).
+// Negativo = déficit objetivo, positivo = superávit objetivo. 1kg de grasa ≈ 7700kcal.
+function objetivoBalanceDia(){
+  if(!PERFIL||PERFIL.ritmo_semanal_kg==null) return null;
+  return PERFIL.ritmo_semanal_kg*7700/7;
+}
+// Objetivo de proteína en gramos para una fecha, según g/kg de peso configurado en el perfil.
+function proteinaObjetivoFecha(fechaISO){
+  if(!PERFIL||PERFIL.proteina_objetivo_gkg==null) return null;
+  const peso=pesoParaFecha(fechaISO);
+  if(peso==null) return null;
+  return PERFIL.proteina_objetivo_gkg*peso;
 }
 
 // Info del ciclo para una fecha: día del ciclo y fase estimada
@@ -839,13 +865,22 @@ async function guardarPerfilBasico(){
   const tmbEl=document.getElementById('pf-tmb');
   const tmb=tmbEl&&tmbEl.value!==''?parseFloat(tmbEl.value):null;
   if(!tmb&&(!altura||!fnac)){ alert('Rellena altura y fecha de nacimiento, o tu TMB manual.'); return; }
+  const pesoObjEl=document.getElementById('pf-peso-obj');
+  const ritmoEl=document.getElementById('pf-ritmo');
+  const proteinaEl=document.getElementById('pf-proteina');
+  const pesoObjetivo=pesoObjEl&&pesoObjEl.value!==''?parseFloat(pesoObjEl.value):null;
+  const ritmo=ritmoEl&&ritmoEl.value!==''?parseFloat(ritmoEl.value):null;
+  const proteinaGkg=proteinaEl&&proteinaEl.value!==''?parseFloat(proteinaEl.value):null;
   try{
-    const {data,error}=await sb.from('perfil').update({altura_cm:altura,fecha_nacimiento:fnac,tmb_manual:tmb}).eq('id',1).select().single();
+    const {data,error}=await sb.from('perfil').update({
+      altura_cm:altura,fecha_nacimiento:fnac,tmb_manual:tmb,
+      peso_objetivo_kg:pesoObjetivo,ritmo_semanal_kg:ritmo,proteina_objetivo_gkg:proteinaGkg
+    }).eq('id',1).select().single();
     if(error){ alert('No se pudo guardar: '+error.message); return; }
     PERFIL=data; closeModal(); renderDiario();
   }catch(e){ alert('No se pudo guardar: '+e.message); }
 }
-// Reabre el formulario de altura/fecha/TMB para poder corregirlo más adelante
+// Reabre el formulario de altura/fecha/TMB/objetivos para poder corregirlo más adelante
 // (reutiliza el modal genérico ya presente en la página).
 function editarPerfilForm(){
   document.getElementById('modal-title').textContent='Tu perfil';
@@ -854,6 +889,11 @@ function editarPerfilForm(){
     <div class="rg-field"><label>Fecha de nacimiento</label><input type="date" id="pf-fnac" value="${PERFIL&&PERFIL.fecha_nacimiento?PERFIL.fecha_nacimiento:''}"></div>
     <div class="rg-field"><label>TMB manual (kcal/día, opcional)</label><input type="number" id="pf-tmb" value="${PERFIL&&PERFIL.tmb_manual!=null?PERFIL.tmb_manual:''}" placeholder="Ej: 1448"></div>
     <p style="font-size:.8em;opacity:.7">Si rellenas la TMB, se usará esa cifra tal cual como base (en vez de calcularla con la fórmula), sumándole luego pasos y ejercicio. Déjala vacía para volver a calcularla por fórmula.</p>
+    <hr style="border:none;border-top:1px solid var(--line, #e5dede);margin:1rem 0">
+    <div class="rg-field"><label>Peso objetivo (kg, opcional)</label><input type="number" step="0.1" id="pf-peso-obj" value="${PERFIL&&PERFIL.peso_objetivo_kg!=null?PERFIL.peso_objetivo_kg:''}" placeholder="Ej: 60"></div>
+    <div class="rg-field"><label>Ritmo semanal deseado (kg/semana, opcional)</label><input type="number" step="0.05" id="pf-ritmo" value="${PERFIL&&PERFIL.ritmo_semanal_kg!=null?PERFIL.ritmo_semanal_kg:''}" placeholder="Ej: -0.3 para perder, 0.2 para ganar"></div>
+    <div class="rg-field"><label>Proteína objetivo (g por kg de peso, opcional)</label><input type="number" step="0.1" id="pf-proteina" value="${PERFIL&&PERFIL.proteina_objetivo_gkg!=null?PERFIL.proteina_objetivo_gkg:''}" placeholder="Ej: 1.6"></div>
+    <p style="font-size:.8em;opacity:.7">Con el ritmo semanal, el Diario te mostrará tu objetivo de déficit/superávit del día (1kg ≈ 7700kcal) y si vas en línea con él.</p>
     <button class="rg-btn rg-btn-save" style="width:100%" onclick="guardarPerfilBasico()">Guardar</button>
   `;
   document.getElementById('modal').classList.add('open');
@@ -864,6 +904,7 @@ async function guardarDiarioDia(){
   const fecha=diarioSelectedFecha;
   const pesoEl=document.getElementById('dd-peso'), pasosEl=document.getElementById('dd-pasos'), notasEl=document.getElementById('dd-notas');
   const gymEl=document.getElementById('dd-gym'), cardioEl=document.getElementById('dd-cardio'), kcalAppEl=document.getElementById('dd-kcalapp');
+  const cinturaEl=document.getElementById('dd-cintura'), energiaEl=document.getElementById('dd-energia');
   const row={
     fecha,
     peso: pesoEl&&pesoEl.value!==''?parseFloat(pesoEl.value):null,
@@ -871,6 +912,8 @@ async function guardarDiarioDia(){
     gimnasio_min: gymEl&&gymEl.value!==''?parseFloat(gymEl.value):null,
     cardio_min: cardioEl&&cardioEl.value!==''?parseFloat(cardioEl.value):null,
     kcal_app: kcalAppEl&&kcalAppEl.value!==''?parseFloat(kcalAppEl.value):null,
+    cintura_cm: cinturaEl&&cinturaEl.value!==''?parseFloat(cinturaEl.value):null,
+    energia: energiaEl&&energiaEl.value!==''?parseInt(energiaEl.value):null,
     notas: (notasEl&&notasEl.value)||null,
     updated_at:new Date().toISOString()
   };
@@ -914,7 +957,22 @@ function pesoChartSVG(){
   const W=680,H=170,padL=34,padR=10,padT=14,padB=22;
   const fechas=puntos.map(p=>new Date(p.fecha+'T00:00:00').getTime());
   const minX=Math.min(...fechas), maxX=Math.max(...fechas);
-  const pesos=puntos.map(p=>p.peso);
+
+  // Serie diaria continua (arrastrando el último peso conocido) para poder
+  // calcular una media móvil de 7 días que suavice el ruido de agua/ciclo.
+  const serieDiaria=[];
+  for(let t=minX;t<=maxX;t+=86400000){
+    const info=pesoInfoFecha(isoDate(new Date(t)));
+    if(info) serieDiaria.push({t,peso:info.peso});
+  }
+  const ventana=7;
+  const media7=serieDiaria.map((d,i)=>{
+    const desde=Math.max(0,i-ventana+1);
+    const slice=serieDiaria.slice(desde,i+1).map(x=>x.peso);
+    return {t:d.t,peso:slice.reduce((a,b)=>a+b,0)/slice.length};
+  });
+
+  const pesos=puntos.map(p=>p.peso).concat(media7.map(p=>p.peso));
   let minY=Math.min(...pesos)-0.4, maxY=Math.max(...pesos)+0.4;
   if(maxY-minY<1){ const c=(maxY+minY)/2; minY=c-0.5; maxY=c+0.5; }
   const xScale=t=> maxX===minX ? (W-padL-padR)/2+padL : padL+(t-minX)/(maxX-minX)*(W-padL-padR);
@@ -934,7 +992,13 @@ function pesoChartSVG(){
       if(x2>x1) shading+=`<rect x="${x1.toFixed(1)}" y="${padT}" width="${(x2-x1).toFixed(1)}" height="${H-padT-padB}" fill="var(--berry-light)" opacity=".6"/>`;
     });
   }
-  const puntoPath=puntos.map((p,i)=>`${i===0?'M':'L'}${xScale(new Date(p.fecha+'T00:00:00').getTime()).toFixed(1)},${yScale(p.peso).toFixed(1)}`).join(' ');
+  // Puntos crudos: puntitos finos (ruido diario), sin conectar con línea gruesa.
+  const rawDots=puntos.map(p=>{
+    const t=new Date(p.fecha+'T00:00:00').getTime();
+    return `<circle cx="${xScale(t).toFixed(1)}" cy="${yScale(p.peso).toFixed(1)}" r="1.6" fill="var(--ink-soft)" opacity=".45"/>`;
+  }).join('');
+  // Media móvil 7 días: la línea principal, más gruesa y suave.
+  const mediaPath=media7.map((p,i)=>`${i===0?'M':'L'}${xScale(p.t).toFixed(1)},${yScale(p.peso).toFixed(1)}`).join(' ');
   const dots=CICLOS.map(c=>{
     const t=new Date(c.fecha_inicio+'T00:00:00').getTime();
     if(t<minX||t>maxX) return '';
@@ -944,7 +1008,8 @@ function pesoChartSVG(){
   return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block">
     ${shading}
     <line x1="${padL}" y1="${yScale(minY+ (maxY-minY)/2).toFixed(1)}" x2="${W-padR}" y2="${yScale(minY+(maxY-minY)/2).toFixed(1)}" stroke="var(--line)" stroke-dasharray="3,3"/>
-    <path d="${puntoPath}" fill="none" stroke="var(--sage)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+    ${rawDots}
+    <path d="${mediaPath}" fill="none" stroke="var(--sage)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
     ${dots}
     <text x="${padL}" y="${H-6}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${fmtEje(minX)}</text>
     <text x="${W-padR}" y="${H-6}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${fmtEje(maxX)}</text>
@@ -957,7 +1022,7 @@ function renderDiarioChart(){
   const svg=pesoChartSVG();
   return `<div class="diario-chart-card">
     <div class="diario-chart-title">Evolución del peso</div>
-    ${CICLOS.length?'<div class="diario-chart-sub">🌸 sombreado = fase lútea estimada · • = inicio de ciclo</div>':''}
+    <div class="diario-chart-sub">línea = media móvil 7 días · puntos tenues = peso real de cada día${CICLOS.length?' · 🌸 sombreado = fase lútea estimada · • = inicio de ciclo':''}</div>
     ${svg?svg:'<div class="diario-chart-empty">Registra tu peso unos días para ver la tendencia aquí.</div>'}
   </div>`;
 }
@@ -972,6 +1037,10 @@ function renderDiarioDayCard(){
   const ciclo=cicloInfoFecha(fecha);
   const gasto=gastoEstimadoFecha(fecha), cons=kcalConsumidasFecha(fecha);
   const balance=gasto!=null?Math.round(cons-gasto):null;
+  const pesoInfo=pesoInfoFecha(fecha);
+  const objetivo=objetivoBalanceDia();
+  const proteinaCons=proteinasConsumidasFecha(fecha);
+  const proteinaObj=proteinaObjetivoFecha(fecha);
 
   let macrosHtml;
   const tieneDatosBase=PERFIL&&(PERFIL.tmb_manual!=null||(PERFIL.altura_cm&&PERFIL.fecha_nacimiento));
@@ -988,16 +1057,38 @@ function renderDiarioDayCard(){
     const gastoLabel=gastoEsDeApp(fecha)?'Gasto (según tu app/reloj)':'Gasto estimado';
     const esDeficit=balance!=null&&balance<=0;
     const heroCls=esDeficit?'pos':'neg';
+    // Nota de peso arrastrado: si el peso usado en el cálculo no es el de este día.
+    let pesoNote='';
+    if(pesoInfo&&!pesoInfo.deHoy){
+      const dias=Math.round((date-new Date(pesoInfo.fecha+'T00:00:00'))/(1000*60*60*24));
+      pesoNote=`<div class="ddc-nota-sutil">Usando tu último peso registrado: ${pesoInfo.peso}kg (${dias===0?'hoy':dias+' día'+(dias===1?'':'s')+' atrás'})</div>`;
+    }
+    // Nota del ajuste aprendido por recalibración, si ya existe.
+    let ajusteNote='';
+    if(!gastoEsDeApp(fecha) && PERFIL.ajuste_gasto_kcal){
+      const base=PERFIL.tmb_manual!=null?'tu TMB manual':'la fórmula';
+      ajusteNote=`<div class="ddc-nota-sutil">Ajuste aprendido: ${PERFIL.ajuste_gasto_kcal>0?'+':''}${Math.round(PERFIL.ajuste_gasto_kcal)}kcal vs ${base} (según tu evolución real de peso)</div>`;
+    }
+    // Línea de objetivo de déficit/superávit, si hay ritmo semanal configurado.
+    let objetivoLine='';
+    if(objetivo!=null && balance!=null){
+      const enLinea=Math.abs(balance-objetivo)<=150;
+      objetivoLine=`<div class="ddc-objetivo-line">Objetivo: ${objetivo<=0?'−':'+'}${Math.abs(Math.round(objetivo))}kcal/día ${enLinea?'· en línea ✅':(balance>objetivo?'· por encima del objetivo':'· por debajo del objetivo')}</div>`;
+    }
     macrosHtml=`
       <div class="ddc-mini-stats">
         <div class="dms-item"><span class="dms-l">Consumidas</span><span class="dms-v mono">${Math.round(cons)} kcal</span></div>
         <div class="dms-item"><span class="dms-l">${gastoLabel}</span><span class="dms-v mono">${gasto!=null?Math.round(gasto):'—'} kcal</span></div>
       </div>
-      <div style="text-align:right;margin-top:2px"><a href="#" onclick="editarPerfilForm();return false;" style="font-size:.8em;opacity:.65">✏️ editar altura / fecha / TMB</a></div>
+      ${pesoNote}${ajusteNote}
+      <div style="text-align:right;margin-top:2px"><a href="#" onclick="editarPerfilForm();return false;" style="font-size:.8em;opacity:.65">✏️ editar altura / fecha / TMB / objetivos</a></div>
       ${balance!=null?`<div class="ddc-balance-hero ${heroCls}">
         <span class="dbh-label">${esDeficit?'Déficit':'Superávit'}</span>
         <span class="dbh-value">${Math.abs(balance)} kcal</span>
-      </div>`:`<div class="diario-no-gasto">Añade tus datos para ver el balance del día.</div>`}
+      </div>${objetivoLine}`:`<div class="diario-no-gasto">Añade tus datos para ver el balance del día.</div>`}
+      <div class="ddc-mini-stats" style="margin-top:.5rem">
+        <div class="dms-item"><span class="dms-l">Proteína</span><span class="dms-v mono">${Math.round(proteinaCons)}g${proteinaObj!=null?' / '+Math.round(proteinaObj)+'g':''}</span></div>
+      </div>
     `;
   }
 
@@ -1014,6 +1105,10 @@ function renderDiarioDayCard(){
         <div class="dti-body"><label for="dd-peso">Peso (kg)</label><input type="number" step="0.1" id="dd-peso" value="${row.peso!=null?row.peso:''}" placeholder="—" oninput="diarioAutoSave()"></div>
       </div>
       <div class="ddc-track-item">
+        <span class="dti-icon">📏</span>
+        <div class="dti-body"><label for="dd-cintura">Cintura (cm)</label><input type="number" step="0.1" id="dd-cintura" value="${row.cintura_cm!=null?row.cintura_cm:''}" placeholder="—" oninput="diarioAutoSave()"></div>
+      </div>
+      <div class="ddc-track-item">
         <span class="dti-icon">👣</span>
         <div class="dti-body"><label for="dd-pasos">Pasos</label><input type="number" step="1" id="dd-pasos" value="${row.pasos!=null?row.pasos:''}" placeholder="—" oninput="diarioAutoSave()"></div>
       </div>
@@ -1025,6 +1120,16 @@ function renderDiarioDayCard(){
         <span class="dti-icon">🏃</span>
         <div class="dti-body"><label for="dd-cardio">Cardio (min)</label><input type="number" step="1" id="dd-cardio" value="${row.cardio_min!=null?row.cardio_min:''}" placeholder="—" oninput="diarioAutoSave()"></div>
       </div>
+    </div>
+    <div class="rg-field"><label>¿Cómo te sientes hoy? (opcional)</label>
+      <select id="dd-energia" onchange="diarioAutoSave()">
+        <option value="" ${row.energia==null?'selected':''}>—</option>
+        <option value="1" ${row.energia===1?'selected':''}>😩 Muy floja / mucha hambre</option>
+        <option value="2" ${row.energia===2?'selected':''}>😕 Floja</option>
+        <option value="3" ${row.energia===3?'selected':''}>😐 Normal</option>
+        <option value="4" ${row.energia===4?'selected':''}>🙂 Bien</option>
+        <option value="5" ${row.energia===5?'selected':''}>😄 Con energía</option>
+      </select>
     </div>
     <div class="rg-field"><label>Kcal según tu app/reloj (opcional)</label><input type="number" step="1" id="dd-kcalapp" value="${row.kcal_app!=null?row.kcal_app:''}" placeholder="Si lo rellenas, sustituye a la estimación" oninput="diarioAutoSave()"></div>
     <button class="btn-regla" onclick="registrarInicioRegla('${fecha}')">🌸 Hoy empezó la regla</button>

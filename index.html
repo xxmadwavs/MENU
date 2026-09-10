@@ -370,6 +370,7 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .diario-chart-title{font-family:'Fraunces',serif;font-style:italic;font-size:.95rem;font-weight:600;color:var(--green-deep);margin-bottom:.3rem}
 .diario-chart-sub{font-size:.68rem;color:var(--ink-soft);margin-bottom:.5rem}
 .diario-chart-empty{text-align:center;padding:1.6rem 1rem;color:var(--ink-soft);font-size:.82rem}
+.diario-chart-modes{display:flex;gap:6px;margin-bottom:.55rem}
 
 .diario-setup{background:var(--sage-light);border:1px dashed var(--sage);border-radius:var(--r-sm);padding:.85rem;font-size:.8rem;color:var(--ink);margin-bottom:.85rem}
 .diario-setup p{margin-bottom:.6rem;color:var(--green-deep);font-weight:600}
@@ -569,6 +570,8 @@ let CICLOS=[];    // [{fecha_inicio,notas}]
 let diarioMonthDate=new Date(); diarioMonthDate.setDate(1); diarioMonthDate.setHours(0,0,0,0);
 let diarioSelectedFecha=isoDate(new Date());
 let diarioSaveTimer=null;
+let diarioChartMode='todo'; // 'todo' | 'mes' | 'anio' — rango mostrado en el gráfico de peso
+let diarioChartYear=new Date().getFullYear();
 
 function isoDate(d){
   const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
@@ -951,20 +954,19 @@ function diarioNextMonth(){
 
 // ── Gráfico de peso: línea continua de TODO el historial, con sombreado ──
 // ── de fase lútea, para que el "reset" mensual no la corte nunca.        ──
-function pesoChartSVG(){
-  const puntos=Object.values(DIARIO).filter(r=>r.peso!=null).sort((a,b)=>a.fecha<b.fecha?-1:1);
-  if(puntos.length<2) return null;
-  const W=680,H=170,padL=34,padR=10,padT=14,padB=22;
-  const fechas=puntos.map(p=>new Date(p.fecha+'T00:00:00').getTime());
-  const minX=Math.min(...fechas), maxX=Math.max(...fechas);
+function pesoChartDiarioSVG(minX,maxX){
+  const puntos=Object.values(DIARIO).filter(r=>r.peso!=null).filter(r=>{
+    const t=new Date(r.fecha+'T00:00:00').getTime(); return t>=minX&&t<=maxX;
+  }).sort((a,b)=>a.fecha<b.fecha?-1:1);
 
-  // Serie diaria continua (arrastrando el último peso conocido) para poder
-  // calcular una media móvil de 7 días que suavice el ruido de agua/ciclo.
+  // Serie diaria continua (arrastrando el último peso conocido, incluso de antes del rango)
+  // para poder calcular una media móvil de 7 días que suavice el ruido de agua/ciclo.
   const serieDiaria=[];
   for(let t=minX;t<=maxX;t+=86400000){
     const info=pesoInfoFecha(isoDate(new Date(t)));
     if(info) serieDiaria.push({t,peso:info.peso});
   }
+  if(!serieDiaria.length) return null;
   const ventana=7;
   const media7=serieDiaria.map((d,i)=>{
     const desde=Math.max(0,i-ventana+1);
@@ -972,6 +974,7 @@ function pesoChartSVG(){
     return {t:d.t,peso:slice.reduce((a,b)=>a+b,0)/slice.length};
   });
 
+  const W=680,H=170,padL=34,padR=10,padT=14,padB=22;
   const pesos=puntos.map(p=>p.peso).concat(media7.map(p=>p.peso));
   let minY=Math.min(...pesos)-0.4, maxY=Math.max(...pesos)+0.4;
   if(maxY-minY<1){ const c=(maxY+minY)/2; minY=c-0.5; maxY=c+0.5; }
@@ -1018,12 +1021,99 @@ function pesoChartSVG(){
   </svg>`;
 }
 
+// Vista anual: media de peso por mes (línea con huecos en los meses sin datos).
+function pesoChartAnualSVG(year){
+  const W=680,H=170,padL=34,padR=10,padT=14,padB=26;
+  const meses=[];
+  for(let m=0;m<12;m++){
+    const entradas=Object.values(DIARIO).filter(r=>{
+      if(r.peso==null) return false;
+      const d=new Date(r.fecha+'T00:00:00');
+      return d.getFullYear()===year && d.getMonth()===m;
+    });
+    meses.push({m,avg:entradas.length?entradas.reduce((a,b)=>a+b.peso,0)/entradas.length:null,n:entradas.length});
+  }
+  const conDato=meses.filter(d=>d.avg!=null);
+  if(!conDato.length) return null;
+  const pesos=conDato.map(d=>d.avg);
+  let minY=Math.min(...pesos)-0.4, maxY=Math.max(...pesos)+0.4;
+  if(maxY-minY<1){ const c=(maxY+minY)/2; minY=c-0.5; maxY=c+0.5; }
+  const xScale=m=>padL+(m+0.5)/12*(W-padL-padR);
+  const yScale=v=>H-padB-(v-minY)/(maxY-minY)*(H-padT-padB);
+  let path='',started=false;
+  meses.forEach(d=>{
+    if(d.avg==null){ started=false; return; }
+    path+=(started?'L':'M')+xScale(d.m).toFixed(1)+','+yScale(d.avg).toFixed(1)+' ';
+    started=true;
+  });
+  const dots=conDato.map(d=>`<circle cx="${xScale(d.m).toFixed(1)}" cy="${yScale(d.avg).toFixed(1)}" r="2.8" fill="var(--sage)"/>`).join('');
+  const labels=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const xLabels=meses.map(d=>`<text x="${xScale(d.m).toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${labels[d.m]}</text>`).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block">
+    <line x1="${padL}" y1="${yScale(minY+(maxY-minY)/2).toFixed(1)}" x2="${W-padR}" y2="${yScale(minY+(maxY-minY)/2).toFixed(1)}" stroke="var(--line)" stroke-dasharray="3,3"/>
+    <path d="${path.trim()}" fill="none" stroke="var(--sage)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+    ${dots}
+    ${xLabels}
+    <text x="${padL}" y="${padT+8}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${maxY.toFixed(1)}</text>
+    <text x="${padL}" y="${H-padB}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${minY.toFixed(1)}</text>
+  </svg>`;
+}
+
+function pesoChartSVG(){
+  if(diarioChartMode==='mes'){
+    const y=diarioMonthDate.getFullYear(), m=diarioMonthDate.getMonth();
+    const inicio=new Date(y,m,1).getTime();
+    const hoy=new Date(); hoy.setHours(0,0,0,0);
+    const esMesActual=y===hoy.getFullYear()&&m===hoy.getMonth();
+    const fin=esMesActual?hoy.getTime():new Date(y,m+1,0).getTime();
+    return pesoChartDiarioSVG(inicio,fin);
+  }
+  if(diarioChartMode==='anio'){
+    return pesoChartAnualSVG(diarioChartYear);
+  }
+  // 'todo': todo el histórico disponible
+  const puntos=Object.values(DIARIO).filter(r=>r.peso!=null);
+  if(!puntos.length) return null;
+  const fechas=puntos.map(p=>new Date(p.fecha+'T00:00:00').getTime());
+  return pesoChartDiarioSVG(Math.min(...fechas),Math.max(...fechas));
+}
+
+function setDiarioChartMode(mode){ diarioChartMode=mode; renderDiario(); }
+function diarioChartPrevYear(){ diarioChartYear--; renderDiario(); }
+function diarioChartNextYear(){ if(diarioChartYear<new Date().getFullYear()) diarioChartYear++; renderDiario(); }
+
 function renderDiarioChart(){
   const svg=pesoChartSVG();
+  const mode=diarioChartMode;
+  const modesHtml=`<div class="diario-chart-modes">
+    <button class="shop-week-btn ${mode==='mes'?'active':''}" onclick="setDiarioChartMode('mes')">Mes</button>
+    <button class="shop-week-btn ${mode==='anio'?'active':''}" onclick="setDiarioChartMode('anio')">Año</button>
+    <button class="shop-week-btn ${mode==='todo'?'active':''}" onclick="setDiarioChartMode('todo')">Todo</button>
+  </div>`;
+  let subnav='';
+  if(mode==='mes'){
+    const hoy=new Date(); hoy.setHours(0,0,0,0);
+    const esMesActual=diarioMonthDate.getFullYear()===hoy.getFullYear()&&diarioMonthDate.getMonth()===hoy.getMonth();
+    const mesLabel=diarioMonthDate.toLocaleDateString('es-ES',{month:'long',year:'numeric'});
+    subnav=`<div class="week-nav" style="margin-bottom:.5rem">
+      <button onclick="diarioPrevMonth()">‹</button>
+      <div class="week-nav-center"><span class="week-nav-label" style="text-transform:capitalize">${mesLabel}</span></div>
+      <button onclick="diarioNextMonth()" ${esMesActual?'disabled':''}>›</button>
+    </div>`;
+  }else if(mode==='anio'){
+    subnav=`<div class="week-nav" style="margin-bottom:.5rem">
+      <button onclick="diarioChartPrevYear()">‹</button>
+      <div class="week-nav-center"><span class="week-nav-label">${diarioChartYear}</span></div>
+      <button onclick="diarioChartNextYear()" ${diarioChartYear>=new Date().getFullYear()?'disabled':''}>›</button>
+    </div>`;
+  }
+  const emptyMsg=mode==='mes'?'No hay registros de peso este mes.':mode==='anio'?'No hay registros de peso este año.':'Registra tu peso unos días para ver la tendencia aquí.';
   return `<div class="diario-chart-card">
     <div class="diario-chart-title">Evolución del peso</div>
-    <div class="diario-chart-sub">línea = media móvil 7 días · puntos tenues = peso real de cada día${CICLOS.length?' · 🌸 sombreado = fase lútea estimada · • = inicio de ciclo':''}</div>
-    ${svg?svg:'<div class="diario-chart-empty">Registra tu peso unos días para ver la tendencia aquí.</div>'}
+    ${modesHtml}
+    ${subnav}
+    <div class="diario-chart-sub">${mode==='anio'?'media de peso por mes':'línea = media móvil 7 días · puntos tenues = peso real de cada día'}${CICLOS.length&&mode!=='anio'?' · 🌸 sombreado = fase lútea estimada · • = inicio de ciclo':''}</div>
+    ${svg?svg:`<div class="diario-chart-empty">${emptyMsg}</div>`}
   </div>`;
 }
 

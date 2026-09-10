@@ -706,10 +706,18 @@ function edadPerfil(){
 }
 // Gasto calórico del día SIN el ajuste aprendido (Mifflin-St Jeor + pasos)
 function gastoBaseFecha(fechaISO){
-  const edad=edadPerfil();
   const peso=pesoParaFecha(fechaISO);
-  if(!PERFIL||!PERFIL.altura_cm||edad==null||peso==null) return null;
-  const bmr=10*peso+6.25*PERFIL.altura_cm-5*edad-161; // fórmula mujer (Mifflin-St Jeor)
+  if(!PERFIL||peso==null) return null;
+  let bmr;
+  if(PERFIL.tmb_manual!=null){
+    // TMB confirmada por apps/dispositivos: se usa directamente como base,
+    // en vez de estimarla con la fórmula de Mifflin-St Jeor.
+    bmr=PERFIL.tmb_manual;
+  }else{
+    const edad=edadPerfil();
+    if(!PERFIL.altura_cm||edad==null) return null;
+    bmr=10*peso+6.25*PERFIL.altura_cm-5*edad-161; // fórmula mujer (Mifflin-St Jeor)
+  }
   const row=DIARIO[fechaISO];
   const pasos=(row&&row.pasos)||0;
   const kcalPasos=pasos*0.04*(peso/70);
@@ -828,12 +836,27 @@ async function guardarPerfilBasico(){
   if(!sb) return;
   const altura=parseFloat(document.getElementById('pf-altura').value)||null;
   const fnac=document.getElementById('pf-fnac').value||null;
-  if(!altura||!fnac){ alert('Rellena altura y fecha de nacimiento.'); return; }
+  const tmbEl=document.getElementById('pf-tmb');
+  const tmb=tmbEl&&tmbEl.value!==''?parseFloat(tmbEl.value):null;
+  if(!tmb&&(!altura||!fnac)){ alert('Rellena altura y fecha de nacimiento, o tu TMB manual.'); return; }
   try{
-    const {data,error}=await sb.from('perfil').update({altura_cm:altura,fecha_nacimiento:fnac}).eq('id',1).select().single();
+    const {data,error}=await sb.from('perfil').update({altura_cm:altura,fecha_nacimiento:fnac,tmb_manual:tmb}).eq('id',1).select().single();
     if(error){ alert('No se pudo guardar: '+error.message); return; }
-    PERFIL=data; renderDiario();
+    PERFIL=data; closeModal(); renderDiario();
   }catch(e){ alert('No se pudo guardar: '+e.message); }
+}
+// Reabre el formulario de altura/fecha/TMB para poder corregirlo más adelante
+// (reutiliza el modal genérico ya presente en la página).
+function editarPerfilForm(){
+  document.getElementById('modal-title').textContent='Tu perfil';
+  document.getElementById('modal-body').innerHTML=`
+    <div class="rg-field"><label>Altura (cm)</label><input type="number" id="pf-altura" value="${PERFIL&&PERFIL.altura_cm!=null?PERFIL.altura_cm:''}" placeholder="165"></div>
+    <div class="rg-field"><label>Fecha de nacimiento</label><input type="date" id="pf-fnac" value="${PERFIL&&PERFIL.fecha_nacimiento?PERFIL.fecha_nacimiento:''}"></div>
+    <div class="rg-field"><label>TMB manual (kcal/día, opcional)</label><input type="number" id="pf-tmb" value="${PERFIL&&PERFIL.tmb_manual!=null?PERFIL.tmb_manual:''}" placeholder="Ej: 1448"></div>
+    <p style="font-size:.8em;opacity:.7">Si rellenas la TMB, se usará esa cifra tal cual como base (en vez de calcularla con la fórmula), sumándole luego pasos y ejercicio. Déjala vacía para volver a calcularla por fórmula.</p>
+    <button class="rg-btn rg-btn-save" style="width:100%" onclick="guardarPerfilBasico()">Guardar</button>
+  `;
+  document.getElementById('modal').classList.add('open');
 }
 function diarioAutoSave(){ clearTimeout(diarioSaveTimer); diarioSaveTimer=setTimeout(guardarDiarioDia,600); }
 async function guardarDiarioDia(){
@@ -951,11 +974,14 @@ function renderDiarioDayCard(){
   const balance=gasto!=null?Math.round(cons-gasto):null;
 
   let macrosHtml;
-  if(!PERFIL||!PERFIL.altura_cm||!PERFIL.fecha_nacimiento){
+  const tieneDatosBase=PERFIL&&(PERFIL.tmb_manual!=null||(PERFIL.altura_cm&&PERFIL.fecha_nacimiento));
+  if(!tieneDatosBase){
     macrosHtml=`<div class="diario-setup">
-      <p>Para calcular tu gasto automático necesito tu altura y fecha de nacimiento (solo una vez):</p>
+      <p>Para calcular tu gasto automático necesito tu altura y fecha de nacimiento, o directamente tu TMB si ya la conoces (solo una vez):</p>
       <div class="rg-field"><label>Altura (cm)</label><input type="number" id="pf-altura" placeholder="165"></div>
       <div class="rg-field"><label>Fecha de nacimiento</label><input type="date" id="pf-fnac"></div>
+      <div class="rg-field"><label>TMB manual (kcal/día, opcional)</label><input type="number" id="pf-tmb" placeholder="Ej: 1448"></div>
+      <p style="font-size:.8em;opacity:.7">Si rellenas la TMB, se usará esa cifra tal cual como base (en vez de calcularla con la fórmula), sumándole luego pasos y ejercicio.</p>
       <button class="rg-btn rg-btn-save" style="width:100%" onclick="guardarPerfilBasico()">Guardar</button>
     </div>`;
   }else{
@@ -967,6 +993,7 @@ function renderDiarioDayCard(){
         <div class="dms-item"><span class="dms-l">Consumidas</span><span class="dms-v mono">${Math.round(cons)} kcal</span></div>
         <div class="dms-item"><span class="dms-l">${gastoLabel}</span><span class="dms-v mono">${gasto!=null?Math.round(gasto):'—'} kcal</span></div>
       </div>
+      <div style="text-align:right;margin-top:2px"><a href="#" onclick="editarPerfilForm();return false;" style="font-size:.8em;opacity:.65">✏️ editar altura / fecha / TMB</a></div>
       ${balance!=null?`<div class="ddc-balance-hero ${heroCls}">
         <span class="dbh-label">${esDeficit?'Déficit':'Superávit'}</span>
         <span class="dbh-value">${Math.abs(balance)} kcal</span>

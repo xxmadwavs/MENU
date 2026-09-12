@@ -724,15 +724,19 @@ function edadPerfil(){
 function gastoBaseFecha(fechaISO){
   const peso=pesoParaFecha(fechaISO);
   if(!PERFIL||peso==null) return null;
-  let bmr;
+  let bmr, factorActividad;
   if(PERFIL.tmb_manual!=null){
     // TMB confirmada por apps/dispositivos: se usa directamente como base,
-    // en vez de estimarla con la fórmula de Mifflin-St Jeor.
+    // tal cual (sin recargo extra), sumándole solo pasos y ejercicio registrados.
     bmr=PERFIL.tmb_manual;
+    factorActividad=1;
   }else{
     const edad=edadPerfil();
     if(!PERFIL.altura_cm||edad==null) return null;
     bmr=10*peso+6.25*PERFIL.altura_cm-5*edad-161; // fórmula mujer (Mifflin-St Jeor)
+    // Margen del 10% por actividad cotidiana no contada, solo aplica cuando el BMR
+    // es una estimación por fórmula (no cuando ya es una TMB real confirmada).
+    factorActividad=1.1;
   }
   const row=DIARIO[fechaISO];
   const pasos=(row&&row.pasos)||0;
@@ -743,7 +747,7 @@ function gastoBaseFecha(fechaISO){
   const cardioMin=(row&&row.cardio_min)||0;
   const kcalGym=gymMin*(6*3.5*peso/200);
   const kcalCardio=cardioMin*(7.5*3.5*peso/200);
-  return bmr*1.1+kcalPasos+kcalGym+kcalCardio;
+  return bmr*factorActividad+kcalPasos+kcalGym+kcalCardio;
 }
 // Gasto estimado final: si tienes kcal reales de tu reloj/app ese día, mandan ellas.
 // Si no, se usa la fórmula (base + corrección aprendida de las recalibraciones).

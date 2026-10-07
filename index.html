@@ -266,15 +266,27 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .shop-progress-top{display:flex;justify-content:space-between;font-size:.75rem;font-weight:700;color:var(--ink-soft);margin-bottom:.4rem}
 .shop-progress-bar{height:7px;border-radius:6px;background:var(--line);overflow:hidden}
 .shop-progress-fill{height:100%;background:var(--green);border-radius:6px;transition:width .25s}
-.shop-item{background:var(--paper-raised);border-radius:var(--r-sm);border:1px solid var(--line);display:flex;align-items:center;gap:.75rem;padding:.65rem .9rem;margin-bottom:6px;cursor:pointer;transition:all .18s}
+.shop-item{background:var(--paper-raised);border-radius:var(--r-sm);border:1px solid var(--line);display:flex;flex-direction:column;align-items:stretch;gap:.55rem;padding:.65rem .9rem;margin-bottom:6px;cursor:pointer;transition:all .18s;min-width:0}
+.shop-row{display:flex;align-items:center;gap:.75rem;min-width:0}
 .shop-item:hover{border-color:var(--green)}
 .shop-item.checked{opacity:.5}
 .shop-check{width:22px;height:22px;border-radius:7px;border:2px solid var(--green);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .shop-item.checked .shop-check{background:var(--green);border-color:var(--green)}
 .shop-item.checked .shop-check::after{content:'✓';color:#fbf6ea;font-size:.72rem;font-weight:700}
 .shop-item.checked .stxt{text-decoration:line-through;color:var(--ink-soft)}
-.stxt{font-size:.9rem;font-weight:600;flex:1}
-.sqty{font-size:.76rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace}
+.stxt{font-size:.9rem;font-weight:600;flex:1;min-width:0;overflow-wrap:anywhere}
+.sqty{font-size:.76rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;max-width:45%;text-align:right;overflow-wrap:anywhere}
+/* Ya lo tengo */
+.shop-have-btn{width:100%;min-height:44px;border-radius:var(--r-sm);border:1.5px solid var(--gold);background:var(--gold-light);color:var(--gold-deep);font-family:'Inter',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .18s}
+.shop-have-btn:active{background:var(--gold);color:#fff}
+.shop-item.have{background:var(--gold-light);border-color:var(--gold)}
+.shop-item.have:hover{border-color:var(--gold-deep)}
+.shop-home{width:22px;flex-shrink:0;text-align:center;font-size:1.05rem;line-height:1}
+.shop-have-foot{display:flex;align-items:center;justify-content:space-between;gap:.75rem;font-size:.8rem;font-weight:600;color:var(--gold-deep)}
+.shop-undo-btn{min-height:44px;min-width:96px;padding:0 1rem;border-radius:var(--r-sm);border:1.5px solid var(--gold-deep);background:var(--paper-raised);color:var(--gold-deep);font-family:'Inter',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.shop-undo-btn:active{background:var(--gold);color:#fff}
+.shop-progress-sub{margin-top:.5rem;font-size:.75rem;font-weight:700;color:var(--gold-deep)}
+.shop-progress-sub:empty{display:none}
 .btn-reset{width:100%;background:none;border:1.5px dashed var(--line);border-radius:var(--r-sm);padding:.65rem;font-family:'Inter',sans-serif;font-size:.83rem;font-weight:600;color:var(--ink-soft);cursor:pointer;margin-top:.75rem;transition:all .2s}
 .btn-reset:hover{background:var(--clay-light);color:var(--clay);border-color:var(--clay)}
 
@@ -290,16 +302,48 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .mm-box{border-radius:11px;padding:9px 4px;text-align:center}
 .mm-box .v{font-family:'IBM Plex Mono',monospace;font-size:1.1rem;font-weight:600;display:block}
 .mm-box .l{display:block;margin-top:2px}
+.fc-sec{margin-top:1.5rem}
+.fc-sec .sec-lbl{margin:0 0 .7rem;color:var(--green)}
+.fc-desc{font-size:.9rem;color:var(--ink-soft);line-height:1.6;margin-bottom:.2rem}
+.rac-ctl{display:flex;justify-content:center}
+.rac-stepper{display:flex;align-items:center;gap:.5rem;background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:4px}
+.rac-stepper button{width:44px;height:44px;border-radius:50%;border:none;background:var(--green-light);color:var(--green);font-size:1.5rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s;-webkit-appearance:none;touch-action:manipulation}
+.rac-stepper button:hover:not(:disabled){background:var(--green);color:#fff}
+.rac-stepper button:disabled{opacity:.4;cursor:not-allowed}
+.rac-n{min-width:3.2ch;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:1.4rem;font-weight:600;color:var(--green-deep)}
+.rac-pr{font-size:.72rem;color:var(--ink-soft);text-align:center;margin-top:.7rem;line-height:1.5;font-family:'IBM Plex Mono',monospace}
+.rac-note{font-size:.72rem;color:var(--ink-soft);margin-top:.5rem;display:none}
+/* Cabecera de la ficha (solo #modal; el modal de registro no se toca) */
+#modal .mh-main{flex:1;min-width:0}
+#modal .modal-head h2{font-size:1.3rem;overflow-wrap:anywhere}
+#modal .modal-close{width:36px;height:36px;font-size:1rem}
+.mh-tipo{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(251,246,234,.72);margin-top:.35rem}
+.mh-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
+.mh-tags:empty{display:none}
+.mh-chip{font-size:.74rem;font-weight:600;padding:3px 10px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);color:#fbf6ea}
+.mh-meta{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;margin-top:.75rem;font-size:.82rem;font-weight:600;color:#fbf6ea}
+.mh-meta:empty{display:none}
+.mh-fav{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--berry-light);color:var(--berry);font-size:1.2rem;line-height:1;display:flex;align-items:center;justify-content:center}
+.mh-fav[hidden]{display:none}
+@media(min-width:760px){
+  #modal .modal{max-width:660px}
+  #modal .modal-head{padding:1.5rem 1.9rem}
+  #modal .modal-body{padding:1.5rem 1.9rem 1.8rem}
+  #modal .modal-head h2{font-size:1.5rem}
+  #modal .mm-box .v{font-size:1.3rem}
+}
 .sec-lbl{margin:1.1rem 0 .5rem;display:flex;align-items:center;gap:.4rem}
 .sec-lbl::after{content:'';flex:1;height:1px;background:var(--line)}
 .ing-list{list-style:none}
-.ing-list li{padding:.45rem 0;border-bottom:1px solid var(--line);font-size:.86rem;display:flex;justify-content:space-between;align-items:center}
+.ing-list li{display:grid;grid-template-columns:minmax(0,min(38%,10rem)) minmax(0,1fr);gap:.15rem .9rem;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--line)}
 .ing-list li:last-child{border-bottom:none}
-.ing-qty{color:var(--ink-soft);font-size:.8rem;font-family:'IBM Plex Mono',monospace}
+.ing-qty{color:var(--green-deep);font-size:.82rem;font-weight:600;font-family:'IBM Plex Mono',monospace;overflow-wrap:anywhere}
+.ing-qty:empty::before{content:'—';color:var(--ink-soft);opacity:.5;font-weight:400}
+.ing-name{font-size:.9rem;line-height:1.4;overflow-wrap:anywhere}
 .steps-ol{list-style:none;counter-reset:s}
-.steps-ol li{counter-increment:s;padding:.6rem 0 .6rem 2.3rem;border-bottom:1px solid var(--line);font-size:.86rem;line-height:1.55;position:relative;color:var(--ink)}
+.steps-ol li{counter-increment:s;display:grid;grid-template-columns:2.3rem minmax(0,1fr);gap:.5rem;padding:.8rem 0;border-bottom:1px solid var(--line);font-size:.9rem;line-height:1.6;color:var(--ink);overflow-wrap:anywhere}
 .steps-ol li:last-child{border-bottom:none}
-.steps-ol li::before{content:counter(s);position:absolute;left:0;top:.6rem;width:21px;height:21px;background:var(--green);color:#fbf6ea;border-radius:50%;font-size:.66rem;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace}
+.steps-ol li::before{content:counter(s,decimal-leading-zero);font-family:'IBM Plex Mono',monospace;font-size:1.05rem;font-weight:600;line-height:1.5;color:var(--gold-deep)}
 .empty-state{text-align:center;padding:3rem 1rem;color:var(--ink-soft)}
 .empty-state .ei{font-size:2.4rem;margin-bottom:.75rem;opacity:.85}
 .empty-state p{font-size:.9rem;line-height:1.55;max-width:280px;margin:0 auto}
@@ -486,8 +530,9 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
   <div class="shop-progress" id="shop-progress" style="display:none">
     <div class="shop-progress-top"><span id="shop-progress-label"></span><span id="shop-progress-pct" class="mono"></span></div>
     <div class="shop-progress-bar"><div class="shop-progress-fill" id="shop-progress-fill"></div></div>
+    <div class="shop-progress-sub" id="shop-progress-have"></div>
   </div>
-  <div class="info-bar">🧺 Lista de la semana seleccionada. Toca un ingrediente para marcarlo como comprado.</div>
+  <div class="info-bar">🧺 Lista de la semana seleccionada. Toca un ingrediente para marcarlo como comprado, o pulsa «🏠 Ya lo tengo» si ya lo tienes en casa.</div>
   <div id="shopping-container"></div>
 </div>
 
@@ -506,8 +551,14 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 <div class="modal-overlay" id="modal" onclick="closeOut(event)">
   <div class="modal">
     <div class="modal-head">
-      <h2 id="modal-title"></h2>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="mh-main">
+        <h2 id="modal-title"></h2>
+        <div class="mh-tipo" id="modal-tipo"></div>
+        <div class="mh-tags" id="modal-tags"></div>
+        <div class="mh-meta" id="modal-meta"></div>
+      </div>
+      <span class="mh-fav" id="modal-fav" role="img" aria-label="Receta favorita" title="Favorita" hidden>♥</span>
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">✕</button>
     </div>
     <div class="modal-body" id="modal-body"></div>
   </div>
@@ -1532,6 +1583,50 @@ function renderRecipes(tipo){
   `).join('');
 }
 
+// ===== SUMA DE CANTIDADES EN LA LISTA DE COMPRA (solo presentación; no toca DATA ni recetas) =====
+// Conservador: solo se suman cantidades que son EXACTAMENTE "número + unidad" y con la MISMA unidad.
+// Cualquier otra cosa (paréntesis, "al gusto", texto extra, sin unidad, unidades distintas) se muestra tal cual.
+// Sin conversiones (g↔kg, ml↔l) ni equivalencias entre unidades.
+const SUMA_UNIDADES={
+  g:{u:'g'}, kg:{u:'kg'}, ml:{u:'ml'}, l:{u:'l'}, cdta:{u:'cdta'},
+  unidad:{u:'unidad',s:'unidad',p:'unidades'}, unidades:{u:'unidad',s:'unidad',p:'unidades'},
+  cucharadita:{u:'cucharadita',s:'cucharadita',p:'cucharaditas'}, cucharaditas:{u:'cucharadita',s:'cucharadita',p:'cucharaditas'},
+  cucharada:{u:'cucharada',s:'cucharada',p:'cucharadas'}, cucharadas:{u:'cucharada',s:'cucharada',p:'cucharadas'},
+  diente:{u:'diente',s:'diente',p:'dientes'}, dientes:{u:'diente',s:'diente',p:'dientes'}
+};
+function parseCantidadSimple(txt){
+  const m=/^(\d+(?:[.,]\d+)?)\s*([a-zA-Záéíóúñ]+)$/.exec(String(txt==null?'':txt).trim());
+  if(!m) return null;
+  const def=SUMA_UNIDADES[m[2].toLowerCase()];
+  if(!def) return null;
+  const milesimas=Math.round(parseFloat(m[1].replace(',','.'))*1000); // enteros: evita 2.0000000001
+  if(!isFinite(milesimas)) return null;
+  return {def,milesimas};
+}
+function formatoNumero(milesimas){ return String(Number((milesimas/1000).toFixed(2))); }
+function formatoCantidadSuma(def,milesimas){
+  const n=formatoNumero(milesimas);
+  if(def.p) return n+' '+(Number(n)===1?def.s:def.p);
+  return n+def.u; // g, ml, kg, l, cdta: mismo formato que los datos (sin espacio)
+}
+// Devuelve la lista de textos a mostrar para un ingrediente agrupado.
+function resumirCantidades(qtys){
+  const grupos={}, orden=[], otros=[], vistos=new Set();
+  qtys.forEach(q=>{
+    const raw=String(q==null?'':q).trim();
+    if(!raw) return;
+    const p=parseCantidadSimple(raw);
+    if(p){
+      const g=grupos[p.def.u]||(grupos[p.def.u]={def:p.def,total:0,n:0,raw});
+      if(!g.n) orden.push(p.def.u);
+      g.total+=p.milesimas; g.n++;
+    } else if(/^\d/.test(raw)){ otros.push(raw); }          // cantidad numérica compleja: nunca se agrupa ni se descarta
+    else if(!vistos.has(raw.toLowerCase())){ vistos.add(raw.toLowerCase()); otros.push(raw); } // "al gusto", etc.: sin repetir el mismo texto
+  });
+  const sumas=orden.map(u=>{ const g=grupos[u]; return g.n===1?g.raw:formatoCantidadSuma(g.def,g.total); });
+  return sumas.concat(otros);
+}
+
 function renderShopTabs(){
   const el=document.getElementById('shop-week-tabs');
   el.innerHTML=SEMANAS.map((s,i)=>
@@ -1566,40 +1661,193 @@ function renderShopping(){
     cont.innerHTML=`<div class="empty-state"><div class="ei">🧺</div><p>No hay ingredientes en el menú de esta semana todavía.</p></div>`;
     return;
   }
-  const checkedCount=sorted.filter(i=>checkedItems[i.nombre]).length;
+  const haveSet=haveForWeek(shopWeek);
+  const isH=i=>!!haveSet[haveKey(i.nombre)];
+  const haveCount=sorted.filter(isH).length;
+  const checkedCount=sorted.filter(i=>!isH(i)&&checkedItems[i.nombre]).length;
   progEl.style.display='block';
   document.getElementById('shop-progress-label').textContent=`${checkedCount} de ${sorted.length} comprados`;
   document.getElementById('shop-progress-pct').textContent=Math.round((checkedCount/sorted.length)*100)+'%';
   document.getElementById('shop-progress-fill').style.width=Math.round((checkedCount/sorted.length)*100)+'%';
+  const pend=sorted.length-checkedCount-haveCount;
+  document.getElementById('shop-progress-have').textContent=haveCount
+    ? `🏠 ${haveCount} ya los tienes · quedan ${pend} por comprar` : '';
   cont.innerHTML=sorted.map(i=>{
-    const k=i.nombre, ch=!!checkedItems[k], qty=[...new Set(i.qtys)].join(', ');
-    return `<div class="shop-item ${ch?'checked':''}" onclick="toggleCheck('${k.replace(/'/g,"\\'")}')">
-      <div class="shop-check"></div><span class="stxt">${i.nombre}</span><span class="sqty">${qty}</span>
+    const k=i.nombre, qty=resumirCantidades(i.qtys).join(', '), a=escAttr(k);
+    if(isH(i)){
+      return `<div class="shop-item have" data-n="${a}" onclick="toggleCheck(this.dataset.n)">
+        <div class="shop-row"><span class="shop-home">🏠</span><span class="stxt">${i.nombre}</span><span class="sqty">${qty}</span></div>
+        <div class="shop-have-foot"><span>Ya lo tienes en casa</span><button class="shop-undo-btn" onclick="event.stopPropagation();setHave(this.closest('.shop-item').dataset.n,false)">Deshacer</button></div>
+      </div>`;
+    }
+    const ch=!!checkedItems[k];
+    return `<div class="shop-item ${ch?'checked':''}" data-n="${a}" onclick="toggleCheck(this.dataset.n)">
+      <div class="shop-row"><div class="shop-check"></div><span class="stxt">${i.nombre}</span><span class="sqty">${qty}</span></div>
+      ${ch?'':`<button class="shop-have-btn" onclick="event.stopPropagation();setHave(this.closest('.shop-item').dataset.n,true)">🏠 Ya lo tengo</button>`}
     </div>`;
   }).join('')+`<button class="btn-reset" onclick="resetShop()">↺ Desmarcar todo</button>`;
 }
 
-function toggleCheck(k){checkedItems[k]=!checkedItems[k];renderShopping();}
+// Estado único por ingrediente: pendiente | ya_tengo | comprado.
+// 'comprado' sigue en checkedItems (como antes). 'ya_tengo' se guarda aparte en localStorage,
+// asociado a la lista concreta (fecha de inicio de esa semana del ciclo), nunca en DATA/recetas.
+const HAVE_KEY='mimenu_compra_ya_tengo_v1';
+function escAttr(t){ return String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function haveKey(nombre){ return String(nombre).toLowerCase().trim(); } // misma clave que usa la agrupación de la lista
+function isoLocal(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+// Fecha de inicio de la próxima (o actual) aparición de la semana idx del ciclo de 4 semanas.
+// Así "Semana 1" de este mes y "Semana 1" del mes siguiente son listas distintas.
+function shopListId(idx){
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  const diffDias=Math.floor((hoy-SEMANA1_INICIO)/(1000*60*60*24));
+  const inicio=new Date(hoy); inicio.setDate(inicio.getDate()-(((diffDias%7)+7)%7));
+  const salto=((idx-calcCurrentWeek())%4+4)%4;
+  inicio.setDate(inicio.getDate()+salto*7);
+  return isoLocal(inicio);
+}
+function haveLoadAll(){
+  try{ const o=JSON.parse(localStorage.getItem(HAVE_KEY)||'{}'); return (o&&typeof o==='object'&&!Array.isArray(o))?o:{}; }
+  catch(e){ return {}; }
+}
+function haveSaveAll(o){
+  // descarta listas de semanas ya pasadas
+  const lim=shopListId(calcCurrentWeek());
+  Object.keys(o).forEach(id=>{ if(id<lim||!Object.keys(o[id]||{}).length) delete o[id]; });
+  try{ localStorage.setItem(HAVE_KEY,JSON.stringify(o)); }catch(e){ console.warn('No se pudo guardar "Ya lo tengo":',e); }
+}
+function haveForWeek(idx){ return haveLoadAll()[shopListId(idx)]||{}; }
+function setHave(nombre,val){
+  const all=haveLoadAll(), id=shopListId(shopWeek), k=haveKey(nombre);
+  all[id]=all[id]||{};
+  if(val){ all[id][k]=1; delete checkedItems[nombre]; } else delete all[id][k];
+  haveSaveAll(all);
+  renderShopping();
+}
+function toggleCheck(k){
+  if(haveForWeek(shopWeek)[haveKey(k)]){ // Ya lo tengo → Comprado (un único estado)
+    const all=haveLoadAll(), id=shopListId(shopWeek);
+    delete all[id][haveKey(k)]; haveSaveAll(all);
+    checkedItems[k]=true;
+  } else checkedItems[k]=!checkedItems[k];
+  renderShopping();
+}
 function resetShop(){checkedItems={};renderShopping();}
+
+// ===== RACIONES (solo consulta) =====
+// receta.raciones (entero >=1) = raciones para las que están pensadas las cantidades y macros guardados.
+// Si falta o no es válido se asume 1. El número elegido en la ficha vive solo en esta variable:
+// nunca se escribe en DATA, data.json ni Supabase, y cada vez que se abre la ficha vuelve a la base.
+const RACIONES_DEFECTO=1;
+let modalRecId=null, modalRaciones=RACIONES_DEFECTO;
+function racionesBase(r){
+  const n=Number(r&&r.raciones);
+  return Number.isInteger(n)&&n>=1?n:RACIONES_DEFECTO;
+}
+// Las cantidades son texto ("200g", "1.3 cucharadita (1.6g)", "al gusto (1g)"): se multiplica cada cifra del texto.
+// Si el texto contiene una fracción escrita (½, 1/2, "medio"...) no se toca (noEscalada) para no inventar nada.
+const FRAC_TXT_RE=/[½¼¾⅓⅔⅛]|\d\s*\/\s*\d|\b(?:medio|media|medios|medias|mitad|cuarto|tercio)\b/i;
+function fmtNum(v,coma){
+  const s=String(parseFloat(v.toFixed(Math.abs(v)<10?2:1)));
+  return coma?s.replace('.',','):s;
+}
+function escalarCantidad(txt,factor){
+  const s=(txt===null||txt===undefined)?'':String(txt);
+  if(factor===1||!/\d/.test(s)) return {text:s,noEscalada:false};
+  if(FRAC_TXT_RE.test(s)) return {text:s,noEscalada:true};
+  return {text:s.replace(/\d+(?:[.,]\d+)?/g,m=>fmtNum(parseFloat(m.replace(',','.'))*factor,m.includes(','))),noEscalada:false};
+}
+function cambiarRaciones(delta){
+  const nuevo=modalRaciones+delta;
+  if(nuevo<1) return;
+  modalRaciones=nuevo;
+  actualizarModalRaciones();
+}
+function actualizarModalRaciones(){
+  const r=getR(modalRecId); if(!r) return;
+  const base=racionesBase(r), n=modalRaciones, f=n/base;
+  const set=(id,t)=>{ const e=document.getElementById(id); if(e) e.textContent=t; };
+  set('rac-n',n);
+  document.getElementById('rac-minus').disabled=n<=1;
+  set('mm-k',Math.round(r.kcal*f));
+  set('mm-p',Math.round(r.proteinas*f)+'g');
+  set('mm-c',Math.round(r.carbos*f)+'g');
+  set('mm-g',Math.round(r.grasas*f)+'g');
+  set('rac-pr',`Por ración · ${Math.round(r.kcal/base)}\u00A0kcal · P\u00A0${Math.round(r.proteinas/base)}g · C\u00A0${Math.round(r.carbos/base)}g · G\u00A0${Math.round(r.grasas/base)}g`);
+  let alguna=false;
+  (r.ingredientes||[]).forEach((i,idx)=>{
+    const q=escalarCantidad(i.cantidad,f);
+    if(q.noEscalada) alguna=true;
+    set('ing-q-'+idx,q.text+(q.noEscalada?' *':''));
+  });
+  const nota=document.getElementById('rac-note'); if(nota) nota.style.display=alguna?'block':'none';
+}
+
+// Etiquetas: mismos ids y nombres visuales que admin.html (se guardan en receta.etiquetas como array de ids).
+// Una receta sin el campo, o con ids desconocidos, se muestra sin etiquetas.
+const ETIQUETAS=[
+  {id:'rapida',nombre:'⚡ Rápida'},
+  {id:'proteica',nombre:'💪 Proteica'},
+  {id:'facil',nombre:'🍳 Fácil'},
+  {id:'air_fryer',nombre:'♨️ Air fryer'},
+  {id:'para_llevar',nombre:'🥡 Para llevar'},
+  {id:'congela_bien',nombre:'❄️ Congela bien'}
+];
+function etiquetasDeReceta(r){
+  const a=r&&Array.isArray(r.etiquetas)?r.etiquetas:[];
+  return ETIQUETAS.filter(t=>a.includes(t.id));
+}
+// Favoritos: SOLO LECTURA de la misma clave que escribe admin.html (misma fuente de verdad). Aquí nunca se escribe.
+const FAV_KEY='mimenu_favoritos_v1';
+function esFavorita(id){
+  try{ const a=JSON.parse(localStorage.getItem(FAV_KEY)||'[]'); return Array.isArray(a)&&a.includes(id); }
+  catch(e){ return false; }
+}
 
 function openModal(id){
   const r=getR(id); if(!r) return;
+  modalRecId=id; modalRaciones=racionesBase(r);
+  const base=racionesBase(r);
   document.getElementById('modal-title').textContent=r.nombre;
+  document.getElementById('modal-tipo').textContent=r.tipo?r.tipo.charAt(0).toUpperCase()+r.tipo.slice(1):'';
+  document.getElementById('modal-tags').innerHTML=etiquetasDeReceta(r).map(t=>`<span class="mh-chip">${t.nombre}</span>`).join('');
+  document.getElementById('modal-meta').innerHTML=
+    (r.tiempo?`<span>⏱ ${r.tiempo}</span>`:'')+`<span>🍽 Para ${base} ${base===1?'ración':'raciones'}</span>`;
+  document.getElementById('modal-fav').hidden=!esFavorita(id);
   document.getElementById('modal-body').innerHTML=`
-    <div class="modal-macros">
-      <div class="mm-box mb-k"><span class="v">${Math.round(r.kcal)}</span><span class="l">kcal</span></div>
-      <div class="mm-box mb-p"><span class="v">${Math.round(r.proteinas)}g</span><span class="l">prot</span></div>
-      <div class="mm-box mb-c"><span class="v">${Math.round(r.carbos)}g</span><span class="l">carbos</span></div>
-      <div class="mm-box mb-g"><span class="v">${Math.round(r.grasas)}g</span><span class="l">grasas</span></div>
-    </div>
-    ${r.descripcion?`<p style="font-size:.86rem;color:var(--ink-soft);margin-bottom:.75rem;line-height:1.55">${r.descripcion}</p>`:''}
-    ${r.tiempo?`<p style="font-size:.8rem;color:#3f5c2c;margin-bottom:1rem;font-weight:700">⏱ ${r.tiempo}</p>`:''}
-    ${r.ingredientes?.length?`<div class="sec-lbl">Ingredientes</div>
-      <ul class="ing-list">${r.ingredientes.map(i=>`<li><span>${i.nombre}</span><span class="ing-qty">${i.cantidad}</span></li>`).join('')}</ul>`:''}
-    ${r.pasos?.length?`<div class="sec-lbl">Preparación</div>
-      <ol class="steps-ol">${r.pasos.map(p=>`<li>${p}</li>`).join('')}</ol>`:''}
+    ${r.descripcion?`<p class="fc-desc">${r.descripcion}</p>`:''}
+    <section class="fc-sec" style="margin-top:${r.descripcion?'1.5rem':'0'}">
+      <div class="sec-lbl">Nutrición</div>
+      <div class="modal-macros" style="margin-bottom:0">
+        <div class="mm-box mb-k"><span class="v" id="mm-k">${Math.round(r.kcal)}</span><span class="l">kcal</span></div>
+        <div class="mm-box mb-p"><span class="v" id="mm-p">${Math.round(r.proteinas)}g</span><span class="l">prot</span></div>
+        <div class="mm-box mb-c"><span class="v" id="mm-c">${Math.round(r.carbos)}g</span><span class="l">carbos</span></div>
+        <div class="mm-box mb-g"><span class="v" id="mm-g">${Math.round(r.grasas)}g</span><span class="l">grasas</span></div>
+      </div>
+      <div class="rac-pr" id="rac-pr"></div>
+    </section>
+    <section class="fc-sec">
+      <div class="sec-lbl">Raciones</div>
+      <div class="rac-ctl">
+        <div class="rac-stepper" role="group" aria-label="Número de raciones">
+          <button type="button" id="rac-minus" onclick="cambiarRaciones(-1)" aria-label="Quitar una ración">−</button>
+          <span class="rac-n" id="rac-n" aria-live="polite">${modalRaciones}</span>
+          <button type="button" id="rac-plus" onclick="cambiarRaciones(1)" aria-label="Añadir una ración">+</button>
+        </div>
+      </div>
+    </section>
+    ${r.ingredientes?.length?`<section class="fc-sec">
+      <div class="sec-lbl">Ingredientes</div>
+      <ul class="ing-list">${r.ingredientes.map((i,idx)=>`<li><span class="ing-qty" id="ing-q-${idx}">${i.cantidad}</span><span class="ing-name">${i.nombre}</span></li>`).join('')}</ul>
+      <div class="rac-note" id="rac-note">* Cantidad no escalada: contiene una fracción escrita en texto.</div>
+    </section>`:''}
+    ${r.pasos?.length?`<section class="fc-sec">
+      <div class="sec-lbl">Preparación</div>
+      <ol class="steps-ol">${r.pasos.map(p=>`<li><span>${p}</span></li>`).join('')}</ol>
+    </section>`:''}
   `;
+  actualizarModalRaciones();
   document.getElementById('modal').classList.add('open');
+  document.getElementById('modal').scrollTop=0;
 }
 
 function closeOut(e){if(e.target===document.getElementById('modal')) closeModal();}

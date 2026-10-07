@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Admin — Mi Menú</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --rose:#e8b4b8;--rose-deep:#c97d87;--rose-dark:#9e4f5a;
@@ -158,6 +158,177 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
 .toast.show{opacity:1}
 
 .section-divider{border:none;border-top:1px solid var(--border);margin:1rem 0}
+
+/* ============================================================
+   UNIFICACIÓN VISUAL CON index.html (verde / crema / dorado)
+   Solo estilos: se redefine la paleta y se restilan los componentes.
+   ============================================================ */
+:root{
+  --paper:#f3efe2;--paper-raised:#fffdf8;--ink:#262b1f;--ink-soft:#71715f;--line:#e2dbc4;
+  --green:#33472c;--green-deep:#23301e;--green-light:#e7ebdd;
+  --gold:#cf9a3e;--gold-deep:#a97928;--gold-light:#f8ecd2;
+  --clay:#b3573d;--clay-light:#f6e3da;
+  --plum:#6c4569;--plum-light:#ece2ea;
+  --sage:#728a5d;--sage-light:#e7edde;
+  --berry:#a24f68;--berry-light:#f4e1e7;
+  /* variables antiguas del admin, reasignadas a la nueva paleta */
+  --rose:#cf9a3e;--rose-deep:#33472c;--rose-dark:#33472c;
+  --blush:#f3efe2;--blush2:#e7ebdd;
+  --mauve:#6c4569;--mauve-light:#ece2ea;
+  --teal:#728a5d;--teal-light:#e7edde;
+  --text:#262b1f;--text-muted:#71715f;--border:#e2dbc4;--bg:#f3efe2;
+  --danger:#b3573d;--danger-bg:#f6e3da;
+  --r:18px;--r-sm:11px;
+  --shadow:0 3px 14px rgba(38,43,31,.07);--shadow-lg:0 10px 34px rgba(38,43,31,.14);
+}
+html{-webkit-tap-highlight-color:transparent}
+body{font-family:'Inter',sans-serif;background:var(--paper);background-image:radial-gradient(circle at 100% 0%,rgba(207,154,62,.08),transparent 45%);color:var(--ink);padding-bottom:6rem;overflow-x:hidden}
+input,select,textarea,button{font-family:'Inter',sans-serif}
+header h1,.modal-head h2,.day-admin-head,.export-card h3,.ms-val{font-family:'Fraunces',serif}
+.ms-val,.ing-row input[type=number],.ing-lib-macro,.tipo-badge,.recipe-item-meta .rm{font-family:'IBM Plex Mono',monospace}
+
+header{background:linear-gradient(160deg,var(--green) 0%,var(--green-deep) 100%);border-bottom:3px solid var(--gold);box-shadow:0 6px 20px rgba(35,48,30,.22);padding:1.15rem 1.25rem 0}
+header h1{color:#fbf6ea;font-weight:600;letter-spacing:.01em}
+.tab-btn{color:rgba(251,246,234,.6);font-weight:700}
+.tab-btn.active{color:#fbf6ea;border-bottom-color:var(--gold)}
+.view{padding:1.05rem 1.1rem 1.5rem}
+
+.btn-primary,.btn-mauve,.btn-teal{background:var(--green)!important;color:#fbf6ea;border-radius:var(--r-sm);font-weight:700;box-shadow:var(--shadow);min-height:40px}
+.btn-primary:hover,.btn-mauve:hover,.btn-teal:hover{background:var(--green-deep)!important;opacity:1}
+.btn-teal{background:var(--paper-raised)!important;color:var(--green);border:1.5px solid var(--green)}
+.btn-teal:hover{background:var(--green-light)!important}
+.btn-secondary{background:var(--paper-raised);border:1.5px solid var(--line);border-radius:var(--r-sm);font-weight:600;color:var(--ink);min-height:36px}
+.btn-secondary:hover{background:var(--green-light);border-color:var(--green)}
+.btn-danger{border-radius:var(--r-sm);min-height:36px;min-width:36px}
+.btn-danger:hover{background:var(--clay);color:#fff}
+
+label{color:var(--ink-soft);font-weight:700;letter-spacing:.045em}
+input[type=text],input[type=number],select,textarea{background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-sm);color:var(--ink);box-shadow:inset 0 1px 3px rgba(38,43,31,.05)}
+input:focus,select:focus,textarea:focus{border-color:var(--green);box-shadow:inset 0 1px 3px rgba(38,43,31,.05),0 0 0 3px var(--green-light)}
+
+/* filtros */
+.sub-tabs{background:var(--paper-raised);border:1px solid var(--line);box-shadow:var(--shadow);overflow-x:auto;scrollbar-width:none;max-width:100%}
+.sub-tabs::-webkit-scrollbar{display:none}
+.sub-tab{min-width:max-content;padding:.5rem .7rem;font-weight:700;font-size:.74rem}
+.sub-tab.active{background:var(--green);color:#fbf6ea}
+
+/* buscador */
+.admin-search{position:relative;margin-bottom:.75rem}
+.admin-search .as-icon{position:absolute;left:.95rem;top:50%;transform:translateY(-50%);color:var(--ink-soft);pointer-events:none;display:flex}
+.admin-search input[type=search]{width:100%;padding:.8rem 2.6rem .8rem 2.6rem;font-size:.92rem;background:var(--paper-raised);border:1.5px solid var(--line);border-radius:var(--r);color:var(--ink);box-shadow:var(--shadow);outline:none;-webkit-appearance:none;appearance:none;transition:border-color .15s,box-shadow .15s}
+.admin-search input[type=search]::placeholder{color:var(--ink-soft)}
+.admin-search input[type=search]:focus{border-color:var(--green);box-shadow:0 0 0 3px var(--green-light)}
+.admin-search input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none;height:16px;width:16px;cursor:pointer;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2371715f' stroke-width='2' stroke-linecap='round'><path d='M5 5l10 10M15 5L5 15'/></svg>") center/contain no-repeat}
+
+/* listado de recetas */
+.recipe-item{background:var(--paper-raised);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:var(--r);box-shadow:var(--shadow);padding:.9rem 1rem;transition:box-shadow .18s,transform .18s}
+.recipe-item:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.recipe-item-name{font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;white-space:normal;overflow:visible;text-overflow:clip;line-height:1.3;margin-bottom:.4rem}
+.recipe-item-meta{gap:.35rem}
+.recipe-item-meta .rm{font-size:.66rem;font-weight:700;padding:2px 7px;border-radius:8px}
+.rm-k{background:var(--clay-light);color:#8a3d27}
+.rm-p{background:var(--sage-light);color:#3f5c2c}
+.rm-c{background:var(--gold-light);color:#8a6416}
+.rm-g{background:var(--plum-light);color:#523153}
+.tipo-badge{text-transform:capitalize;letter-spacing:.02em}
+.b-desayuno{background:var(--gold-light);color:#8a6416}
+.b-comida{background:var(--sage-light);color:#3f5c2c}
+.b-cena{background:var(--plum-light);color:#523153}
+.b-snack{background:var(--clay-light);color:#8a3d27}
+.b-postre{background:var(--berry-light);color:var(--berry)}
+.recipe-actions{align-self:center}
+.recipe-actions .btn-secondary,.recipe-actions .btn-danger{min-height:40px}
+.admin-empty{text-align:center;padding:2.5rem 1rem;color:var(--ink-soft);font-size:.9rem;line-height:1.55}
+.admin-empty .ae-icon{font-size:2.2rem;margin-bottom:.6rem;opacity:.85}
+.admin-empty p{max-width:300px;margin:0 auto}
+.admin-empty b{color:var(--ink)}
+
+/* resto de tarjetas y modales */
+.macro-summary,.info-bar{background:var(--sage-light);color:#3f5c2c}
+.info-bar{border-left:3px solid var(--gold);border-radius:var(--r-sm);font-weight:600}
+.ing-lib-item,.export-card,.day-admin-card{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.export-card h3{color:var(--green-deep);font-weight:600}
+.day-admin-head{background:linear-gradient(150deg,var(--green),var(--green-deep));font-weight:600}
+.modal{background:var(--paper-raised);border-radius:var(--r)}
+.modal-head{background:linear-gradient(150deg,var(--green),var(--green-deep));border-bottom:3px solid var(--gold)}
+.modal-mauve .modal-head{background:linear-gradient(150deg,var(--plum),#4c2e49)}
+.modal-overlay{background:rgba(35,30,20,.55)}
+.step-num{background:var(--green)}
+.btn-add-row{background:var(--paper);border:1.5px dashed var(--line);color:var(--ink-soft)}
+.btn-add-row:hover{background:var(--green-light);border-color:var(--green);color:var(--green)}
+.ing-select-btn{background:var(--green)}
+.import-drop:hover,.import-drop.drag-over{border-color:var(--green);background:var(--green-light)}
+.toast{background:var(--green-deep)!important;color:#fbf6ea}
+.ilm-k,.mk{color:#8a3d27}.ilm-p,.mp{color:#3f5c2c}.ilm-c,.mc{color:#8a6416}.ilm-g,.mg{color:#523153}
+.ilm-k{background:var(--clay-light)}.ilm-p{background:var(--sage-light)}.ilm-c{background:var(--gold-light)}.ilm-g{background:var(--plum-light)}
+/* botones de semana del calendario (colores en línea desde JS) */
+#menu-admin-list button[style*="#9e4f5a"]{background:var(--green)!important;border-color:var(--green)!important}
+.float-btn{bottom:1.25rem;right:1rem}
+
+@media (max-width:480px){
+  .view{padding:.9rem .85rem 1.5rem}
+  .recipe-item{flex-wrap:wrap}
+  .recipe-actions{width:100%;justify-content:flex-end}
+  .float-btn .btn-teal,.float-btn .btn-primary{padding:.6rem .9rem;font-size:.82rem}
+}
+
+/* FAVORITOS */
+.admin-filter-row{display:flex;gap:.5rem;align-items:flex-start;margin-bottom:1rem}
+.admin-filter-row .sub-tabs{flex:1;min-width:0;margin-bottom:0}
+.fav-chip{flex-shrink:0;min-height:44px;padding:0 .9rem;border-radius:var(--r);border:1px solid var(--line);background:var(--paper-raised);color:var(--ink-soft);font-weight:700;font-size:.78rem;cursor:pointer;box-shadow:var(--shadow);transition:all .18s;white-space:nowrap}
+.fav-chip.active{background:var(--berry);border-color:var(--berry);color:#fff}
+.recipe-item-top{display:flex;align-items:flex-start;gap:.5rem}
+.recipe-item-top .recipe-item-name{flex:1;min-width:0}
+.fav-btn{flex-shrink:0;width:40px;height:40px;margin:-6px -6px 0 0;border-radius:50%;border:none;background:transparent;color:var(--ink-soft);font-size:1.45rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s,background .15s,color .15s;-webkit-appearance:none}
+.fav-btn:hover{background:var(--berry-light);color:var(--berry)}
+.fav-btn:active{transform:scale(.88)}
+.fav-btn.on{color:var(--berry);background:var(--berry-light)}
+.recipe-item.is-fav{border-left-color:var(--berry)}
+
+/* ETIQUETAS */
+.tag-picker{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.1rem}
+label.tag-opt{display:inline-flex;align-items:center;gap:.4rem;margin:0;padding:.45rem .75rem;min-height:40px;border:1.5px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink);font-size:.82rem;font-weight:600;text-transform:none;letter-spacing:0;cursor:pointer;transition:all .15s;user-select:none}
+label.tag-opt input{width:16px;height:16px;margin:0;accent-color:var(--green);cursor:pointer}
+label.tag-opt:hover{border-color:var(--green)}
+label.tag-opt.on{background:var(--green-light);border-color:var(--green);color:var(--green-deep)}
+.recipe-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin:.1rem 0 .45rem}
+.recipe-item-meta .rm-r{background:var(--paper);color:var(--ink-soft);border:1px solid var(--line);font-family:'Nunito',sans-serif;font-weight:700}
+.rtag{font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--green-light);color:var(--green-deep);border:1px solid var(--line);white-space:nowrap}
+/* TARJETA DE RECETA: secciones (cabecera · info · etiquetas · nutrición · acciones) */
+.recipe-item{flex-direction:column;align-items:stretch;gap:.7rem}
+.recipe-item .recipe-item-info{display:flex;flex-direction:column;gap:.6rem;width:100%;flex:none}
+.ri-head .recipe-item-name{margin-bottom:.3rem;overflow-wrap:anywhere}
+.ri-head .tipo-badge{display:inline-block}
+.recipe-item .recipe-tags{margin:0}
+.ri-nutri{padding-top:.6rem;border-top:1px dashed var(--line);gap:.35rem}
+.recipe-item .recipe-actions{width:100%;justify-content:space-between;align-items:center;gap:.5rem;padding-top:.65rem;border-top:1px solid var(--line)}
+.recipe-actions .btn-secondary{min-height:44px;padding:0 1.2rem;font-size:.82rem}
+.recipe-actions .btn-danger{min-height:44px;min-width:44px;font-size:.9rem}
+/* POSIBLES DUPLICADOS DE INGREDIENTES (solo aviso, tono ámbar suave) */
+.dup-box{background:#fbf3df;border:1px solid #ead9a8;border-left:4px solid var(--gold);border-radius:var(--r);padding:.85rem 1rem;margin:.75rem 0;box-shadow:var(--shadow);color:#5e4710}
+.dup-box.dup-ok{background:var(--paper-raised);border-color:var(--line);border-left-color:var(--green);color:var(--ink-soft)}
+.dup-title{font-family:'Fraunces',serif;font-weight:600;font-size:1rem;color:#5e4710}
+.dup-ok .dup-title{color:var(--green-deep)}
+.dup-empty{font-size:.85rem;margin-top:.25rem}
+.dup-group{margin-top:.65rem;padding-top:.65rem;border-top:1px dashed #e0cb94}
+.dup-name{font-weight:700;font-size:.92rem;color:var(--ink);overflow-wrap:anywhere}
+.dup-name span{display:inline-block;margin-left:.45rem;padding:2px 8px;border-radius:999px;background:#f3e2b3;color:#7a5a12;font-size:.7rem;font-weight:700;white-space:nowrap}
+.dup-entries{list-style:none;margin:.3rem 0 0;padding:0}
+.dup-entries li{position:relative;padding-left:1rem;font-size:.86rem;line-height:1.5;overflow-wrap:anywhere}
+.dup-entries li::before{content:'•';position:absolute;left:.15rem;color:var(--gold)}
+.dup-entries small{color:var(--ink-soft);font-size:.74rem}
+.dup-uses{margin-top:.35rem;font-size:.8rem;line-height:1.5;color:var(--ink-soft);overflow-wrap:anywhere}
+.dup-uses b{color:var(--ink)}
+.dup-foot{margin-top:.75rem;padding-top:.65rem;border-top:1px solid #e0cb94;font-size:.78rem;line-height:1.5}
+.dup-foot span{display:block;color:var(--ink-soft)}
+/* CATEGORÍAS DE INGREDIENTES (discretas, un solo tono) */
+.ing-cat{display:inline-block;margin-left:.45rem;padding:1px 8px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);font-family:'Inter',sans-serif;font-size:.68rem;font-weight:700;white-space:nowrap;vertical-align:middle}
+.ing-cat-filter{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;max-width:100%;margin:0 0 .75rem;padding:2px 1px 4px;-webkit-overflow-scrolling:touch}
+.ing-cat-filter::-webkit-scrollbar{display:none}
+.cat-chip{flex:0 0 auto;min-height:38px;padding:0 .85rem;border-radius:999px;border:1.5px solid var(--line);background:var(--paper-raised);color:var(--ink-soft);font-size:.76rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .15s;-webkit-appearance:none}
+.cat-chip:hover{border-color:var(--green)}
+.cat-chip.active{background:var(--green);border-color:var(--green);color:#fbf6ea}
 </style>
 </head>
 <body>
@@ -179,6 +350,11 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
 
 <!-- ===== RECETAS ===== -->
 <div id="view-recetas-admin" class="view active">
+  <div class="admin-search">
+    <span class="as-icon"><svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.3"/><path d="M12.5 12.5 17 17"/></svg></span>
+    <input type="search" id="recipe-search-admin" placeholder="Buscar receta por nombre…" autocomplete="off" aria-label="Buscar receta por nombre" oninput="renderRecipeList(adminFilter)">
+  </div>
+  <div class="admin-filter-row">
   <div class="sub-tabs">
     <button class="sub-tab active" onclick="filterAdmin('todas',this)">Todas</button>
     <button class="sub-tab" onclick="filterAdmin('desayuno',this)">Desayuno</button>
@@ -186,6 +362,8 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
     <button class="sub-tab" onclick="filterAdmin('cena',this)">Cena</button>
     <button class="sub-tab" onclick="filterAdmin('snack',this)">Snack</button>
     <button class="sub-tab" onclick="filterAdmin('postre',this)">Postre</button>
+  </div>
+  <button class="fav-chip" id="fav-filter-btn" aria-pressed="false" onclick="toggleFavFilter(this)">♥ Favoritas</button>
   </div>
   <div id="recipe-admin-list"></div>
   <div class="float-btn">
@@ -199,10 +377,12 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
   <div class="info-bar">
     Añade aquí todos tus ingredientes con sus valores nutricionales por <strong>100g/ml</strong> (o por la unidad que uses). Al crear recetas podrás seleccionarlos del listado.
   </div>
+  <div id="ing-dup-box" class="dup-box dup-ok"></div>
   <div class="search-bar">
     <span class="search-icon">🔍</span>
     <input type="text" id="ing-search" placeholder="Buscar ingrediente..." oninput="renderIngLib()">
   </div>
+  <div id="ing-cat-filter" class="ing-cat-filter" role="group" aria-label="Filtrar por categoría"></div>
   <div id="ing-lib-list"></div>
   <div class="float-btn">
     <button class="btn-mauve" onclick="openIngModal()">+ Nuevo ingrediente</button>
@@ -274,8 +454,20 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
         </div>
       </div>
 
+      <div class="form-2">
+        <div>
+          <label for="f-raciones">Raciones</label>
+          <input type="number" id="f-raciones" min="1" step="1" value="1" inputmode="numeric"
+                 onkeydown="if(['.',',','-','+','e','E'].includes(event.key))event.preventDefault()">
+        </div>
+        <div></div>
+      </div>
+
       <label>Descripción (opcional)</label>
       <textarea id="f-desc" rows="2" placeholder="Breve descripción..."></textarea>
+
+      <label>Etiquetas</label>
+      <div class="tag-picker" id="f-etiquetas"></div>
 
       <hr class="section-divider">
       <label>Ingredientes</label>
@@ -338,6 +530,9 @@ textarea{resize:vertical;min-height:55px;line-height:1.5}
 
       <label>Unidad de referencia</label>
       <input type="text" id="if-unidad" placeholder="Ej: 100g, 1 unidad, 1 cda">
+
+      <label for="if-categoria">Categoría</label>
+      <select id="if-categoria"></select>
 
       <p style="font-size:.78rem;color:var(--text-muted);margin-top:.5rem;line-height:1.5">
         Valores nutricionales <strong>por la unidad de referencia</strong> indicada arriba:
@@ -475,6 +670,83 @@ const TIPOS_L={desayuno:'Desayuno',comida:'Comida',cena:'Cena',snack:'Snack'};
 
 let adminFilter='todas', editingRecipeId=null, editingIngId=null, macroManual=false;
 
+// ===== FAVORITOS =====
+// Única fuente de verdad: conjunto de IDs de receta guardado en localStorage.
+// No se toca DATA ni data.json; una receta sin entrada aquí es "no favorita".
+const FAV_KEY='mimenu_favoritos_v1';
+function loadFavs(){
+  try{ const a=JSON.parse(localStorage.getItem(FAV_KEY)||'[]'); return new Set(Array.isArray(a)?a:[]); }
+  catch(e){ return new Set(); }
+}
+function saveFavs(){
+  try{ localStorage.setItem(FAV_KEY,JSON.stringify([...FAVORITOS])); return true; }
+  catch(e){ return false; }
+}
+let FAVORITOS=loadFavs();
+let adminSoloFavoritas=false;
+function isFav(id){ return FAVORITOS.has(id); }
+function toggleFav(id){
+  if(FAVORITOS.has(id)) FAVORITOS.delete(id); else FAVORITOS.add(id);
+  if(!saveFavs()) toast('⚠ No se pudo guardar el favorito en este navegador');
+  renderRecipeList(adminFilter);
+}
+// ===== ETIQUETAS =====
+// Se guardan dentro de cada receta como array de IDs estables: receta.etiquetas=['rapida',...].
+// Una receta sin el campo (o con un valor no válido) se interpreta como "sin etiquetas".
+const ETIQUETAS=[
+  {id:'rapida',nombre:'⚡ Rápida'},
+  {id:'proteica',nombre:'💪 Proteica'},
+  {id:'facil',nombre:'🍳 Fácil'},
+  {id:'air_fryer',nombre:'♨️ Air fryer'},
+  {id:'para_llevar',nombre:'🥡 Para llevar'},
+  {id:'congela_bien',nombre:'❄️ Congela bien'}
+];
+function etiquetasDeReceta(r){
+  const a=r&&Array.isArray(r.etiquetas)?r.etiquetas:[];
+  return ETIQUETAS.filter(t=>a.includes(t.id));
+}
+function recipeTagsHtml(r){
+  const tags=etiquetasDeReceta(r);
+  return tags.length?`<div class="recipe-tags">${tags.map(t=>`<span class="rtag">${t.nombre}</span>`).join('')}</div>`:'';
+}
+function buildTagPicker(){
+  document.getElementById('f-etiquetas').innerHTML=ETIQUETAS.map(t=>
+    `<label class="tag-opt"><input type="checkbox" value="${t.id}" onchange="this.parentElement.classList.toggle('on',this.checked)"><span>${t.nombre}</span></label>`
+  ).join('');
+}
+function setTagChecks(ids){
+  const sel=Array.isArray(ids)?ids:[];
+  document.querySelectorAll('#f-etiquetas input[type=checkbox]').forEach(cb=>{
+    cb.checked=sel.includes(cb.value);
+    cb.parentElement.classList.toggle('on',cb.checked);
+  });
+}
+function getSelectedTags(){
+  return [...document.querySelectorAll('#f-etiquetas input[type=checkbox]')].filter(cb=>cb.checked).map(cb=>cb.value);
+}
+buildTagPicker();
+
+// ===== RACIONES =====
+// Se guardan dentro de cada receta como entero >=1: receta.raciones=4.
+// Una receta sin el campo (o con un valor no válido) se interpreta como 1 ración.
+// Las cantidades de los ingredientes son siempre las de estas raciones base.
+const RACIONES_DEFECTO=1;
+function racionesDeReceta(r){
+  const n=Number(r&&r.raciones);
+  return Number.isInteger(n)&&n>=1?n:RACIONES_DEFECTO;
+}
+function recipeRacionesHtml(r){
+  const n=racionesDeReceta(r);
+  return `<span class="rm rm-r">🍽️ ${n} ${n===1?'ración':'raciones'}</span>`;
+}
+
+function toggleFavFilter(btn){
+  adminSoloFavoritas=!adminSoloFavoritas;
+  btn.classList.toggle('active',adminSoloFavoritas);
+  btn.setAttribute('aria-pressed',adminSoloFavoritas?'true':'false');
+  renderRecipeList(adminFilter);
+}
+
 function genId(prefix){ return prefix + Date.now() + Math.random().toString(36).slice(2,6); }
 
 function toast(msg,color){
@@ -533,16 +805,124 @@ function showView(name,btn){
 // =====================
 // BIBLIOTECA INGREDIENTES
 // =====================
+// ===== CATEGORÍAS DE INGREDIENTES =====
+// La categoría vive en la biblioteca: ingrediente.categoria = id estable (sin emoji).
+// Un ingrediente sin categoría (o con un valor desconocido) se interpreta como 'otros'
+// en tiempo de ejecución; NO se escribe en los datos antiguos.
+const CATEGORIAS_ING=[
+  {id:'frutas_verduras',   nombre:'Frutas y verduras',    emoji:'🥬'},
+  {id:'carniceria',        nombre:'Carnicería',           emoji:'🥩'},
+  {id:'pescaderia',        nombre:'Pescadería',           emoji:'🐟'},
+  {id:'lacteos',           nombre:'Lácteos',              emoji:'🥛'},
+  {id:'huevos',            nombre:'Huevos',               emoji:'🥚'},
+  {id:'panaderia',         nombre:'Panadería',            emoji:'🥖'},
+  {id:'despensa',          nombre:'Despensa',             emoji:'🥫'},
+  {id:'congelados',        nombre:'Congelados',           emoji:'🧊'},
+  {id:'salsas_condimentos',nombre:'Salsas y condimentos', emoji:'🧂'},
+  {id:'bebidas',           nombre:'Bebidas',              emoji:'🥤'},
+  {id:'otros',             nombre:'Otros',                emoji:'📦'}
+];
+const CATEGORIA_ING_DEFECTO='otros';
+let ingCatFilter='todas';
+function categoriaIngrediente(i){
+  const c=i&&i.categoria;
+  return CATEGORIAS_ING.some(x=>x.id===c)?c:CATEGORIA_ING_DEFECTO;
+}
+function categoriaIngLabel(id){
+  const c=CATEGORIAS_ING.find(x=>x.id===id)||CATEGORIAS_ING[CATEGORIAS_ING.length-1];
+  return c.emoji+' '+c.nombre;
+}
+function buildIngCategorySelect(){
+  document.getElementById('if-categoria').innerHTML=
+    CATEGORIAS_ING.map(c=>`<option value="${c.id}">${c.emoji} ${c.nombre}</option>`).join('');
+  document.getElementById('if-categoria').value=CATEGORIA_ING_DEFECTO;
+}
+function buildIngCatFilter(){
+  const opts=[{id:'todas',nombre:'Todas'}].concat(CATEGORIAS_ING);
+  document.getElementById('ing-cat-filter').innerHTML=opts.map(c=>
+    `<button type="button" class="cat-chip${c.id===ingCatFilter?' active':''}" data-cat="${c.id}" aria-pressed="${c.id===ingCatFilter}" onclick="filtrarIngCategoria('${c.id}')">${c.nombre}</button>`
+  ).join('');
+}
+function filtrarIngCategoria(id){
+  ingCatFilter=id;
+  document.querySelectorAll('#ing-cat-filter .cat-chip').forEach(b=>{
+    const on=b.dataset.cat===id; b.classList.toggle('active',on); b.setAttribute('aria-pressed',on?'true':'false');
+  });
+  renderIngLib();
+}
+buildIngCategorySelect();
+buildIngCatFilter();
+
+// ---- Posibles duplicados (solo detección y aviso; nunca modifica DATA) ----
+// La clave se usa únicamente para COMPARAR. No se guarda ni sustituye al nombre real.
+// Ignora mayúsculas, tildes, puntuación simple y espacios repetidos/extremos.
+function claveIngrediente(nombre){
+  return String(nombre==null?'':nombre)
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s]/gu,' ')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+// Agrupa ingredientes con la MISMA clave (equivalentes, no parecidos). Devuelve grupos de 2 o más.
+function detectarDuplicadosIngredientes(){
+  const grupos=new Map();
+  (DATA.ingredientes||[]).forEach(i=>{
+    const k=claveIngrediente(i&&i.nombre); if(!k) return;
+    if(!grupos.has(k)) grupos.set(k,[]);
+    grupos.get(k).push(i);
+  });
+  // Las recetas guardan el nombre del ingrediente (sin id): se enlazan por la misma clave.
+  const usos=new Map();
+  (DATA.recetas||[]).forEach(r=>(r.ingredientes||[]).forEach(x=>{
+    const k=claveIngrediente(x&&x.nombre); if(!k) return;
+    if(!usos.has(k)) usos.set(k,new Set());
+    usos.get(k).add(r.nombre);
+  }));
+  return [...grupos.entries()]
+    .filter(([,arr])=>arr.length>1)
+    .map(([k,arr])=>({
+      clave:k,
+      entradas:[...arr].sort((a,b)=>String(a.nombre).localeCompare(String(b.nombre),'es')),
+      recetas:[...(usos.get(k)||[])]
+    }))
+    .sort((a,b)=>a.clave.localeCompare(b.clave,'es'));
+}
+function renderIngDuplicates(){
+  const box=document.getElementById('ing-dup-box'); if(!box) return;
+  const grupos=detectarDuplicadosIngredientes();
+  if(!grupos.length){
+    box.className='dup-box dup-ok';
+    box.innerHTML='<div class="dup-title">Posibles duplicados</div><p class="dup-empty">No se han detectado posibles duplicados.</p>';
+    return;
+  }
+  const MAX_REC=10;
+  box.className='dup-box';
+  box.innerHTML='<div class="dup-title">⚠ Posibles duplicados</div>'+
+    grupos.map(g=>{
+      const rec=g.recetas.slice(0,MAX_REC).map(esc).join(' · ')+(g.recetas.length>MAX_REC?` · y ${g.recetas.length-MAX_REC} más`:'');
+      return `<div class="dup-group">
+        <div class="dup-name">${esc(g.entradas[0].nombre)}<span>${g.entradas.length} entradas</span></div>
+        <ul class="dup-entries">${g.entradas.map(i=>`<li>${esc(i.nombre)}${i.unidad?` <small>(por ${esc(i.unidad)})</small>`:''}</li>`).join('')}</ul>
+        ${g.recetas.length?`<div class="dup-uses"><b>Usado en:</b> ${rec}</div>`:''}
+      </div>`;
+    }).join('')+
+    `<div class="dup-foot"><b>${grupos.length} ${grupos.length===1?'grupo detectado':'grupos detectados'}</b>
+      <span>Es solo un aviso: no se ha cambiado nada. Revisa cada caso y edita o elimina a mano si procede.</span></div>`;
+}
+
 function renderIngLib(){
+  renderIngDuplicates();
   const query=(document.getElementById('ing-search')?.value||'').toLowerCase();
   const cont=document.getElementById('ing-lib-list');
   const list=DATA.ingredientes
     .filter(i=>i.nombre.toLowerCase().includes(query))
+    .filter(i=>ingCatFilter==='todas'||categoriaIngrediente(i)===ingCatFilter)
     .sort((a,b)=>a.nombre.localeCompare(b.nombre));
 
   if(!list.length){
     cont.innerHTML=`<div style="text-align:center;padding:2rem;color:var(--text-muted);font-size:.9rem">
-      ${query?'No se encontraron ingredientes.':'No hay ingredientes todavía.<br>Pulsa "+ Nuevo ingrediente" para añadir.'}
+      ${(query||ingCatFilter!=='todas')?'No se encontraron ingredientes.':'No hay ingredientes todavía.<br>Pulsa "+ Nuevo ingrediente" para añadir.'}
     </div>`;
     return;
   }
@@ -550,7 +930,7 @@ function renderIngLib(){
   cont.innerHTML=list.map(i=>`
     <div class="ing-lib-item">
       <div class="ing-lib-info">
-        <div class="ing-lib-name">${i.nombre}</div>
+        <div class="ing-lib-name">${i.nombre}<span class="ing-cat">${categoriaIngLabel(categoriaIngrediente(i))}</span></div>
         <div class="ing-lib-macros">
           <span style="color:var(--text-muted);font-size:.7rem">por ${i.unidad} →</span>
           <span class="ing-lib-macro ilm-k">${Math.round(i.kcal)} kcal</span>
@@ -572,6 +952,7 @@ function openIngModal(){
   document.getElementById('ing-modal-title').textContent='Nuevo ingrediente';
   document.getElementById('if-id').value='';
   ['if-nombre','if-unidad'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('if-categoria').value=CATEGORIA_ING_DEFECTO;
   ['if-kcal','if-prot','if-carbos','if-grasas'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('ing-modal').classList.add('open');
   setTimeout(()=>document.getElementById('if-nombre').focus(),100);
@@ -584,6 +965,7 @@ function openEditIngModal(id){
   document.getElementById('if-id').value=i.id;
   document.getElementById('if-nombre').value=i.nombre||'';
   document.getElementById('if-unidad').value=i.unidad||'';
+  document.getElementById('if-categoria').value=categoriaIngrediente(i);
   document.getElementById('if-kcal').value=i.kcal||'';
   document.getElementById('if-prot').value=i.proteinas||'';
   document.getElementById('if-carbos').value=i.carbos||'';
@@ -600,6 +982,7 @@ function saveIng(){
   const ing={
     id: editingIngId||genId('i'),
     nombre, unidad,
+    categoria: document.getElementById('if-categoria').value,
     kcal: parseFloat(document.getElementById('if-kcal').value)||0,
     proteinas: parseFloat(document.getElementById('if-prot').value)||0,
     carbos: parseFloat(document.getElementById('if-carbos').value)||0,
@@ -655,27 +1038,54 @@ function filterAdmin(tipo,btn){
   renderRecipeList(tipo);
 }
 
+function normalizeSearch(t){ return String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim(); }
+
 function renderRecipeList(tipo){
   const cont=document.getElementById('recipe-admin-list');
-  const list=tipo==='todas'?DATA.recetas:DATA.recetas.filter(r=>r.tipo===tipo);
+  const searchEl=document.getElementById('recipe-search-admin');
+  const rawQuery=searchEl?searchEl.value.trim():'';
+  const q=normalizeSearch(rawQuery);
+  let list=tipo==='todas'?DATA.recetas:DATA.recetas.filter(r=>r.tipo===tipo);
+  if(adminSoloFavoritas) list=list.filter(r=>isFav(r.id));
+  if(q) list=list.filter(r=>normalizeSearch(r.nombre).includes(q));
   if(!list.length){
-    cont.innerHTML=`<div style="text-align:center;padding:2rem;color:var(--text-muted);font-size:.9rem">
-      No hay recetas${tipo!=='todas'?' de este tipo':''}. Pulsa "+ Nueva receta".
-    </div>`;
+    let msg;
+    if(adminSoloFavoritas){
+      if(q) msg='No se han encontrado recetas favoritas para “'+esc(rawQuery)+'”.';
+      else if(!DATA.recetas.some(r=>isFav(r.id))) msg='Aún no tienes recetas favoritas.';
+      else msg='No hay recetas favoritas de este tipo.';
+    }
+    else if(!DATA.recetas.length) msg='Todavía no hay recetas. Pulsa “Nueva receta” para añadir la primera.';
+    else if(q) msg='No se han encontrado recetas para “'+esc(rawQuery)+'”.';
+    else msg='No hay recetas de este tipo.';
+    cont.innerHTML=`<div class="admin-empty"><div class="ae-icon">🌱</div><p>${msg}</p></div>`;
     return;
   }
   cont.innerHTML=list.map(r=>`
-    <div class="recipe-item">
+    <div class="recipe-item${isFav(r.id)?' is-fav':''}">
       <div class="recipe-item-info">
-        <div class="recipe-item-name">${r.nombre}</div>
-        <div class="recipe-item-meta">
+        <div class="ri-head">
+          <div class="recipe-item-top">
+            <div class="recipe-item-name">${r.nombre}</div>
+            <button class="fav-btn${isFav(r.id)?' on':''}" aria-pressed="${isFav(r.id)}" aria-label="${isFav(r.id)?'Quitar de favoritas':'Marcar como favorita'}" title="${isFav(r.id)?'Quitar de favoritas':'Marcar como favorita'}" onclick="toggleFav('${r.id}')">${isFav(r.id)?'♥':'♡'}</button>
+          </div>
           <span class="tipo-badge b-${r.tipo}">${r.tipo}</span>
-          ${Math.round(r.kcal)} kcal · P:${Math.round(r.proteinas)}g · CH:${Math.round(r.carbos)}g · G:${Math.round(r.grasas)}g
+        </div>
+        <div class="recipe-item-meta ri-info">
+          ${r.tiempo?`<span class="rm rm-r">⏱ ${esc(r.tiempo)}</span>`:''}
+          ${recipeRacionesHtml(r)}
+        </div>
+        ${recipeTagsHtml(r)}
+        <div class="recipe-item-meta ri-nutri">
+          <span class="rm rm-k">${Math.round(r.kcal)} kcal</span>
+          <span class="rm rm-p">P:${Math.round(r.proteinas)}g</span>
+          <span class="rm rm-c">CH:${Math.round(r.carbos)}g</span>
+          <span class="rm rm-g">G:${Math.round(r.grasas)}g</span>
         </div>
       </div>
       <div class="recipe-actions">
-        <button class="btn-secondary" style="font-size:.78rem;padding:.32rem .65rem" onclick="openEditRecipeModal('${r.id}')">Editar</button>
-        <button class="btn-danger" onclick="deleteRecipe('${r.id}')">✕</button>
+        <button class="btn-secondary" onclick="openEditRecipeModal('${r.id}')">Editar</button>
+        <button class="btn-danger" aria-label="Eliminar receta" title="Eliminar receta" onclick="deleteRecipe('${r.id}')">✕</button>
       </div>
     </div>
   `).join('');
@@ -687,10 +1097,12 @@ function openNewRecipeModal(){
   document.getElementById('f-id').value='';
   ['f-nombre','f-tiempo','f-desc'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('f-tipo').value='desayuno';
+  document.getElementById('f-raciones').value=RACIONES_DEFECTO;
   ['f-kcal','f-prot','f-carbos','f-grasas'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('ing-container').innerHTML='';
   document.getElementById('steps-container').innerHTML='';
   addIngRow(); addStepRow();
+  setTagChecks([]);
   refreshIngLibrarySelect();
   updateMacroPreview();
   document.getElementById('recipe-modal').classList.add('open');
@@ -705,6 +1117,7 @@ function openEditRecipeModal(id){
   document.getElementById('f-tipo').value=r.tipo||'desayuno';
   document.getElementById('f-tiempo').value=r.tiempo||'';
   document.getElementById('f-desc').value=r.descripcion||'';
+  document.getElementById('f-raciones').value=racionesDeReceta(r);
   document.getElementById('f-kcal').value=r.kcal||'';
   document.getElementById('f-prot').value=r.proteinas||'';
   document.getElementById('f-carbos').value=r.carbos||'';
@@ -720,6 +1133,7 @@ function openEditRecipeModal(id){
   const stC=document.getElementById('steps-container'); stC.innerHTML='';
   (r.pasos||[]).forEach(p=>addStepRow(p));
   if(!r.pasos?.length) addStepRow();
+  setTagChecks(r.etiquetas);
 
   refreshIngLibrarySelect();
   updateMacroPreview();
@@ -831,6 +1245,14 @@ function saveRecipe(){
   const nombre=document.getElementById('f-nombre').value.trim();
   if(!nombre){ alert('El nombre es obligatorio'); return; }
 
+  const racionesRaw=document.getElementById('f-raciones').value.trim();
+  const raciones=Number(racionesRaw);
+  if(racionesRaw===''||!Number.isInteger(raciones)||raciones<1){
+    alert('Las raciones deben ser un número entero de 1 o más');
+    document.getElementById('f-raciones').focus();
+    return;
+  }
+
   const ingredientes=[];
   document.querySelectorAll('#ing-container .ing-row').forEach(row=>{
     const ins=row.querySelectorAll('input[type=text]');
@@ -857,12 +1279,15 @@ function saveRecipe(){
     tipo: document.getElementById('f-tipo').value,
     tiempo: document.getElementById('f-tiempo').value.trim(),
     descripcion: document.getElementById('f-desc').value.trim(),
+    raciones,
     kcal: parseFloat(document.getElementById('f-kcal').value)||0,
     proteinas: parseFloat(document.getElementById('f-prot').value)||0,
     carbos: parseFloat(document.getElementById('f-carbos').value)||0,
     grasas: parseFloat(document.getElementById('f-grasas').value)||0,
     ingredientes, pasos
   };
+  const etiquetas=getSelectedTags();
+  if(etiquetas.length) receta.etiquetas=etiquetas;
 
   if(editingRecipeId){
     const idx=DATA.recetas.findIndex(r=>r.id===editingRecipeId);
@@ -879,6 +1304,7 @@ function saveRecipe(){
 function deleteRecipe(id){
   if(!confirm('¿Eliminar esta receta?')) return;
   DATA.recetas=DATA.recetas.filter(r=>r.id!==id);
+  if(FAVORITOS.delete(id)) saveFavs();
   const SEMANAS4=['semana1','semana2','semana3','semana4'];
   SEMANAS4.forEach(sem=>{ if(DATA.menu[sem]) DIAS.forEach(d=>TIPOS.forEach(t=>{ if(DATA.menu[sem][d]&&DATA.menu[sem][d][t]===id) DATA.menu[sem][d][t]=null; })); });
   DIAS.forEach(d=>TIPOS.forEach(t=>{ if(DATA.menu[d]&&DATA.menu[d][t]===id) DATA.menu[d][t]=null; }));
@@ -1157,6 +1583,8 @@ function importTextRecipe(){
   document.getElementById('f-tipo').value=document.getElementById('import-tipo').value;
   document.getElementById('f-tiempo').value=document.getElementById('import-tiempo').value;
   document.getElementById('f-desc').value='';
+  document.getElementById('f-raciones').value=RACIONES_DEFECTO;
+  setTagChecks([]);
 
   // Fill macros if detected
   if(result.totalKcal){

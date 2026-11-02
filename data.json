@@ -971,6 +971,43 @@
       "proteinas": 10,
       "carbos": 76,
       "grasas": 0.7
+    },
+    {
+      "id": "i17913715219362s26",
+      "nombre": "Baos",
+      "unidad": "100g",
+      "kcal": 285,
+      "proteinas": 6,
+      "carbos": 60,
+      "grasas": 2.1
+    },
+    {
+      "id": "i1791371672514808z",
+      "nombre": "Col",
+      "unidad": "100g",
+      "kcal": 24,
+      "proteinas": 1.3,
+      "carbos": 4.5,
+      "grasas": 0.2
+    },
+    {
+      "id": "i179137171512893ow",
+      "nombre": "Salsa de ostras",
+      "unidad": "100",
+      "kcal": 113,
+      "proteinas": 1.2,
+      "carbos": 27,
+      "grasas": 0.5
+    },
+    {
+      "id": "i1793623174282eoag",
+      "nombre": "Creme de coco (carrefour)",
+      "unidad": "100ml",
+      "categoria": "salsas_condimentos",
+      "kcal": 210,
+      "proteinas": 1.2,
+      "carbos": 3.3,
+      "grasas": 21
     }
   ],
   "recetas": [
@@ -1147,281 +1184,6 @@
       "pasos": []
     },
     {
-      "id": "r1783427391045k33n",
-      "nombre": "Revuelto de huevo con pavo y tostadas",
-      "tipo": "desayuno",
-      "tiempo": "",
-      "descripcion": "",
-      "kcal": 418,
-      "proteinas": 39.1,
-      "carbos": 32.3,
-      "grasas": 14,
-      "ingredientes": [
-        {
-          "nombre": "Pan molde integral",
-          "cantidad": "70g",
-          "kcal": 170.8,
-          "proteinas": 7.2,
-          "carbos": 28.8,
-          "grasas": 2
-        },
-        {
-          "nombre": "Huevo",
-          "cantidad": "100g",
-          "kcal": 155,
-          "proteinas": 13,
-          "carbos": 1.1,
-          "grasas": 11
-        },
-        {
-          "nombre": "Tomate natural",
-          "cantidad": "50g",
-          "kcal": 9,
-          "proteinas": 0.5,
-          "carbos": 2,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Pavo 93%",
-          "cantidad": "80g",
-          "kcal": 83.2,
-          "proteinas": 18.4,
-          "carbos": 0.4,
-          "grasas": 0.9
-        }
-      ],
-      "pasos": []
-    },
-    {
-      "id": "r1783427712306hxkz",
-      "nombre": "Queso fresco batido con cereales y fruta",
-      "tipo": "desayuno",
-      "tiempo": "",
-      "descripcion": "",
-      "kcal": 380,
-      "proteinas": 27.1,
-      "carbos": 52.8,
-      "grasas": 0.8,
-      "ingredientes": [
-        {
-          "nombre": "Queso batido",
-          "cantidad": "300g",
-          "kcal": 138,
-          "proteinas": 22.5,
-          "carbos": 12,
-          "grasas": 0
-        },
-        {
-          "nombre": "Manzana",
-          "cantidad": "100g",
-          "kcal": 53,
-          "proteinas": 0.3,
-          "carbos": 0,
-          "grasas": 0.2
-        },
-        {
-          "nombre": "Cereales de maíz (Corn Flakes)",
-          "cantidad": "50g",
-          "kcal": 188.5,
-          "proteinas": 4.3,
-          "carbos": 40.8,
-          "grasas": 0.6
-        }
-      ],
-      "pasos": []
-    },
-    {
-      "id": "r1783433696400z1v7",
-      "nombre": "Quesadilla de pavo y queso",
-      "tipo": "desayuno",
-      "tiempo": "",
-      "descripcion": "",
-      "kcal": 444,
-      "proteinas": 44,
-      "carbos": 30.4,
-      "grasas": 14.8,
-      "ingredientes": [
-        {
-          "nombre": "Tortilla harina de trigo integral",
-          "cantidad": "70g",
-          "kcal": 201.6,
-          "proteinas": 6.4,
-          "carbos": 29.4,
-          "grasas": 5.1
-        },
-        {
-          "nombre": "Pavo 93%",
-          "cantidad": "120g",
-          "kcal": 124.8,
-          "proteinas": 27.6,
-          "carbos": 0.6,
-          "grasas": 1.3
-        },
-        {
-          "nombre": "Mozzarella",
-          "cantidad": "40g",
-          "kcal": 117.2,
-          "proteinas": 10,
-          "carbos": 0.4,
-          "grasas": 8.4
-        },
-        {
-          "nombre": "Orégano",
-          "cantidad": "",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Calienta una sartén a fuego medio.",
-        "Coloca la tortilla y añade el queso sobre una mitad.",
-        "Dobla la tortilla por la mitad.",
-        "Espolvorea orégano o tus especias favoritas.",
-        "Dobla la tortilla por la mitad.",
-        "Cocina 2-3 minutos por cada lado, hasta que el queso se funda y la tortilla esté dorada.",
-        "Corta en triángulos y sirve."
-      ]
-    },
-    {
-      "id": "r1783434983179e45o",
-      "nombre": "Pollo a la plancha con arroz y brócoli",
-      "tipo": "comida",
-      "tiempo": "25",
-      "descripcion": "",
-      "kcal": 550.0,
-      "proteinas": 34.5,
-      "carbos": 77.6,
-      "grasas": 12.4,
-      "ingredientes": [
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "96.2g",
-          "kcal": 105.8,
-          "proteinas": 22.1,
-          "carbos": 0.0,
-          "grasas": 1.2
-        },
-        {
-          "nombre": "Arroz Blanco",
-          "cantidad": "82.9g",
-          "kcal": 289.7,
-          "proteinas": 6.6,
-          "carbos": 63.1,
-          "grasas": 1.0
-        },
-        {
-          "nombre": "Brocoli (congelado)",
-          "cantidad": "207.5g",
-          "kcal": 70.5,
-          "proteinas": 5.8,
-          "carbos": 14.5,
-          "grasas": 0.8
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "10.2ml",
-          "kcal": 84.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 9.4
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pimienta",
-          "cantidad": "",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Cocinar el arroz",
-        "Cocinar el brócoli a hervir en 6 minutos",
-        "Salzona el pollo con sal, pimienta y ajo en polvo",
-        "Calienta la sartén a fuego medio-alto. Vierte el aceite.",
-        "Cocina el pollo"
-      ]
-    },
-    {
-      "id": "r1783435262105q5wg",
-      "nombre": "Ternera con patata asada",
-      "tipo": "comida",
-      "tiempo": "45",
-      "descripcion": "",
-      "kcal": 550.0,
-      "proteinas": 30.2,
-      "carbos": 82.0,
-      "grasas": 9.1,
-      "ingredientes": [
-        {
-          "nombre": "Ternera magra",
-          "cantidad": "97.2g",
-          "kcal": 129.3,
-          "proteinas": 21.1,
-          "carbos": 0.0,
-          "grasas": 4.4
-        },
-        {
-          "nombre": "Patata",
-          "cantidad": "455.5g",
-          "kcal": 387.1,
-          "proteinas": 9.1,
-          "carbos": 82.0,
-          "grasas": 0.9
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "4.1ml",
-          "kcal": 33.6,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 3.8
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pimienta",
-          "cantidad": "",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Precalienta la air fryer a 200°C.",
-        "Lava y corta la patata en gajos.",
-        "Mezcla con el aceite y una pizca de sal.",
-        "Hornea 40 minutos, removiendo a mitad de cocción.",
-        "Calienta una sartén.",
-        "Salpimenta la ternera y cocina 3-4 minutos por cada lado."
-      ]
-    },
-    {
       "id": "r1783435415938z5ky",
       "nombre": "Pasta de lentejas con pollo",
       "tipo": "cena",
@@ -1473,7 +1235,7 @@
       "tipo": "comida",
       "tiempo": "15",
       "descripcion": "",
-      "kcal": 550.0,
+      "kcal": 550,
       "proteinas": 31.8,
       "carbos": 68.9,
       "grasas": 14.7,
@@ -1481,8 +1243,8 @@
         {
           "nombre": "Carne Picada Pollo",
           "cantidad": "111.3g",
-          "kcal": 147.0,
-          "proteinas": 20.0,
+          "kcal": 147,
+          "proteinas": 20,
           "carbos": 0.6,
           "grasas": 7.3
         },
@@ -1523,7 +1285,7 @@
       "tipo": "comida",
       "tiempo": "25",
       "descripcion": "",
-      "kcal": 550.0,
+      "kcal": 550,
       "proteinas": 32.3,
       "carbos": 78.2,
       "grasas": 8.5,
@@ -1532,8 +1294,8 @@
           "nombre": "Pechuga de pollo",
           "cantidad": "61g",
           "kcal": 67.2,
-          "proteinas": 14.0,
-          "carbos": 0.0,
+          "proteinas": 14,
+          "carbos": 0,
           "grasas": 0.7
         },
         {
@@ -1550,14 +1312,14 @@
           "kcal": 7.3,
           "proteinas": 0.5,
           "carbos": 1.6,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Tomate natural",
           "cantidad": "78g",
-          "kcal": 14.0,
+          "kcal": 14,
           "proteinas": 0.7,
-          "carbos": 3.0,
+          "carbos": 3,
           "grasas": 0.1
         },
         {
@@ -1589,7 +1351,7 @@
       "tipo": "comida",
       "tiempo": "25",
       "descripcion": "",
-      "kcal": 550.0,
+      "kcal": 550,
       "proteinas": 35.2,
       "carbos": 70.3,
       "grasas": 13.5,
@@ -1600,14 +1362,14 @@
           "kcal": 149.6,
           "proteinas": 26.7,
           "carbos": 1.6,
-          "grasas": 4.0
+          "grasas": 4
         },
         {
           "nombre": "Arroz Blanco",
           "cantidad": "67.2g",
           "kcal": 234.4,
           "proteinas": 5.4,
-          "carbos": 51.0,
+          "carbos": 51,
           "grasas": 0.8
         },
         {
@@ -1615,8 +1377,8 @@
           "cantidad": "223.9g",
           "kcal": 60.4,
           "proteinas": 2.2,
-          "carbos": 11.0,
-          "grasas": 0.0
+          "carbos": 11,
+          "grasas": 0
         },
         {
           "nombre": "Cebolla (congelada)",
@@ -1630,8 +1392,8 @@
           "nombre": "Aceite",
           "cantidad": "9.2ml",
           "kcal": 75.8,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 8.5
         },
         {
@@ -1650,81 +1412,6 @@
       ]
     },
     {
-      "id": "r1783436820322xfra",
-      "nombre": "Solomillo de cerdo con boniato y zanahoria asada",
-      "tipo": "comida",
-      "tiempo": "",
-      "descripcion": "",
-      "kcal": 550.0,
-      "proteinas": 29.8,
-      "carbos": 84.1,
-      "grasas": 11.5,
-      "ingredientes": [
-        {
-          "nombre": "Solomillo de cerdo",
-          "cantidad": "117.8g",
-          "kcal": 122.5,
-          "proteinas": 23.0,
-          "carbos": 1.8,
-          "grasas": 2.6
-        },
-        {
-          "nombre": "Batata/Boniato",
-          "cantidad": "331.8g",
-          "kcal": 285.4,
-          "proteinas": 5.3,
-          "carbos": 66.4,
-          "grasas": 0.3
-        },
-        {
-          "nombre": "Zanahoria",
-          "cantidad": "165.9g",
-          "kcal": 68.0,
-          "proteinas": 1.5,
-          "carbos": 15.9,
-          "grasas": 0.3
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "9.1ml",
-          "kcal": 74.1,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 8.3
-        },
-        {
-          "nombre": "Romero",
-          "cantidad": "",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pimienta",
-          "cantidad": "",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Precalienta la air fryer a 200°C.",
-        "Coloca el boniato en cubos y la zanahoria en rodajas. Añade aceite y romero. Mezcla bien. Hornea durante 35 minutos. Remueve a mitad del tiempo.",
-        "Calienta una sartén. Salpimenta la carne. Cocina 4 minutos por cada lado.",
-        "Baja el fuego. Cocina 3 minutos más. Deja reposar 5 minutos."
-      ]
-    },
-    {
       "id": "r1783882271794367i",
       "nombre": "Chili de pollo fitness (versión sencilla)",
       "tipo": "comida",
@@ -1733,7 +1420,7 @@
       "kcal": 549.8,
       "proteinas": 28.3,
       "carbos": 73.7,
-      "grasas": 15.0,
+      "grasas": 15,
       "ingredientes": [
         {
           "nombre": "Carne Picada Pollo",
@@ -1771,8 +1458,8 @@
           "nombre": "Aceite",
           "cantidad": "3.8ml",
           "kcal": 31.6,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 3.5
         },
         {
@@ -1797,7 +1484,7 @@
           "kcal": 9.9,
           "proteinas": 0.4,
           "carbos": 2.2,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Ajo en polvo",
@@ -1805,7 +1492,7 @@
           "kcal": 10.9,
           "proteinas": 0.6,
           "carbos": 2.4,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Cebolla en polvo",
@@ -1813,14 +1500,14 @@
           "kcal": 9.1,
           "proteinas": 0.3,
           "carbos": 2.1,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Comino molido",
           "cantidad": "2.5cdta",
           "kcal": 8.4,
           "proteinas": 0.4,
-          "carbos": 1.0,
+          "carbos": 1,
           "grasas": 0.5
         },
         {
@@ -1829,7 +1516,7 @@
           "kcal": 2.8,
           "proteinas": 0.1,
           "carbos": 0.7,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Cayena molida",
@@ -1845,15 +1532,15 @@
           "kcal": 2.7,
           "proteinas": 0.1,
           "carbos": 0.7,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Sal",
           "cantidad": "al gusto",
-          "kcal": 0.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 0.0
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
         }
       ],
       "pasos": [
@@ -1872,7 +1559,7 @@
       "descripcion": "Pollo al curry ligero con arroz ajustado a 500 kcal",
       "kcal": 549.9,
       "proteinas": 33.4,
-      "carbos": 78.0,
+      "carbos": 78,
       "grasas": 11.7,
       "ingredientes": [
         {
@@ -1880,7 +1567,7 @@
           "cantidad": "75.8g",
           "kcal": 83.4,
           "proteinas": 17.4,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 0.9
         },
         {
@@ -1889,12 +1576,12 @@
           "kcal": 286.8,
           "proteinas": 6.6,
           "carbos": 62.5,
-          "grasas": 1.0
+          "grasas": 1
         },
         {
           "nombre": "Yogur griego light",
           "cantidad": "102.7g",
-          "kcal": 75.0,
+          "kcal": 75,
           "proteinas": 7.5,
           "carbos": 5.4,
           "grasas": 2.6
@@ -1921,14 +1608,14 @@
           "kcal": 3.6,
           "proteinas": 0.2,
           "carbos": 0.8,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
           "cantidad": "6.8ml",
           "kcal": 54.8,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 6.1
         }
       ],
@@ -1956,7 +1643,7 @@
           "cantidad": "77.7g",
           "kcal": 85.5,
           "proteinas": 17.9,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 0.9
         },
         {
@@ -1970,10 +1657,10 @@
         {
           "nombre": "Tomate triturado",
           "cantidad": "92.6g",
-          "kcal": 25.0,
+          "kcal": 25,
           "proteinas": 0.9,
           "carbos": 4.5,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Cebolla (congelada)",
@@ -1997,14 +1684,14 @@
           "kcal": 3.4,
           "proteinas": 0.1,
           "carbos": 0.8,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
           "cantidad": "5.8ml",
           "kcal": 47.6,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 5.3
         },
         {
@@ -2062,7 +1749,7 @@
         {
           "nombre": "Cebolla (congelada)",
           "cantidad": "65.8g",
-          "kcal": 25.0,
+          "kcal": 25,
           "proteinas": 0.8,
           "carbos": 5.7,
           "grasas": 0.2
@@ -2073,14 +1760,14 @@
           "kcal": 4.1,
           "proteinas": 0.2,
           "carbos": 0.9,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
           "cantidad": "4.5ml",
           "kcal": 36.9,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 4.1
         },
         {
@@ -2097,15 +1784,15 @@
           "kcal": 2.4,
           "proteinas": 0.2,
           "carbos": 0.2,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Sal",
           "cantidad": "1g",
-          "kcal": 0.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 0.0
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
         },
         {
           "nombre": "Pimienta negra molida",
@@ -2113,7 +1800,7 @@
           "kcal": 2.4,
           "proteinas": 0.1,
           "carbos": 0.6,
-          "grasas": 0.0
+          "grasas": 0
         }
       ],
       "pasos": [
@@ -2133,14 +1820,14 @@
       "kcal": 550.1,
       "proteinas": 33.8,
       "carbos": 71.6,
-      "grasas": 13.0,
+      "grasas": 13,
       "ingredientes": [
         {
           "nombre": "Tortilla harina de trigo integral",
           "cantidad": "116.6g",
           "kcal": 335.9,
           "proteinas": 10.7,
-          "carbos": 49.0,
+          "carbos": 49,
           "grasas": 8.5
         },
         {
@@ -2148,7 +1835,7 @@
           "cantidad": "78g",
           "kcal": 85.8,
           "proteinas": 17.9,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 0.9
         },
         {
@@ -2172,15 +1859,15 @@
           "cantidad": "103.5g",
           "kcal": 18.6,
           "proteinas": 0.9,
-          "carbos": 4.0,
+          "carbos": 4,
           "grasas": 0.2
         },
         {
           "nombre": "Aceite",
           "cantidad": "2.8ml",
           "kcal": 23.6,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 2.6
         },
         {
@@ -2197,15 +1884,15 @@
           "kcal": 8.4,
           "proteinas": 0.4,
           "carbos": 1.9,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Sal",
           "cantidad": "1.4g",
-          "kcal": 0.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 0.0
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
         }
       ],
       "pasos": [
@@ -2222,7 +1909,7 @@
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Arroz tres delicias fitness ajustado a 500 kcal",
-      "kcal": 550.0,
+      "kcal": 550,
       "proteinas": 33.2,
       "carbos": 87.1,
       "grasas": 7.3,
@@ -2240,7 +1927,7 @@
           "cantidad": "64.8g",
           "kcal": 71.2,
           "proteinas": 14.9,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 0.8
         },
         {
@@ -2249,7 +1936,7 @@
           "kcal": 70.1,
           "proteinas": 5.9,
           "carbos": 0.5,
-          "grasas": 5.0
+          "grasas": 5
         },
         {
           "nombre": "Zanahoria",
@@ -2273,7 +1960,7 @@
           "kcal": 4.8,
           "proteinas": 0.7,
           "carbos": 0.5,
-          "grasas": 0.0
+          "grasas": 0
         }
       ],
       "pasos": [
@@ -2285,79 +1972,12 @@
       ]
     },
     {
-      "id": "r1783883110495xbhd",
-      "nombre": "Pollo con cuscús y verduras",
-      "tipo": "comida",
-      "tiempo": "",
-      "descripcion": "Pollo con cuscús y verduras ajustado a 500 kcal",
-      "kcal": 550.0,
-      "proteinas": 36.5,
-      "carbos": 78.6,
-      "grasas": 8.9,
-      "ingredientes": [
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "99.2g",
-          "kcal": 109.1,
-          "proteinas": 22.8,
-          "carbos": 0.0,
-          "grasas": 1.2
-        },
-        {
-          "nombre": "Cuscus",
-          "cantidad": "88.5g",
-          "kcal": 332.5,
-          "proteinas": 11.3,
-          "carbos": 68.5,
-          "grasas": 0.5
-        },
-        {
-          "nombre": "Calabacin",
-          "cantidad": "88.5g",
-          "kcal": 14.2,
-          "proteinas": 1.1,
-          "carbos": 2.9,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Tomate natural",
-          "cantidad": "88.5g",
-          "kcal": 15.9,
-          "proteinas": 0.8,
-          "carbos": 3.4,
-          "grasas": 0.2
-        },
-        {
-          "nombre": "Cebolla (congelada)",
-          "cantidad": "44.2g",
-          "kcal": 16.8,
-          "proteinas": 0.5,
-          "carbos": 3.8,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "7.5ml",
-          "kcal": 61.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 6.8
-        }
-      ],
-      "pasos": [
-        "Hierve agua, añade el cuscús, tapa 5 minutos y remueve con un tenedor.",
-        "Cocina el pollo 5 minutos por cada lado.",
-        "Saltea la cebolla y el calabacín 8 minutos, añade el tomate 2 minutos más.",
-        "Sirve todo junto."
-      ]
-    },
-    {
       "id": "r1783883110495h01e",
       "nombre": "Hamburguesa fitness de pollo con patatas al horno",
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Hamburguesa fitness de pollo con patatas al horno ajustado a 500 kcal",
-      "kcal": 550.0,
+      "kcal": 550,
       "proteinas": 23.2,
       "carbos": 92.7,
       "grasas": 8.4,
@@ -2368,7 +1988,7 @@
           "kcal": 79.1,
           "proteinas": 10.8,
           "carbos": 0.3,
-          "grasas": 4.0
+          "grasas": 4
         },
         {
           "nombre": "Barra pan integral 30%",
@@ -2399,23 +2019,23 @@
           "cantidad": "34.4g",
           "kcal": 4.8,
           "proteinas": 0.3,
-          "carbos": 1.0,
-          "grasas": 0.0
+          "carbos": 1,
+          "grasas": 0
         },
         {
           "nombre": "Cebolla (congelada)",
           "cantidad": "34.4g",
           "kcal": 13.1,
           "proteinas": 0.4,
-          "carbos": 3.0,
+          "carbos": 3,
           "grasas": 0.1
         },
         {
           "nombre": "Aceite",
           "cantidad": "2.4ml",
           "kcal": 19.7,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 2.2
         }
       ],
@@ -2442,7 +2062,7 @@
           "cantidad": "149.2g",
           "kcal": 164.1,
           "proteinas": 34.3,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 1.8
         },
         {
@@ -2450,7 +2070,7 @@
           "cantidad": "99.5g",
           "kcal": 33.8,
           "proteinas": 2.8,
-          "carbos": 7.0,
+          "carbos": 7,
           "grasas": 0.4
         },
         {
@@ -2472,24 +2092,24 @@
         {
           "nombre": "Salsa de soja baja en sal",
           "cantidad": "14.9ml",
-          "kcal": 8.0,
+          "kcal": 8,
           "proteinas": 1.2,
           "carbos": 0.8,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
           "cantidad": "5ml",
           "kcal": 40.8,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 4.6
         },
         {
           "nombre": "noodles de trigo",
           "cantidad": "69.6g",
           "kcal": 243.7,
-          "proteinas": 7.0,
+          "proteinas": 7,
           "carbos": 52.9,
           "grasas": 0.5
         }
@@ -2503,270 +2123,12 @@
       ]
     },
     {
-      "id": "r17838833525461nqx",
-      "nombre": "Lasaña fitness de pollo",
-      "tipo": "comida",
-      "tiempo": "",
-      "descripcion": "Lasaña fitness de pollo ajustado a 500 kcal",
-      "kcal": 550.0,
-      "proteinas": 33.6,
-      "carbos": 79.4,
-      "grasas": 10.7,
-      "ingredientes": [
-        {
-          "nombre": "Placas de lasana integral",
-          "cantidad": "93.4g",
-          "kcal": 312.7,
-          "proteinas": 12.1,
-          "carbos": 58.8,
-          "grasas": 2.3
-        },
-        {
-          "nombre": "Carne Picada Pollo",
-          "cantidad": "55g",
-          "kcal": 72.6,
-          "proteinas": 9.9,
-          "carbos": 0.3,
-          "grasas": 3.6
-        },
-        {
-          "nombre": "Tomate triturado",
-          "cantidad": "155.5g",
-          "kcal": 42.0,
-          "proteinas": 1.6,
-          "carbos": 7.6,
-          "grasas": 0.0
-        },
-        {
-          "nombre": "Calabacin",
-          "cantidad": "116.7g",
-          "kcal": 18.6,
-          "proteinas": 1.4,
-          "carbos": 3.8,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Cebolla (congelada)",
-          "cantidad": "77.8g",
-          "kcal": 29.5,
-          "proteinas": 0.9,
-          "carbos": 6.7,
-          "grasas": 0.2
-        },
-        {
-          "nombre": "Queso rallado light",
-          "cantidad": "31.2g",
-          "kcal": 68.4,
-          "proteinas": 7.5,
-          "carbos": 0.6,
-          "grasas": 4.4
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "1.6g",
-          "kcal": 4.3,
-          "proteinas": 0.1,
-          "carbos": 1.1,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "0.8g",
-          "kcal": 0.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 0.0
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "0.8g",
-          "kcal": 1.9,
-          "proteinas": 0.1,
-          "carbos": 0.5,
-          "grasas": 0.0
-        }
-      ],
-      "pasos": [
-        "Cuece las placas de lasaña según el paquete.",
-        "Pica la cebolla y el calabacín.",
-        "Sofríe la cebolla 5 minutos.",
-        "Añade el pollo picado y cocina 8 minutos.",
-        "Incorpora el calabacín y cocina otros 5 minutos.",
-        "Añade el tomate, sazona con orégano, sal y pimienta, y cocina 10 minutos.",
-        "Alterna capas de pasta y relleno en un molde apto para air fryer. Termina con el queso rallado por encima.",
-        "Air fryer: cocina a 170°C durante 15-18 minutos, hasta que el queso esté dorado y burbujeante (comprueba a mitad de cocción; si se dora demasiado rápido, cubre con papel de aluminio los últimos minutos)."
-      ]
-    },
-    {
-      "id": "r1783883352546t09h",
-      "nombre": "Arroz frito fitness con huevo y pollo",
-      "tipo": "comida",
-      "tiempo": "",
-      "descripcion": "Arroz frito fitness con huevo y pollo ajustado a 500 kcal",
-      "kcal": 550.0,
-      "proteinas": 32.7,
-      "carbos": 79.6,
-      "grasas": 11.0,
-      "ingredientes": [
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "46.2g",
-          "kcal": 50.8,
-          "proteinas": 10.6,
-          "carbos": 0.0,
-          "grasas": 0.6
-        },
-        {
-          "nombre": "Arroz Blanco",
-          "cantidad": "82.2g",
-          "kcal": 286.9,
-          "proteinas": 6.6,
-          "carbos": 62.5,
-          "grasas": 1.0
-        },
-        {
-          "nombre": "Huevo",
-          "cantidad": "82.2g",
-          "kcal": 127.5,
-          "proteinas": 10.7,
-          "carbos": 0.9,
-          "grasas": 9.0
-        },
-        {
-          "nombre": "Zanahoria",
-          "cantidad": "65.8g",
-          "kcal": 27.0,
-          "proteinas": 0.6,
-          "carbos": 6.3,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Guisantes",
-          "cantidad": "65.8g",
-          "kcal": 53.4,
-          "proteinas": 3.5,
-          "carbos": 9.5,
-          "grasas": 0.3
-        },
-        {
-          "nombre": "Salsa de soja baja en sal",
-          "cantidad": "8.2ml",
-          "kcal": 4.4,
-          "proteinas": 0.7,
-          "carbos": 0.4,
-          "grasas": 0.0
-        }
-      ],
-      "pasos": [
-        "Cuece el arroz.",
-        "Bate los huevos, haz una tortilla francesa fina y córtala en tiras.",
-        "Corta y cocina el pollo.",
-        "Añade la zanahoria y los guisantes, cocina unos minutos hasta que estén tiernos.",
-        "Mezcla todo: arroz, pollo, tortilla y verduras.",
-        "Incorpora un chorrito de salsa de soja y saltea 2-3 minutos."
-      ]
-    },
-    {
-      "id": "r1783883352546admk",
-      "nombre": "Canelones de pollo",
-      "tipo": "comida",
-      "tiempo": "",
-      "descripcion": "Canelones de pollo ajustado a 500 kcal",
-      "kcal": 550.0,
-      "proteinas": 30.9,
-      "carbos": 76.9,
-      "grasas": 13.8,
-      "ingredientes": [
-        {
-          "nombre": "Placas de canelones",
-          "cantidad": "85.1g",
-          "kcal": 297.9,
-          "proteinas": 10.6,
-          "carbos": 61.3,
-          "grasas": 1.3
-        },
-        {
-          "nombre": "Carne Picada Pollo",
-          "cantidad": "53.6g",
-          "kcal": 70.7,
-          "proteinas": 9.6,
-          "carbos": 0.3,
-          "grasas": 3.5
-        },
-        {
-          "nombre": "Cebolla (congelada)",
-          "cantidad": "85.1g",
-          "kcal": 32.3,
-          "proteinas": 1.0,
-          "carbos": 7.3,
-          "grasas": 0.3
-        },
-        {
-          "nombre": "Tomate triturado",
-          "cantidad": "127.6g",
-          "kcal": 34.5,
-          "proteinas": 1.3,
-          "carbos": 6.2,
-          "grasas": 0.0
-        },
-        {
-          "nombre": "Queso rallado light",
-          "cantidad": "33.9g",
-          "kcal": 74.8,
-          "proteinas": 8.2,
-          "carbos": 0.7,
-          "grasas": 4.8
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "4.4ml",
-          "kcal": 35.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 3.9
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "0.9g",
-          "kcal": 0.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 0.0
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "0.8g",
-          "kcal": 2.1,
-          "proteinas": 0.1,
-          "carbos": 0.5,
-          "grasas": 0.0
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "0.8g",
-          "kcal": 2.2,
-          "proteinas": 0.1,
-          "carbos": 0.6,
-          "grasas": 0.0
-        }
-      ],
-      "pasos": [
-        "Cuece las placas de canelones en agua hirviendo con sal, según el tiempo indicado en el paquete (normalmente 8-10 minutos). Escúrrelas sobre un paño para que no se peguen.",
-        "Calienta el aceite en una sartén y sofríe la cebolla picada 5 minutos.",
-        "Añade la carne picada de pollo y cocina 6-7 minutos, desmenuzándola bien.",
-        "Incorpora el tomate triturado, el orégano, la sal y la pimienta. Cocina 8-10 minutos hasta que espese.",
-        "Rellena cada placa con una cucharada del relleno y enróllala sobre sí misma.",
-        "Coloca los canelones en un molde apto para air fryer y reparte el queso rallado por encima.",
-        "Air fryer: cocina a 170°C durante 10-12 minutos, hasta que el queso se funda y se dore ligeramente."
-      ]
-    },
-    {
       "id": "r1783883635127zxpf",
       "nombre": "Ñoquis con pollo y tomate",
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Ñoquis con pollo y tomate ajustado a 500 kcal",
-      "kcal": 550.0,
+      "kcal": 550,
       "proteinas": 37.4,
       "carbos": 66.7,
       "grasas": 12.5,
@@ -2782,9 +2144,9 @@
         {
           "nombre": "Pechuga de pollo",
           "cantidad": "127.3g",
-          "kcal": 140.0,
+          "kcal": 140,
           "proteinas": 29.3,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 1.5
         },
         {
@@ -2793,14 +2155,14 @@
           "kcal": 48.8,
           "proteinas": 1.8,
           "carbos": 8.9,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
           "cantidad": "10.5ml",
           "kcal": 86.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 9.6
         }
       ],
@@ -2809,67 +2171,6 @@
         "Calienta el aceite y cocina la pechuga de pollo cortada en dados durante 8 minutos.",
         "Añade el tomate triturado y cocina 8-10 minutos a fuego medio.",
         "Incorpora los ñoquis a la salsa y mezcla bien 1-2 minutos."
-      ]
-    },
-    {
-      "id": "r1783883635127th9x",
-      "nombre": "Pechuga de pollo rellena de queso light y espinacas",
-      "tipo": "comida",
-      "tiempo": "",
-      "descripcion": "Pechuga de pollo rellena de queso light y espinacas ajustado a 500 kcal",
-      "kcal": 550.0,
-      "proteinas": 40.2,
-      "carbos": 66.3,
-      "grasas": 13.3,
-      "ingredientes": [
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "121.2g",
-          "kcal": 133.2,
-          "proteinas": 27.9,
-          "carbos": 0.0,
-          "grasas": 1.5
-        },
-        {
-          "nombre": "Queso Light Philadelphia",
-          "cantidad": "43.9g",
-          "kcal": 67.5,
-          "proteinas": 2.6,
-          "carbos": 1.9,
-          "grasas": 5.3
-        },
-        {
-          "nombre": "Espinacas frescas",
-          "cantidad": "139.4g",
-          "kcal": 32.0,
-          "proteinas": 3.5,
-          "carbos": 5.0,
-          "grasas": 0.6
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "5.4ml",
-          "kcal": 44.7,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 5.0
-        },
-        {
-          "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "78.1g",
-          "kcal": 272.6,
-          "proteinas": 6.2,
-          "carbos": 59.4,
-          "grasas": 0.9
-        }
-      ],
-      "pasos": [
-        "Saltea las espinacas frescas en una sartén con un poco de aceite hasta que reduzcan, 2-3 minutos, y deja templar.",
-        "Mezcla las espinacas con el queso light Philadelphia.",
-        "Abre la pechuga de pollo en libro (con un corte lateral, sin llegar a separarla del todo) y rellénala con la mezcla de queso y espinacas.",
-        "Cierra con palillos si es necesario y pincela con el resto del aceite.",
-        "Air fryer: cocina a 180°C durante 18-20 minutos, dando la vuelta a mitad de cocción, hasta que el pollo esté bien hecho por dentro.",
-        "Añade 115 g de arroz blanco cocido como guarnición extra para completar los macros del día."
       ]
     },
     {
@@ -2896,7 +2197,7 @@
           "cantidad": "60.3g",
           "kcal": 66.3,
           "proteinas": 13.9,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 0.7
         },
         {
@@ -2911,9 +2212,9 @@
           "nombre": "Caldo pollo",
           "cantidad": "310.8ml",
           "kcal": 15.6,
-          "proteinas": 0.0,
+          "proteinas": 0,
           "carbos": 1.9,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Queso parmesano light",
@@ -2927,8 +2228,8 @@
           "nombre": "Aceite",
           "cantidad": "2.5ml",
           "kcal": 20.4,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 2.3
         }
       ],
@@ -2963,9 +2264,9 @@
         {
           "nombre": "Pechuga de pollo",
           "cantidad": "100g",
-          "kcal": 110.0,
-          "proteinas": 23.0,
-          "carbos": 0.0,
+          "kcal": 110,
+          "proteinas": 23,
+          "carbos": 0,
           "grasas": 1.2
         },
         {
@@ -2974,7 +2275,7 @@
           "kcal": 22.9,
           "proteinas": 0.9,
           "carbos": 4.2,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Queso rallado light",
@@ -2988,8 +2289,8 @@
           "nombre": "Aceite",
           "cantidad": "2.7ml",
           "kcal": 22.4,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 2.5
         }
       ],
@@ -3002,154 +2303,12 @@
       ]
     },
     {
-      "id": "r17838836351277k1s",
-      "nombre": "Muslos de pollo al horno con patatas",
-      "tipo": "comida",
-      "tiempo": "",
-      "descripcion": "Muslos de pollo al horno con patatas ajustado a 500 kcal",
-      "kcal": 550.1,
-      "proteinas": 28.1,
-      "carbos": 71.7,
-      "grasas": 15.1,
-      "ingredientes": [
-        {
-          "nombre": "Muslo de pollo (sin piel)",
-          "cantidad": "110.5g",
-          "kcal": 165.6,
-          "proteinas": 19.9,
-          "carbos": 0.0,
-          "grasas": 8.8
-        },
-        {
-          "nombre": "Patata",
-          "cantidad": "321.4g",
-          "kcal": 273.3,
-          "proteinas": 6.4,
-          "carbos": 57.8,
-          "grasas": 0.6
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "5.9ml",
-          "kcal": 48.3,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 5.4
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "1.4g",
-          "kcal": 0.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 0.0
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "1.7g",
-          "kcal": 4.2,
-          "proteinas": 0.2,
-          "carbos": 1.1,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "3.2g",
-          "kcal": 10.5,
-          "proteinas": 0.5,
-          "carbos": 2.3,
-          "grasas": 0.0
-        },
-        {
-          "nombre": "Arroz Blanco (guarnición extra para completar macros)",
-          "cantidad": "13.8g",
-          "kcal": 48.2,
-          "proteinas": 1.1,
-          "carbos": 10.5,
-          "grasas": 0.2
-        }
-      ],
-      "pasos": [
-        "Corta las patatas en gajos y condimenta junto con los muslos de pollo con el aceite, sal, pimienta y ajo en polvo.",
-        "Air fryer: coloca los muslos y las patatas en la cesta (sin amontonar, en una sola capa si es posible) y cocina a 180°C durante 22-25 minutos, dando la vuelta a mitad de cocción, hasta que el pollo esté dorado y las patatas tiernas.",
-        "Añade 19 g de arroz blanco cocido como guarnición extra para completar los macros del día."
-      ]
-    },
-    {
-      "id": "r1783883635127kkck",
-      "nombre": "Cuscús con carne picada de ternera",
-      "tipo": "comida",
-      "tiempo": "",
-      "descripcion": "Cuscús con carne picada de ternera ajustado a 500 kcal",
-      "kcal": 549.9,
-      "proteinas": 30.7,
-      "carbos": 64.0,
-      "grasas": 18.8,
-      "ingredientes": [
-        {
-          "nombre": "Cuscus",
-          "cantidad": "64.4g",
-          "kcal": 242.3,
-          "proteinas": 8.2,
-          "carbos": 49.9,
-          "grasas": 0.4
-        },
-        {
-          "nombre": "Carne picada vacuno",
-          "cantidad": "116g",
-          "kcal": 220.3,
-          "proteinas": 20.9,
-          "carbos": 2.8,
-          "grasas": 13.9
-        },
-        {
-          "nombre": "Cebolla (congelada)",
-          "cantidad": "45g",
-          "kcal": 17.1,
-          "proteinas": 0.5,
-          "carbos": 3.9,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Tomate natural",
-          "cantidad": "64.4g",
-          "kcal": 11.6,
-          "proteinas": 0.6,
-          "carbos": 2.5,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Zanahoria",
-          "cantidad": "51.6g",
-          "kcal": 21.1,
-          "proteinas": 0.5,
-          "carbos": 4.9,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "4.6ml",
-          "kcal": 37.5,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 4.2
-        }
-      ],
-      "pasos": [
-        "Hierve agua (misma cantidad que el cuscús), viértela sobre el cuscús, tapa 5 minutos y remueve con un tenedor.",
-        "Calienta el aceite y sofríe la cebolla y la zanahoria picadas 6-7 minutos.",
-        "Añade la carne picada de ternera y cocina 6-7 minutos, desmenuzándola.",
-        "Incorpora el tomate natural y cocina 5 minutos más.",
-        "Sirve la carne con verduras sobre el cuscús."
-      ]
-    },
-    {
       "id": "r1783883635127104s",
       "nombre": "Guiso de garbanzos con pollo",
       "tipo": "comida",
       "tiempo": "",
       "descripcion": "Guiso de garbanzos con pollo ajustado a 500 kcal",
-      "kcal": 550.0,
+      "kcal": 550,
       "proteinas": 33.8,
       "carbos": 59.1,
       "grasas": 18.1,
@@ -3167,15 +2326,15 @@
           "cantidad": "82g",
           "kcal": 90.3,
           "proteinas": 18.9,
-          "carbos": 0.0,
-          "grasas": 1.0
+          "carbos": 0,
+          "grasas": 1
         },
         {
           "nombre": "Zanahoria",
           "cantidad": "104.1g",
           "kcal": 42.6,
           "proteinas": 0.9,
-          "carbos": 10.0,
+          "carbos": 10,
           "grasas": 0.2
         },
         {
@@ -3197,17 +2356,17 @@
         {
           "nombre": "Caldo pollo",
           "cantidad": "260ml",
-          "kcal": 13.0,
-          "proteinas": 0.0,
+          "kcal": 13,
+          "proteinas": 0,
           "carbos": 1.6,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
           "cantidad": "13.4ml",
           "kcal": 109.7,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 12.2
         },
         {
@@ -3229,66 +2388,6 @@
       ]
     },
     {
-      "id": "r1783883635127fma1",
-      "nombre": "Solomillo de cerdo con arroz al limón",
-      "tipo": "comida",
-      "tiempo": "",
-      "descripcion": "Solomillo de cerdo con arroz al limón ajustado a 500 kcal",
-      "kcal": 550.0,
-      "proteinas": 40.5,
-      "carbos": 75.1,
-      "grasas": 9.9,
-      "ingredientes": [
-        {
-          "nombre": "Solomillo de cerdo",
-          "cantidad": "168g",
-          "kcal": 174.9,
-          "proteinas": 32.8,
-          "carbos": 2.5,
-          "grasas": 3.7
-        },
-        {
-          "nombre": "Arroz Blanco",
-          "cantidad": "92.7g",
-          "kcal": 323.7,
-          "proteinas": 7.4,
-          "carbos": 70.5,
-          "grasas": 1.1
-        },
-        {
-          "nombre": "Limon",
-          "cantidad": "20.2g",
-          "kcal": 5.8,
-          "proteinas": 0.2,
-          "carbos": 1.9,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Perejil fresco",
-          "cantidad": "2.6g",
-          "kcal": 0.9,
-          "proteinas": 0.1,
-          "carbos": 0.2,
-          "grasas": 0.0
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "5.5ml",
-          "kcal": 44.7,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 5.0
-        }
-      ],
-      "pasos": [
-        "Hierve el arroz 12 minutos y escúrrelo.",
-        "Mezcla el arroz caliente con la ralladura y el zumo del limón y el perejil picado.",
-        "Sella el solomillo en una sartén con el aceite, 3-4 minutos por cada lado, hasta que esté dorado por fuera y jugoso por dentro.",
-        "Deja reposar 3 minutos, corta en medallones y sirve sobre el arroz al limón.",
-        "Añade 30 g de arroz blanco cocido como guarnición extra para completar los macros del día."
-      ]
-    },
-    {
       "id": "r1783883635127tyfc",
       "nombre": "Pollo mediterráneo al horno",
       "tipo": "comida",
@@ -3302,15 +2401,15 @@
         {
           "nombre": "Pechuga de pollo",
           "cantidad": "130g",
-          "kcal": 143.0,
+          "kcal": 143,
           "proteinas": 29.9,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 1.56
         },
         {
           "nombre": "Tomate natural",
           "cantidad": "150g",
-          "kcal": 27.0,
+          "kcal": 27,
           "proteinas": 1.4,
           "carbos": 5.9,
           "grasas": 0.27
@@ -3343,24 +2442,24 @@
           "nombre": "Mozzarella light",
           "cantidad": "14.3g",
           "kcal": 25.7,
-          "proteinas": 4.0,
+          "proteinas": 4,
           "carbos": 0.3,
-          "grasas": 1.0
+          "grasas": 1
         },
         {
           "nombre": "Aceite",
           "cantidad": "5ml",
           "kcal": 40.95,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 4.55
         },
         {
           "nombre": "Arroz Blanco (incorporado a la receta)",
           "cantidad": "75g",
           "kcal": 261.75,
-          "proteinas": 6.0,
-          "carbos": 57.0,
+          "proteinas": 6,
+          "carbos": 57,
           "grasas": 0.9
         }
       ],
@@ -3370,1343 +2469,6 @@
         "Cuece el arroz aparte y resérvalo.",
         "Coloca el pollo y las verduras en un molde apto para air fryer, incorpora el arroz ya cocido mezclándolo bien con el resto, y reparte la mozzarella light por encima.",
         "Air fryer: cocina a 180°C durante 18-20 minutos, removiendo a mitad de cocción, hasta que el pollo esté hecho y la mozzarella fundida y dorada."
-      ]
-    },
-    {
-      "id": "r1783884014505hqfu",
-      "nombre": "Tortilla de claras rellena de pavo y mozzarella light",
-      "tipo": "cena",
-      "tiempo": "",
-      "descripcion": "Tortilla de claras rellena de pavo y mozzarella light",
-      "kcal": 408.3,
-      "proteinas": 50.9,
-      "carbos": 7.6,
-      "grasas": 19.5,
-      "ingredientes": [
-        {
-          "nombre": "Claras de huevo",
-          "cantidad": "150ml",
-          "kcal": 78,
-          "proteinas": 16.5,
-          "carbos": 1.05,
-          "grasas": 0.3
-        },
-        {
-          "nombre": "Huevo",
-          "cantidad": "115g",
-          "kcal": 178.25,
-          "proteinas": 14.95,
-          "carbos": 1.26,
-          "grasas": 12.65
-        },
-        {
-          "nombre": "Pavo 93%",
-          "cantidad": "60g",
-          "kcal": 62.4,
-          "proteinas": 13.8,
-          "carbos": 0.3,
-          "grasas": 0.66
-        },
-        {
-          "nombre": "Mozzarella light",
-          "cantidad": "18g",
-          "kcal": 32.4,
-          "proteinas": 5.04,
-          "carbos": 0.36,
-          "grasas": 1.26
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "4.6g",
-          "kcal": 12.19,
-          "proteinas": 0.41,
-          "carbos": 3.17,
-          "grasas": 0.21
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "2.3g",
-          "kcal": 5.75,
-          "proteinas": 0.23,
-          "carbos": 1.47,
-          "grasas": 0.07
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "0.5g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "4.8ml",
-          "kcal": 39.27,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 4.36
-        }
-      ],
-      "pasos": [
-        "Pon las claras y el huevo en un bol, añade la sal, la pimienta y el orégano, y bate 30 segundos.",
-        "Calienta una sartén a fuego medio, añade el aceite y repártelo con un papel de cocina.",
-        "Vierte la mezcla de huevo y deja cocinar 2-3 minutos sin remover, hasta que la base esté cuajada.",
-        "Coloca las lonchas de pavo sobre una mitad de la tortilla y añade la mozzarella por encima.",
-        "Dobla la tortilla con la espátula y cocina 2 minutos más por cada lado para que el queso se funda."
-      ]
-    },
-    {
-      "id": "r1783884014510av7e",
-      "nombre": "Rollitos de calabacín rellenos de pollo gratinados",
-      "tipo": "cena",
-      "tiempo": "",
-      "descripcion": "Rollitos de calabacín rellenos de pollo gratinados",
-      "kcal": 468,
-      "proteinas": 40.2,
-      "carbos": 37.8,
-      "grasas": 17.9,
-      "ingredientes": [
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "108g",
-          "kcal": 118.8,
-          "proteinas": 24.84,
-          "carbos": 0,
-          "grasas": 1.3
-        },
-        {
-          "nombre": "Calabacin",
-          "cantidad": "529.8g",
-          "kcal": 84.76,
-          "proteinas": 6.36,
-          "carbos": 17.48,
-          "grasas": 0.53
-        },
-        {
-          "nombre": "Mozzarella light",
-          "cantidad": "18g",
-          "kcal": 32.4,
-          "proteinas": 5.04,
-          "carbos": 0.36,
-          "grasas": 1.26
-        },
-        {
-          "nombre": "Tomate triturado",
-          "cantidad": "254.3g",
-          "kcal": 68.66,
-          "proteinas": 2.54,
-          "carbos": 12.46,
-          "grasas": 0
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "6.4g",
-          "kcal": 20.98,
-          "proteinas": 1.06,
-          "carbos": 4.62,
-          "grasas": 0.04
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "4.2g",
-          "kcal": 11.23,
-          "proteinas": 0.38,
-          "carbos": 2.92,
-          "grasas": 0.19
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "16ml",
-          "kcal": 131.2,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 14.56
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "1g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Con un pelador o mandolina, corta el calabacín en láminas finas.",
-        "Corta el pollo en tiras pequeñas y sazónalo con ajo en polvo, orégano y una pizca de sal.",
-        "Cocina el pollo en una sartén con el aceite durante 6-7 minutos.",
-        "Pon una tira de pollo sobre cada lámina de calabacín y enróllala. Coloca los rollitos en una fuente apta para air fryer.",
-        "Cubre con el tomate triturado y la mozzarella.",
-        "Air fryer: cocina a 180°C durante 10-12 minutos, hasta que el calabacín esté tierno y la mozzarella fundida y dorada."
-      ]
-    },
-    {
-      "id": "r178388401451028w9",
-      "nombre": "Lomo de cerdo al ajo con ensalada mediterránea",
-      "tipo": "cena",
-      "tiempo": "",
-      "descripcion": "Lomo de cerdo al ajo con ensalada mediterránea",
-      "kcal": 436.7,
-      "proteinas": 35.8,
-      "carbos": 29.2,
-      "grasas": 21.1,
-      "ingredientes": [
-        {
-          "nombre": "Lomo de cerdo",
-          "cantidad": "146.3g",
-          "kcal": 198.9,
-          "proteinas": 29.98,
-          "carbos": 0,
-          "grasas": 7.9
-        },
-        {
-          "nombre": "Lechuga",
-          "cantidad": "136.2g",
-          "kcal": 19.06,
-          "proteinas": 1.23,
-          "carbos": 3.95,
-          "grasas": 0.14
-        },
-        {
-          "nombre": "Tomate natural",
-          "cantidad": "204.2g",
-          "kcal": 36.76,
-          "proteinas": 1.84,
-          "carbos": 7.96,
-          "grasas": 0.41
-        },
-        {
-          "nombre": "Pepino",
-          "cantidad": "136.2g",
-          "kcal": 20.42,
-          "proteinas": 0.95,
-          "carbos": 4.9,
-          "grasas": 0.14
-        },
-        {
-          "nombre": "Cebolla morada",
-          "cantidad": "51g",
-          "kcal": 20.42,
-          "proteinas": 0.56,
-          "carbos": 4.75,
-          "grasas": 0.05
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "13.4ml",
-          "kcal": 110.17,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 12.23
-        },
-        {
-          "nombre": "Ajo fresco",
-          "cantidad": "10.2g",
-          "kcal": 15.15,
-          "proteinas": 0.65,
-          "carbos": 3.37,
-          "grasas": 0.05
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "3.4g",
-          "kcal": 9.02,
-          "proteinas": 0.31,
-          "carbos": 2.35,
-          "grasas": 0.15
-        },
-        {
-          "nombre": "Limon",
-          "cantidad": "8.5g",
-          "kcal": 2.55,
-          "proteinas": 0.1,
-          "carbos": 0.8,
-          "grasas": 0.02
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "1g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "1.7g",
-          "kcal": 4.25,
-          "proteinas": 0.17,
-          "carbos": 1.09,
-          "grasas": 0.05
-        }
-      ],
-      "pasos": [
-        "Pica los ajos muy finos. Frota el lomo con el ajo, el orégano, la sal y la pimienta. Deja reposar 10 minutos.",
-        "Calienta una sartén con el aceite y cocina el lomo 4-5 minutos por cada lado.",
-        "Mientras tanto, lava y corta la lechuga, el tomate, el pepino y la cebolla morada.",
-        "Aliña la ensalada con el zumo de limón, una pizca de sal y pimienta, y sirve junto al lomo."
-      ]
-    },
-    {
-      "id": "r17838840145108fmu",
-      "nombre": "Pollo cremoso con espinacas y queso fresco batido",
-      "tipo": "cena",
-      "tiempo": "",
-      "descripcion": "Pollo cremoso con espinacas y queso fresco batido",
-      "kcal": 446.2,
-      "proteinas": 48.2,
-      "carbos": 26.8,
-      "grasas": 17.5,
-      "ingredientes": [
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "148.4g",
-          "kcal": 163.28,
-          "proteinas": 34.14,
-          "carbos": 0,
-          "grasas": 1.78
-        },
-        {
-          "nombre": "Espinacas frescas",
-          "cantidad": "192g",
-          "kcal": 44.19,
-          "proteinas": 4.8,
-          "carbos": 6.92,
-          "grasas": 0.77
-        },
-        {
-          "nombre": "Cebolla (congelada)",
-          "cantidad": "96g",
-          "kcal": 36.5,
-          "proteinas": 1.15,
-          "carbos": 8.26,
-          "grasas": 0.29
-        },
-        {
-          "nombre": "Queso fresco batido 0%",
-          "cantidad": "82.5g",
-          "kcal": 37.11,
-          "proteinas": 6.6,
-          "carbos": 3.3,
-          "grasas": 0
-        },
-        {
-          "nombre": "Ajo fresco",
-          "cantidad": "4.8g",
-          "kcal": 7.2,
-          "proteinas": 0.3,
-          "carbos": 1.58,
-          "grasas": 0.02
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "15.8ml",
-          "kcal": 129.61,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 14.38
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "4.8g",
-          "kcal": 15.85,
-          "proteinas": 0.8,
-          "carbos": 3.49,
-          "grasas": 0.03
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "3.2g",
-          "kcal": 8.49,
-          "proteinas": 0.29,
-          "carbos": 2.21,
-          "grasas": 0.14
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "1.6g",
-          "kcal": 4,
-          "proteinas": 0.16,
-          "carbos": 1.02,
-          "grasas": 0.05
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "1g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Corta el pollo en dados de unos 2 cm y sazónalo con ajo en polvo, orégano, sal y pimienta.",
-        "Pica la cebolla y el ajo. Calienta el aceite y sofríe la cebolla 4 minutos. Añade el ajo y cocina 30 segundos.",
-        "Añade el pollo y cocina 7-8 minutos hasta que esté dorado.",
-        "Incorpora las espinacas y remueve 2 minutos hasta que reduzcan su volumen.",
-        "Baja el fuego, añade el queso fresco batido y remueve constantemente 2 minutos sin dejar que hierva fuerte, para mantener una salsa cremosa."
-      ]
-    },
-    {
-      "id": "r17838840145107cmi",
-      "nombre": "Crepes proteicos rellenos de pollo y queso",
-      "tipo": "cena",
-      "tiempo": "",
-      "descripcion": "Crepes proteicos rellenos de pollo y queso",
-      "kcal": 457.8,
-      "proteinas": 55.3,
-      "carbos": 40.5,
-      "grasas": 7,
-      "ingredientes": [
-        {
-          "nombre": "Claras de huevo",
-          "cantidad": "128.6ml",
-          "kcal": 66.85,
-          "proteinas": 14.14,
-          "carbos": 0.9,
-          "grasas": 0.26
-        },
-        {
-          "nombre": "Harina de avena",
-          "cantidad": "49g",
-          "kcal": 190.83,
-          "proteinas": 7.36,
-          "carbos": 30.42,
-          "grasas": 3.43
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "0.5g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "107g",
-          "kcal": 117.84,
-          "proteinas": 24.64,
-          "carbos": 0,
-          "grasas": 1.29
-        },
-        {
-          "nombre": "Mozzarella light",
-          "cantidad": "21.4g",
-          "kcal": 38.57,
-          "proteinas": 6,
-          "carbos": 0.43,
-          "grasas": 1.5
-        },
-        {
-          "nombre": "Espinacas frescas",
-          "cantidad": "81.8g",
-          "kcal": 18.81,
-          "proteinas": 2.04,
-          "carbos": 2.94,
-          "grasas": 0.33
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "4.9g",
-          "kcal": 16.19,
-          "proteinas": 0.82,
-          "carbos": 3.56,
-          "grasas": 0.03
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "3.3g",
-          "kcal": 8.67,
-          "proteinas": 0.29,
-          "carbos": 2.26,
-          "grasas": 0.15
-        }
-      ],
-      "pasos": [
-        "Mezcla las claras con la harina de avena y la sal hasta obtener una masa homogénea.",
-        "Cocina dos crepes finos en una sartén antiadherente, 1-2 minutos por cada lado.",
-        "Corta el pollo en tiras y condiméntalo con ajo en polvo, orégano y pimienta.",
-        "Cocina el pollo 7 minutos, añade las espinacas y cocina 1 minuto más.",
-        "Rellena los crepes con el pollo y la mozzarella, enróllalos y cocínalos 2 minutos más en la sartén para fundir el queso."
-      ]
-    },
-    {
-      "id": "r1783884014510myfp",
-      "nombre": "Pollo al horno con costra ligera de mozzarella",
-      "tipo": "cena",
-      "tiempo": "",
-      "descripcion": "Pollo al horno con costra ligera de mozzarella",
-      "kcal": 346.3,
-      "proteinas": 34.5,
-      "carbos": 33.4,
-      "grasas": 8.4,
-      "ingredientes": [
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "108g",
-          "kcal": 118.8,
-          "proteinas": 24.84,
-          "carbos": 0,
-          "grasas": 1.3
-        },
-        {
-          "nombre": "Mozzarella light",
-          "cantidad": "12g",
-          "kcal": 21.6,
-          "proteinas": 3.36,
-          "carbos": 0.24,
-          "grasas": 0.84
-        },
-        {
-          "nombre": "Pan rallado integral",
-          "cantidad": "34.5g",
-          "kcal": 120.75,
-          "proteinas": 4.48,
-          "carbos": 23.46,
-          "grasas": 1.03
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "6.9g",
-          "kcal": 22.77,
-          "proteinas": 1.15,
-          "carbos": 5.01,
-          "grasas": 0.05
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "4.6g",
-          "kcal": 12.19,
-          "proteinas": 0.41,
-          "carbos": 3.17,
-          "grasas": 0.21
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "2.3g",
-          "kcal": 5.75,
-          "proteinas": 0.23,
-          "carbos": 1.47,
-          "grasas": 0.07
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "5.4ml",
-          "kcal": 44.48,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 4.94
-        }
-      ],
-      "pasos": [
-        "Mezcla la mozzarella rallada, el pan rallado, el ajo en polvo, el orégano y la pimienta.",
-        "Pinta el pollo con el aceite y rebózalo con la mezcla.",
-        "Colócalo en la cesta o en un molde apto para air fryer, sobre papel si lo prefieres.",
-        "Air fryer: cocina a 180°C durante 15-18 minutos, hasta que esté dorado y el pollo bien hecho.",
-        "Deja reposar 3 minutos antes de servir."
-      ]
-    },
-    {
-      "id": "r1783884014510rc4a",
-      "nombre": "Ensalada griega con pollo",
-      "tipo": "cena",
-      "tiempo": "",
-      "descripcion": "Ensalada griega con pollo",
-      "kcal": 463,
-      "proteinas": 50.6,
-      "carbos": 27,
-      "grasas": 18.3,
-      "ingredientes": [
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "168.2g",
-          "kcal": 185.07,
-          "proteinas": 38.7,
-          "carbos": 0,
-          "grasas": 2.02
-        },
-        {
-          "nombre": "Tomate natural",
-          "cantidad": "178g",
-          "kcal": 32.04,
-          "proteinas": 1.6,
-          "carbos": 6.94,
-          "grasas": 0.36
-        },
-        {
-          "nombre": "Pepino",
-          "cantidad": "148.3g",
-          "kcal": 22.25,
-          "proteinas": 1.04,
-          "carbos": 5.34,
-          "grasas": 0.15
-        },
-        {
-          "nombre": "Cebolla morada",
-          "cantidad": "44.5g",
-          "kcal": 17.8,
-          "proteinas": 0.49,
-          "carbos": 4.14,
-          "grasas": 0.04
-        },
-        {
-          "nombre": "Queso feta light",
-          "cantidad": "44.5g",
-          "kcal": 84.55,
-          "proteinas": 7.12,
-          "carbos": 1.34,
-          "grasas": 5.79
-        },
-        {
-          "nombre": "Lechuga",
-          "cantidad": "103.8g",
-          "kcal": 14.54,
-          "proteinas": 0.93,
-          "carbos": 3.01,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "10.5ml",
-          "kcal": 86.01,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 9.54
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "3g",
-          "kcal": 7.86,
-          "proteinas": 0.27,
-          "carbos": 2.05,
-          "grasas": 0.13
-        },
-        {
-          "nombre": "Limon",
-          "cantidad": "44.5g",
-          "kcal": 12.91,
-          "proteinas": 0.49,
-          "carbos": 4.14,
-          "grasas": 0.13
-        }
-      ],
-      "pasos": [
-        "Condimenta el pollo con sal, pimienta y orégano.",
-        "Cocínalo 5-6 minutos por cada lado, deja reposar 3 minutos y córtalo en tiras.",
-        "Lava y corta todas las verduras.",
-        "Mezcla las verduras con el queso feta.",
-        "Añade el pollo por encima y aliña con el aceite y el zumo de limón."
-      ]
-    },
-    {
-      "id": "r1783884769787d39g",
-      "nombre": "Rollitos de ternera rellenos de queso y espinacas",
-      "tipo": "cena",
-      "tiempo": "30",
-      "descripcion": "",
-      "kcal": 417.6,
-      "proteinas": 58.4,
-      "carbos": 11.3,
-      "grasas": 15.3,
-      "ingredientes": [
-        {
-          "nombre": "Filete de ternera",
-          "cantidad": "169g",
-          "kcal": 268.6,
-          "proteinas": 46.29,
-          "carbos": 0,
-          "grasas": 7.77
-        },
-        {
-          "nombre": "Espinacas frescas",
-          "cantidad": "131.3g",
-          "kcal": 30.2,
-          "proteinas": 3.28,
-          "carbos": 4.73,
-          "grasas": 0.53
-        },
-        {
-          "nombre": "Mozzarella light",
-          "cantidad": "28.2g",
-          "kcal": 50.68,
-          "proteinas": 7.88,
-          "carbos": 0.56,
-          "grasas": 1.97
-        },
-        {
-          "nombre": "Ajo fresco",
-          "cantidad": "1.6 diente (8.2g)",
-          "kcal": 12.31,
-          "proteinas": 0.53,
-          "carbos": 2.71,
-          "grasas": 0.05
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "5.2ml",
-          "kcal": 42.99,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 4.77
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "1.6g",
-          "kcal": 4.1,
-          "proteinas": 0.16,
-          "carbos": 1.05,
-          "grasas": 0.05
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "1.6 cucharadita (3.3g)",
-          "kcal": 8.7,
-          "proteinas": 0.3,
-          "carbos": 2.26,
-          "grasas": 0.15
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "1g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Extiende los filetes de ternera sobre una tabla y sazona con sal, pimienta y orégano.",
-        "Reparte las espinacas y la mozzarella sobre cada filete.",
-        "Enrolla cada filete firmemente y sujétalo con un palillo.",
-        "Calienta el aceite en una sartén y dora los rollitos 3 minutos por cada lado.",
-        "Añade el ajo picado y cocina 3 minutos más, bajando el fuego para que el interior quede bien hecho."
-      ]
-    },
-    {
-      "id": "r1783884769789muq1",
-      "nombre": "Calabacines rellenos de pavo gratinados",
-      "tipo": "cena",
-      "tiempo": "40",
-      "descripcion": "",
-      "kcal": 444.6,
-      "proteinas": 40.2,
-      "carbos": 47.8,
-      "grasas": 12.5,
-      "ingredientes": [
-        {
-          "nombre": "Calabacin",
-          "cantidad": "572g",
-          "kcal": 91.51,
-          "proteinas": 6.86,
-          "carbos": 18.87,
-          "grasas": 0.57
-        },
-        {
-          "nombre": "Pavo 93%",
-          "cantidad": "102g",
-          "kcal": 106.08,
-          "proteinas": 23.46,
-          "carbos": 0.51,
-          "grasas": 1.12
-        },
-        {
-          "nombre": "Tomate triturado",
-          "cantidad": "228.8g",
-          "kcal": 61.77,
-          "proteinas": 2.29,
-          "carbos": 11.21,
-          "grasas": 0
-        },
-        {
-          "nombre": "Mozzarella light",
-          "cantidad": "18g",
-          "kcal": 32.4,
-          "proteinas": 5.04,
-          "carbos": 0.36,
-          "grasas": 1.26
-        },
-        {
-          "nombre": "Cebolla (congelada)",
-          "cantidad": "114.4g",
-          "kcal": 43.47,
-          "proteinas": 1.37,
-          "carbos": 9.84,
-          "grasas": 0.34
-        },
-        {
-          "nombre": "Ajo fresco",
-          "cantidad": "1.9 diente (9.5g)",
-          "kcal": 14.3,
-          "proteinas": 0.61,
-          "carbos": 3.15,
-          "grasas": 0.06
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "9.8ml",
-          "kcal": 80.16,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 8.9
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "1.9 cucharadita (3.8g)",
-          "kcal": 10.1,
-          "proteinas": 0.34,
-          "carbos": 2.63,
-          "grasas": 0.17
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "1g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "1.9g",
-          "kcal": 4.77,
-          "proteinas": 0.19,
-          "carbos": 1.22,
-          "grasas": 0.06
-        }
-      ],
-      "pasos": [
-        "Precalienta el horno a 200 °C.",
-        "Corta el calabacín por la mitad a lo largo y vacía ligeramente el interior con una cuchara. Pica la pulpa y resérvala.",
-        "Sofríe la cebolla y el ajo picados en el aceite durante 5 minutos.",
-        "Añade el pavo picado, sazona con sal, pimienta y orégano, y cocina 7 minutos.",
-        "Incorpora la pulpa del calabacín y el tomate triturado. Cocina 5 minutos más.",
-        "Rellena los calabacines con la mezcla y añade la mozzarella por encima.",
-        "Hornea 20 minutos hasta que estén tiernos y gratinados."
-      ]
-    },
-    {
-      "id": "r1783884769790vzp9",
-      "nombre": "Merluza al limón con verduras salteadas",
-      "tipo": "cena",
-      "tiempo": "25",
-      "descripcion": "",
-      "kcal": 411.2,
-      "proteinas": 37,
-      "carbos": 35.9,
-      "grasas": 15.2,
-      "ingredientes": [
-        {
-          "nombre": "Merluza",
-          "cantidad": "202.7g",
-          "kcal": 198.62,
-          "proteinas": 30.81,
-          "carbos": 4.05,
-          "grasas": 6.08
-        },
-        {
-          "nombre": "Calabacin",
-          "cantidad": "279.5g",
-          "kcal": 44.71,
-          "proteinas": 3.35,
-          "carbos": 9.22,
-          "grasas": 0.28
-        },
-        {
-          "nombre": "Zanahoria",
-          "cantidad": "149g",
-          "kcal": 61.11,
-          "proteinas": 1.34,
-          "carbos": 14.31,
-          "grasas": 0.3
-        },
-        {
-          "nombre": "Limon",
-          "cantidad": "37.3g (zumo y ralladura)",
-          "kcal": 10.81,
-          "proteinas": 0.41,
-          "carbos": 3.47,
-          "grasas": 0.11
-        },
-        {
-          "nombre": "Ajo fresco",
-          "cantidad": "1.9 diente (9.3g)",
-          "kcal": 13.97,
-          "proteinas": 0.6,
-          "carbos": 3.07,
-          "grasas": 0.06
-        },
-        {
-          "nombre": "Perejil fresco",
-          "cantidad": "9.3g",
-          "kcal": 3.35,
-          "proteinas": 0.28,
-          "carbos": 0.56,
-          "grasas": 0.07
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "9ml",
-          "kcal": 73.94,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 8.21
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "1g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "1.9g",
-          "kcal": 4.66,
-          "proteinas": 0.19,
-          "carbos": 1.19,
-          "grasas": 0.06
-        }
-      ],
-      "pasos": [
-        "Corta el calabacín en medias lunas y la zanahoria en tiras finas o rodajas.",
-        "Sazona la merluza con sal, pimienta y el zumo de limón. Deja reposar 5 minutos.",
-        "Calienta el aceite en una sartén y añade el ajo picado, cocina 30 segundos.",
-        "Añade las verduras y saltea 6-7 minutos hasta que estén tiernas.",
-        "Retira las verduras y en la misma sartén cocina la merluza 3-4 minutos por cada lado.",
-        "Sirve la merluza sobre las verduras salteadas, espolvorea perejil picado y la ralladura de limón."
-      ]
-    },
-    {
-      "id": "r1783884769791v9at",
-      "nombre": "Tortilla proteica rellena de queso cottage y espinacas",
-      "tipo": "cena",
-      "tiempo": "20",
-      "descripcion": "",
-      "kcal": 405.2,
-      "proteinas": 52.7,
-      "carbos": 14.3,
-      "grasas": 15,
-      "ingredientes": [
-        {
-          "nombre": "Claras de huevo",
-          "cantidad": "219.4ml",
-          "kcal": 114.06,
-          "proteinas": 24.13,
-          "carbos": 1.54,
-          "grasas": 0.44
-        },
-        {
-          "nombre": "Huevo",
-          "cantidad": "1.4 huevo (71.7g)",
-          "kcal": 111.15,
-          "proteinas": 9.32,
-          "carbos": 0.79,
-          "grasas": 7.89
-        },
-        {
-          "nombre": "Queso cottage",
-          "cantidad": "143.4g",
-          "kcal": 140.55,
-          "proteinas": 15.78,
-          "carbos": 4.88,
-          "grasas": 6.17
-        },
-        {
-          "nombre": "Espinacas frescas",
-          "cantidad": "114.7g",
-          "kcal": 26.39,
-          "proteinas": 2.87,
-          "carbos": 4.13,
-          "grasas": 0.46
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "1.4 cucharadita (2.9g)",
-          "kcal": 9.47,
-          "proteinas": 0.47,
-          "carbos": 2.08,
-          "grasas": 0.01
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "1g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "1.4g",
-          "kcal": 3.59,
-          "proteinas": 0.14,
-          "carbos": 0.92,
-          "grasas": 0.04
-        }
-      ],
-      "pasos": [
-        "Bate las claras junto con el huevo entero, la sal, la pimienta y el ajo en polvo.",
-        "Saltea las espinacas en una sartén antiadherente 2-3 minutos hasta que reduzcan.",
-        "Vierte la mezcla de huevo sobre las espinacas y cocina a fuego medio-bajo 4-5 minutos.",
-        "Añade el queso cottage sobre una mitad de la tortilla.",
-        "Dobla la tortilla por la mitad y cocina 2 minutos más por cada lado hasta que cuaje por completo."
-      ]
-    },
-    {
-      "id": "r1783884769793tf13",
-      "nombre": "Gambas al ajillo fitness con ensalada",
-      "tipo": "cena",
-      "tiempo": "20",
-      "descripcion": "",
-      "kcal": 420.5,
-      "proteinas": 43.3,
-      "carbos": 25.5,
-      "grasas": 16.9,
-      "ingredientes": [
-        {
-          "nombre": "Gambas (congeladas)",
-          "cantidad": "250.5g",
-          "kcal": 177.85,
-          "proteinas": 37.57,
-          "carbos": 0.75,
-          "grasas": 1.5
-        },
-        {
-          "nombre": "Lechuga",
-          "cantidad": "152.6g",
-          "kcal": 21.37,
-          "proteinas": 1.37,
-          "carbos": 4.43,
-          "grasas": 0.15
-        },
-        {
-          "nombre": "Pepino",
-          "cantidad": "152.6g",
-          "kcal": 22.9,
-          "proteinas": 1.07,
-          "carbos": 5.5,
-          "grasas": 0.15
-        },
-        {
-          "nombre": "Tomate natural",
-          "cantidad": "190.8g",
-          "kcal": 34.34,
-          "proteinas": 1.72,
-          "carbos": 7.44,
-          "grasas": 0.38
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "15.7ml",
-          "kcal": 129.13,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 14.33
-        },
-        {
-          "nombre": "Ajo fresco",
-          "cantidad": "3.8 dientes (19g)",
-          "kcal": 28.43,
-          "proteinas": 1.22,
-          "carbos": 6.3,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Perejil fresco",
-          "cantidad": "9.5g",
-          "kcal": 3.43,
-          "proteinas": 0.29,
-          "carbos": 0.57,
-          "grasas": 0.08
-        },
-        {
-          "nombre": "Cayena molida",
-          "cantidad": "una pizca (1g)",
-          "kcal": 3.05,
-          "proteinas": 0.11,
-          "carbos": 0.53,
-          "grasas": 0.17
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "1g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Lava y corta la lechuga, el pepino y el tomate. Colócalos en un bol y reserva.",
-        "Descongela las gambas y sécalas bien con papel de cocina.",
-        "Calienta el aceite en una sartén y añade el ajo laminado y la cayena, cocina 1 minuto sin que se queme.",
-        "Añade las gambas y sal, cocina 2-3 minutos hasta que estén rosadas.",
-        "Espolvorea con perejil picado y sirve las gambas junto a la ensalada."
-      ]
-    },
-    {
-      "id": "r17838847697942cy0",
-      "nombre": "Pastel fitness de carne y calabacín",
-      "tipo": "cena",
-      "tiempo": "45",
-      "descripcion": "",
-      "kcal": 432.8,
-      "proteinas": 42.2,
-      "carbos": 39.2,
-      "grasas": 13.7,
-      "ingredientes": [
-        {
-          "nombre": "Pavo 93%",
-          "cantidad": "108g",
-          "kcal": 112.32,
-          "proteinas": 24.84,
-          "carbos": 0.54,
-          "grasas": 1.19
-        },
-        {
-          "nombre": "Calabacin",
-          "cantidad": "575g",
-          "kcal": 92,
-          "proteinas": 6.9,
-          "carbos": 18.97,
-          "grasas": 0.57
-        },
-        {
-          "nombre": "Mozzarella light",
-          "cantidad": "24g",
-          "kcal": 43.2,
-          "proteinas": 6.72,
-          "carbos": 0.48,
-          "grasas": 1.68
-        },
-        {
-          "nombre": "Tomate triturado",
-          "cantidad": "230g",
-          "kcal": 62.1,
-          "proteinas": 2.3,
-          "carbos": 11.27,
-          "grasas": 0
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "11ml",
-          "kcal": 90.1,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 10
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "2.3 cucharadita (4.6g)",
-          "kcal": 15.18,
-          "proteinas": 0.76,
-          "carbos": 3.33,
-          "grasas": 0.02
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "2.3 cucharadita (4.6g)",
-          "kcal": 12.19,
-          "proteinas": 0.41,
-          "carbos": 3.17,
-          "grasas": 0.21
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "1g",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "2.3g",
-          "kcal": 5.75,
-          "proteinas": 0.23,
-          "carbos": 1.47,
-          "grasas": 0.07
-        }
-      ],
-      "pasos": [
-        "Precalienta el horno a 190 °C.",
-        "Corta el calabacín en láminas finas con una mandolina o pelador.",
-        "Mezcla la carne picada de pavo con el ajo en polvo, el orégano, la sal y la pimienta.",
-        "En un molde apto para horno, alterna capas de calabacín y la carne sazonada, pincelando con un poco de aceite entre capas.",
-        "Cubre con el tomate triturado y la mozzarella por encima.",
-        "Hornea 30-35 minutos hasta que esté dorado y bien cocido."
-      ]
-    },
-    {
-      "id": "r1783884769795lrvw",
-      "nombre": "Salteado asiático de pollo",
-      "tipo": "cena",
-      "tiempo": "20",
-      "descripcion": "Receta original de pavo, sustituido por pollo",
-      "kcal": 424.6,
-      "proteinas": 41.6,
-      "carbos": 44.3,
-      "grasas": 10.3,
-      "ingredientes": [
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "142.2g",
-          "kcal": 156.43,
-          "proteinas": 32.71,
-          "carbos": 0,
-          "grasas": 1.71
-        },
-        {
-          "nombre": "Col blanca",
-          "cantidad": "345g",
-          "kcal": 86.25,
-          "proteinas": 4.48,
-          "carbos": 20.01,
-          "grasas": 0.34
-        },
-        {
-          "nombre": "Zanahoria",
-          "cantidad": "184g",
-          "kcal": 75.44,
-          "proteinas": 1.66,
-          "carbos": 17.66,
-          "grasas": 0.37
-        },
-        {
-          "nombre": "Salsa de soja baja en sal",
-          "cantidad": "23ml",
-          "kcal": 12.19,
-          "proteinas": 1.84,
-          "carbos": 1.15,
-          "grasas": 0.02
-        },
-        {
-          "nombre": "Ajo fresco",
-          "cantidad": "2.3 diente (11.5g)",
-          "kcal": 17.25,
-          "proteinas": 0.74,
-          "carbos": 3.79,
-          "grasas": 0.07
-        },
-        {
-          "nombre": "Jengibre en polvo",
-          "cantidad": "2.5 cucharadita (2.3g)",
-          "kcal": 7.82,
-          "proteinas": 0.21,
-          "carbos": 1.66,
-          "grasas": 0.09
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "8.4ml",
-          "kcal": 69.27,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 7.69
-        }
-      ],
-      "pasos": [
-        "Corta el pollo en tiras finas. Corta la col en juliana y ralla la zanahoria.",
-        "Calienta el aceite en un wok o sartén amplia y añade el ajo picado, cocina 30 segundos.",
-        "Añade el pollo y cocina 5-6 minutos hasta que esté dorado.",
-        "Incorpora la col y la zanahoria, saltea 5 minutos más.",
-        "Añade la salsa de soja y el jengibre, cocina 2 minutos más removiendo bien."
-      ]
-    },
-    {
-      "id": "r1783884769796o3y3",
-      "nombre": "Pollo Cordon Bleu Fitness",
-      "tipo": "cena",
-      "tiempo": "40",
-      "descripcion": "",
-      "kcal": 570.6,
-      "proteinas": 58,
-      "carbos": 31.8,
-      "grasas": 23.1,
-      "ingredientes": [
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "120.5g",
-          "kcal": 132.6,
-          "proteinas": 27.73,
-          "carbos": 0,
-          "grasas": 1.45
-        },
-        {
-          "nombre": "Jamón serrano",
-          "cantidad": "40.2g (jamón cocido bajo en grasa)",
-          "kcal": 85.18,
-          "proteinas": 12.05,
-          "carbos": 0.2,
-          "grasas": 4.02
-        },
-        {
-          "nombre": "Queso Light Philadelphia",
-          "cantidad": "25g (queso light en lonchas)",
-          "kcal": 38.66,
-          "proteinas": 1.48,
-          "carbos": 1.1,
-          "grasas": 3.01
-        },
-        {
-          "nombre": "Pan rallado integral",
-          "cantidad": "34.6g",
-          "kcal": 120.98,
-          "proteinas": 4.49,
-          "carbos": 23.5,
-          "grasas": 1.04
-        },
-        {
-          "nombre": "Huevo",
-          "cantidad": "1.7 huevo (86.4g)",
-          "kcal": 133.94,
-          "proteinas": 11.23,
-          "carbos": 0.95,
-          "grasas": 9.51
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "1.7 cucharadita (3.5g)",
-          "kcal": 11.41,
-          "proteinas": 0.57,
-          "carbos": 2.51,
-          "grasas": 0.02
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "1.7 cucharadita (3.5g)",
-          "kcal": 9.16,
-          "proteinas": 0.31,
-          "carbos": 2.39,
-          "grasas": 0.16
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "Al gusto (1.7g)",
-          "kcal": 4.32,
-          "proteinas": 0.17,
-          "carbos": 1.11,
-          "grasas": 0.05
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "4.2ml",
-          "kcal": 34.31,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 3.81
-        }
-      ],
-      "pasos": [
-        "Precalienta el horno a 200 °C.",
-        "Abre la pechuga por la mitad sin llegar a cortarla del todo.",
-        "Coloca el jamón y el queso en el centro y cierra la pechuga presionando bien.",
-        "Pásala por el huevo batido y después por el pan rallado mezclado con ajo en polvo, orégano y pimienta.",
-        "Colócala sobre una bandeja con papel de horno y pincela con el aceite.",
-        "Hornea 22-25 minutos. Deja reposar 5 minutos antes de cortar."
       ]
     },
     {
@@ -4992,420 +2754,6 @@
         "Cocina en una plancha muy caliente durante 10-12 minutos, girándolas cada 2 minutos y pincelando con el aceite.",
         "Mientras tanto, mezcla el queso fresco batido con el zumo de limón, el ajo en polvo, el orégano y la sal para la salsa.",
         "Sirve las brochetas junto a la salsa de yogur."
-      ]
-    },
-    {
-      "id": "r1783885121771ebo1",
-      "nombre": "Lomo al romero con cebolla caramelizada ligera",
-      "tipo": "cena",
-      "tiempo": "20",
-      "descripcion": "",
-      "kcal": 328.3,
-      "proteinas": 26.8,
-      "carbos": 26.6,
-      "grasas": 13.6,
-      "ingredientes": [
-        {
-          "nombre": "Lomo de cerdo",
-          "cantidad": "112g",
-          "kcal": 152.16,
-          "proteinas": 22.94,
-          "carbos": 0,
-          "grasas": 6.04
-        },
-        {
-          "nombre": "Cebolla (congelada)",
-          "cantidad": "239g",
-          "kcal": 90.86,
-          "proteinas": 2.87,
-          "carbos": 20.56,
-          "grasas": 0.72
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "7ml",
-          "kcal": 57.2,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 6.35
-        },
-        {
-          "nombre": "Romero",
-          "cantidad": "2 cucharadita (3g)",
-          "kcal": 9.96,
-          "proteinas": 0.14,
-          "carbos": 1.91,
-          "grasas": 0.46
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "2 cucharadita (4g)",
-          "kcal": 13.15,
-          "proteinas": 0.66,
-          "carbos": 2.89,
-          "grasas": 0.02
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "al gusto (1g)",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "al gusto (2g)",
-          "kcal": 4.98,
-          "proteinas": 0.2,
-          "carbos": 1.28,
-          "grasas": 0.06
-        }
-      ],
-      "pasos": [
-        "Corta la cebolla en tiras finas.",
-        "Cocínala en una sartén con un poco del aceite a fuego medio durante 10 minutos, removiendo de vez en cuando. Añade una cucharada de agua si empieza a pegarse, así se ablandará y caramelizará de forma natural, sin azúcar.",
-        "Sazona el lomo con ajo en polvo, romero, sal y pimienta.",
-        "Cocina el lomo en otra sartén con el resto del aceite durante 4 minutos por cada lado.",
-        "Sirve el lomo sobre la cebolla caramelizada."
-      ]
-    },
-    {
-      "id": "r17838851217723onh",
-      "nombre": "Tortilla proteica de espinacas y mozzarella",
-      "tipo": "cena",
-      "tiempo": "15",
-      "descripcion": "",
-      "kcal": 422,
-      "proteinas": 48.8,
-      "carbos": 13,
-      "grasas": 20.2,
-      "ingredientes": [
-        {
-          "nombre": "Claras de huevo",
-          "cantidad": "209ml",
-          "kcal": 108.61,
-          "proteinas": 22.97,
-          "carbos": 1.46,
-          "grasas": 0.42
-        },
-        {
-          "nombre": "Huevo",
-          "cantidad": "2 huevo entero (100.7g)",
-          "kcal": 156.05,
-          "proteinas": 13.09,
-          "carbos": 1.11,
-          "grasas": 11.07
-        },
-        {
-          "nombre": "Espinacas frescas",
-          "cantidad": "161g",
-          "kcal": 37.05,
-          "proteinas": 4.03,
-          "carbos": 5.8,
-          "grasas": 0.64
-        },
-        {
-          "nombre": "Mozzarella light",
-          "cantidad": "29.2g",
-          "kcal": 52.63,
-          "proteinas": 8.19,
-          "carbos": 0.58,
-          "grasas": 2.05
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "6.3ml",
-          "kcal": 51.97,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 5.77
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "2 cucharadita (4g)",
-          "kcal": 10.67,
-          "proteinas": 0.36,
-          "carbos": 2.78,
-          "grasas": 0.18
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "al gusto (1g)",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "al gusto (2g)",
-          "kcal": 5.03,
-          "proteinas": 0.2,
-          "carbos": 1.29,
-          "grasas": 0.06
-        }
-      ],
-      "pasos": [
-        "Bate las claras junto con el huevo entero.",
-        "Añade el orégano, la sal y la pimienta.",
-        "Calienta una sartén con el aceite y cocina las espinacas durante 2 minutos.",
-        "Vierte el huevo batido y cocina 3 minutos.",
-        "Añade la mozzarella.",
-        "Dobla la tortilla y cocina 2 minutos más."
-      ]
-    },
-    {
-      "id": "r1783885121773tytv",
-      "nombre": "Gambas al ajillo cremosas con espinacas",
-      "tipo": "cena",
-      "tiempo": "20",
-      "descripcion": "",
-      "kcal": 430.1,
-      "proteinas": 49.2,
-      "carbos": 22.5,
-      "grasas": 17,
-      "ingredientes": [
-        {
-          "nombre": "Gambas (congeladas)",
-          "cantidad": "222.6g (peladas)",
-          "kcal": 158.03,
-          "proteinas": 33.39,
-          "carbos": 0.67,
-          "grasas": 1.34
-        },
-        {
-          "nombre": "Espinacas frescas",
-          "cantidad": "236.8g",
-          "kcal": 54.46,
-          "proteinas": 5.92,
-          "carbos": 8.52,
-          "grasas": 0.95
-        },
-        {
-          "nombre": "Queso fresco batido 0%",
-          "cantidad": "101.2g",
-          "kcal": 45.53,
-          "proteinas": 8.09,
-          "carbos": 4.05,
-          "grasas": 0
-        },
-        {
-          "nombre": "Ajo fresco",
-          "cantidad": "3.9 dientes (19.7g)",
-          "kcal": 29.4,
-          "proteinas": 1.26,
-          "carbos": 6.51,
-          "grasas": 0.1
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "16ml",
-          "kcal": 131.2,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 14.56
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "2 cucharadita (2g)",
-          "kcal": 6.51,
-          "proteinas": 0.34,
-          "carbos": 1.44,
-          "grasas": 0.02
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "al gusto (2g)",
-          "kcal": 4.93,
-          "proteinas": 0.2,
-          "carbos": 1.26,
-          "grasas": 0.06
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "al gusto (1g)",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Pela y corta el ajo en láminas finas.",
-        "Calienta el aceite y añade el ajo, cocina 30 segundos.",
-        "Añade las gambas y cocina 2 minutos por cada lado.",
-        "Añade las espinacas y remueve durante 2 minutos.",
-        "Baja el fuego, añade el queso fresco batido, el ajo en polvo, la sal y la pimienta.",
-        "Remueve durante 2 minutos sin dejar que hierva la salsa."
-      ]
-    },
-    {
-      "id": "r1783885121774b6l9",
-      "nombre": "Revuelto proteico de pollo y queso",
-      "tipo": "cena",
-      "tiempo": "15",
-      "descripcion": "",
-      "kcal": 383.9,
-      "proteinas": 44.7,
-      "carbos": 11.1,
-      "grasas": 17.8,
-      "ingredientes": [
-        {
-          "nombre": "Claras de huevo",
-          "cantidad": "132ml",
-          "kcal": 68.64,
-          "proteinas": 14.52,
-          "carbos": 0.92,
-          "grasas": 0.26
-        },
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "90g",
-          "kcal": 99,
-          "proteinas": 20.7,
-          "carbos": 0,
-          "grasas": 1.08
-        },
-        {
-          "nombre": "Mozzarella light",
-          "cantidad": "18g",
-          "kcal": 32.4,
-          "proteinas": 5.04,
-          "carbos": 0.36,
-          "grasas": 1.26
-        },
-        {
-          "nombre": "Espinacas frescas",
-          "cantidad": "138g",
-          "kcal": 31.74,
-          "proteinas": 3.45,
-          "carbos": 4.97,
-          "grasas": 0.55
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "16ml",
-          "kcal": 131.2,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 14.56
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "2.3 cucharadita (4.6g)",
-          "kcal": 15.18,
-          "proteinas": 0.76,
-          "carbos": 3.33,
-          "grasas": 0.02
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "al gusto (2.3g)",
-          "kcal": 5.75,
-          "proteinas": 0.23,
-          "carbos": 1.47,
-          "grasas": 0.07
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "al gusto (1g)",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Corta el pollo en dados y condiméntalo con ajo en polvo, sal y pimienta.",
-        "Cocínalo en una sartén con el aceite durante 7 minutos.",
-        "Añade las espinacas y remueve 2 minutos.",
-        "Vierte las claras y remueve constantemente.",
-        "Añade la mozzarella y retira del fuego cuando el queso empiece a fundirse."
-      ]
-    },
-    {
-      "id": "r1783885121775ggm2",
-      "nombre": "Lomo al ajo y limón con calabacín",
-      "tipo": "cena",
-      "tiempo": "20",
-      "descripcion": "",
-      "kcal": 359.9,
-      "proteinas": 29.8,
-      "carbos": 30.2,
-      "grasas": 15.8,
-      "ingredientes": [
-        {
-          "nombre": "Lomo de cerdo",
-          "cantidad": "108.2g",
-          "kcal": 147.09,
-          "proteinas": 22.17,
-          "carbos": 0,
-          "grasas": 5.84
-        },
-        {
-          "nombre": "Calabacin",
-          "cantidad": "414g",
-          "kcal": 66.24,
-          "proteinas": 4.97,
-          "carbos": 13.66,
-          "grasas": 0.41
-        },
-        {
-          "nombre": "Ajo fresco",
-          "cantidad": "4.6 dientes (23g)",
-          "kcal": 34.27,
-          "proteinas": 1.47,
-          "carbos": 7.59,
-          "grasas": 0.11
-        },
-        {
-          "nombre": "Limon",
-          "cantidad": "2.5 unidad, en zumo (46g)",
-          "kcal": 13.34,
-          "proteinas": 0.51,
-          "carbos": 4.28,
-          "grasas": 0.14
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "9.9ml",
-          "kcal": 81.06,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 9
-        },
-        {
-          "nombre": "Oregano seco",
-          "cantidad": "2.3 cucharadita (4.6g)",
-          "kcal": 12.19,
-          "proteinas": 0.41,
-          "carbos": 3.17,
-          "grasas": 0.21
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "al gusto (2.3g)",
-          "kcal": 5.75,
-          "proteinas": 0.23,
-          "carbos": 1.47,
-          "grasas": 0.07
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "al gusto (1g)",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Corta el calabacín en rodajas finas.",
-        "Calienta el aceite y añade el ajo laminado, cocina durante 30 segundos.",
-        "Añade el lomo, salpimentado, y cocina 4 minutos por cada lado.",
-        "Incorpora el calabacín y cocina 5 minutos, removiendo de vez en cuando.",
-        "Añade el zumo de limón y el orégano, remueve durante 1 minuto y sirve."
       ]
     },
     {
@@ -5733,120 +3081,12 @@
       ]
     },
     {
-      "id": "r1783885404415n7ll",
-      "nombre": "Wrap César Fitness",
-      "tipo": "cena",
-      "tiempo": "15",
-      "descripcion": "",
-      "kcal": 646.8,
-      "proteinas": 50.1,
-      "carbos": 59.4,
-      "grasas": 21.4,
-      "ingredientes": [
-        {
-          "nombre": "Tortilla harina de trigo integral",
-          "cantidad": "1.8 unidad (107.6g)",
-          "kcal": 309.89,
-          "proteinas": 9.9,
-          "carbos": 45.19,
-          "grasas": 7.85
-        },
-        {
-          "nombre": "Pechuga de pollo",
-          "cantidad": "96g",
-          "kcal": 105.6,
-          "proteinas": 22.08,
-          "carbos": 0,
-          "grasas": 1.15
-        },
-        {
-          "nombre": "Lechuga",
-          "cantidad": "107.6g, romana",
-          "kcal": 15.06,
-          "proteinas": 0.97,
-          "carbos": 3.12,
-          "grasas": 0.11
-        },
-        {
-          "nombre": "Queso parmesano light",
-          "cantidad": "27g, rallado",
-          "kcal": 86.08,
-          "proteinas": 8.61,
-          "carbos": 0.27,
-          "grasas": 5.65
-        },
-        {
-          "nombre": "Yogur griego 0%",
-          "cantidad": "125.5g",
-          "kcal": 73.35,
-          "proteinas": 7.33,
-          "carbos": 5.33,
-          "grasas": 2.51
-        },
-        {
-          "nombre": "Mostaza",
-          "cantidad": "9g",
-          "kcal": 5.92,
-          "proteinas": 0.39,
-          "carbos": 0.48,
-          "grasas": 0.38
-        },
-        {
-          "nombre": "Limon",
-          "cantidad": "1.6 unidad, en zumo (27g)",
-          "kcal": 7.71,
-          "proteinas": 0.3,
-          "carbos": 2.51,
-          "grasas": 0.07
-        },
-        {
-          "nombre": "Ajo en polvo",
-          "cantidad": "1.6 cucharadita (1.8g)",
-          "kcal": 5.92,
-          "proteinas": 0.3,
-          "carbos": 1.31,
-          "grasas": 0.02
-        },
-        {
-          "nombre": "Aceite",
-          "cantidad": "4ml",
-          "kcal": 32.8,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 3.64
-        },
-        {
-          "nombre": "Pimienta negra molida",
-          "cantidad": "al gusto (1.8g)",
-          "kcal": 4.48,
-          "proteinas": 0.18,
-          "carbos": 1.15,
-          "grasas": 0.05
-        },
-        {
-          "nombre": "Sal",
-          "cantidad": "al gusto (1g)",
-          "kcal": 0,
-          "proteinas": 0,
-          "carbos": 0,
-          "grasas": 0
-        }
-      ],
-      "pasos": [
-        "Cocina el pollo en una sartén con el aceite, el ajo en polvo, la sal y la pimienta durante 8 minutos.",
-        "Mezcla el yogur griego, la mostaza, el zumo de limón y el ajo en polvo para hacer una salsa César ligera.",
-        "Calienta la tortilla.",
-        "Añade la lechuga, el pollo, el parmesano rallado y la salsa sobre la tortilla.",
-        "Enrolla el wrap y dóralo 1 minuto por cada lado en la sartén para que quede crujiente."
-      ]
-    },
-    {
       "id": "r1783885550751p229",
       "nombre": "Pasta cremosa de pollo al limón",
       "tipo": "comida",
       "tiempo": "25",
       "descripcion": "",
-      "kcal": 550.0,
+      "kcal": 550,
       "proteinas": 42.5,
       "carbos": 91.8,
       "grasas": 13.1,
@@ -5855,31 +3095,31 @@
           "nombre": "Espagueti (garofalo)",
           "cantidad": "99.9g",
           "kcal": 250.8,
-          "proteinas": 14.0,
-          "carbos": 70.0,
-          "grasas": 1.0
+          "proteinas": 14,
+          "carbos": 70,
+          "grasas": 1
         },
         {
           "nombre": "Pechuga de pollo",
           "cantidad": "67g",
           "kcal": 73.7,
           "proteinas": 15.4,
-          "carbos": 0.0,
+          "carbos": 0,
           "grasas": 0.8
         },
         {
           "nombre": "Queso fresco batido 0%",
           "cantidad": "37.2g",
           "kcal": 16.8,
-          "proteinas": 3.0,
+          "proteinas": 3,
           "carbos": 1.5,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Cebolla (congelada)",
           "cantidad": "85.7g",
           "kcal": 32.5,
-          "proteinas": 1.0,
+          "proteinas": 1,
           "carbos": 7.4,
           "grasas": 0.3
         },
@@ -5911,8 +3151,8 @@
           "nombre": "Aceite",
           "cantidad": "6.8ml",
           "kcal": 55.9,
-          "proteinas": 0.0,
-          "carbos": 0.0,
+          "proteinas": 0,
+          "carbos": 0,
           "grasas": 6.2
         },
         {
@@ -5920,7 +3160,7 @@
           "cantidad": "1.4cucharadita (4.6g)",
           "kcal": 7.6,
           "proteinas": 0.3,
-          "carbos": 2.0,
+          "carbos": 2,
           "grasas": 0.1
         },
         {
@@ -5929,7 +3169,7 @@
           "kcal": 9.4,
           "proteinas": 0.5,
           "carbos": 2.1,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Pimienta negra molida",
@@ -5937,15 +3177,15 @@
           "kcal": 3.6,
           "proteinas": 0.1,
           "carbos": 0.9,
-          "grasas": 0.0
+          "grasas": 0
         },
         {
           "nombre": "Sal",
           "cantidad": "al gusto (1g)",
-          "kcal": 0.0,
-          "proteinas": 0.0,
-          "carbos": 0.0,
-          "grasas": 0.0
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
         },
         {
           "nombre": "Perejil fresco",
@@ -5953,7 +3193,7 @@
           "kcal": 1.6,
           "proteinas": 0.1,
           "carbos": 0.3,
-          "grasas": 0.0
+          "grasas": 0
         }
       ],
       "pasos": [
@@ -5967,31 +3207,197 @@
       ]
     },
     {
-      "id": "r1783935397964sm5p",
-      "nombre": "Solomillo de cerdo",
-      "tipo": "cena",
+      "id": "r1791369662815ap4f",
+      "nombre": "Espagueti con tomate y pollo",
+      "tipo": "comida",
       "tiempo": "",
       "descripcion": "",
-      "kcal": 369,
-      "proteinas": 59.4,
-      "carbos": 7.8,
-      "grasas": 11.4,
+      "kcal": 426,
+      "proteinas": 46.3,
+      "carbos": 60.3,
+      "grasas": 7.4,
       "ingredientes": [
         {
-          "nombre": "Solomillo de cerdo",
-          "cantidad": "300g",
-          "kcal": 312,
-          "proteinas": 58.5,
-          "carbos": 4.5,
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.6
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "150g",
+          "kcal": 165,
+          "proteinas": 34.5,
+          "carbos": 0,
+          "grasas": 1.8
+        },
+        {
+          "nombre": "Espagueti (garofalo)",
+          "cantidad": "80g",
+          "kcal": 200.8,
+          "proteinas": 11.2,
+          "carbos": 56,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "50g",
+          "kcal": 19,
+          "proteinas": 0.6,
+          "carbos": 4.3,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Tomate natural",
+          "cantidad": "00g",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": []
+    },
+    {
+      "id": "r1791371636762l3s5",
+      "nombre": "Baos de carne picada",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "raciones": 1,
+      "kcal": 494,
+      "proteinas": 26.8,
+      "carbos": 72.6,
+      "grasas": 10.9,
+      "ingredientes": [
+        {
+          "nombre": "Baos",
+          "cantidad": "100g",
+          "kcal": 285,
+          "proteinas": 6,
+          "carbos": 60,
+          "grasas": 2.1
+        },
+        {
+          "nombre": "Carne Picada Pollo",
+          "cantidad": "100g",
+          "kcal": 132,
+          "proteinas": 18,
+          "carbos": 0.5,
           "grasas": 6.6
         },
         {
-          "nombre": "Lechuga",
-          "cantidad": "60g",
-          "kcal": 8.4,
-          "proteinas": 0.5,
-          "carbos": 1.7,
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "50g",
+          "kcal": 19,
+          "proteinas": 0.6,
+          "carbos": 4.3,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Soja",
+          "cantidad": "10ml",
+          "kcal": 7.7,
+          "proteinas": 1,
+          "carbos": 0.3,
+          "grasas": 0
+        },
+        {
+          "nombre": "Col",
+          "cantidad": "50g",
+          "kcal": 12,
+          "proteinas": 0.7,
+          "carbos": 2.3,
           "grasas": 0.1
+        },
+        {
+          "nombre": "Salsa de ostras",
+          "cantidad": "5",
+          "kcal": 5.7,
+          "proteinas": 0.1,
+          "carbos": 1.4,
+          "grasas": 0
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "40g",
+          "kcal": 16.4,
+          "proteinas": 0.4,
+          "carbos": 3.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Jenjibre",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "2 ml",
+          "kcal": 16.4,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 1.8
+        }
+      ],
+      "pasos": [
+        "Pica muy finamente la cebolla, col, zanahoria y ajo.",
+        "Cocina las verduras y cocina hasta que estén blanditas con 2 g de aceite de sésamo.",
+        "Añade a carne en una sartén antiadherente",
+        "Incorpora la soja, salsa de ostras, jengibre y pimienta.",
+        "Cocina unos minutos más hasta que el relleno quede bastante seco.",
+        "Cocina los baos al vapor siguiendo las instrucciones del paquete.",
+        "Ábrelos y rellénalos con la mezcla."
+      ]
+    },
+    {
+      "id": "r1793622536217hi9d",
+      "nombre": "Pollo con salsa de miel, ajo y limón",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "raciones": 1,
+      "kcal": 475,
+      "proteinas": 44.2,
+      "carbos": 55.7,
+      "grasas": 7.3,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "170g",
+          "kcal": 187,
+          "proteinas": 39.1,
+          "carbos": 0,
+          "grasas": 2
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "200g",
+          "kcal": 170,
+          "proteinas": 4,
+          "carbos": 36,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Miel",
+          "cantidad": "10g",
+          "kcal": 30.4,
+          "proteinas": 0,
+          "carbos": 8.2,
+          "grasas": 0
         },
         {
           "nombre": "Aceite",
@@ -6002,15 +3408,486 @@
           "grasas": 4.6
         },
         {
-          "nombre": "Tomates cherry",
-          "cantidad": "40g",
-          "kcal": 7.2,
-          "proteinas": 0.4,
-          "carbos": 1.6,
+          "nombre": "Limon",
+          "cantidad": "20g",
+          "kcal": 5.8,
+          "proteinas": 0.2,
+          "carbos": 1.9,
           "grasas": 0.1
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "100g",
+          "kcal": 41,
+          "proteinas": 0.9,
+          "carbos": 9.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Pimentón dulce",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pìmienta",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
         }
       ],
-      "pasos": []
+      "pasos": [
+        "Pela las patatas y las zanahorias y córtalas en trozos pequeños.",
+        "Ponlas en una bandeja con un poco de aceite, sal y pimentón.",
+        "Hornea a 200 °C durante unos 30-35 minutos, removiendo a mitad de cocción.",
+        "Mientras tanto, corta el pollo en dados y salpimiéntalo.",
+        "Dora el pollo en una sartén con el aceite.",
+        "Añade el ajo picado y cocina unos segundos.",
+        "Incorpora la miel, un chorrito de limón y dos cucharadas de agua.",
+        "Remueve a fuego medio hasta que se forme una salsa que cubra el pollo.",
+        "Sirve junto con las patatas y zanahorias."
+      ]
+    },
+    {
+      "id": "r179362265711953hx",
+      "nombre": "Pollo teriyaki con arroz y brócoli",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "raciones": 1,
+      "kcal": 507,
+      "proteinas": 46.1,
+      "carbos": 62.3,
+      "grasas": 7.6,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "160g",
+          "kcal": 176,
+          "proteinas": 36.8,
+          "carbos": 0,
+          "grasas": 1.9
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "60 g",
+          "kcal": 209.4,
+          "proteinas": 4.8,
+          "carbos": 45.6,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Brocoli (congelado)",
+          "cantidad": "100g",
+          "kcal": 34,
+          "proteinas": 2.8,
+          "carbos": 7,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Soja",
+          "cantidad": "15ml",
+          "kcal": 11.5,
+          "proteinas": 1.5,
+          "carbos": 0.5,
+          "grasas": 0
+        },
+        {
+          "nombre": "Miel",
+          "cantidad": "10g",
+          "kcal": 30.4,
+          "proteinas": 0,
+          "carbos": 8.2,
+          "grasas": 0
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1,
+          "grasas": 0
+        },
+        {
+          "nombre": "Jenjibre",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Semillas de sésamo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.6
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz siguiendo las instrucciones del paquete.",
+        "Corta el brócoli en ramilletes pequeños y cuécelo durante 4-5 minutos o hazlo al vapor.",
+        "Corta el pollo en dados.",
+        "Dóralo en una sartén antiadherente.",
+        "Mezcla en un recipiente la soja, la miel, el ajo picado, el jengibre y dos cucharadas de agua.",
+        "Vierte la mezcla sobre el pollo.",
+        "Cocina a fuego medio durante unos minutos hasta que la salsa espese ligeramente y el pollo esté completamente hecho.",
+        "Sirve con el arroz y el brócoli. Añade el sésamo por encima."
+      ]
+    },
+    {
+      "id": "r1793622982124sryj",
+      "nombre": "Pollo cremoso con tomate, mozzarella y pasta",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "raciones": 1,
+      "kcal": 512,
+      "proteinas": 56.6,
+      "carbos": 48.3,
+      "grasas": 15.8,
+      "ingredientes": [
+        {
+          "nombre": "Aceite",
+          "cantidad": "5 ml",
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.6
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "160g",
+          "kcal": 176,
+          "proteinas": 36.8,
+          "carbos": 0,
+          "grasas": 1.9
+        },
+        {
+          "nombre": "Tomate natural",
+          "cantidad": "150g",
+          "kcal": 27,
+          "proteinas": 1.4,
+          "carbos": 5.9,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Mozzarella",
+          "cantidad": "40g",
+          "kcal": 117.2,
+          "proteinas": 10,
+          "carbos": 0.4,
+          "grasas": 8.4
+        },
+        {
+          "nombre": "Espagueti (garofalo)",
+          "cantidad": "60g",
+          "kcal": 150.6,
+          "proteinas": 8.4,
+          "carbos": 42,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Orégano",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Albahaca",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Pon agua a hervir con sal y cuece la pasta siguiendo las instrucciones del paquete.",
+        "Corta el pollo en dados o tiras y salpimiéntalo.",
+        "Calienta el aceite en una sartén y dora el pollo hasta que esté completamente cocinado. Retíralo y resérvalo.",
+        "En la misma sartén, añade el ajo picado y cocina unos segundos.",
+        "Incorpora el tomate triturado, el orégano y la albahaca.",
+        "Cocina la salsa durante unos 8 minutos a fuego medio.",
+        "Añade el pollo y mezcla bien.",
+        "Incorpora la mozzarella en trocitos y el parmesano.",
+        "Remueve hasta que la mozzarella se funda y quede una salsa cremosa.",
+        "Añade la pasta escurrida, mezcla todo y sirve."
+      ]
+    },
+    {
+      "id": "r1793623137144y1kq",
+      "nombre": "Pollo tikka masala",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "raciones": 1,
+      "kcal": 556,
+      "proteinas": 43.5,
+      "carbos": 52.7,
+      "grasas": 18.1,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "160g",
+          "kcal": 176,
+          "proteinas": 36.8,
+          "carbos": 0,
+          "grasas": 1.9
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "55 g",
+          "kcal": 192,
+          "proteinas": 4.4,
+          "carbos": 41.8,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Tomate natural",
+          "cantidad": "100g",
+          "kcal": 18,
+          "proteinas": 0.9,
+          "carbos": 3.9,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Creme de coco (carrefour)",
+          "cantidad": "50ml",
+          "kcal": 105,
+          "proteinas": 0.6,
+          "carbos": 1.7,
+          "grasas": 10.5
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "50g",
+          "kcal": 19,
+          "proteinas": 0.6,
+          "carbos": 4.3,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5 ml",
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.6
+        },
+        {
+          "nombre": "Jenjibre",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Curry",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Comino",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Cúrcuma",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimentón dulce",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz basmati siguiendo las instrucciones del paquete.",
+        "Corta el pollo en dados y mézclalo con curry, comino, cúrcuma, pimentón y una pizca de sal.",
+        "Calienta el aceite en una sartén y dora el pollo. Retíralo y resérvalo.",
+        "En la misma sartén, cocina la cebolla picada durante unos 5 minutos.",
+        "Añade el ajo y el jengibre y remueve durante unos segundos.",
+        "Incorpora el tomate triturado y cocina durante 5-7 minutos.",
+        "Añade la leche de coco y mezcla bien.",
+        "Devuelve el pollo a la sartén.",
+        "Cocina a fuego medio-bajo durante unos 8-10 minutos, hasta que el pollo esté completamente hecho y la salsa haya espesado.",
+        "Sirve acompañado del arroz."
+      ]
+    },
+    {
+      "id": "r1793623455925g45j",
+      "nombre": "Pollo cremoso al coco y lima con arroz",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "",
+      "raciones": 1,
+      "kcal": 586,
+      "proteinas": 42.7,
+      "carbos": 46.8,
+      "grasas": 24.1,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "160g",
+          "kcal": 176,
+          "proteinas": 36.8,
+          "carbos": 0,
+          "grasas": 1.9
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "50 g",
+          "kcal": 174.5,
+          "proteinas": 4,
+          "carbos": 38,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Creme de coco (carrefour)",
+          "cantidad": "80ml",
+          "kcal": 168,
+          "proteinas": 1,
+          "carbos": 2.6,
+          "grasas": 16.8
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "50g",
+          "kcal": 19,
+          "proteinas": 0.6,
+          "carbos": 4.3,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1,
+          "grasas": 0
+        },
+        {
+          "nombre": "Limon",
+          "cantidad": "10g",
+          "kcal": 2.9,
+          "proteinas": 0.1,
+          "carbos": 0.9,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5 ml",
+          "kcal": 41,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.6
+        },
+        {
+          "nombre": "Curry",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Jenjibre",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Corta el pollo en dados y salpimiéntalo.",
+        "Calienta el aceite en una sartén y dora el pollo. Retíralo y resérvalo.",
+        "En la misma sartén, añade la cebolla picada y cocina durante 4-5 minutos.",
+        "Incorpora el ajo, el jengibre y el curry. Remueve unos segundos.",
+        "Añade la leche de coco y el zumo de lima.",
+        "Remueve y deja cocinar a fuego suave durante 3 minutos.",
+        "Incorpora de nuevo el pollo y cocina durante unos 8-10 minutos, hasta que esté completamente hecho y la salsa haya espesado.",
+        "Cuece el arroz basmati aparte.",
+        "Sirve el pollo con su salsa de coco acompañado del arroz."
+      ]
     }
   ],
   "menu": {
@@ -6059,17 +3936,17 @@
     "semana1": {
       "lunes": {
         "desayuno": "r1783416344197uysz",
-        "comida": "r1783434983179e45o",
+        "comida": null,
         "postre_comida": null,
-        "cena": "r17838840145108fmu",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "martes": {
         "desayuno": "r178342655835041jb",
-        "comida": "r1783435262105q5wg",
+        "comida": null,
         "postre_comida": null,
-        "cena": "r17838851217723onh",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
@@ -6077,39 +3954,39 @@
         "desayuno": "r1783426608931zhkv",
         "comida": "r1783883110495gnwl",
         "postre_comida": null,
-        "cena": "r1783885121773tytv",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "jueves": {
-        "desayuno": "r1783427391045k33n",
+        "desayuno": null,
         "comida": "r1783883110495j33o",
         "postre_comida": null,
-        "cena": "r178388401451028w9",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "viernes": {
-        "desayuno": "r1783427712306hxkz",
-        "comida": "r1783883635127kkck",
+        "desayuno": null,
+        "comida": null,
         "postre_comida": null,
-        "cena": "r1783884014510rc4a",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "sabado": {
         "desayuno": "r1783426503814knhn",
-        "comida": "r17838833525461nqx",
+        "comida": null,
         "postre_comida": null,
-        "cena": "r1783884014510av7e",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "domingo": {
-        "desayuno": "r1783433696400z1v7",
-        "comida": "r1783883352546admk",
+        "desayuno": null,
+        "comida": null,
         "postre_comida": null,
-        "cena": "r1783884769789muq1",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       }
@@ -6119,23 +3996,23 @@
         "desayuno": "r1783426608931zhkv",
         "comida": "r1783436456557ulxz",
         "postre_comida": null,
-        "cena": "r1783884769793tf13",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "martes": {
         "desayuno": "r178342655835041jb",
-        "comida": "r1783436820322xfra",
+        "comida": null,
         "postre_comida": null,
         "cena": "r1783885404412btg3",
         "postre_cena": null,
         "snack": null
       },
       "miercoles": {
-        "desayuno": "r1783427391045k33n",
+        "desayuno": null,
         "comida": "r1783883110495h01e",
         "postre_comida": null,
-        "cena": "r1783884014505hqfu",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
@@ -6143,7 +4020,7 @@
         "desayuno": "r1783416344197uysz",
         "comida": "r1783883110495zyrx",
         "postre_comida": null,
-        "cena": "r17838840145107cmi",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
@@ -6159,7 +4036,7 @@
         "desayuno": "r1783426503814knhn",
         "comida": "r1783885550751p229",
         "postre_comida": null,
-        "cena": "r17838847697942cy0",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
@@ -6174,10 +4051,10 @@
     },
     "semana3": {
       "lunes": {
-        "desayuno": "r1783427712306hxkz",
+        "desayuno": null,
         "comida": "r17838836351278djt",
         "postre_comida": null,
-        "cena": "r1783884769787d39g",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
@@ -6185,7 +4062,7 @@
         "desayuno": "r1783426608931zhkv",
         "comida": "r17834360145643n7k",
         "postre_comida": null,
-        "cena": "r1783885121774b6l9",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
@@ -6193,23 +4070,23 @@
         "desayuno": "r1783416344197uysz",
         "comida": "r1783883635127tyfc",
         "postre_comida": null,
-        "cena": "r1783885121775ggm2",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "jueves": {
         "desayuno": "r178342655835041jb",
-        "comida": "r1783883110495xbhd",
+        "comida": null,
         "postre_comida": null,
         "cena": "r1783885404414tnfe",
         "postre_cena": null,
         "snack": null
       },
       "viernes": {
-        "desayuno": "r1783433696400z1v7",
-        "comida": "r1783883635127th9x",
+        "desayuno": null,
+        "comida": null,
         "postre_comida": null,
-        "cena": "r1783884014510myfp",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
@@ -6222,68 +4099,68 @@
         "snack": null
       },
       "domingo": {
-        "desayuno": "r1783427391045k33n",
+        "desayuno": null,
         "comida": "r1783883110495aszl",
         "postre_comida": null,
-        "cena": "r1783884769790vzp9",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       }
     },
     "semana4": {
       "lunes": {
-        "desayuno": "r1783427712306hxkz",
-        "comida": "r1783883635127fma1",
+        "desayuno": "r178342655835041jb",
+        "comida": "r1793622536217hi9d",
         "postre_comida": null,
-        "cena": "r1783935397964sm5p",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "martes": {
-        "desayuno": "r1783427391045k33n",
-        "comida": "r17838836351277k1s",
+        "desayuno": "r178342655835041jb",
+        "comida": "r179362265711953hx",
         "postre_comida": null,
-        "cena": "r1783884769795lrvw",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "miercoles": {
-        "desayuno": "r1783426608931zhkv",
-        "comida": "r1783435512891cs49",
+        "desayuno": "r178342655835041jb",
+        "comida": "r1793622982124sryj",
         "postre_comida": null,
         "cena": "r1783884769799x3sm",
         "postre_cena": null,
         "snack": null
       },
       "jueves": {
-        "desayuno": "r1783433696400z1v7",
-        "comida": "r1783883352546t09h",
+        "desayuno": "r178342655835041jb",
+        "comida": "r1793623455925g45j",
         "postre_comida": null,
-        "cena": "r1783885121771ebo1",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "viernes": {
-        "desayuno": "r1783416344197uysz",
-        "comida": "r1783883635127104s",
+        "desayuno": "r178342655835041jb",
+        "comida": "r1793623137144y1kq",
         "postre_comida": null,
         "cena": "r1783435415938z5ky",
         "postre_cena": null,
         "snack": null
       },
       "sabado": {
-        "desayuno": "r178342655835041jb",
+        "desayuno": "r1783426503814knhn",
         "comida": "r1783883635127bre6",
         "postre_comida": null,
-        "cena": "r1783884769796o3y3",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       },
       "domingo": {
-        "desayuno": "r1783426503814knhn",
+        "desayuno": "r178342655835041jb",
         "comida": "r1783883110495yz0j",
         "postre_comida": null,
-        "cena": "r1783885404415n7ll",
+        "cena": null,
         "postre_cena": null,
         "snack": null
       }

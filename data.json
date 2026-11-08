@@ -643,9 +643,9 @@
       "id": "i1783427557217cybs",
       "nombre": "Manzana",
       "unidad": "100g",
-      "kcal": 53,
+      "kcal": 52,
       "proteinas": 0.3,
-      "carbos": 0,
+      "carbos": 13.8,
       "grasas": 0.2
     },
     {
@@ -1008,6 +1008,123 @@
       "proteinas": 1.2,
       "carbos": 3.3,
       "grasas": 21
+    },
+    {
+      "id": "i1794170559917ov88",
+      "nombre": "Carne picada magra de ternera",
+      "unidad": "100g",
+      "kcal": 132,
+      "proteinas": 20.5,
+      "carbos": 0,
+      "grasas": 5.5
+    },
+    {
+      "id": "i1794170559917dupw",
+      "nombre": "Naranja",
+      "unidad": "100g",
+      "kcal": 47,
+      "proteinas": 0.9,
+      "carbos": 11.8,
+      "grasas": 0.1
+    },
+    {
+      "id": "i1794170559917qqbx",
+      "nombre": "Leche de coco light",
+      "unidad": "100ml",
+      "kcal": 73,
+      "proteinas": 0.6,
+      "carbos": 2,
+      "grasas": 7
+    },
+    {
+      "id": "i1794170559917ypel",
+      "nombre": "Jengibre molido",
+      "unidad": "100g",
+      "kcal": 335,
+      "proteinas": 9,
+      "carbos": 72,
+      "grasas": 4.2
+    },
+    {
+      "id": "i1794170559917jy1a",
+      "nombre": "Canela molida",
+      "unidad": "100g",
+      "kcal": 247,
+      "proteinas": 4,
+      "carbos": 80.6,
+      "grasas": 1.2
+    },
+    {
+      "id": "i1794170559917ggoa",
+      "nombre": "Tomillo seco",
+      "unidad": "100g",
+      "kcal": 276,
+      "proteinas": 9.1,
+      "carbos": 63.9,
+      "grasas": 7.4
+    },
+    {
+      "id": "i1794170559917ci8e",
+      "nombre": "Laurel seco",
+      "unidad": "100g",
+      "kcal": 313,
+      "proteinas": 7.6,
+      "carbos": 75,
+      "grasas": 8.4
+    },
+    {
+      "id": "i1794170559918yufq",
+      "nombre": "Vino tinto",
+      "unidad": "100ml",
+      "kcal": 77,
+      "proteinas": 0.1,
+      "carbos": 2.6,
+      "grasas": 0
+    },
+    {
+      "id": "i1794170731231zb28",
+      "nombre": "Nata ligera para cocinar",
+      "unidad": "100ml",
+      "kcal": 90,
+      "proteinas": 3,
+      "carbos": 4,
+      "grasas": 7
+    },
+    {
+      "id": "i1794170731231qqb7",
+      "nombre": "Sidra",
+      "unidad": "100ml",
+      "kcal": 36,
+      "proteinas": 0,
+      "carbos": 2.5,
+      "grasas": 0
+    },
+    {
+      "id": "i1794170731231n1pu",
+      "nombre": "Maíz cocido (bote)",
+      "unidad": "100g",
+      "kcal": 80,
+      "proteinas": 2.6,
+      "carbos": 14.5,
+      "grasas": 1.3
+    },
+    {
+      "id": "i1794170731231dfrd",
+      "nombre": "Vinagre balsámico",
+      "unidad": "100ml",
+      "kcal": 88,
+      "proteinas": 0.5,
+      "carbos": 17,
+      "grasas": 0
+    },
+    {
+      "id": "i1794170731231wvx3",
+      "nombre": "Semillas de sésamo",
+      "unidad": "100g",
+      "kcal": 573,
+      "proteinas": 17.7,
+      "carbos": 23.4,
+      "grasas": 49.7
     }
   ],
   "recetas": [
@@ -3927,6 +4044,1482 @@
         }
       ],
       "pasos": []
+    },
+    {
+      "id": "r1794170559918bv4s",
+      "nombre": "Pollo al ajillo con limón y arroz",
+      "tipo": "comida",
+      "tiempo": "25",
+      "descripcion": "Congelable. Receta para 1 ración.",
+      "raciones": 1,
+      "kcal": 429.1,
+      "proteinas": 41.9,
+      "carbos": 46.9,
+      "grasas": 7.2,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "160g",
+          "kcal": 176.0,
+          "proteinas": 36.8,
+          "carbos": 0.0,
+          "grasas": 1.9
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "55g",
+          "kcal": 192.0,
+          "proteinas": 4.4,
+          "carbos": 41.8,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "6g",
+          "kcal": 8.9,
+          "proteinas": 0.4,
+          "carbos": 2.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Limon (zumo de medio limón)",
+          "cantidad": "30g",
+          "kcal": 8.7,
+          "proteinas": 0.3,
+          "carbos": 2.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Caldo pollo",
+          "cantidad": "50ml",
+          "kcal": 2.5,
+          "proteinas": 0.0,
+          "carbos": 0.3,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Perejil fresco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz y resérvalo.",
+        "Corta el pollo en dados y salpimiéntalo.",
+        "Dora el pollo en una sartén con el aceite.",
+        "Añade los ajos picados y cocina durante unos segundos.",
+        "Incorpora el zumo de limón y el caldo.",
+        "Añade perejil y deja cocinar a fuego medio unos 8 minutos, hasta que el pollo esté hecho y la salsa haya reducido.",
+        "Reparte el pollo con su salsa y el arroz en el táper."
+      ]
+    },
+    {
+      "id": "r1794170559918o07f",
+      "nombre": "Pastel de carne picada con puré de patata",
+      "tipo": "comida",
+      "tiempo": "60",
+      "descripcion": "Congelable. Receta para 1 ración.",
+      "raciones": 1,
+      "kcal": 520.0,
+      "proteinas": 40.5,
+      "carbos": 53.1,
+      "grasas": 15.3,
+      "ingredientes": [
+        {
+          "nombre": "Carne picada magra de ternera",
+          "cantidad": "150g",
+          "kcal": 198.0,
+          "proteinas": 30.8,
+          "carbos": 0.0,
+          "grasas": 8.2
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "200g",
+          "kcal": 170.0,
+          "proteinas": 4.0,
+          "carbos": 36.0,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "60g",
+          "kcal": 24.6,
+          "proteinas": 0.5,
+          "carbos": 5.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "50g",
+          "kcal": 19.0,
+          "proteinas": 0.6,
+          "carbos": 4.3,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "100g",
+          "kcal": 27.0,
+          "proteinas": 1.0,
+          "carbos": 4.9,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "40ml",
+          "kcal": 18.4,
+          "proteinas": 1.2,
+          "carbos": 1.9,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Queso rallado light",
+          "cantidad": "10g",
+          "kcal": 22.0,
+          "proteinas": 2.4,
+          "carbos": 0.2,
+          "grasas": 1.4
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Oregano seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Pela las patatas, córtalas y cuécelas durante unos 15-20 minutos.",
+        "Mientras tanto, pica la cebolla y la zanahoria.",
+        "Sofríe ambas verduras con el aceite durante 5 minutos.",
+        "Añade la carne picada y cocina hasta que esté dorada.",
+        "Incorpora el tomate triturado, el orégano, la sal y la pimienta.",
+        "Cocina durante 8-10 minutos.",
+        "Escurre las patatas y machácalas con la leche hasta conseguir un puré.",
+        "Coloca la carne en un recipiente apto para horno y cúbrela con el puré.",
+        "Añade el queso rallado y gratina durante unos minutos."
+      ]
+    },
+    {
+      "id": "r17941705599181zne",
+      "nombre": "Ternera guisada con zanahoria y garbanzos",
+      "tipo": "comida",
+      "tiempo": "70",
+      "descripcion": "Congelable. Receta para 1 ración. El vino es opcional (sin él bajan unas 31 kcal).",
+      "raciones": 1,
+      "kcal": 460.3,
+      "proteinas": 40.9,
+      "carbos": 32.3,
+      "grasas": 13.6,
+      "ingredientes": [
+        {
+          "nombre": "Ternera magra",
+          "cantidad": "150g",
+          "kcal": 199.5,
+          "proteinas": 32.5,
+          "carbos": 0.0,
+          "grasas": 6.8
+        },
+        {
+          "nombre": "Garbanzos (bote)",
+          "cantidad": "100g",
+          "kcal": 95.0,
+          "proteinas": 5.4,
+          "carbos": 12.0,
+          "grasas": 2.0
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "100g",
+          "kcal": 41.0,
+          "proteinas": 0.9,
+          "carbos": 9.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "50g",
+          "kcal": 19.0,
+          "proteinas": 0.6,
+          "carbos": 4.3,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "100g",
+          "kcal": 27.0,
+          "proteinas": 1.0,
+          "carbos": 4.9,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Caldo cocido",
+          "cantidad": "100ml",
+          "kcal": 7.0,
+          "proteinas": 0.5,
+          "carbos": 0.5,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Vino tinto (opcional)",
+          "cantidad": "40ml",
+          "kcal": 30.8,
+          "proteinas": 0.0,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Laurel seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimentón dulce",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Corta la ternera en dados pequeños.",
+        "Calienta el aceite en una cazuela y dora la carne.",
+        "Añade la cebolla picada y la zanahoria en rodajas.",
+        "Cocina durante 5 minutos.",
+        "Incorpora el tomate triturado y el pimentón dulce.",
+        "Añade el vino, si lo utilizas, y deja que evapore durante un par de minutos.",
+        "Incorpora el caldo y el laurel.",
+        "Tapa y cocina a fuego lento durante 40-50 minutos, hasta que la carne esté tierna. Si utilizas olla rápida, tardarás bastante menos.",
+        "Añade los garbanzos escurridos y cocina otros 5-8 minutos."
+      ]
+    },
+    {
+      "id": "r1794170559918ul0j",
+      "nombre": "Lomo de cerdo a la naranja con boniato",
+      "tipo": "comida",
+      "tiempo": "40",
+      "descripcion": "Congelable. Receta para 1 ración.",
+      "raciones": 1,
+      "kcal": 513.1,
+      "proteinas": 38.0,
+      "carbos": 59.5,
+      "grasas": 13.6,
+      "ingredientes": [
+        {
+          "nombre": "Lomo de cerdo",
+          "cantidad": "160g",
+          "kcal": 217.6,
+          "proteinas": 32.8,
+          "carbos": 0.0,
+          "grasas": 8.6
+        },
+        {
+          "nombre": "Batata/Boniato",
+          "cantidad": "200g",
+          "kcal": 172.0,
+          "proteinas": 3.2,
+          "carbos": 40.0,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Naranja (zumo de 1 naranja)",
+          "cantidad": "100g",
+          "kcal": 47.0,
+          "proteinas": 0.9,
+          "carbos": 11.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Cebolla (congelada, ½ cebolla)",
+          "cantidad": "75g",
+          "kcal": 28.5,
+          "proteinas": 0.9,
+          "carbos": 6.4,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Caldo pollo",
+          "cantidad": "50ml",
+          "kcal": 2.5,
+          "proteinas": 0.0,
+          "carbos": 0.3,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Tomillo seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Pela el boniato y córtalo en dados.",
+        "Cuécelo durante unos 15-20 minutos, hasta que esté tierno. Puedes machacarlo después para hacer un puré.",
+        "Salpimienta el lomo y dóralo en una sartén con el aceite.",
+        "Retira la carne y añade la cebolla picada.",
+        "Cocina unos 5 minutos e incorpora el ajo.",
+        "Añade el zumo de naranja y el caldo.",
+        "Incorpora el tomillo y deja reducir la salsa durante unos 5 minutos.",
+        "Devuelve el lomo a la sartén y cocina hasta que esté completamente hecho.",
+        "Si quieres una salsa más fina, tritura la cebolla y el líquido.",
+        "Sirve con el boniato."
+      ]
+    },
+    {
+      "id": "r1794170559918hcvh",
+      "nombre": "Albóndigas de ternera en salsa de almendras",
+      "tipo": "comida",
+      "tiempo": "40",
+      "descripcion": "Congelable. Sin pan rallado ni huevo. Receta para 1 ración.",
+      "raciones": 1,
+      "kcal": 558.8,
+      "proteinas": 39.6,
+      "carbos": 54.0,
+      "grasas": 21.1,
+      "ingredientes": [
+        {
+          "nombre": "Carne picada magra de ternera",
+          "cantidad": "150g",
+          "kcal": 198.0,
+          "proteinas": 30.8,
+          "carbos": 0.0,
+          "grasas": 8.2
+        },
+        {
+          "nombre": "Almendra cruda",
+          "cantidad": "15g",
+          "kcal": 86.8,
+          "proteinas": 3.2,
+          "carbos": 3.2,
+          "grasas": 7.5
+        },
+        {
+          "nombre": "Cebolla (congelada, ½ cebolla)",
+          "cantidad": "75g",
+          "kcal": 28.5,
+          "proteinas": 0.9,
+          "carbos": 6.4,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Caldo pollo",
+          "cantidad": "100ml",
+          "kcal": 5.0,
+          "proteinas": 0.0,
+          "carbos": 0.6,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "50g",
+          "kcal": 20.5,
+          "proteinas": 0.5,
+          "carbos": 4.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "50g",
+          "kcal": 174.5,
+          "proteinas": 4.0,
+          "carbos": 38.0,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Perejil fresco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Mezcla la carne picada con perejil, sal y pimienta.",
+        "Forma pequeñas albóndigas. No necesitas añadir pan rallado ni huevo.",
+        "Dóralas en una sartén con el aceite y resérvalas.",
+        "En la misma sartén, cocina la cebolla y la zanahoria picadas.",
+        "Añade el ajo y las almendras y tuesta durante 1-2 minutos.",
+        "Incorpora el caldo y cocina durante 3 minutos.",
+        "Tritura la salsa hasta que quede cremosa.",
+        "Devuelve las albóndigas a la sartén y cocina a fuego suave durante 12-15 minutos, hasta que estén completamente hechas.",
+        "Cuece el arroz aparte y acompaña las albóndigas."
+      ]
+    },
+    {
+      "id": "r1794170559918onjq",
+      "nombre": "Pollo satay con arroz",
+      "tipo": "comida",
+      "tiempo": "20",
+      "descripcion": "Mejor recién hecho. Salsa de cacahuete cremosa. Receta para 1 ración.",
+      "raciones": 1,
+      "kcal": 475.4,
+      "proteinas": 43.8,
+      "carbos": 46.8,
+      "grasas": 12.1,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "150g",
+          "kcal": 165.0,
+          "proteinas": 34.5,
+          "carbos": 0.0,
+          "grasas": 1.8
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "55g",
+          "kcal": 192.0,
+          "proteinas": 4.4,
+          "carbos": 41.8,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Crema de cacahuete",
+          "cantidad": "15g",
+          "kcal": 88.3,
+          "proteinas": 3.8,
+          "carbos": 3.0,
+          "grasas": 7.5
+        },
+        {
+          "nombre": "Leche de coco light",
+          "cantidad": "30ml",
+          "kcal": 21.9,
+          "proteinas": 0.2,
+          "carbos": 0.6,
+          "grasas": 2.1
+        },
+        {
+          "nombre": "Salsa de soja baja en sal",
+          "cantidad": "10ml",
+          "kcal": 5.3,
+          "proteinas": 0.8,
+          "carbos": 0.5,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Limón o lima (zumo)",
+          "cantidad": "10g",
+          "kcal": 2.9,
+          "proteinas": 0.1,
+          "carbos": 0.9,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Ajo en polvo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Jengibre molido",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz.",
+        "Corta el pollo en tiras y dóralo en una sartén.",
+        "Mezcla la crema de cacahuete, la leche de coco, la soja, el zumo de lima, el ajo y el jengibre.",
+        "Añade un poco de agua hasta conseguir una salsa fluida.",
+        "Vierte la salsa sobre el pollo.",
+        "Cocina a fuego bajo durante 3-4 minutos, removiendo para que no se pegue.",
+        "Sirve con el arroz."
+      ]
+    },
+    {
+      "id": "r17941705599187nsn",
+      "nombre": "Lomo con manzana y cebolla caramelizada",
+      "tipo": "comida",
+      "tiempo": "45",
+      "descripcion": "Mejor recién hecho. Receta para 1 ración.",
+      "raciones": 1,
+      "kcal": 478.5,
+      "proteinas": 37.1,
+      "carbos": 50.2,
+      "grasas": 13.8,
+      "ingredientes": [
+        {
+          "nombre": "Lomo de cerdo",
+          "cantidad": "160g",
+          "kcal": 217.6,
+          "proteinas": 32.8,
+          "carbos": 0.0,
+          "grasas": 8.6
+        },
+        {
+          "nombre": "Manzana (1 pequeña)",
+          "cantidad": "120g",
+          "kcal": 62.4,
+          "proteinas": 0.4,
+          "carbos": 16.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Cebolla (congelada, ½ cebolla)",
+          "cantidad": "75g",
+          "kcal": 28.5,
+          "proteinas": 0.9,
+          "carbos": 6.4,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "150g",
+          "kcal": 127.5,
+          "proteinas": 3.0,
+          "carbos": 27.0,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Caldo pollo",
+          "cantidad": "30ml",
+          "kcal": 1.5,
+          "proteinas": 0.0,
+          "carbos": 0.2,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Canela molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Pela las patatas, córtalas en gajos y hornéalas a 200 °C durante 25-30 minutos con parte del aceite.",
+        "Corta la cebolla en tiras finas y cocina a fuego lento con el resto del aceite durante unos 8 minutos.",
+        "Pela la manzana y córtala en dados.",
+        "Añádela a la cebolla junto con el caldo y una pizca de canela.",
+        "Cocina unos 8 minutos, hasta que la manzana esté blandita.",
+        "Salpimienta el lomo y cocínalo en otra sartén hasta que esté hecho.",
+        "Sirve el lomo con la salsa de manzana y las patatas."
+      ]
+    },
+    {
+      "id": "r1794170731232a0rl",
+      "nombre": "Pollo cremoso al limón con pasta",
+      "tipo": "comida",
+      "tiempo": "25",
+      "descripcion": "Congelable. Al recalentar, añade una cucharada de agua para recuperar la cremosidad.",
+      "raciones": 1,
+      "kcal": 497.8,
+      "proteinas": 52.9,
+      "carbos": 48.2,
+      "grasas": 9.2,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "160g",
+          "kcal": 176.0,
+          "proteinas": 36.8,
+          "carbos": 0.0,
+          "grasas": 1.9
+        },
+        {
+          "nombre": "Rigatoni (Garofalo) (pasta seca)",
+          "cantidad": "60g",
+          "kcal": 210.6,
+          "proteinas": 8.4,
+          "carbos": 42.0,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Queso fresco batido 0% (opcional)",
+          "cantidad": "50g",
+          "kcal": 22.5,
+          "proteinas": 4.0,
+          "carbos": 2.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Queso parmesano light",
+          "cantidad": "10g",
+          "kcal": 32.0,
+          "proteinas": 3.2,
+          "carbos": 0.1,
+          "grasas": 2.1
+        },
+        {
+          "nombre": "Limon (zumo de medio limón)",
+          "cantidad": "30g",
+          "kcal": 8.7,
+          "proteinas": 0.3,
+          "carbos": 2.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Caldo pollo",
+          "cantidad": "50ml",
+          "kcal": 2.5,
+          "proteinas": 0.0,
+          "carbos": 0.3,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Oregano seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece la pasta y reserva un poco del agua de cocción.",
+        "Corta el pollo en dados y salpimiéntalo.",
+        "Dora el pollo en una sartén con el aceite.",
+        "Añade el ajo picado y cocina unos segundos.",
+        "Incorpora el caldo y el zumo de limón.",
+        "Cocina unos 5 minutos, hasta que el pollo esté hecho.",
+        "Añade el queso fresco batido y el parmesano. Remueve a fuego suave.",
+        "Incorpora la pasta y mezcla. Si queda muy espesa, añade un poquito del agua de cocción."
+      ]
+    },
+    {
+      "id": "r1794170731232kw38",
+      "nombre": "Mini pastel de carne con tomate y patata",
+      "tipo": "comida",
+      "tiempo": "60",
+      "descripcion": "Congelable. Se congela la ración completa una vez enfriada; no necesita guarnición.",
+      "raciones": 1,
+      "kcal": 520.8,
+      "proteinas": 40.5,
+      "carbos": 53.7,
+      "grasas": 15.3,
+      "ingredientes": [
+        {
+          "nombre": "Carne picada magra de ternera",
+          "cantidad": "150g",
+          "kcal": 198.0,
+          "proteinas": 30.8,
+          "carbos": 0.0,
+          "grasas": 8.2
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "200g",
+          "kcal": 170.0,
+          "proteinas": 4.0,
+          "carbos": 36.0,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "100g",
+          "kcal": 27.0,
+          "proteinas": 1.0,
+          "carbos": 4.9,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Cebolla (congelada, ½ cebolla)",
+          "cantidad": "75g",
+          "kcal": 28.5,
+          "proteinas": 0.9,
+          "carbos": 6.4,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "50g",
+          "kcal": 20.5,
+          "proteinas": 0.5,
+          "carbos": 4.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "30ml",
+          "kcal": 13.8,
+          "proteinas": 0.9,
+          "carbos": 1.4,
+          "grasas": 0.5
+        },
+        {
+          "nombre": "Queso rallado light",
+          "cantidad": "10g",
+          "kcal": 22.0,
+          "proteinas": 2.4,
+          "carbos": 0.2,
+          "grasas": 1.4
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Oregano seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece las patatas hasta que estén tiernas.",
+        "Mientras, sofríe la cebolla y la zanahoria picadas con el aceite.",
+        "Añade la carne picada y cocina hasta que se dore.",
+        "Incorpora el tomate, el orégano y la pimienta.",
+        "Cocina la salsa durante 8-10 minutos.",
+        "Machaca las patatas con la leche hasta hacer un puré.",
+        "Coloca la carne en un recipiente apto para horno.",
+        "Cubre con el puré y añade el queso.",
+        "Gratina unos minutos hasta que se dore."
+      ]
+    },
+    {
+      "id": "r1794170731232uu46",
+      "nombre": "Ternera cremosa con arroz",
+      "tipo": "comida",
+      "tiempo": "30",
+      "descripcion": "Congelable. La salsa ayuda a que la carne no quede seca al recalentar.",
+      "raciones": 1,
+      "kcal": 563.8,
+      "proteinas": 42.6,
+      "carbos": 60.0,
+      "grasas": 16.3,
+      "ingredientes": [
+        {
+          "nombre": "Ternera magra (en tiras)",
+          "cantidad": "160g",
+          "kcal": 212.8,
+          "proteinas": 34.7,
+          "carbos": 0.0,
+          "grasas": 7.2
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "55g",
+          "kcal": 192.0,
+          "proteinas": 4.4,
+          "carbos": 41.8,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Cebolla (congelada, ½ cebolla)",
+          "cantidad": "75g",
+          "kcal": 28.5,
+          "proteinas": 0.9,
+          "carbos": 6.4,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "100g",
+          "kcal": 41.0,
+          "proteinas": 0.9,
+          "carbos": 9.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Nata ligera para cocinar",
+          "cantidad": "50ml",
+          "kcal": 45.0,
+          "proteinas": 1.5,
+          "carbos": 2.0,
+          "grasas": 3.5
+        },
+        {
+          "nombre": "Caldo cocido (caldo de carne)",
+          "cantidad": "50ml",
+          "kcal": 3.5,
+          "proteinas": 0.2,
+          "carbos": 0.2,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Ajo en polvo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz.",
+        "Corta la ternera en tiras finas.",
+        "Dora la carne con el aceite y retírala.",
+        "Añade la cebolla picada y la zanahoria en rodajas finas.",
+        "Cocina las verduras durante 5-7 minutos.",
+        "Incorpora el caldo y la nata ligera.",
+        "Añade la ternera y cocina a fuego suave hasta que esté hecha y la salsa haya espesado.",
+        "Sirve con el arroz."
+      ]
+    },
+    {
+      "id": "r1794170731232o57d",
+      "nombre": "Lomo de cerdo en salsa de manzana y sidra",
+      "tipo": "comida",
+      "tiempo": "45",
+      "descripcion": "Congelable. Las patatas se pueden congelar aparte para conservar mejor su textura.",
+      "raciones": 1,
+      "kcal": 506.5,
+      "proteinas": 37.1,
+      "carbos": 52.2,
+      "grasas": 13.8,
+      "ingredientes": [
+        {
+          "nombre": "Lomo de cerdo",
+          "cantidad": "160g",
+          "kcal": 217.6,
+          "proteinas": 32.8,
+          "carbos": 0.0,
+          "grasas": 8.6
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "150g",
+          "kcal": 127.5,
+          "proteinas": 3.0,
+          "carbos": 27.0,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Manzana (1 pequeña)",
+          "cantidad": "120g",
+          "kcal": 62.4,
+          "proteinas": 0.4,
+          "carbos": 16.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Cebolla (congelada, ½ cebolla)",
+          "cantidad": "75g",
+          "kcal": 28.5,
+          "proteinas": 0.9,
+          "carbos": 6.4,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Sidra",
+          "cantidad": "75ml",
+          "kcal": 27.0,
+          "proteinas": 0.0,
+          "carbos": 1.9,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Caldo pollo",
+          "cantidad": "50ml",
+          "kcal": 2.5,
+          "proteinas": 0.0,
+          "carbos": 0.3,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Tomillo seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Corta la patata en dados y hornéala con parte del aceite a 200 °C durante 25-30 minutos.",
+        "Salpimienta el lomo y dóralo en una sartén.",
+        "Retira la carne y añade la cebolla picada.",
+        "Cocina 5 minutos e incorpora la manzana en dados.",
+        "Añade la sidra y deja que reduzca unos minutos.",
+        "Incorpora el caldo y el tomillo.",
+        "Devuelve el lomo a la sartén y cocina hasta que esté completamente hecho.",
+        "Sirve con la salsa de manzana y las patatas."
+      ]
+    },
+    {
+      "id": "r1794170731232uauw",
+      "nombre": "Pollo mexicano gratinado con arroz",
+      "tipo": "comida",
+      "tiempo": "40",
+      "descripcion": "Congelable. Al recalentar, añade una cucharada de agua y tapa para que el arroz no se reseque.",
+      "raciones": 1,
+      "kcal": 553.0,
+      "proteinas": 51.2,
+      "carbos": 57.1,
+      "grasas": 12.1,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "160g",
+          "kcal": 176.0,
+          "proteinas": 36.8,
+          "carbos": 0.0,
+          "grasas": 1.9
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "50g",
+          "kcal": 174.5,
+          "proteinas": 4.0,
+          "carbos": 38.0,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "100g",
+          "kcal": 27.0,
+          "proteinas": 1.0,
+          "carbos": 4.9,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Maíz cocido (bote)",
+          "cantidad": "50g",
+          "kcal": 40.0,
+          "proteinas": 1.3,
+          "carbos": 7.2,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Queso rallado light",
+          "cantidad": "30g",
+          "kcal": 66.0,
+          "proteinas": 7.2,
+          "carbos": 0.6,
+          "grasas": 4.2
+        },
+        {
+          "nombre": "Cebolla (congelada, ½ cebolla)",
+          "cantidad": "75g",
+          "kcal": 28.5,
+          "proteinas": 0.9,
+          "carbos": 6.4,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Comino molido",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Ajo en polvo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimenton dulce",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz.",
+        "Corta el pollo en dados.",
+        "Sofríe la cebolla picada con el aceite.",
+        "Añade el pollo y dóralo.",
+        "Incorpora el tomate triturado, el maíz, el comino, el ajo y el pimentón.",
+        "Cocina durante 8-10 minutos, hasta que el pollo esté hecho.",
+        "Mezcla con el arroz.",
+        "Coloca todo en un recipiente apto para horno y añade el queso.",
+        "Gratina hasta que el queso se funda."
+      ]
+    },
+    {
+      "id": "r1794170731232r17q",
+      "nombre": "Ternera coreana con arroz",
+      "tipo": "comida",
+      "tiempo": "20",
+      "descripcion": "Mejor recién hecha.",
+      "raciones": 1,
+      "kcal": 533.5,
+      "proteinas": 39.7,
+      "carbos": 62.1,
+      "grasas": 13.7,
+      "ingredientes": [
+        {
+          "nombre": "Ternera magra (en tiras finas)",
+          "cantidad": "150g",
+          "kcal": 199.5,
+          "proteinas": 32.5,
+          "carbos": 0.0,
+          "grasas": 6.8
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "55g",
+          "kcal": 192.0,
+          "proteinas": 4.4,
+          "carbos": 41.8,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Salsa de soja baja en sal",
+          "cantidad": "15ml",
+          "kcal": 7.9,
+          "proteinas": 1.2,
+          "carbos": 0.8,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Miel",
+          "cantidad": "10g",
+          "kcal": 30.4,
+          "proteinas": 0.0,
+          "carbos": 8.2,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite (sésamo u oliva)",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "100g",
+          "kcal": 41.0,
+          "proteinas": 0.9,
+          "carbos": 9.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Semillas de sésamo",
+          "cantidad": "3g",
+          "kcal": 17.2,
+          "proteinas": 0.5,
+          "carbos": 0.7,
+          "grasas": 1.5
+        },
+        {
+          "nombre": "Jengibre molido",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz.",
+        "Mezcla la soja, la miel, el ajo y el jengibre.",
+        "Corta la ternera en tiras finas.",
+        "Calienta el aceite y saltea la carne a fuego fuerte.",
+        "Añade la salsa y remueve hasta que la ternera quede bien cubierta.",
+        "Cocina la zanahoria en tiras finas en la misma sartén.",
+        "Sirve la ternera con el arroz y la zanahoria.",
+        "Añade sésamo por encima."
+      ]
+    },
+    {
+      "id": "r1794170731232pz71",
+      "nombre": "Medallones de lomo con salsa balsámica y miel",
+      "tipo": "comida",
+      "tiempo": "45",
+      "descripcion": "Mejor recién hecho.",
+      "raciones": 1,
+      "kcal": 511.3,
+      "proteinas": 37.8,
+      "carbos": 55.8,
+      "grasas": 13.7,
+      "ingredientes": [
+        {
+          "nombre": "Lomo de cerdo",
+          "cantidad": "160g",
+          "kcal": 217.6,
+          "proteinas": 32.8,
+          "carbos": 0.0,
+          "grasas": 8.6
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "200g",
+          "kcal": 170.0,
+          "proteinas": 4.0,
+          "carbos": 36.0,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "100g",
+          "kcal": 41.0,
+          "proteinas": 0.9,
+          "carbos": 9.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Vinagre balsámico",
+          "cantidad": "10ml",
+          "kcal": 8.8,
+          "proteinas": 0.1,
+          "carbos": 1.7,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Miel",
+          "cantidad": "10g",
+          "kcal": 30.4,
+          "proteinas": 0.0,
+          "carbos": 8.2,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0.0,
+          "carbos": 0.0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Caldo pollo",
+          "cantidad": "50ml",
+          "kcal": 2.5,
+          "proteinas": 0.0,
+          "carbos": 0.3,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Tomillo seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Corta las patatas y las zanahorias en trozos.",
+        "Añade el aceite, la sal y el tomillo.",
+        "Hornea a 200 °C durante unos 30 minutos.",
+        "Corta el lomo en medallones y salpimiéntalos.",
+        "Dora la carne en una sartén.",
+        "Añade el balsámico, la miel y el caldo.",
+        "Cocina a fuego medio hasta que la salsa reduzca y el lomo esté hecho.",
+        "Sirve con las verduras asadas."
+      ]
     }
   ],
   "menu": {
@@ -3975,7 +5568,7 @@
     "semana1": {
       "lunes": {
         "desayuno": "r1783416344197uysz",
-        "comida": null,
+        "comida": "r1794170559918bv4s",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -3983,7 +5576,7 @@
       },
       "martes": {
         "desayuno": "r178342655835041jb",
-        "comida": null,
+        "comida": "r1794170559918o07f",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -3991,7 +5584,7 @@
       },
       "miercoles": {
         "desayuno": "r1783426608931zhkv",
-        "comida": "r1783883110495gnwl",
+        "comida": "r17941705599181zne",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -3999,7 +5592,7 @@
       },
       "jueves": {
         "desayuno": null,
-        "comida": "r1783883110495j33o",
+        "comida": "r1794170559918ul0j",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -4007,7 +5600,7 @@
       },
       "viernes": {
         "desayuno": null,
-        "comida": null,
+        "comida": "r1794170559918hcvh",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -4015,7 +5608,7 @@
       },
       "sabado": {
         "desayuno": "r1783426503814knhn",
-        "comida": null,
+        "comida": "r1794170559918onjq",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -4023,7 +5616,7 @@
       },
       "domingo": {
         "desayuno": null,
-        "comida": null,
+        "comida": "r17941705599187nsn",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -4033,7 +5626,7 @@
     "semana2": {
       "lunes": {
         "desayuno": "r1783426608931zhkv",
-        "comida": "r1783436456557ulxz",
+        "comida": "r1794170731232a0rl",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -4041,7 +5634,7 @@
       },
       "martes": {
         "desayuno": "r178342655835041jb",
-        "comida": null,
+        "comida": "r1794170731232kw38",
         "postre_comida": null,
         "cena": "r1783885404412btg3",
         "postre_cena": null,
@@ -4049,7 +5642,7 @@
       },
       "miercoles": {
         "desayuno": null,
-        "comida": "r1783883110495h01e",
+        "comida": "r1794170731232uu46",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -4057,7 +5650,7 @@
       },
       "jueves": {
         "desayuno": "r1783416344197uysz",
-        "comida": "r1783883110495zyrx",
+        "comida": "r1794170731232o57d",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -4065,7 +5658,7 @@
       },
       "viernes": {
         "desayuno": null,
-        "comida": "r1783883110495ejid",
+        "comida": "r1794170731232uauw",
         "postre_comida": null,
         "cena": "r17838847697983vhr",
         "postre_cena": null,
@@ -4073,7 +5666,7 @@
       },
       "sabado": {
         "desayuno": "r1783426503814knhn",
-        "comida": "r1783885550751p229",
+        "comida": "r1794170731232r17q",
         "postre_comida": null,
         "cena": null,
         "postre_cena": null,
@@ -4081,7 +5674,7 @@
       },
       "domingo": {
         "desayuno": null,
-        "comida": "r1783883635127zxpf",
+        "comida": "r1794170731232pz71",
         "postre_comida": null,
         "cena": "r1783885404413ylju",
         "postre_cena": null,

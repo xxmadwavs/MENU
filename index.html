@@ -704,6 +704,51 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .da-cta:hover{background:var(--green-light)}
 .da-cta:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 
+/* ── F1.4: comidas del día, peso y próximos planes ── */
+.dc-sum{font-size:.76rem;line-height:1.45;color:var(--ink-soft);margin-bottom:.65rem}
+.dc-sum b{color:var(--ink)}
+.dc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:.6rem}
+@media(min-width:760px){.dc-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dc-item{display:flex;align-items:flex-start;gap:.7rem;padding:.7rem .8rem;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--paper-raised)}
+.dc-item.dc-registro{border-color:var(--sage);border-left-width:4px}
+.dc-item.dc-plan{border-style:dashed;background:transparent}
+.dc-item.dc-vacio{border-style:dashed;background:transparent;opacity:.8}
+.dc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:.2rem}
+.dc-type{font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.dc-name{font-size:.9rem;font-weight:600;line-height:1.3;color:var(--ink);text-align:left;overflow-wrap:anywhere}
+button.dc-name{background:none;border:0;padding:0;font-family:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+button.dc-name:hover{text-decoration-color:var(--green)}
+.dc-name.is-empty{font-weight:500;color:var(--ink-soft)}
+.dc-macros{display:flex;flex-wrap:wrap;gap:.2rem .65rem;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft)}
+.dc-macros b{color:var(--ink)}
+.dc-badge{align-self:flex-start;display:inline-flex;padding:2px 8px;border-radius:20px;font-size:.62rem;font-weight:700}
+.dc-badge.is-plan{border:1px dashed var(--ink-soft);color:var(--ink-soft)}
+.dc-edit{flex-shrink:0;width:40px;height:40px;border:0;border-radius:50%;background:var(--green-light);color:var(--green);font-size:1rem;cursor:pointer}
+.dc-edit:hover{background:var(--green);color:#fff}
+.dc-name:focus-visible,.dc-edit:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.dc-note{margin-top:.6rem;font-size:.72rem;line-height:1.45;color:var(--ink-soft)}
+.dash-pw{display:flex;flex-direction:column;gap:.7rem}
+.pw-last{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap}
+.pw-val{font-family:'IBM Plex Mono',monospace;font-size:1.75rem;font-weight:700;line-height:1;color:var(--ink)}
+.pw-val small{font-size:.9rem;font-weight:600;color:var(--ink-soft)}
+.pw-when{font-size:.76rem;color:var(--ink-soft)}
+.pw-trend{display:flex;flex-direction:column;gap:.35rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.pw-tl{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.pw-tv{font-size:.88rem;font-weight:600;color:var(--ink)}
+.pw-tv .mono{font-family:'IBM Plex Mono',monospace}
+.pw-spark{display:block;width:100%;height:auto;max-height:64px}
+.pw-note{font-size:.72rem;line-height:1.45;color:var(--ink-soft)}
+.dash-pl{display:flex;flex-direction:column;gap:.7rem}
+.pl-day{display:flex;flex-direction:column;gap:.35rem}
+.pl-dl{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.pl-it{display:flex;align-items:center;gap:.6rem;font-size:.84rem}
+.pl-it .meal-icon{flex-shrink:0}
+.pl-it button{background:none;border:0;padding:0;font-family:inherit;font-size:inherit;font-weight:600;color:var(--ink);text-align:left;cursor:pointer;min-width:0;overflow-wrap:anywhere}
+.pl-it button:hover{text-decoration:underline}
+.pl-it button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.pl-k{margin-left:auto;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft)}
+.pl-entreno{padding-top:.7rem;border-top:1px solid var(--line)}
+
 /* Recetas: varias columnas cuando hay sitio (solo presentación) */
 @media(min-width:720px){
   .recipes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:.8rem}
@@ -843,19 +888,19 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
     </section>
     <section class="dash-card dash-comidas" id="dash-comidas" aria-labelledby="dash-comidas-t">
       <div class="dash-card-head"><h3 id="dash-comidas-t">Comidas del día</h3><button type="button" class="dash-link" onclick="showView('calendario')">Ver calendario</button></div>
-      <div class="dash-slot" id="dash-comidas-body">Aquí se mostrarán el desayuno, la comida, la cena y los snacks de hoy.</div>
+      <div class="dash-meals" id="dash-comidas-body"><p class="dash-loading">Cargando…</p></div>
     </section>
     <section class="dash-card dash-actividad" id="dash-actividad" aria-labelledby="dash-actividad-t">
       <div class="dash-card-head"><h3 id="dash-actividad-t">Actividad física</h3><button type="button" class="dash-link" onclick="dashVerDiario()">Ver diario</button></div>
       <div class="dash-act" id="dash-actividad-body"><p class="dash-loading">Cargando…</p></div>
     </section>
     <section class="dash-card dash-peso" id="dash-peso" aria-labelledby="dash-peso-t">
-      <div class="dash-card-head"><h3 id="dash-peso-t">Peso</h3><button type="button" class="dash-link" onclick="showView('diario')">Ver diario</button></div>
-      <div class="dash-slot" id="dash-peso-body">Aquí se mostrará tu último peso y su evolución.</div>
+      <div class="dash-card-head"><h3 id="dash-peso-t">Peso</h3><button type="button" class="dash-link" onclick="dashVerDiario()">Ver diario</button></div>
+      <div class="dash-pw" id="dash-peso-body"><p class="dash-loading">Cargando…</p></div>
     </section>
     <section class="dash-card dash-planes" id="dash-planes" aria-labelledby="dash-planes-t">
       <div class="dash-card-head"><h3 id="dash-planes-t">Próximos planes</h3><button type="button" class="dash-link" onclick="showView('calendario')">Ver calendario</button></div>
-      <div class="dash-slot" id="dash-planes-body">Aquí se mostrarán las próximas comidas planificadas.</div>
+      <div class="dash-pl" id="dash-planes-body"><p class="dash-loading">Cargando…</p></div>
     </section>
     <section class="dash-card dash-accesos" id="dash-accesos" aria-labelledby="dash-accesos-t">
       <div class="dash-card-head"><h3 id="dash-accesos-t">Accesos rápidos</h3></div>
@@ -2783,6 +2828,9 @@ function renderDashboard(){
   dashSet('dash-resumen-body',dashKcalHtml(f,dd));
   DASH_MACROS.forEach(m=>dashRenderMacro(m,dd,f));
   dashSet('dash-actividad-body',dashActividadHtml(f));
+  dashSet('dash-comidas-body',dashComidasHtml(f));
+  dashSet('dash-peso-body',dashPesoHtml(f));
+  dashSet('dash-planes-body',dashPlanesHtml());
 }
 
 // Totales del día (los calcula computeRealDia) + cuánto de ese total viene de registros reales.
@@ -2962,6 +3010,133 @@ function dashActividadHtml(f){
       <p class="da-note">Aquí solo se muestran: no se suman a las calorías consumidas ni cambian el balance del Diario.</p>
       <button type="button" class="da-cta" onclick="dashVerDiario()">${hayAlgo?'Ver o editar en el Diario':'Registrar en el Diario'}</button>
     </div>`;
+}
+
+/* ══════════ DASHBOARD · COMIDAS, PESO Y PRÓXIMOS PLANES (F1.4) ══════════
+   Solo lectura: menuDelDia/getR (menú efectivo), REGISTRO (registro real) y DIARIO (peso). No guarda nada ni cambia cálculos.
+   Planificado y registrado se muestran por separado: un hueco con registro manda (igual que computeRealDia y el calendario). */
+const DASH_SLOTS=['desayuno','comida','postre_comida','cena','postre_cena','snack'];
+const DASH_SLOT_L={desayuno:'Desayuno',comida:'Comida',postre_comida:'Postre de la comida',cena:'Cena',postre_cena:'Postre de la cena',snack:'Snack'};
+function dashSlotIcon(t){
+  const esPostre=t.indexOf('postre_')===0;
+  return `<div class="meal-icon mi-${esPostre?'postre':t}" style="${esPostre?'background:#fff;font-size:.8rem;width:28px;height:28px;':''}">${esPostre?'🍮':ICON_TIPO[t]}</div>`;
+}
+// Misma lógica de nombre, macros y acceso que mealItemHtml del calendario
+function dashSlotInfo(f,dm,t){
+  const reg=REGISTRO[regKey(f,t)], r=getR(dm[t]);
+  if(!reg&&!r) return null;
+  const nombre=reg?(reg.estado==='no_comido'?'No comido':(reg.receta_nombre||reg.nombre_libre||'—')):r.nombre;
+  const s=reg?{kcal:reg.kcal,proteinas:reg.proteinas,carbos:reg.carbos,grasas:reg.grasas}:r;
+  const macros=(s&&!(reg&&reg.estado==='no_comido'))?s:null;
+  let recId=null;
+  if(reg){ if(reg.estado==='otra_receta') recId=reg.receta_id; else if(reg.estado==='como_plan') recId=r?r.id:null; }
+  else recId=r.id;
+  if(recId&&!getR(recId)) recId=null;
+  return {reg,nombre,macros,recId};
+}
+// Abre el registro del día mostrado. openRgModal toma el plan de la semana seleccionada en el Calendario,
+// así que la ajustamos solo durante la llamada y se restaura enseguida (el Calendario no cambia).
+function dashAbrirRegistro(t){
+  const f=dashFecha; if(dashFueraDeRegistros(f)) return;
+  const {dia}=menuDelDia(f);
+  const prev=currentWeek;
+  try{ currentWeek=weekIndexForDate(new Date(f+'T00:00:00')); openRgModal(t,dia,f); }
+  finally{ currentWeek=prev; }
+}
+function dashComidasHtml(f){
+  const {dm}=menuDelDia(f);
+  const puedeReg=!dashFueraDeRegistros(f);
+  let nReg=0,nPlan=0;
+  const items=DASH_SLOTS.map(t=>{
+    const esPostre=t.indexOf('postre_')===0;
+    const i=dashSlotInfo(f,dm,t);
+    if(!i&&esPostre) return '';
+    const edit=puedeReg?`<button type="button" class="dc-edit" title="Registrar lo que comiste realmente" aria-label="${escAttr(i&&i.reg?'Editar registro':'Registrar')}: ${escAttr(DASH_SLOT_L[t])}" onclick="dashAbrirRegistro('${t}')">✎</button>`:'';
+    if(!i) return `<li class="dc-item dc-vacio">${dashSlotIcon(t)}<div class="dc-main"><div class="dc-type">${DASH_SLOT_L[t]}</div><div class="dc-name is-empty">Sin planificar ni registrar</div></div>${edit}</li>`;
+    if(i.reg) nReg++; else nPlan++;
+    const nom=i.recId?`<button type="button" class="dc-name" onclick="openModal('${escAttr(i.recId)}')">${escAttr(i.nombre)}</button>`:`<div class="dc-name">${escAttr(i.nombre)}</div>`;
+    const m=i.macros?`<div class="dc-macros"><span><b>${Math.round(i.macros.kcal||0)}</b> kcal</span><span>P <b>${Math.round(i.macros.proteinas||0)}</b> g</span><span>CH <b>${Math.round(i.macros.carbos||0)}</b> g</span><span>G <b>${Math.round(i.macros.grasas||0)}</b> g</span></div>`:'';
+    const badge=i.reg?`<span class="dc-badge reg-badge rb-${escAttr(i.reg.estado)}">${RB_LABEL[i.reg.estado]||escAttr(i.reg.estado)}</span>`:`<span class="dc-badge is-plan">Planificada · sin registrar</span>`;
+    return `<li class="dc-item ${i.reg?'dc-registro':'dc-plan'}">${dashSlotIcon(t)}<div class="dc-main"><div class="dc-type">${DASH_SLOT_L[t]}</div>${nom}${m}${badge}</div>${edit}</li>`;
+  }).join('');
+  const resumen=(nReg||nPlan)
+    ?`<p class="dc-sum"><b>${nReg}</b> registrada${nReg===1?'':'s'} · <b>${nPlan}</b> planificada${nPlan===1?'':'s'} sin registrar</p>`
+    :`<p class="dc-sum">No hay comidas planificadas ni registradas este día.</p>`;
+  const nota=puedeReg?'':`<p class="dc-note">Los registros de esta fecha no están cargados, así que solo se muestra lo planificado y no se ofrece registrar desde aquí.</p>`;
+  return `${resumen}<ul class="dc-list">${items}</ul>${nota}`;
+}
+
+// ── Peso: solo pesos realmente registrados en DIARIO (nada arrastrado ni inventado) ──
+function dashFmtPeso(n,max){ return n.toLocaleString('es-ES',{maximumFractionDigits:max==null?2:max}); }
+function dashFmtDelta(n){ const r=Math.round(n*10)/10; return (r>0?'+':(r<0?'−':''))+dashFmtNum(Math.abs(r)); }
+function dashPesosHasta(f){
+  return Object.values(DIARIO).filter(r=>r&&r.peso!=null&&r.fecha<=f&&Number.isFinite(Number(r.peso)))
+    .map(r=>({fecha:r.fecha,peso:Number(r.peso)})).sort((a,b)=>a.fecha<b.fecha?-1:1);
+}
+const DASH_PESO_SEMANAS=6;
+function dashPesoSemanas(pesos,f){
+  const fin=new Date(f+'T00:00:00'), out=[];
+  for(let k=0;k<DASH_PESO_SEMANAS;k++){ // k=0: los 7 días que terminan en la fecha mostrada
+    const hasta=new Date(fin); hasta.setDate(fin.getDate()-7*k);
+    const desde=new Date(hasta); desde.setDate(hasta.getDate()-6);
+    const a=isoDate(desde), b=isoDate(hasta);
+    const e=pesos.filter(p=>p.fecha>=a&&p.fecha<=b);
+    out.push(e.length?{k,n:e.length,avg:e.reduce((x,y)=>x+y.peso,0)/e.length}:{k,n:0,avg:null});
+  }
+  return out;
+}
+function dashSparkSVG(sem){
+  const pts=sem.filter(w=>w.avg!=null);
+  const W=220,H=56,pl=6,pr=6,pt=8,pb=8;
+  let lo=Math.min(...pts.map(w=>w.avg)), hi=Math.max(...pts.map(w=>w.avg));
+  if(hi-lo<1){ const c=(hi+lo)/2; lo=c-.5; hi=c+.5; } // rango mínimo de 1 kg: las variaciones pequeñas no se exageran
+  const x=k=>pl+(DASH_PESO_SEMANAS-1-k)/(DASH_PESO_SEMANAS-1)*(W-pl-pr);
+  const y=v=>H-pb-(v-lo)/(hi-lo)*(H-pt-pb);
+  const path=pts.slice().sort((a,b)=>b.k-a.k).map((w,i)=>`${i?'L':'M'}${x(w.k).toFixed(1)},${y(w.avg).toFixed(1)}`).join(' ');
+  const dots=pts.map(w=>`<circle cx="${x(w.k).toFixed(1)}" cy="${y(w.avg).toFixed(1)}" r="${w.k===pts[0].k?4:2.6}" fill="var(--sage)"/>`).join('');
+  return `<svg class="pw-spark" viewBox="0 0 ${W} ${H}" role="img" aria-label="Medias semanales de peso de las últimas ${DASH_PESO_SEMANAS} semanas"><path d="${path}" fill="none" stroke="var(--sage)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>${dots}</svg>`;
+}
+function dashPesoHtml(f){
+  const pesos=dashPesosHasta(f);
+  if(!pesos.length) return `<p class="pw-note">Aún no hay ningún peso registrado hasta esta fecha. Puedes añadirlo en el Diario.</p>`;
+  const last=pesos[pesos.length-1];
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  const dias=Math.round((hoy-new Date(last.fecha+'T00:00:00'))/86400000);
+  const cuando=dias===0?'hoy':(dias===1?'ayer':'hace '+dias+' días');
+  const fechaTxt=new Date(last.fecha+'T00:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'numeric'});
+  const cab=`<div class="pw-last"><span class="pw-val">${dashFmtPeso(last.peso)}<small> kg</small></span><span class="pw-when">${fechaTxt} · ${cuando}</span></div>`;
+
+  const sem=dashPesoSemanas(pesos,f), conDato=sem.filter(w=>w.avg!=null), nRegs=conDato.reduce((a,w)=>a+w.n,0);
+  if(conDato.length<2||nRegs<3){
+    return `${cab}<div class="pw-trend"><div class="pw-tl">Tendencia</div><p class="pw-note">Aún no hay suficientes registros para mostrar una tendencia: hacen falta al menos 3 pesos repartidos en 2 semanas distintas de las últimas ${DASH_PESO_SEMANAS} (hay ${nRegs} en ${conDato.length} semana${conDato.length===1?'':'s'}).</p></div>`;
+  }
+  const nuevo=conDato[0], viejo=conDato[conDato.length-1];
+  const semanas=viejo.k-nuevo.k, delta=nuevo.avg-viejo.avg, porSem=delta/semanas;
+  const estado=Math.abs(porSem)<0.15?'Estable':(delta<0?'A la baja':'Al alza');
+  const detalle=`${dashFmtDelta(delta)} kg en ${semanas} semana${semanas===1?'':'s'}`;
+  return `${cab}<div class="pw-trend"><div class="pw-tl">Tendencia · medias semanales</div>
+    <div class="pw-tv">${estado} <span class="mono">· ${detalle}</span></div>
+    ${dashSparkSVG(sem)}
+    <p class="pw-note">Compara la media de la última semana con datos (${dashFmtPeso(nuevo.avg,1)} kg) con la de hace ${semanas} semana${semanas===1?'':'s'} (${dashFmtPeso(viejo.avg,1)} kg). Las oscilaciones de un día a otro no cuentan.</p></div>`;
+}
+
+// ── Próximos planes: menú efectivo (data.json + cambios locales) desde mañana, 7 días, hasta 6 comidas ──
+function dashPlanesHtml(){
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  const dias=[]; let total=0;
+  for(let i=1;i<=7&&total<6;i++){
+    const d=new Date(hoy); d.setDate(hoy.getDate()+i);
+    const f=isoDate(d), {dm}=menuDelDia(f);
+    const its=[];
+    DASH_SLOTS.forEach(t=>{ const r=getR(dm[t]); if(r&&!REGISTRO[regKey(f,t)]&&total<6){ its.push({t,r}); total++; } });
+    if(its.length){
+      const lbl=i===1?'Mañana':d.toLocaleDateString('es-ES',{weekday:'long'});
+      dias.push(`<div class="pl-day"><div class="pl-dl">${lbl} · ${d.toLocaleDateString('es-ES',{day:'numeric',month:'short'})}</div>${its.map(({t,r})=>
+        `<div class="pl-it">${dashSlotIcon(t)}<button type="button" onclick="openModal('${escAttr(r.id)}')" title="${escAttr(DASH_SLOT_L[t])}">${escAttr(r.nombre)}</button><span class="pl-k">${Math.round(r.kcal||0)} kcal</span></div>`).join('')}</div>`);
+    }
+  }
+  const comidas=dias.length?dias.join(''):`<p class="pw-note">No hay comidas planificadas en los próximos 7 días.</p>`;
+  return `${comidas}<div class="pl-entreno"><div class="pl-dl">Próximos entrenamientos</div><p class="pw-note">No hay entrenamientos futuros planificados en la app.</p></div>`;
 }
 
 dashRenderCabecera();

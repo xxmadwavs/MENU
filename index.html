@@ -113,8 +113,8 @@ header{
 header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;line-height:1.1}
 .brand-sub{font-size:.72rem;color:rgba(251,246,234,.65);margin-top:2px;text-transform:capitalize;letter-spacing:.02em}
 
-/* BOTTOM NAV */
-.bottom-nav{
+/* NAVEGACIÓN PRINCIPAL — móvil: barra inferior · tablet/escritorio: barra lateral (ver bloque F1.1 al final) */
+.app-nav{
   position:fixed;bottom:0;left:0;right:0;z-index:150;
   background:var(--paper-raised);
   border-top:1px solid var(--line);
@@ -263,31 +263,53 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .shop-week-btn.active{background:var(--green);border-color:var(--green);color:#fbf6ea}
 .info-bar{background:var(--sage-light);border-radius:var(--r);border:1px solid var(--line);padding:.7rem 1rem;margin-bottom:.75rem;font-size:.8rem;color:#3f5c2c;font-weight:600;box-shadow:var(--shadow)}
 .shop-progress{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r);padding:.7rem 1rem;margin-bottom:.75rem;box-shadow:var(--shadow)}
-.shop-progress-top{display:flex;justify-content:space-between;font-size:.75rem;font-weight:700;color:var(--ink-soft);margin-bottom:.4rem}
+.shop-progress-top{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;font-size:1rem;font-weight:800;color:var(--green-deep);margin-bottom:.5rem}
+.shop-progress-top .mono{font-size:.85rem;color:var(--ink-soft)}
 .shop-progress-bar{height:7px;border-radius:6px;background:var(--line);overflow:hidden}
 .shop-progress-fill{height:100%;background:var(--green);border-radius:6px;transition:width .25s}
-.shop-item{background:var(--paper-raised);border-radius:var(--r-sm);border:1px solid var(--line);display:flex;flex-direction:column;align-items:stretch;gap:.55rem;padding:.65rem .9rem;margin-bottom:6px;cursor:pointer;transition:all .18s;min-width:0}
-.shop-row{display:flex;align-items:center;gap:.75rem;min-width:0}
+/* Lista de compra — bloque por categoría (acordeón) */
+.shop-cat{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:.85rem;overflow:hidden}
+.shop-cat-head{display:flex;align-items:center;gap:.7rem;width:100%;min-height:60px;padding:.55rem .9rem;border:0;background:var(--green-light);color:var(--green-deep);font-family:'Inter',sans-serif;text-align:left;cursor:pointer;min-width:0;border-left:4px solid var(--gold);transition:background .18s}
+.shop-cat-head:hover{background:#dfe5d2}
+.shop-cat-head:focus-visible{outline:3px solid var(--gold);outline-offset:-3px}
+.shop-cat-emoji{font-size:1.5rem;line-height:1;flex-shrink:0}
+.shop-cat-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:.1rem}
+.shop-cat-name{font-size:.9rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;overflow-wrap:anywhere}
+.shop-cat-sub{font-size:.78rem;font-weight:600;color:var(--ink-soft);overflow-wrap:anywhere}
+.shop-cat-chev{width:36px;height:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--paper-raised);color:var(--green);transition:transform .2s}
+.shop-cat-chev svg{width:18px;height:18px}
+.shop-cat.collapsed .shop-cat-chev{transform:rotate(-90deg)}
+.shop-cat-body{padding:.55rem .55rem .35rem}
+.shop-cat-body[hidden]{display:none}
+@media(min-width:760px){.shop-cat-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:.5rem;align-items:start}.shop-cat-body[hidden]{display:none}}
+/* Ingredientes */
+.shop-item{background:var(--paper-raised);border-radius:var(--r-sm);border:1px solid var(--line);padding:.35rem .5rem .35rem .35rem;margin-bottom:6px;cursor:pointer;transition:background .18s,border-color .18s,opacity .18s;min-width:0}
+.shop-row{display:flex;align-items:center;gap:.5rem;min-width:0;min-height:52px}
 .shop-item:hover{border-color:var(--green)}
-.shop-item.checked{opacity:.5}
-.shop-check{width:22px;height:22px;border-radius:7px;border:2px solid var(--green);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.shop-check-area{width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.shop-check{width:26px;height:26px;border-radius:8px;border:2px solid var(--green);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.shop-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:.1rem}
+.stxt{font-size:1rem;font-weight:700;line-height:1.25;overflow-wrap:anywhere}
+.sqty{font-size:.86rem;font-weight:600;color:var(--green);font-family:'IBM Plex Mono',monospace;line-height:1.3;overflow-wrap:anywhere}
+/* Comprado: discreto pero visible */
+.shop-item.checked{background:transparent;border-color:transparent;opacity:.6}
+.shop-item.checked .shop-row{min-height:44px}
 .shop-item.checked .shop-check{background:var(--green);border-color:var(--green)}
-.shop-item.checked .shop-check::after{content:'✓';color:#fbf6ea;font-size:.72rem;font-weight:700}
-.shop-item.checked .stxt{text-decoration:line-through;color:var(--ink-soft)}
-.stxt{font-size:.9rem;font-weight:600;flex:1;min-width:0;overflow-wrap:anywhere}
-.sqty{font-size:.76rem;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;max-width:45%;text-align:right;overflow-wrap:anywhere}
+.shop-item.checked .shop-check::after{content:'✓';color:#fbf6ea;font-size:.78rem;font-weight:700}
+.shop-item.checked .stxt{text-decoration:line-through;color:var(--ink-soft);font-size:.92rem;font-weight:600}
+.shop-item.checked .sqty{color:var(--ink-soft);font-size:.8rem}
 /* Ya lo tengo */
-.shop-have-btn{width:100%;min-height:44px;border-radius:var(--r-sm);border:1.5px solid var(--gold);background:var(--gold-light);color:var(--gold-deep);font-family:'Inter',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .18s}
+.shop-have-btn{flex-shrink:0;min-width:44px;min-height:44px;padding:0 .7rem;border-radius:var(--r-sm);border:1.5px solid var(--gold);background:var(--gold-light);color:var(--gold-deep);font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;line-height:1.15;cursor:pointer;transition:all .18s}
 .shop-have-btn:active{background:var(--gold);color:#fff}
 .shop-item.have{background:var(--gold-light);border-color:var(--gold)}
 .shop-item.have:hover{border-color:var(--gold-deep)}
-.shop-home{width:22px;flex-shrink:0;text-align:center;font-size:1.05rem;line-height:1}
-.shop-have-foot{display:flex;align-items:center;justify-content:space-between;gap:.75rem;font-size:.8rem;font-weight:600;color:var(--gold-deep)}
-.shop-undo-btn{min-height:44px;min-width:96px;padding:0 1rem;border-radius:var(--r-sm);border:1.5px solid var(--gold-deep);background:var(--paper-raised);color:var(--gold-deep);font-family:'Inter',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.shop-home{width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem;line-height:1}
+.shop-have-note{font-size:.76rem;font-weight:600;color:var(--gold-deep)}
+.shop-undo-btn{min-height:44px;min-width:44px;padding:0 .8rem;border-radius:var(--r-sm);border:1.5px solid var(--gold-deep);background:var(--paper-raised);color:var(--gold-deep);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;flex-shrink:0}
 .shop-undo-btn:active{background:var(--gold);color:#fff}
-.shop-progress-sub{margin-top:.5rem;font-size:.75rem;font-weight:700;color:var(--gold-deep)}
+.shop-progress-sub{margin-top:.55rem;font-size:.82rem;font-weight:700;color:var(--gold-deep)}
 .shop-progress-sub:empty{display:none}
-.btn-reset{width:100%;background:none;border:1.5px dashed var(--line);border-radius:var(--r-sm);padding:.65rem;font-family:'Inter',sans-serif;font-size:.83rem;font-weight:600;color:var(--ink-soft);cursor:pointer;margin-top:.75rem;transition:all .2s}
+.btn-reset{width:100%;min-height:48px;background:none;border:1.5px dashed var(--line);border-radius:var(--r-sm);padding:.65rem;font-family:'Inter',sans-serif;font-size:.83rem;font-weight:600;color:var(--ink-soft);cursor:pointer;margin-top:.75rem;transition:all .2s}
 .btn-reset:hover{background:var(--clay-light);color:var(--clay);border-color:var(--clay)}
 
 /* MODAL */
@@ -315,6 +337,35 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .rac-note{font-size:.72rem;color:var(--ink-soft);margin-top:.5rem;display:none}
 /* Cabecera de la ficha (solo #modal; el modal de registro no se toca) */
 #modal .mh-main{flex:1;min-width:0}
+/* Añadir al menú */
+.fc-actions{display:flex;margin-bottom:1rem}
+.btn-add-menu{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;min-height:48px;padding:0 1.2rem;border-radius:var(--r-sm);border:0;background:var(--green);color:#fbf6ea;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;box-shadow:var(--shadow);transition:background .18s}
+.btn-add-menu:hover,.btn-add-menu:active{background:var(--green-deep)}
+#am-modal{z-index:210}
+#am-modal .modal-body{padding-top:.4rem}
+#am-modal .mh-main{flex:1;min-width:0}
+#am-modal .modal-close{width:44px;height:44px;font-size:1rem}
+#am-recipe{text-transform:none;letter-spacing:0;font-size:.88rem;font-weight:600;color:rgba(251,246,234,.85);margin-top:.3rem;overflow-wrap:anywhere}
+.am-sec{margin-top:1rem}
+.am-sec .sec-lbl{margin:0 0 .5rem;color:var(--green)}
+.am-grid{display:grid;gap:.4rem}
+.am-grid.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.am-grid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.am-opt{min-height:46px;min-width:0;padding:.25rem .3rem;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--paper-raised);color:var(--ink);font-family:'Inter',sans-serif;font-size:.84rem;font-weight:700;line-height:1.15;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:all .15s}
+.am-opt:hover{border-color:var(--green)}
+.am-opt[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fbf6ea}
+.am-opt small{font-size:.66rem;font-weight:600;opacity:.8}
+.am-msg{margin-top:1rem;padding:.7rem .85rem;border-radius:var(--r-sm);font-size:.84rem;font-weight:600;line-height:1.45;background:var(--sage-light);color:#3f5c2c;overflow-wrap:anywhere}
+.am-msg.warn{background:var(--gold-light);color:var(--gold-deep);border:1px solid var(--gold)}
+.am-msg b{display:block}
+.am-actions{display:flex;gap:.5rem;margin-top:1rem}
+.am-actions button{flex:1;min-height:48px;border-radius:var(--r-sm);font-family:'Inter',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer}
+.am-cancel{background:var(--paper-raised);border:1.5px solid var(--line);color:var(--ink-soft)}
+.am-confirm{background:var(--green);border:0;color:#fbf6ea}
+.am-confirm:disabled{background:var(--line);color:var(--ink-soft);cursor:not-allowed}
+/* Aviso breve */
+.app-toast{position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom,0px));transform:translate(-50%,12px);z-index:300;max-width:calc(100vw - 2rem);padding:.7rem 1.1rem;border-radius:999px;background:var(--green-deep);color:#fbf6ea;font-size:.88rem;font-weight:700;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;text-align:center}
+.app-toast.show{opacity:1;transform:translate(-50%,0)}
 #modal .modal-head h2{font-size:1.3rem;overflow-wrap:anywhere}
 #modal .modal-close{width:36px;height:36px;font-size:1rem}
 .mh-tipo{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(251,246,234,.72);margin-top:.35rem}
@@ -480,10 +531,248 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .dm-def.pos{color:var(--sage)}
 .dm-def.neg{color:var(--clay)}
 .dm-def.na{color:var(--line)}
+
+/* ═══════════════════════════════════════════════════════════
+   F1.1 — DASHBOARD Y NAVEGACIÓN
+   Un único <nav class="app-nav">: barra inferior en móvil, lateral en tablet/escritorio.
+   ═══════════════════════════════════════════════════════════ */
+:root{--side-w:0px}
+.app-shell{display:block}
+.app-side{display:contents}
+.app-main{min-width:0}
+
+/* Accesibilidad de la navegación */
+.nav-btn:focus-visible{outline:2px solid var(--gold);outline-offset:-3px;border-radius:10px}
+.dash-link:focus-visible,.dash-quick:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* Cabecera de la vista Inicio */
+.dash-head{margin-bottom:1rem}
+.dash-title{font-size:1.7rem;font-weight:600;line-height:1.15;color:var(--green-deep)}
+.dash-date{font-size:.95rem;font-weight:600;line-height:1.3;color:var(--ink)}
+@media(min-width:640px){.dash-date{font-size:1rem}}
+.dash-date::first-letter{text-transform:uppercase}
+
+/* Rejilla de tarjetas (móvil: una columna, en el orden del DOM) */
+.dash-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:.85rem}
+.dash-card{
+  display:flex;flex-direction:column;gap:.75rem;min-width:0;
+  background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);padding:1rem 1.05rem 1.05rem;
+}
+.dash-card-head{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.dash-card-head h3{font-family:'Fraunces',serif;font-style:italic;font-size:1.02rem;font-weight:600;line-height:1.25;color:var(--green-deep)}
+.dash-link{
+  flex-shrink:0;min-height:44px;margin:-.55rem -.7rem -.55rem 0;padding:0 .7rem;
+  display:inline-flex;align-items:center;background:none;border:0;border-radius:var(--r-sm);
+  font-family:'Inter',sans-serif;font-size:.76rem;font-weight:700;color:var(--green);cursor:pointer;
+}
+.dash-link:hover{background:var(--green-light)}
+
+/* Espacio reservado para el contenido de subfases posteriores (sin datos) */
+.dash-slot{
+  flex:1;min-height:96px;display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:1rem;border:1.5px dashed var(--line);border-radius:var(--r-sm);
+  font-size:.82rem;line-height:1.5;color:var(--ink-soft);
+}
+
+/* Resumen nutricional: la tarjeta protagonista */
+.dash-resumen{
+  background:linear-gradient(150deg,var(--green),var(--green-deep));
+  border-color:var(--green-deep);border-top:3px solid var(--gold);box-shadow:var(--shadow-lg);color:#fbf6ea;
+}
+.dash-resumen .dash-card-head h3{color:#fbf6ea}
+.dash-resumen .dash-link{color:var(--gold-light)}
+.dash-resumen .dash-link:hover{background:rgba(255,255,255,.12)}
+.dash-resumen .dash-slot{min-height:132px;border-color:rgba(251,246,234,.3);color:rgba(251,246,234,.78)}
+
+/* Accesos rápidos */
+.dash-quick-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem}
+.dash-quick{
+  display:flex;align-items:center;gap:.65rem;min-width:0;min-height:56px;padding:.55rem .7rem;
+  background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-sm);
+  font-family:'Inter',sans-serif;color:var(--ink);text-align:left;cursor:pointer;
+  transition:border-color .15s,background .15s;
+}
+.dash-quick:hover{border-color:var(--green);background:var(--green-light)}
+.dq-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.dq-icon svg{display:block}
+.dq-gold{background:var(--gold-light);color:var(--gold-deep)}
+.dq-sage{background:var(--sage-light);color:#3f5c2c}
+.dq-clay{background:var(--clay-light);color:#8a3d27}
+.dq-plum{background:var(--plum-light);color:#523153}
+.dq-text{display:flex;flex-direction:column;gap:1px;min-width:0}
+.dq-name{font-size:.86rem;font-weight:700;line-height:1.2}
+.dq-desc{font-size:.7rem;font-weight:500;line-height:1.3;color:var(--ink-soft);overflow-wrap:anywhere}
+
+/* ── F1.2: cabecera del día y resumen nutricional ── */
+.dash-head{display:flex;flex-direction:column;gap:.6rem}
+.dash-daynav{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.6rem}
+.dash-daybtn{
+  width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  border:0;border-radius:50%;background:var(--green-light);color:var(--green);
+  font-size:1.4rem;line-height:1;cursor:pointer;transition:background .15s,color .15s;
+}
+.dash-daybtn:hover:not(:disabled){background:var(--green);color:#fff}
+.dash-daybtn:disabled{opacity:.28;cursor:default}
+.dash-daybtn:focus-visible,.dash-hoy:focus-visible,.kc-cta:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.dash-daylabel{display:flex;flex-direction:column;align-items:flex-start;gap:.25rem;min-width:0}
+.dash-chip{padding:2px 10px;border-radius:20px;background:var(--line);color:var(--ink-soft);font-size:.72rem;font-weight:700}
+.dash-chip:empty{display:none}
+.dash-chip.is-today{background:var(--green);color:#fbf6ea}
+.dash-hoy{
+  min-height:44px;padding:0 1rem;border:1.5px solid var(--green);border-radius:999px;background:none;
+  color:var(--green);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;
+}
+.dash-hoy:hover{background:var(--green-light)}
+.dash-hoy{grid-column:1/-1;justify-self:start}
+.dash-hoy[hidden]{display:none}
+@media(min-width:640px){
+  .dash-daynav{display:flex;flex-wrap:wrap}
+  .dash-daylabel{flex-direction:row;align-items:center;gap:.55rem;flex-wrap:wrap}
+}
+
+.dash-loading,.dash-empty-s{font-size:.82rem;line-height:1.5;color:var(--ink-soft)}
+.dash-empty-l{font-size:.9rem;line-height:1.5;color:rgba(251,246,234,.85)}
+
+/* Calorías */
+.kc{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.7rem 1.1rem;align-items:center}
+.kc-ring{display:block;flex-shrink:0;width:104px;height:104px}
+.kc-ring text{font-family:'IBM Plex Mono',monospace}
+.kc-stats{display:flex;flex-direction:column;min-width:0}
+.kc-row{display:flex;justify-content:space-between;align-items:baseline;gap:.6rem;padding:.38rem 0;border-bottom:1px solid rgba(251,246,234,.16);font-size:.8rem;color:rgba(251,246,234,.78)}
+.kc-row:last-child{border-bottom:0}
+.kc-row b{font-family:'IBM Plex Mono',monospace;font-size:.92rem;font-weight:700;color:#fbf6ea;white-space:nowrap}
+.kc-row.kc-big b{font-size:1.1rem}
+@media(min-width:640px){
+  .kc-ring{width:120px;height:120px}
+  .kc-row b{font-size:1rem}
+  .kc-row.kc-big b{font-size:1.35rem}
+}
+.kc-legend{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;font-size:.76rem;color:rgba(251,246,234,.82)}
+.kc-leg{display:inline-flex;align-items:center;gap:.4rem}
+.kc-leg b{font-family:'IBM Plex Mono',monospace;color:#fbf6ea}
+.kc-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.kc-reg{background:var(--gold)}
+.kc-plan{background:rgba(251,246,234,.5)}
+.kc-note{grid-column:1/-1;font-size:.72rem;line-height:1.45;color:rgba(251,246,234,.66)}
+.kc-warn{grid-column:1/-1;font-size:.82rem;line-height:1.5;color:#fbf6ea;background:rgba(255,255,255,.1);border-radius:var(--r-sm);padding:.6rem .75rem}
+.kc-cta{
+  grid-column:1/-1;justify-self:start;min-height:44px;padding:0 1.1rem;border:0;border-radius:var(--r-sm);
+  background:var(--gold);color:var(--green-deep);font-family:'Inter',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer;
+}
+
+/* Macronutrientes */
+.dash-macro{--mc:var(--sage)}
+.dash-macro-carb{--mc:var(--gold)}
+.dash-macro-gras{--mc:var(--plum)}
+.dash-macro-prot .dm-pct{background:var(--sage-light);color:#3f5c2c}
+.dash-macro-carb .dm-pct{background:var(--gold-light);color:#8a6416}
+.dash-macro-gras .dm-pct{background:var(--plum-light);color:#523153}
+.dm-pct{padding:2px 9px;border-radius:20px;font-family:'IBM Plex Mono',monospace;font-size:.76rem;font-weight:700}
+.dm-pct[hidden]{display:none}
+.dm-body{display:flex;flex-direction:column;gap:.55rem}
+.dm-val{font-family:'IBM Plex Mono',monospace;font-size:1.75rem;font-weight:700;line-height:1;color:var(--ink)}
+.dm-val small{font-size:.9rem;font-weight:600;color:var(--ink-soft)}
+.dash-bar{position:relative;height:8px;border-radius:6px;background:var(--line);overflow:hidden}
+.dash-bar span{position:absolute;top:0;bottom:0;left:0;border-radius:6px;background:var(--mc)}
+.dash-bar .dash-bar-plan{opacity:.4}
+.dm-rows{display:flex;justify-content:space-between;gap:.6rem;font-size:.74rem;color:var(--ink-soft)}
+.dm-rows div{display:flex;flex-direction:column;gap:1px}
+.dm-rows b{font-family:'IBM Plex Mono',monospace;font-size:.88rem;color:var(--ink)}
+.dm-rows div:last-child{text-align:right}
+.dm-none{font-size:.78rem;line-height:1.45;color:var(--ink-soft)}
+.dm-split{font-size:.7rem;line-height:1.45;color:var(--ink-soft)}
+
+/* Recetas: varias columnas cuando hay sitio (solo presentación) */
+@media(min-width:720px){
+  .recipes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:.8rem}
+}
+
+/* TABLET GRANDE / ESCRITORIO PEQUEÑO — dashboard a 2 columnas */
+@media(min-width:640px){
+  .dash-grid{
+    grid-template-columns:repeat(6,minmax(0,1fr));gap:1rem;
+    grid-template-areas:"res res res res res res" "pro pro car car gra gra" "com com com com com com" "act act act peso peso peso" "pla pla pla acc acc acc";
+  }
+  .dash-resumen{grid-area:res}
+  .dash-macro-prot{grid-area:pro}
+  .dash-macro-carb{grid-area:car}
+  .dash-macro-gras{grid-area:gra}
+  .dash-comidas{grid-area:com}
+  .dash-actividad{grid-area:act}
+  .dash-peso{grid-area:peso}
+  .dash-planes{grid-area:pla}
+  .dash-accesos{grid-area:acc}
+}
+
+/* Accesos rápidos en tarjeta estrecha: una columna */
+@media(min-width:640px) and (max-width:1099px){
+  .dash-quick-grid{grid-template-columns:minmax(0,1fr)}
+}
+
+/* TABLET Y SUPERIOR — barra lateral compacta (iconos + etiqueta) */
+@media(min-width:768px){
+  :root{--side-w:84px}
+  body{padding-bottom:0}
+  .app-shell{display:grid;grid-template-columns:var(--side-w) minmax(0,1fr);min-height:100vh}
+  .app-side{
+    display:flex;flex-direction:column;position:sticky;top:0;height:100vh;height:100dvh;overflow-y:auto;z-index:150;
+    background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 100%);
+    border-right:3px solid var(--gold);box-shadow:6px 0 20px rgba(35,48,30,.18);
+  }
+  .app-side header{position:static;z-index:auto;padding:1.15rem .5rem 1rem;background:none;box-shadow:none;border-bottom:1px solid rgba(251,246,234,.14);display:flex;justify-content:center}
+  .app-side .brand > div{display:none}
+  .app-nav{
+    position:static;flex:1;flex-direction:column;gap:.3rem;padding:.8rem .5rem 1rem;
+    background:none;border:0;box-shadow:none;
+  }
+  .nav-btn{
+    flex:none;padding:.65rem .2rem .55rem;border-radius:12px;color:rgba(251,246,234,.74);
+    transition:color .15s,background .15s;
+  }
+  .nav-btn:hover{background:rgba(255,255,255,.08);color:#fbf6ea}
+  .nav-btn.active{background:rgba(255,255,255,.13);color:#fbf6ea}
+  .nav-btn.active .nav-icon{transform:none}
+  .nav-btn.active::before{top:50%;left:-.5rem;transform:translateY(-50%);width:4px;height:26px;border-radius:0 4px 4px 0;background:var(--gold)}
+  .view{padding:1.6rem 2rem 2.5rem;max-width:1180px;margin-left:auto;margin-right:auto}
+  #view-calendario,#view-compra,#view-diario{max-width:960px}
+  .app-toast{bottom:28px;left:calc(50% + var(--side-w) / 2)}
+}
+
+/* ESCRITORIO — barra lateral ancha con etiquetas al lado del icono */
+@media(min-width:1100px){
+  :root{--side-w:248px}
+  .app-side header{justify-content:flex-start;padding:1.3rem 1.25rem 1.15rem}
+  .app-side .brand > div{display:block}
+  .app-nav{padding:1rem .8rem 1.2rem;gap:.25rem}
+  .nav-btn{flex-direction:row;justify-content:flex-start;gap:.8rem;padding:.75rem 1rem;font-size:.9rem;letter-spacing:0}
+  .nav-btn.active::before{left:-.8rem}
+  .view{padding:2rem 2.5rem 3rem}
+  .dash-title{font-size:2rem}
+  .dash-grid{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    grid-template-areas:"res res res res peso peso" "pro pro car car gra gra" "com com com com act act" "pla pla pla acc acc acc";
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .nav-btn,.nav-btn .nav-icon,.dash-quick{transition:none}
+}
 </style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="ic-inicio" viewBox="0 0 20 20"><rect x="3" y="3" width="6" height="8" rx="1.6"/><rect x="11" y="3" width="6" height="4.5" rx="1.6"/><rect x="3" y="13" width="6" height="4" rx="1.6"/><rect x="11" y="9.5" width="6" height="7.5" rx="1.6"/></symbol>
+    <symbol id="ic-calendario" viewBox="0 0 20 20"><rect x="3" y="4.3" width="14" height="12.2" rx="2.2"/><path d="M3 8.2h14"/><path d="M7 2.6v3.2M13 2.6v3.2"/></symbol>
+    <symbol id="ic-recetas" viewBox="0 0 20 20"><path d="M10 5.6c-1.5-1.1-3.6-1.6-6.2-1.6v11c2.6 0 4.7.5 6.2 1.6m0-11c1.5-1.1 3.6-1.6 6.2-1.6v11c-2.6 0-4.7.5-6.2 1.6m0-11v11"/></symbol>
+    <symbol id="ic-compra" viewBox="0 0 20 20"><path d="M3.3 8h13.4l-1.2 8a1.6 1.6 0 0 1-1.6 1.4H6.1A1.6 1.6 0 0 1 4.5 16L3.3 8Z"/><path d="M6.7 8 8.2 3.3M13.3 8 11.8 3.3M8 11.2v3.6M12 11.2v3.6"/></symbol>
+    <symbol id="ic-diario" viewBox="0 0 20 20"><path d="M3 5.5l5.3 5.8L11 8.6l6 6.2"/><path d="M17.3 10.6v4.2h-4.3"/></symbol>
+  </defs>
+</svg>
+<div class="app-shell">
+<aside class="app-side">
 <header>
   <div class="brand">
     <span class="brand-mark"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16C4 9 9 4 16 4c0 7-5 12-12 12Z"/><path d="M4.5 15.5c2-4 5-7 9-9"/></svg></span>
@@ -494,8 +783,72 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
   </div>
 </header>
 
-<main>
-<div id="view-calendario" class="view active">
+<nav class="app-nav" aria-label="Secciones de la aplicación">
+  <button type="button" class="nav-btn active" data-view="inicio" aria-current="page" onclick="showView('inicio',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-inicio"/></svg></span><span>Inicio</span></button>
+  <button type="button" class="nav-btn" data-view="calendario" onclick="showView('calendario',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-calendario"/></svg></span><span>Calendario</span></button>
+  <button type="button" class="nav-btn" data-view="recetas" onclick="showView('recetas',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-recetas"/></svg></span><span>Recetas</span></button>
+  <button type="button" class="nav-btn" data-view="compra" onclick="showView('compra',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-compra"/></svg></span><span>Compra</span></button>
+  <button type="button" class="nav-btn" data-view="diario" onclick="showView('diario',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-diario"/></svg></span><span>Diario</span></button>
+</nav>
+</aside>
+
+<main class="app-main">
+<div id="view-inicio" class="view active">
+  <div class="dash-head">
+    <h2 class="dash-title" id="dash-saludo">Hola</h2>
+    <div class="dash-daynav" role="group" aria-label="Día seleccionado">
+      <button type="button" class="dash-daybtn" id="dash-prev" onclick="dashPrevDay()" aria-label="Día anterior">‹</button>
+      <div class="dash-daylabel" aria-live="polite"><p class="dash-date" id="dash-fecha"></p><span class="dash-chip" id="dash-dia-chip"></span></div>
+      <button type="button" class="dash-daybtn" id="dash-next" onclick="dashNextDay()" aria-label="Día siguiente">›</button>
+      <button type="button" class="dash-hoy" id="dash-hoy" onclick="dashHoy()" hidden>Ir a hoy</button>
+    </div>
+  </div>
+  <div class="dash-grid">
+    <section class="dash-card dash-resumen" id="dash-resumen" aria-labelledby="dash-resumen-t">
+      <div class="dash-card-head"><h3 id="dash-resumen-t">Resumen nutricional</h3><button type="button" class="dash-link" onclick="dashVerDiario()">Ver diario</button></div>
+      <div id="dash-resumen-body"><p class="dash-empty-l">Cargando datos…</p></div>
+    </section>
+    <section class="dash-card dash-macro dash-macro-prot" id="dash-prot" aria-labelledby="dash-prot-t">
+      <div class="dash-card-head"><h3 id="dash-prot-t">Proteínas</h3><span class="dm-pct" id="dash-prot-pct" hidden></span></div>
+      <div class="dm-body" id="dash-prot-body"><p class="dash-loading">Cargando…</p></div>
+    </section>
+    <section class="dash-card dash-macro dash-macro-carb" id="dash-carb" aria-labelledby="dash-carb-t">
+      <div class="dash-card-head"><h3 id="dash-carb-t">Carbohidratos</h3><span class="dm-pct" id="dash-carb-pct" hidden></span></div>
+      <div class="dm-body" id="dash-carb-body"><p class="dash-loading">Cargando…</p></div>
+    </section>
+    <section class="dash-card dash-macro dash-macro-gras" id="dash-gras" aria-labelledby="dash-gras-t">
+      <div class="dash-card-head"><h3 id="dash-gras-t">Grasas</h3><span class="dm-pct" id="dash-gras-pct" hidden></span></div>
+      <div class="dm-body" id="dash-gras-body"><p class="dash-loading">Cargando…</p></div>
+    </section>
+    <section class="dash-card dash-comidas" id="dash-comidas" aria-labelledby="dash-comidas-t">
+      <div class="dash-card-head"><h3 id="dash-comidas-t">Comidas del día</h3><button type="button" class="dash-link" onclick="showView('calendario')">Ver calendario</button></div>
+      <div class="dash-slot" id="dash-comidas-body">Aquí se mostrarán el desayuno, la comida, la cena y los snacks de hoy.</div>
+    </section>
+    <section class="dash-card dash-actividad" id="dash-actividad" aria-labelledby="dash-actividad-t">
+      <div class="dash-card-head"><h3 id="dash-actividad-t">Actividad física</h3><button type="button" class="dash-link" onclick="showView('diario')">Ver diario</button></div>
+      <div class="dash-slot" id="dash-actividad-body">Aquí se mostrarán los pasos y el ejercicio de hoy.</div>
+    </section>
+    <section class="dash-card dash-peso" id="dash-peso" aria-labelledby="dash-peso-t">
+      <div class="dash-card-head"><h3 id="dash-peso-t">Peso</h3><button type="button" class="dash-link" onclick="showView('diario')">Ver diario</button></div>
+      <div class="dash-slot" id="dash-peso-body">Aquí se mostrará tu último peso y su evolución.</div>
+    </section>
+    <section class="dash-card dash-planes" id="dash-planes" aria-labelledby="dash-planes-t">
+      <div class="dash-card-head"><h3 id="dash-planes-t">Próximos planes</h3><button type="button" class="dash-link" onclick="showView('calendario')">Ver calendario</button></div>
+      <div class="dash-slot" id="dash-planes-body">Aquí se mostrarán las próximas comidas planificadas.</div>
+    </section>
+    <section class="dash-card dash-accesos" id="dash-accesos" aria-labelledby="dash-accesos-t">
+      <div class="dash-card-head"><h3 id="dash-accesos-t">Accesos rápidos</h3></div>
+      <div class="dash-quick-grid" id="dash-accesos-body">
+        <button type="button" class="dash-quick" onclick="showView('calendario')"><span class="dq-icon dq-gold"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-calendario"/></svg></span><span class="dq-text"><span class="dq-name">Calendario</span><span class="dq-desc">Menú de la semana</span></span></button>
+        <button type="button" class="dash-quick" onclick="showView('recetas')"><span class="dq-icon dq-sage"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-recetas"/></svg></span><span class="dq-text"><span class="dq-name">Recetas</span><span class="dq-desc">Buscar y añadir al menú</span></span></button>
+        <button type="button" class="dash-quick" onclick="showView('compra')"><span class="dq-icon dq-clay"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-compra"/></svg></span><span class="dq-text"><span class="dq-name">Compra</span><span class="dq-desc">Lista de la semana</span></span></button>
+        <button type="button" class="dash-quick" onclick="showView('diario')"><span class="dq-icon dq-plum"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-diario"/></svg></span><span class="dq-text"><span class="dq-name">Diario</span><span class="dq-desc">Peso, pasos y balance</span></span></button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div id="view-calendario" class="view">
   <div id="cal-loading" class="loading"><div class="spinner"></div><span>Cargando menú…</span></div>
   <div id="cal-content" style="display:none">
     <div class="week-nav">
@@ -540,13 +893,7 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
   <div id="diario-content"></div>
 </div>
 </main>
-
-<nav class="bottom-nav">
-  <button class="nav-btn active" onclick="showView('calendario',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.3" width="14" height="12.2" rx="2.2"/><path d="M3 8.2h14"/><path d="M7 2.6v3.2M13 2.6v3.2"/></svg></span><span>Calendario</span></button>
-  <button class="nav-btn" onclick="showView('recetas',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5.6c-1.5-1.1-3.6-1.6-6.2-1.6v11c2.6 0 4.7.5 6.2 1.6m0-11c1.5-1.1 3.6-1.6 6.2-1.6v11c-2.6 0-4.7.5-6.2 1.6m0-11v11"/></svg></span><span>Recetas</span></button>
-  <button class="nav-btn" onclick="showView('compra',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.3 8h13.4l-1.2 8a1.6 1.6 0 0 1-1.6 1.4H6.1A1.6 1.6 0 0 1 4.5 16L3.3 8Z"/><path d="M6.7 8 8.2 3.3M13.3 8 11.8 3.3M8 11.2v3.6M12 11.2v3.6"/></svg></span><span>Compra</span></button>
-  <button class="nav-btn" onclick="showView('diario',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5l5.3 5.8L11 8.6l6 6.2"/><path d="M17.3 10.6v4.2h-4.3"/></svg></span><span>Diario</span></button>
-</nav>
+</div>
 
 <div class="modal-overlay" id="modal" onclick="closeOut(event)">
   <div class="modal">
@@ -563,6 +910,23 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
     <div class="modal-body" id="modal-body"></div>
   </div>
 </div>
+
+<div class="modal-overlay" id="am-modal" onclick="closeAddMenuOut(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="am-title">
+    <div class="modal-head">
+      <div class="mh-main"><h2 id="am-title">Añadir al menú</h2><div class="mh-tipo" id="am-recipe"></div></div>
+      <button class="modal-close" onclick="closeAddMenu()" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="am-sec"><div class="sec-lbl">Semana</div><div class="am-grid c4" id="am-sem" role="group" aria-label="Semana"></div></div>
+      <div class="am-sec"><div class="sec-lbl">Día</div><div class="am-grid c4" id="am-dia" role="group" aria-label="Día"></div></div>
+      <div class="am-sec"><div class="sec-lbl">Comida</div><div class="am-grid c2" id="am-tipo" role="group" aria-label="Comida"></div></div>
+      <div class="am-msg" id="am-msg" role="status" aria-live="polite"></div>
+      <div class="am-actions"><button type="button" class="am-cancel" onclick="closeAddMenu()">Cancelar</button><button type="button" class="am-confirm" id="am-confirm" onclick="confirmAddMenu()">Añadir receta</button></div>
+    </div>
+  </div>
+</div>
+<div class="app-toast" id="app-toast" role="status" aria-live="polite"></div>
 
 <div class="modal-overlay" id="rg-modal" onclick="closeRgOut(event)">
   <div class="modal">
@@ -702,6 +1066,51 @@ async function loadData(){
 
 function getR(id){ return DATA.recetas.find(r=>r.id===id)||null; }
 
+// ===== MENÚ EFECTIVO = DATA.menu (data.json, solo lectura) + cambios locales de este dispositivo =====
+// Los cambios hechos desde index.html se guardan SOLO como overrides en localStorage, con el mismo concepto que
+// DATA.menu: {semana:{dia:{franja:idReceta}}}. No se copia el menú base ni se escribe en DATA.menu / data.json.
+// Toda la app lee el menú a través de menuEfectivoDia / menuEfectivoSemana.
+const MENU_OV_KEY='mimenu_menu_overrides_v1';
+let _menuOv=null;
+function menuOverridesLoad(){
+  if(_menuOv) return _menuOv;
+  let raw={};
+  try{ const p=JSON.parse(localStorage.getItem(MENU_OV_KEY)||'{}'); if(p&&typeof p==='object'&&!Array.isArray(p)) raw=p; }catch(e){}
+  const clean={}; // solo semanas, días y franjas que existen; ids como texto
+  SEMANAS.forEach(sem=>DIAS.forEach(dia=>TIPOS.forEach(t=>{
+    const id=raw[sem]&&raw[sem][dia]&&raw[sem][dia][t];
+    if(typeof id==='string'&&id){ clean[sem]=clean[sem]||{}; clean[sem][dia]=clean[sem][dia]||{}; clean[sem][dia][t]=id; }
+  })));
+  return (_menuOv=clean);
+}
+function menuOverridesSave(){
+  try{ localStorage.setItem(MENU_OV_KEY,JSON.stringify(menuOverridesLoad())); return true; }
+  catch(e){ console.warn('No se pudo guardar el menú local:',e); return false; }
+}
+function menuAplicarOverride(base,sem,dia){
+  const ov=(menuOverridesLoad()[sem]||{})[dia];
+  return ov?Object.assign({},base,ov):base;
+}
+function menuEfectivoDia(sem,dia){
+  const menu=DATA.menu||{};
+  return menuAplicarOverride((menu[sem]?menu[sem][dia]:menu[dia])||{},sem,dia);
+}
+function menuEfectivoSemana(sem){ // {dia:{franja:id}} con overrides aplicados
+  const base=(DATA.menu||{})[sem]||{}, ov=menuOverridesLoad()[sem]||{}, out={};
+  new Set(Object.keys(base).concat(Object.keys(ov))).forEach(dia=>{ out[dia]=menuAplicarOverride(base[dia]||{},sem,dia); });
+  return out;
+}
+// Receta que ocupa el hueco en el menú EFECTIVO (null si está vacío o apunta a una receta que ya no existe)
+function menuHuecoOcupado(sem,dia,tipo){ const id=menuEfectivoDia(sem,dia)[tipo]; return id&&getR(id)?id:null; }
+// Añade una receta a un hueco vacío. Nunca sobrescribe. Solo guarda el id de la receta.
+function menuAnadirReceta(sem,dia,tipo,recId){
+  if(!SEMANAS.includes(sem)||!DIAS.includes(dia)||!TIPOS.includes(tipo)||!getR(recId)) return {ok:false,motivo:'invalido'};
+  if(menuHuecoOcupado(sem,dia,tipo)) return {ok:false,motivo:'ocupado'};
+  const ov=menuOverridesLoad();
+  ov[sem]=ov[sem]||{}; ov[sem][dia]=ov[sem][dia]||{}; ov[sem][dia][tipo]=recId;
+  return {ok:true,guardado:menuOverridesSave()};
+}
+
 // Combina lo planificado con el registro real guardado: si hay registro para un hueco, manda;
 // si no, se asume lo planificado como estimación.
 function computeRealDia(dia,fecha,dm){
@@ -735,8 +1144,7 @@ function menuDelDia(fechaISO){
   const date=new Date(fechaISO+'T00:00:00');
   const dia=DIA_KEY_POR_JS_DAY[date.getDay()];
   const sem=SEMANAS[weekIndexForDate(date)];
-  const menu=DATA.menu||{};
-  const dm=(menu[sem]?menu[sem][dia]:menu[dia])||{};
+  const dm=menuEfectivoDia(sem,dia);
   return {dia,dm};
 }
 function kcalConsumidasFecha(fechaISO){
@@ -1334,6 +1742,7 @@ function renderDiarioMesLista(){
 function renderDiario(){
   const el=document.getElementById('diario-content');
   if(!DATA||!el) return;
+  renderDashboard();
   const mesLabel=diarioMonthDate.toLocaleDateString('es-ES',{month:'long',year:'numeric'});
   const hoy=new Date();
   const esMesActual=diarioMonthDate.getFullYear()===hoy.getFullYear()&&diarioMonthDate.getMonth()===hoy.getMonth();
@@ -1353,18 +1762,21 @@ function renderDiario(){
 function getCurrentSemana(){ return SEMANAS[currentWeek % SEMANAS.length]; }
 
 function getMenuDia(dia){
-  const sem=getCurrentSemana();
-  const menu=DATA.menu;
-  if(menu[sem]) return menu[sem][dia]||{};
-  return menu[dia]||{};
+  return menuEfectivoDia(getCurrentSemana(),dia);
 }
 
 function showView(name,btn){
+  const view=document.getElementById('view-'+name);
+  if(!view) return;
+  const cambia=!view.classList.contains('active');
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('view-'+name).classList.add('active');
-  btn.classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>{ b.classList.remove('active'); b.removeAttribute('aria-current'); });
+  view.classList.add('active');
+  // btn es opcional: los accesos rápidos del dashboard llaman a showView(nombre) sin botón
+  const navBtn=btn||document.querySelector('.nav-btn[data-view="'+name+'"]');
+  if(navBtn){ navBtn.classList.add('active'); navBtn.setAttribute('aria-current','page'); }
   if(name==='compra') renderShopping();
+  if(cambia) window.scrollTo(0,0);
 }
 
 function getWeekMonday(weekIdx){
@@ -1436,6 +1848,7 @@ function renderCal(){
   const panel=document.getElementById('day-panel');
   if(selectedDay){ renderDayPanel(selectedDay); panel.style.display='block'; }
   else panel.style.display='none';
+  renderDashboard();
 }
 
 function selectDay(dia){
@@ -1587,6 +2000,7 @@ function renderRecipes(tipo){
 // Conservador: solo se suman cantidades que son EXACTAMENTE "número + unidad" y con la MISMA unidad.
 // Cualquier otra cosa (paréntesis, "al gusto", texto extra, sin unidad, unidades distintas) se muestra tal cual.
 // Sin conversiones (g↔kg, ml↔l) ni equivalencias entre unidades.
+// Si un número trae más de 3 decimales no se interpreta (se muestra tal cual) para no perder precisión al sumar.
 const SUMA_UNIDADES={
   g:{u:'g'}, kg:{u:'kg'}, ml:{u:'ml'}, l:{u:'l'}, cdta:{u:'cdta'},
   unidad:{u:'unidad',s:'unidad',p:'unidades'}, unidades:{u:'unidad',s:'unidad',p:'unidades'},
@@ -1595,7 +2009,7 @@ const SUMA_UNIDADES={
   diente:{u:'diente',s:'diente',p:'dientes'}, dientes:{u:'diente',s:'diente',p:'dientes'}
 };
 function parseCantidadSimple(txt){
-  const m=/^(\d+(?:[.,]\d+)?)\s*([a-zA-Záéíóúñ]+)$/.exec(String(txt==null?'':txt).trim());
+  const m=/^(\d+(?:[.,]\d{1,3})?)\s*([a-zA-Záéíóúñ]+)$/.exec(String(txt==null?'':txt).trim());
   if(!m) return null;
   const def=SUMA_UNIDADES[m[2].toLowerCase()];
   if(!def) return null;
@@ -1603,7 +2017,7 @@ function parseCantidadSimple(txt){
   if(!isFinite(milesimas)) return null;
   return {def,milesimas};
 }
-function formatoNumero(milesimas){ return String(Number((milesimas/1000).toFixed(2))); }
+function formatoNumero(milesimas){ return String(Number((milesimas/1000).toFixed(3))); } // máx. 3 decimales = la precisión con la que se parsea
 function formatoCantidadSuma(def,milesimas){
   const n=formatoNumero(milesimas);
   if(def.p) return n+' '+(Number(n)===1?def.s:def.p);
@@ -1635,14 +2049,49 @@ function renderShopTabs(){
 }
 
 function setShopWeek(idx){
-  shopWeek=idx; checkedItems={};
+  shopWeek=idx;
   renderShopTabs(); renderShopping();
+}
+
+// ===== CATEGORÍAS EN LA LISTA DE COMPRA (solo presentación) =====
+// La categoría sale de la biblioteca (ingrediente.categoria); NO forma parte de la clave de agrupación.
+// Sin biblioteca, sin categoría, vacía o desconocida → 'otros'. No se escribe nada en DATA.
+const CATEGORIAS_COMPRA=[
+  {id:'frutas_verduras',   nombre:'Frutas y verduras',    emoji:'🥬'},
+  {id:'carniceria',        nombre:'Carnicería',           emoji:'🥩'},
+  {id:'pescaderia',        nombre:'Pescadería',           emoji:'🐟'},
+  {id:'lacteos',           nombre:'Lácteos',              emoji:'🥛'},
+  {id:'huevos',            nombre:'Huevos',               emoji:'🥚'},
+  {id:'panaderia',         nombre:'Panadería',            emoji:'🥖'},
+  {id:'despensa',          nombre:'Despensa',             emoji:'🥫'},
+  {id:'congelados',        nombre:'Congelados',           emoji:'🧊'},
+  {id:'salsas_condimentos',nombre:'Salsas y condimentos', emoji:'🧂'},
+  {id:'bebidas',           nombre:'Bebidas',              emoji:'🥤'},
+  {id:'otros',             nombre:'Otros',                emoji:'📦'}
+];
+function categoriaCompraDe(nombre,mapaCat){
+  const c=mapaCat[String(nombre).toLowerCase().trim()]; // misma normalización que la agrupación
+  return CATEGORIAS_COMPRA.some(x=>x.id===c)?c:'otros';
+}
+// Devuelve [{cat,items}] en el orden fijo de categorías, solo con las que tienen ingredientes.
+// Dentro de cada categoría se conserva el orden que traía la lista.
+function agruparPorCategoria(items){
+  const mapaCat={};
+  catalogoIngredientes().forEach(b=>{
+    if(!b||!b.nombre) return;
+    const k=String(b.nombre).toLowerCase().trim();
+    if(!CATEGORIAS_COMPRA.some(x=>x.id===b.categoria)) return;
+    if(!mapaCat[k]) mapaCat[k]=b.categoria; // si hay duplicados en la biblioteca, vale la primera categoría válida
+  });
+  const porCat={};
+  items.forEach(i=>{ const c=categoriaCompraDe(i.nombre,mapaCat); (porCat[c]=porCat[c]||[]).push(i); });
+  return CATEGORIAS_COMPRA.filter(c=>porCat[c.id]).map(c=>({cat:c,items:porCat[c.id]}));
 }
 
 function renderShopping(){
   const cont=document.getElementById('shopping-container');
   const sem=SEMANAS[shopWeek];
-  const menuSem=DATA.menu[sem]||{};
+  const menuSem=menuEfectivoSemana(sem);
   const map={};
   Object.values(menuSem).forEach(dm=>{
     TIPOS.forEach(t=>{
@@ -1664,7 +2113,9 @@ function renderShopping(){
   const haveSet=haveForWeek(shopWeek);
   const isH=i=>!!haveSet[haveKey(i.nombre)];
   const haveCount=sorted.filter(isH).length;
-  const checkedCount=sorted.filter(i=>!isH(i)&&checkedItems[i.nombre]).length;
+  const boughtSet=compradoForWeek(shopWeek);
+  const isC=i=>!!boughtSet[haveKey(i.nombre)];
+  const checkedCount=sorted.filter(i=>!isH(i)&&isC(i)).length;
   progEl.style.display='block';
   document.getElementById('shop-progress-label').textContent=`${checkedCount} de ${sorted.length} comprados`;
   document.getElementById('shop-progress-pct').textContent=Math.round((checkedCount/sorted.length)*100)+'%';
@@ -1672,25 +2123,72 @@ function renderShopping(){
   const pend=sorted.length-checkedCount-haveCount;
   document.getElementById('shop-progress-have').textContent=haveCount
     ? `🏠 ${haveCount} ya los tienes · quedan ${pend} por comprar` : '';
-  cont.innerHTML=sorted.map(i=>{
+  const itemHtml=i=>{
     const k=i.nombre, qty=resumirCantidades(i.qtys).join(', '), a=escAttr(k);
+    const text=`<div class="shop-text"><span class="stxt">${i.nombre}</span><span class="sqty">${qty}</span></div>`;
     if(isH(i)){
       return `<div class="shop-item have" data-n="${a}" onclick="toggleCheck(this.dataset.n)">
-        <div class="shop-row"><span class="shop-home">🏠</span><span class="stxt">${i.nombre}</span><span class="sqty">${qty}</span></div>
-        <div class="shop-have-foot"><span>Ya lo tienes en casa</span><button class="shop-undo-btn" onclick="event.stopPropagation();setHave(this.closest('.shop-item').dataset.n,false)">Deshacer</button></div>
+        <div class="shop-row"><span class="shop-home">🏠</span><div class="shop-text"><span class="stxt">${i.nombre}</span><span class="sqty">${qty}</span><span class="shop-have-note">Ya lo tienes en casa</span></div><button class="shop-undo-btn" onclick="event.stopPropagation();setHave(this.closest('.shop-item').dataset.n,false)">Deshacer</button></div>
       </div>`;
     }
-    const ch=!!checkedItems[k];
+    const ch=isC(i);
     return `<div class="shop-item ${ch?'checked':''}" data-n="${a}" onclick="toggleCheck(this.dataset.n)">
-      <div class="shop-row"><div class="shop-check"></div><span class="stxt">${i.nombre}</span><span class="sqty">${qty}</span></div>
-      ${ch?'':`<button class="shop-have-btn" onclick="event.stopPropagation();setHave(this.closest('.shop-item').dataset.n,true)">🏠 Ya lo tengo</button>`}
+      <div class="shop-row"><span class="shop-check-area"><span class="shop-check"></span></span>${text}${ch?'':`<button class="shop-have-btn" onclick="event.stopPropagation();setHave(this.closest('.shop-item').dataset.n,true)">🏠 Ya lo tengo</button>`}</div>
     </div>`;
+  };
+  // Resumen del encabezado de cada categoría: solo cuenta los mismos estados ya calculados (isH / isC)
+  const catSub=items=>{
+    const h=items.filter(isH).length, c=items.filter(i=>!isH(i)&&isC(i)).length, p=items.length-h-c;
+    const parts=[p?`${p} ${p===1?'pendiente':'pendientes'}`:'Nada pendiente'];
+    if(c) parts.push(`${c} ${c===1?'comprado':'comprados'}`);
+    if(h) parts.push(`🏠 ${h} en casa`);
+    return parts.join(' · ');
+  };
+  const plegadas=catPlegadasLoad();
+  const chev='<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8l5 5 5-5"/></svg>';
+  cont.innerHTML=agruparPorCategoria(sorted).map(g=>{
+    const fold=!!plegadas[g.cat.id], bid='shop-cat-body-'+g.cat.id;
+    return `<section class="shop-cat ${fold?'collapsed':''}" data-cat="${g.cat.id}">
+      <button type="button" class="shop-cat-head" aria-expanded="${fold?'false':'true'}" aria-controls="${bid}" onclick="toggleCatCompra('${g.cat.id}')">
+        <span class="shop-cat-emoji" aria-hidden="true">${g.cat.emoji}</span>
+        <span class="shop-cat-info"><span class="shop-cat-name">${g.cat.nombre}</span><span class="shop-cat-sub">${catSub(g.items)}</span></span>
+        <span class="shop-cat-chev">${chev}</span>
+      </button>
+      <div class="shop-cat-body" id="${bid}" ${fold?'hidden':''}>${g.items.map(itemHtml).join('')}</div>
+    </section>`;
   }).join('')+`<button class="btn-reset" onclick="resetShop()">↺ Desmarcar todo</button>`;
 }
 
+// ---- Plegado de categorías (solo visual) ----
+// Clave propia y global: {idCategoria:true} solo para las plegadas. Sin entrada = desplegada (por defecto,
+// y así una categoría nueva nunca aparece plegada). No guarda ingredientes, cantidades ni estados de compra.
+const CAT_FOLD_KEY='mimenu_compra_categorias_v1';
+let _catFoldMem={};
+function catPlegadasLoad(){
+  try{ const o=JSON.parse(localStorage.getItem(CAT_FOLD_KEY)||'{}'); if(o&&typeof o==='object'&&!Array.isArray(o)) _catFoldMem=o; }
+  catch(e){}
+  return _catFoldMem;
+}
+function catPlegadasSave(o){
+  _catFoldMem=o;
+  try{ localStorage.setItem(CAT_FOLD_KEY,JSON.stringify(o)); }catch(e){ console.warn('No se pudo guardar el plegado de categorías:',e); }
+}
+// Cambia solo el DOM de esa categoría (sin volver a pintar la lista ni tocar los estados de compra)
+function toggleCatCompra(id){
+  const o=Object.assign({},catPlegadasLoad());
+  if(o[id]) delete o[id]; else o[id]=true;
+  catPlegadasSave(o);
+  const sec=document.querySelector('.shop-cat[data-cat="'+id+'"]'); if(!sec) return;
+  const fold=!!o[id];
+  sec.classList.toggle('collapsed',fold);
+  sec.querySelector('.shop-cat-head').setAttribute('aria-expanded',fold?'false':'true');
+  sec.querySelector('.shop-cat-body').hidden=fold;
+}
+
 // Estado único por ingrediente: pendiente | ya_tengo | comprado.
-// 'comprado' sigue en checkedItems (como antes). 'ya_tengo' se guarda aparte en localStorage,
-// asociado a la lista concreta (fecha de inicio de esa semana del ciclo), nunca en DATA/recetas.
+// Ambos estados se guardan en localStorage, en claves independientes (HAVE_KEY y BOUGHT_KEY), con la misma
+// forma {fechaInicioSemana:{nombreNormalizado:1}}: asociados a la lista concreta (fecha de inicio de esa
+// semana del ciclo), nunca en DATA/recetas. ('checkedItems' ya no se usa para el estado de compra.)
 const HAVE_KEY='mimenu_compra_ya_tengo_v1';
 function escAttr(t){ return String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function haveKey(nombre){ return String(nombre).toLowerCase().trim(); } // misma clave que usa la agrupación de la lista
@@ -1716,22 +2214,50 @@ function haveSaveAll(o){
   try{ localStorage.setItem(HAVE_KEY,JSON.stringify(o)); }catch(e){ console.warn('No se pudo guardar "Ya lo tengo":',e); }
 }
 function haveForWeek(idx){ return haveLoadAll()[shopListId(idx)]||{}; }
+// ---- Comprado (persistente, independiente de «Ya lo tengo») ----
+const BOUGHT_KEY='mimenu_compra_comprado_v1';
+let _boughtMem=null, _boughtSaveFailed=false; // respaldo en memoria solo si localStorage no deja guardar
+function compradoLoadAll(){
+  if(_boughtSaveFailed&&_boughtMem) return _boughtMem;
+  try{ const o=JSON.parse(localStorage.getItem(BOUGHT_KEY)||'{}'); return (o&&typeof o==='object'&&!Array.isArray(o))?o:{}; }
+  catch(e){ return _boughtMem||{}; } // clave ausente/corrupta: empieza vacía sin romper la app
+}
+function compradoSaveAll(o){
+  // misma limpieza que «Ya lo tengo»: descarta listas de semanas ya pasadas (nunca la actual ni las futuras)
+  const lim=shopListId(calcCurrentWeek());
+  Object.keys(o).forEach(id=>{ if(id<lim||!o[id]||!Object.keys(o[id]).length) delete o[id]; });
+  _boughtMem=o;
+  try{ localStorage.setItem(BOUGHT_KEY,JSON.stringify(o)); _boughtSaveFailed=false; }
+  catch(e){ _boughtSaveFailed=true; console.warn('No se pudo guardar "Comprado":',e); }
+}
+function compradoForWeek(idx){ return compradoLoadAll()[shopListId(idx)]||{}; }
+function quitarComprado(nombre){
+  const c=compradoLoadAll(), id=shopListId(shopWeek), k=haveKey(nombre);
+  if(c[id]&&c[id][k]){ delete c[id][k]; compradoSaveAll(c); }
+}
 function setHave(nombre,val){
   const all=haveLoadAll(), id=shopListId(shopWeek), k=haveKey(nombre);
   all[id]=all[id]||{};
-  if(val){ all[id][k]=1; delete checkedItems[nombre]; } else delete all[id][k];
+  if(val){ all[id][k]=1; quitarComprado(nombre); } else delete all[id][k];
   haveSaveAll(all);
   renderShopping();
 }
 function toggleCheck(k){
-  if(haveForWeek(shopWeek)[haveKey(k)]){ // Ya lo tengo → Comprado (un único estado)
-    const all=haveLoadAll(), id=shopListId(shopWeek);
-    delete all[id][haveKey(k)]; haveSaveAll(all);
-    checkedItems[k]=true;
-  } else checkedItems[k]=!checkedItems[k];
+  const hk=haveKey(k), id=shopListId(shopWeek), c=compradoLoadAll();
+  c[id]=c[id]||{};
+  if(haveForWeek(shopWeek)[hk]){ // Ya lo tengo → Comprado (un único estado)
+    const all=haveLoadAll();
+    delete all[id][hk]; haveSaveAll(all);
+    c[id][hk]=1;
+  } else if(c[id][hk]) delete c[id][hk]; else c[id][hk]=1;
+  compradoSaveAll(c);
   renderShopping();
 }
-function resetShop(){checkedItems={};renderShopping();}
+// «Desmarcar todo»: quita solo los Comprado de la semana mostrada (no toca «Ya lo tengo» ni otras semanas)
+function resetShop(){
+  const c=compradoLoadAll(); delete c[shopListId(shopWeek)]; compradoSaveAll(c);
+  renderShopping();
+}
 
 // ===== RACIONES (solo consulta) =====
 // receta.raciones (entero >=1) = raciones para las que están pensadas las cantidades y macros guardados.
@@ -1814,6 +2340,7 @@ function openModal(id){
     (r.tiempo?`<span>⏱ ${r.tiempo}</span>`:'')+`<span>🍽 Para ${base} ${base===1?'ración':'raciones'}</span>`;
   document.getElementById('modal-fav').hidden=!esFavorita(id);
   document.getElementById('modal-body').innerHTML=`
+    <div class="fc-actions"><button type="button" class="btn-add-menu" onclick="openAddMenu()">➕ Añadir al menú</button></div>
     ${r.descripcion?`<p class="fc-desc">${r.descripcion}</p>`:''}
     <section class="fc-sec" style="margin-top:${r.descripcion?'1.5rem':'0'}">
       <div class="sec-lbl">Nutrición</div>
@@ -1851,6 +2378,56 @@ function openModal(id){
 }
 
 function closeOut(e){if(e.target===document.getElementById('modal')) closeModal();}
+
+/* ══════════ AÑADIR RECETA AL MENÚ (selector semana → día → comida) ══════════ */
+let amState=null, _toastT=null;
+function showToast(msg){
+  const el=document.getElementById('app-toast'); el.textContent=msg; el.classList.add('show');
+  clearTimeout(_toastT); _toastT=setTimeout(()=>el.classList.remove('show'),2600);
+}
+function amCap(t){ return t.charAt(0).toUpperCase()+t.slice(1); }
+function openAddMenu(){
+  const r=getR(modalRecId); if(!r) return;
+  amState={recId:r.id, sem:SEMANAS[currentWeek%SEMANAS.length], dia:DIA_KEY_POR_JS_DAY[new Date().getDay()], tipo:TIPOS.includes(r.tipo)?r.tipo:'comida'};
+  document.getElementById('am-recipe').textContent=r.nombre;
+  document.getElementById('am-sem').innerHTML=SEMANAS.map((s,i)=>`<button type="button" class="am-opt" data-v="${s}" onclick="amPick('sem','${s}')">${SEM_L[i]}</button>`).join('');
+  document.getElementById('am-dia').innerHTML=DIAS.map(d=>`<button type="button" class="am-opt" data-v="${d}" onclick="amPick('dia','${d}')">${DIAS_L[d].slice(0,3)}</button>`).join('');
+  document.getElementById('am-tipo').innerHTML=TIPOS.map(t=>`<button type="button" class="am-opt" data-v="${t}" onclick="amPick('tipo','${t}')"><span>${TIPO_I[t]} ${amCap(t)}</span><small></small></button>`).join('');
+  amRefresh();
+  document.getElementById('am-modal').classList.add('open');
+  document.getElementById('am-modal').scrollTop=0;
+}
+function amPick(campo,v){ if(!amState) return; amState[campo]=v; amRefresh(); }
+function amRefresh(){
+  if(!amState) return;
+  const {sem,dia,tipo,recId}=amState;
+  [['am-sem',sem],['am-dia',dia],['am-tipo',tipo]].forEach(([id,val])=>
+    document.querySelectorAll('#'+id+' .am-opt').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===val?'true':'false')));
+  document.querySelectorAll('#am-tipo .am-opt').forEach(b=>{ b.querySelector('small').textContent=menuHuecoOcupado(sem,dia,b.dataset.v)?'Ocupada':''; });
+  const ocup=menuHuecoOcupado(sem,dia,tipo), msg=document.getElementById('am-msg'), btn=document.getElementById('am-confirm');
+  const lugar=`${SEM_L[SEMANAS.indexOf(sem)]} · ${DIAS_L[dia]} · ${amCap(tipo)}`;
+  if(ocup){
+    const rr=getR(ocup);
+    msg.className='am-msg warn';
+    msg.innerHTML=`<b>Este hueco ya tiene una receta.</b>${escAttr(lugar)}: ${escAttr(rr?rr.nombre:'')}. No se ha modificado el menú. Para sustituirla utilizaremos la opción «Reemplazar receta», que implementaremos en una fase posterior.`;
+    btn.disabled=true;
+  } else {
+    msg.className='am-msg';
+    msg.textContent='Se añadirá en: '+lugar;
+    btn.disabled=false;
+  }
+}
+function confirmAddMenu(){
+  if(!amState) return;
+  const {sem,dia,tipo,recId}=amState;
+  const res=menuAnadirReceta(sem,dia,tipo,recId);
+  if(!res.ok){ amRefresh(); return; } // hueco ocupado: no se toca nada
+  closeAddMenu();
+  renderCal(); renderDiario();
+  showToast(res.guardado?'✓ Receta añadida al menú':'⚠ Añadida, pero no se pudo guardar en este navegador');
+}
+function closeAddMenu(){ document.getElementById('am-modal').classList.remove('open'); amState=null; }
+function closeAddMenuOut(e){ if(e.target===document.getElementById('am-modal')) closeAddMenu(); }
 function closeModal(){document.getElementById('modal').classList.remove('open');}
 
 /* ══════════ REGISTRO REAL (lo que de verdad has comido) ══════════ */
@@ -2135,6 +2712,182 @@ async function deleteRegistro(){
   }catch(e){ alert('No se pudo borrar: '+e.message); }
 }
 
+/* ══════════ DASHBOARD · CABECERA Y RESUMEN NUTRICIONAL (F1.2) ══════════
+   Solo presenta datos que la app ya calcula: computeRealDia (registro real > plan), gastoEstimadoFecha,
+   objetivoBalanceDia y proteinaObjetivoFecha. No guarda nada ni modifica DATA, REGISTRO ni PERFIL. */
+let dashFecha=isoDate(new Date()); // día mostrado en el dashboard (independiente del Calendario y del Diario)
+const DASH_MACROS=[
+  {id:'prot',key:'proteinas',nombre:'Proteínas'},
+  {id:'carb',key:'carbos',nombre:'Carbohidratos'},
+  {id:'gras',key:'grasas',nombre:'Grasas'}
+];
+function dashSet(id,html){ const el=document.getElementById(id); if(el) el.innerHTML=html; }
+function dashSaludo(){
+  const h=new Date().getHours();
+  return h>=6&&h<12?'Buenos días':(h>=12&&h<20?'Buenas tardes':'Buenas noches');
+}
+// Días que han pasado desde la fecha mostrada hasta hoy (0 = hoy)
+function dashDiasDesdeHoy(){
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  return Math.round((hoy-new Date(dashFecha+'T00:00:00'))/86400000);
+}
+function dashRenderCabecera(){
+  const n=dashDiasDesdeHoy();
+  dashSet('dash-saludo',dashSaludo());
+  const f=document.getElementById('dash-fecha');
+  if(f) f.textContent=new Date(dashFecha+'T00:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  const chip=document.getElementById('dash-dia-chip');
+  if(chip){ chip.textContent=n===0?'Hoy':(n===1?'Ayer':(n>1?'Hace '+n+' días':'')); chip.classList.toggle('is-today',n===0); }
+  const next=document.getElementById('dash-next'); if(next) next.disabled=n<=0; // igual que el Diario: sin fechas futuras
+  const hoyBtn=document.getElementById('dash-hoy'); if(hoyBtn) hoyBtn.hidden=n===0;
+}
+function dashMover(delta){
+  const d=new Date(dashFecha+'T00:00:00'); d.setDate(d.getDate()+delta);
+  dashFecha=isoDate(d);
+  renderDashboard();
+}
+function dashPrevDay(){ dashMover(-1); }
+function dashNextDay(){ if(dashDiasDesdeHoy()<=0) return; dashMover(1); }
+function dashHoy(){ dashFecha=isoDate(new Date()); renderDashboard(); }
+// «Ver diario» abre el Diario en el mismo día que muestra el dashboard
+function dashVerDiario(){
+  diarioSelectedFecha=dashFecha;
+  const d=new Date(dashFecha+'T00:00:00'); diarioMonthDate=new Date(d.getFullYear(),d.getMonth(),1);
+  renderDiario(); showView('diario');
+}
+function renderDashboard(){
+  if(!DATA) return;
+  dashRenderCabecera();
+  const f=dashFecha, dd=dashDatosDia(f);
+  dashSet('dash-resumen-body',dashKcalHtml(f,dd));
+  DASH_MACROS.forEach(m=>dashRenderMacro(m,dd,f));
+}
+
+// Totales del día (los calcula computeRealDia) + cuánto de ese total viene de registros reales.
+// Lo planificado sin registrar es total − registrado: nada se suma dos veces.
+function dashDatosDia(fecha){
+  const {dia,dm}=menuDelDia(fecha);
+  const real=computeRealDia(dia,fecha,dm);
+  const reg={kcal:0,proteinas:0,carbos:0,grasas:0};
+  let nReg=0,nPlan=0;
+  Object.keys(real.slots).forEach(k=>{
+    const s=real.slots[k];
+    if(s.source==='registro'){ nReg++; reg.kcal+=s.kcal; reg.proteinas+=s.proteinas; reg.carbos+=s.carbos; reg.grasas+=s.grasas; }
+    else if(s.source==='plan') nPlan++;
+  });
+  return {real,reg,nReg,nPlan,hayDatos:(nReg+nPlan)>0};
+}
+// REGISTRO solo se carga para las 4 semanas del ciclo (loadRegistroRango): fuera de ese rango no hay registros cargados
+function dashFueraDeRegistros(fecha){
+  const lunes=[0,1,2,3].map(getWeekMonday);
+  const min=new Date(Math.min(...lunes.map(d=>d.getTime())));
+  const max=new Date(Math.max(...lunes.map(d=>d.getTime()))); max.setDate(max.getDate()+6);
+  return fecha<isoDate(min)||fecha>isoDate(max);
+}
+
+// Objetivo calórico = gasto estimado del día + balance objetivo (ritmo semanal), con las cifras redondeadas
+// tal y como las muestra el Diario, para que sumen a la vista. Sin ritmo o sin gasto no hay objetivo.
+function dashObjetivoKcal(f){
+  const gasto=gastoEstimadoFecha(f), bal=objetivoBalanceDia();
+  if(gasto==null||bal==null) return null;
+  const obj=Math.round(gasto)+Math.round(bal);
+  return obj>0?{obj,gasto:Math.round(gasto),bal:Math.round(bal)}:null;
+}
+function dashMotivoSinObjetivo(f){
+  if(!PERFIL) return {txt:'No se ha podido cargar tu perfil, así que no hay objetivo calórico.',cta:false};
+  if(objetivoBalanceDia()==null) return {txt:'Indica tu ritmo semanal deseado para calcular tu objetivo calórico.',cta:true};
+  if(gastoEstimadoFecha(f)==null){
+    return pesoParaFecha(f)==null
+      ? {txt:'Registra tu peso en el Diario para estimar tu gasto y calcular el objetivo.',cta:false}
+      : {txt:'Faltan tu altura y fecha de nacimiento (o tu TMB) para estimar el gasto y calcular el objetivo.',cta:true};
+  }
+  return {txt:'Con tu gasto y ritmo actuales el objetivo calórico no es válido. Revisa tus objetivos.',cta:true};
+}
+
+function dashRingSVG(totK,regK,obj){
+  const r=54,cx=66,cy=66,C=2*Math.PI*r;
+  const arco=(v,color,op)=>{
+    const len=Math.max(0,Math.min(v/obj,1))*C;
+    return len>0?`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="11" stroke-dasharray="${len.toFixed(2)} ${(C-len).toFixed(2)}" transform="rotate(-90 ${cx} ${cy})" opacity="${op}"/>`:'';
+  };
+  const pct=Math.round(totK/obj*100);
+  return `<svg class="kc-ring" width="120" height="120" viewBox="0 0 132 132" role="img" aria-label="${pct}% del objetivo calórico">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="11"/>
+    ${arco(totK,'#fbf6ea',.5)}${arco(regK,'var(--gold)',1)}
+    <text x="${cx}" y="${cy+3}" text-anchor="middle" font-size="27" font-weight="600" fill="#fbf6ea">${pct}%</text>
+    <text x="${cx}" y="${cy+21}" text-anchor="middle" font-size="9.5" fill="rgba(251,246,234,.7)" font-family="Inter,sans-serif" font-weight="600">del objetivo</text>
+  </svg>`;
+}
+
+function dashKcalHtml(f,dd){
+  const o=dashObjetivoKcal(f);
+  const cons=Math.round(dd.real.kcal), regK=Math.round(dd.reg.kcal), planK=cons-regK;
+  const sinReg=dashFueraDeRegistros(f)
+    ?`<p class="kc-note">No hay registros cargados para esta fecha: solo se muestra lo planificado.</p>`:'';
+  const cta=m=>m.cta?`<button type="button" class="kc-cta" onclick="editarPerfilForm()">Configurar objetivos</button>`:'';
+
+  if(!dd.hayDatos){
+    const m=o?null:dashMotivoSinObjetivo(f);
+    return `<div class="kc"><p class="dash-empty-l" style="grid-column:1/-1">No hay comidas planificadas ni registradas este día.</p>
+      ${o?`<p class="kc-note">Objetivo calórico del día: <b class="mono">${o.obj} kcal</b></p>`:`<p class="kc-warn">${m.txt}</p>${cta(m)}`}
+      ${sinReg}</div>`;
+  }
+  const legend=`<div class="kc-legend">
+    ${dd.nReg?`<span class="kc-leg"><i class="kc-dot kc-reg"></i>Registrado <b>${regK} kcal</b></span>`:''}
+    ${dd.nPlan?`<span class="kc-leg"><i class="kc-dot kc-plan"></i>Planificado, sin registrar <b>${planK} kcal</b></span>`:''}
+  </div>`;
+  if(!o){
+    const m=dashMotivoSinObjetivo(f);
+    return `<div class="kc">
+      <div class="kc-stats" style="grid-column:1/-1"><div class="kc-row kc-big"><span>Consumidas</span><b>${cons} kcal</b></div></div>
+      ${legend}<p class="kc-warn">${m.txt}</p>${cta(m)}${sinReg}</div>`;
+  }
+  const resta=o.obj-cons, pasado=resta<0;
+  const baseTxt=`Objetivo = gasto estimado del día (${o.gasto} kcal) ${o.bal<=0?'−':'+'} ${o.bal<=0?'déficit':'superávit'} objetivo (${Math.abs(o.bal)} kcal), como en el Diario.`;
+  return `<div class="kc">
+    ${dashRingSVG(cons,regK,o.obj)}
+    <div class="kc-stats">
+      <div class="kc-row kc-big"><span>Consumidas</span><b>${cons} kcal</b></div>
+      <div class="kc-row"><span>Objetivo</span><b>${o.obj} kcal</b></div>
+      <div class="kc-row"><span>${pasado?'Superadas':'Restantes'}</span><b>${Math.abs(resta)} kcal</b></div>
+    </div>
+    ${legend}<p class="kc-note">${baseTxt}</p>${sinReg}</div>`;
+}
+
+// Objetivo diario de cada macro. Solo la proteína tiene objetivo configurable en la app (g por kg de peso).
+function dashObjetivoMacro(key,f){
+  if(key==='proteinas'){ const o=proteinaObjetivoFecha(f); return o!=null&&Math.round(o)>0?Math.round(o):null; }
+  return null;
+}
+function dashRenderMacro(m,dd,f){
+  const pctEl=document.getElementById('dash-'+m.id+'-pct');
+  const setPct=t=>{ if(pctEl){ pctEl.textContent=t||''; pctEl.hidden=!t; } };
+  if(!dd.hayDatos){
+    setPct('');
+    dashSet('dash-'+m.id+'-body',`<div class="dm-val">—</div><p class="dash-empty-s">Sin comidas planificadas ni registradas.</p>`);
+    return;
+  }
+  const cons=Math.round(dd.real[m.key]), regV=Math.round(dd.reg[m.key]), planV=cons-regV;
+  const obj=dashObjetivoMacro(m.key,f);
+  const split=`<p class="dm-split">${dd.nReg?`Registrado ${regV} g`:''}${dd.nReg&&dd.nPlan?' · ':''}${dd.nPlan?`Planificado, sin registrar ${planV} g`:''}</p>`;
+  if(obj==null){
+    setPct('');
+    dashSet('dash-'+m.id+'-body',`<div class="dm-val">${cons}<small> g</small></div>
+      <p class="dm-none">${m.key==='proteinas'?'Sin objetivo: indica tus g de proteína por kg en tu perfil y registra tu peso.':'Sin objetivo diario configurado.'}</p>${split}`);
+    return;
+  }
+  const pct=Math.round(cons/obj*100), resta=obj-cons;
+  const w=v=>Math.max(0,Math.min(v/obj,1))*100;
+  setPct(pct+'%');
+  dashSet('dash-'+m.id+'-body',`<div class="dm-val">${cons}<small> g</small></div>
+    <div class="dash-bar" role="progressbar" aria-label="${m.nombre}: ${pct}% del objetivo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.min(pct,100)}" aria-valuetext="${pct}% del objetivo">
+      <span class="dash-bar-plan" style="width:${w(cons).toFixed(1)}%"></span><span class="dash-bar-reg" style="width:${w(regV).toFixed(1)}%"></span>
+    </div>
+    <div class="dm-rows"><div><span>Objetivo</span><b>${obj} g</b></div><div><span>${resta<0?'Superado':'Restan'}</span><b>${Math.abs(resta)} g</b></div></div>
+    ${split}`);
+}
+
+dashRenderCabecera();
 loadData();
 </script>
 </body>

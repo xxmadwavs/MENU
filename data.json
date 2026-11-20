@@ -1179,6 +1179,96 @@
       "proteinas": 0,
       "carbos": 12.7,
       "grasas": 0
+    },
+    {
+      "id": "i1795162430382kj3r",
+      "nombre": "Pera",
+      "unidad": "100g",
+      "kcal": 57,
+      "proteinas": 0.4,
+      "carbos": 15.2,
+      "grasas": 0.1
+    },
+    {
+      "id": "i179516243038317hx",
+      "nombre": "Avellanas",
+      "unidad": "100g",
+      "kcal": 628,
+      "proteinas": 15,
+      "carbos": 16.7,
+      "grasas": 60.8
+    },
+    {
+      "id": "i17951624303846dz1",
+      "nombre": "Ricotta",
+      "unidad": "100g",
+      "kcal": 174,
+      "proteinas": 11,
+      "carbos": 3,
+      "grasas": 13
+    },
+    {
+      "id": "i1795162430385cmyu",
+      "nombre": "Lentejas secas",
+      "unidad": "100g",
+      "kcal": 352,
+      "proteinas": 25,
+      "carbos": 60,
+      "grasas": 1.1
+    },
+    {
+      "id": "i1795162430387e6n1",
+      "nombre": "Puerro",
+      "unidad": "100g",
+      "kcal": 61,
+      "proteinas": 1.5,
+      "carbos": 14,
+      "grasas": 0.3
+    },
+    {
+      "id": "i1795162430388t1hk",
+      "nombre": "Fideos finos",
+      "unidad": "100g",
+      "kcal": 360,
+      "proteinas": 12,
+      "carbos": 74,
+      "grasas": 1.5
+    },
+    {
+      "id": "i17951624303895fxc",
+      "nombre": "Harina de trigo",
+      "unidad": "100g",
+      "kcal": 364,
+      "proteinas": 10,
+      "carbos": 76,
+      "grasas": 1
+    },
+    {
+      "id": "i17951624303909mxu",
+      "nombre": "Sepia",
+      "unidad": "100g",
+      "kcal": 79,
+      "proteinas": 16,
+      "carbos": 0.8,
+      "grasas": 0.7
+    },
+    {
+      "id": "i1795162430391mq8k",
+      "nombre": "Cúrcuma molida",
+      "unidad": "100g",
+      "kcal": 312,
+      "proteinas": 9.7,
+      "carbos": 67,
+      "grasas": 3.3
+    },
+    {
+      "id": "i1795162430392se1p",
+      "nombre": "Cereales integrales",
+      "unidad": "100g",
+      "kcal": 370,
+      "proteinas": 10,
+      "carbos": 70,
+      "grasas": 3
     }
   ],
   "recetas": [
@@ -7356,6 +7446,2131 @@
         "Espolvorea un poco de orégano.",
         "Si quieres el queso fundido, calienta las tostadas en una sartén tapada."
       ]
+    },
+    {
+      "id": "r1795162430483gk96",
+      "nombre": "Tostadas con huevo revuelto, tomate y queso",
+      "tipo": "desayuno",
+      "tiempo": "",
+      "descripcion": "Desayuno salado, rico en proteína y fácil de preparar.",
+      "raciones": 1,
+      "kcal": 497.4,
+      "proteinas": 30.7,
+      "carbos": 34.2,
+      "grasas": 25.8,
+      "ingredientes": [
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "70g (2 rebanadas)",
+          "kcal": 170.8,
+          "proteinas": 7.2,
+          "carbos": 28.8,
+          "grasas": 2.0
+        },
+        {
+          "nombre": "Huevo",
+          "cantidad": "116g (2 huevos)",
+          "kcal": 179.8,
+          "proteinas": 15.1,
+          "carbos": 1.3,
+          "grasas": 12.8
+        },
+        {
+          "nombre": "Mozzarella",
+          "cantidad": "30g",
+          "kcal": 87.9,
+          "proteinas": 7.5,
+          "carbos": 0.3,
+          "grasas": 6.3
+        },
+        {
+          "nombre": "Tomate natural",
+          "cantidad": "100g",
+          "kcal": 18.0,
+          "proteinas": 0.9,
+          "carbos": 3.9,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Oregano seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Tuesta las rebanadas de pan.",
+        "Ralla el tomate y repártelo sobre las tostadas.",
+        "Bate los dos huevos en un recipiente.",
+        "Calienta el aceite en una sartén.",
+        "Añade los huevos y remueve a fuego medio-bajo.",
+        "Cuando empiecen a cuajar, incorpora la mozzarella.",
+        "Remueve hasta que el queso se funda ligeramente.",
+        "Reparte el revuelto sobre las tostadas.",
+        "Termina con pimienta y orégano."
+      ]
+    },
+    {
+      "id": "r1795162430484naqj",
+      "nombre": "Garbanzos al curry con espinacas y arroz basmati",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "Plato especiado, cremoso y vegetal, con proteína de las legumbres.",
+      "raciones": 1,
+      "kcal": 488.2,
+      "proteinas": 16.9,
+      "carbos": 75.1,
+      "grasas": 12.5,
+      "ingredientes": [
+        {
+          "nombre": "Garbanzos (bote)",
+          "cantidad": "150g (cocidos y escurridos)",
+          "kcal": 142.5,
+          "proteinas": 8.1,
+          "carbos": 18.0,
+          "grasas": 3.0
+        },
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "55g (basmati, en seco)",
+          "kcal": 192.0,
+          "proteinas": 4.4,
+          "carbos": 41.8,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Espinacas frescas",
+          "cantidad": "80g",
+          "kcal": 18.4,
+          "proteinas": 2.0,
+          "carbos": 2.9,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "100g",
+          "kcal": 27.0,
+          "proteinas": 1.0,
+          "carbos": 4.9,
+          "grasas": 0
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "40g",
+          "kcal": 15.2,
+          "proteinas": 0.5,
+          "carbos": 3.4,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Leche de coco light",
+          "cantidad": "50ml",
+          "kcal": 36.5,
+          "proteinas": 0.3,
+          "carbos": 1.0,
+          "grasas": 3.5
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Curry en polvo",
+          "cantidad": "2.5g (1 cucharadita)",
+          "kcal": 8.1,
+          "proteinas": 0.4,
+          "carbos": 1.4,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Cúrcuma molida",
+          "cantidad": "1g (½ cucharadita)",
+          "kcal": 3.1,
+          "proteinas": 0.1,
+          "carbos": 0.7,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g (½ diente)",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Jengibre molido",
+          "cantidad": "una pizca",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Cuece el arroz basmati en agua con sal.",
+        "Pica la cebolla y el ajo.",
+        "Calienta el aceite en una sartén y sofríe ambos ingredientes.",
+        "Añade el curry, la cúrcuma y el jengibre.",
+        "Incorpora el tomate triturado y cocina durante 3-4 minutos.",
+        "Añade la leche de coco y mezcla.",
+        "Incorpora los garbanzos escurridos.",
+        "Cocina a fuego medio durante 8 minutos.",
+        "Añade las espinacas y remueve hasta que se ablanden.",
+        "Rectifica de sal y pimienta.",
+        "Sirve acompañado del arroz."
+      ]
+    },
+    {
+      "id": "r1795162430485yxbp",
+      "nombre": "Ñoquis salteados con pesto, pollo y tomates cherry",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "Cena completa con una combinación italiana muy sabrosa.",
+      "raciones": 1,
+      "kcal": 502.9,
+      "proteinas": 33.0,
+      "carbos": 52.5,
+      "grasas": 16.9,
+      "ingredientes": [
+        {
+          "nombre": "Gnocchi",
+          "cantidad": "150g (ñoquis de patata)",
+          "kcal": 228.0,
+          "proteinas": 5.2,
+          "carbos": 48.0,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "100g",
+          "kcal": 110.0,
+          "proteinas": 23.0,
+          "carbos": 0,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Pesto (gallo)",
+          "cantidad": "15g",
+          "kcal": 74.0,
+          "proteinas": 0.7,
+          "carbos": 0.5,
+          "grasas": 7.6
+        },
+        {
+          "nombre": "Tomates cherry",
+          "cantidad": "100g",
+          "kcal": 18.0,
+          "proteinas": 0.9,
+          "carbos": 3.9,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Queso parmesano light",
+          "cantidad": "10g (rallado)",
+          "kcal": 32.0,
+          "proteinas": 3.2,
+          "carbos": 0.1,
+          "grasas": 2.1
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Albahaca seca",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Corta el pollo en dados pequeños.",
+        "Lava los tomates cherry y córtalos por la mitad.",
+        "Calienta el aceite en una sartén.",
+        "Añade el pollo y cocínalo hasta que esté completamente hecho.",
+        "Incorpora los tomates cherry y saltea durante 2-3 minutos.",
+        "Cuece los ñoquis siguiendo las instrucciones del paquete. Normalmente estarán listos cuando floten.",
+        "Escúrrelos y añádelos a la sartén.",
+        "Incorpora el pesto y mezcla bien.",
+        "Añade un poquito de agua de cocción si quieres una salsa más ligera.",
+        "Termina con el parmesano y la albahaca."
+      ]
+    },
+    {
+      "id": "r1795162430486ab9z",
+      "nombre": "Avena reposada con leche, cacao, pera y avellanas",
+      "tipo": "desayuno",
+      "tiempo": "",
+      "descripcion": "Se puede preparar la noche anterior y llevar al trabajo.",
+      "raciones": 1,
+      "kcal": 364.2,
+      "proteinas": 13.6,
+      "carbos": 50.2,
+      "grasas": 12.5,
+      "ingredientes": [
+        {
+          "nombre": "Copos de avena",
+          "cantidad": "45g",
+          "kcal": 167.4,
+          "proteinas": 5.9,
+          "carbos": 27.0,
+          "grasas": 3.1
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "150ml",
+          "kcal": 69.0,
+          "proteinas": 4.7,
+          "carbos": 7.1,
+          "grasas": 2.4
+        },
+        {
+          "nombre": "Pera",
+          "cantidad": "90g (½ grande)",
+          "kcal": 51.3,
+          "proteinas": 0.4,
+          "carbos": 13.7,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Avellanas",
+          "cantidad": "10g",
+          "kcal": 62.8,
+          "proteinas": 1.5,
+          "carbos": 1.7,
+          "grasas": 6.1
+        },
+        {
+          "nombre": "Cacao puro",
+          "cantidad": "5g",
+          "kcal": 13.8,
+          "proteinas": 1.3,
+          "carbos": 0.8,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Canela molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Edulcorante",
+          "cantidad": "opcional",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Coloca la avena en un recipiente con tapa.",
+        "Añade el cacao puro y mezcla.",
+        "Incorpora la leche poco a poco.",
+        "Remueve hasta que el cacao se disuelva.",
+        "Tapa el recipiente y déjalo en la nevera durante toda la noche (mínimo 4-6 horas).",
+        "Por la mañana, corta la pera en dados.",
+        "Añádela por encima junto con las avellanas troceadas.",
+        "Termina con un poco de canela. Si queda demasiado espeso, añade un chorrito más de leche."
+      ]
+    },
+    {
+      "id": "r179516243048796qm",
+      "nombre": "Ternera guisada con patatas, zanahoria y guisantes",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "Guiso tradicional, completo y perfecto para preparar con antelación.",
+      "raciones": 1,
+      "kcal": 580.9,
+      "proteinas": 43.8,
+      "carbos": 69.4,
+      "grasas": 12.5,
+      "ingredientes": [
+        {
+          "nombre": "Ternera magra",
+          "cantidad": "150g (para guisar)",
+          "kcal": 199.5,
+          "proteinas": 32.5,
+          "carbos": 0,
+          "grasas": 6.8
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "220g",
+          "kcal": 187.0,
+          "proteinas": 4.4,
+          "carbos": 39.6,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "100g",
+          "kcal": 41.0,
+          "proteinas": 0.9,
+          "carbos": 9.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Guisantes",
+          "cantidad": "60g",
+          "kcal": 48.6,
+          "proteinas": 3.2,
+          "carbos": 8.7,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "50g",
+          "kcal": 19.0,
+          "proteinas": 0.6,
+          "carbos": 4.3,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "100g",
+          "kcal": 27.0,
+          "proteinas": 1.0,
+          "carbos": 4.9,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Caldo cocido",
+          "cantidad": "150ml (caldo de carne)",
+          "kcal": 10.5,
+          "proteinas": 0.8,
+          "carbos": 0.8,
+          "grasas": 0
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g (½ diente)",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Pimenton dulce",
+          "cantidad": "1g (½ cucharadita)",
+          "kcal": 2.9,
+          "proteinas": 0.1,
+          "carbos": 0.6,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Laurel seco",
+          "cantidad": "1 hoja",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Corta la ternera en dados de tamaño similar.",
+        "Pela y corta las patatas en trozos medianos.",
+        "Corta la zanahoria en rodajas.",
+        "Pica la cebolla y el ajo.",
+        "Calienta el aceite en una olla.",
+        "Dora la ternera por todos sus lados y retírala.",
+        "En la misma olla, sofríe la cebolla y el ajo.",
+        "Añade el pimentón y remueve rápidamente.",
+        "Incorpora el tomate triturado.",
+        "Devuelve la carne a la olla y añade el caldo y el laurel.",
+        "Cocina tapado a fuego bajo durante unos 45-60 minutos, hasta que la carne esté tierna. Comprueba que no se quede sin líquido.",
+        "Añade las patatas y la zanahoria.",
+        "Cocina otros 20 minutos aproximadamente.",
+        "Incorpora los guisantes durante los últimos 8-10 minutos.",
+        "Comprueba que las patatas estén tiernas y ajusta la sal. Si usas olla rápida, el tiempo de cocción de la carne será considerablemente menor."
+      ]
+    },
+    {
+      "id": "r17951624304884fx2",
+      "nombre": "Crema de calabacín y puerro con tortilla francesa y tostadas",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "Cena reconfortante con verdura, proteína y pan.",
+      "raciones": 1,
+      "kcal": 533.1,
+      "proteinas": 25.4,
+      "carbos": 55.2,
+      "grasas": 23.7,
+      "ingredientes": [
+        {
+          "nombre": "Calabacin",
+          "cantidad": "250g",
+          "kcal": 40.0,
+          "proteinas": 3.0,
+          "carbos": 8.2,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Puerro",
+          "cantidad": "80g",
+          "kcal": 48.8,
+          "proteinas": 1.2,
+          "carbos": 11.2,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "100g",
+          "kcal": 85.0,
+          "proteinas": 2.0,
+          "carbos": 18.0,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Agua o caldo de verduras",
+          "cantidad": "200ml",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "10ml (5 ml crema + 5 ml tortilla)",
+          "kcal": 81.9,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 9.1
+        },
+        {
+          "nombre": "Huevo",
+          "cantidad": "116g (2 huevos)",
+          "kcal": 179.8,
+          "proteinas": 15.1,
+          "carbos": 1.3,
+          "grasas": 12.8
+        },
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "40g (1 rebanada grande)",
+          "kcal": 97.6,
+          "proteinas": 4.1,
+          "carbos": 16.4,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "CREMA: lava el calabacín y el puerro y córtalos en trozos pequeños.",
+        "Pela la patata y córtala en dados.",
+        "Calienta el aceite en una olla.",
+        "Añade el puerro y sofríelo durante 3 minutos.",
+        "Incorpora el calabacín y la patata.",
+        "Añade el caldo o agua hasta cubrir parcialmente las verduras.",
+        "Cocina durante 15-20 minutos, hasta que la patata esté tierna.",
+        "Tritura hasta conseguir una crema fina. Ajusta de sal y pimienta.",
+        "TORTILLA: bate los huevos. Calienta el aceite en una sartén.",
+        "Añade los huevos batidos y cocina a fuego medio hasta que cuajen.",
+        "Dobla la tortilla por la mitad.",
+        "Sirve junto a la crema y la tostada."
+      ]
+    },
+    {
+      "id": "r1795162430489g42z",
+      "nombre": "Tostadas con ricotta, miel y fruta",
+      "tipo": "desayuno",
+      "tiempo": "",
+      "descripcion": "Desayuno dulce, cremoso y diferente.",
+      "raciones": 1,
+      "kcal": 337.6,
+      "proteinas": 14.5,
+      "carbos": 46.5,
+      "grasas": 10.1,
+      "ingredientes": [
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "70g (2 rebanadas)",
+          "kcal": 170.8,
+          "proteinas": 7.2,
+          "carbos": 28.8,
+          "grasas": 2.0
+        },
+        {
+          "nombre": "Ricotta",
+          "cantidad": "60g",
+          "kcal": 104.4,
+          "proteinas": 6.6,
+          "carbos": 1.8,
+          "grasas": 7.8
+        },
+        {
+          "nombre": "Miel",
+          "cantidad": "10g",
+          "kcal": 30.4,
+          "proteinas": 0.0,
+          "carbos": 8.2,
+          "grasas": 0
+        },
+        {
+          "nombre": "Fresas congeladas",
+          "cantidad": "100g (o fruta de temporada)",
+          "kcal": 32.0,
+          "proteinas": 0.7,
+          "carbos": 7.7,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Canela molida",
+          "cantidad": "opcional",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Tuesta las rebanadas de pan.",
+        "Reparte la ricotta entre las dos tostadas.",
+        "Añade la miel por encima.",
+        "Lava y corta la fruta.",
+        "Colócala sobre las tostadas o sírvela al lado.",
+        "Termina con un poco de canela."
+      ]
+    },
+    {
+      "id": "r1795162430490sodg",
+      "nombre": "Albóndigas de pollo en salsa de tomate con cuscús y calabacín",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "Alternativa más ligera a las albóndigas tradicionales.",
+      "raciones": 1,
+      "kcal": 662.3,
+      "proteinas": 42.9,
+      "carbos": 74.9,
+      "grasas": 21.0,
+      "ingredientes": [
+        {
+          "nombre": "Carne Picada Pollo",
+          "cantidad": "160g",
+          "kcal": 211.2,
+          "proteinas": 28.8,
+          "carbos": 0.8,
+          "grasas": 10.6
+        },
+        {
+          "nombre": "Pan rallado integral",
+          "cantidad": "15g",
+          "kcal": 52.5,
+          "proteinas": 1.9,
+          "carbos": 10.2,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "15ml (1 cucharada)",
+          "kcal": 6.9,
+          "proteinas": 0.5,
+          "carbos": 0.7,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "10ml (5 ml albóndigas + 5 ml salsa)",
+          "kcal": 81.9,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 9.1
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "150g",
+          "kcal": 40.5,
+          "proteinas": 1.5,
+          "carbos": 7.4,
+          "grasas": 0
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "40g",
+          "kcal": 15.2,
+          "proteinas": 0.5,
+          "carbos": 3.4,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g (½ diente)",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Cuscus",
+          "cantidad": "60g (en seco)",
+          "kcal": 225.6,
+          "proteinas": 7.7,
+          "carbos": 46.4,
+          "grasas": 0.4
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "150g",
+          "kcal": 24.0,
+          "proteinas": 1.8,
+          "carbos": 4.9,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Ajo en polvo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Perejil fresco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Oregano seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Albahaca seca",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "ALBÓNDIGAS: coloca la carne picada en un bol.",
+        "Añade el pan rallado, la leche, el ajo en polvo, el perejil y la pimienta.",
+        "Mezcla hasta integrar todos los ingredientes.",
+        "Forma pequeñas albóndigas con las manos.",
+        "Calienta una cucharadita de aceite en una sartén.",
+        "Dóralas por todos los lados. Retira y reserva.",
+        "SALSA: pica la cebolla y el ajo.",
+        "Añade la otra cucharadita de aceite a la sartén.",
+        "Sofríe la cebolla durante 4 minutos.",
+        "Incorpora el ajo y el tomate triturado.",
+        "Añade orégano, albahaca, sal y pimienta.",
+        "Cocina durante 5 minutos.",
+        "Incorpora las albóndigas.",
+        "Tapa y cocina a fuego suave unos 10-12 minutos, comprobando que el interior esté completamente cocinado.",
+        "CUSCÚS: colócalo en un recipiente y añade la misma cantidad aproximada de agua hirviendo, siguiendo las instrucciones del paquete.",
+        "Tapa durante 5 minutos y separa los granos con un tenedor.",
+        "Corta el calabacín en dados y saltéalo en una sartén antiadherente.",
+        "Sirve el cuscús con las albóndigas, la salsa y el calabacín."
+      ]
+    },
+    {
+      "id": "r1795162430491bavq",
+      "nombre": "Ensalada templada de patata, pollo a la plancha, tomate y salsa de queso",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "Ensalada templada que funciona muy bien como cena completa.",
+      "raciones": 1,
+      "kcal": 383.5,
+      "proteinas": 34.4,
+      "carbos": 34.9,
+      "grasas": 10.6,
+      "ingredientes": [
+        {
+          "nombre": "Patata",
+          "cantidad": "150g",
+          "kcal": 127.5,
+          "proteinas": 3.0,
+          "carbos": 27.0,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "120g",
+          "kcal": 132.0,
+          "proteinas": 27.6,
+          "carbos": 0,
+          "grasas": 1.4
+        },
+        {
+          "nombre": "Tomate natural",
+          "cantidad": "120g",
+          "kcal": 21.6,
+          "proteinas": 1.1,
+          "carbos": 4.7,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Queso Light Philadelphia",
+          "cantidad": "30g",
+          "kcal": 46.2,
+          "proteinas": 1.8,
+          "carbos": 1.3,
+          "grasas": 3.6
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "30ml",
+          "kcal": 13.8,
+          "proteinas": 0.9,
+          "carbos": 1.4,
+          "grasas": 0.5
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Limon",
+          "cantidad": "5g (un chorrito)",
+          "kcal": 1.5,
+          "proteinas": 0.1,
+          "carbos": 0.5,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Ajo en polvo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Oregano seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Pela la patata y córtala en dados.",
+        "Cuécela en agua con sal durante 15-20 minutos.",
+        "Escúrrela y reserva.",
+        "Corta el pollo en tiras.",
+        "Calienta el aceite en una sartén.",
+        "Cocina el pollo con ajo en polvo, pimienta y orégano hasta que esté completamente hecho.",
+        "Corta el tomate en dados.",
+        "Para la salsa, mezcla el queso crema con la leche y unas gotas de limón.",
+        "Calienta la mezcla unos segundos en el microondas y remueve hasta conseguir una salsa homogénea.",
+        "Coloca la patata en un plato, añade el pollo y el tomate.",
+        "Termina con la salsa de queso por encima."
+      ]
+    },
+    {
+      "id": "r1795162430492552p",
+      "nombre": "Wrap de desayuno con huevo revuelto, pavo y queso",
+      "tipo": "desayuno",
+      "tiempo": "",
+      "descripcion": "Muy práctico para desayunar antes de salir de casa.",
+      "raciones": 1,
+      "kcal": 422.0,
+      "proteinas": 34.8,
+      "carbos": 28.4,
+      "grasas": 17.8,
+      "ingredientes": [
+        {
+          "nombre": "Tortilla harina de trigo integral",
+          "cantidad": "60g (1 grande)",
+          "kcal": 172.8,
+          "proteinas": 5.5,
+          "carbos": 25.2,
+          "grasas": 4.4
+        },
+        {
+          "nombre": "Huevo",
+          "cantidad": "58g (1 huevo)",
+          "kcal": 89.9,
+          "proteinas": 7.5,
+          "carbos": 0.6,
+          "grasas": 6.4
+        },
+        {
+          "nombre": "Pavo 93%",
+          "cantidad": "60g",
+          "kcal": 62.4,
+          "proteinas": 13.8,
+          "carbos": 0.3,
+          "grasas": 0.7
+        },
+        {
+          "nombre": "Mozzarella",
+          "cantidad": "30g",
+          "kcal": 87.9,
+          "proteinas": 7.5,
+          "carbos": 0.3,
+          "grasas": 6.3
+        },
+        {
+          "nombre": "Tomate natural",
+          "cantidad": "50g",
+          "kcal": 9.0,
+          "proteinas": 0.5,
+          "carbos": 1.9,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Oregano seco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Bate el huevo.",
+        "Calienta una sartén antiadherente y prepara el revuelto.",
+        "Calienta ligeramente la tortilla para que sea más fácil enrollarla.",
+        "Coloca el pavo en el centro.",
+        "Añade el huevo revuelto.",
+        "Incorpora el queso y el tomate en rodajas finas.",
+        "Espolvorea pimienta y orégano.",
+        "Dobla los laterales hacia dentro y enrolla.",
+        "Coloca el wrap en la sartén durante 1-2 minutos para dorarlo."
+      ]
+    },
+    {
+      "id": "r1795162430493ag3a",
+      "nombre": "Lentejas estofadas con zanahoria, patata y espinacas",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "Plato de cuchara completo, nutritivo y perfecto para preparar varias raciones.",
+      "raciones": 1,
+      "kcal": 519.2,
+      "proteinas": 24.7,
+      "carbos": 90.6,
+      "grasas": 6.3,
+      "ingredientes": [
+        {
+          "nombre": "Lentejas secas",
+          "cantidad": "70g",
+          "kcal": 246.4,
+          "proteinas": 17.5,
+          "carbos": 42.0,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "150g",
+          "kcal": 127.5,
+          "proteinas": 3.0,
+          "carbos": 27.0,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "100g",
+          "kcal": 41.0,
+          "proteinas": 0.9,
+          "carbos": 9.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Espinacas frescas",
+          "cantidad": "60g",
+          "kcal": 13.8,
+          "proteinas": 1.5,
+          "carbos": 2.2,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "40g",
+          "kcal": 15.2,
+          "proteinas": 0.5,
+          "carbos": 3.4,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "100g",
+          "kcal": 27.0,
+          "proteinas": 1.0,
+          "carbos": 4.9,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g (½ diente)",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Pimenton dulce",
+          "cantidad": "1g (½ cucharadita)",
+          "kcal": 2.9,
+          "proteinas": 0.1,
+          "carbos": 0.6,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Laurel seco",
+          "cantidad": "1 hoja",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Agua o caldo de verduras",
+          "cantidad": "400-450ml",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Lava las lentejas bajo el grifo. Si requieren remojo, sigue las instrucciones del paquete.",
+        "Pela y corta la patata en dados.",
+        "Corta la zanahoria en rodajas.",
+        "Pica la cebolla y el ajo.",
+        "Calienta el aceite en una olla.",
+        "Añade la cebolla y el ajo y sofríe durante unos minutos.",
+        "Incorpora el pimentón y remueve rápidamente.",
+        "Añade el tomate triturado.",
+        "Incorpora las lentejas, la zanahoria y el laurel.",
+        "Cubre con el agua o caldo.",
+        "Cocina a fuego medio-bajo durante unos 25-35 minutos, dependiendo de la variedad de lenteja.",
+        "Añade la patata cuando falten unos 20 minutos.",
+        "Incorpora las espinacas durante los últimos 5 minutos.",
+        "Comprueba que las lentejas y las patatas estén tiernas.",
+        "Ajusta la sal y sirve. Si te gustan más espesas, aplasta algunos trozos de patata dentro de la olla."
+      ]
+    },
+    {
+      "id": "r1795162430494y2ze",
+      "nombre": "Ñoquis de espinacas con gambas y salsa cremosa",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "Cena cremosa con gambas y una salsa ligera.",
+      "raciones": 1,
+      "kcal": 508.1,
+      "proteinas": 36.3,
+      "carbos": 55.5,
+      "grasas": 14.5,
+      "ingredientes": [
+        {
+          "nombre": "Gnocchi",
+          "cantidad": "150g (ñoquis de espinacas)",
+          "kcal": 228.0,
+          "proteinas": 5.2,
+          "carbos": 48.0,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Gambas (congeladas)",
+          "cantidad": "150g (peladas)",
+          "kcal": 106.5,
+          "proteinas": 22.5,
+          "carbos": 0.4,
+          "grasas": 0.9
+        },
+        {
+          "nombre": "Espinacas frescas",
+          "cantidad": "50g",
+          "kcal": 11.5,
+          "proteinas": 1.2,
+          "carbos": 1.8,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Queso Light Philadelphia",
+          "cantidad": "40g",
+          "kcal": 61.6,
+          "proteinas": 2.4,
+          "carbos": 1.8,
+          "grasas": 4.8
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "50ml",
+          "kcal": 23.0,
+          "proteinas": 1.6,
+          "carbos": 2.4,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g (1 diente)",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Queso parmesano light",
+          "cantidad": "10g",
+          "kcal": 32.0,
+          "proteinas": 3.2,
+          "carbos": 0.1,
+          "grasas": 2.1
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Nuez moscada",
+          "cantidad": "una pizca",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Pica el ajo.",
+        "Calienta el aceite en una sartén.",
+        "Añade el ajo y cocina unos segundos.",
+        "Incorpora las gambas y cocínalas hasta que estén hechas.",
+        "Añade las espinacas y remueve hasta que reduzcan.",
+        "En un recipiente, mezcla el queso crema con la leche.",
+        "Añade la mezcla a la sartén.",
+        "Incorpora pimienta y una pizca de nuez moscada.",
+        "Cuece los ñoquis según las instrucciones del fabricante.",
+        "Escúrrelos y añádelos a la salsa.",
+        "Mezcla a fuego bajo durante 2 minutos.",
+        "Termina con el parmesano."
+      ]
+    },
+    {
+      "id": "r1795162430495zgiu",
+      "nombre": "Pan con queso fresco, plátano y canela",
+      "tipo": "desayuno",
+      "tiempo": "",
+      "descripcion": "Combinación dulce y sencilla.",
+      "raciones": 1,
+      "kcal": 317.8,
+      "proteinas": 18.7,
+      "carbos": 49.0,
+      "grasas": 5.0,
+      "ingredientes": [
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "70g (2 rebanadas)",
+          "kcal": 170.8,
+          "proteinas": 7.2,
+          "carbos": 28.8,
+          "grasas": 2.0
+        },
+        {
+          "nombre": "Queso fresco",
+          "cantidad": "80g",
+          "kcal": 78.4,
+          "proteinas": 10.8,
+          "carbos": 2.4,
+          "grasas": 2.8
+        },
+        {
+          "nombre": "Plátano",
+          "cantidad": "60g (½ grande)",
+          "kcal": 53.4,
+          "proteinas": 0.7,
+          "carbos": 13.7,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Miel",
+          "cantidad": "5g",
+          "kcal": 15.2,
+          "proteinas": 0.0,
+          "carbos": 4.1,
+          "grasas": 0
+        },
+        {
+          "nombre": "Canela molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Tuesta el pan.",
+        "Corta el queso fresco en rodajas.",
+        "Colócalo sobre las tostadas.",
+        "Corta el plátano en rodajas finas.",
+        "Añádelo por encima.",
+        "Termina con la miel y la canela."
+      ]
+    },
+    {
+      "id": "r17951624304967vei",
+      "nombre": "Cerdo salteado con salsa de soja y miel, noodles y zanahoria",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "Receta asiática con salsa dulce y salada.",
+      "raciones": 1,
+      "kcal": 622.5,
+      "proteinas": 42.3,
+      "carbos": 83.3,
+      "grasas": 13.6,
+      "ingredientes": [
+        {
+          "nombre": "Lomo de cerdo",
+          "cantidad": "150g (limpio)",
+          "kcal": 204.0,
+          "proteinas": 30.8,
+          "carbos": 0,
+          "grasas": 8.1
+        },
+        {
+          "nombre": "noodles de trigo",
+          "cantidad": "75g (secos)",
+          "kcal": 262.5,
+          "proteinas": 7.5,
+          "carbos": 57.0,
+          "grasas": 0.5
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "100g",
+          "kcal": 41.0,
+          "proteinas": 0.9,
+          "carbos": 9.6,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "100g",
+          "kcal": 16.0,
+          "proteinas": 1.2,
+          "carbos": 3.3,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "40g (½ pequeña)",
+          "kcal": 15.2,
+          "proteinas": 0.5,
+          "carbos": 3.4,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Salsa de soja baja en sal",
+          "cantidad": "15ml",
+          "kcal": 7.9,
+          "proteinas": 1.2,
+          "carbos": 0.8,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Miel",
+          "cantidad": "10g",
+          "kcal": 30.4,
+          "proteinas": 0.0,
+          "carbos": 8.2,
+          "grasas": 0
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g (1 diente)",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Jengibre molido",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Semillas de sésamo",
+          "cantidad": "opcional",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Corta el lomo en tiras finas.",
+        "Pela la zanahoria y córtala en tiras.",
+        "Corta el calabacín y la cebolla.",
+        "Cuece los noodles siguiendo las instrucciones del paquete.",
+        "Mezcla la salsa de soja, la miel, el ajo picado y el jengibre.",
+        "Calienta el aceite en una sartén grande.",
+        "Añade el cerdo y saltéalo hasta que esté bien cocinado.",
+        "Incorpora la zanahoria y la cebolla.",
+        "Cocina durante 3-4 minutos.",
+        "Añade el calabacín y cocina otros 3 minutos.",
+        "Incorpora los noodles escurridos.",
+        "Vierte la salsa por encima.",
+        "Mezcla durante un par de minutos hasta que todo quede bien impregnado.",
+        "Añade sésamo si te apetece."
+      ]
+    },
+    {
+      "id": "r1795162430497iabd",
+      "nombre": "Sopa de fideos con pollo desmenuzado",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "Cena calentita, fácil de digerir y perfecta para terminar el viernes.",
+      "raciones": 1,
+      "kcal": 429.1,
+      "proteinas": 34.8,
+      "carbos": 51.9,
+      "grasas": 7.0,
+      "ingredientes": [
+        {
+          "nombre": "Pechuga de pollo",
+          "cantidad": "120g",
+          "kcal": 132.0,
+          "proteinas": 27.6,
+          "carbos": 0,
+          "grasas": 1.4
+        },
+        {
+          "nombre": "Fideos finos",
+          "cantidad": "50g (en seco)",
+          "kcal": 180.0,
+          "proteinas": 6.0,
+          "carbos": 37.0,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "80g",
+          "kcal": 32.8,
+          "proteinas": 0.7,
+          "carbos": 7.7,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Puerro",
+          "cantidad": "30g",
+          "kcal": 18.3,
+          "proteinas": 0.4,
+          "carbos": 4.2,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Caldo pollo",
+          "cantidad": "500ml",
+          "kcal": 25.0,
+          "proteinas": 0,
+          "carbos": 3.0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Ajo en polvo",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Perejil fresco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Corta la zanahoria en dados pequeños.",
+        "Corta el puerro en rodajas finas.",
+        "Calienta el aceite en una olla.",
+        "Añade las verduras y sofríe durante 3 minutos.",
+        "Incorpora el caldo.",
+        "Añade la pechuga de pollo entera.",
+        "Cocina durante unos 15-20 minutos, hasta que el pollo esté completamente hecho.",
+        "Retira el pollo y desmenúzalo con dos tenedores.",
+        "Añade los fideos al caldo y cocina siguiendo el tiempo indicado en el paquete.",
+        "Incorpora de nuevo el pollo desmenuzado.",
+        "Añade perejil y pimienta.",
+        "Sirve caliente."
+      ]
+    },
+    {
+      "id": "r17951624304989gqg",
+      "nombre": "Batido de plátano, leche y cacao + tostada de queso",
+      "tipo": "desayuno",
+      "tiempo": "",
+      "descripcion": "Desayuno rápido para los fines de semana.",
+      "raciones": 1,
+      "kcal": 341.4,
+      "proteinas": 19.4,
+      "carbos": 51.0,
+      "grasas": 7.2,
+      "ingredientes": [
+        {
+          "nombre": "Plátano",
+          "cantidad": "100g (1 pequeño)",
+          "kcal": 89.0,
+          "proteinas": 1.1,
+          "carbos": 22.8,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "200ml",
+          "kcal": 92.0,
+          "proteinas": 6.2,
+          "carbos": 9.4,
+          "grasas": 3.2
+        },
+        {
+          "nombre": "Cacao puro",
+          "cantidad": "5g",
+          "kcal": 13.8,
+          "proteinas": 1.3,
+          "carbos": 0.8,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "40g (1 rebanada)",
+          "kcal": 97.6,
+          "proteinas": 4.1,
+          "carbos": 16.4,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Queso fresco",
+          "cantidad": "50g",
+          "kcal": 49.0,
+          "proteinas": 6.8,
+          "carbos": 1.5,
+          "grasas": 1.8
+        },
+        {
+          "nombre": "Canela molida",
+          "cantidad": "opcional",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Pela el plátano y córtalo en trozos.",
+        "Colócalo en la batidora.",
+        "Añade la leche y el cacao.",
+        "Tritura hasta conseguir un batido homogéneo.",
+        "Si lo prefieres frío, añade hielo.",
+        "Tuesta el pan.",
+        "Coloca el queso fresco encima.",
+        "Sirve junto al batido."
+      ]
+    },
+    {
+      "id": "r1795162430499cv4q",
+      "nombre": "Merluza en salsa verde con patatas y guisantes",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "Receta tradicional de pescado con una salsa muy sabrosa.",
+      "raciones": 1,
+      "kcal": 540.7,
+      "proteinas": 38.3,
+      "carbos": 70.9,
+      "grasas": 11.1,
+      "ingredientes": [
+        {
+          "nombre": "Merluza",
+          "cantidad": "180g",
+          "kcal": 176.4,
+          "proteinas": 27.4,
+          "carbos": 3.6,
+          "grasas": 5.4
+        },
+        {
+          "nombre": "Patata",
+          "cantidad": "250g",
+          "kcal": 212.5,
+          "proteinas": 5.0,
+          "carbos": 45.0,
+          "grasas": 0.5
+        },
+        {
+          "nombre": "Guisantes",
+          "cantidad": "70g",
+          "kcal": 56.7,
+          "proteinas": 3.8,
+          "carbos": 10.1,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "40g (½ pequeña)",
+          "kcal": 15.2,
+          "proteinas": 0.5,
+          "carbos": 3.4,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g (1 diente)",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Caldo pescado",
+          "cantidad": "100ml",
+          "kcal": 4.0,
+          "proteinas": 0.4,
+          "carbos": 0.5,
+          "grasas": 0
+        },
+        {
+          "nombre": "Harina de trigo",
+          "cantidad": "5g",
+          "kcal": 18.2,
+          "proteinas": 0.5,
+          "carbos": 3.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Perejil fresco",
+          "cantidad": "10g (abundante)",
+          "kcal": 3.6,
+          "proteinas": 0.3,
+          "carbos": 0.6,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Limon",
+          "cantidad": "30g (½ limón)",
+          "kcal": 8.7,
+          "proteinas": 0.3,
+          "carbos": 2.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Pela las patatas y córtalas en rodajas gruesas.",
+        "Cuécelas en agua con sal durante 15-20 minutos.",
+        "Pica la cebolla y el ajo.",
+        "Calienta el aceite en una sartén amplia.",
+        "Sofríe la cebolla durante 4-5 minutos.",
+        "Añade el ajo picado.",
+        "Incorpora la harina y remueve durante unos segundos.",
+        "Añade el caldo poco a poco mientras remueves para evitar grumos.",
+        "Incorpora el perejil picado.",
+        "Añade los guisantes y cocina durante 5 minutos.",
+        "Coloca la merluza en la salsa.",
+        "Cocina a fuego medio-bajo durante 4-6 minutos, dependiendo del grosor, hasta que esté hecha.",
+        "Añade unas gotas de limón.",
+        "Sirve con las patatas cocidas."
+      ]
+    },
+    {
+      "id": "r1795162430500y213",
+      "nombre": "Ensalada templada de garbanzos, tomate, zanahoria y queso fresco",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "Cena sin complicaciones que se prepara en pocos minutos.",
+      "raciones": 1,
+      "kcal": 301.8,
+      "proteinas": 18.2,
+      "carbos": 34.2,
+      "grasas": 10.1,
+      "ingredientes": [
+        {
+          "nombre": "Garbanzos (bote)",
+          "cantidad": "150g (cocidos y escurridos)",
+          "kcal": 142.5,
+          "proteinas": 8.1,
+          "carbos": 18.0,
+          "grasas": 3.0
+        },
+        {
+          "nombre": "Tomate natural",
+          "cantidad": "100g",
+          "kcal": 18.0,
+          "proteinas": 0.9,
+          "carbos": 3.9,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Zanahoria",
+          "cantidad": "80g",
+          "kcal": 32.8,
+          "proteinas": 0.7,
+          "carbos": 7.7,
+          "grasas": 0.2
+        },
+        {
+          "nombre": "Queso fresco",
+          "cantidad": "60g",
+          "kcal": 58.8,
+          "proteinas": 8.1,
+          "carbos": 1.8,
+          "grasas": 2.1
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Limon",
+          "cantidad": "30g (½ limón)",
+          "kcal": 8.7,
+          "proteinas": 0.3,
+          "carbos": 2.8,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Perejil fresco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Comino molido",
+          "cantidad": "una pizca",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Escurre y enjuaga los garbanzos.",
+        "Pela y ralla la zanahoria.",
+        "Corta el tomate en dados.",
+        "Calienta los garbanzos en una sartén con un poquito de agua.",
+        "Añade una pizca de comino y pimienta.",
+        "Cocina durante 3-4 minutos.",
+        "Coloca los garbanzos en un bol.",
+        "Añade la zanahoria y el tomate.",
+        "Corta el queso fresco en dados y repártelo por encima.",
+        "Aliña con el aceite, el zumo de limón y el perejil."
+      ]
+    },
+    {
+      "id": "r17951624305014g2d",
+      "nombre": "Cereales con leche, fruta y frutos secos",
+      "tipo": "desayuno",
+      "tiempo": "",
+      "descripcion": "Desayuno sencillo para cambiar de las tostadas.",
+      "raciones": 1,
+      "kcal": 366.2,
+      "proteinas": 13.2,
+      "carbos": 47.6,
+      "grasas": 13.8,
+      "ingredientes": [
+        {
+          "nombre": "Cereales integrales",
+          "cantidad": "40g (sin mucho azúcar añadido)",
+          "kcal": 148.0,
+          "proteinas": 4.0,
+          "carbos": 28.0,
+          "grasas": 1.2
+        },
+        {
+          "nombre": "Leche semi",
+          "cantidad": "200ml",
+          "kcal": 92.0,
+          "proteinas": 6.2,
+          "carbos": 9.4,
+          "grasas": 3.2
+        },
+        {
+          "nombre": "Fresas congeladas",
+          "cantidad": "100g (fresas, plátano o manzana)",
+          "kcal": 32.0,
+          "proteinas": 0.7,
+          "carbos": 7.7,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Avellanas",
+          "cantidad": "15g (o nueces)",
+          "kcal": 94.2,
+          "proteinas": 2.2,
+          "carbos": 2.5,
+          "grasas": 9.1
+        }
+      ],
+      "pasos": [
+        "Coloca los cereales en un bol.",
+        "Añade la leche.",
+        "Lava y corta la fruta.",
+        "Incorpórala a los cereales.",
+        "Trocea los frutos secos y añádelos por encima. Elige cereales que te gusten, pero mira la etiqueta para controlar el azúcar."
+      ]
+    },
+    {
+      "id": "r1795162430502sq3m",
+      "nombre": "Arroz meloso de sepia y gambas con calabacín",
+      "tipo": "comida",
+      "tiempo": "",
+      "descripcion": "Plato especial para el domingo, con sabor a mar.",
+      "raciones": 1,
+      "kcal": 528.2,
+      "proteinas": 44.0,
+      "carbos": 69.0,
+      "grasas": 7.1,
+      "ingredientes": [
+        {
+          "nombre": "Arroz Blanco",
+          "cantidad": "70g (redondo, en seco)",
+          "kcal": 244.3,
+          "proteinas": 5.6,
+          "carbos": 53.2,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Sepia",
+          "cantidad": "120g (limpia)",
+          "kcal": 94.8,
+          "proteinas": 19.2,
+          "carbos": 1.0,
+          "grasas": 0.8
+        },
+        {
+          "nombre": "Gambas (congeladas)",
+          "cantidad": "100g (peladas)",
+          "kcal": 71.0,
+          "proteinas": 15.0,
+          "carbos": 0.3,
+          "grasas": 0.6
+        },
+        {
+          "nombre": "Calabacin",
+          "cantidad": "100g",
+          "kcal": 16.0,
+          "proteinas": 1.2,
+          "carbos": 3.3,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Cebolla (congelada)",
+          "cantidad": "40g",
+          "kcal": 15.2,
+          "proteinas": 0.5,
+          "carbos": 3.4,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Tomate triturado",
+          "cantidad": "100g",
+          "kcal": 27.0,
+          "proteinas": 1.0,
+          "carbos": 4.9,
+          "grasas": 0
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Caldo pescado",
+          "cantidad": "325ml (300-350 ml)",
+          "kcal": 13.0,
+          "proteinas": 1.3,
+          "carbos": 1.6,
+          "grasas": 0
+        },
+        {
+          "nombre": "Ajo fresco",
+          "cantidad": "3g (1 diente)",
+          "kcal": 4.5,
+          "proteinas": 0.2,
+          "carbos": 1.0,
+          "grasas": 0.0
+        },
+        {
+          "nombre": "Pimenton dulce",
+          "cantidad": "0.5g (una pizca)",
+          "kcal": 1.4,
+          "proteinas": 0.1,
+          "carbos": 0.3,
+          "grasas": 0.1
+        },
+        {
+          "nombre": "Azafrán o cúrcuma",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Perejil fresco",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Sal",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Pica la cebolla y el ajo.",
+        "Corta la sepia en trozos pequeños.",
+        "Corta el calabacín en dados.",
+        "Calienta el aceite en una sartén profunda o cazuela.",
+        "Incorpora la sepia y saltéala durante unos minutos.",
+        "Añade la cebolla y el ajo.",
+        "Incorpora el calabacín.",
+        "Añade el tomate triturado y cocina durante 4-5 minutos.",
+        "Incorpora el pimentón y el azafrán.",
+        "Añade el arroz y remueve para que se impregne del sofrito.",
+        "Vierte el caldo caliente.",
+        "Cocina a fuego medio durante unos 15 minutos, removiendo de vez en cuando.",
+        "Añade las gambas durante los últimos 4-5 minutos.",
+        "Comprueba que el arroz esté cocido y que mantenga una textura melosa.",
+        "Ajusta de sal y termina con perejil. Si se queda demasiado seco antes de que el arroz esté hecho, añade un poco más de caldo caliente."
+      ]
+    },
+    {
+      "id": "r17951624305030bkc",
+      "nombre": "Tostadas de ricotta, tomate salteado y jamón serrano",
+      "tipo": "cena",
+      "tiempo": "",
+      "descripcion": "Cena con un toque italiano y muy fácil de preparar.",
+      "raciones": 1,
+      "kcal": 448.6,
+      "proteinas": 26.3,
+      "carbos": 41.0,
+      "grasas": 19.3,
+      "ingredientes": [
+        {
+          "nombre": "Pan molde integral",
+          "cantidad": "80g (2 rebanadas)",
+          "kcal": 195.2,
+          "proteinas": 8.2,
+          "carbos": 32.9,
+          "grasas": 2.3
+        },
+        {
+          "nombre": "Ricotta",
+          "cantidad": "70g",
+          "kcal": 121.8,
+          "proteinas": 7.7,
+          "carbos": 2.1,
+          "grasas": 9.1
+        },
+        {
+          "nombre": "Jamón serrano",
+          "cantidad": "30g",
+          "kcal": 63.6,
+          "proteinas": 9.0,
+          "carbos": 0.1,
+          "grasas": 3.0
+        },
+        {
+          "nombre": "Tomates cherry",
+          "cantidad": "150g",
+          "kcal": 27.0,
+          "proteinas": 1.4,
+          "carbos": 5.8,
+          "grasas": 0.3
+        },
+        {
+          "nombre": "Aceite",
+          "cantidad": "5ml",
+          "kcal": 41.0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 4.5
+        },
+        {
+          "nombre": "Albahaca seca",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        },
+        {
+          "nombre": "Pimienta negra molida",
+          "cantidad": "",
+          "kcal": 0,
+          "proteinas": 0,
+          "carbos": 0,
+          "grasas": 0
+        }
+      ],
+      "pasos": [
+        "Lava los tomates cherry y córtalos por la mitad.",
+        "Calienta el aceite en una sartén.",
+        "Añade los tomates con la parte cortada hacia abajo.",
+        "Cocina durante 3-4 minutos hasta que estén blanditos.",
+        "Añade pimienta y albahaca.",
+        "Tuesta el pan.",
+        "Reparte la ricotta sobre las tostadas.",
+        "Incorpora los tomates salteados.",
+        "Termina con el jamón serrano."
+      ]
     }
   ],
   "menu": {
@@ -7461,58 +9676,58 @@
     },
     "semana2": {
       "lunes": {
-        "desayuno": "r1783426608931zhkv",
-        "comida": "r1794170731232a0rl",
+        "desayuno": "r1795162430483gk96",
+        "comida": "r1795162430484naqj",
         "postre_comida": null,
-        "cena": null,
+        "cena": "r1795162430485yxbp",
         "postre_cena": null,
         "snack": null
       },
       "martes": {
-        "desayuno": "r178342655835041jb",
-        "comida": "r1794170731232kw38",
+        "desayuno": "r1795162430486ab9z",
+        "comida": "r179516243048796qm",
         "postre_comida": null,
-        "cena": "r1783885404412btg3",
+        "cena": "r17951624304884fx2",
         "postre_cena": null,
         "snack": null
       },
       "miercoles": {
-        "desayuno": null,
-        "comida": "r1794170731232uu46",
+        "desayuno": "r1795162430489g42z",
+        "comida": "r1795162430490sodg",
         "postre_comida": null,
-        "cena": null,
+        "cena": "r1795162430491bavq",
         "postre_cena": null,
         "snack": null
       },
       "jueves": {
-        "desayuno": "r1783416344197uysz",
-        "comida": "r1794170731232o57d",
+        "desayuno": "r1795162430492552p",
+        "comida": "r1795162430493ag3a",
         "postre_comida": null,
-        "cena": null,
+        "cena": "r1795162430494y2ze",
         "postre_cena": null,
         "snack": null
       },
       "viernes": {
-        "desayuno": null,
-        "comida": "r1794170731232uauw",
+        "desayuno": "r1795162430495zgiu",
+        "comida": "r17951624304967vei",
         "postre_comida": null,
-        "cena": "r17838847697983vhr",
+        "cena": "r1795162430497iabd",
         "postre_cena": null,
         "snack": null
       },
       "sabado": {
-        "desayuno": "r1783426503814knhn",
-        "comida": "r1794170731232r17q",
+        "desayuno": "r17951624304989gqg",
+        "comida": "r1795162430499cv4q",
         "postre_comida": null,
-        "cena": null,
+        "cena": "r1795162430500y213",
         "postre_cena": null,
         "snack": null
       },
       "domingo": {
-        "desayuno": null,
-        "comida": "r1794170731232pz71",
+        "desayuno": "r17951624305014g2d",
+        "comida": "r1795162430502sq3m",
         "postre_comida": null,
-        "cena": "r1783885404413ylju",
+        "cena": "r17951624305030bkc",
         "postre_cena": null,
         "snack": null
       }

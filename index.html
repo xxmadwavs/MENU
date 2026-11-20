@@ -683,6 +683,27 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .dm-none{font-size:.78rem;line-height:1.45;color:var(--ink-soft)}
 .dm-split{font-size:.7rem;line-height:1.45;color:var(--ink-soft)}
 
+/* ── F1.3: actividad física y entrenamiento ── */
+.dash-act{display:flex;flex-direction:column;gap:.9rem}
+.da-sec{display:flex;flex-direction:column;gap:.45rem;padding-top:.75rem;border-top:1px solid var(--line)}
+.da-sec:first-child{padding-top:0;border-top:0}
+.da-lbl{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.da-big{font-family:'IBM Plex Mono',monospace;font-size:1.6rem;font-weight:700;line-height:1;color:var(--ink)}
+.da-big small{font-size:.85rem;font-weight:600;color:var(--ink-soft)}
+.da-row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;font-size:.84rem;color:var(--ink)}
+.da-row .da-min{font-family:'IBM Plex Mono',monospace;font-weight:700;margin-left:auto}
+.da-row.is-none{color:var(--ink-soft)}
+.da-chip{flex-shrink:0;padding:2px 9px;border-radius:20px;font-size:.68rem;font-weight:700;white-space:nowrap}
+.da-chip.done{background:var(--sage-light);color:#3f5c2c}
+.da-chip.zero{background:var(--line);color:var(--ink)}
+.da-chip.none{background:transparent;border:1px dashed var(--line);color:var(--ink-soft)}
+.da-note{font-size:.74rem;line-height:1.45;color:var(--ink-soft)}
+.da-bar{position:relative;height:8px;border-radius:6px;background:var(--line);overflow:hidden}
+.da-bar span{position:absolute;top:0;bottom:0;left:0;border-radius:6px;background:var(--sage)}
+.da-cta{align-self:flex-start;min-height:40px;padding:0 .9rem;border:1.5px solid var(--green);border-radius:999px;background:none;color:var(--green);font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer}
+.da-cta:hover{background:var(--green-light)}
+.da-cta:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
 /* Recetas: varias columnas cuando hay sitio (solo presentación) */
 @media(min-width:720px){
   .recipes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:.8rem}
@@ -825,8 +846,8 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
       <div class="dash-slot" id="dash-comidas-body">Aquí se mostrarán el desayuno, la comida, la cena y los snacks de hoy.</div>
     </section>
     <section class="dash-card dash-actividad" id="dash-actividad" aria-labelledby="dash-actividad-t">
-      <div class="dash-card-head"><h3 id="dash-actividad-t">Actividad física</h3><button type="button" class="dash-link" onclick="showView('diario')">Ver diario</button></div>
-      <div class="dash-slot" id="dash-actividad-body">Aquí se mostrarán los pasos y el ejercicio de hoy.</div>
+      <div class="dash-card-head"><h3 id="dash-actividad-t">Actividad física</h3><button type="button" class="dash-link" onclick="dashVerDiario()">Ver diario</button></div>
+      <div class="dash-act" id="dash-actividad-body"><p class="dash-loading">Cargando…</p></div>
     </section>
     <section class="dash-card dash-peso" id="dash-peso" aria-labelledby="dash-peso-t">
       <div class="dash-card-head"><h3 id="dash-peso-t">Peso</h3><button type="button" class="dash-link" onclick="showView('diario')">Ver diario</button></div>
@@ -2761,6 +2782,7 @@ function renderDashboard(){
   const f=dashFecha, dd=dashDatosDia(f);
   dashSet('dash-resumen-body',dashKcalHtml(f,dd));
   DASH_MACROS.forEach(m=>dashRenderMacro(m,dd,f));
+  dashSet('dash-actividad-body',dashActividadHtml(f));
 }
 
 // Totales del día (los calcula computeRealDia) + cuánto de ese total viene de registros reales.
@@ -2885,6 +2907,61 @@ function dashRenderMacro(m,dd,f){
     </div>
     <div class="dm-rows"><div><span>Objetivo</span><b>${obj} g</b></div><div><span>${resta<0?'Superado':'Restan'}</span><b>${Math.abs(resta)} g</b></div></div>
     ${split}`);
+}
+
+/* ══════════ DASHBOARD · ACTIVIDAD FÍSICA Y ENTRENAMIENTO (F1.3) ══════════
+   Solo lectura de DIARIO[fecha] (pasos, gimnasio_min, cardio_min), los mismos campos que edita el Diario.
+   No suma calorías de actividad al consumo ni toca gastoBaseFecha/balanceFecha: el gasto ya lo calcula el Diario.
+   La app no guarda objetivo de pasos, estado de actividad ni plan de entrenamiento: no se muestra ni se inventa nada de eso. */
+function dashNumOrNull(v){ if(v==null||v==='') return null; const n=Number(v); return Number.isFinite(n)&&n>=0?n:null; }
+function dashFmtNum(n){ return n.toLocaleString('es-ES',{maximumFractionDigits:1}); }
+// Solo existe si el perfil lo trae con un valor válido (hoy el perfil no tiene este campo)
+function dashObjetivoPasos(){ const n=PERFIL?dashNumOrNull(PERFIL.pasos_objetivo):null; return n>0?Math.round(n):null; }
+function dashActividadHtml(f){
+  const row=DIARIO[f]||{};
+  const pasos=dashNumOrNull(row.pasos), gym=dashNumOrNull(row.gimnasio_min), cardio=dashNumOrNull(row.cardio_min);
+
+  // 1) Pasos
+  let pasosHtml;
+  if(pasos==null){
+    pasosHtml=`<p class="da-note">Sin pasos registrados este día.</p>`;
+  }else{
+    const obj=dashObjetivoPasos();
+    pasosHtml=`<div class="da-big">${dashFmtNum(pasos)}<small> pasos</small></div>`;
+    if(obj!=null){
+      const pct=Math.round(pasos/obj*100), resta=obj-pasos;
+      pasosHtml+=`<div class="da-bar" role="progressbar" aria-label="Pasos: ${pct}% del objetivo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.min(pct,100)}" aria-valuetext="${pct}% del objetivo"><span style="width:${Math.max(0,Math.min(pasos/obj,1))*100}%"></span></div>
+        <div class="da-row"><span>Objetivo ${dashFmtNum(obj)}</span><span class="da-min">${pct}%</span><span>${resta<0?'Superado en':'Faltan'} ${dashFmtNum(Math.abs(resta))}</span></div>`;
+    }else{
+      pasosHtml+=`<p class="da-note">Sin objetivo de pasos configurado.</p>`;
+    }
+  }
+
+  // 2) Actividad registrada (null = sin registrar; 0 = registrado sin actividad; >0 = realizada)
+  const tipos=[{n:'Gimnasio',v:gym},{n:'Cardio',v:cardio}];
+  const actRows=tipos.map(t=>{
+    if(t.v==null) return `<div class="da-row is-none"><span>${t.n}</span><span class="da-chip none">Sin registrar</span></div>`;
+    if(t.v===0) return `<div class="da-row"><span>${t.n}</span><span class="da-min">0 min</span><span class="da-chip zero">Sin actividad</span></div>`;
+    return `<div class="da-row"><span>${t.n}</span><span class="da-min">${dashFmtNum(t.v)} min</span><span class="da-chip done">Realizada</span></div>`;
+  }).join('');
+  const hayAct=(gym!=null&&gym>0)||(cardio!=null&&cardio>0);
+
+  // 3) Entrenamiento: la app no tiene entrenamientos planificados; lo único que existe es lo realizado en el Diario
+  const sesiones=tipos.filter(t=>t.v>0).map(t=>t.n);
+  const realizadoHtml=hayAct
+    ?`<div class="da-row"><span>Sesión realizada</span><span class="da-chip done">${sesiones.join(' + ')}</span></div>`
+    :`<div class="da-row is-none"><span>Sesión realizada</span><span class="da-chip none">No registrada</span></div>`;
+  const hayAlgo=pasos!=null||gym!=null||cardio!=null;
+
+  return `
+    <div class="da-sec"><div class="da-lbl">Pasos</div>${pasosHtml}</div>
+    <div class="da-sec"><div class="da-lbl">Actividad registrada</div>${actRows}</div>
+    <div class="da-sec"><div class="da-lbl">Entrenamiento</div>
+      <div class="da-row is-none"><span>Previsto</span><span class="da-chip none">Sin plan en la app</span></div>
+      ${realizadoHtml}
+      <p class="da-note">Aquí solo se muestran: no se suman a las calorías consumidas ni cambian el balance del Diario.</p>
+      <button type="button" class="da-cta" onclick="dashVerDiario()">${hayAlgo?'Ver o editar en el Diario':'Registrar en el Diario'}</button>
+    </div>`;
 }
 
 dashRenderCabecera();

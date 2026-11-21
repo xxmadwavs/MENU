@@ -448,6 +448,36 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .rg-totals .tv{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:.95rem;color:var(--green-deep);display:block;text-align:center}
 .rg-totals .tl{color:var(--green-deep);opacity:.7;display:block;text-align:center;margin-top:2px}
 .rg-field{margin-bottom:.8rem}
+.rg-sel,.ring-qty2 select,.rg-add-line select{background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-sm);color:var(--ink);font-family:'Inter',sans-serif;font-size:.8rem;padding:.5rem .45rem;min-height:36px}
+.rg-field .rg-sel{width:100%;font-size:.86rem;padding:.55rem .7rem}
+.rg-sel:focus,.ring-qty2 select:focus,.rg-add-line select:focus,.rg-man input:focus,.rg-add-line input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-light)}
+.rg-dest{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:.2rem}
+.rg-list-h,.rg-add-h{font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:.5rem 0 .3rem}
+.rg-vacio{font-size:.8rem;color:var(--ink-soft);margin:.4rem 0 .8rem}
+.ring-qty2{display:flex;gap:4px;flex-shrink:0;align-items:center}
+.ring-qty2 input{width:58px;border-radius:8px;padding:.35rem .4rem;font-size:.78rem;text-align:center;font-family:'IBM Plex Mono',monospace;background:var(--paper);border:1.5px solid var(--line);color:var(--ink);min-height:36px}
+.ring-qty2 select{max-width:84px}
+.ring-u{font-size:.68rem;color:var(--ink-soft)}
+.rg-add{margin-top:1rem;padding-top:.6rem;border-top:1px dashed var(--line)}
+.rg-add-sel{display:flex;flex-direction:column;gap:.5rem;padding:.7rem;margin-bottom:.8rem;border:1.5px solid var(--sage);border-radius:var(--r-sm);background:var(--sage-light);font-size:.82rem}
+.rg-add-ref{font-size:.72rem;color:var(--ink-soft)}
+.rg-add-line{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.rg-add-line label{font-size:.72rem;font-weight:700;color:var(--ink-soft)}
+.rg-add-line input{width:90px;padding:.4rem .5rem;border-radius:8px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.82rem;min-height:36px}
+.rg-add-prev{font-size:.76rem;color:#3f5c2c;min-height:1.1em}
+.rg-add-prev em{font-style:normal;opacity:.75}
+.rg-prev-err{color:#8a3d27}
+.rg-man{padding:.6rem .65rem;margin:.45rem 0;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--paper-raised)}
+.rg-man input{width:100%;padding:.4rem .5rem;border-radius:8px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-size:.8rem;min-height:36px}
+.rg-man-top{display:flex;gap:6px;align-items:center;margin-bottom:.4rem}
+.rg-man-q{display:grid;grid-template-columns:1fr 1.4fr;gap:6px;margin-bottom:.4rem}
+.rg-man-n{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.rg-man-n label{font-size:.6rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;display:flex;flex-direction:column;gap:2px}
+.rg-man-h{font-size:.68rem;color:var(--ink-soft);margin-top:.35rem}
+.rg-tot-nota{font-size:.72rem;color:#7a5a12;margin:-.5rem 0 .8rem;min-height:0}
+.dal-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.55rem}
+.dal-head .dal-h{margin-bottom:0}
+.dal-warn{font-size:.7rem;color:#7a5a12}
 .rg-field label{display:block;margin-bottom:.3rem}
 .rg-field input,.rg-field textarea{width:100%;padding:.55rem .7rem;font-size:.86rem}
 .rg-macro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
@@ -716,7 +746,7 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .dc-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:.2rem}
 .dc-type{font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
 .dc-name{font-size:.9rem;font-weight:600;line-height:1.3;color:var(--ink);text-align:left;overflow-wrap:anywhere}
-button.dc-name{background:none;border:0;padding:0;font-family:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+button.dc-name{background:none;border:0;padding:.3rem 0;min-height:36px;display:flex;align-items:center;font-family:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
 button.dc-name:hover{text-decoration-color:var(--green)}
 .dc-name.is-empty{font-weight:500;color:var(--ink-soft)}
 .dc-macros{display:flex;flex-wrap:wrap;gap:.2rem .65rem;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft)}
@@ -743,11 +773,98 @@ button.dc-name:hover{text-decoration-color:var(--green)}
 .pl-dl{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
 .pl-it{display:flex;align-items:center;gap:.6rem;font-size:.84rem}
 .pl-it .meal-icon{flex-shrink:0}
-.pl-it button{background:none;border:0;padding:0;font-family:inherit;font-size:inherit;font-weight:600;color:var(--ink);text-align:left;cursor:pointer;min-width:0;overflow-wrap:anywhere}
+.pl-it button{background:none;border:0;padding:.25rem 0;min-height:40px;display:flex;align-items:center;font-family:inherit;font-size:inherit;font-weight:600;color:var(--ink);text-align:left;cursor:pointer;min-width:0;overflow-wrap:anywhere}
 .pl-it button:hover{text-decoration:underline}
 .pl-it button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .pl-k{margin-left:auto;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-soft)}
 .pl-entreno{padding-top:.7rem;border-top:1px solid var(--line)}
+
+/* ── F2.1: planificado vs consumido ── */
+.cal-kcal-plan{opacity:.55;font-style:italic;font-weight:600}
+.rb-pendiente{background:transparent;border:1px dashed var(--ink-soft);color:var(--ink-soft)}
+.day-plan-row{padding:.4rem 1.1rem;border-bottom:1px solid var(--line);font-size:.74rem;color:var(--ink-soft)}
+.day-plan-row .mono{font-weight:700;color:var(--ink)}
+.dml-cap{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.dal{margin:.9rem 0;padding-top:.8rem;border-top:1px solid var(--line)}
+.dal-h{font-family:'Fraunces',serif;font-weight:600;font-size:1rem;color:var(--ink);margin-bottom:.55rem}
+.dal-sum{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;margin-bottom:.5rem}
+.dal-box{display:flex;flex-direction:column;gap:2px;padding:.55rem .7rem;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--paper)}
+.dal-box.plan{border-style:dashed;background:transparent}
+.dal-box.cons{border-color:var(--sage);background:var(--sage-light)}
+.dal-box-l{font-size:.64rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)}
+.dal-box-v{font-family:'IBM Plex Mono',monospace;font-size:1.05rem;color:var(--ink)}
+.dal-box-s{font-size:.68rem;color:var(--ink-soft)}
+.dal-estado{font-size:.76rem;line-height:1.45;margin:.2rem 0 .7rem;padding:.45rem .65rem;border-radius:var(--r-sm);background:var(--paper)}
+.dal-estado.is-none{color:var(--ink-soft);border:1px dashed var(--line)}
+.dal-estado.is-part{color:#7a5a12;background:#fbf1d8}
+.dal-estado.is-ok{color:#3f5c2c;background:var(--sage-light)}
+.dal-aviso{font-size:.8rem;color:var(--ink-soft);margin:.2rem 0 .5rem}
+.dal-aviso.dal-err{color:#8a3d27}
+.dal-slot{margin-bottom:.7rem}
+.dal-slot-h{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.3rem}
+.dal-type{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.dal-act{min-height:36px;padding:0 .8rem;border:1.5px solid var(--green);border-radius:999px;background:none;color:var(--green);font-family:inherit;font-size:.74rem;font-weight:700;cursor:pointer}
+.dal-act:hover{background:var(--green-light)}
+.dal-act:focus-visible,.dal-ing summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.dal-pair{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem}
+@media(min-width:640px){.dal-pair{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dal-col{display:flex;flex-direction:column;gap:.25rem;min-width:0;padding:.6rem .7rem;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--paper)}
+.dal-col.dal-plan{border-style:dashed;background:transparent}
+.dal-col.is-reg{border-color:var(--sage);border-left-width:4px;background:var(--paper-raised)}
+.dal-col.is-no{border-color:var(--clay);border-left-width:4px;background:var(--clay-light)}
+.dal-col.is-pend,.dal-col.is-none{border-style:dashed;background:transparent}
+.dal-lbl{font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
+.dal-name{font-size:.86rem;font-weight:600;line-height:1.3;color:var(--ink);overflow-wrap:anywhere}
+.dal-macros{display:flex;flex-wrap:wrap;gap:.15rem .6rem;font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--ink-soft)}
+.dal-macros b{color:var(--ink)}
+.dal-none{font-size:.76rem;color:var(--ink-soft)}
+.dal-nota,.dal-diff{font-size:.7rem;color:var(--ink-soft)}
+.dal-state{align-self:flex-start;display:inline-flex;padding:2px 8px;border-radius:20px;font-size:.62rem;font-weight:700}
+.dal-state.st-reg{background:var(--sage-light);color:#3f5c2c}
+.dal-state.st-no{background:#fff;color:#8a3d27;border:1px solid var(--clay)}
+.dal-state.st-pend{border:1px dashed var(--ink-soft);color:var(--ink-soft)}
+.dal-state.st-part{background:#fbf1d8;color:#7a5a12;border:1px solid #e3c875}
+.dal-col.is-part{border-color:#d9b44a;border-left-width:4px;background:var(--paper-raised)}
+.dal-chips{display:flex;flex-wrap:wrap;gap:.3rem;margin:0 0 .7rem}
+.dal-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:20px;font-size:.66rem;font-weight:700;border:1px solid var(--line);color:var(--ink-soft);background:var(--paper)}
+.dal-chip.c-reg{background:var(--sage-light);color:#3f5c2c;border-color:var(--sage)}
+.dal-chip.c-part{background:#fbf1d8;color:#7a5a12;border-color:#e3c875}
+.dal-chip.c-no{background:var(--clay-light);color:#8a3d27;border-color:var(--clay)}
+.dal-chip.c-pend{border-style:dashed}
+.dal-extra-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin:-.25rem 0 .7rem;padding:.4rem .7rem;border:1px dashed var(--line);border-radius:var(--r-sm);font-size:.76rem;color:var(--ink-soft)}
+.dal-otros-h{font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:.4rem 0 .3rem}
+.rb-parcial{background:#fbf1d8;color:#7a5a12}
+.rb-desconocido{background:var(--paper);color:var(--ink-soft);border:1px solid var(--line)}
+.dal-state.st-none{border:1px dashed var(--line);color:var(--ink-soft)}
+.dal-ing{font-size:.72rem;color:var(--ink-soft)}
+.dal-ing summary{cursor:pointer;font-weight:600;min-height:28px;display:flex;align-items:center}
+.dal-ing ul{margin:.2rem 0 0;padding-left:1.1rem}
+.dal-ing li.is-skip{text-decoration:line-through;opacity:.7}
+.dal-ing em{font-style:normal;opacity:.75}
+
+/* ── F1.5: errores de carga, estados vacíos y accesos ── */
+#dash-errores[hidden]{display:none}
+.dash-banner{display:flex;align-items:flex-start;justify-content:space-between;gap:.9rem;flex-wrap:wrap;padding:.85rem 1rem;border-radius:var(--r-sm);border:1.5px solid var(--clay);background:var(--clay-light);color:#6b2f1d}
+.dash-banner .db-txt{flex:1 1 260px;min-width:0;font-size:.82rem;line-height:1.5}
+.dash-banner p{margin:.2rem 0 0}
+.dash-banner details{margin-top:.35rem;font-size:.72rem}
+.dash-banner summary{cursor:pointer;font-weight:700}
+.dash-banner .da-cta{border-color:#6b2f1d;color:#6b2f1d}
+.dash-banner .da-cta:hover{background:rgba(107,47,29,.1)}
+.dash-banner .da-cta:disabled{opacity:.5;cursor:default}
+.dash-err{display:flex;flex-direction:column;gap:.6rem;align-items:flex-start;font-size:.84rem;line-height:1.5;color:var(--ink-soft)}
+.dash-err p{margin:0}
+.dash-err-s{font-size:.78rem;line-height:1.45;color:var(--ink-soft)}
+.dash-resumen .dash-err{color:rgba(251,246,234,.9)}
+.dash-resumen .dash-err .da-cta{color:#fbf6ea;border-color:rgba(251,246,234,.65)}
+.dash-resumen .dash-err .da-cta:hover{background:rgba(255,255,255,.12)}
+.dc-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin:-.25rem 0 .75rem}
+.dm-none .da-cta,.kc-warn+.da-cta{margin-top:.4rem}
+.dc-picks{display:flex;flex-direction:column;gap:.5rem;margin-top:.6rem}
+.dc-pick{display:flex;align-items:center;justify-content:space-between;gap:.6rem;min-height:48px;padding:.5rem .8rem;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--paper);font-family:inherit;font-size:.9rem;font-weight:600;color:var(--ink);text-align:left;cursor:pointer}
+.dc-pick:hover{border-color:var(--green);background:var(--green-light)}
+.dc-pick:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.dc-pick-s{font-size:.68rem;font-weight:700;color:var(--ink-soft);text-align:right}
 
 /* Recetas: varias columnas cuando hay sitio (solo presentación) */
 @media(min-width:720px){
@@ -834,6 +951,9 @@ button.dc-name:hover{text-decoration-color:var(--green)}
     <symbol id="ic-calendario" viewBox="0 0 20 20"><rect x="3" y="4.3" width="14" height="12.2" rx="2.2"/><path d="M3 8.2h14"/><path d="M7 2.6v3.2M13 2.6v3.2"/></symbol>
     <symbol id="ic-recetas" viewBox="0 0 20 20"><path d="M10 5.6c-1.5-1.1-3.6-1.6-6.2-1.6v11c2.6 0 4.7.5 6.2 1.6m0-11c1.5-1.1 3.6-1.6 6.2-1.6v11c-2.6 0-4.7.5-6.2 1.6m0-11v11"/></symbol>
     <symbol id="ic-compra" viewBox="0 0 20 20"><path d="M3.3 8h13.4l-1.2 8a1.6 1.6 0 0 1-1.6 1.4H6.1A1.6 1.6 0 0 1 4.5 16L3.3 8Z"/><path d="M6.7 8 8.2 3.3M13.3 8 11.8 3.3M8 11.2v3.6M12 11.2v3.6"/></symbol>
+    <symbol id="ic-comida" viewBox="0 0 20 20"><path d="M6 3v5.2a2 2 0 0 0 4 0V3M8 3v14"/><path d="M14.5 17V3c-1.8 1.2-2.8 3.4-2.8 6.2 0 1.2.8 2 2.8 2"/></symbol>
+    <symbol id="ic-peso" viewBox="0 0 20 20"><rect x="3" y="3.5" width="14" height="13" rx="3"/><path d="M7 8.2a4 3.2 0 0 1 6 0"/><path d="M10 8.2l1.6-1.4"/></symbol>
+    <symbol id="ic-actividad" viewBox="0 0 20 20"><path d="M11 2.8 5.5 11H10l-1 6.2L14.5 9H10l1-6.2Z"/></symbol>
     <symbol id="ic-diario" viewBox="0 0 20 20"><path d="M3 5.5l5.3 5.8L11 8.6l6 6.2"/><path d="M17.3 10.6v4.2h-4.3"/></symbol>
   </defs>
 </svg>
@@ -869,6 +989,7 @@ button.dc-name:hover{text-decoration-color:var(--green)}
       <button type="button" class="dash-hoy" id="dash-hoy" onclick="dashHoy()" hidden>Ir a hoy</button>
     </div>
   </div>
+  <div id="dash-errores" hidden></div>
   <div class="dash-grid">
     <section class="dash-card dash-resumen" id="dash-resumen" aria-labelledby="dash-resumen-t">
       <div class="dash-card-head"><h3 id="dash-resumen-t">Resumen nutricional</h3><button type="button" class="dash-link" onclick="dashVerDiario()">Ver diario</button></div>
@@ -905,10 +1026,12 @@ button.dc-name:hover{text-decoration-color:var(--green)}
     <section class="dash-card dash-accesos" id="dash-accesos" aria-labelledby="dash-accesos-t">
       <div class="dash-card-head"><h3 id="dash-accesos-t">Accesos rápidos</h3></div>
       <div class="dash-quick-grid" id="dash-accesos-body">
-        <button type="button" class="dash-quick" onclick="showView('calendario')"><span class="dq-icon dq-gold"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-calendario"/></svg></span><span class="dq-text"><span class="dq-name">Calendario</span><span class="dq-desc">Menú de la semana</span></span></button>
-        <button type="button" class="dash-quick" onclick="showView('recetas')"><span class="dq-icon dq-sage"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-recetas"/></svg></span><span class="dq-text"><span class="dq-name">Recetas</span><span class="dq-desc">Buscar y añadir al menú</span></span></button>
-        <button type="button" class="dash-quick" onclick="showView('compra')"><span class="dq-icon dq-clay"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-compra"/></svg></span><span class="dq-text"><span class="dq-name">Compra</span><span class="dq-desc">Lista de la semana</span></span></button>
-        <button type="button" class="dash-quick" onclick="showView('diario')"><span class="dq-icon dq-plum"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-diario"/></svg></span><span class="dq-text"><span class="dq-name">Diario</span><span class="dq-desc">Peso, pasos y balance</span></span></button>
+        <button type="button" class="dash-quick" onclick="dashRegistrarComida()"><span class="dq-icon dq-sage"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-comida"/></svg></span><span class="dq-text"><span class="dq-name">Registrar comida</span><span class="dq-desc">Lo que has comido este día</span></span></button>
+        <button type="button" class="dash-quick" onclick="dashRegistrarPeso()"><span class="dq-icon dq-plum"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-peso"/></svg></span><span class="dq-text"><span class="dq-name">Registrar peso</span><span class="dq-desc">Se anota en el Diario</span></span></button>
+        <button type="button" class="dash-quick" onclick="dashRegistrarActividad()"><span class="dq-icon dq-clay"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-actividad"/></svg></span><span class="dq-text"><span class="dq-name">Registrar actividad</span><span class="dq-desc">Pasos y ejercicio</span></span></button>
+        <button type="button" class="dash-quick" onclick="dashAbrirMenu()"><span class="dq-icon dq-gold"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-calendario"/></svg></span><span class="dq-text"><span class="dq-name">Abrir el menú</span><span class="dq-desc">Calendario semanal</span></span></button>
+        <button type="button" class="dash-quick" onclick="dashIrA('recetas')"><span class="dq-icon dq-sage"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-recetas"/></svg></span><span class="dq-text"><span class="dq-name">Consultar recetas</span><span class="dq-desc">Buscar y añadir al menú</span></span></button>
+        <button type="button" class="dash-quick" onclick="dashIrA('compra')"><span class="dq-icon dq-clay"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-compra"/></svg></span><span class="dq-text"><span class="dq-name">Lista de la compra</span><span class="dq-desc">Ingredientes de la semana</span></span></button>
       </div>
     </section>
   </div>
@@ -998,7 +1121,7 @@ button.dc-name:hover{text-decoration-color:var(--green)}
   <div class="modal">
     <div class="modal-head">
       <h2 id="rg-modal-title"></h2>
-      <button class="modal-close" onclick="closeRgModal()">✕</button>
+      <button class="modal-close" onclick="rgCerrar()" aria-label="Cerrar">✕</button>
     </div>
     <div class="modal-body" id="rg-modal-body"></div>
   </div>
@@ -1067,57 +1190,81 @@ function getFechaDia(dia,weekIdx){
 function regKey(fecha,tipo){ return fecha+'|'+tipo; }
 function catalogoIngredientes(){ return (DATA.ingredientes||[]).concat(INGREDIENTES_EXTRA||[]); }
 
+// ── Estado de carga: distingue «no hay datos» de «no se pudo cargar» (el dashboard muestra el error, nunca valores de sustitución) ──
+let LOAD_ERR={}; // clave -> mensaje del fallo; si la clave no está, la carga fue correcta (aunque no haya filas)
+const LOAD_LABEL={datos:'el menú y las recetas',registro:'los registros de comidas',perfil:'el perfil y los objetivos',diario:'el diario (peso, pasos y ejercicio)',ciclos:'el ciclo',ingredientes:'los ingredientes guardados'};
+function loadFail(k,e){ const m=(e&&e.message)||String(e||'error desconocido'); LOAD_ERR[k]=m; console.warn('No se pudo cargar ('+k+'):',m); }
+const SIN_BD='sin conexión con la base de datos (Supabase no está disponible)';
+
 async function loadRegistroRango(){
-  if(!sb) return;
+  delete LOAD_ERR.registro;
+  if(!sb){ loadFail('registro',SIN_BD); return; }
   try{
     const mondays=[0,1,2,3].map(getWeekMonday);
     const min=new Date(Math.min(...mondays.map(d=>d.getTime())));
     const max=new Date(Math.max(...mondays.map(d=>d.getTime()))); max.setDate(max.getDate()+6);
     const {data,error}=await sb.from('registro_diario').select('*').gte('fecha',isoDate(min)).lte('fecha',isoDate(max));
-    if(error){ console.warn('Error cargando registro:',error.message); return; }
+    if(error){ loadFail('registro',error); return; }
     REGISTRO={};
     (data||[]).forEach(row=>{ REGISTRO[regKey(row.fecha,row.tipo)]=row; });
-  }catch(e){ console.warn('Error cargando registro:',e); }
+  }catch(e){ loadFail('registro',e); }
 }
 
 async function loadPerfil(){
-  if(!sb) return;
+  delete LOAD_ERR.perfil;
+  if(!sb){ loadFail('perfil',SIN_BD); return; }
   try{
     const {data,error}=await sb.from('perfil').select('*').eq('id',1).single();
     if(!error) PERFIL=data;
-  }catch(e){ console.warn('No se pudo cargar el perfil:',e); }
+    else if(error.code!=='PGRST116') loadFail('perfil',error); // PGRST116 = no hay fila de perfil todavía (ausencia de datos, no un fallo)
+  }catch(e){ loadFail('perfil',e); }
 }
 async function loadDiario(){
-  if(!sb) return;
+  delete LOAD_ERR.diario;
+  if(!sb){ loadFail('diario',SIN_BD); return; }
   try{
     const {data,error}=await sb.from('diario').select('*');
-    if(error) return;
+    if(error){ loadFail('diario',error); return; }
     DIARIO={};
     (data||[]).forEach(r=>{ DIARIO[r.fecha]=r; });
-  }catch(e){ console.warn('No se pudo cargar el diario:',e); }
+  }catch(e){ loadFail('diario',e); }
 }
 async function loadCiclos(){
-  if(!sb) return;
+  delete LOAD_ERR.ciclos;
+  if(!sb){ loadFail('ciclos',SIN_BD); return; }
   try{
     const {data,error}=await sb.from('ciclo').select('*').order('fecha_inicio');
-    if(!error) CICLOS=data||[];
-  }catch(e){ console.warn('No se pudieron cargar los ciclos:',e); }
+    if(error){ loadFail('ciclos',error); return; }
+    CICLOS=data||[];
+  }catch(e){ loadFail('ciclos',e); }
 }
 
 async function loadIngredientesExtra(){
-  if(!sb) return;
+  delete LOAD_ERR.ingredientes;
+  if(!sb){ loadFail('ingredientes',SIN_BD); return; }
   try{
     const {data,error}=await sb.from('ingredientes').select('*');
-    if(error){ console.warn('Error cargando ingredientes guardados:',error.message); return; }
+    if(error){ loadFail('ingredientes',error); return; }
     INGREDIENTES_EXTRA=data||[];
-  }catch(e){ console.warn('Error cargando ingredientes guardados:',e); }
+  }catch(e){ loadFail('ingredientes',e); }
+}
+
+async function loadMenuData(){
+  delete LOAD_ERR.datos;
+  try{
+    const r=await fetch('data.json?t='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status+' al leer data.json');
+    const d=await r.json();
+    if(!d||!Array.isArray(d.recetas)||!d.menu||typeof d.menu!=='object') throw new Error('data.json no tiene el formato esperado');
+    DATA=d;
+  }catch(e){
+    loadFail('datos',e);
+    if(!DATA) DATA={recetas:[],menu:{}}; // solo para que la app no se rompa: el dashboard avisa del error y no presenta este vacío como «sin menú»
+  }
 }
 
 async function loadData(){
-  try{
-    const r=await fetch('data.json?t='+Date.now());
-    DATA=await r.json();
-  }catch(e){ DATA={recetas:[],menu:{}}; }
+  await loadMenuData();
   document.getElementById('today-label').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
   await Promise.all([loadRegistroRango(), loadIngredientesExtra(), loadPerfil(), loadDiario(), loadCiclos()]);
   document.getElementById('cal-loading').style.display='none';
@@ -1177,24 +1324,82 @@ function menuAnadirReceta(sem,dia,tipo,recId){
   return {ok:true,guardado:menuOverridesSave()};
 }
 
-// Combina lo planificado con el registro real guardado: si hay registro para un hueco, manda;
-// si no, se asume lo planificado como estimación.
+// Separa lo CONSUMIDO (solo lo registrado) de lo PLANIFICADO (menú). Un hueco planificado sin registro NO se da por
+// consumido: queda como «pendiente». kcal/proteinas/carbos/grasas = consumido registrado (0 si no hay registros; usa
+// nReg/hayRegistro para distinguir «no hay información» de «consumo cero»). El plan va aparte en `plan`.
+// Los registros con una categoría que no es una de las actuales (p. ej. antiguas) se conservan tal cual en `otros`
+// y cuentan como consumo registrado: no se pierden ni se reasignan a otra categoría.
 function computeRealDia(dia,fecha,dm){
   dm=dm||getMenuDia(dia);
-  let kcal=0,proteinas=0,carbos=0,grasas=0;
-  const slots={};
+  const real={kcal:0,proteinas:0,carbos:0,grasas:0}, plan={kcal:0,proteinas:0,carbos:0,grasas:0};
+  const slots={}, otros=[];
+  let nReg=0,nPlan=0,pendientes=0;
   const todosTipos=TIPOS.concat(['postre_comida','postre_cena']);
+  const sumar=(acc,x)=>{ acc.kcal+=x.kcal||0; acc.proteinas+=x.proteinas||0; acc.carbos+=x.carbos||0; acc.grasas+=x.grasas||0; };
   todosTipos.forEach(t=>{
     const reg=REGISTRO[regKey(fecha,t)];
     const planR=getR(dm[t]);
-    let s;
-    if(reg){ s={source:'registro',estado:reg.estado,kcal:reg.kcal||0,proteinas:reg.proteinas||0,carbos:reg.carbos||0,grasas:reg.grasas||0}; }
-    else if(planR){ s={source:'plan',estado:null,kcal:planR.kcal||0,proteinas:planR.proteinas||0,carbos:planR.carbos||0,grasas:planR.grasas||0}; }
-    else{ s={source:'none',estado:null,kcal:0,proteinas:0,carbos:0,grasas:0}; }
-    slots[t]=s;
-    kcal+=s.kcal; proteinas+=s.proteinas; carbos+=s.carbos; grasas+=s.grasas;
+    if(planR){ nPlan++; sumar(plan,planR); }
+    if(reg){
+      nReg++; sumar(real,reg);
+      slots[t]={source:'registro',estado:reg.estado,kcal:reg.kcal||0,proteinas:reg.proteinas||0,carbos:reg.carbos||0,grasas:reg.grasas||0};
+    }else if(planR){
+      pendientes++;
+      slots[t]={source:'plan',estado:null,kcal:planR.kcal||0,proteinas:planR.proteinas||0,carbos:planR.carbos||0,grasas:planR.grasas||0};
+    }else{
+      slots[t]={source:'none',estado:null,kcal:0,proteinas:0,carbos:0,grasas:0};
+    }
   });
-  return {kcal,proteinas,carbos,grasas,slots};
+  const pref=fecha+'|';
+  Object.keys(REGISTRO).forEach(k=>{
+    if(k.indexOf(pref)!==0) return;
+    const tipo=k.slice(pref.length);
+    if(todosTipos.indexOf(tipo)!==-1) return;
+    const reg=REGISTRO[k]; otros.push(reg); nReg++; sumar(real,reg);
+  });
+  return {kcal:real.kcal,proteinas:real.proteinas,carbos:real.carbos,grasas:real.grasas,slots,plan,otros,nReg,nPlan,pendientes};
+}
+
+// ── Carga de registros: el rango inicial cubre las 4 semanas del ciclo; el resto de meses se carga al consultarlos ──
+// Así «sin registro» nunca se confunde con «registros sin cargar».
+const REG_MESES={}; // 'YYYY-MM' -> 'cargando' | 'ok' | {err}
+function registroEnVentana(f){
+  const lunes=[0,1,2,3].map(getWeekMonday);
+  const min=new Date(Math.min(...lunes.map(d=>d.getTime())));
+  const max=new Date(Math.max(...lunes.map(d=>d.getTime()))); max.setDate(max.getDate()+6);
+  return f>=isoDate(min)&&f<=isoDate(max);
+}
+function estadoRegistroFecha(f){ // 'ok' | 'cargando' | {err}
+  if(LOAD_ERR.registro) return {err:LOAD_ERR.registro};
+  if(registroEnVentana(f)) return 'ok';
+  const st=REG_MESES[f.slice(0,7)];
+  return st===undefined?'cargando':st;
+}
+function registroCubreFecha(f){ return estadoRegistroFecha(f)==='ok'; }
+async function cargarRegistroMes(ym){
+  if(REG_MESES[ym]==='ok'||REG_MESES[ym]==='cargando') return;
+  REG_MESES[ym]='cargando';
+  if(!sb){ REG_MESES[ym]={err:SIN_BD}; return; }
+  try{
+    const [y,m]=ym.split('-').map(Number);
+    const {data,error}=await sb.from('registro_diario').select('*').gte('fecha',ym+'-01').lte('fecha',isoDate(new Date(y,m,0)));
+    if(error){ REG_MESES[ym]={err:error.message||'error del servicio'}; return; }
+    (data||[]).forEach(row=>{ REGISTRO[regKey(row.fecha,row.tipo)]=row; });
+    REG_MESES[ym]='ok';
+  }catch(e){ REG_MESES[ym]={err:(e&&e.message)||String(e)}; }
+}
+function asegurarRegistroFecha(f){ // dispara la carga si hace falta y repinta al terminar (sin bucles: 'cargando'/'ok'/{err} no se piden de nuevo)
+  if(!f||LOAD_ERR.registro||registroEnVentana(f)) return;
+  const ym=f.slice(0,7);
+  if(REG_MESES[ym]!==undefined) return;
+  cargarRegistroMes(ym).then(()=>{ if(DATA) renderDiario(); });
+}
+function reintentarRegistroFecha(f){ delete REG_MESES[f.slice(0,7)]; asegurarRegistroFecha(f); renderDiario(); }
+// Estado del consumo de un día: ¿hay información registrada?, ¿queda algo planificado sin registrar?
+function infoConsumoFecha(f){
+  if(!registroCubreFecha(f)) return {sinCargar:true,hayRegistro:false,completo:false,pendientes:0,nReg:0,nPlan:0};
+  const {dia,dm}=menuDelDia(f), r=computeRealDia(dia,f,dm);
+  return {sinCargar:false,hayRegistro:r.nReg>0,completo:r.nReg>0&&r.pendientes===0,pendientes:r.pendientes,nReg:r.nReg,nPlan:r.nPlan};
 }
 
 // ── Diario: helpers que funcionan para CUALQUIER fecha, sin depender ──
@@ -1291,6 +1496,7 @@ function gastoEsDeApp(fechaISO){
 function balanceFecha(fechaISO){
   const gasto=gastoEstimadoFecha(fechaISO);
   if(gasto==null) return null;
+  if(!infoConsumoFecha(fechaISO).hayRegistro) return null; // sin registros no hay «consumo cero»: no hay balance
   return kcalConsumidasFecha(fechaISO)-gasto;
 }
 // Balance diario objetivo (kcal), a partir del ritmo de cambio de peso deseado (kg/semana).
@@ -1354,6 +1560,7 @@ async function recalibrarDuracionCiclo(){
 // contra lo que predecía el déficit registrado, y ajusta ajuste_gasto_kcal poco a poco.
 async function recalibrarGastoSiToca(){
   if(!sb||!PERFIL) return;
+  if(LOAD_ERR.perfil||LOAD_ERR.diario||LOAD_ERR.registro||LOAD_ERR.datos) return; // con datos incompletos no se recalibra ni se escribe en el perfil
   const hoy=isoDate(new Date());
   if(PERFIL.ultima_recalibracion){
     const dias=Math.floor((new Date(hoy)-new Date(PERFIL.ultima_recalibracion))/(1000*60*60*24));
@@ -1365,6 +1572,7 @@ async function recalibrarGastoSiToca(){
     if(!row||row.peso==null) return null;
     const gastoBase=gastoBaseFecha(f);
     if(gastoBase==null) return null;
+    if(!infoConsumoFecha(f).completo) return null; // días sin registros o con comidas planificadas sin registrar no son fiables para aprender el gasto
     const ciclo=cicloInfoFecha(f);
     return {fecha:f,peso:row.peso,lutea:ciclo&&ciclo.fase==='lutea',gastoBase,kcalCons:kcalConsumidasFecha(f)};
   }).filter(Boolean);
@@ -1432,7 +1640,8 @@ function editarPerfilForm(){
 }
 function diarioAutoSave(){ clearTimeout(diarioSaveTimer); diarioSaveTimer=setTimeout(guardarDiarioDia,600); }
 async function guardarDiarioDia(){
-  if(!sb) return;
+  if(!sb){ showToast('No se ha guardado: no hay conexión con la base de datos.',6500); return; }
+  if(LOAD_ERR.diario){ showToast('No se ha guardado: tu diario no se cargó correctamente y se podrían sobrescribir datos. Recarga o pulsa «Reintentar» en Inicio.',7000); return; }
   const fecha=diarioSelectedFecha;
   const pesoEl=document.getElementById('dd-peso'), pasosEl=document.getElementById('dd-pasos'), notasEl=document.getElementById('dd-notas');
   const gymEl=document.getElementById('dd-gym'), cardioEl=document.getElementById('dd-cardio'), kcalAppEl=document.getElementById('dd-kcalapp');
@@ -1451,10 +1660,11 @@ async function guardarDiarioDia(){
   };
   try{
     const {data,error}=await sb.from('diario').upsert(row,{onConflict:'fecha'}).select().single();
-    if(error){ console.warn('No se pudo guardar el diario:',error.message); return; }
+    if(error){ console.warn('No se pudo guardar el diario:',error.message); showToast('No se ha guardado el diario: '+error.message,7000); return; }
     DIARIO[fecha]=data;
     renderDiario();
-  }catch(e){ console.warn('No se pudo guardar el diario:',e); }
+    showToast('Diario guardado'); // solo tras la confirmación de la base de datos
+  }catch(e){ console.warn('No se pudo guardar el diario:',e); showToast('No se ha guardado el diario: '+((e&&e.message)||'error de conexión'),7000); }
 }
 
 // ── Navegación día / mes ──
@@ -1646,6 +1856,165 @@ function renderDiarioChart(){
   </div>`;
 }
 
+// ── Diario · Alimentación del día: PLANIFICADO y CONSUMIDO por separado, comida a comida ──
+const DAL_LABEL={desayuno:'Desayuno',comida:'Comida',postre_comida:'Postre de la comida',cena:'Cena',postre_cena:'Postre de la cena',snack:'Snack'};
+const DAL_ORDEN=['desayuno','comida','postre_comida','cena','postre_cena','snack'];
+function dalMacros(s){
+  return `<span><b>${Math.round(s.kcal||0)}</b> kcal</span><span>P <b>${Math.round(s.proteinas||0)}</b> g</span><span>CH <b>${Math.round(s.carbos||0)}</b> g</span><span>G <b>${Math.round(s.grasas||0)}</b> g</span>`;
+}
+function dalIngredientes(lista,real){
+  if(!lista||!lista.length) return '';
+  const li=lista.map(i=>{
+    const nom=escAttr(i.nombre||'—');
+    if(real&&i.origen==='receta') return `<li>${nom} · ${escAttr(fmtN(i.raciones))} ${Number(i.raciones)===1?'ración':'raciones'} <em>(receta añadida)</em></li>`;
+    if(real&&i.ref_cantidad!=null) return `<li>${nom} · ${escAttr(fmtN(i.cantidad))} ${escAttr(i.unidad||'')} <em>(biblioteca)</em></li>`;
+    if(real&&i.origen==='manual') return `<li>${nom}${i.cantidad_real?' · '+escAttr(i.cantidad_real):''} <em>(manual${i.datos_incompletos?' · datos nutricionales incompletos':''})</em></li>`;
+    const cant=real?(i.cantidad_real!=null&&i.cantidad_real!==''?i.cantidad_real:i.cantidad_orig):i.cantidad;
+    const dif=real&&i.cantidad_orig&&i.cantidad_real!=null&&i.cantidad_real!==''&&String(i.cantidad_real)!==String(i.cantidad_orig)&&!i.origen?` <em>(previsto ${escAttr(i.cantidad_orig)})</em>`:'';
+    return `<li class="${i.skip?'is-skip':''}">${nom}${cant?` · ${escAttr(cant)}`:''}${dif}${i.extra?' <em>(extra)</em>':''}${i.skip?' <em>(omitido)</em>':''}</li>`;
+  }).join('');
+  return `<details class="dal-ing"><summary>${real?'Cantidades reales':'Cantidades previstas'} (${lista.length})</summary><ul>${li}</ul></details>`;
+}
+// ── Estados de una comida (derivados al pintar; no se guarda nada nuevo ni se toca ningún registro) ──
+//  consumida   = registrada (como plan / otra receta / libre)
+//  parcial     = registrada como plan u otra receta, pero con algún ingrediente omitido o con menos cantidad de la prevista
+//  no_consumida= registrada explícitamente como «no comí»
+//  planificada = hay plan pero NO hay registro (no cuenta como consumida)
+//  sin_info    = ni plan ni registro (no se trata como consumo cero)
+const REG_ESTADOS_CONOCIDOS=['como_plan','otra_receta','libre','no_comido'];
+function regEsParcial(reg){
+  if(!reg||(reg.estado!=='como_plan'&&reg.estado!=='otra_receta')||!Array.isArray(reg.ingredientes)) return false;
+  return reg.ingredientes.some(i=>{
+    if(!i||i.extra||i.origen) return false; // las entradas añadidas (biblioteca, receta, manual) no son parte del plan
+    if(i.skip) return true;
+    const o=parseLeadingNum(i.cantidad_orig), r=parseLeadingNum(i.cantidad_real);
+    return o!=null&&o>0&&r!=null&&r<o-1e-9;
+  });
+}
+function regNombre(reg){ // nombre mostrable; solo presentación, no modifica el registro
+  if(!reg) return '';
+  if(reg.receta_nombre) return reg.receta_nombre;
+  if(reg.nombre_libre) return reg.nombre_libre;
+  const ns=(Array.isArray(reg.ingredientes)?reg.ingredientes:[]).filter(i=>i&&!i.skip&&i.nombre).map(i=>i.nombre);
+  if(!ns.length) return '—';
+  return ns.length>3?ns.slice(0,3).join(', ')+' y '+(ns.length-3)+' más':ns.join(', ');
+}
+function regIncompletos(reg){ return Array.isArray(reg&&reg.ingredientes)?reg.ingredientes.filter(i=>i&&i.datos_incompletos&&!i.skip).length:0; }
+function incompletosFecha(f){ let n=0; const pref=f+'|'; Object.keys(REGISTRO).forEach(k=>{ if(k.indexOf(pref)===0&&REGISTRO[k].estado!=='no_comido') n+=regIncompletos(REGISTRO[k]); }); return n; }
+function regEtiquetaEstado(reg){ // etiqueta segura para cualquier valor de `estado`, también el de registros antiguos
+  if(!reg) return '';
+  if(regEsParcial(reg)) return 'Parcialmente consumida';
+  return RB_LABEL[reg.estado]||'Registro anterior';
+}
+function dalEstadoSlot(reg,planR){
+  if(reg){ if(reg.estado==='no_comido') return 'no_consumida'; return regEsParcial(reg)?'parcial':'consumida'; }
+  return planR?'planificada':'sin_info';
+}
+// Nombre legible de una categoría antigua o desconocida; el identificador guardado no se modifica
+function tipoLegado(tipo){
+  const t=String(tipo==null||tipo===''?'sin categoría':tipo).replace(/_/g,' ').trim();
+  return t.charAt(0).toUpperCase()+t.slice(1);
+}
+function dalSlotHtml(t,fecha,dm){
+  const reg=REGISTRO[regKey(fecha,t)], planR=getR(dm[t]);
+  const esPostre=t.indexOf('postre_')===0;
+  if(esPostre&&!reg&&!planR){ // postre sin plan ni registro: fila compacta, para poder registrar uno no planificado
+    return `<div class="dal-extra-row"><span>🍮 ${DAL_LABEL[t]}: sin planificar · sin información registrada</span><button type="button" class="dal-act" onclick="diarioRegistrar('${t}')">+ Registrar</button></div>`;
+  }
+  const planCol=planR
+    ?`<div class="dal-name">${escAttr(planR.nombre)}</div><div class="dal-macros">${dalMacros(planR)}</div>${dalIngredientes(planR.ingredientes,false)}`
+    :`<div class="dal-none">Nada planificado</div>`;
+  let cls,consCol;
+  if(reg){
+    const L={como_plan:'Consumida y registrada · como el plan',otra_receta:'Consumida y registrada · otra receta',libre:'Consumida y registrada · alimento libre',no_comido:'No consumida'};
+    const noC=reg.estado==='no_comido';
+    const parcial=regEsParcial(reg);
+    cls=noC?'is-no':(parcial?'is-part':'is-reg');
+    const nombre=noC?'':(regNombre(reg));
+    let dif='';
+    if(reg.estado==='como_plan'&&planR){ const d=Math.round((reg.kcal||0)-(planR.kcal||0)); if(d!==0) dif=`<div class="dal-diff">${parcial?'Consumo parcial':'Cantidades distintas a las previstas'}: ${d>0?'+':'−'}${Math.abs(d)} kcal respecto al plan</div>`; }
+    else if(parcial) dif=`<div class="dal-diff">Se ha omitido o reducido alguna parte de lo previsto.</div>`;
+    const etiqueta=parcial?'Parcialmente consumida y registrada'+(reg.estado==='otra_receta'?' · otra receta':''):(L[reg.estado]||'Consumida y registrada · registro anterior');
+    consCol=`<span class="dal-state ${noC?'st-no':(parcial?'st-part':'st-reg')}">${etiqueta}</span>
+      ${noC?'':`<div class="dal-name">${escAttr(nombre)}</div><div class="dal-macros">${dalMacros(reg)}</div>${dif}${dalIngredientes(reg.ingredientes,true)}`}
+      ${regIncompletos(reg)?`<div class="dal-warn">⚠ ${regIncompletos(reg)} alimento${regIncompletos(reg)===1?'':'s'} sin todos los datos nutricionales: el total solo suma los datos disponibles.</div>`:''}
+      ${reg.notas?`<div class="dal-nota">${escAttr(reg.notas)}</div>`:''}`;
+  }else if(planR){
+    cls='is-pend';
+    consCol=`<span class="dal-state st-pend">Planificada · aún sin registrar</span><div class="dal-none">No cuenta como consumida.</div>`;
+  }else{
+    cls='is-none';
+    consCol=`<span class="dal-state st-none">Sin información registrada</span>`;
+  }
+  return `<div class="dal-slot">
+    <div class="dal-slot-h"><span class="dal-type">${DAL_LABEL[t]}</span><button type="button" class="dal-act" onclick="diarioRegistrar('${t}')">${reg?'Editar registro':'Registrar'}</button></div>
+    <div class="dal-pair">
+      <div class="dal-col dal-plan"><span class="dal-lbl">Planificado</span>${planCol}</div>
+      <div class="dal-col dal-cons ${cls}"><span class="dal-lbl">Consumido</span>${consCol}</div>
+    </div></div>`;
+}
+function dalOtrosHtml(otros){
+  if(!otros||!otros.length) return '';
+  return `<div class="dal-otros-h">Registros de otras categorías (conservados)</div>`+otros.map(reg=>{
+    const tipo=tipoLegado(reg.tipo);
+    return `<div class="dal-slot"><div class="dal-slot-h"><span class="dal-type">${escAttr(tipo)} · categoría anterior</span></div>
+      <div class="dal-pair"><div class="dal-col dal-plan"><span class="dal-lbl">Planificado</span><div class="dal-none">No aplica (categoría fuera del menú actual)</div></div>
+      <div class="dal-col dal-cons is-reg"><span class="dal-lbl">Consumido</span><span class="dal-state ${reg.estado==='no_comido'?'st-no':'st-reg'}">${reg.estado==='no_comido'?'No consumida':'Consumida y registrada'}</span>
+      <div class="dal-name">${escAttr(reg.estado==='no_comido'?'—':(regNombre(reg)))}</div><div class="dal-macros">${dalMacros(reg)}</div>
+      <div class="dal-nota">Registro de una categoría anterior («${escAttr(reg.tipo==null?'':reg.tipo)}»): se conserva tal cual y suma al consumo real del día.</div></div></div></div>`;
+  }).join('');
+}
+function renderDiarioAlimentacion(fecha){
+  const est=estadoRegistroFecha(fecha);
+  if(est!=='ok'){
+    return `<div class="dal"><div class="dal-h">Alimentación del día</div>${est==='cargando'
+      ?'<p class="dal-aviso">Cargando los registros de esta fecha…</p>'
+      :`<p class="dal-aviso dal-err">No se han podido cargar los registros de esta fecha (${escAttr(est.err)}). No se muestra ningún consumo para no confundir «sin cargar» con «no comió».</p><button type="button" class="dal-act" onclick="reintentarRegistroFecha('${fecha}')">Reintentar</button>`}</div>`;
+  }
+  const {dia,dm}=menuDelDia(fecha);
+  const r=computeRealDia(dia,fecha,dm);
+  let estado;
+  if(!r.nReg&&!r.nPlan) estado='Sin información registrada y sin menú planificado para este día.';
+  else if(!r.nReg) estado=`Sin información registrada. Hay ${r.nPlan} comida${r.nPlan===1?'':'s'} planificada${r.nPlan===1?'':'s'}, pero no se cuenta${r.nPlan===1?'':'n'} como consumida${r.nPlan===1?'':'s'} hasta que la${r.nPlan===1?'':'s'} registres.`;
+  else if(r.pendientes) estado=`Registro parcial: ${r.nReg} registrada${r.nReg===1?'':'s'} · ${r.pendientes} planificada${r.pendientes===1?'':'s'} sin registrar (no cuenta${r.pendientes===1?'':'n'} como consumida${r.pendientes===1?'':'s'}).`;
+  else estado='Todo lo planificado está registrado.';
+  const cnt={consumida:0,parcial:0,no_consumida:0,planificada:0};
+  DAL_ORDEN.forEach(t=>{ const e=dalEstadoSlot(REGISTRO[regKey(fecha,t)],getR(dm[t])); if(cnt[e]!==undefined) cnt[e]++; });
+  cnt.consumida+=(r.otros||[]).length;
+  const chip=(c,n,l)=>n?`<span class="dal-chip ${c}">${n} ${l}</span>`:'';
+  const chips=`${chip('c-reg',cnt.consumida,cnt.consumida===1?'consumida y registrada':'consumidas y registradas')}${chip('c-part',cnt.parcial,cnt.parcial===1?'parcialmente consumida':'parcialmente consumidas')}${chip('c-no',cnt.no_consumida,cnt.no_consumida===1?'no consumida':'no consumidas')}${chip('c-pend',cnt.planificada,cnt.planificada===1?'planificada sin registrar':'planificadas sin registrar')}`;
+  const box=(cls,lbl,has,t,sub)=>`<div class="dal-box ${cls}"><span class="dal-box-l">${lbl}</span><b class="dal-box-v">${has?Math.round(t.kcal)+' kcal':'—'}</b><span class="dal-box-s">${has?`P ${Math.round(t.proteinas)} · CH ${Math.round(t.carbos)} · G ${Math.round(t.grasas)} g`:sub}</span></div>`;
+  return `<div class="dal">
+    <div class="dal-head"><div class="dal-h">Alimentación del día</div><button type="button" class="dal-act" onclick="diarioAnadir()">+ Añadir alimento</button></div>
+    <div class="dal-sum">${box('plan','Planificado (menú)',r.nPlan>0,r.plan,'Sin menú')}${box('cons','Consumido (registrado)',r.nReg>0,r,'Sin información')}</div>
+    <p class="dal-estado ${!r.nReg?'is-none':(r.pendientes?'is-part':'is-ok')}">${estado}</p>
+    ${chips?`<div class="dal-chips">${chips}</div>`:''}
+    ${incompletosFecha(fecha)?`<p class="dal-warn" style="margin:0 0 .6rem">⚠ Hay alimentos registrados sin todos sus datos nutricionales: los totales del día son un mínimo, no se han estimado los datos que faltan.</p>`:''}
+    ${DAL_ORDEN.map(t=>dalSlotHtml(t,fecha,dm)).join('')}${dalOtrosHtml(r.otros)}
+  </div>`;
+}
+function diarioRegistrar(t){ abrirRegistroDeFecha(t,diarioSelectedFecha); }
+// «Añadir alimento»: abre el registro del día mostrado (por defecto Snack); en el propio modal se elige otro día o categoría
+function diarioAnadir(){ abrirRegistroDeFecha('snack',diarioSelectedFecha); }
+// Abre el registro real de una comida para CUALQUIER fecha. openRgModal toma el plan de la semana seleccionada en el
+// Calendario, así que se ajusta solo durante la llamada y se restaura enseguida (el Calendario no cambia).
+function abrirRegistroDeFecha(t,f){
+  const bloq=bloqueoRegistroFecha(f); if(bloq){ showToast(bloq,7000); return; }
+  const {dia}=menuDelDia(f);
+  const prev=currentWeek;
+  try{ currentWeek=weekIndexForDate(new Date(f+'T00:00:00')); openRgModal(t,dia,f); }
+  finally{ currentWeek=prev; }
+}
+// Registrar sobre datos no cargados podría sobrescribir registros reales (upsert): se bloquea con una explicación
+function bloqueoRegistroFecha(f){
+  const e=dashErr(['datos','registro']);
+  if(e.length) return 'No se pueden registrar comidas ahora: no se han cargado '+dashLista(e)+'. Guardar podría sobrescribir datos existentes. Pulsa «Reintentar».';
+  const st=estadoRegistroFecha(f);
+  if(st==='cargando') return 'Se están cargando los registros de esta fecha. Espera un momento y vuelve a intentarlo.';
+  if(st!=='ok') return 'No se han podido cargar los registros de esta fecha, así que no se puede registrar sobre ellos (podrías sobrescribir datos). Pulsa «Reintentar».';
+  return null;
+}
+
 function renderDiarioDayCard(){
   const fecha=diarioSelectedFecha;
   const row=DIARIO[fecha]||{};
@@ -1654,8 +2023,9 @@ function renderDiarioDayCard(){
   const esHoy=date.getTime()===hoy.getTime();
   const label=(esHoy?'Hoy · ':'')+date.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
   const ciclo=cicloInfoFecha(fecha);
+  const info=infoConsumoFecha(fecha);
   const gasto=gastoEstimadoFecha(fecha), cons=kcalConsumidasFecha(fecha);
-  const balance=gasto!=null?Math.round(cons-gasto):null;
+  const balance=(gasto!=null&&info.hayRegistro)?Math.round(cons-gasto):null; // sin registros no hay balance
   const pesoInfo=pesoInfoFecha(fecha);
   const objetivo=objetivoBalanceDia();
   const proteinaCons=proteinasConsumidasFecha(fecha);
@@ -1696,7 +2066,7 @@ function renderDiarioDayCard(){
     }
     macrosHtml=`
       <div class="ddc-mini-stats">
-        <div class="dms-item"><span class="dms-l">Consumidas</span><span class="dms-v mono">${Math.round(cons)} kcal</span></div>
+        <div class="dms-item"><span class="dms-l">Consumidas (registradas)</span><span class="dms-v mono">${info.hayRegistro?Math.round(cons)+' kcal':'—'}</span></div>
         <div class="dms-item"><span class="dms-l">${gastoLabel}</span><span class="dms-v mono">${gasto!=null?Math.round(gasto):'—'} kcal</span></div>
       </div>
       ${pesoNote}${ajusteNote}
@@ -1704,9 +2074,10 @@ function renderDiarioDayCard(){
       ${balance!=null?`<div class="ddc-balance-hero ${heroCls}">
         <span class="dbh-label">${esDeficit?'Déficit':'Superávit'}</span>
         <span class="dbh-value">${Math.abs(balance)} kcal</span>
-      </div>${objetivoLine}`:`<div class="diario-no-gasto">Añade tus datos para ver el balance del día.</div>`}
+      </div>${incompletosFecha(fecha)?`<div class="ddc-nota-sutil">Provisional: hay alimentos registrados sin todos sus datos nutricionales; el consumo real puede ser mayor.</div>`:''}${info.pendientes?`<div class="ddc-nota-sutil">Provisional: ${info.pendientes} comida${info.pendientes===1?'':'s'} planificada${info.pendientes===1?'':'s'} sin registrar no cuenta${info.pendientes===1?'':'n'} como consumida${info.pendientes===1?'':'s'}.</div>`:''}${objetivoLine}`
+        :`<div class="diario-no-gasto">${gasto==null?'Añade tus datos para ver el balance del día.':(info.sinCargar?'Los registros de esta fecha aún no están cargados: no se calcula el balance.':'Sin información de comidas registrada: no se calcula el balance (no registrar no equivale a no haber comido).')}</div>`}
       <div class="ddc-mini-stats" style="margin-top:.5rem">
-        <div class="dms-item"><span class="dms-l">Proteína</span><span class="dms-v mono">${Math.round(proteinaCons)}g${proteinaObj!=null?' / '+Math.round(proteinaObj)+'g':''}</span></div>
+        <div class="dms-item"><span class="dms-l">Proteína</span><span class="dms-v mono">${info.hayRegistro?Math.round(proteinaCons)+'g':'—'}${proteinaObj!=null?(info.hayRegistro?' / ':' · objetivo ')+Math.round(proteinaObj)+'g':''}</span></div>
       </div>
     `;
   }
@@ -1752,6 +2123,7 @@ function renderDiarioDayCard(){
     </div>
     <div class="rg-field"><label>Kcal según tu app/reloj (opcional)</label><input type="number" step="1" id="dd-kcalapp" value="${row.kcal_app!=null?row.kcal_app:''}" placeholder="Si lo rellenas, sustituye a la estimación" oninput="diarioAutoSave()"></div>
     <button class="btn-regla" onclick="registrarInicioRegla('${fecha}')">🌸 Hoy empezó la regla</button>
+    ${renderDiarioAlimentacion(fecha)}
     ${macrosHtml}
     <div class="rg-field" style="margin-top:.7rem"><label>Notas</label><textarea id="dd-notas" rows="2" oninput="diarioAutoSave()" placeholder="Cómo te sientes, algo que anotar...">${row.notas||''}</textarea></div>
   </div>`;
@@ -1770,12 +2142,13 @@ function renderDiarioResumenMes(){
   const diasConDatos=Object.keys(DIARIO).filter(f=>{
     const d=new Date(f+'T00:00:00'); return d.getFullYear()===y&&d.getMonth()===m&&(DIARIO[f].peso!=null||DIARIO[f].pasos!=null);
   });
-  const balances=diasConDatos.map(f=>balanceFecha(f)).filter(b=>b!=null);
+  // Solo días con todo lo planificado registrado: un día a medias haría parecer el déficit mayor de lo que fue
+  const balances=diasConDatos.filter(f=>infoConsumoFecha(f).completo).map(f=>balanceFecha(f)).filter(b=>b!=null);
   const balanceMedio=balances.length?Math.round(balances.reduce((a,b)=>a+b,0)/balances.length):null;
   return `<div class="diario-resumen">
     <div class="dr-box"><span class="drv">${cambioTxt}</span><span class="drl">peso este mes</span></div>
     <div class="dr-box"><span class="drv">${diasConDatos.length}</span><span class="drl">días registrados</span></div>
-    <div class="dr-box"><span class="drv">${balanceMedio!=null?(balanceMedio<=0?'−':'+')+Math.abs(balanceMedio):'—'}</span><span class="drl">balance medio</span></div>
+    <div class="dr-box"><span class="drv">${balanceMedio!=null?(balanceMedio<=0?'−':'+')+Math.abs(balanceMedio):'—'}</span><span class="drl" title="Solo cuentan los días con todo lo planificado registrado">balance medio${balances.length?` (${balances.length} d.)`:''}</span></div>
   </div>`;
 }
 
@@ -1792,14 +2165,15 @@ function renderDiarioMesLista(){
     const row=DIARIO[fecha];
     const gasto=gastoEstimadoFecha(fecha);
     const cons=kcalConsumidasFecha(fecha);
-    const balance=gasto!=null?Math.round(cons-gasto):null;
+    const infoC=infoConsumoFecha(fecha);
+    const balance=(gasto!=null&&infoC.hayRegistro)?Math.round(cons-gasto):null;
     const ciclo=cicloInfoFecha(fecha);
     const entreno=row&&((row.gimnasio_min>0)||(row.cardio_min>0));
     rows+=`<div class="dm-row ${fecha===diarioSelectedFecha?'sel':''}" onclick="selectDiarioDay('${fecha}')">
       <span class="dm-d">${d}${ciclo&&ciclo.diaCiclo===1?' 🔴':''}${entreno?' 🏋️':''}</span>
       <span class="dm-peso">${row&&row.peso!=null?row.peso+'kg':'—'}</span>
       <span class="dm-pasos">${row&&row.pasos!=null?row.pasos:'—'}</span>
-      <span class="dm-def ${balance==null?'na':(balance<=0?'pos':'neg')}">${balance==null?'—':(balance<=0?'−':'+')+Math.abs(balance)+' kcal'}</span>
+      <span class="dm-def ${balance==null?'na':(balance<=0?'pos':'neg')}" ${balance!=null&&infoC.pendientes?'title="Provisional: hay comidas planificadas sin registrar"':''}>${balance==null?'—':(balance<=0?'−':'+')+Math.abs(balance)+' kcal'+(infoC.pendientes?'*':'')}</span>
     </div>`;
   }
   return `<div class="dm-list">${rows}</div>`;
@@ -1812,6 +2186,9 @@ function renderDiario(){
   const mesLabel=diarioMonthDate.toLocaleDateString('es-ES',{month:'long',year:'numeric'});
   const hoy=new Date();
   const esMesActual=diarioMonthDate.getFullYear()===hoy.getFullYear()&&diarioMonthDate.getMonth()===hoy.getMonth();
+  asegurarRegistroFecha(diarioSelectedFecha);
+  asegurarRegistroFecha(isoDate(new Date(diarioMonthDate.getFullYear(),diarioMonthDate.getMonth(),1)));
+  asegurarRegistroFecha(isoDate(new Date(diarioMonthDate.getFullYear(),diarioMonthDate.getMonth()+1,0)));
   el.innerHTML=`
     ${renderDiarioChart()}
     ${renderDiarioDayCard()}
@@ -1893,20 +2270,22 @@ function renderCal(){
     const date=new Date(mon); date.setDate(mon.getDate()+i); date.setHours(0,0,0,0);
     const fecha=isoDate(date);
     const dm=getMenuDia(dia);
-    const {kcal}=computeRealDia(dia,fecha,dm);
+    const rd=computeRealDia(dia,fecha,dm);
+    const consK=rd.kcal, planK=rd.plan.kcal, hayReg=rd.nReg>0;
+    const kcal=hayReg?consK:planK; // con registros se muestra lo consumido; si no, lo previsto (rotulado aparte)
     const dots=TIPOS.map(t=>{
       const r=getR(dm[t]);
       if(!r && !REGISTRO[regKey(fecha,t)]) return '';
       return `<div class="cal-dot dot-${t}"></div>`;
     }).join('');
-    const tieneRegistro=TIPOS.concat(['postre_comida','postre_cena']).some(t=>REGISTRO[regKey(fecha,t)]);
+    const tieneRegistro=hayReg;
     const isToday=date.getTime()===today.getTime();
     const isSel=selectedDay===dia;
     return `<div class="cal-cell ${isToday?'today':''} ${kcal>0?'has-food':''} ${isSel?'selected':''}" onclick="selectDay('${dia}')">
       <div class="cal-num">${date.getDate()}</div>
       ${tieneRegistro?'<div class="cal-check">✓</div>':''}
       <div class="cal-dots">${dots}</div>
-      ${kcal>0?`<div class="cal-kcal">${Math.round(kcal)}</div>`:''}
+      ${kcal>0?`<div class="cal-kcal ${hayReg?'':'cal-kcal-plan'}" title="${hayReg?'Consumido registrado':'Previsto en el menú (sin registrar)'}">${hayReg?'':'~'}${Math.round(kcal)}</div>`:''}
     </div>`;
   }).join('');
 
@@ -1961,10 +2340,10 @@ const RB_LABEL={como_plan:'✓ Como el plan',otra_receta:'🔄 Otra receta',libr
 function mealItemHtml(tipo,dia,fecha,dm,esPostre){
   const r=getR(dm[tipo]);
   const reg=REGISTRO[regKey(fecha,tipo)];
-  const nombreMostrado = reg ? (reg.estado==='no_comido'?'No comido':(reg.receta_nombre||reg.nombre_libre||'—')) : (r?r.nombre:'Sin asignar');
+  const nombreMostrado = reg ? (reg.estado==='no_comido'?'No comido':(regNombre(reg))) : (r?r.nombre:'Sin asignar');
   const s=reg?{kcal:reg.kcal,proteinas:reg.proteinas,carbos:reg.carbos,grasas:reg.grasas}:r;
   const tieneDatos=!!s && !(reg&&reg.estado==='no_comido');
-  const badge=reg?`<span class="reg-badge rb-${reg.estado}">${RB_LABEL[reg.estado]}</span>`:'';
+  const badge=reg?`<span class="reg-badge rb-${regEsParcial(reg)?'parcial':(RB_LABEL[reg.estado]?escAttr(reg.estado):'desconocido')}">${regEtiquetaEstado(reg)}</span>`:(r?`<span class="reg-badge rb-pendiente">Planificada · sin registrar</span>`:'');
   const clickable = reg? (reg.estado!=='no_comido'&&reg.estado!=='libre') : !!r;
   const clickId = reg ? (reg.estado==='otra_receta'?reg.receta_id:(r?r.id:null)) : (r?r.id:null);
   return `<div class="meal-item">
@@ -1989,8 +2368,10 @@ function mealItemHtml(tipo,dia,fecha,dm,esPostre){
 function renderDayPanel(dia){
   const fecha=getFechaDia(dia);
   const dm=getMenuDia(dia);
-  const {kcal:tk,proteinas:tp,carbos:tc,grasas:tg}=computeRealDia(dia,fecha,dm);
-  const hayRegistro=TIPOS.concat(['postre_comida','postre_cena']).some(t=>REGISTRO[regKey(fecha,t)]);
+  const rd=computeRealDia(dia,fecha,dm);
+  const hayRegistro=rd.nReg>0;
+  const tot=hayRegistro?rd:rd.plan; // el anillo muestra lo registrado si lo hay; si no, lo previsto (rotulado como tal)
+  const {kcal:tk,proteinas:tp,carbos:tc,grasas:tg}=tot;
 
   let mealsHtml='';
   TIPOS.forEach(tipo=>{
@@ -2020,10 +2401,15 @@ function renderDayPanel(dia){
           <div class="dml-row"><span class="dml-dot" style="background:var(--sage)"></span>Prot <span class="mono">${Math.round(tp)}g</span></div>
           <div class="dml-row"><span class="dml-dot" style="background:var(--gold)"></span>Carb <span class="mono">${Math.round(tc)}g</span></div>
           <div class="dml-row"><span class="dml-dot" style="background:var(--plum)"></span>Gras <span class="mono">${Math.round(tg)}g</span></div>
+          <div class="dml-row dml-cap">${hayRegistro?'Registrado':'Previsto'}</div>
         </div>
-      </div>`:`<span class="day-empty-badge">Sin planificar</span>`}
+      </div>`:`<span class="day-empty-badge">${hayRegistro?'Sin consumo registrado':'Sin planificar'}</span>`}
     </div>
-    ${hayRegistro?`<div class="day-real-row"><span class="drr-icon">📔</span> Incluye lo que registraste como comido real <span class="mono">${Math.round(tk)} kcal</span></div>`:''}
+    ${hayRegistro
+      ?`<div class="day-real-row"><span class="drr-icon">📔</span> Consumido registrado <span class="mono">${Math.round(rd.kcal)} kcal</span></div>
+        <div class="day-plan-row">Planificado: <span class="mono">${Math.round(rd.plan.kcal)} kcal</span>${rd.pendientes?` · ${rd.pendientes} planificada${rd.pendientes===1?'':'s'} sin registrar (no cuenta${rd.pendientes===1?'':'n'} como consumida${rd.pendientes===1?'':'s'})`:''}</div>`
+      :(rd.plan.kcal>0?`<div class="day-plan-row">🗓️ Solo planificado: aún no hay nada registrado, así que no cuenta como consumido.</div>`:'')}
+    ${(rd.otros||[]).map(o=>`<div class="day-real-row"><span class="drr-icon">📔</span> Otro registro (${escAttr(o.tipo||'—')}): ${escAttr(o.estado==='no_comido'?'No consumida':(regNombre(o)))} <span class="mono">${Math.round(o.kcal||0)} kcal</span></div>`).join('')}
     <div>${mealsHtml}</div>
   `;
 }
@@ -2447,9 +2833,9 @@ function closeOut(e){if(e.target===document.getElementById('modal')) closeModal(
 
 /* ══════════ AÑADIR RECETA AL MENÚ (selector semana → día → comida) ══════════ */
 let amState=null, _toastT=null;
-function showToast(msg){
+function showToast(msg,ms){
   const el=document.getElementById('app-toast'); el.textContent=msg; el.classList.add('show');
-  clearTimeout(_toastT); _toastT=setTimeout(()=>el.classList.remove('show'),2600);
+  clearTimeout(_toastT); _toastT=setTimeout(()=>el.classList.remove('show'),ms||2600);
 }
 function amCap(t){ return t.charAt(0).toUpperCase()+t.slice(1); }
 function openAddMenu(){
@@ -2503,21 +2889,94 @@ function parseLeadingNum(s){
   const m=String(s).match(/[\d]+([.,]\d+)?/);
   return m?parseFloat(m[0].replace(',','.')):null;
 }
-function calcRowMacros(row){
-  const orig=parseLeadingNum(row.cantidad_orig);
-  const real=parseLeadingNum(row.cantidad_real);
-  const factor= row.skip?0:((orig&&orig>0&&real!==null)?real/orig:1);
-  return {
-    kcal:(row.kcal_orig||0)*factor, proteinas:(row.proteinas_orig||0)*factor,
-    carbos:(row.carbos_orig||0)*factor, grasas:(row.grasas_orig||0)*factor
-  };
+// ═════════ CÁLCULO NUTRICIONAL DEL REGISTRO — ÚNICA fuente de kcal y macros ═════════
+// Todo total (modal, Diario, Calendario, Dashboard) sale de nutriFila(). Se suman valores SIN redondear y se redondea
+// una sola vez al guardar (r2). Los datos de la biblioteca y de las recetas solo se LEEN: cada fila guarda su propia
+// cantidad y una copia de los valores de referencia, nunca se escribe en el catálogo.
+const NUTR=['kcal','proteinas','carbos','grasas'];
+function r2(v){ return Math.round((v+Number.EPSILON)*100)/100; }
+function normTxt(s){ return String(s==null?'':s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim(); }
+function coincideBusqueda(nombre,q){ const n=normTxt(nombre); return normTxt(q).split(/\s+/).filter(Boolean).every(w=>n.includes(w)); }
+function fmtN(v){ const n=Number(v); return isFinite(n)?String(parseFloat(n.toFixed(2))).replace('.',','):''; }
+function numDeTexto(v){ const n=parseFloat(String(v==null?'':v).replace(',','.')); return isFinite(n)?n:NaN; }
+
+// Unidades con conversión real; una unidad desconocida solo es compatible consigo misma
+const UNIDADES={g:{fam:'masa',f:1},kg:{fam:'masa',f:1000},ml:{fam:'vol',f:1},cl:{fam:'vol',f:10},l:{fam:'vol',f:1000},unidad:{fam:'ud',f:1}};
+const UNIDAD_ALIAS={gr:'g',grs:'g',gramo:'g',gramos:'g',kilo:'kg',kilos:'kg',kilogramo:'kg',kilogramos:'kg',mililitro:'ml',mililitros:'ml',litro:'l',litros:'l',ud:'unidad',uds:'unidad',u:'unidad',und:'unidad',unidades:'unidad'};
+function unidadNorm(u){ const k=normTxt(u).replace(/\./g,''); return UNIDAD_ALIAS[k]||k; }
+// "100g" → {cant:100,unidad:'g'} · "100" → {cant:100,unidad:''} (sin unidad indicada) · "1 unidad" → {cant:1,unidad:'unidad'}
+function parseRef(txt){
+  const m=String(txt==null?'':txt).trim().match(/^(\d+(?:[.,]\d+)?)\s*([^\d\s]*)/);
+  if(!m) return null;
+  const cant=parseFloat(m[1].replace(',','.'));
+  return cant>0?{cant,unidad:unidadNorm(m[2])}:null;
 }
+// Proporción cantidad/referencia como {num,den} (se multiplica antes de dividir para no acumular error); null si no son compatibles
+function ratioUnidades(cant,u,refCant,refU){
+  const a=UNIDADES[u], b=UNIDADES[refU];
+  if(a&&b) return a.fam!==b.fam?null:{num:cant*a.f,den:refCant*b.f};
+  return u===refU?{num:cant,den:refCant}:null;
+}
+function unidadesCompatibles(refU){ // opciones del selector de unidad para una referencia
+  const a=UNIDADES[refU]; if(!a) return [refU];
+  return Object.keys(UNIDADES).filter(k=>UNIDADES[k].fam===a.fam&&k!=='cl');
+}
+function etiquetaUnidad(u){ return u===''||u==null?'(uds. de la referencia)':u; }
+
+function nutriFila(r){
+  const out={kcal:0,proteinas:0,carbos:0,grasas:0,incompleto:false,aviso:null};
+  if(!r||r.skip) return out;
+  // Alimento manual (y «extras» antiguos): valores absolutos para la cantidad indicada. Un dato que falta NO se rellena con 0.
+  if(r.origen==='manual'||(r.extra&&r.kcal_orig===undefined)){
+    NUTR.forEach(k=>{ const v=r[k]; if(v===null||v===undefined||v===''||!isFinite(Number(v))) out.incompleto=true; else out[k]=Number(v); });
+    return out;
+  }
+  const nuevo=(r.origen==='receta'||r.ref_cantidad!=null);
+  let num=1,den=1,fLegacy=null;
+  if(r.origen==='receta'){
+    const rac=Number(r.raciones), base=Number(r.raciones_base)||1;
+    if(!(rac>0)){ out.aviso='Indica las raciones'; out.incompleto=true; return out; }
+    num=rac; den=base;
+  }else if(r.ref_cantidad!=null){
+    const cant=numDeTexto(r.cantidad);
+    if(!(cant>=0)){ out.aviso='Indica la cantidad'; out.incompleto=true; return out; }
+    const q=ratioUnidades(cant,r.unidad||'',Number(r.ref_cantidad),r.ref_unidad||'');
+    if(!q||!(q.den>0)){ out.aviso='Unidad no compatible'; out.incompleto=true; return out; }
+    num=q.num; den=q.den;
+  }else{ // filas del plan y de registros anteriores: cálculo original (primer número del texto), sin cambios
+    const orig=parseLeadingNum(r.cantidad_orig), real=parseLeadingNum(r.cantidad_real);
+    fLegacy=(orig&&orig>0&&real!==null)?real/orig:1;
+  }
+  NUTR.forEach(k=>{
+    const v=r[k+'_orig'];
+    if(!nuevo) out[k]=(v||0)*fLegacy;
+    else if(v===null||v===undefined||v===''||!isFinite(Number(v))) out.incompleto=true;
+    else out[k]=Number(v)*num/den;
+  });
+  return out;
+}
+const calcRowMacros=nutriFila; // alias: mismo cálculo
+function rgTotalesDe(ings,extras){
+  const t={kcal:0,proteinas:0,carbos:0,grasas:0,incompletos:0,avisos:0};
+  (ings||[]).concat(extras||[]).forEach(r=>{
+    const m=nutriFila(r); NUTR.forEach(k=>{ t[k]+=m[k]; });
+    if(!r.skip&&m.incompleto) t.incompletos++;
+    if(m.aviso) t.avisos++;
+  });
+  return t;
+}
+function esAnadida(r){ return !!r&&!r.extra&&(r.origen==='catalogo'||r.origen==='receta'); }
+
 function ingredientesDesdeReceta(rec){
   return (rec.ingredientes||[]).map(i=>({
     nombre:i.nombre, cantidad_orig:i.cantidad, cantidad_real:i.cantidad,
     kcal_orig:i.kcal||0, proteinas_orig:i.proteinas||0, carbos_orig:i.carbos||0, grasas_orig:i.grasas||0, skip:false
   }));
 }
+
+// ── Estado del modal: destino (día y categoría), comida principal y entradas añadidas ──
+function rgSnapshot(){ const s=rgState; return JSON.stringify({f:s.fuente,i:s.ingredientes,e:s.extras,l:s.libreNombre,o:s.otraRecetaId,n:s.notas}); }
+function rgHayCambios(){ return !!rgState&&rgState.snap!==rgSnapshot(); }
 
 function openRgModal(tipo,dia,fecha){
   const dm=getMenuDia(dia);
@@ -2526,7 +2985,8 @@ function openRgModal(tipo,dia,fecha){
   const esPostre=tipo.indexOf('postre_')===0;
 
   rgState={tipo,dia,fecha,esPostre,planR,fuente:null,ingredientes:[],extras:[],
-    libreNombre:'', otraRecetaId:null, notas:'', buscando:'', buscandoIng:''};
+    libreNombre:'', otraRecetaId:null, notas:'', buscando:'',
+    addMode:null, qReceta:'', qIng:'', recSel:null, recRac:'1', ingSel:null, ingCant:'', ingUni:''};
 
   if(reg){
     rgState.fuente=reg.estado;
@@ -2543,68 +3003,149 @@ function openRgModal(tipo,dia,fecha){
     rgState.fuente=planR?'como_plan':'libre';
     if(planR) rgState.ingredientes=ingredientesDesdeReceta(planR);
   }
+  rgState.snap=rgSnapshot();
 
   const fechaFmt=new Date(fecha+'T00:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
   document.getElementById('rg-modal-title').textContent=`${TIPO_I[tipo]||'🍮'} ${(tipo.replace('postre_','postre ')).replace('_',' ')} · ${fechaFmt}`;
   renderRgModalBody();
   document.getElementById('rg-modal').classList.add('open');
 }
-function closeRgOut(e){ if(e.target===document.getElementById('rg-modal')) closeRgModal(); }
+function closeRgOut(e){ if(e.target===document.getElementById('rg-modal')) rgCerrar(); }
+function rgCerrar(){ if(rgHayCambios()&&!confirm('Hay cambios sin guardar en este registro. ¿Cerrar y descartarlos?')) return; closeRgModal(); }
 function closeRgModal(){ document.getElementById('rg-modal').classList.remove('open'); rgState=null; }
 
+// Cambiar el día o la categoría dentro del modal: abre el registro de ese día/categoría (si ya existe, se edita; si no, se crea)
+async function rgCambiarDestino(){
+  const s=rgState; if(!s) return;
+  const f=document.getElementById('rg-dest-fecha').value, t=document.getElementById('rg-dest-tipo').value;
+  if(!f||t===''||(f===s.fecha&&t===s.tipo)){ renderRgModalBody(); return; }
+  if(rgHayCambios()&&!confirm('Hay cambios sin guardar en esta comida. Si cambias de día o categoría se descartarán. ¿Continuar?')){ renderRgModalBody(); return; }
+  if(!registroEnVentana(f)) await cargarRegistroMes(f.slice(0,7));
+  if(rgState!==s) return;
+  const bloq=bloqueoRegistroFecha(f);
+  if(bloq){ showToast(bloq,7000); renderRgModalBody(); return; }
+  abrirRegistroDeFecha(t,f);
+}
+
 function setRgFuente(f){
-  rgState.fuente=f;
-  if(f==='como_plan'&&rgState.planR){ rgState.ingredientes=ingredientesDesdeReceta(rgState.planR); rgState.extras=[]; rgState.otraRecetaId=null; }
-  if(f==='otra_receta'){ rgState.ingredientes=[]; rgState.extras=[]; rgState.buscando=''; }
-  if(f==='libre'){ rgState.ingredientes=[]; rgState.extras=[]; rgState.buscandoIng=''; }
+  const s=rgState, anad=s.ingredientes.filter(esAnadida); // lo añadido a mano se conserva al cambiar de pestaña
+  s.fuente=f;
+  if(f==='como_plan'&&s.planR){ s.ingredientes=ingredientesDesdeReceta(s.planR).concat(anad); s.otraRecetaId=null; }
+  if(f==='otra_receta'){ s.ingredientes=anad; s.buscando=''; }
+  if(f==='libre'){ s.ingredientes=anad; }
   renderRgModalBody();
 }
 function rgPickReceta(id){
   const rec=getR(id); if(!rec) return;
+  const anad=rgState.ingredientes.filter(esAnadida);
   rgState.otraRecetaId=id;
-  rgState.ingredientes=ingredientesDesdeReceta(rec);
-  rgState.extras=[];
+  rgState.ingredientes=ingredientesDesdeReceta(rec).concat(anad);
   renderRgModalBody();
 }
 function rgToggleSkip(idx){ rgState.ingredientes[idx].skip=!rgState.ingredientes[idx].skip; renderRgModalBody(); }
 function rgUpdateQty(idx,val){ rgState.ingredientes[idx].cantidad_real=val; updateRgRowDisplay(idx); updateRgTotalsDisplay(); }
 function rgDelIngrediente(idx){ rgState.ingredientes.splice(idx,1); renderRgModalBody(); }
-function rgAddExtra(){ rgState.extras.push({nombre:'',cantidad_orig:'',cantidad_real:'',kcal:0,proteinas:0,carbos:0,grasas:0,extra:true}); renderRgModalBody(); }
-function rgAddExtraConNombre(nombre){
-  rgState.extras.push({nombre,cantidad_orig:'',cantidad_real:'',kcal:0,proteinas:0,carbos:0,grasas:0,extra:true});
-  rgState.buscandoIng='';
+function rgSearchRecetas(q){ rgState.buscando=q; renderRgModalBody(); }
+
+// Entradas con cantidad y unidad (ingredientes de biblioteca) y raciones (recetas)
+function rgTextoCant(row){ return (fmtN(row.cantidad)+' '+(row.unidad||'')).trim(); }
+function rgUpdateCant(idx,val){ const r=rgState.ingredientes[idx]; r.cantidad=val; r.cantidad_real=rgTextoCant(r); updateRgRowDisplay(idx); updateRgTotalsDisplay(); }
+function rgUpdateUni(idx,u){ const r=rgState.ingredientes[idx]; r.unidad=u; r.cantidad_real=rgTextoCant(r); updateRgRowDisplay(idx); updateRgTotalsDisplay(); }
+function rgTextoRac(r){ const n=Number(r.raciones); return fmtN(n)+(n===1?' ración':' raciones'); }
+function rgUpdateRac(idx,val){ const r=rgState.ingredientes[idx], n=numDeTexto(val); r.raciones=isNaN(n)?'':n; r.cantidad_real=rgTextoRac(r); updateRgRowDisplay(idx); updateRgTotalsDisplay(); }
+
+// Alimentos manuales: nombre, cantidad, unidad y los 4 valores nutricionales, todos opcionales salvo el nombre
+function rgAddManual(nombre){
+  rgState.extras.push({origen:'manual',extra:true,nombre:nombre||'',cantidad:'',unidad:'',cantidad_real:'',kcal:null,proteinas:null,carbos:null,grasas:null});
+  rgState.addMode=null; rgState.qIng='';
   renderRgModalBody();
 }
-function rgDelExtra(idx){ rgState.extras.splice(idx,1); renderRgModalBody(); updateRgTotalsDisplay(); }
+function rgDelExtra(idx){ rgState.extras.splice(idx,1); renderRgModalBody(); }
 function rgUpdateExtra(idx,field,val){
-  rgState.extras[idx][field] = (['kcal','proteinas','carbos','grasas'].includes(field)) ? (parseFloat(val)||0) : val;
+  const e=rgState.extras[idx];
+  if(NUTR.indexOf(field)!==-1){ const n=numDeTexto(val); e[field]=(isNaN(n)||n<0)?null:n; }
+  else{
+    if((field==='cantidad'||field==='unidad')&&e.cantidad===undefined) e.cantidad=e.cantidad_real||''; // registro antiguo: la cantidad estaba en un solo texto
+    e[field]=val;
+    if(field==='cantidad'||field==='unidad') e.cantidad_real=[e.cantidad,e.unidad].filter(x=>x!==undefined&&x!=='').join(' ');
+  }
   updateRgTotalsDisplay();
 }
 function rgUpdateLibreNombre(val){ rgState.libreNombre=val; }
-function rgSearchRecetas(q){ rgState.buscando=q; renderRgModalBody(); }
-function rgSearchIngredientes(q){ rgState.buscandoIng=q; renderRgModalBody(); }
-function rgAddIngredienteCatalogo(id){
-  const ing=catalogoIngredientes().find(i=>i.id===id); if(!ing) return;
-  rgState.ingredientes.push({nombre:ing.nombre, cantidad_orig:ing.unidad, cantidad_real:ing.unidad,
-    kcal_orig:ing.kcal||0, proteinas_orig:ing.proteinas||0, carbos_orig:ing.carbos||0, grasas_orig:ing.grasas||0,
-    skip:false, origen:'catalogo'});
+
+// Panel «Añadir a esta comida»: receta · ingrediente · manual
+function rgSetAddMode(m){ const s=rgState; s.addMode=s.addMode===m?null:m; s.recSel=null; s.ingSel=null; renderRgModalBody(); }
+function rgBuscarReceta(q){ rgState.qReceta=q; rgState.recSel=null; renderRgModalBody(); }
+function rgSelReceta(id){ rgState.recSel=id; rgState.recRac='1'; renderRgModalBody(); }
+function rgSetRecRac(v){ rgState.recRac=v; rgActualizarPreview(); }
+function rgBuscarIng(q){ rgState.qIng=q; rgState.ingSel=null; renderRgModalBody(); }
+function catalogoBusqueda(q){ // biblioteca (data.json + Supabase) sin repetir ingredientes idénticos
+  const vistos=new Set(), out=[];
+  catalogoIngredientes().forEach(i=>{
+    if(q&&!coincideBusqueda(i.nombre,q)) return;
+    const k=normTxt(i.nombre)+'|'+normTxt(i.unidad)+'|'+i.kcal;
+    if(vistos.has(k)) return; vistos.add(k); out.push(i);
+  });
+  return out.sort((a,b)=>String(a.nombre).localeCompare(String(b.nombre),'es'));
+}
+function rgSelIng(id){
+  const ing=catalogoIngredientes().find(i=>String(i.id)===String(id)); if(!ing) return;
+  const ref=parseRef(ing.unidad);
+  rgState.ingSel=id; rgState.ingCant=ref?String(ref.cant):''; rgState.ingUni=ref?ref.unidad:'';
+  renderRgModalBody();
+}
+function rgSetIngCant(v){ rgState.ingCant=v; rgActualizarPreview(); }
+function rgSetIngUni(u){ rgState.ingUni=u; rgActualizarPreview(); }
+// Entrada que se añadiría con lo escrito ahora (null si falta algo); sirve para la vista previa y para añadir
+function rgEntradaPendiente(){
+  const s=rgState;
+  if(s.addMode==='receta'){
+    const r=getR(s.recSel); if(!r) return null;
+    const rac=numDeTexto(s.recRac); if(!(rac>0)) return {error:'Indica cuántas raciones has tomado (más de 0).'};
+    const e={origen:'receta',receta_id:r.id,nombre:r.nombre,raciones:rac,raciones_base:racionesBase(r),
+      kcal_orig:r.kcal==null?null:r.kcal,proteinas_orig:r.proteinas==null?null:r.proteinas,carbos_orig:r.carbos==null?null:r.carbos,grasas_orig:r.grasas==null?null:r.grasas};
+    e.cantidad_real=rgTextoRac(e); return e;
+  }
+  if(s.addMode==='ingrediente'){
+    const ing=catalogoIngredientes().find(i=>String(i.id)===String(s.ingSel)); if(!ing) return null;
+    const ref=parseRef(ing.unidad);
+    if(!ref) return {error:'Ese ingrediente no tiene una cantidad de referencia válida («'+ing.unidad+'»): regístralo como alimento manual.'};
+    const cant=numDeTexto(s.ingCant); if(!(cant>0)) return {error:'Indica la cantidad (mayor que 0).'};
+    if(!ratioUnidades(cant,s.ingUni,ref.cant,ref.unidad)) return {error:'Esa unidad no es compatible con la de la referencia.'};
+    const e={origen:'catalogo',ing_id:ing.id,nombre:ing.nombre,cantidad:cant,unidad:s.ingUni,ref_cantidad:ref.cant,ref_unidad:ref.unidad,
+      cantidad_orig:ing.unidad,kcal_orig:ing.kcal==null?null:ing.kcal,proteinas_orig:ing.proteinas==null?null:ing.proteinas,
+      carbos_orig:ing.carbos==null?null:ing.carbos,grasas_orig:ing.grasas==null?null:ing.grasas,skip:false};
+    e.cantidad_real=rgTextoCant(e); return e;
+  }
+  return null;
+}
+function rgPreviewHtml(){
+  const e=rgEntradaPendiente(); if(!e) return '';
+  if(e.error) return `<span class="rg-prev-err">${escAttr(e.error)}</span>`;
+  const m=nutriFila(e);
+  return `Aportará <b>${Math.round(m.kcal)}</b> kcal · P ${Math.round(m.proteinas)} g · CH ${Math.round(m.carbos)} g · G ${Math.round(m.grasas)} g${m.incompleto?' <em>(la biblioteca no tiene todos los datos)</em>':''}`;
+}
+function rgActualizarPreview(){ const el=document.getElementById('rg-add-prev'); if(el) el.innerHTML=rgPreviewHtml(); }
+function rgConfirmarAdd(){
+  const s=rgState, e=rgEntradaPendiente();
+  if(!e) return;
+  if(e.error){ showToast(e.error,5000); return; }
+  s.ingredientes.push(e);
+  if(s.addMode==='receta'){ s.recSel=null; s.qReceta=''; } else { s.ingSel=null; s.qIng=''; }
+  showToast('Añadido a la comida');
   renderRgModalBody();
 }
 
 function updateRgRowDisplay(idx){
   const el=document.getElementById('ring-kcal-'+idx);
-  if(el){ const m=calcRowMacros(rgState.ingredientes[idx]); el.textContent=Math.round(m.kcal)+' kcal'; }
+  if(el){ const m=nutriFila(rgState.ingredientes[idx]); el.textContent=m.aviso?'—':Math.round(m.kcal)+' kcal'; }
   const row=document.getElementById('ring-row-'+idx);
   if(row) row.classList.toggle('skipped',!!rgState.ingredientes[idx].skip);
 }
-
 function rgComputeTotals(){
-  if(!rgState) return {kcal:0,proteinas:0,carbos:0,grasas:0};
-  if(rgState.fuente==='no_comido') return {kcal:0,proteinas:0,carbos:0,grasas:0};
-  let kcal=0,proteinas=0,carbos=0,grasas=0;
-  rgState.ingredientes.forEach(r=>{const m=calcRowMacros(r);kcal+=m.kcal;proteinas+=m.proteinas;carbos+=m.carbos;grasas+=m.grasas;});
-  (rgState.extras||[]).forEach(e=>{kcal+=e.kcal||0;proteinas+=e.proteinas||0;carbos+=e.carbos||0;grasas+=e.grasas||0;});
-  return {kcal,proteinas,carbos,grasas};
+  const z={kcal:0,proteinas:0,carbos:0,grasas:0,incompletos:0,avisos:0};
+  if(!rgState||rgState.fuente==='no_comido') return z;
+  return rgTotalesDe(rgState.ingredientes,rgState.extras);
 }
 function updateRgTotalsDisplay(){
   const t=rgComputeTotals();
@@ -2613,6 +3154,91 @@ function updateRgTotalsDisplay(){
   set('rg-tot-p',Math.round(t.proteinas)+'g');
   set('rg-tot-c',Math.round(t.carbos)+'g');
   set('rg-tot-g',Math.round(t.grasas)+'g');
+  const nota=document.getElementById('rg-tot-nota');
+  if(nota) nota.textContent=t.incompletos?`${t.incompletos} entrada${t.incompletos===1?'':'s'} sin todos los datos nutricionales: los totales solo suman los datos disponibles (no se estiman los que faltan).`:'';
+}
+
+function rgFilaHtml(row,idx){
+  const m=nutriFila(row), nom=escAttr(row.nombre||'—');
+  const kc=`<div class="ring-kcal" id="ring-kcal-${idx}">${m.aviso?'—':Math.round(m.kcal)+' kcal'}</div>`;
+  const del=`<button class="ring-skip" onclick="rgDelIngrediente(${idx})" title="Quitar" aria-label="Quitar ${nom}">🗑</button>`;
+  if(row.origen==='receta'){
+    const base=Number(row.raciones_base)||1;
+    const porRac=row.kcal_orig!=null?` · ${Math.round(row.kcal_orig/base)} kcal/ración`:'';
+    return `<div class="ring-row" id="ring-row-${idx}"><div class="ring-name">${nom}<span class="orig">receta añadida${porRac}</span></div>
+      <div class="ring-qty2"><input type="text" inputmode="decimal" aria-label="Raciones de ${nom}" value="${escAttr(row.raciones===''||row.raciones==null?'':fmtN(row.raciones))}" oninput="rgUpdateRac(${idx},this.value)"><span class="ring-u">raciones</span></div>${kc}${del}</div>`;
+  }
+  if(row.ref_cantidad!=null){
+    const opts=unidadesCompatibles(row.ref_unidad||'');
+    const sel=opts.map(u=>`<option value="${escAttr(u)}" ${u===(row.unidad||'')?'selected':''}>${escAttr(etiquetaUnidad(u))}</option>`).join('');
+    return `<div class="ring-row" id="ring-row-${idx}"><div class="ring-name">${nom}<span class="orig">biblioteca · valores por ${escAttr(row.cantidad_orig)}</span></div>
+      <div class="ring-qty2"><input type="text" inputmode="decimal" aria-label="Cantidad de ${nom}" value="${escAttr(row.cantidad==null?'':row.cantidad)}" oninput="rgUpdateCant(${idx},this.value)"><select aria-label="Unidad de ${nom}" onchange="rgUpdateUni(${idx},this.value)">${sel}</select></div>${kc}${del}</div>`;
+  }
+  const esCatalogo=row.origen==='catalogo'; // ingrediente de biblioteca añadido en versiones anteriores
+  const etiqueta=esCatalogo?('cat.: '+row.cantidad_orig):('plan: '+row.cantidad_orig);
+  const accion=esCatalogo
+    ?del
+    :`<button class="ring-skip ${row.skip?'on':''}" onclick="rgToggleSkip(${idx})" title="No lo comí" aria-label="No lo comí: ${nom}">🚫</button>`;
+  return `<div class="ring-row ${row.skip?'skipped':''}" id="ring-row-${idx}">
+    <div class="ring-name">${nom}<span class="orig">${escAttr(etiqueta)}</span></div>
+    <div class="ring-qty"><input type="text" value="${escAttr(row.cantidad_real==null?'':row.cantidad_real)}" aria-label="Cantidad real de ${nom}" oninput="rgUpdateQty(${idx},this.value)"></div>
+    ${kc}${accion}</div>`;
+}
+function rgManualHtml(e,idx){
+  const v=x=>(x===null||x===undefined)?'':escAttr(x);
+  const cant=e.cantidad!==undefined?e.cantidad:(e.cantidad_real||'');
+  return `<div class="rg-man">
+    <div class="rg-man-top"><input type="text" placeholder="Nombre del alimento" aria-label="Nombre del alimento manual" value="${v(e.nombre)}" oninput="rgUpdateExtra(${idx},'nombre',this.value)"><button class="rg-extra-del" onclick="rgDelExtra(${idx})" aria-label="Quitar alimento manual">✕</button></div>
+    <div class="rg-man-q"><input type="text" inputmode="decimal" placeholder="Cantidad" aria-label="Cantidad" value="${v(cant)}" oninput="rgUpdateExtra(${idx},'cantidad',this.value)"><input type="text" list="rg-unidades" placeholder="Unidad (g, ml, ración…)" aria-label="Unidad" value="${v(e.unidad)}" oninput="rgUpdateExtra(${idx},'unidad',this.value)"></div>
+    <div class="rg-man-n">
+      <label>kcal<input type="number" min="0" step="any" inputmode="decimal" placeholder="—" value="${v(e.kcal)}" oninput="rgUpdateExtra(${idx},'kcal',this.value)"></label>
+      <label>Prot. g<input type="number" min="0" step="any" inputmode="decimal" placeholder="—" value="${v(e.proteinas)}" oninput="rgUpdateExtra(${idx},'proteinas',this.value)"></label>
+      <label>Carb. g<input type="number" min="0" step="any" inputmode="decimal" placeholder="—" value="${v(e.carbos)}" oninput="rgUpdateExtra(${idx},'carbos',this.value)"></label>
+      <label>Grasa g<input type="number" min="0" step="any" inputmode="decimal" placeholder="—" value="${v(e.grasas)}" oninput="rgUpdateExtra(${idx},'grasas',this.value)"></label>
+    </div>
+    <div class="rg-man-h">Valores para la cantidad indicada. Deja vacío lo que no sepas: no se estima.</div>
+  </div>`;
+}
+function rgAddPanelHtml(){
+  const s=rgState, m=s.addMode;
+  const tab=(k,l)=>`<button type="button" class="rg-src-tab ${m===k?'active':''}" aria-pressed="${m===k}" onclick="rgSetAddMode('${k}')">${l}</button>`;
+  let panel='';
+  if(m==='receta'){
+    const q=s.qReceta||'';
+    const lista=DATA.recetas.filter(r=>!q||coincideBusqueda(r.nombre,q)).sort((a,b)=>String(a.nombre).localeCompare(String(b.nombre),'es')).slice(0,40);
+    panel+=`<div class="rg-field"><label for="rg-q-receta">Buscar receta</label><input type="text" id="rg-q-receta" placeholder="Nombre de la receta…" value="${escAttr(q)}" oninput="rgBuscarReceta(this.value)"></div>`;
+    panel+=`<div class="rg-recipe-picker">${lista.map(r=>{ const b=racionesBase(r); return `<div class="rg-rp-item ${s.recSel===r.id?'picked':''}" onclick="rgSelReceta('${escAttr(r.id)}')"><span>${escAttr(r.nombre)}</span><span class="rpk">${Math.round((r.kcal||0)/b)} kcal/ración</span></div>`; }).join('')||'<div class="rg-rp-item">Sin resultados</div>'}</div>`;
+    if(s.recSel&&getR(s.recSel)){
+      const r=getR(s.recSel);
+      panel+=`<div class="rg-add-sel"><b>${escAttr(r.nombre)}</b>
+        <div class="rg-add-line"><label for="rg-rac">Raciones consumidas</label><input type="text" inputmode="decimal" id="rg-rac" value="${escAttr(s.recRac)}" oninput="rgSetRecRac(this.value)"></div>
+        <div class="rg-add-prev" id="rg-add-prev">${rgPreviewHtml()}</div>
+        <button type="button" class="rg-btn rg-btn-save" onclick="rgConfirmarAdd()">Añadir receta a la comida</button></div>`;
+    }
+  }else if(m==='ingrediente'){
+    const q=s.qIng||'';
+    const lista=catalogoBusqueda(q).slice(0,40);
+    panel+=`<div class="rg-field"><label for="rg-q-ing">Buscar ingrediente</label><input type="text" id="rg-q-ing" placeholder="Ej. arroz, pollo, yogur…" value="${escAttr(q)}" oninput="rgBuscarIng(this.value)"></div>`;
+    if(lista.length){
+      panel+=`<div class="rg-recipe-picker">${lista.map(i=>`<div class="rg-rp-item ${String(s.ingSel)===String(i.id)?'picked':''}" onclick="rgSelIng('${escAttr(i.id)}')"><span>${escAttr(i.nombre)}</span><span class="rpk">${escAttr(i.unidad)} · ${Math.round(i.kcal||0)} kcal</span></div>`).join('')}</div>`;
+    }else{
+      panel+=`<div class="rg-recipe-picker"><div class="rg-rp-item" onclick="rgAddManual(${escAttr(JSON.stringify(q))})"><span>Sin resultados para «${escAttr(q)}»</span><span class="rpk">+ registrar como alimento manual</span></div></div>`;
+    }
+    const ing=s.ingSel!=null?catalogoIngredientes().find(i=>String(i.id)===String(s.ingSel)):null;
+    if(ing){
+      const ref=parseRef(ing.unidad);
+      const sel=ref?unidadesCompatibles(ref.unidad).map(u=>`<option value="${escAttr(u)}" ${u===s.ingUni?'selected':''}>${escAttr(etiquetaUnidad(u))}</option>`).join(''):'';
+      panel+=`<div class="rg-add-sel"><b>${escAttr(ing.nombre)}</b><span class="rg-add-ref">Valores de la biblioteca por ${escAttr(ing.unidad)}</span>
+        <div class="rg-add-line"><label for="rg-cant">Cantidad</label><input type="text" inputmode="decimal" id="rg-cant" value="${escAttr(s.ingCant)}" oninput="rgSetIngCant(this.value)"><select aria-label="Unidad" onchange="rgSetIngUni(this.value)">${sel}</select></div>
+        <div class="rg-add-prev" id="rg-add-prev">${rgPreviewHtml()}</div>
+        <button type="button" class="rg-btn rg-btn-save" onclick="rgConfirmarAdd()">Añadir ingrediente a la comida</button></div>`;
+    }
+  }else if(m==='manual'){
+    panel+=`<div class="rg-add-sel"><span class="rg-add-ref">Para alimentos que no están en la biblioteca. Solo se guarda en este registro; no se crea ningún ingrediente en la biblioteca.</span>
+      <button type="button" class="rg-btn rg-btn-save" onclick="rgAddManual()">+ Añadir alimento manual</button></div>`;
+  }
+  return `<div class="rg-add"><div class="rg-add-h">➕ Añadir a esta comida</div>
+    <div class="rg-src-tabs">${tab('receta','🍲 Receta')}${tab('ingrediente','🥕 Ingrediente')}${tab('manual','✍️ Manual')}</div>${panel}</div>`;
 }
 
 function renderRgModalBody(){
@@ -2622,6 +3248,12 @@ function renderRgModalBody(){
   const modalBodyEl=document.getElementById('rg-modal-body');
   const activeId=(activeEl&&activeEl.id&&modalBodyEl&&modalBodyEl.contains(activeEl))?activeEl.id:null;
   const selStart=(activeId&&activeEl.selectionStart!=null)?activeEl.selectionStart:null;
+
+  const hoy=isoDate(new Date());
+  const tiposDest=DAL_ORDEN.indexOf(s.tipo)===-1?DAL_ORDEN.concat([s.tipo]):DAL_ORDEN;
+  let dest=`<div class="rg-dest">
+    <div class="rg-field"><label for="rg-dest-fecha">Día</label><input type="date" id="rg-dest-fecha" value="${s.fecha}" max="${s.fecha>hoy?s.fecha:hoy}" onchange="rgCambiarDestino()"></div>
+    <div class="rg-field"><label for="rg-dest-tipo">Categoría</label><select id="rg-dest-tipo" class="rg-sel" onchange="rgCambiarDestino()">${tiposDest.map(t=>`<option value="${escAttr(t)}" ${t===s.tipo?'selected':''}>${escAttr(DAL_LABEL[t]||tipoLegado(t))}</option>`).join('')}</select></div></div>`;
 
   let tabs=`<div class="rg-src-tabs">`;
   if(s.planR) tabs+=`<div class="rg-src-tab ${s.fuente==='como_plan'?'active':''}" onclick="setRgFuente('como_plan')">✓ Como el plan</div>`;
@@ -2633,54 +3265,23 @@ function renderRgModalBody(){
   let body='';
   if(s.fuente==='como_plan'||s.fuente==='otra_receta'||s.fuente==='libre'){
     if(s.fuente==='otra_receta'){
-      body+=`<div class="rg-field"><label>Buscar receta</label><input type="text" id="rg-search-receta" placeholder="Nombre de la receta…" value="${s.buscando||''}" oninput="rgSearchRecetas(this.value)"></div>`;
-      const q=(s.buscando||'').toLowerCase().trim();
-      const list=DATA.recetas.filter(r=>!q||r.nombre.toLowerCase().includes(q)).slice(0,40);
-      body+=`<div class="rg-recipe-picker">${list.map(r=>`<div class="rg-rp-item ${s.otraRecetaId===r.id?'picked':''}" onclick="rgPickReceta('${r.id}')"><span>${r.nombre}</span><span class="rpk">${Math.round(r.kcal)} kcal</span></div>`).join('')||'<div class="rg-rp-item">Sin resultados</div>'}</div>`;
+      body+=`<div class="rg-field"><label for="rg-search-receta">Receta principal (sustituye al plan)</label><input type="text" id="rg-search-receta" placeholder="Nombre de la receta…" value="${escAttr(s.buscando||'')}" oninput="rgSearchRecetas(this.value)"></div>`;
+      const list=DATA.recetas.filter(r=>!s.buscando||coincideBusqueda(r.nombre,s.buscando)).slice(0,40);
+      body+=`<div class="rg-recipe-picker">${list.map(r=>`<div class="rg-rp-item ${s.otraRecetaId===r.id?'picked':''}" onclick="rgPickReceta('${escAttr(r.id)}')"><span>${escAttr(r.nombre)}</span><span class="rpk">${Math.round(r.kcal)} kcal</span></div>`).join('')||'<div class="rg-rp-item">Sin resultados</div>'}</div>`;
     } else if(s.fuente==='libre'){
-      body+=`<div class="rg-field"><label>¿Qué comiste? (nombre, opcional)</label><input type="text" id="rg-libre-nombre" value="${s.libreNombre||''}" placeholder="Ej. Ensalada improvisada" oninput="rgUpdateLibreNombre(this.value)"></div>`;
+      body+=`<div class="rg-field"><label for="rg-libre-nombre">¿Qué comiste? (nombre, opcional)</label><input type="text" id="rg-libre-nombre" value="${escAttr(s.libreNombre||'')}" placeholder="Ej. Ensalada improvisada" oninput="rgUpdateLibreNombre(this.value)"></div>`;
     } else if(s.planR){
-      body+=`<div class="rg-ref-card">Plan original: <b>${s.planR.nombre}</b> — ${Math.round(s.planR.kcal)} kcal</div>`;
+      body+=`<div class="rg-ref-card">Plan original: <b>${escAttr(s.planR.nombre)}</b> — ${Math.round(s.planR.kcal)} kcal</div>`;
     }
-    // buscador de ingredientes del catálogo (data.json + Supabase), disponible en cualquier modo
-    body+=`<div class="rg-field"><label>Añadir ingrediente del catálogo</label><input type="text" id="rg-search-ingrediente" placeholder="Ej. arroz, pollo, gelatina…" value="${s.buscandoIng||''}" oninput="rgSearchIngredientes(this.value)"></div>`;
-    const qi=(s.buscandoIng||'').toLowerCase().trim();
-    if(qi){
-      const listi=catalogoIngredientes().filter(i=>i.nombre.toLowerCase().includes(qi)).slice(0,30);
-      if(listi.length){
-        body+=`<div class="rg-recipe-picker">${listi.map(i=>`<div class="rg-rp-item" onclick="rgAddIngredienteCatalogo('${i.id}')"><span>${i.nombre}</span><span class="rpk">${i.unidad} · ${Math.round(i.kcal)} kcal</span></div>`).join('')}</div>`;
-      } else {
-        body+=`<div class="rg-recipe-picker"><div class="rg-rp-item" onclick="rgAddExtraConNombre('${qi.replace(/'/g,"\\'")}')"><span>Sin resultados para «${s.buscandoIng}»</span><span class="rpk">+ crear nuevo</span></div></div>`;
-      }
+    if(s.ingredientes.length||s.extras.length){
+      body+=`<div class="rg-list-h">En esta comida</div>`;
+      body+=s.ingredientes.map(rgFilaHtml).join('');
+      body+=s.extras.map(rgManualHtml).join('');
+    }else if(s.fuente==='libre'){
+      body+=`<p class="rg-vacio">Todavía no hay nada en esta comida. Añade una receta, un ingrediente o un alimento manual.</p>`;
     }
-    if(s.ingredientes.length){
-      body+=s.ingredientes.map((row,idx)=>{
-        const m=calcRowMacros(row);
-        const esCatalogo=row.origen==='catalogo';
-        const etiqueta=esCatalogo?('cat.: '+row.cantidad_orig):('plan: '+row.cantidad_orig);
-        const accion=esCatalogo
-          ?`<button class="ring-skip" onclick="rgDelIngrediente(${idx})" title="Quitar">🗑</button>`
-          :`<button class="ring-skip ${row.skip?'on':''}" onclick="rgToggleSkip(${idx})" title="No lo comí">🚫</button>`;
-        return `<div class="ring-row ${row.skip?'skipped':''}" id="ring-row-${idx}">
-          <div class="ring-name">${row.nombre}<span class="orig">${etiqueta}</span></div>
-          <div class="ring-qty"><input type="text" value="${row.cantidad_real}" oninput="rgUpdateQty(${idx},this.value)"></div>
-          <div class="ring-kcal" id="ring-kcal-${idx}">${Math.round(m.kcal)} kcal</div>
-          ${accion}
-        </div>`;
-      }).join('');
-    }
-    if(s.extras&&s.extras.length){
-      body+=s.extras.map((e,idx)=>`<div class="rg-extra-row">
-        <input type="text" placeholder="Ingrediente" value="${e.nombre}" oninput="rgUpdateExtra(${idx},'nombre',this.value)">
-        <input type="text" placeholder="cant." value="${e.cantidad_real||''}" oninput="rgUpdateExtra(${idx},'cantidad_real',this.value)">
-        <input type="number" placeholder="kcal" value="${e.kcal||''}" oninput="rgUpdateExtra(${idx},'kcal',this.value)">
-        <input type="number" placeholder="prot" value="${e.proteinas||''}" oninput="rgUpdateExtra(${idx},'proteinas',this.value)">
-        <input type="number" placeholder="carb" value="${e.carbos||''}" oninput="rgUpdateExtra(${idx},'carbos',this.value)">
-        <input type="number" placeholder="gras" value="${e.grasas||''}" oninput="rgUpdateExtra(${idx},'grasas',this.value)">
-        <button class="rg-extra-del" onclick="rgDelExtra(${idx})">✕</button>
-      </div>`).join('');
-    }
-    body+=`<button class="rg-add-extra" onclick="rgAddExtra()">+ Añadir ingrediente a mano (sin catálogo)</button>`;
+    body+=rgAddPanelHtml();
+    body+=`<datalist id="rg-unidades"><option value="g"><option value="ml"><option value="unidad"><option value="ración"><option value="cucharada"><option value="cucharadita"><option value="rebanada"><option value="loncha"></datalist>`;
   } else if(s.fuente==='no_comido'){
     body+=`<div class="rg-empty-msg">🚫 Se registrará como que no comiste esto, sin sumar calorías al día.</div>`;
   }
@@ -2691,10 +3292,10 @@ function renderRgModalBody(){
       <div><span class="tv" id="rg-tot-p">0g</span><span class="tl">prot</span></div>
       <div><span class="tv" id="rg-tot-c">0g</span><span class="tl">carb</span></div>
       <div><span class="tv" id="rg-tot-g">0g</span><span class="tl">gras</span></div>
-    </div>`;
+    </div><div class="rg-tot-nota" id="rg-tot-nota"></div>`;
 
   const existeReg=!!REGISTRO[regKey(s.fecha,s.tipo)];
-  modalBodyEl.innerHTML = tabs + body + totalsHtml + `
+  modalBodyEl.innerHTML = dest + tabs + body + totalsHtml + `
     <div class="rg-actions">
       ${existeReg?`<button class="rg-btn rg-btn-del" onclick="deleteRegistro()">Quitar registro</button>`:''}
       <button class="rg-btn rg-btn-save" onclick="saveRegistro()">Guardar</button>
@@ -2712,9 +3313,26 @@ async function saveRegistro(){
   if(!sb){ alert('Falta configurar Supabase (SUPABASE_URL / SUPABASE_ANON_KEY) en el código.'); return; }
   if(s.fuente==='otra_receta'&&!s.otraRecetaId&&!s.ingredientes.length){ alert('Elige una receta primero.'); return; }
 
-  const t=rgComputeTotals();
+  // Alimentos manuales: se descartan los vacíos; el nombre es obligatorio si hay algún dato
+  const extras=[];
+  for(const e0 of s.extras){
+    const e={...e0}, nombre=String(e.nombre||'').trim();
+    const hayDato=String(e.cantidad_real||'').trim()!==''||NUTR.some(k=>e[k]!==null&&e[k]!==undefined&&e[k]!==''&&Number(e[k])!==0);
+    if(!nombre){ if(hayDato){ alert('Falta el nombre de un alimento manual.'); return; } continue; }
+    e.nombre=nombre;
+    if(e.origen==='manual') e.datos_incompletos=NUTR.some(k=>e[k]===null||e[k]===undefined||e[k]==='');
+    extras.push(e);
+  }
+  if(s.fuente!=='no_comido'){
+    for(const r of s.ingredientes){ const m=nutriFila(r); if(m.aviso&&!r.skip){ alert(`«${r.nombre||'—'}»: ${m.aviso.toLowerCase()}.`); return; } }
+    if(s.fuente==='libre'&&!s.ingredientes.length&&!extras.length&&!String(s.libreNombre||'').trim()){
+      alert('Añade al menos un alimento o elige «No comí». Un registro vacío no se guarda como consumo.'); return;
+    }
+  }
+
+  const t=s.fuente==='no_comido'?{kcal:0,proteinas:0,carbos:0,grasas:0}:rgTotalesDe(s.ingredientes,extras);
   const recNombre = s.fuente==='como_plan'?(s.planR?s.planR.nombre:null) : s.fuente==='otra_receta'?(getR(s.otraRecetaId)?.nombre||null) : null;
-  const ingredientesGuardar = (s.fuente==='como_plan'||s.fuente==='otra_receta'||s.fuente==='libre') ? [...s.ingredientes,...(s.extras||[])] : null;
+  const ingredientesGuardar = (s.fuente==='como_plan'||s.fuente==='otra_receta'||s.fuente==='libre') ? [...s.ingredientes,...extras] : null;
 
   const row={
     fecha:s.fecha, tipo:s.tipo, estado:s.fuente,
@@ -2722,7 +3340,7 @@ async function saveRegistro(){
     receta_nombre: recNombre,
     nombre_libre: s.fuente==='libre'?(s.libreNombre||null):null,
     ingredientes: ingredientesGuardar,
-    kcal:t.kcal, proteinas:t.proteinas, carbos:t.carbos, grasas:t.grasas,
+    kcal:r2(t.kcal), proteinas:r2(t.proteinas), carbos:r2(t.carbos), grasas:r2(t.grasas), // se suma sin redondear y se redondea una sola vez
     notas: s.notas||null,
     updated_at: new Date().toISOString()
   };
@@ -2732,49 +3350,24 @@ async function saveRegistro(){
     const {data,error}=await sb.from('registro_diario').upsert(row,{onConflict:'fecha,tipo'}).select().single();
     if(error){ alert('No se pudo guardar: '+error.message); return; }
     REGISTRO[regKey(s.fecha,s.tipo)]=data;
-    await guardarIngredientesNuevos(s.extras);
+    // Los alimentos manuales quedan SOLO en este registro: no se crean ingredientes en la biblioteca.
     closeRgModal();
     renderCal();
+    renderDiario();
   }catch(e){ alert('No se pudo guardar: '+e.message); }
   finally{ body.classList.remove('rg-saving'); }
 }
 
-// Guarda en Supabase los ingredientes escritos a mano que todavía no existían en el
-// catálogo (ni en data.json ni en los ya guardados antes), para que a partir de ahora
-// salgan en el buscador.
-async function guardarIngredientesNuevos(extras){
-  if(!sb || !extras || !extras.length) return;
-  const existentes=new Set(catalogoIngredientes().map(i=>i.nombre.trim().toLowerCase()));
-  const vistos=new Set();
-  const nuevos=[];
-  extras.forEach(e=>{
-    const nombre=(e.nombre||'').trim();
-    const clave=nombre.toLowerCase();
-    if(!nombre || existentes.has(clave) || vistos.has(clave)) return;
-    vistos.add(clave);
-    nuevos.push({
-      nombre,
-      unidad:(e.cantidad_real&&String(e.cantidad_real).trim())||'1 unidad',
-      kcal:e.kcal||0, proteinas:e.proteinas||0, carbos:e.carbos||0, grasas:e.grasas||0
-    });
-  });
-  if(!nuevos.length) return;
-  try{
-    const {data,error}=await sb.from('ingredientes').insert(nuevos).select();
-    if(error){ console.warn('No se pudieron guardar ingredientes nuevos:',error.message); return; }
-    if(data) INGREDIENTES_EXTRA=INGREDIENTES_EXTRA.concat(data);
-  }catch(e){ console.warn('No se pudieron guardar ingredientes nuevos:',e); }
-}
-
 async function deleteRegistro(){
   const s=rgState; if(!s||!sb) return;
-  if(!confirm('¿Quitar este registro y volver a lo planificado?')) return;
+  if(!confirm('¿Quitar este registro? La comida volverá a figurar como planificada sin registrar (no contará como consumida).')) return;
   try{
     const {error}=await sb.from('registro_diario').delete().eq('fecha',s.fecha).eq('tipo',s.tipo);
     if(error){ alert('No se pudo borrar: '+error.message); return; }
     delete REGISTRO[regKey(s.fecha,s.tipo)];
     closeRgModal();
     renderCal();
+    renderDiario();
   }catch(e){ alert('No se pudo borrar: '+e.message); }
 }
 
@@ -2824,36 +3417,48 @@ function dashVerDiario(){
 function renderDashboard(){
   if(!DATA) return;
   dashRenderCabecera();
-  const f=dashFecha, dd=dashDatosDia(f);
-  dashSet('dash-resumen-body',dashKcalHtml(f,dd));
-  DASH_MACROS.forEach(m=>dashRenderMacro(m,dd,f));
-  dashSet('dash-actividad-body',dashActividadHtml(f));
-  dashSet('dash-comidas-body',dashComidasHtml(f));
-  dashSet('dash-peso-body',dashPesoHtml(f));
-  dashSet('dash-planes-body',dashPlanesHtml());
+  dashRenderErrores();
+  const f=dashFecha;
+  // Si falló la carga de lo que alimenta una tarjeta, se muestra el error en ella (nunca un valor de sustitución)
+  const eCons=dashErr(['datos','registro']), eDia=dashErr(['diario']), eMenu=dashErr(['datos']);
+  asegurarRegistroFecha(f);
+  const estReg=estadoRegistroFecha(f);
+  if(!eCons.length&&estReg!=='ok'){ // registros de esta fecha aún sin cargar (o con error): se dice, no se muestra «sin comidas»
+    const cargando=estReg==='cargando';
+    const msg=cargando?`<p class="dash-loading">Cargando los registros de esta fecha…</p>`
+      :`<div class="dash-err"><p><b>No se han podido cargar los registros de esta fecha.</b> ${dashEsConexion(estReg.err)?'Parece un problema de conexión.':'El servicio ha devuelto un error.'} Esto no significa que no comieras: por eso no se muestran cifras.</p><button type="button" class="da-cta" onclick="reintentarRegistroFecha('${f}')">Reintentar</button></div>`;
+    dashSet('dash-resumen-body',msg);
+    DASH_MACROS.forEach(m=>{ const pe=document.getElementById('dash-'+m.id+'-pct'); if(pe){ pe.textContent=''; pe.hidden=true; } dashSet('dash-'+m.id+'-body',`<p class="dash-err-s">${cargando?'Cargando…':'No se pueden mostrar '+m.nombre.toLowerCase()+': registros de esta fecha sin cargar.'}</p>`); });
+    dashSet('dash-comidas-body',msg);
+  }else if(eCons.length){
+    dashSet('dash-resumen-body',dashErrHtml(eCons,'calorías y macronutrientes'));
+    DASH_MACROS.forEach(m=>{ const pe=document.getElementById('dash-'+m.id+'-pct'); if(pe){ pe.textContent=''; pe.hidden=true; } dashSet('dash-'+m.id+'-body',dashErrHtml(eCons,m.nombre.toLowerCase(),true)); });
+    dashSet('dash-comidas-body',dashErrHtml(eCons,'las comidas'));
+  }else{
+    const dd=dashDatosDia(f);
+    dashSet('dash-resumen-body',dashKcalHtml(f,dd));
+    DASH_MACROS.forEach(m=>dashRenderMacro(m,dd,f));
+    dashSet('dash-comidas-body',dashComidasHtml(f));
+  }
+  dashSet('dash-actividad-body',eDia.length?dashErrHtml(eDia,'pasos y ejercicio'):dashActividadHtml(f));
+  dashSet('dash-peso-body',eDia.length?dashErrHtml(eDia,'el peso y su tendencia'):dashPesoHtml(f));
+  dashSet('dash-planes-body',eMenu.length?dashErrHtml(eMenu,'los próximos planes'):dashPlanesHtml());
 }
 
-// Totales del día (los calcula computeRealDia) + cuánto de ese total viene de registros reales.
-// Lo planificado sin registrar es total − registrado: nada se suma dos veces.
+// Totales del día. computeRealDia ya separa lo consumido (registrado) de lo planificado: aquí solo se reparte para pintar.
+// real/reg = consumido registrado · pend = planificado sin registrar (no cuenta como consumido).
 function dashDatosDia(fecha){
   const {dia,dm}=menuDelDia(fecha);
   const real=computeRealDia(dia,fecha,dm);
-  const reg={kcal:0,proteinas:0,carbos:0,grasas:0};
-  let nReg=0,nPlan=0;
+  const pend={kcal:0,proteinas:0,carbos:0,grasas:0};
   Object.keys(real.slots).forEach(k=>{
     const s=real.slots[k];
-    if(s.source==='registro'){ nReg++; reg.kcal+=s.kcal; reg.proteinas+=s.proteinas; reg.carbos+=s.carbos; reg.grasas+=s.grasas; }
-    else if(s.source==='plan') nPlan++;
+    if(s.source==='plan'){ pend.kcal+=s.kcal; pend.proteinas+=s.proteinas; pend.carbos+=s.carbos; pend.grasas+=s.grasas; }
   });
-  return {real,reg,nReg,nPlan,hayDatos:(nReg+nPlan)>0};
+  return {real,reg:real,pend,nReg:real.nReg,nPlan:real.pendientes,hayRegistro:real.nReg>0,hayDatos:(real.nReg+real.pendientes)>0};
 }
-// REGISTRO solo se carga para las 4 semanas del ciclo (loadRegistroRango): fuera de ese rango no hay registros cargados
-function dashFueraDeRegistros(fecha){
-  const lunes=[0,1,2,3].map(getWeekMonday);
-  const min=new Date(Math.min(...lunes.map(d=>d.getTime())));
-  const max=new Date(Math.max(...lunes.map(d=>d.getTime()))); max.setDate(max.getDate()+6);
-  return fecha<isoDate(min)||fecha>isoDate(max);
-}
+// «Sin cargar» (fuera de lo ya cargado, en curso o con error) ≠ «sin registros»
+function dashFueraDeRegistros(fecha){ return !registroCubreFecha(fecha); }
 
 // Objetivo calórico = gasto estimado del día + balance objetivo (ritmo semanal), con las cifras redondeadas
 // tal y como las muestra el Diario, para que sumen a la vista. Sin ritmo o sin gasto no hay objetivo.
@@ -2864,11 +3469,13 @@ function dashObjetivoKcal(f){
   return obj>0?{obj,gasto:Math.round(gasto),bal:Math.round(bal)}:null;
 }
 function dashMotivoSinObjetivo(f){
-  if(!PERFIL) return {txt:'No se ha podido cargar tu perfil, así que no hay objetivo calórico.',cta:false};
+  if(LOAD_ERR.perfil) return {txt:'No se ha podido cargar tu perfil, así que no se puede calcular el objetivo calórico. Pulsa «Reintentar».',cta:false};
+  if(!PERFIL) return {txt:'Todavía no hay datos de perfil: configúralos para calcular tu objetivo calórico.',cta:true};
+  if(LOAD_ERR.diario) return {txt:'No se ha podido cargar tu diario, así que no se puede estimar tu gasto ni el objetivo. Pulsa «Reintentar».',cta:false};
   if(objetivoBalanceDia()==null) return {txt:'Indica tu ritmo semanal deseado para calcular tu objetivo calórico.',cta:true};
   if(gastoEstimadoFecha(f)==null){
     return pesoParaFecha(f)==null
-      ? {txt:'Registra tu peso en el Diario para estimar tu gasto y calcular el objetivo.',cta:false}
+      ? {txt:'Registra tu peso en el Diario para estimar tu gasto y calcular el objetivo.',cta:false,peso:true}
       : {txt:'Faltan tu altura y fecha de nacimiento (o tu TMB) para estimar el gasto y calcular el objetivo.',cta:true};
   }
   return {txt:'Con tu gasto y ritmo actuales el objetivo calórico no es válido. Revisa tus objetivos.',cta:true};
@@ -2880,7 +3487,7 @@ function dashRingSVG(totK,regK,obj){
     const len=Math.max(0,Math.min(v/obj,1))*C;
     return len>0?`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="11" stroke-dasharray="${len.toFixed(2)} ${(C-len).toFixed(2)}" transform="rotate(-90 ${cx} ${cy})" opacity="${op}"/>`:'';
   };
-  const pct=Math.round(totK/obj*100);
+  const pct=Math.round(regK/obj*100); // el % es solo de lo consumido registrado; el arco tenue es lo planificado sin registrar
   return `<svg class="kc-ring" width="120" height="120" viewBox="0 0 132 132" role="img" aria-label="${pct}% del objetivo calórico">
     <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="11"/>
     ${arco(totK,'#fbf6ea',.5)}${arco(regK,'var(--gold)',1)}
@@ -2891,37 +3498,41 @@ function dashRingSVG(totK,regK,obj){
 
 function dashKcalHtml(f,dd){
   const o=dashObjetivoKcal(f);
-  const cons=Math.round(dd.real.kcal), regK=Math.round(dd.reg.kcal), planK=cons-regK;
-  const sinReg=dashFueraDeRegistros(f)
-    ?`<p class="kc-note">No hay registros cargados para esta fecha: solo se muestra lo planificado.</p>`:'';
-  const cta=m=>m.cta?`<button type="button" class="kc-cta" onclick="editarPerfilForm()">Configurar objetivos</button>`:'';
+  const cons=Math.round(dd.real.kcal), pendK=Math.round(dd.pend.kcal);
+  const cta=m=>m.cta?`<button type="button" class="kc-cta" onclick="editarPerfilForm()">Configurar objetivos</button>`:(m.peso?`<button type="button" class="kc-cta" onclick="dashRegistrarPeso()">Registrar peso</button>`:'');
+  const btnReg=`<button type="button" class="kc-cta" style="grid-column:1/-1;justify-self:start" onclick="dashRegistrarComida()">Registrar comida</button>`;
 
   if(!dd.hayDatos){
     const m=o?null:dashMotivoSinObjetivo(f);
-    return `<div class="kc"><p class="dash-empty-l" style="grid-column:1/-1">No hay comidas planificadas ni registradas este día.</p>
-      ${o?`<p class="kc-note">Objetivo calórico del día: <b class="mono">${o.obj} kcal</b></p>`:`<p class="kc-warn">${m.txt}</p>${cta(m)}`}
-      ${sinReg}</div>`;
+    return `<div class="kc"><p class="dash-empty-l" style="grid-column:1/-1">No hay comidas planificadas ni registradas este día.</p>${btnReg}
+      ${o?`<p class="kc-note">Objetivo calórico del día: <b class="mono">${o.obj} kcal</b></p>`:`<p class="kc-warn">${m.txt}</p>${cta(m)}`}</div>`;
   }
   const legend=`<div class="kc-legend">
-    ${dd.nReg?`<span class="kc-leg"><i class="kc-dot kc-reg"></i>Registrado <b>${regK} kcal</b></span>`:''}
-    ${dd.nPlan?`<span class="kc-leg"><i class="kc-dot kc-plan"></i>Planificado, sin registrar <b>${planK} kcal</b></span>`:''}
+    ${dd.nReg?`<span class="kc-leg"><i class="kc-dot kc-reg"></i>Registrado <b>${cons} kcal</b></span>`:''}
+    ${dd.nPlan?`<span class="kc-leg"><i class="kc-dot kc-plan"></i>Planificado, sin registrar <b>${pendK} kcal</b> · no cuenta como consumido</span>`:''}
   </div>`;
+  if(!dd.hayRegistro){ // hay menú pero nada registrado: sin información, no «0 consumidas»
+    const m=o?null:dashMotivoSinObjetivo(f);
+    return `<div class="kc"><p class="dash-empty-l" style="grid-column:1/-1">Sin información registrada este día. Lo planificado no se cuenta como consumido hasta que lo registres.</p>${btnReg}
+      ${legend}
+      ${o?`<p class="kc-note">Objetivo calórico del día: <b class="mono">${o.obj} kcal</b></p>`:`<p class="kc-warn">${m.txt}</p>${cta(m)}`}</div>`;
+  }
   if(!o){
     const m=dashMotivoSinObjetivo(f);
     return `<div class="kc">
       <div class="kc-stats" style="grid-column:1/-1"><div class="kc-row kc-big"><span>Consumidas</span><b>${cons} kcal</b></div></div>
-      ${legend}<p class="kc-warn">${m.txt}</p>${cta(m)}${sinReg}</div>`;
+      ${legend}<p class="kc-warn">${m.txt}</p>${cta(m)}</div>`;
   }
   const resta=o.obj-cons, pasado=resta<0;
   const baseTxt=`Objetivo = gasto estimado del día (${o.gasto} kcal) ${o.bal<=0?'−':'+'} ${o.bal<=0?'déficit':'superávit'} objetivo (${Math.abs(o.bal)} kcal), como en el Diario.`;
   return `<div class="kc">
-    ${dashRingSVG(cons,regK,o.obj)}
+    ${dashRingSVG(cons+pendK,cons,o.obj)}
     <div class="kc-stats">
       <div class="kc-row kc-big"><span>Consumidas</span><b>${cons} kcal</b></div>
       <div class="kc-row"><span>Objetivo</span><b>${o.obj} kcal</b></div>
       <div class="kc-row"><span>${pasado?'Superadas':'Restantes'}</span><b>${Math.abs(resta)} kcal</b></div>
     </div>
-    ${legend}<p class="kc-note">${baseTxt}</p>${sinReg}</div>`;
+    ${legend}<p class="kc-note">${baseTxt}</p></div>`;
 }
 
 // Objetivo diario de cada macro. Solo la proteína tiene objetivo configurable en la app (g por kg de peso).
@@ -2937,13 +3548,18 @@ function dashRenderMacro(m,dd,f){
     dashSet('dash-'+m.id+'-body',`<div class="dm-val">—</div><p class="dash-empty-s">Sin comidas planificadas ni registradas.</p>`);
     return;
   }
-  const cons=Math.round(dd.real[m.key]), regV=Math.round(dd.reg[m.key]), planV=cons-regV;
+  const cons=Math.round(dd.real[m.key]), regV=cons, planV=Math.round(dd.pend[m.key]);
   const obj=dashObjetivoMacro(m.key,f);
-  const split=`<p class="dm-split">${dd.nReg?`Registrado ${regV} g`:''}${dd.nReg&&dd.nPlan?' · ':''}${dd.nPlan?`Planificado, sin registrar ${planV} g`:''}</p>`;
+  const split=`<p class="dm-split">${dd.nReg?`Registrado ${regV} g`:''}${dd.nReg&&dd.nPlan?' · ':''}${dd.nPlan?`Planificado, sin registrar ${planV} g (no cuenta)`:''}</p>`;
+  if(!dd.hayRegistro){ // hay menú pero nada registrado: sin información, no «0 g»
+    setPct('');
+    dashSet('dash-'+m.id+'-body',`<div class="dm-val">—</div><p class="dash-empty-s">Sin información registrada.</p>${split}`);
+    return;
+  }
   if(obj==null){
     setPct('');
     dashSet('dash-'+m.id+'-body',`<div class="dm-val">${cons}<small> g</small></div>
-      <p class="dm-none">${m.key==='proteinas'?'Sin objetivo: indica tus g de proteína por kg en tu perfil y registra tu peso.':'Sin objetivo diario configurado.'}</p>${split}`);
+      ${dashSinObjetivoMacroHtml(m,f)}${split}`);
     return;
   }
   const pct=Math.round(cons/obj*100), resta=obj-cons;
@@ -2951,7 +3567,7 @@ function dashRenderMacro(m,dd,f){
   setPct(pct+'%');
   dashSet('dash-'+m.id+'-body',`<div class="dm-val">${cons}<small> g</small></div>
     <div class="dash-bar" role="progressbar" aria-label="${m.nombre}: ${pct}% del objetivo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${Math.min(pct,100)}" aria-valuetext="${pct}% del objetivo">
-      <span class="dash-bar-plan" style="width:${w(cons).toFixed(1)}%"></span><span class="dash-bar-reg" style="width:${w(regV).toFixed(1)}%"></span>
+      <span class="dash-bar-plan" style="width:${w(cons+planV).toFixed(1)}%"></span><span class="dash-bar-reg" style="width:${w(regV).toFixed(1)}%"></span>
     </div>
     <div class="dm-rows"><div><span>Objetivo</span><b>${obj} g</b></div><div><span>${resta<0?'Superado':'Restan'}</span><b>${Math.abs(resta)} g</b></div></div>
     ${split}`);
@@ -3008,7 +3624,7 @@ function dashActividadHtml(f){
       <div class="da-row is-none"><span>Previsto</span><span class="da-chip none">Sin plan en la app</span></div>
       ${realizadoHtml}
       <p class="da-note">Aquí solo se muestran: no se suman a las calorías consumidas ni cambian el balance del Diario.</p>
-      <button type="button" class="da-cta" onclick="dashVerDiario()">${hayAlgo?'Ver o editar en el Diario':'Registrar en el Diario'}</button>
+      <button type="button" class="da-cta" onclick="${hayAlgo?'dashVerDiario()':'dashRegistrarActividad()'}">${hayAlgo?'Ver o editar en el Diario':'Registrar actividad'}</button>
     </div>`;
 }
 
@@ -3025,7 +3641,7 @@ function dashSlotIcon(t){
 function dashSlotInfo(f,dm,t){
   const reg=REGISTRO[regKey(f,t)], r=getR(dm[t]);
   if(!reg&&!r) return null;
-  const nombre=reg?(reg.estado==='no_comido'?'No comido':(reg.receta_nombre||reg.nombre_libre||'—')):r.nombre;
+  const nombre=reg?(reg.estado==='no_comido'?'No comido':(regNombre(reg))):r.nombre;
   const s=reg?{kcal:reg.kcal,proteinas:reg.proteinas,carbos:reg.carbos,grasas:reg.grasas}:r;
   const macros=(s&&!(reg&&reg.estado==='no_comido'))?s:null;
   let recId=null;
@@ -3036,13 +3652,7 @@ function dashSlotInfo(f,dm,t){
 }
 // Abre el registro del día mostrado. openRgModal toma el plan de la semana seleccionada en el Calendario,
 // así que la ajustamos solo durante la llamada y se restaura enseguida (el Calendario no cambia).
-function dashAbrirRegistro(t){
-  const f=dashFecha; if(dashFueraDeRegistros(f)) return;
-  const {dia}=menuDelDia(f);
-  const prev=currentWeek;
-  try{ currentWeek=weekIndexForDate(new Date(f+'T00:00:00')); openRgModal(t,dia,f); }
-  finally{ currentWeek=prev; }
-}
+function dashAbrirRegistro(t){ abrirRegistroDeFecha(t,dashFecha); }
 function dashComidasHtml(f){
   const {dm}=menuDelDia(f);
   const puedeReg=!dashFueraDeRegistros(f);
@@ -3056,14 +3666,16 @@ function dashComidasHtml(f){
     if(i.reg) nReg++; else nPlan++;
     const nom=i.recId?`<button type="button" class="dc-name" onclick="openModal('${escAttr(i.recId)}')">${escAttr(i.nombre)}</button>`:`<div class="dc-name">${escAttr(i.nombre)}</div>`;
     const m=i.macros?`<div class="dc-macros"><span><b>${Math.round(i.macros.kcal||0)}</b> kcal</span><span>P <b>${Math.round(i.macros.proteinas||0)}</b> g</span><span>CH <b>${Math.round(i.macros.carbos||0)}</b> g</span><span>G <b>${Math.round(i.macros.grasas||0)}</b> g</span></div>`:'';
-    const badge=i.reg?`<span class="dc-badge reg-badge rb-${escAttr(i.reg.estado)}">${RB_LABEL[i.reg.estado]||escAttr(i.reg.estado)}</span>`:`<span class="dc-badge is-plan">Planificada · sin registrar</span>`;
+    const badge=i.reg?`<span class="dc-badge reg-badge rb-${regEsParcial(i.reg)?'parcial':(RB_LABEL[i.reg.estado]?escAttr(i.reg.estado):'desconocido')}">${regEtiquetaEstado(i.reg)}</span>`:`<span class="dc-badge is-plan">Planificada · sin registrar</span>`;
     return `<li class="dc-item ${i.reg?'dc-registro':'dc-plan'}">${dashSlotIcon(t)}<div class="dc-main"><div class="dc-type">${DASH_SLOT_L[t]}</div>${nom}${m}${badge}</div>${edit}</li>`;
   }).join('');
+  const otros=computeRealDia(menuDelDia(f).dia,f,dm).otros;
+  const otrosHtml=otros.map(o=>{ nReg++; return `<li class="dc-item dc-registro"><div class="dc-main"><div class="dc-type">Otro registro · ${escAttr(o.tipo||'—')}</div><div class="dc-name">${escAttr(o.estado==='no_comido'?'No comido':(regNombre(o)))}</div>${o.estado==='no_comido'?'':`<div class="dc-macros"><span><b>${Math.round(o.kcal||0)}</b> kcal</span><span>P <b>${Math.round(o.proteinas||0)}</b> g</span><span>CH <b>${Math.round(o.carbos||0)}</b> g</span><span>G <b>${Math.round(o.grasas||0)}</b> g</span></div>`}<span class="dc-badge reg-badge rb-como_plan">Registrada</span></div></li>`; }).join('');
   const resumen=(nReg||nPlan)
-    ?`<p class="dc-sum"><b>${nReg}</b> registrada${nReg===1?'':'s'} · <b>${nPlan}</b> planificada${nPlan===1?'':'s'} sin registrar</p>`
-    :`<p class="dc-sum">No hay comidas planificadas ni registradas este día.</p>`;
+    ?`<p class="dc-sum"><b>${nReg}</b> registrada${nReg===1?'':'s'} (consumo real) · <b>${nPlan}</b> planificada${nPlan===1?'':'s'} sin registrar${nPlan?' (no cuenta'+(nPlan===1?'':'n')+' como consumida'+(nPlan===1?'':'s')+')':''}</p>`
+    :`<p class="dc-sum">No hay comidas planificadas ni registradas este día.</p><div class="dc-actions"><button type="button" class="da-cta" onclick="dashRegistrarComida()">Registrar comida</button><button type="button" class="da-cta" onclick="dashAbrirMenu()">Planificar en el calendario</button></div>`;
   const nota=puedeReg?'':`<p class="dc-note">Los registros de esta fecha no están cargados, así que solo se muestra lo planificado y no se ofrece registrar desde aquí.</p>`;
-  return `${resumen}<ul class="dc-list">${items}</ul>${nota}`;
+  return `${resumen}<ul class="dc-list">${items}${otrosHtml}</ul>${nota}`;
 }
 
 // ── Peso: solo pesos realmente registrados en DIARIO (nada arrastrado ni inventado) ──
@@ -3098,7 +3710,7 @@ function dashSparkSVG(sem){
 }
 function dashPesoHtml(f){
   const pesos=dashPesosHasta(f);
-  if(!pesos.length) return `<p class="pw-note">Aún no hay ningún peso registrado hasta esta fecha. Puedes añadirlo en el Diario.</p>`;
+  if(!pesos.length) return `<p class="pw-note">Aún no hay ningún peso registrado hasta esta fecha.</p><button type="button" class="da-cta" onclick="dashRegistrarPeso()">Registrar peso</button>`;
   const last=pesos[pesos.length-1];
   const hoy=new Date(); hoy.setHours(0,0,0,0);
   const dias=Math.round((hoy-new Date(last.fecha+'T00:00:00'))/86400000);
@@ -3108,7 +3720,7 @@ function dashPesoHtml(f){
 
   const sem=dashPesoSemanas(pesos,f), conDato=sem.filter(w=>w.avg!=null), nRegs=conDato.reduce((a,w)=>a+w.n,0);
   if(conDato.length<2||nRegs<3){
-    return `${cab}<div class="pw-trend"><div class="pw-tl">Tendencia</div><p class="pw-note">Aún no hay suficientes registros para mostrar una tendencia: hacen falta al menos 3 pesos repartidos en 2 semanas distintas de las últimas ${DASH_PESO_SEMANAS} (hay ${nRegs} en ${conDato.length} semana${conDato.length===1?'':'s'}).</p></div>`;
+    return `${cab}<div class="pw-trend"><div class="pw-tl">Tendencia</div><p class="pw-note">Aún no hay suficientes registros para mostrar una tendencia: hacen falta al menos 3 pesos repartidos en 2 semanas distintas de las últimas ${DASH_PESO_SEMANAS} (hay ${nRegs} en ${conDato.length} semana${conDato.length===1?'':'s'}).</p><button type="button" class="da-cta" onclick="dashRegistrarPeso()">Registrar peso</button></div>`;
   }
   const nuevo=conDato[0], viejo=conDato[conDato.length-1];
   const semanas=viejo.k-nuevo.k, delta=nuevo.avg-viejo.avg, porSem=delta/semanas;
@@ -3135,9 +3747,91 @@ function dashPlanesHtml(){
         `<div class="pl-it">${dashSlotIcon(t)}<button type="button" onclick="openModal('${escAttr(r.id)}')" title="${escAttr(DASH_SLOT_L[t])}">${escAttr(r.nombre)}</button><span class="pl-k">${Math.round(r.kcal||0)} kcal</span></div>`).join('')}</div>`);
     }
   }
-  const comidas=dias.length?dias.join(''):`<p class="pw-note">No hay comidas planificadas en los próximos 7 días.</p>`;
-  return `${comidas}<div class="pl-entreno"><div class="pl-dl">Próximos entrenamientos</div><p class="pw-note">No hay entrenamientos futuros planificados en la app.</p></div>`;
+  const comidas=dias.length?dias.join(''):`<p class="pw-note">No hay comidas planificadas en los próximos 7 días.</p><button type="button" class="da-cta" onclick="dashAbrirMenu()">Planificar en el calendario</button>`;
+  return `${comidas}<div class="pl-entreno"><div class="pl-dl">Próximos entrenamientos</div><p class="pw-note">No hay entrenamientos futuros planificados. Esta app todavía no permite planificar entrenamientos: lo que registres en el Diario aparece en «Actividad física».</p></div>`;
 }
+
+/* ══════════ DASHBOARD · ERRORES, ESTADOS Y ACCESOS RÁPIDOS (F1.5) ══════════ */
+let _dashRetry=false;
+function dashErr(keys){ return keys.filter(k=>Object.prototype.hasOwnProperty.call(LOAD_ERR,k)); }
+function dashEsConexion(msg){ return !navigator.onLine||/failed to fetch|networkerror|network|load failed|conexi|timeout|timed out|offline|abort|supabase no est/i.test(String(msg||'')); }
+function dashLista(keys){ return keys.map(k=>LOAD_LABEL[k]).join(', '); }
+function dashErrHtml(keys,que,corto){
+  if(corto) return `<p class="dash-err-s">No se pueden mostrar ${que}: no se han cargado ${dashLista(keys)}.</p>`;
+  const causa=keys.some(k=>dashEsConexion(LOAD_ERR[k]))?'Parece un problema de conexión.':'El servicio ha devuelto un error.';
+  return `<div class="dash-err"><p><b>No se han podido cargar ${dashLista(keys)}.</b> ${causa} Esto no significa que no tengas datos, por eso no se muestran cifras de ${que}.</p><button type="button" class="da-cta" onclick="dashReintentar()" ${_dashRetry?'disabled':''}>${_dashRetry?'Reintentando…':'Reintentar'}</button></div>`;
+}
+function dashRenderErrores(){
+  const el=document.getElementById('dash-errores'); if(!el) return;
+  const ks=Object.keys(LOAD_ERR);
+  if(!ks.length){ el.hidden=true; el.innerHTML=''; return; }
+  const con=ks.some(k=>dashEsConexion(LOAD_ERR[k]));
+  el.hidden=false;
+  el.innerHTML=`<div class="dash-banner" role="alert"><div class="db-txt"><b>${con?'Problema de conexión':'No se han podido cargar algunos datos'}</b>
+    <p>Sin cargar: ${dashLista(ks)}. Las tarjetas afectadas no muestran valores de sustitución y no se permite registrar sobre datos que no se han cargado. Esto no significa que no tengas datos guardados.</p>
+    <details><summary>Detalle técnico</summary>${ks.map(k=>`<div>${escAttr(k)}: ${escAttr(LOAD_ERR[k])}</div>`).join('')}</details></div>
+    <button type="button" class="da-cta" onclick="dashReintentar()" ${_dashRetry?'disabled':''}>${_dashRetry?'Reintentando…':'Reintentar'}</button></div>`;
+}
+// Vuelve a cargar solo lo que falló y repinta; si sigue fallando lo dice, sin dar nada por cargado
+async function dashReintentar(){
+  if(_dashRetry) return;
+  const ks=Object.keys(LOAD_ERR); if(!ks.length) return;
+  _dashRetry=true; renderDashboard();
+  const loaders={datos:loadMenuData,registro:loadRegistroRango,perfil:loadPerfil,diario:loadDiario,ciclos:loadCiclos,ingredientes:loadIngredientesExtra};
+  try{
+    await Promise.all(ks.map(k=>loaders[k]()));
+    renderCal(); renderRecipes(recipeFilter); renderShopTabs(); renderDiario();
+  }finally{ _dashRetry=false; renderDashboard(); }
+  const quedan=Object.keys(LOAD_ERR);
+  showToast(quedan.length?'Sigue sin cargar: '+dashLista(quedan)+'.':'Datos cargados correctamente.',quedan.length?6000:2600);
+}
+// Objetivo de proteína / macros sin objetivo: explica la causa real y ofrece la acción que corresponde
+function dashSinObjetivoMacroHtml(m,f){
+  if(m.key!=='proteinas') return `<p class="dm-none">Todavía no hay objetivo de ${m.nombre.toLowerCase()} en la app: solo se puede configurar el de proteína.</p>`;
+  if(LOAD_ERR.perfil||LOAD_ERR.diario) return `<p class="dm-none">No se ha podido cargar tu ${LOAD_ERR.perfil?'perfil':'diario'}, así que no se puede calcular el objetivo de proteína.</p>`;
+  if(!PERFIL||PERFIL.proteina_objetivo_gkg==null) return `<p class="dm-none">Sin objetivo de proteína: indica tus g por kg de peso en tu perfil.</p><button type="button" class="da-cta" onclick="editarPerfilForm()">Configurar objetivo</button>`;
+  if(pesoParaFecha(f)==null) return `<p class="dm-none">Para calcular el objetivo de proteína necesitas registrar tu peso.</p><button type="button" class="da-cta" onclick="dashRegistrarPeso()">Registrar peso</button>`;
+  return `<p class="dm-none">El objetivo de proteína configurado no es válido. Revísalo en tu perfil.</p><button type="button" class="da-cta" onclick="editarPerfilForm()">Revisar objetivo</button>`;
+}
+
+// Registrar sobre datos no cargados podría sobrescribir registros reales (upsert): se bloquea con una explicación
+function dashBloqueoRegistro(){ return bloqueoRegistroFecha(dashFecha); }
+// Reutiliza el modal genérico (el mismo que el perfil) para elegir la comida y abre después el registro existente
+function dashRegistrarComida(){
+  const f=dashFecha, b=dashBloqueoRegistro(), {dm}=menuDelDia(f);
+  const fechaTxt=new Date(f+'T00:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+  document.getElementById('modal-title').textContent='Registrar comida';
+  ['modal-tipo','modal-tags','modal-meta'].forEach(id=>{ const e=document.getElementById(id); if(e) e.innerHTML=''; });
+  const fav=document.getElementById('modal-fav'); if(fav) fav.hidden=true;
+  let body;
+  if(b) body=`<p class="dc-note" style="margin-top:0">${escAttr(b)}</p>`;
+  else body=`<p class="dc-note" style="margin-top:0">¿Qué comida quieres registrar el <b>${escAttr(fechaTxt)}</b>?</p><div class="dc-picks">${DASH_SLOTS.map(t=>{
+    const i=dashSlotInfo(f,dm,t);
+    const est=i?(i.reg?regEtiquetaEstado(i.reg):'Planificada · sin registrar'):'Sin planificar';
+    return `<button type="button" class="dc-pick" onclick="closeModal();dashAbrirRegistro('${t}')"><span>${DASH_SLOT_L[t]}</span><span class="dc-pick-s">${est}</span></button>`;
+  }).join('')}</div>`;
+  document.getElementById('modal-body').innerHTML=body;
+  document.getElementById('modal').classList.add('open');
+}
+// Peso y actividad se registran en el formulario del Diario (con su autoguardado), en el día mostrado
+function dashIrAlDiarioCampo(id){
+  if(dashErr(['diario']).length){ showToast('No se puede registrar ahora: tu diario no se ha cargado y se podrían sobrescribir datos. Pulsa «Reintentar».',7000); return; }
+  dashVerDiario();
+  const el=document.getElementById(id);
+  if(el){ el.focus({preventScroll:true}); el.scrollIntoView({block:'center',behavior:'smooth'}); }
+}
+function dashRegistrarPeso(){ dashIrAlDiarioCampo('dd-peso'); }
+function dashRegistrarActividad(){ dashIrAlDiarioCampo('dd-pasos'); }
+// Abre el Calendario en la semana y el día mostrados (solo si ese día está dentro de las 4 semanas del ciclo)
+function dashAbrirMenu(){
+  const f=dashFecha;
+  if(registroEnVentana(f)){ // el Calendario solo muestra las 4 semanas del ciclo
+    currentWeek=weekIndexForDate(new Date(f+'T00:00:00')); selectedDay=menuDelDia(f).dia;
+    renderWeekDots(); renderCal();
+  }
+  showView('calendario');
+}
+function dashIrA(vista){ showView(vista); }
 
 dashRenderCabecera();
 loadData();

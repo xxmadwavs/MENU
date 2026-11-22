@@ -489,6 +489,38 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .rg-btn-del{background:var(--clay-light);color:var(--clay)}
 .rg-btn-del:hover{background:var(--clay);color:#fff}
 .rg-saving{opacity:.55;pointer-events:none}
+/* F2.3 — edición de registros */
+.ring-chg{display:inline-block;margin-top:3px;padding:0;background:none;border:none;font-family:'Inter',sans-serif;font-size:.68rem;font-weight:700;color:var(--green);text-decoration:underline;cursor:pointer}
+.rg-rac-prin{margin:.2rem 0 .8rem;padding:.65rem .75rem;border:1.5px solid var(--sage);border-radius:var(--r-sm);background:var(--sage-light);font-size:.8rem}
+.rg-rac-prin .rg-add-line{margin-top:.35rem}
+.rg-rac-nota{font-size:.72rem;color:var(--ink-soft);margin-top:.4rem}
+.rg-aviso{margin:0 0 .8rem;padding:.6rem .75rem;border-radius:var(--r-sm);background:var(--gold-light);color:#7a5a12;font-size:.76rem}
+.rg-err{margin:.8rem 0 0;padding:.65rem .75rem;border-radius:var(--r-sm);background:var(--clay-light);color:#8a3d27;font-size:.78rem;font-weight:600}
+.rg-dirty{margin:.8rem 0 0;font-size:.72rem;font-weight:700;color:#7a5a12}
+.rg-move{margin-top:1rem;padding-top:.7rem;border-top:1px dashed var(--line)}
+.rg-move label{display:block;font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.35rem}
+.rg-move-line{display:flex;gap:8px;align-items:stretch}
+.rg-move-line .rg-sel{flex:1;min-width:0}
+.rg-btn-sec{flex:0 0 auto;background:var(--green-light);color:var(--green-deep);padding:.55rem .9rem}
+.rg-btn-sec:hover{background:var(--sage-light)}
+.rg-add-cancel{margin-left:auto;background:none;border:none;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:700;color:var(--clay);cursor:pointer;text-decoration:underline}
+.rg-add-h-row{display:flex;align-items:center;gap:.5rem}
+/* F2.4 — copiar comidas y extras rápidos */
+.dal-acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.rg-copia{margin:0 0 .9rem;padding:.7rem .8rem;border:1.5px solid var(--sage);border-radius:var(--r-sm);background:var(--sage-light);font-size:.8rem}
+.rg-copia-l{margin-top:.3rem;line-height:1.35}
+.rg-copia-l span{display:inline-block;min-width:4.3rem;font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.rg-copia-h{margin:.5rem 0 .3rem;font-size:.72rem;color:var(--ink-soft)}
+.rg-quick{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin:.1rem 0 .7rem}
+.rg-quick>span{font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-right:2px}
+.rg-chip{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:.3rem .65rem;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:700;color:var(--green);cursor:pointer}
+.rg-chip:hover{border-color:var(--green);background:var(--green-light)}
+.rg-copylink{margin:.1rem 0 .7rem}
+.rg-btn:disabled{opacity:.45;cursor:not-allowed}
+.cp-sec{margin-bottom:1rem}
+.cp-sel{margin:.5rem 0;padding:.6rem .75rem;border-radius:var(--r-sm);background:var(--green-light);font-size:.78rem;color:var(--green-deep)}
+.cp-aviso{font-size:.76rem;color:var(--ink-soft);margin:.3rem 0}
+.cp-err{font-size:.76rem;color:#8a3d27;margin:.3rem 0}
 
 /* DIARIO */
 .diario-chart-card{background:var(--paper-raised);border-radius:var(--r);border:1px solid var(--line);box-shadow:var(--shadow);padding:.95rem .9rem .7rem;margin-bottom:.85rem}
@@ -1124,6 +1156,16 @@ button.dc-name:hover{text-decoration-color:var(--green)}
       <button class="modal-close" onclick="rgCerrar()" aria-label="Cerrar">✕</button>
     </div>
     <div class="modal-body" id="rg-modal-body"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="cp-modal" onclick="closeCpOut(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Copiar una comida</h2>
+      <button class="modal-close" onclick="closeCpModal()" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="modal-body" id="cp-modal-body"></div>
   </div>
 </div>
 
@@ -1868,7 +1910,7 @@ function dalIngredientes(lista,real){
     const nom=escAttr(i.nombre||'—');
     if(real&&i.origen==='receta') return `<li>${nom} · ${escAttr(fmtN(i.raciones))} ${Number(i.raciones)===1?'ración':'raciones'} <em>(receta añadida)</em></li>`;
     if(real&&i.ref_cantidad!=null) return `<li>${nom} · ${escAttr(fmtN(i.cantidad))} ${escAttr(i.unidad||'')} <em>(biblioteca)</em></li>`;
-    if(real&&i.origen==='manual') return `<li>${nom}${i.cantidad_real?' · '+escAttr(i.cantidad_real):''} <em>(manual${i.datos_incompletos?' · datos nutricionales incompletos':''})</em></li>`;
+    if(real&&i.origen==='manual') return `<li>${nom}${i.cantidad_real?' · '+escAttr(i.cantidad_real):''} <em>(manual${i.extra_tipo?' · '+escAttr(String(i.extra_tipo).toLowerCase()):''}${i.datos_incompletos?' · datos nutricionales incompletos':''})</em></li>`;
     const cant=real?(i.cantidad_real!=null&&i.cantidad_real!==''?i.cantidad_real:i.cantidad_orig):i.cantidad;
     const dif=real&&i.cantidad_orig&&i.cantidad_real!=null&&i.cantidad_real!==''&&String(i.cantidad_real)!==String(i.cantidad_orig)&&!i.origen?` <em>(previsto ${escAttr(i.cantidad_orig)})</em>`:'';
     return `<li class="${i.skip?'is-skip':''}">${nom}${cant?` · ${escAttr(cant)}`:''}${dif}${i.extra?' <em>(extra)</em>':''}${i.skip?' <em>(omitido)</em>':''}</li>`;
@@ -1887,6 +1929,7 @@ function regEsParcial(reg){
   return reg.ingredientes.some(i=>{
     if(!i||i.extra||i.origen) return false; // las entradas añadidas (biblioteca, receta, manual) no son parte del plan
     if(i.skip) return true;
+    const fr=factorRacionesReceta(i); if(fr!==null&&fr<1-1e-9) return true; // F2.3: menos raciones que la receta completa
     const o=parseLeadingNum(i.cantidad_orig), r=parseLeadingNum(i.cantidad_real);
     return o!=null&&o>0&&r!=null&&r<o-1e-9;
   });
@@ -1898,6 +1941,15 @@ function regNombre(reg){ // nombre mostrable; solo presentación, no modifica el
   const ns=(Array.isArray(reg.ingredientes)?reg.ingredientes:[]).filter(i=>i&&!i.skip&&i.nombre).map(i=>i.nombre);
   if(!ns.length) return '—';
   return ns.length>3?ns.slice(0,3).join(', ')+' y '+(ns.length-3)+' más':ns.join(', ');
+}
+// F2.3: «Consumo: 0,5 de 2 raciones de la receta»; solo presentación, no modifica el registro
+function regRacionesTexto(reg){
+  if(!reg||!Array.isArray(reg.ingredientes)) return '';
+  const main=reg.ingredientes.filter(i=>i&&!i.extra&&!i.origen&&i.raciones_receta!==undefined);
+  const f=main.find(i=>!i.skip)||main[0]; if(!f) return '';
+  const rac=Number(f.raciones_receta), base=Number(f.raciones_base)||1;
+  if(!(rac>0)||Math.abs(rac-base)<1e-9) return '';
+  return `Consumo: ${fmtN(rac)} de ${fmtN(base)} ${base===1?'ración':'raciones'} de la receta (las cantidades de la lista son las de la receta completa).`;
 }
 function regIncompletos(reg){ return Array.isArray(reg&&reg.ingredientes)?reg.ingredientes.filter(i=>i&&i.datos_incompletos&&!i.skip).length:0; }
 function incompletosFecha(f){ let n=0; const pref=f+'|'; Object.keys(REGISTRO).forEach(k=>{ if(k.indexOf(pref)===0&&REGISTRO[k].estado!=='no_comido') n+=regIncompletos(REGISTRO[k]); }); return n; }
@@ -1934,6 +1986,7 @@ function dalSlotHtml(t,fecha,dm){
     let dif='';
     if(reg.estado==='como_plan'&&planR){ const d=Math.round((reg.kcal||0)-(planR.kcal||0)); if(d!==0) dif=`<div class="dal-diff">${parcial?'Consumo parcial':'Cantidades distintas a las previstas'}: ${d>0?'+':'−'}${Math.abs(d)} kcal respecto al plan</div>`; }
     else if(parcial) dif=`<div class="dal-diff">Se ha omitido o reducido alguna parte de lo previsto.</div>`;
+    const racTxt=regRacionesTexto(reg); if(racTxt) dif+=`<div class="dal-diff">${escAttr(racTxt)}</div>`;
     const etiqueta=parcial?'Parcialmente consumida y registrada'+(reg.estado==='otra_receta'?' · otra receta':''):(L[reg.estado]||'Consumida y registrada · registro anterior');
     consCol=`<span class="dal-state ${noC?'st-no':(parcial?'st-part':'st-reg')}">${etiqueta}</span>
       ${noC?'':`<div class="dal-name">${escAttr(nombre)}</div><div class="dal-macros">${dalMacros(reg)}</div>${dif}${dalIngredientes(reg.ingredientes,true)}`}
@@ -1947,7 +2000,7 @@ function dalSlotHtml(t,fecha,dm){
     consCol=`<span class="dal-state st-none">Sin información registrada</span>`;
   }
   return `<div class="dal-slot">
-    <div class="dal-slot-h"><span class="dal-type">${DAL_LABEL[t]}</span><button type="button" class="dal-act" onclick="diarioRegistrar('${t}')">${reg?'Editar registro':'Registrar'}</button></div>
+    <div class="dal-slot-h"><span class="dal-type">${DAL_LABEL[t]}</span><span class="dal-acts">${reg?'':`<button type="button" class="dal-act" onclick="diarioCopiarA('${t}')">Copiar</button>`}<button type="button" class="dal-act" onclick="diarioRegistrar('${t}')">${reg?'Editar registro':'Registrar'}</button></span></div>
     <div class="dal-pair">
       <div class="dal-col dal-plan"><span class="dal-lbl">Planificado</span>${planCol}</div>
       <div class="dal-col dal-cons ${cls}"><span class="dal-lbl">Consumido</span>${consCol}</div>
@@ -1957,7 +2010,8 @@ function dalOtrosHtml(otros){
   if(!otros||!otros.length) return '';
   return `<div class="dal-otros-h">Registros de otras categorías (conservados)</div>`+otros.map(reg=>{
     const tipo=tipoLegado(reg.tipo);
-    return `<div class="dal-slot"><div class="dal-slot-h"><span class="dal-type">${escAttr(tipo)} · categoría anterior</span></div>
+    const editable=typeof reg.tipo==='string'&&reg.tipo!=='';
+    return `<div class="dal-slot"><div class="dal-slot-h"><span class="dal-type">${escAttr(tipo)} · categoría anterior</span>${editable?`<button type="button" class="dal-act" onclick="diarioEditarOtro(${escAttr(JSON.stringify(reg.tipo))})">Editar registro</button>`:''}</div>
       <div class="dal-pair"><div class="dal-col dal-plan"><span class="dal-lbl">Planificado</span><div class="dal-none">No aplica (categoría fuera del menú actual)</div></div>
       <div class="dal-col dal-cons is-reg"><span class="dal-lbl">Consumido</span><span class="dal-state ${reg.estado==='no_comido'?'st-no':'st-reg'}">${reg.estado==='no_comido'?'No consumida':'Consumida y registrada'}</span>
       <div class="dal-name">${escAttr(reg.estado==='no_comido'?'—':(regNombre(reg)))}</div><div class="dal-macros">${dalMacros(reg)}</div>
@@ -1985,7 +2039,7 @@ function renderDiarioAlimentacion(fecha){
   const chips=`${chip('c-reg',cnt.consumida,cnt.consumida===1?'consumida y registrada':'consumidas y registradas')}${chip('c-part',cnt.parcial,cnt.parcial===1?'parcialmente consumida':'parcialmente consumidas')}${chip('c-no',cnt.no_consumida,cnt.no_consumida===1?'no consumida':'no consumidas')}${chip('c-pend',cnt.planificada,cnt.planificada===1?'planificada sin registrar':'planificadas sin registrar')}`;
   const box=(cls,lbl,has,t,sub)=>`<div class="dal-box ${cls}"><span class="dal-box-l">${lbl}</span><b class="dal-box-v">${has?Math.round(t.kcal)+' kcal':'—'}</b><span class="dal-box-s">${has?`P ${Math.round(t.proteinas)} · CH ${Math.round(t.carbos)} · G ${Math.round(t.grasas)} g`:sub}</span></div>`;
   return `<div class="dal">
-    <div class="dal-head"><div class="dal-h">Alimentación del día</div><button type="button" class="dal-act" onclick="diarioAnadir()">+ Añadir alimento</button></div>
+    <div class="dal-head"><div class="dal-h">Alimentación del día</div><span class="dal-acts"><button type="button" class="dal-act" onclick="diarioCopiar()">Copiar comida</button><button type="button" class="dal-act" onclick="diarioAnadir()">+ Añadir extra o alimento</button></span></div>
     <div class="dal-sum">${box('plan','Planificado (menú)',r.nPlan>0,r.plan,'Sin menú')}${box('cons','Consumido (registrado)',r.nReg>0,r,'Sin información')}</div>
     <p class="dal-estado ${!r.nReg?'is-none':(r.pendientes?'is-part':'is-ok')}">${estado}</p>
     ${chips?`<div class="dal-chips">${chips}</div>`:''}
@@ -1994,6 +2048,9 @@ function renderDiarioAlimentacion(fecha){
   </div>`;
 }
 function diarioRegistrar(t){ abrirRegistroDeFecha(t,diarioSelectedFecha); }
+function diarioCopiar(){ abrirCopiar(diarioSelectedFecha,null); }
+function diarioCopiarA(t){ abrirCopiar(diarioSelectedFecha,t); }
+function diarioEditarOtro(t){ abrirRegistroDeFecha(t,diarioSelectedFecha); } // registro de una categoría anterior: se edita, se mueve a una categoría actual o se quita
 // «Añadir alimento»: abre el registro del día mostrado (por defecto Snack); en el propio modal se elige otro día o categoría
 function diarioAnadir(){ abrirRegistroDeFecha('snack',diarioSelectedFecha); }
 // Abre el registro real de una comida para CUALQUIER fecha. openRgModal toma el plan de la semana seleccionada en el
@@ -2923,6 +2980,15 @@ function unidadesCompatibles(refU){ // opciones del selector de unidad para una 
 }
 function etiquetaUnidad(u){ return u===''||u==null?'(uds. de la referencia)':u; }
 
+// F2.3 — raciones consumidas de la RECETA PRINCIPAL de un registro (como el plan / otra receta).
+// Se guardan en cada fila de la receta: raciones_receta (lo consumido) y raciones_base (raciones de la receta original).
+// La receta no se toca: solo cambia el factor con el que se calcula ESTA fila del registro.
+// Sin esos campos (registros anteriores) el factor es 1, es decir, el cálculo de siempre. null = raciones no válidas.
+function factorRacionesReceta(r){
+  if(!r||r.raciones_receta===undefined) return 1;
+  const rac=Number(r.raciones_receta), base=Number(r.raciones_base)||1;
+  return (r.raciones_receta!==''&&r.raciones_receta!==null&&rac>0)?rac/base:null;
+}
 function nutriFila(r){
   const out={kcal:0,proteinas:0,carbos:0,grasas:0,incompleto:false,aviso:null};
   if(!r||r.skip) return out;
@@ -2946,6 +3012,9 @@ function nutriFila(r){
   }else{ // filas del plan y de registros anteriores: cálculo original (primer número del texto), sin cambios
     const orig=parseLeadingNum(r.cantidad_orig), real=parseLeadingNum(r.cantidad_real);
     fLegacy=(orig&&orig>0&&real!==null)?real/orig:1;
+    const fr=factorRacionesReceta(r);
+    if(fr===null){ out.aviso='Indica las raciones'; out.incompleto=true; return out; }
+    fLegacy*=fr;
   }
   NUTR.forEach(k=>{
     const v=r[k+'_orig'];
@@ -2978,15 +3047,16 @@ function ingredientesDesdeReceta(rec){
 function rgSnapshot(){ const s=rgState; return JSON.stringify({f:s.fuente,i:s.ingredientes,e:s.extras,l:s.libreNombre,o:s.otraRecetaId,n:s.notas}); }
 function rgHayCambios(){ return !!rgState&&rgState.snap!==rgSnapshot(); }
 
-function openRgModal(tipo,dia,fecha){
+function openRgModal(tipo,dia,fecha,regCopia){ // regCopia: registro de origen (copia independiente) para abrir una COPIA en un destino libre
   const dm=getMenuDia(dia);
   const planR=getR(dm[tipo]);
-  const reg=REGISTRO[regKey(fecha,tipo)];
+  const reg=regCopia||REGISTRO[regKey(fecha,tipo)];
   const esPostre=tipo.indexOf('postre_')===0;
 
   rgState={tipo,dia,fecha,esPostre,planR,fuente:null,ingredientes:[],extras:[],
     libreNombre:'', otraRecetaId:null, notas:'', buscando:'',
-    addMode:null, qReceta:'', qIng:'', recSel:null, recRac:'1', ingSel:null, ingCant:'', ingUni:''};
+    addMode:null, qReceta:'', qIng:'', recSel:null, recRac:'1', ingSel:null, ingCant:'', ingUni:'',
+    reemplazarIdx:null, error:'', aviso:'', ocupado:false};
 
   if(reg){
     rgState.fuente=reg.estado;
@@ -2999,6 +3069,8 @@ function openRgModal(tipo,dia,fecha){
       rgState.extras=extras;
       if(reg.estado==='libre') rgState.libreNombre=reg.nombre_libre||'';
     }
+    rgProtegerRegistroAnterior(reg,planR);
+    if(regCopia) rgPrepararCopia(regCopia,planR);
   } else {
     rgState.fuente=planR?'como_plan':'libre';
     if(planR) rgState.ingredientes=ingredientesDesdeReceta(planR);
@@ -3006,18 +3078,40 @@ function openRgModal(tipo,dia,fecha){
   rgState.snap=rgSnapshot();
 
   const fechaFmt=new Date(fecha+'T00:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
-  document.getElementById('rg-modal-title').textContent=`${TIPO_I[tipo]||'🍮'} ${(tipo.replace('postre_','postre ')).replace('_',' ')} · ${fechaFmt}`;
+  document.getElementById('rg-modal-title').textContent=`${regCopia?'Copia · ':''}${TIPO_I[tipo]||'🍮'} ${(tipo.replace('postre_','postre ')).replace('_',' ')} · ${fechaFmt}`;
   renderRgModalBody();
   document.getElementById('rg-modal').classList.add('open');
 }
+// F2.3 — un registro anterior con un estado que la app ya no conoce, o que solo guarda totales (sin lista de alimentos),
+// nunca debe quedar a cero al editarlo: se abre como alimento libre conservando sus filas o, si no hay, sus totales.
+function rgProtegerRegistroAnterior(reg,planR){
+  const s=rgState;
+  const conocido=REG_ESTADOS_CONOCIDOS.indexOf(reg.estado)!==-1;
+  const sinFilas=!s.ingredientes.length&&!s.extras.length;
+  const hayTotales=NUTR.some(k=>Number(reg[k])>0);
+  if(conocido&&reg.estado==='no_comido') return;
+  if(!conocido){
+    s.fuente='libre'; s.otraRecetaId=null; s.libreNombre=reg.nombre_libre||reg.receta_nombre||'';
+    s.ingredientes=(reg.ingredientes||[]).filter(x=>x&&!x.extra).map(x=>({...x}));
+    s.extras=(reg.ingredientes||[]).filter(x=>x&&x.extra).map(x=>({...x}));
+    s.aviso='Registro anterior: su estado («'+(reg.estado==null?'sin estado':reg.estado)+'») ya no existe en la app. Se abre como alimento libre conservando sus datos; al guardar quedará con el formato actual.';
+  }
+  if(rgState.ingredientes.length||rgState.extras.length) return;
+  if(!hayTotales||(reg.estado==='como_plan'&&planR)) return;
+  s.fuente='libre'; if(!s.libreNombre) s.libreNombre=reg.nombre_libre||reg.receta_nombre||'';
+  s.extras=[{origen:'manual',extra:true,nombre:reg.receta_nombre||reg.nombre_libre||'Registro anterior',cantidad:'',unidad:'',cantidad_real:'',
+    kcal:Number(reg.kcal)||0,proteinas:Number(reg.proteinas)||0,carbos:Number(reg.carbos)||0,grasas:Number(reg.grasas)||0}];
+  s.aviso='Registro anterior: solo guardaba los totales, sin lista de alimentos. Se abre como un alimento manual con esos mismos valores para que puedas corregirlos sin perderlos.';
+}
 function closeRgOut(e){ if(e.target===document.getElementById('rg-modal')) rgCerrar(); }
-function rgCerrar(){ if(rgHayCambios()&&!confirm('Hay cambios sin guardar en este registro. ¿Cerrar y descartarlos?')) return; closeRgModal(); }
+function rgCerrar(){ if(rgState&&rgState.ocupado){ showToast('Se está guardando: espera un momento.'); return; } if(rgHayCambios()&&!confirm('Hay cambios sin guardar en este registro. ¿Cerrar y descartarlos?')) return; closeRgModal(); }
 function closeRgModal(){ document.getElementById('rg-modal').classList.remove('open'); rgState=null; }
 
 // Cambiar el día o la categoría dentro del modal: abre el registro de ese día/categoría (si ya existe, se edita; si no, se crea)
 async function rgCambiarDestino(){
   const s=rgState; if(!s) return;
   const f=document.getElementById('rg-dest-fecha').value, t=document.getElementById('rg-dest-tipo').value;
+  if(s.ocupado) return;
   if(!f||t===''||(f===s.fecha&&t===s.tipo)){ renderRgModalBody(); return; }
   if(rgHayCambios()&&!confirm('Hay cambios sin guardar en esta comida. Si cambias de día o categoría se descartarán. ¿Continuar?')){ renderRgModalBody(); return; }
   if(!registroEnVentana(f)) await cargarRegistroMes(f.slice(0,7));
@@ -3029,7 +3123,7 @@ async function rgCambiarDestino(){
 
 function setRgFuente(f){
   const s=rgState, anad=s.ingredientes.filter(esAnadida); // lo añadido a mano se conserva al cambiar de pestaña
-  s.fuente=f;
+  s.fuente=f; s.reemplazarIdx=null;
   if(f==='como_plan'&&s.planR){ s.ingredientes=ingredientesDesdeReceta(s.planR).concat(anad); s.otraRecetaId=null; }
   if(f==='otra_receta'){ s.ingredientes=anad; s.buscando=''; }
   if(f==='libre'){ s.ingredientes=anad; }
@@ -3038,13 +3132,73 @@ function setRgFuente(f){
 function rgPickReceta(id){
   const rec=getR(id); if(!rec) return;
   const anad=rgState.ingredientes.filter(esAnadida);
-  rgState.otraRecetaId=id;
+  rgState.otraRecetaId=id; rgState.reemplazarIdx=null;
   rgState.ingredientes=ingredientesDesdeReceta(rec).concat(anad);
   renderRgModalBody();
 }
 function rgToggleSkip(idx){ rgState.ingredientes[idx].skip=!rgState.ingredientes[idx].skip; renderRgModalBody(); }
+
+// ═════════ F2.3 — raciones de la receta principal, cambio de alimento, mover y persistencia verificada ═════════
+// Todo esto trabaja SOLO sobre el borrador del registro (rgState) y sobre su fila de registro_diario. DATA (data.json),
+// INGREDIENTES_EXTRA (biblioteca) y las recetas se leen para calcular, nunca se modifican.
+function rgFilasPrincipales(){ return rgState.ingredientes.filter(r=>!esAnadida(r)&&!r.extra&&r.origen!=='manual'); }
+function rgRecetaPrincipal(){ const s=rgState; return s.fuente==='como_plan'?s.planR:(s.fuente==='otra_receta'?getR(s.otraRecetaId):null); }
+function rgBaseReceta(){
+  const m=rgFilasPrincipales().find(r=>Number(r.raciones_base)>0);
+  return m?Number(m.raciones_base):racionesBase(rgRecetaPrincipal());
+}
+function rgRacionesPrincipalTexto(){ // lo que se muestra en el campo: lo guardado o, si no se ha ajustado, la receta entera
+  const m=rgFilasPrincipales().find(r=>r.raciones_receta!==undefined);
+  if(m) return (m.raciones_receta===''||m.raciones_receta==null)?'':fmtN(m.raciones_receta);
+  return fmtN(rgBaseReceta());
+}
+function rgRacionesNota(){
+  const base=rgBaseReceta(), txt=rgRacionesPrincipalTexto(), n=numDeTexto(txt);
+  if(!(n>0)) return 'Indica cuántas raciones has tomado (más de 0).';
+  const f=n/base;
+  return `La receta original tiene ${fmtN(base)} ${base===1?'ración':'raciones'}. Se calcula ×${fmtN(f)} sobre sus cantidades; la receta no se modifica.`;
+}
+function rgRacionesPrincipalHtml(){
+  const s=rgState;
+  if(s.fuente!=='como_plan'&&s.fuente!=='otra_receta') return '';
+  if(!rgFilasPrincipales().length) return '';
+  return `<div class="rg-rac-prin"><b>Raciones consumidas de la receta</b>
+    <div class="rg-add-line"><label for="rg-rac-prin">Raciones</label><input type="text" inputmode="decimal" id="rg-rac-prin" value="${escAttr(rgRacionesPrincipalTexto())}" oninput="rgSetRacionesPrincipal(this.value)"><span class="ring-u">de ${escAttr(fmtN(rgBaseReceta()))}</span></div>
+    <div class="rg-rac-nota" id="rg-rac-nota">${escAttr(rgRacionesNota())}</div></div>`;
+}
+function rgSetRacionesPrincipal(val){
+  const n=numDeTexto(val), base=rgBaseReceta();
+  rgFilasPrincipales().forEach(r=>{ r.raciones_receta=(isNaN(n)||!(n>0))?'':n; r.raciones_base=base; });
+  rgState.ingredientes.forEach((_,i)=>updateRgRowDisplay(i));
+  const nota=document.getElementById('rg-rac-nota'); if(nota) nota.textContent=rgRacionesNota();
+  updateRgTotalsDisplay();
+}
+
+// Cambiar el alimento de una entrada añadida (ingrediente de biblioteca o receta): se elige otro y la entrada se sustituye
+function rgCambiarAlimento(idx){
+  const s=rgState, r=s.ingredientes[idx]; if(!r) return;
+  s.reemplazarIdx=idx; s.addMode=r.origen==='receta'?'receta':'ingrediente';
+  s.recSel=null; s.ingSel=null; s.qReceta=''; s.qIng='';
+  renderRgModalBody();
+  const el=document.querySelector('#rg-modal-body .rg-add'); if(el&&el.scrollIntoView) el.scrollIntoView({block:'center',behavior:'smooth'});
+}
+function rgCancelarCambio(){ const s=rgState; s.reemplazarIdx=null; s.addMode=null; s.recSel=null; s.ingSel=null; renderRgModalBody(); }
+
+// ── Persistencia verificada: una operación solo se da por buena si la respuesta lo confirma ──
+function sbErrTxt(e){
+  const m=(e&&e.message)||String(e||'error desconocido');
+  return /failed to fetch|networkerror|load failed|network request failed|timeout|timed out/i.test(m)?'sin conexión con la base de datos ('+m+')':m;
+}
+function filaGuardadaOk(data,row){ // ¿la fila que devuelve la base de datos es la que se ha enviado?
+  if(!data||typeof data!=='object'||Array.isArray(data)) return false;
+  if(data.fecha!==row.fecha||data.tipo!==row.tipo) return false;
+  if(!NUTR.every(k=>Math.abs(Number(data[k])-Number(row[k]))<=0.51)) return false; // tolerancia de redondeo: la columna puede guardar menos decimales
+  const na=Array.isArray(row.ingredientes)?row.ingredientes.length:null, nb=Array.isArray(data.ingredientes)?data.ingredientes.length:null;
+  return na===nb;
+}
+function rgError(msg){ const s=rgState; if(!s) return; s.error=msg||''; renderRgModalBody(); }
 function rgUpdateQty(idx,val){ rgState.ingredientes[idx].cantidad_real=val; updateRgRowDisplay(idx); updateRgTotalsDisplay(); }
-function rgDelIngrediente(idx){ rgState.ingredientes.splice(idx,1); renderRgModalBody(); }
+function rgDelIngrediente(idx){ rgState.ingredientes.splice(idx,1); rgState.reemplazarIdx=null; rgState.addMode=null; renderRgModalBody(); }
 function rgSearchRecetas(q){ rgState.buscando=q; renderRgModalBody(); }
 
 // Entradas con cantidad y unidad (ingredientes de biblioteca) y raciones (recetas)
@@ -3074,9 +3228,13 @@ function rgUpdateExtra(idx,field,val){
 function rgUpdateLibreNombre(val){ rgState.libreNombre=val; }
 
 // Panel «Añadir a esta comida»: receta · ingrediente · manual
-function rgSetAddMode(m){ const s=rgState; s.addMode=s.addMode===m?null:m; s.recSel=null; s.ingSel=null; renderRgModalBody(); }
+function rgSetAddMode(m){ const s=rgState; if(s.reemplazarIdx!=null) return; s.addMode=s.addMode===m?null:m; s.recSel=null; s.ingSel=null; renderRgModalBody(); }
 function rgBuscarReceta(q){ rgState.qReceta=q; rgState.recSel=null; renderRgModalBody(); }
-function rgSelReceta(id){ rgState.recSel=id; rgState.recRac='1'; renderRgModalBody(); }
+function rgSelReceta(id){
+  const viejo=rgState.reemplazarIdx!=null?rgState.ingredientes[rgState.reemplazarIdx]:null; // al cambiar de receta se conservan las raciones
+  rgState.recSel=id; rgState.recRac=(viejo&&viejo.origen==='receta'&&Number(viejo.raciones)>0)?fmtN(viejo.raciones):'1';
+  renderRgModalBody();
+}
 function rgSetRecRac(v){ rgState.recRac=v; rgActualizarPreview(); }
 function rgBuscarIng(q){ rgState.qIng=q; rgState.ingSel=null; renderRgModalBody(); }
 function catalogoBusqueda(q){ // biblioteca (data.json + Supabase) sin repetir ingredientes idénticos
@@ -3092,6 +3250,8 @@ function rgSelIng(id){
   const ing=catalogoIngredientes().find(i=>String(i.id)===String(id)); if(!ing) return;
   const ref=parseRef(ing.unidad);
   rgState.ingSel=id; rgState.ingCant=ref?String(ref.cant):''; rgState.ingUni=ref?ref.unidad:'';
+  const viejo=rgState.reemplazarIdx!=null?rgState.ingredientes[rgState.reemplazarIdx]:null; // al cambiar de alimento se conserva la cantidad si la unidad es compatible
+  if(viejo&&viejo.ref_cantidad!=null&&ref&&unidadesCompatibles(ref.unidad).indexOf(viejo.unidad||'')!==-1&&numDeTexto(viejo.cantidad)>0){ rgState.ingCant=String(viejo.cantidad); rgState.ingUni=viejo.unidad||''; }
   renderRgModalBody();
 }
 function rgSetIngCant(v){ rgState.ingCant=v; rgActualizarPreview(); }
@@ -3130,6 +3290,7 @@ function rgConfirmarAdd(){
   const s=rgState, e=rgEntradaPendiente();
   if(!e) return;
   if(e.error){ showToast(e.error,5000); return; }
+  if(s.reemplazarIdx!=null&&s.ingredientes[s.reemplazarIdx]){ s.ingredientes[s.reemplazarIdx]=e; s.reemplazarIdx=null; s.addMode=null; s.recSel=null; s.ingSel=null; s.qReceta=''; s.qIng=''; showToast('Alimento cambiado (guarda para confirmar)'); renderRgModalBody(); return; }
   s.ingredientes.push(e);
   if(s.addMode==='receta'){ s.recSel=null; s.qReceta=''; } else { s.ingSel=null; s.qIng=''; }
   showToast('Añadido a la comida');
@@ -3155,23 +3316,25 @@ function updateRgTotalsDisplay(){
   set('rg-tot-c',Math.round(t.carbos)+'g');
   set('rg-tot-g',Math.round(t.grasas)+'g');
   const nota=document.getElementById('rg-tot-nota');
+  const dirty=document.getElementById('rg-dirty'); if(dirty) dirty.style.display=rgHayCambios()?'':'none';
   if(nota) nota.textContent=t.incompletos?`${t.incompletos} entrada${t.incompletos===1?'':'s'} sin todos los datos nutricionales: los totales solo suman los datos disponibles (no se estiman los que faltan).`:'';
 }
 
 function rgFilaHtml(row,idx){
   const m=nutriFila(row), nom=escAttr(row.nombre||'—');
+  const chg=`<button type="button" class="ring-chg" onclick="rgCambiarAlimento(${idx})" aria-label="Cambiar el alimento ${nom}">Cambiar alimento</button>`;
   const kc=`<div class="ring-kcal" id="ring-kcal-${idx}">${m.aviso?'—':Math.round(m.kcal)+' kcal'}</div>`;
   const del=`<button class="ring-skip" onclick="rgDelIngrediente(${idx})" title="Quitar" aria-label="Quitar ${nom}">🗑</button>`;
   if(row.origen==='receta'){
     const base=Number(row.raciones_base)||1;
     const porRac=row.kcal_orig!=null?` · ${Math.round(row.kcal_orig/base)} kcal/ración`:'';
-    return `<div class="ring-row" id="ring-row-${idx}"><div class="ring-name">${nom}<span class="orig">receta añadida${porRac}</span></div>
+    return `<div class="ring-row" id="ring-row-${idx}"><div class="ring-name">${nom}<span class="orig">receta añadida${porRac}</span>${chg}</div>
       <div class="ring-qty2"><input type="text" inputmode="decimal" aria-label="Raciones de ${nom}" value="${escAttr(row.raciones===''||row.raciones==null?'':fmtN(row.raciones))}" oninput="rgUpdateRac(${idx},this.value)"><span class="ring-u">raciones</span></div>${kc}${del}</div>`;
   }
   if(row.ref_cantidad!=null){
     const opts=unidadesCompatibles(row.ref_unidad||'');
     const sel=opts.map(u=>`<option value="${escAttr(u)}" ${u===(row.unidad||'')?'selected':''}>${escAttr(etiquetaUnidad(u))}</option>`).join('');
-    return `<div class="ring-row" id="ring-row-${idx}"><div class="ring-name">${nom}<span class="orig">biblioteca · valores por ${escAttr(row.cantidad_orig)}</span></div>
+    return `<div class="ring-row" id="ring-row-${idx}"><div class="ring-name">${nom}<span class="orig">biblioteca · valores por ${escAttr(row.cantidad_orig)}</span>${chg}</div>
       <div class="ring-qty2"><input type="text" inputmode="decimal" aria-label="Cantidad de ${nom}" value="${escAttr(row.cantidad==null?'':row.cantidad)}" oninput="rgUpdateCant(${idx},this.value)"><select aria-label="Unidad de ${nom}" onchange="rgUpdateUni(${idx},this.value)">${sel}</select></div>${kc}${del}</div>`;
   }
   const esCatalogo=row.origen==='catalogo'; // ingrediente de biblioteca añadido en versiones anteriores
@@ -3180,7 +3343,7 @@ function rgFilaHtml(row,idx){
     ?del
     :`<button class="ring-skip ${row.skip?'on':''}" onclick="rgToggleSkip(${idx})" title="No lo comí" aria-label="No lo comí: ${nom}">🚫</button>`;
   return `<div class="ring-row ${row.skip?'skipped':''}" id="ring-row-${idx}">
-    <div class="ring-name">${nom}<span class="orig">${escAttr(etiqueta)}</span></div>
+    <div class="ring-name">${nom}<span class="orig">${escAttr(etiqueta)}</span>${esCatalogo?chg:''}</div>
     <div class="ring-qty"><input type="text" value="${escAttr(row.cantidad_real==null?'':row.cantidad_real)}" aria-label="Cantidad real de ${nom}" oninput="rgUpdateQty(${idx},this.value)"></div>
     ${kc}${accion}</div>`;
 }
@@ -3200,7 +3363,7 @@ function rgManualHtml(e,idx){
   </div>`;
 }
 function rgAddPanelHtml(){
-  const s=rgState, m=s.addMode;
+  const s=rgState, m=s.addMode, rep=s.reemplazarIdx!=null?s.ingredientes[s.reemplazarIdx]:null;
   const tab=(k,l)=>`<button type="button" class="rg-src-tab ${m===k?'active':''}" aria-pressed="${m===k}" onclick="rgSetAddMode('${k}')">${l}</button>`;
   let panel='';
   if(m==='receta'){
@@ -3213,7 +3376,7 @@ function rgAddPanelHtml(){
       panel+=`<div class="rg-add-sel"><b>${escAttr(r.nombre)}</b>
         <div class="rg-add-line"><label for="rg-rac">Raciones consumidas</label><input type="text" inputmode="decimal" id="rg-rac" value="${escAttr(s.recRac)}" oninput="rgSetRecRac(this.value)"></div>
         <div class="rg-add-prev" id="rg-add-prev">${rgPreviewHtml()}</div>
-        <button type="button" class="rg-btn rg-btn-save" onclick="rgConfirmarAdd()">Añadir receta a la comida</button></div>`;
+        <button type="button" class="rg-btn rg-btn-save" onclick="rgConfirmarAdd()">${rep?'Cambiar por esta receta':'Añadir receta a la comida'}</button></div>`;
     }
   }else if(m==='ingrediente'){
     const q=s.qIng||'';
@@ -3222,7 +3385,7 @@ function rgAddPanelHtml(){
     if(lista.length){
       panel+=`<div class="rg-recipe-picker">${lista.map(i=>`<div class="rg-rp-item ${String(s.ingSel)===String(i.id)?'picked':''}" onclick="rgSelIng('${escAttr(i.id)}')"><span>${escAttr(i.nombre)}</span><span class="rpk">${escAttr(i.unidad)} · ${Math.round(i.kcal||0)} kcal</span></div>`).join('')}</div>`;
     }else{
-      panel+=`<div class="rg-recipe-picker"><div class="rg-rp-item" onclick="rgAddManual(${escAttr(JSON.stringify(q))})"><span>Sin resultados para «${escAttr(q)}»</span><span class="rpk">+ registrar como alimento manual</span></div></div>`;
+      panel+=`<div class="rg-recipe-picker"><div class="rg-rp-item" ${rep?'':`onclick="rgAddManual(${escAttr(JSON.stringify(q))})"`}><span>Sin resultados para «${escAttr(q)}»</span><span class="rpk">${rep?'':'+ registrar como alimento manual'}</span></div></div>`;
     }
     const ing=s.ingSel!=null?catalogoIngredientes().find(i=>String(i.id)===String(s.ingSel)):null;
     if(ing){
@@ -3231,13 +3394,15 @@ function rgAddPanelHtml(){
       panel+=`<div class="rg-add-sel"><b>${escAttr(ing.nombre)}</b><span class="rg-add-ref">Valores de la biblioteca por ${escAttr(ing.unidad)}</span>
         <div class="rg-add-line"><label for="rg-cant">Cantidad</label><input type="text" inputmode="decimal" id="rg-cant" value="${escAttr(s.ingCant)}" oninput="rgSetIngCant(this.value)"><select aria-label="Unidad" onchange="rgSetIngUni(this.value)">${sel}</select></div>
         <div class="rg-add-prev" id="rg-add-prev">${rgPreviewHtml()}</div>
-        <button type="button" class="rg-btn rg-btn-save" onclick="rgConfirmarAdd()">Añadir ingrediente a la comida</button></div>`;
+        <button type="button" class="rg-btn rg-btn-save" onclick="rgConfirmarAdd()">${rep?'Cambiar por este ingrediente':'Añadir ingrediente a la comida'}</button></div>`;
     }
   }else if(m==='manual'){
     panel+=`<div class="rg-add-sel"><span class="rg-add-ref">Para alimentos que no están en la biblioteca. Solo se guarda en este registro; no se crea ningún ingrediente en la biblioteca.</span>
       <button type="button" class="rg-btn rg-btn-save" onclick="rgAddManual()">+ Añadir alimento manual</button></div>`;
   }
-  return `<div class="rg-add"><div class="rg-add-h">➕ Añadir a esta comida</div>
+  if(rep) return `<div class="rg-add"><div class="rg-add-h-row"><div class="rg-add-h">Cambiar «${escAttr(rep.nombre||'—')}» por…</div><button type="button" class="rg-add-cancel" onclick="rgCancelarCambio()">Cancelar</button></div>${panel}</div>`;
+  const quick=`<div class="rg-quick"><span>Extra rápido</span>${RG_EXTRAS.map(x=>`<button type="button" class="rg-chip" onclick="rgAddExtraRapido(${escAttr(JSON.stringify(x))})">${escAttr(x)}</button>`).join('')}${s.copia?'':`<button type="button" class="rg-chip" onclick="rgComidaNoPlanificada()">Comida no planificada</button>`}</div>`;
+  return `<div class="rg-add"><div class="rg-add-h">➕ Añadir a esta comida</div>${quick}
     <div class="rg-src-tabs">${tab('receta','🍲 Receta')}${tab('ingrediente','🥕 Ingrediente')}${tab('manual','✍️ Manual')}</div>${panel}</div>`;
 }
 
@@ -3262,7 +3427,9 @@ function renderRgModalBody(){
   tabs+=`<div class="rg-src-tab ${s.fuente==='no_comido'?'active':''}" onclick="setRgFuente('no_comido')">🚫 No comí</div>`;
   tabs+=`</div>`;
 
-  let body='';
+  if(s.copia){ dest=''; tabs=''; }
+  else if(!REGISTRO[regKey(s.fecha,s.tipo)]) dest+=`<div class="rg-copylink"><button type="button" class="ring-chg" onclick="rgIrACopiar()">Copiar de otra comida registrada…</button></div>`;
+  let body=(s.copia?rgCopiaCardHtml():'')+(s.aviso?`<div class="rg-aviso">${escAttr(s.aviso)}</div>`:'');
   if(s.fuente==='como_plan'||s.fuente==='otra_receta'||s.fuente==='libre'){
     if(s.fuente==='otra_receta'){
       body+=`<div class="rg-field"><label for="rg-search-receta">Receta principal (sustituye al plan)</label><input type="text" id="rg-search-receta" placeholder="Nombre de la receta…" value="${escAttr(s.buscando||'')}" oninput="rgSearchRecetas(this.value)"></div>`;
@@ -3273,6 +3440,7 @@ function renderRgModalBody(){
     } else if(s.planR){
       body+=`<div class="rg-ref-card">Plan original: <b>${escAttr(s.planR.nombre)}</b> — ${Math.round(s.planR.kcal)} kcal</div>`;
     }
+    body+=rgRacionesPrincipalHtml();
     if(s.ingredientes.length||s.extras.length){
       body+=`<div class="rg-list-h">En esta comida</div>`;
       body+=s.ingredientes.map(rgFilaHtml).join('');
@@ -3295,10 +3463,15 @@ function renderRgModalBody(){
     </div><div class="rg-tot-nota" id="rg-tot-nota"></div>`;
 
   const existeReg=!!REGISTRO[regKey(s.fecha,s.tipo)];
+  const libres=existeReg?DAL_ORDEN.filter(t=>t!==s.tipo):[];
+  const mover=libres.some(t=>!REGISTRO[regKey(s.fecha,t)])
+    ?`<div class="rg-move"><label for="rg-move-tipo">Mover este registro a otra categoría</label><div class="rg-move-line"><select id="rg-move-tipo" class="rg-sel">${libres.map(t=>{ const ocu=!!REGISTRO[regKey(s.fecha,t)]; return `<option value="${escAttr(t)}" ${ocu?'disabled':''}>${escAttr(DAL_LABEL[t]||tipoLegado(t))}${ocu?' (ya tiene registro)':''}</option>`; }).join('')}</select><button type="button" class="rg-btn rg-btn-sec" onclick="rgMover()">Mover</button></div></div>`:'';
   modalBodyEl.innerHTML = dest + tabs + body + totalsHtml + `
+    <div class="rg-dirty" id="rg-dirty" style="display:none">Cambios sin guardar</div>
+    ${s.error?`<div class="rg-err" role="alert">${escAttr(s.error)}</div>`:''}${mover}
     <div class="rg-actions">
       ${existeReg?`<button class="rg-btn rg-btn-del" onclick="deleteRegistro()">Quitar registro</button>`:''}
-      <button class="rg-btn rg-btn-save" onclick="saveRegistro()">Guardar</button>
+      <button class="rg-btn rg-btn-save" onclick="saveRegistro()">${s.copia?'Confirmar y guardar copia':'Guardar'}</button>
     </div>`;
   updateRgTotalsDisplay();
 
@@ -3309,7 +3482,7 @@ function renderRgModalBody(){
 }
 
 async function saveRegistro(){
-  const s=rgState; if(!s) return;
+  const s=rgState; if(!s||s.ocupado) return; // un solo guardado a la vez: un doble toque no envía dos veces
   if(!sb){ alert('Falta configurar Supabase (SUPABASE_URL / SUPABASE_ANON_KEY) en el código.'); return; }
   if(s.fuente==='otra_receta'&&!s.otraRecetaId&&!s.ingredientes.length){ alert('Elige una receta primero.'); return; }
 
@@ -3326,7 +3499,7 @@ async function saveRegistro(){
   if(s.fuente!=='no_comido'){
     for(const r of s.ingredientes){ const m=nutriFila(r); if(m.aviso&&!r.skip){ alert(`«${r.nombre||'—'}»: ${m.aviso.toLowerCase()}.`); return; } }
     if(s.fuente==='libre'&&!s.ingredientes.length&&!extras.length&&!String(s.libreNombre||'').trim()){
-      alert('Añade al menos un alimento o elige «No comí». Un registro vacío no se guarda como consumo.'); return;
+      alert('No queda ningún alimento en esta comida. Añade alguno, elige «No comí» o usa «Quitar registro» para eliminar la comida entera.'); return;
     }
   }
 
@@ -3345,30 +3518,315 @@ async function saveRegistro(){
     updated_at: new Date().toISOString()
   };
 
+  if(s.copia) return rgGuardarCopia(s,row); // una copia SIEMPRE es un registro nuevo: INSERT, nunca upsert
+  // La escritura es un upsert por (fecha, tipo): repetirla tras un fallo sobrescribe la misma fila, nunca crea otra.
+  // Solo se da por guardado si la base de datos devuelve la fila con lo que se envió; si no, el borrador se conserva intacto.
+  s.ocupado=true; s.error='';
   const body=document.getElementById('rg-modal-body'); body.classList.add('rg-saving');
+  let guardada=null, fallo=null;
   try{
     const {data,error}=await sb.from('registro_diario').upsert(row,{onConflict:'fecha,tipo'}).select().single();
-    if(error){ alert('No se pudo guardar: '+error.message); return; }
-    REGISTRO[regKey(s.fecha,s.tipo)]=data;
-    // Los alimentos manuales quedan SOLO en este registro: no se crean ingredientes en la biblioteca.
-    closeRgModal();
-    renderCal();
-    renderDiario();
-  }catch(e){ alert('No se pudo guardar: '+e.message); }
-  finally{ body.classList.remove('rg-saving'); }
+    if(error) fallo='No se pudo guardar: '+sbErrTxt(error)+'. Tus cambios siguen aquí; pulsa Guardar para reintentar.';
+    else if(!filaGuardadaOk(data,row)) fallo='La base de datos no ha confirmado los datos guardados. Tus cambios siguen aquí; pulsa Guardar para reintentar (no se duplicará el registro).';
+    else guardada=data;
+  }catch(e){
+    fallo='No se pudo confirmar el guardado: '+sbErrTxt(e)+'. Tus cambios siguen aquí; pulsa Guardar para reintentar (no se duplicará el registro).';
+  }finally{ s.ocupado=false; body.classList.remove('rg-saving'); }
+  if(fallo){ if(rgState===s) rgError(fallo); else showToast(fallo,7000); return; }
+  REGISTRO[regKey(s.fecha,s.tipo)]=guardada;
+  // Los alimentos manuales quedan SOLO en este registro: no se crean ingredientes en la biblioteca.
+  if(rgState===s) closeRgModal();
+  renderCal();
+  renderDiario();
+  showToast('Registro guardado');
+}
+
+// Borra una fila y comprueba que de verdad ha desaparecido (una política de la base de datos puede rechazar el borrado sin dar error)
+async function borrarFilaVerificado(fecha,tipo){
+  try{
+    const {data,error}=await sb.from('registro_diario').delete().eq('fecha',fecha).eq('tipo',tipo).select();
+    if(error) return {ok:false,msg:sbErrTxt(error)};
+    if(Array.isArray(data)&&data.length>0) return {ok:true};
+    const chk=await sb.from('registro_diario').select('fecha,tipo').eq('fecha',fecha).eq('tipo',tipo);
+    if(chk.error) return {ok:false,msg:'no se pudo confirmar el borrado ('+sbErrTxt(chk.error)+')'};
+    if(chk.data&&chk.data.length) return {ok:false,msg:'la base de datos no ha borrado el registro (¿faltan permisos?)'};
+    return {ok:true};
+  }catch(e){ return {ok:false,msg:sbErrTxt(e)}; }
 }
 
 async function deleteRegistro(){
-  const s=rgState; if(!s||!sb) return;
-  if(!confirm('¿Quitar este registro? La comida volverá a figurar como planificada sin registrar (no contará como consumida).')) return;
+  const s=rgState; if(!s||!sb||s.ocupado) return;
+  const reg=REGISTRO[regKey(s.fecha,s.tipo)];
+  if(!reg){ showToast('Este registro aún no está guardado: no hay nada que quitar.'); return; }
+  const que=DAL_LABEL[s.tipo]||tipoLegado(s.tipo);
+  if(!confirm(`¿Quitar el registro de «${que}» (${Math.round(reg.kcal||0)} kcal)? La comida volverá a figurar como planificada sin registrar (no contará como consumida). Los demás registros no se tocan.`)) return;
+  s.ocupado=true; s.error='';
+  const body=document.getElementById('rg-modal-body'); body.classList.add('rg-saving');
+  let res;
+  try{ res=await borrarFilaVerificado(s.fecha,s.tipo); }finally{ s.ocupado=false; body.classList.remove('rg-saving'); }
+  if(!res.ok){ const m='No se pudo quitar el registro: '+res.msg+'. No se ha borrado nada.'; if(rgState===s) rgError(m); else showToast(m,7000); return; }
+  delete REGISTRO[regKey(s.fecha,s.tipo)];
+  if(rgState===s) closeRgModal();
+  renderCal();
+  renderDiario();
+  showToast('Registro quitado');
+}
+
+// Cambiar la categoría de un registro YA guardado: una sola operación UPDATE de su fila (atómica). Nunca sobrescribe
+// otro registro: si la categoría de destino ya tiene uno, la base de datos lo rechaza y no se mueve nada.
+async function rgMover(){
+  const s=rgState; if(!s||!sb||s.ocupado) return;
+  const reg=REGISTRO[regKey(s.fecha,s.tipo)];
+  const sel=document.getElementById('rg-move-tipo'), nuevo=sel?sel.value:'';
+  if(!reg){ rgError('Este registro aún no está guardado: guárdalo antes de moverlo.'); return; }
+  if(!nuevo||nuevo===s.tipo) return;
+  if(rgHayCambios()){ rgError('Hay cambios sin guardar. Guárdalos (o descártalos cerrando) antes de mover el registro.'); return; }
+  if(REGISTRO[regKey(s.fecha,nuevo)]){ rgError('«'+(DAL_LABEL[nuevo]||nuevo)+'» ya tiene un registro este día. Mover no sobrescribe nada: edítalo o quítalo primero.'); return; }
+  const de=DAL_LABEL[s.tipo]||tipoLegado(s.tipo), a=DAL_LABEL[nuevo]||tipoLegado(nuevo);
+  if(!confirm(`¿Mover este registro de «${de}» a «${a}»? Conserva sus alimentos y cantidades.`)) return;
+  const patch={tipo:nuevo,updated_at:new Date().toISOString()};
+  if(reg.estado==='como_plan'){ // «como el plan» solo tiene sentido en la franja de ese plan
+    const planNuevo=getR(menuDelDia(s.fecha).dm[nuevo]);
+    if(!planNuevo||planNuevo.id!==reg.receta_id) patch.estado='otra_receta';
+  }
+  s.ocupado=true; s.error='';
+  const body=document.getElementById('rg-modal-body'); body.classList.add('rg-saving');
+  let movida=null, fallo=null;
   try{
-    const {error}=await sb.from('registro_diario').delete().eq('fecha',s.fecha).eq('tipo',s.tipo);
-    if(error){ alert('No se pudo borrar: '+error.message); return; }
-    delete REGISTRO[regKey(s.fecha,s.tipo)];
-    closeRgModal();
-    renderCal();
-    renderDiario();
-  }catch(e){ alert('No se pudo borrar: '+e.message); }
+    const {data,error}=await sb.from('registro_diario').update(patch).eq('fecha',s.fecha).eq('tipo',s.tipo).select();
+    if(error){
+      fallo=(error.code==='23505'||/duplicate|unique/i.test(error.message||''))?'«'+a+'» ya tiene un registro este día; no se ha movido nada.':'No se pudo mover: '+sbErrTxt(error)+'. No se ha movido nada.';
+    }else if(Array.isArray(data)&&data.length===1&&data[0].tipo===nuevo&&data[0].fecha===s.fecha){
+      movida=data[0];
+    }else{ // respuesta sin la fila movida: se comprueba el estado real antes de dar nada por hecho
+      const chk=await sb.from('registro_diario').select('*').eq('fecha',s.fecha).in('tipo',[s.tipo,nuevo]);
+      if(chk.error) fallo='No se pudo confirmar el movimiento: '+sbErrTxt(chk.error)+'. Revisa el día antes de reintentar.';
+      else{
+        const orig=(chk.data||[]).find(x=>x.tipo===s.tipo), dest=(chk.data||[]).find(x=>x.tipo===nuevo);
+        if(orig&&!dest) fallo='La base de datos no ha movido el registro (¿faltan permisos?). No se ha cambiado nada.';
+        else if(!orig&&dest&&JSON.stringify(dest.ingredientes)===JSON.stringify(reg.ingredientes)&&Math.abs(Number(dest.kcal)-Number(reg.kcal))<0.011) movida=dest; // el movimiento sí se hizo (la respuesta se perdió)
+        else fallo='No se pudo confirmar el movimiento: el estado de ese día ha cambiado. Cierra y vuelve a abrirlo.';
+      }
+    }
+  }catch(e){
+    fallo='No se pudo confirmar el movimiento: '+sbErrTxt(e)+'. Comprueba la conexión y revisa el día antes de reintentar.';
+  }finally{ s.ocupado=false; body.classList.remove('rg-saving'); }
+  if(fallo){ if(rgState===s) rgError(fallo); else showToast(fallo,7000); return; }
+  delete REGISTRO[regKey(s.fecha,s.tipo)];
+  REGISTRO[regKey(s.fecha,nuevo)]=movida;
+  if(rgState===s) closeRgModal();
+  renderCal();
+  renderDiario();
+  showToast('Registro movido a '+a);
+}
+
+/* ══════════ F2.4 — COPIAR COMIDAS, REPETIR COMBINACIONES Y EXTRAS ══════════
+   Una copia es un registro NUEVO e independiente: se construye clonando en profundidad el registro de origen (sin su id
+   ni ninguna referencia compartida), se revisa y edita como cualquier registro y se guarda con INSERT en una categoría
+   que no tenga registro: nunca sobrescribe. No toca el menú (ni overrides), las recetas ni la biblioteca. */
+const RG_EXTRAS=['Picoteo','Bebida','Extra','Tentempié','Fuera del menú'];
+let cpState=null; // estado del selector «Copiar una comida»
+
+// Extras: se registran como alimentos manuales sin planificar nada ni tocar el menú
+function rgAddExtraRapido(label){
+  const s=rgState; if(!s) return;
+  s.reemplazarIdx=null; s.addMode=null; s.qIng='';
+  s.extras.push({origen:'manual',extra:true,extra_tipo:label,nombre:label,cantidad:'',unidad:'',cantidad_real:'',kcal:null,proteinas:null,carbos:null,grasas:null});
+  renderRgModalBody();
+  const ms=document.querySelectorAll('#rg-modal-body .rg-man'), last=ms[ms.length-1], inp=last&&last.querySelector('.rg-man-n input');
+  if(inp&&inp.focus) inp.focus();
+}
+// Comida completa que no estaba en el menú: se registra como «libre» (el plan del hueco no se modifica)
+function rgComidaNoPlanificada(){
+  const s=rgState; if(!s) return;
+  if(s.fuente!=='libre'){
+    if(s.ingredientes.some(r=>!esAnadida(r))&&!confirm('Se quitarán de este registro los ingredientes del plan (el menú no cambia). ¿Continuar?')) return;
+    setRgFuente('libre');
+  }
+  if(!String(s.libreNombre||'').trim()) s.libreNombre='Comida no planificada';
+  s.reemplazarIdx=null; s.addMode='ingrediente';
+  renderRgModalBody();
+}
+
+// ── Preparar y revisar la copia ──
+function rgPrepararCopia(orig,planR){
+  const s=rgState; s.notas='';
+  if(s.fuente==='como_plan'&&!(planR&&planR.id===orig.receta_id)){ // «como el plan» solo si el hueco de destino tiene esa misma receta
+    if(orig.receta_id&&getR(orig.receta_id)){ s.fuente='otra_receta'; s.otraRecetaId=orig.receta_id; }
+    else{ s.fuente='libre'; s.otraRecetaId=null; s.libreNombre=orig.receta_nombre||''; }
+  }
+  if(s.fuente==='otra_receta'&&!getR(s.otraRecetaId)){ s.fuente='libre'; s.libreNombre=orig.receta_nombre||orig.nombre_libre||''; s.otraRecetaId=null; }
+  if(s.fuente==='otra_receta'&&!s.ingredientes.length) s.ingredientes=ingredientesDesdeReceta(getR(s.otraRecetaId));
+  s.copia={fecha:orig.fecha,tipo:orig.tipo,nombre:regNombre(orig),
+    alimentos:(Array.isArray(orig.ingredientes)?orig.ingredientes:[]).filter(x=>x&&!x.skip&&x.nombre).map(x=>x.nombre)};
+}
+function fmtFechaLarga(f){ return new Date(f+'T00:00:00').toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'}); }
+function rgCopiaCardHtml(){
+  const s=rgState, c=s.copia, cat=t=>DAL_LABEL[t]||tipoLegado(t);
+  return `<div class="rg-copia"><b>Copia de una comida registrada</b>
+    <div class="rg-copia-l"><span>Origen</span>${escAttr(fmtFechaLarga(c.fecha))} · ${escAttr(cat(c.tipo))}</div>
+    <div class="rg-copia-l"><span>Destino</span>${escAttr(fmtFechaLarga(s.fecha))} · ${escAttr(cat(s.tipo))}</div>
+    <div class="rg-copia-l"><span>Se copia</span>${escAttr(c.alimentos.length?c.alimentos.join(', '):(c.nombre||'—'))}</div>
+    <div class="rg-copia-h">Es un registro nuevo e independiente: ajusta cantidades o alimentos aquí abajo si quieres; el original no cambia. No se guarda nada hasta confirmar.</div>
+    <button type="button" class="ring-chg" onclick="rgVolverACopiar()">Cambiar origen o destino</button></div>`;
+}
+function rgIrACopiar(){
+  const s=rgState; if(!s||s.ocupado) return;
+  if(rgHayCambios()&&!confirm('Hay cambios sin guardar en este registro. ¿Descartarlos para copiar otra comida?')) return;
+  const f=s.fecha, t=s.tipo; closeRgModal(); abrirCopiar(f,t);
+}
+function rgVolverACopiar(){
+  const s=rgState; if(!s||s.ocupado) return;
+  if(rgHayCambios()&&!confirm('Has modificado la copia. ¿Descartar los cambios y volver a elegir?')) return;
+  const f=s.fecha, t=s.tipo, c=s.copia; closeRgModal(); abrirCopiar(f,t,{fecha:c.fecha,tipo:c.tipo});
+}
+// Firma de lo comido (alimentos + cantidades): sirve para avisar de una posible duplicación accidental
+function sigRegistro(reg){
+  const l=(Array.isArray(reg&&reg.ingredientes)?reg.ingredientes:[]).filter(i=>i&&!i.skip).map(i=>
+    normTxt(i.nombre)+'='+normTxt(i.origen==='receta'?(i.raciones+' rac'):(i.cantidad_real!=null&&i.cantidad_real!==''?i.cantidad_real:(i.cantidad==null?'':i.cantidad))));
+  return l.sort().join('|');
+}
+function duplicadoEnDia(fecha,row){
+  const sig=sigRegistro(row); if(!sig) return null;
+  const pref=fecha+'|';
+  for(const k of Object.keys(REGISTRO)){
+    if(k.indexOf(pref)!==0) continue;
+    const r=REGISTRO[k]; if(r.estado==='no_comido') continue;
+    if(sigRegistro(r)===sig) return r;
+  }
+  return null;
+}
+function copiaIgual(a,b){ // ¿la fila existente es la copia que se intentaba guardar? (reintento tras perder la respuesta)
+  return a&&b&&a.estado===b.estado&&(a.receta_id||null)===(b.receta_id||null)&&JSON.stringify(a.ingredientes)===JSON.stringify(b.ingredientes)&&NUTR.every(k=>Math.abs(Number(a[k])-Number(b[k]))<=0.51);
+}
+async function rgGuardarCopia(s,row){
+  const dest=DAL_LABEL[s.tipo]||tipoLegado(s.tipo);
+  if(REGISTRO[regKey(s.fecha,s.tipo)]){ rgError('«'+dest+'» ya tiene un registro ese día. Una copia no sobrescribe nada: vuelve atrás y elige otra categoría.'); return; }
+  const dup=duplicadoEnDia(s.fecha,row);
+  if(dup&&!s.dupConfirmado){
+    if(!confirm('Ese día ya hay un registro con los mismos alimentos y cantidades («'+(DAL_LABEL[dup.tipo]||tipoLegado(dup.tipo))+'»). ¿Copiar igualmente?')) return;
+    s.dupConfirmado=true;
+  }
+  s.ocupado=true; s.error='';
+  const body=document.getElementById('rg-modal-body'); body.classList.add('rg-saving');
+  let guardada=null, fallo=null;
+  try{
+    const {data,error}=await sb.from('registro_diario').insert(row).select().single();
+    if(error){
+      if(error.code==='23505'||/duplicate|unique/i.test(error.message||'')){ // ya existe: ¿es esta misma copia (reintento) o un registro ajeno?
+        const chk=await sb.from('registro_diario').select('*').eq('fecha',row.fecha).eq('tipo',row.tipo);
+        if(chk.error) fallo='No se pudo confirmar la copia: '+sbErrTxt(chk.error)+'. Tus cambios siguen aquí; pulsa de nuevo para reintentar.';
+        else if(chk.data&&chk.data.length&&copiaIgual(chk.data[0],row)) guardada=chk.data[0]; // la copia ya estaba guardada: no se duplica
+        else fallo='«'+dest+'» ya tiene un registro ese día (puede que se haya creado desde otro dispositivo). No se ha sobrescrito nada: vuelve atrás y elige otra categoría.';
+      }else fallo='No se pudo guardar la copia: '+sbErrTxt(error)+'. Tus cambios siguen aquí; pulsa de nuevo para reintentar.';
+    }else if(!filaGuardadaOk(data,row)) fallo='La base de datos no ha confirmado la copia. Tus cambios siguen aquí; pulsa de nuevo para reintentar (no se duplicará).';
+    else guardada=data;
+  }catch(e){
+    fallo='No se pudo confirmar la copia: '+sbErrTxt(e)+'. Tus cambios siguen aquí; pulsa de nuevo para reintentar (no se duplicará).';
+  }finally{ s.ocupado=false; body.classList.remove('rg-saving'); }
+  if(fallo){ if(rgState===s) rgError(fallo); else showToast(fallo,7000); return; }
+  REGISTRO[regKey(s.fecha,s.tipo)]=guardada;
+  if(rgState===s) closeRgModal();
+  renderCal(); renderDiario();
+  showToast('Comida copiada a '+dest);
+}
+
+// ── Selector «Copiar una comida» ──
+function cpCopiable(r){ return !!r&&r.estado!=='no_comido'&&((Array.isArray(r.ingredientes)&&r.ingredientes.length>0)||NUTR.some(k=>Number(r[k])>0)); }
+function cpOrdenTipo(t){ const i=DAL_ORDEN.indexOf(t); return i<0?99:i; }
+function cpComidasDia(f){
+  const pref=f+'|', out=[];
+  Object.keys(REGISTRO).forEach(k=>{ if(k.indexOf(pref)===0&&cpCopiable(REGISTRO[k])) out.push(REGISTRO[k]); });
+  return out.sort((a,b)=>cpOrdenTipo(a.tipo)-cpOrdenTipo(b.tipo));
+}
+function cpRecientes(){
+  const c=cpState, out=[];
+  Object.keys(REGISTRO).forEach(k=>{ const r=REGISTRO[k]; if(cpCopiable(r)&&r.fecha!==c.destFecha) out.push(r); });
+  out.sort((a,b)=>a.fecha<b.fecha?1:a.fecha>b.fecha?-1:cpOrdenTipo(a.tipo)-cpOrdenTipo(b.tipo));
+  return out.slice(0,10);
+}
+function cpPrimeraLibre(f){ return DAL_ORDEN.find(t=>!REGISTRO[regKey(f,t)])||null; }
+function abrirCopiar(f,t,sel){
+  const bloq=bloqueoRegistroFecha(f); if(bloq){ showToast(bloq,7000); return; }
+  const o=new Date(f+'T00:00:00'); o.setDate(o.getDate()-1);
+  cpState={destFecha:f,destTipo:(t&&!REGISTRO[regKey(f,t)])?t:cpPrimeraLibre(f),tipoManual:!!t,
+    origFecha:sel?sel.fecha:isoDate(o),sel:sel?regKey(sel.fecha,sel.tipo):null,lista:[],recientes:[]};
+  cpRender();
+  document.getElementById('cp-modal').classList.add('open');
+  cpCargarOrigen(cpState.origFecha);
+}
+async function cpCargarOrigen(f){
+  const c=cpState; if(!c||!f) return;
+  if(!registroEnVentana(f)) await cargarRegistroMes(f.slice(0,7));
+  if(cpState===c) cpRender();
+}
+function cpReintentarOrigen(){ const c=cpState; if(!c) return; delete REG_MESES[c.origFecha.slice(0,7)]; cpCargarOrigen(c.origFecha).then(()=>{}); cpRender(); }
+function closeCpModal(){ document.getElementById('cp-modal').classList.remove('open'); cpState=null; }
+function closeCpOut(e){ if(e.target===document.getElementById('cp-modal')) closeCpModal(); }
+function cpRender(){
+  const c=cpState; if(!c) return;
+  const hoy=isoDate(new Date()), est=estadoRegistroFecha(c.origFecha);
+  c.lista=est==='ok'?cpComidasDia(c.origFecha):[]; c.recientes=cpRecientes();
+  const cat=t=>DAL_LABEL[t]||tipoLegado(t);
+  const item=(r,fn,i,conFecha)=>`<div class="rg-rp-item ${c.sel===regKey(r.fecha,r.tipo)?'picked':''}" onclick="${fn}(${i})"><span>${conFecha?escAttr(new Date(r.fecha+'T00:00:00').toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'}))+' · ':''}${escAttr(cat(r.tipo))} — ${escAttr(regNombre(r))}</span><span class="rpk">${Math.round(r.kcal||0)} kcal</span></div>`;
+  const sel=c.sel?REGISTRO[c.sel]:null;
+  const libre=!!c.destTipo&&!REGISTRO[regKey(c.destFecha,c.destTipo)];
+  const ok=!!sel&&libre;
+  let origen;
+  if(est==='cargando') origen='<p class="cp-aviso">Cargando los registros de ese día…</p>';
+  else if(est!=='ok') origen=`<p class="cp-err">No se han podido cargar los registros de ese día (${escAttr(est.err)}).</p><button type="button" class="ring-chg" onclick="cpReintentarOrigen()">Reintentar</button>`;
+  else origen=c.lista.length?`<div class="rg-recipe-picker">${c.lista.map((r,i)=>item(r,'cpSel',i,false)).join('')}</div>`:'<p class="cp-aviso">Ese día no hay comidas registradas que copiar.</p>';
+  const rec=c.recientes.length?`<div class="cp-sec"><div class="rg-list-h">Registradas recientemente</div><div class="rg-recipe-picker">${c.recientes.map((r,i)=>item(r,'cpSelRec',i,true)).join('')}</div></div>`:'';
+  const nIng=sel?(Array.isArray(sel.ingredientes)?sel.ingredientes.filter(x=>x&&!x.skip).length:0):0;
+  document.getElementById('cp-modal-body').innerHTML=`
+    <div class="cp-sec"><div class="rg-list-h">Destino de la copia</div><div class="rg-dest">
+      <div class="rg-field"><label for="cp-dest-fecha">Día</label><input type="date" id="cp-dest-fecha" value="${c.destFecha}" max="${c.destFecha>hoy?c.destFecha:hoy}" onchange="cpCambiarDestinoFecha(this.value)"></div>
+      <div class="rg-field"><label for="cp-dest-tipo">Categoría</label><select id="cp-dest-tipo" class="rg-sel" onchange="cpSetDestTipo(this.value)">${DAL_ORDEN.map(t=>{ const ocu=!!REGISTRO[regKey(c.destFecha,t)]; return `<option value="${escAttr(t)}" ${t===c.destTipo?'selected':''} ${ocu?'disabled':''}>${escAttr(cat(t))}${ocu?' (ya tiene registro)':''}</option>`; }).join('')}</select></div></div>
+      ${libre?'':'<p class="cp-err">No hay categoría libre ese día: una copia no sobrescribe registros existentes.</p>'}</div>
+    <div class="cp-sec"><div class="rg-list-h">Comida de origen</div>
+      <div class="rg-field"><label for="cp-orig-fecha">Día de origen</label><input type="date" id="cp-orig-fecha" value="${c.origFecha}" onchange="cpCambiarOrigenFecha(this.value)"></div>${origen}</div>
+    ${rec}
+    ${sel?`<div class="cp-sel">Se copiará: <b>${escAttr(regNombre(sel))}</b> · ${nIng} alimento${nIng===1?'':'s'} · ${Math.round(sel.kcal||0)} kcal${libre?` → ${escAttr(cat(c.destTipo))} del ${escAttr(fmtFechaLarga(c.destFecha))}`:''}</div>`:''}
+    <div class="rg-actions"><button type="button" class="rg-btn rg-btn-save" onclick="cpContinuar()" ${ok?'':'disabled'}>Revisar y copiar</button></div>`;
+}
+function cpElegir(r){
+  const c=cpState; if(!c||!r) return;
+  c.sel=regKey(r.fecha,r.tipo);
+  if(!c.tipoManual&&DAL_ORDEN.indexOf(r.tipo)!==-1&&!REGISTRO[regKey(c.destFecha,r.tipo)]) c.destTipo=r.tipo; // categoría correspondiente
+  cpRender();
+}
+function cpSel(i){ cpElegir(cpState&&cpState.lista[i]); }
+function cpSelRec(i){ const c=cpState, r=c&&c.recientes[i]; if(!r) return; c.origFecha=r.fecha; cpElegir(r); }
+function cpSetDestTipo(v){ const c=cpState; if(!c) return; c.destTipo=v; c.tipoManual=true; cpRender(); }
+async function cpCambiarDestinoFecha(v){
+  const c=cpState; if(!c||!v) return;
+  if(!registroEnVentana(v)) await cargarRegistroMes(v.slice(0,7));
+  if(cpState!==c) return;
+  const bloq=bloqueoRegistroFecha(v); if(bloq){ showToast(bloq,7000); cpRender(); return; }
+  c.destFecha=v;
+  if(!c.destTipo||REGISTRO[regKey(v,c.destTipo)]){ c.destTipo=cpPrimeraLibre(v); c.tipoManual=false; }
+  cpRender();
+}
+async function cpCambiarOrigenFecha(v){
+  const c=cpState; if(!c||!v) return;
+  c.origFecha=v; c.sel=null; cpRender(); await cpCargarOrigen(v);
+}
+function cpContinuar(){
+  const c=cpState; if(!c) return;
+  const orig=c.sel?REGISTRO[c.sel]:null;
+  if(!orig||!c.destTipo) return;
+  if(REGISTRO[regKey(c.destFecha,c.destTipo)]){ cpRender(); return; }
+  const f=c.destFecha, t=c.destTipo;
+  closeCpModal(); abrirCopiaEn(t,f,orig);
+}
+// Abre la revisión de la copia: clon profundo del origen (sin su id) sobre un destino libre
+function abrirCopiaEn(t,f,orig){
+  const bloq=bloqueoRegistroFecha(f); if(bloq){ showToast(bloq,7000); return; }
+  if(REGISTRO[regKey(f,t)]){ showToast('Esa categoría ya tiene un registro: la copia no sobrescribe nada.',7000); return; }
+  const clon=JSON.parse(JSON.stringify(orig)); delete clon.id;
+  const {dia}=menuDelDia(f), prev=currentWeek;
+  try{ currentWeek=weekIndexForDate(new Date(f+'T00:00:00')); openRgModal(t,dia,f,clon); }
+  finally{ currentWeek=prev; }
 }
 
 /* ══════════ DASHBOARD · CABECERA Y RESUMEN NUTRICIONAL (F1.2) ══════════

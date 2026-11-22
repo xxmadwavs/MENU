@@ -973,6 +973,43 @@ button.dc-name:hover{text-decoration-color:var(--green)}
 @media(prefers-reduced-motion:reduce){
   .nav-btn,.nav-btn .nav-icon,.dash-quick{transition:none}
 }
+/* F2.5 · objetivos, estados de día y promedios semanales */
+.dal-obj{display:flex;flex-direction:column;gap:3px;font-size:.74rem;line-height:1.4;margin:0 0 .5rem;padding:.5rem .65rem;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--paper)}
+.dal-obj span{font-weight:700;color:var(--ink-soft);margin-right:6px}
+.dal-obj-n{margin:.25rem 0 0;font-size:.68rem;color:#7a5a12}
+.diario-semana{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r);padding:.8rem .9rem;margin:.9rem 0;box-shadow:var(--shadow)}
+.sw-h{display:flex;justify-content:space-between;align-items:baseline;font-size:.8rem;margin-bottom:.5rem}
+.sw-h span{font-size:.7rem;color:var(--ink-soft)}
+.sw-days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:.55rem}
+.sw-d{display:flex;align-items:center;justify-content:center;height:26px;border-radius:7px;font-size:.7rem;font-weight:700;cursor:pointer;border:1.5px solid var(--line);color:var(--ink-soft);background:var(--paper)}
+.sw-d.sel{outline:2px solid var(--gold);outline-offset:1px}
+.sw-completo{background:var(--sage-light);border-color:var(--sage);color:#3f5c2c}
+.sw-parcial,.sw-datos_incompletos{background:#fbf1d8;border-color:var(--gold);color:#7a5a12}
+.sw-sin_registros,.sw-sin_cargar,.sw-futuro{border-style:dashed;opacity:.75}
+.sw-n{font-size:.74rem;line-height:1.45;margin:0 0 .55rem;color:var(--ink-soft)}
+.sw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem}
+.sw-c{display:flex;flex-direction:column;gap:1px;padding:.45rem .6rem;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--paper)}
+.sw-c span{font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)}
+.sw-c b{font-family:'IBM Plex Mono',monospace;font-size:1rem}
+.sw-c small{font-size:.64rem;color:var(--ink-soft)}
+/* F3.1 · objetivo calórico: manual vs estimación */
+.of-box{border:1px solid var(--line);border-radius:var(--r-sm);padding:.6rem .7rem;margin:.5rem 0;background:var(--paper)}
+.of-t{font-size:.8rem;font-weight:700;margin-bottom:.4rem}
+.of-opts{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.5rem}
+.of-opt{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem;font-size:.82rem;padding:.4rem .5rem;border:1px solid var(--line);border-radius:var(--r-sm);cursor:pointer}
+.of-opt small{color:var(--ink-soft);font-size:.7rem}
+.of-n{font-size:.74rem;line-height:1.45;color:var(--ink-soft);margin:.3rem 0 0}
+.ob-badge{font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-left:6px;white-space:nowrap}
+.ob-man{background:var(--gold-light);color:#7a5a12;border:1px solid var(--gold)}
+.ob-auto{background:transparent;color:var(--ink-soft);border:1px dashed var(--ink-soft)}
+.ob-card{background:var(--paper-raised);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:var(--r);padding:.7rem .9rem;margin-bottom:.8rem;box-shadow:var(--shadow)}
+.ob-card.is-man{border-left-color:var(--gold)}
+.ob-card.is-auto{border-left-style:dashed;border-left-color:var(--ink-soft)}
+.ob-h{display:flex;justify-content:space-between;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)}
+.ob-h a{text-transform:none;letter-spacing:0;font-weight:600}
+.ob-main{margin:.25rem 0}
+.ob-v{font-size:1.25rem}
+.ob-n{font-size:.72rem;line-height:1.45;color:var(--ink-soft);margin:.15rem 0 0}
 </style>
 </head>
 <body>
@@ -1247,7 +1284,9 @@ async function loadRegistroRango(){
     const max=new Date(Math.max(...mondays.map(d=>d.getTime()))); max.setDate(max.getDate()+6);
     const {data,error}=await sb.from('registro_diario').select('*').gte('fecha',isoDate(min)).lte('fecha',isoDate(max));
     if(error){ loadFail('registro',error); return; }
-    REGISTRO={};
+    // Solo se renueva lo que cubre la ventana: los meses ya cargados bajo demanda (REG_MESES) se conservan, para no
+    // dejar «registrados» como vacíos meses que siguen marcados como cargados.
+    Object.keys(REGISTRO).forEach(k=>{ if(registroEnVentana(k.split('|')[0])) delete REGISTRO[k]; });
     (data||[]).forEach(row=>{ REGISTRO[regKey(row.fecha,row.tipo)]=row; });
   }catch(e){ loadFail('registro',e); }
 }
@@ -1439,9 +1478,34 @@ function asegurarRegistroFecha(f){ // dispara la carga si hace falta y repinta a
 function reintentarRegistroFecha(f){ delete REG_MESES[f.slice(0,7)]; asegurarRegistroFecha(f); renderDiario(); }
 // Estado del consumo de un día: ¿hay información registrada?, ¿queda algo planificado sin registrar?
 function infoConsumoFecha(f){
-  if(!registroCubreFecha(f)) return {sinCargar:true,hayRegistro:false,completo:false,pendientes:0,nReg:0,nPlan:0};
-  const {dia,dm}=menuDelDia(f), r=computeRealDia(dia,f,dm);
-  return {sinCargar:false,hayRegistro:r.nReg>0,completo:r.nReg>0&&r.pendientes===0,pendientes:r.pendientes,nReg:r.nReg,nPlan:r.nPlan};
+  if(!registroCubreFecha(f)) return {sinCargar:true,hayRegistro:false,completo:false,pendientes:0,nReg:0,nPlan:0,estado:'sin_cargar'};
+  const {dia,dm}=menuDelDia(f), r=computeRealDia(dia,f,dm), ed=estadoDiaRegistro(f);
+  // «completo» = criterio único de F2.5 (ver estadoDiaRegistro): lo usan balance medio, recalibración y promedios semanales
+  return {sinCargar:false,hayRegistro:r.nReg>0,completo:ed.estado==='completo',pendientes:r.pendientes,nReg:r.nReg,nPlan:r.nPlan,estado:ed.estado};
+}
+// ── Estado de registro de un día (F2.5). Criterios, en este orden:
+//  sin_cargar        los registros de esa fecha no se han cargado (no se sabe nada de ese día)
+//  sin_registros     ninguna comida registrada (NO equivale a 0 kcal)
+//  parcial           hay registros pero queda planificado sin registrar, o no hay menú con el que comprobar que está todo
+//  datos_incompletos todo lo planificado está registrado, pero algún alimento no tiene todos sus datos nutricionales
+//  completo          todo lo planificado está registrado, con datos nutricionales completos
+// Si no se puede demostrar que el día está completo, no se da por completo. «No comí» cuenta como registrado.
+const DIA_ESTADO_LABEL={completo:'Día completo',parcial:'Parcialmente registrado',sin_registros:'Sin registros',datos_incompletos:'Datos incompletos',sin_cargar:'Sin cargar',futuro:'Aún no ha llegado'};
+function regDatosIncompletos(reg){
+  if(!reg||reg.estado==='no_comido') return 0;
+  const n=regIncompletos(reg);
+  if(n) return n;
+  return NUTR.some(k=>reg[k]==null||!Number.isFinite(Number(reg[k])))?1:0; // macros ausentes en la fila: se avisa, no se rellenan
+}
+function estadoDiaRegistro(f){
+  if(!registroCubreFecha(f)) return {estado:'sin_cargar',nReg:0,nPlan:0,pendientes:0,incompletos:0};
+  const {dia,dm}=menuDelDia(f), r=computeRealDia(dia,f,dm), inc=incompletosFecha(f);
+  const base={nReg:r.nReg,nPlan:r.nPlan,pendientes:r.pendientes,incompletos:inc};
+  if(r.nReg===0) return {estado:'sin_registros',...base};
+  if(r.pendientes>0) return {estado:'parcial',motivo:'pendientes',...base};
+  if(r.nPlan===0) return {estado:'parcial',motivo:'sin_plan',...base};
+  if(inc>0) return {estado:'datos_incompletos',...base};
+  return {estado:'completo',...base};
 }
 
 // ── Diario: helpers que funcionan para CUALQUIER fecha, sin depender ──
@@ -1546,6 +1610,32 @@ function balanceFecha(fechaISO){
 function objetivoBalanceDia(){
   if(!PERFIL||PERFIL.ritmo_semanal_kg==null) return null;
   return PERFIL.ritmo_semanal_kg*7700/7;
+}
+// ── Objetivo calórico (F2.5 / F3.1): UNA sola función para Dashboard, Diario y promedios ──
+// El origen activo es 'manual' (el valor que el usuario guarda en perfil.objetivo_kcal) o 'auto' (estimación: gasto estimado
+// del día + balance objetivo por ritmo semanal; fórmula sin cambios). El origen se guarda en perfil.objetivo_origen cuando
+// esa columna existe; si no existe (o está vacía) se deduce como hasta ahora: hay valor manual guardado → manual, si no → auto.
+// No hay ninguna cifra de objetivo en el código: todo sale del perfil. Un valor manual guardado nunca se sustituye solo.
+function objetivoKcalManual(){
+  if(!PERFIL||PERFIL.objetivo_kcal==null||PERFIL.objetivo_kcal==='') return null;
+  const n=Number(PERFIL.objetivo_kcal);
+  return Number.isFinite(n)&&n>0?Math.round(n):null;
+}
+function perfilTieneColumna(c){ return !!PERFIL&&Object.prototype.hasOwnProperty.call(PERFIL,c); }
+function objetivoKcalOrigen(){ // 'manual' | 'auto'
+  const o=PERFIL&&PERFIL.objetivo_origen;
+  if(o==='manual'||o==='auto') return o;
+  return objetivoKcalManual()!=null?'manual':'auto';
+}
+function objetivoKcalAuto(f){ // estimación automática (misma fórmula que ya usaba la app)
+  const gasto=gastoEstimadoFecha(f), bal=objetivoBalanceDia();
+  if(gasto==null||bal==null) return null;
+  const obj=Math.round(gasto)+Math.round(bal);
+  return obj>0?{obj,origen:'calculado',gasto:Math.round(gasto),bal:Math.round(bal)}:null;
+}
+function objetivoKcalFecha(f){ // el objetivo ACTIVO para esa fecha, o null si no hay (no se inventa ni se cambia de origen en silencio)
+  if(objetivoKcalOrigen()==='manual'){ const m=objetivoKcalManual(); return m!=null?{obj:m,origen:'manual'}:null; }
+  return objetivoKcalAuto(f);
 }
 // Objetivo de proteína en gramos para una fecha, según g/kg de peso configurado en el perfil.
 function proteinaObjetivoFecha(fechaISO){
@@ -1653,14 +1743,41 @@ async function guardarPerfilBasico(){
   const pesoObjetivo=pesoObjEl&&pesoObjEl.value!==''?parseFloat(pesoObjEl.value):null;
   const ritmo=ritmoEl&&ritmoEl.value!==''?parseFloat(ritmoEl.value):null;
   const proteinaGkg=proteinaEl&&proteinaEl.value!==''?parseFloat(proteinaEl.value):null;
+  const objEl=document.getElementById('pf-obj-kcal'), oriEl=document.querySelector('input[name="pf-obj-origen"]:checked');
+  let objKcal, origen;                          // undefined = el formulario no trae esta sección (no se toca nada)
+  const colOrigen=perfilTieneColumna('objetivo_origen'), previo=objetivoKcalManual();
+  if(objEl){
+    if(objEl.value===''){ objKcal=null; }
+    else{ objKcal=parseFloat(objEl.value); if(!Number.isFinite(objKcal)||objKcal<500||objKcal>10000){ alert('El objetivo calórico debe estar entre 500 y 10.000 kcal, o dejarse vacío.'); return; } objKcal=Math.round(objKcal); }
+    origen=oriEl?oriEl.value:(objKcal!=null?'manual':'auto');
+    if(origen==='manual'&&objKcal==null){ alert('Has elegido el objetivo manual: indica las kcal diarias o elige la estimación automática.'); return; }
+    let borra=false;
+    if(!colOrigen&&origen==='auto'&&(objKcal!=null||previo!=null)){ // sin columna de origen, «auto» solo es posible quitando el valor manual
+      if(!confirm('Para usar la estimación automática se borrará tu objetivo manual guardado ('+(previo!=null?previo:objKcal)+' kcal), porque la base de datos aún no tiene la columna objetivo_origen. ¿Continuar?')) return;
+      objKcal=null; borra=true;
+    }
+    if(!borra&&previo!=null&&objKcal!==previo&&!confirm('Tu objetivo manual guardado es '+previo+' kcal. ¿Cambiarlo a '+(objKcal==null?'«sin valor»':objKcal+' kcal')+'?')) return;
+  }
+  const cambios={
+    altura_cm:altura,fecha_nacimiento:fnac,tmb_manual:tmb,
+    peso_objetivo_kg:pesoObjetivo,ritmo_semanal_kg:ritmo,proteina_objetivo_gkg:proteinaGkg
+  };
+  // Las columnas nuevas solo se escriben si existen (el perfil cargado las trae) o si el usuario ha escrito un valor:
+  // así guardar el perfil no falla en una base de datos que todavía no las tenga.
+  if(objKcal!==undefined&&(objKcal!==null||perfilTieneColumna('objetivo_kcal'))) cambios.objetivo_kcal=objKcal;
+  if(origen!==undefined&&colOrigen) cambios.objetivo_origen=origen;
   try{
-    const {data,error}=await sb.from('perfil').update({
-      altura_cm:altura,fecha_nacimiento:fnac,tmb_manual:tmb,
-      peso_objetivo_kg:pesoObjetivo,ritmo_semanal_kg:ritmo,proteina_objetivo_gkg:proteinaGkg
-    }).eq('id',1).select().single();
-    if(error){ alert('No se pudo guardar: '+error.message); return; }
+    const {data,error}=await sb.from('perfil').update(cambios).eq('id',1).select().single();
+    if(error){
+      const col=['objetivo_origen','objetivo_kcal'].find(c=>c in cambios&&new RegExp(c,'i').test(error.message||''));
+      if(col) alert('No se pudo guardar: la tabla «perfil» aún no tiene la columna '+col+'. Aplica antes la migración SQL de F3.1 en Supabase. No se ha guardado nada.');
+      else alert('No se pudo guardar: '+error.message);
+      return;
+    }
+    const noConf=!data||typeof data!=='object'||('objetivo_kcal' in cambios&&Number(data.objetivo_kcal||0)!==Number(cambios.objetivo_kcal||0))||('objetivo_origen' in cambios&&data.objetivo_origen!==cambios.objetivo_origen);
+    if(noConf){ alert('La base de datos no ha confirmado los cambios del perfil. No se ha dado nada por guardado; inténtalo de nuevo.'); return; }
     PERFIL=data; closeModal(); renderDiario();
-  }catch(e){ alert('No se pudo guardar: '+e.message); }
+  }catch(e){ alert('No se pudo guardar: '+((e&&e.message)||'error de conexión')); }
 }
 // Reabre el formulario de altura/fecha/TMB/objetivos para poder corregirlo más adelante
 // (reutiliza el modal genérico ya presente en la página).
@@ -1675,6 +1792,16 @@ function editarPerfilForm(){
     <div class="rg-field"><label>Peso objetivo (kg, opcional)</label><input type="number" step="0.1" id="pf-peso-obj" value="${PERFIL&&PERFIL.peso_objetivo_kg!=null?PERFIL.peso_objetivo_kg:''}" placeholder="Ej: 60"></div>
     <div class="rg-field"><label>Ritmo semanal deseado (kg/semana, opcional)</label><input type="number" step="0.05" id="pf-ritmo" value="${PERFIL&&PERFIL.ritmo_semanal_kg!=null?PERFIL.ritmo_semanal_kg:''}" placeholder="Ej: -0.3 para perder, 0.2 para ganar"></div>
     <div class="rg-field"><label>Proteína objetivo (g por kg de peso, opcional)</label><input type="number" step="0.1" id="pf-proteina" value="${PERFIL&&PERFIL.proteina_objetivo_gkg!=null?PERFIL.proteina_objetivo_gkg:''}" placeholder="Ej: 1.6"></div>
+    <div class="of-box">
+      <div class="of-t">Objetivo calórico diario</div>
+      <div class="of-opts">
+        <label class="of-opt"><input type="radio" name="pf-obj-origen" id="pf-obj-origen-manual" value="manual" ${objetivoKcalOrigen()==='manual'?'checked':''}> <b>Manual</b><small>el valor que tú indicas</small></label>
+        <label class="of-opt"><input type="radio" name="pf-obj-origen" id="pf-obj-origen-auto" value="auto" ${objetivoKcalOrigen()==='auto'?'checked':''}> <b>Estimación automática</b><small>gasto estimado del día + ritmo semanal</small></label>
+      </div>
+      <div class="rg-field"><label>Objetivo manual (kcal/día)</label><input type="number" step="10" min="0" id="pf-obj-kcal" value="${objetivoKcalManual()!=null?objetivoKcalManual():''}" placeholder="kcal por día" oninput="document.getElementById('pf-obj-origen-manual').checked=true"></div>
+      <p class="of-n">${(()=>{ const a=objetivoKcalAuto(diarioSelectedFecha); return a?`Estimación automática para el día que estás viendo: <b>${a.obj} kcal</b> (gasto ${a.gasto} ${a.bal<=0?'−':'+'} ${Math.abs(a.bal)}). Solo se usa si eliges «Estimación automática».`:'Estimación automática no disponible ahora: '+dashMotivoSinObjetivo(diarioSelectedFecha,true).txt; })()}</p>
+      <p class="of-n">Activo ahora: <b>${(()=>{ const o=objetivoKcalFecha(diarioSelectedFecha); return o?o.obj+' kcal · '+(o.origen==='manual'?'manual':'estimación automática'):'ninguno'; })()}</b>. Cambiar de origen no borra el valor manual guardado${perfilTieneColumna('objetivo_origen')?'':' (para eso hace falta la columna <code>objetivo_origen</code>; sin ella, elegir la estimación automática borra el valor manual, previa confirmación)'}.</p>
+    </div>
     <p style="font-size:.8em;opacity:.7">Con el ritmo semanal, el Diario te mostrará tu objetivo de déficit/superávit del día (1kg ≈ 7700kcal) y si vas en línea con él.</p>
     <button class="rg-btn rg-btn-save" style="width:100%" onclick="guardarPerfilBasico()">Guardar</button>
   `;
@@ -1952,7 +2079,7 @@ function regRacionesTexto(reg){
   return `Consumo: ${fmtN(rac)} de ${fmtN(base)} ${base===1?'ración':'raciones'} de la receta (las cantidades de la lista son las de la receta completa).`;
 }
 function regIncompletos(reg){ return Array.isArray(reg&&reg.ingredientes)?reg.ingredientes.filter(i=>i&&i.datos_incompletos&&!i.skip).length:0; }
-function incompletosFecha(f){ let n=0; const pref=f+'|'; Object.keys(REGISTRO).forEach(k=>{ if(k.indexOf(pref)===0&&REGISTRO[k].estado!=='no_comido') n+=regIncompletos(REGISTRO[k]); }); return n; }
+function incompletosFecha(f){ let n=0; const pref=f+'|'; Object.keys(REGISTRO).forEach(k=>{ if(k.indexOf(pref)===0) n+=regDatosIncompletos(REGISTRO[k]); }); return n; }
 function regEtiquetaEstado(reg){ // etiqueta segura para cualquier valor de `estado`, también el de registros antiguos
   if(!reg) return '';
   if(regEsParcial(reg)) return 'Parcialmente consumida';
@@ -2018,6 +2145,17 @@ function dalOtrosHtml(otros){
       <div class="dal-nota">Registro de una categoría anterior («${escAttr(reg.tipo==null?'':reg.tipo)}»): se conserva tal cual y suma al consumo real del día.</div></div></div></div>`;
   }).join('');
 }
+// Comparación con objetivos del día: kcal (función única) y proteína (perfil). Hidratos y grasas no tienen objetivo en la configuración: no se inventan.
+function dalObjetivoHtml(fecha,r,ed){
+  const o=objetivoKcalFecha(fecha), pObj=proteinaObjetivoFecha(fecha), hay=r.nReg>0, prov=ed.estado!=='completo';
+  const cmp=(cons,obj,u)=>{ const d=Math.round(obj)-Math.round(cons); return d>=0?`restan <b>${d} ${u}</b>`:`superado en <b>${-d} ${u}</b>`; };
+  const l=[];
+  if(o) l.push(`<div><span>Objetivo calórico <i class="ob-badge ${o.origen==='manual'?'ob-man':'ob-auto'}">${o.origen==='manual'?'Manual':'Estimación automática'}</i></span><b>${o.obj} kcal</b>${hay?` · consumido ${Math.round(r.kcal)} kcal · ${cmp(r.kcal,o.obj,'kcal')}`:' · sin información registrada: no se compara'}</div>`);
+  else l.push(`<div><span>Objetivo calórico</span>sin configurar · <a href="#" onclick="editarPerfilForm();return false;">Configurar objetivos</a></div>`);
+  if(pObj!=null&&Math.round(pObj)>0) l.push(`<div><span>Objetivo de proteína</span><b>${Math.round(pObj)} g</b>${hay?` · consumido ${Math.round(r.proteinas)} g · ${cmp(r.proteinas,pObj,'g')}`:' · sin información registrada'}</div>`);
+  l.push(`<div><span>Hidratos y grasas</span>sin objetivo configurado: se muestran los totales sin comparar</div>`);
+  return `<div class="dal-obj">${l.join('')}${hay&&prov?`<p class="dal-obj-n">Comparación provisional: el día no está completo (${DIA_ESTADO_LABEL[ed.estado].toLowerCase()}).</p>`:''}</div>`;
+}
 function renderDiarioAlimentacion(fecha){
   const est=estadoRegistroFecha(fecha);
   if(est!=='ok'){
@@ -2026,7 +2164,7 @@ function renderDiarioAlimentacion(fecha){
       :`<p class="dal-aviso dal-err">No se han podido cargar los registros de esta fecha (${escAttr(est.err)}). No se muestra ningún consumo para no confundir «sin cargar» con «no comió».</p><button type="button" class="dal-act" onclick="reintentarRegistroFecha('${fecha}')">Reintentar</button>`}</div>`;
   }
   const {dia,dm}=menuDelDia(fecha);
-  const r=computeRealDia(dia,fecha,dm);
+  const r=computeRealDia(dia,fecha,dm), edia=estadoDiaRegistro(fecha);
   let estado;
   if(!r.nReg&&!r.nPlan) estado='Sin información registrada y sin menú planificado para este día.';
   else if(!r.nReg) estado=`Sin información registrada. Hay ${r.nPlan} comida${r.nPlan===1?'':'s'} planificada${r.nPlan===1?'':'s'}, pero no se cuenta${r.nPlan===1?'':'n'} como consumida${r.nPlan===1?'':'s'} hasta que la${r.nPlan===1?'':'s'} registres.`;
@@ -2041,7 +2179,8 @@ function renderDiarioAlimentacion(fecha){
   return `<div class="dal">
     <div class="dal-head"><div class="dal-h">Alimentación del día</div><span class="dal-acts"><button type="button" class="dal-act" onclick="diarioCopiar()">Copiar comida</button><button type="button" class="dal-act" onclick="diarioAnadir()">+ Añadir extra o alimento</button></span></div>
     <div class="dal-sum">${box('plan','Planificado (menú)',r.nPlan>0,r.plan,'Sin menú')}${box('cons','Consumido (registrado)',r.nReg>0,r,'Sin información')}</div>
-    <p class="dal-estado ${!r.nReg?'is-none':(r.pendientes?'is-part':'is-ok')}">${estado}</p>
+    ${dalObjetivoHtml(fecha,r,edia)}
+    <p class="dal-estado ${edia.estado==='completo'?'is-ok':(edia.estado==='sin_registros'?'is-none':'is-part')}"><b>${DIA_ESTADO_LABEL[edia.estado]}.</b> ${edia.estado==='datos_incompletos'?'Todo lo planificado está registrado, pero faltan datos nutricionales en algún alimento: el día no entra en los promedios.':(edia.motivo==='sin_plan'?'Hay registros, pero no hay menú planificado con el que comprobar que el día está completo: no entra en los promedios.':estado)}</p>
     ${chips?`<div class="dal-chips">${chips}</div>`:''}
     ${incompletosFecha(fecha)?`<p class="dal-warn" style="margin:0 0 .6rem">⚠ Hay alimentos registrados sin todos sus datos nutricionales: los totales del día son un mínimo, no se han estimado los datos que faltan.</p>`:''}
     ${DAL_ORDEN.map(t=>dalSlotHtml(t,fecha,dm)).join('')}${dalOtrosHtml(r.otros)}
@@ -2125,6 +2264,7 @@ function renderDiarioDayCard(){
       <div class="ddc-mini-stats">
         <div class="dms-item"><span class="dms-l">Consumidas (registradas)</span><span class="dms-v mono">${info.hayRegistro?Math.round(cons)+' kcal':'—'}</span></div>
         <div class="dms-item"><span class="dms-l">${gastoLabel}</span><span class="dms-v mono">${gasto!=null?Math.round(gasto):'—'} kcal</span></div>
+        <div class="dms-item"><span class="dms-l">Objetivo calórico</span><span class="dms-v mono">${objetivoKcalFecha(fecha)?objetivoKcalFecha(fecha).obj+' kcal':'—'}</span></div>
       </div>
       ${pesoNote}${ajusteNote}
       <div style="text-align:right;margin-top:2px"><a href="#" onclick="editarPerfilForm();return false;" style="font-size:.8em;opacity:.65">✏️ editar altura / fecha / TMB / objetivos</a></div>
@@ -2186,6 +2326,61 @@ function renderDiarioDayCard(){
   </div>`;
 }
 
+// ── Promedios semanales (F2.5): semana lunes–domingo de la fecha seleccionada ──
+// Solo entran los días COMPLETOS (estadoDiaRegistro). Sin registros, parcial, datos incompletos, sin cargar y futuros no
+// cuentan como 0: se excluyen y se dice cuántos y por qué. Las medias se calculan sobre los totales sin redondear.
+function fechasSemanaDe(f){
+  const d=new Date(f+'T00:00:00'); d.setDate(d.getDate()-((d.getDay()+6)%7));
+  return Array.from({length:7},(_,i)=>{ const x=new Date(d); x.setDate(d.getDate()+i); return isoDate(x); });
+}
+function resumenSemana(f){
+  const fechas=fechasSemanaDe(f), hoy=isoDate(new Date());
+  const estados=fechas.map(x=>x>hoy?{fecha:x,estado:'futuro'}:{fecha:x,...estadoDiaRegistro(x)});
+  const cargas=fechas.filter(x=>x<=hoy).map(x=>({fecha:x,st:estadoRegistroFecha(x)}));
+  const err=cargas.find(c=>c.st&&c.st.err), cargando=cargas.some(c=>c.st==='cargando');
+  const incl=estados.filter(e=>e.estado==='completo');
+  const suma={kcal:0,proteinas:0,carbos:0,grasas:0};
+  incl.forEach(e=>{ const {dia,dm}=menuDelDia(e.fecha), r=computeRealDia(dia,e.fecha,dm); NUTR.forEach(k=>{ suma[k]+=r[k]||0; }); });
+  const n=incl.length, media=n?Object.fromEntries(NUTR.map(k=>[k,suma[k]/n])):null;
+  const objMedio=fn=>{ if(!n) return null; const v=incl.map(e=>fn(e.fecha)); return v.every(x=>x!=null)?v.reduce((a,b)=>a+b,0)/n:null; };
+  const oK=objMedio(x=>{ const o=objetivoKcalFecha(x); return o?o.obj:null; });
+  const oP=objMedio(x=>{ const o=proteinaObjetivoFecha(x); return o!=null&&Math.round(o)>0?o:null; });
+  const excl={}; estados.forEach(e=>{ if(e.estado!=='completo') excl[e.estado]=(excl[e.estado]||0)+1; });
+  return {fechas,estados,n,media,objetivoKcal:oK,objetivoProt:oP,excl,error:err?err.st.err:null,cargando};
+}
+function reintentarSemana(f){ fechasSemanaDe(f).forEach(x=>{ if(!registroEnVentana(x)) delete REG_MESES[x.slice(0,7)]; }); fechasSemanaDe(f).forEach(asegurarRegistroFecha); renderDiario(); }
+function renderDiarioSemana(){
+  const f=diarioSelectedFecha, w=resumenSemana(f);
+  const ini=new Date(w.fechas[0]+'T00:00:00'), fin=new Date(w.fechas[6]+'T00:00:00');
+  const rango=ini.toLocaleDateString('es-ES',{day:'numeric',month:'short'})+' – '+fin.toLocaleDateString('es-ES',{day:'numeric',month:'short'});
+  const letras=['L','M','X','J','V','S','D'];
+  const chips=w.estados.map((e,i)=>`<span class="sw-d sw-${e.estado}${e.fecha===f?' sel':''}" title="${escAttr(fmtFechaLarga(e.fecha)+': '+DIA_ESTADO_LABEL[e.estado])}" onclick="selectDiarioDay('${e.fecha}')">${letras[i]}</span>`).join('');
+  const cab=`<div class="sw-h"><b>Promedios de la semana</b><span>${rango}</span></div><div class="sw-days">${chips}</div>`;
+  if(w.error) return `<div class="diario-semana">${cab}<p class="dal-aviso dal-err">No se han podido cargar todos los registros de esta semana (${escAttr(w.error)}). No se calculan promedios para no tratar «sin cargar» como «no comió».</p><button type="button" class="dal-act" onclick="reintentarSemana('${f}')">Reintentar</button></div>`;
+  if(w.cargando) return `<div class="diario-semana">${cab}<p class="dal-aviso">Cargando los registros de la semana…</p></div>`;
+  const ord=['parcial','datos_incompletos','sin_registros','futuro'], pl={parcial:['parcial','parciales'],datos_incompletos:['con datos incompletos','con datos incompletos'],sin_registros:['sin registros','sin registros'],futuro:['futuro','futuros']};
+  const exTxt=ord.filter(k=>w.excl[k]).map(k=>`${w.excl[k]} ${pl[k][w.excl[k]===1?0:1]}`).join(' · ');
+  const dif=(v,o,u)=>{ if(o==null) return ''; const d=Math.round(v)-Math.round(o); return `<small>objetivo medio ${Math.round(o)} ${u} · ${d===0?'en el objetivo':(d>0?'+':'−')+Math.abs(d)+' '+u}</small>`; };
+  const celda=(l,k,u,o,sinObj)=>`<div class="sw-c"><span>${l}</span><b>${w.media?Math.round(w.media[k])+' '+u:'—'}</b>${w.media?(o!=null?dif(w.media[k],o,u):`<small>${sinObj}</small>`):''}</div>`;
+  const oKtxt=objetivoKcalManual()!=null?'objetivo fijado en tu perfil':'sin objetivo calórico configurado';
+  return `<div class="diario-semana">${cab}
+    <p class="sw-n">${w.n?`Media diaria sobre <b>${w.n}</b> ${w.n===1?'día completo':'días completos'}.`:'Ningún día completo esta semana: no hay promedio (no se rellena con ceros).'}${exTxt?` No cuentan: ${exTxt}.`:''}</p>
+    <div class="sw-grid">${celda('Kcal consumidas','kcal','kcal',w.objetivoKcal,oKtxt)}${celda('Proteínas','proteinas','g',w.objetivoProt,'sin objetivo de proteína')}${celda('Carbohidratos','carbos','g',null,'sin objetivo configurado')}${celda('Grasas','grasas','g',null,'sin objetivo configurado')}</div>
+  </div>`;
+}
+
+// Tarjeta «Objetivo calórico»: qué valor usa la app ahora y de dónde viene (manual ≠ estimación)
+function renderObjetivoCard(){
+  const f=diarioSelectedFecha, o=objetivoKcalFecha(f), man=objetivoKcalManual(), auto=objetivoKcalAuto(f), orig=objetivoKcalOrigen();
+  const badge=o?`<i class="ob-badge ${o.origen==='manual'?'ob-man':'ob-auto'}">${o.origen==='manual'?'Manual':'Estimación automática'}</i>`:'';
+  const cab=o?`<b class="ob-v mono">${o.obj} kcal</b>${badge}`:`<b class="ob-v">Sin objetivo activo</b>`;
+  const sub=o?'':`<p class="ob-n">${orig==='manual'?'Tienes elegido el origen manual pero no hay kcal guardadas.':escAttr(dashMotivoSinObjetivo(f,true).txt)}</p>`;
+  const otras=[
+    orig==='auto'?(man!=null?`Objetivo manual guardado (no se usa): ${man} kcal`:'Objetivo manual: ninguno guardado'):(auto?`Estimación automática de este día (no se usa): ${auto.obj} kcal`:'Estimación automática: no disponible'),
+  ].join('');
+  return `<div class="ob-card ${o?(o.origen==='manual'?'is-man':'is-auto'):'is-none'}"><div class="ob-h"><span>Objetivo calórico activo</span><a href="#" onclick="editarPerfilForm();return false;">Cambiar</a></div>
+    <div class="ob-main">${cab}</div>${sub}<p class="ob-n">${otras}. Es el que usan Inicio, el Diario y los promedios.</p></div>`;
+}
 function renderDiarioResumenMes(){
   const y=diarioMonthDate.getFullYear(), m=diarioMonthDate.getMonth();
   const conPeso=Object.keys(DIARIO).filter(f=>{
@@ -2227,7 +2422,7 @@ function renderDiarioMesLista(){
     const ciclo=cicloInfoFecha(fecha);
     const entreno=row&&((row.gimnasio_min>0)||(row.cardio_min>0));
     rows+=`<div class="dm-row ${fecha===diarioSelectedFecha?'sel':''}" onclick="selectDiarioDay('${fecha}')">
-      <span class="dm-d">${d}${ciclo&&ciclo.diaCiclo===1?' 🔴':''}${entreno?' 🏋️':''}</span>
+      <span class="dm-d" title="${escAttr(DIA_ESTADO_LABEL[infoC.estado]||'')}">${d}${ciclo&&ciclo.diaCiclo===1?' 🔴':''}${entreno?' 🏋️':''}${infoC.estado==='completo'?' ✓':(infoC.estado==='parcial'||infoC.estado==='datos_incompletos'?' ◐':'')}</span>
       <span class="dm-peso">${row&&row.peso!=null?row.peso+'kg':'—'}</span>
       <span class="dm-pasos">${row&&row.pasos!=null?row.pasos:'—'}</span>
       <span class="dm-def ${balance==null?'na':(balance<=0?'pos':'neg')}" ${balance!=null&&infoC.pendientes?'title="Provisional: hay comidas planificadas sin registrar"':''}>${balance==null?'—':(balance<=0?'−':'+')+Math.abs(balance)+' kcal'+(infoC.pendientes?'*':'')}</span>
@@ -2244,11 +2439,14 @@ function renderDiario(){
   const hoy=new Date();
   const esMesActual=diarioMonthDate.getFullYear()===hoy.getFullYear()&&diarioMonthDate.getMonth()===hoy.getMonth();
   asegurarRegistroFecha(diarioSelectedFecha);
+  fechasSemanaDe(diarioSelectedFecha).forEach(asegurarRegistroFecha);
   asegurarRegistroFecha(isoDate(new Date(diarioMonthDate.getFullYear(),diarioMonthDate.getMonth(),1)));
   asegurarRegistroFecha(isoDate(new Date(diarioMonthDate.getFullYear(),diarioMonthDate.getMonth()+1,0)));
   el.innerHTML=`
     ${renderDiarioChart()}
+    ${renderObjetivoCard()}
     ${renderDiarioDayCard()}
+    ${renderDiarioSemana()}
     <div class="week-nav">
       <button onclick="diarioPrevMonth()">‹</button>
       <div class="week-nav-center"><span class="week-nav-label" style="text-transform:capitalize">${mesLabel}</span></div>
@@ -3525,6 +3723,17 @@ async function saveRegistro(){
   const body=document.getElementById('rg-modal-body'); body.classList.add('rg-saving');
   let guardada=null, fallo=null;
   try{
+    // Antes de escribir se comprueba que la fila en la base de datos sigue siendo la que se cargó (otro dispositivo, otra pestaña).
+    // Si cambió, no se sobrescribe. Excepción: si ya contiene exactamente lo que se envía (reintento tras perder la respuesta), es idempotente.
+    const local=REGISTRO[regKey(s.fecha,s.tipo)]||null;
+    const chk=await sb.from('registro_diario').select('*').eq('fecha',s.fecha).eq('tipo',s.tipo);
+    if(chk.error) throw chk.error;
+    const remoto=(chk.data&&chk.data[0])||null;
+    const cambiado=(!!remoto!==!!local)||(remoto&&local&&String(remoto.updated_at||'')!==String(local.updated_at||''));
+    if(cambiado&&!copiaIgual(remoto,row)){ fallo='Este registro ha cambiado en la base de datos desde que lo abriste (¿otro dispositivo o pestaña?). No se ha guardado nada para no sobrescribirlo. Cierra, recarga la página y vuelve a editarlo.'; }
+  }catch(e){ fallo='No se pudo comprobar el estado actual del registro: '+sbErrTxt(e)+'. No se ha guardado nada; tus cambios siguen aquí, pulsa Guardar para reintentar.'; }
+  if(fallo){ s.ocupado=false; body.classList.remove('rg-saving'); if(rgState===s) rgError(fallo); else showToast(fallo,7000); return; }
+  try{
     const {data,error}=await sb.from('registro_diario').upsert(row,{onConflict:'fecha,tipo'}).select().single();
     if(error) fallo='No se pudo guardar: '+sbErrTxt(error)+'. Tus cambios siguen aquí; pulsa Guardar para reintentar.';
     else if(!filaGuardadaOk(data,row)) fallo='La base de datos no ha confirmado los datos guardados. Tus cambios siguen aquí; pulsa Guardar para reintentar (no se duplicará el registro).';
@@ -3920,17 +4129,13 @@ function dashFueraDeRegistros(fecha){ return !registroCubreFecha(fecha); }
 
 // Objetivo calórico = gasto estimado del día + balance objetivo (ritmo semanal), con las cifras redondeadas
 // tal y como las muestra el Diario, para que sumen a la vista. Sin ritmo o sin gasto no hay objetivo.
-function dashObjetivoKcal(f){
-  const gasto=gastoEstimadoFecha(f), bal=objetivoBalanceDia();
-  if(gasto==null||bal==null) return null;
-  const obj=Math.round(gasto)+Math.round(bal);
-  return obj>0?{obj,gasto:Math.round(gasto),bal:Math.round(bal)}:null;
-}
-function dashMotivoSinObjetivo(f){
+function dashObjetivoKcal(f){ return objetivoKcalFecha(f); } // misma función que el Diario: una sola fuente del objetivo
+function dashMotivoSinObjetivo(f,soloAuto){
+  if(!soloAuto&&PERFIL&&objetivoKcalOrigen()==='manual'&&objetivoKcalManual()==null) return {txt:'Tienes elegido el objetivo manual pero no hay kcal guardadas. Indícalas o elige la estimación automática.',cta:true};
   if(LOAD_ERR.perfil) return {txt:'No se ha podido cargar tu perfil, así que no se puede calcular el objetivo calórico. Pulsa «Reintentar».',cta:false};
   if(!PERFIL) return {txt:'Todavía no hay datos de perfil: configúralos para calcular tu objetivo calórico.',cta:true};
   if(LOAD_ERR.diario) return {txt:'No se ha podido cargar tu diario, así que no se puede estimar tu gasto ni el objetivo. Pulsa «Reintentar».',cta:false};
-  if(objetivoBalanceDia()==null) return {txt:'Indica tu ritmo semanal deseado para calcular tu objetivo calórico.',cta:true};
+  if(objetivoBalanceDia()==null) return {txt:'Indica tu ritmo semanal deseado o un objetivo calórico diario para ver la comparación.',cta:true};
   if(gastoEstimadoFecha(f)==null){
     return pesoParaFecha(f)==null
       ? {txt:'Registra tu peso en el Diario para estimar tu gasto y calcular el objetivo.',cta:false,peso:true}
@@ -3982,12 +4187,12 @@ function dashKcalHtml(f,dd){
       ${legend}<p class="kc-warn">${m.txt}</p>${cta(m)}</div>`;
   }
   const resta=o.obj-cons, pasado=resta<0;
-  const baseTxt=`Objetivo = gasto estimado del día (${o.gasto} kcal) ${o.bal<=0?'−':'+'} ${o.bal<=0?'déficit':'superávit'} objetivo (${Math.abs(o.bal)} kcal), como en el Diario.`;
+  const baseTxt=o.origen==='manual'?`Objetivo fijado por ti en tu perfil (${o.obj} kcal/día), el mismo que en el Diario.`:`Objetivo = gasto estimado del día (${o.gasto} kcal) ${o.bal<=0?'−':'+'} ${o.bal<=0?'déficit':'superávit'} objetivo (${Math.abs(o.bal)} kcal), como en el Diario.`;
   return `<div class="kc">
     ${dashRingSVG(cons+pendK,cons,o.obj)}
     <div class="kc-stats">
       <div class="kc-row kc-big"><span>Consumidas</span><b>${cons} kcal</b></div>
-      <div class="kc-row"><span>Objetivo</span><b>${o.obj} kcal</b></div>
+      <div class="kc-row"><span>Objetivo ${o.origen==='manual'?'(manual)':'(estimado)'}</span><b>${o.obj} kcal</b></div>
       <div class="kc-row"><span>${pasado?'Superadas':'Restantes'}</span><b>${Math.abs(resta)} kcal</b></div>
     </div>
     ${legend}<p class="kc-note">${baseTxt}</p></div>`;

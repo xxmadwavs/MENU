@@ -528,6 +528,14 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .diario-chart-sub{font-size:.68rem;color:var(--ink-soft);margin-bottom:.5rem}
 .diario-chart-empty{text-align:center;padding:1.6rem 1rem;color:var(--ink-soft);font-size:.82rem}
 .diario-chart-modes{display:flex;gap:6px;margin-bottom:.55rem;flex-wrap:wrap}
+/* F4.3 · seguimiento */
+.seg-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:.85rem;margin-top:.6rem}
+@media(min-width:900px){.seg-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.seg-grid .diario-chart-card{margin-bottom:0;min-width:0}
+.seg-leg{display:flex;flex-wrap:wrap;gap:.3rem .9rem;margin:.5rem 0 0;font-size:.7rem;color:var(--ink-soft);line-height:1.4}
+.seg-leg>span{display:inline-flex;align-items:center;gap:.35rem}
+.seg-sw{display:inline-block;width:14px;height:10px;border-radius:2px;flex:none}
+.seg-retry{margin-top:.4rem;font:inherit;font-size:.72rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;border:1px solid var(--line);background:var(--paper-raised);color:var(--ink);cursor:pointer}
 /* F4.2 · evolución corporal */
 .evo-cap{font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:.1rem 0 .35rem}
 .evo-tiles{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:.2rem 0 .85rem}
@@ -970,7 +978,7 @@ button.dc-name:hover{text-decoration-color:var(--green)}
   .nav-btn.active .nav-icon{transform:none}
   .nav-btn.active::before{top:50%;left:-.5rem;transform:translateY(-50%);width:4px;height:26px;border-radius:0 4px 4px 0;background:var(--gold)}
   .view{padding:1.6rem 2rem 2.5rem;max-width:1180px;margin-left:auto;margin-right:auto}
-  #view-calendario,#view-compra,#view-diario{max-width:960px}
+  #view-calendario,#view-compra,#view-diario,#view-evolucion{max-width:960px}
   .app-toast{bottom:28px;left:calc(50% + var(--side-w) / 2)}
 }
 
@@ -1104,6 +1112,7 @@ button.dc-name:hover{text-decoration-color:var(--green)}
     <symbol id="ic-comida" viewBox="0 0 20 20"><path d="M6 3v5.2a2 2 0 0 0 4 0V3M8 3v14"/><path d="M14.5 17V3c-1.8 1.2-2.8 3.4-2.8 6.2 0 1.2.8 2 2.8 2"/></symbol>
     <symbol id="ic-peso" viewBox="0 0 20 20"><rect x="3" y="3.5" width="14" height="13" rx="3"/><path d="M7 8.2a4 3.2 0 0 1 6 0"/><path d="M10 8.2l1.6-1.4"/></symbol>
     <symbol id="ic-actividad" viewBox="0 0 20 20"><path d="M11 2.8 5.5 11H10l-1 6.2L14.5 9H10l1-6.2Z"/></symbol>
+    <symbol id="ic-evolucion" viewBox="0 0 20 20"><path d="M4.5 16V10M10 16V4.5M15.5 16v-4.5"/></symbol>
     <symbol id="ic-diario" viewBox="0 0 20 20"><path d="M3 5.5l5.3 5.8L11 8.6l6 6.2"/><path d="M17.3 10.6v4.2h-4.3"/></symbol>
   </defs>
 </svg>
@@ -1125,6 +1134,7 @@ button.dc-name:hover{text-decoration-color:var(--green)}
   <button type="button" class="nav-btn" data-view="recetas" onclick="showView('recetas',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-recetas"/></svg></span><span>Recetas</span></button>
   <button type="button" class="nav-btn" data-view="compra" onclick="showView('compra',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-compra"/></svg></span><span>Compra</span></button>
   <button type="button" class="nav-btn" data-view="diario" onclick="showView('diario',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-diario"/></svg></span><span>Diario</span></button>
+  <button type="button" class="nav-btn" data-view="evolucion" onclick="showView('evolucion',this)"><span class="nav-icon"><svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#ic-evolucion"/></svg></span><span>Evolución</span></button>
 </nav>
 </aside>
 
@@ -1230,6 +1240,10 @@ button.dc-name:hover{text-decoration-color:var(--green)}
 
 <div id="view-diario" class="view">
   <div id="diario-content"></div>
+</div>
+
+<div id="view-evolucion" class="view">
+  <div id="evolucion-content"><p class="diario-chart-empty">Cargando…</p></div>
 </div>
 </main>
 </div>
@@ -1554,7 +1568,7 @@ function asegurarRegistroFecha(f){ // dispara la carga si hace falta y repinta a
   if(!f||LOAD_ERR.registro||registroEnVentana(f)) return;
   const ym=f.slice(0,7);
   if(REG_MESES[ym]!==undefined) return;
-  cargarRegistroMes(ym).then(()=>{ if(DATA) renderDiario(); });
+  cargarRegistroMes(ym).then(()=>{ if(DATA){ renderDiario(); segRepintarSiActiva(); } });
 }
 function reintentarRegistroFecha(f){ delete REG_MESES[f.slice(0,7)]; asegurarRegistroFecha(f); renderDiario(); }
 // Estado del consumo de un día: ¿hay información registrada?, ¿queda algo planificado sin registrar?
@@ -2532,7 +2546,7 @@ function evoPeriodoEtiqueta(){ const p=EVO_PERIODOS.find(x=>x.id===evoPeriodo); 
 function evoDiaMs(dia){ const f=Math.floor(dia); return new Date(evoIso(f)+'T00:00:00').getTime()+(dia-f)*86400000; }
 const EVO_FONT='IBM Plex Mono,monospace';
 
-function pesoChartDiarioSVG(regs,rango,tend){
+function pesoChartDiarioSVG(regs,rango,tend,Wpx){
   const f2t=f=>new Date(f+'T00:00:00').getTime();
   const minX=f2t(rango.desde), maxX=f2t(rango.hasta);
   const puntos=evoEnRango(regs,rango.desde,rango.hasta);
@@ -2542,7 +2556,7 @@ function pesoChartDiarioSVG(regs,rango,tend){
   const tendOk=tend&&tend.estado==='ok';
   const huecos=evoHuecos(puntos.map(p=>p.fecha),rango.desde,rango.hasta);
 
-  const W=680,H=170,padL=48,padR=10,padT=14,padB=22;
+  const W=Wpx||680,H=170,padL=48,padR=10,padT=14,padB=22;
   const pesos=puntos.map(p=>p.valor).concat(media7.map(p=>p.valor));
   if(tendOk) pesos.push(tend.primera.media,tend.segunda.media);
   let minY=Math.min(...pesos)-0.4, maxY=Math.max(...pesos)+0.4;
@@ -2573,7 +2587,7 @@ function pesoChartDiarioSVG(regs,rango,tend){
     });
   }
   // Peso puntual: un punto por día con registro (la medición real).
-  const rawDots=puntos.map(p=>`<circle cx="${xScale(f2t(p.fecha)).toFixed(1)}" cy="${yScale(p.valor).toFixed(1)}" r="2.8" fill="var(--ink)" opacity=".75"/>`).join('');
+  const rawDots=puntos.map(p=>`<circle cx="${xScale(f2t(p.fecha)).toFixed(1)}" cy="${yScale(p.valor).toFixed(1)}" r="${puntos.length>120?1.8:2.8}" fill="var(--ink)" opacity=".75"/>`).join('');
   // Media móvil: línea continua; se corta cuando entre dos registros hay más de 6 días (las ventanas ya no se solapan).
   const tramos=[]; media7.forEach(p=>{ const t=tramos[tramos.length-1]; if(t&&p.dia-t[t.length-1].dia<=6) t.push(p); else tramos.push([p]); });
   const mediaSvg=tramos.map(t=>t.length>1
@@ -2601,8 +2615,7 @@ function pesoChartDiarioSVG(regs,rango,tend){
     ${mediaSvg}
     ${tendSvg}
     ${dots}
-    <text x="${padL}" y="${H-6}" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${fmtEje(minX)}</text>
-    <text x="${W-padR}" y="${H-6}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${fmtEje(maxX)}</text>
+    ${segEjeX(iso=>xScale(f2t(iso)),rango.desde,rango.hasta,W,padL,padR,H-6)}
     <text x="${padL-4}" y="${padT+8}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${yTxt(maxY)}</text>
     <text x="${padL-4}" y="${H-padB}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${yTxt(minY)}</text>
   </svg>`;
@@ -2675,11 +2688,11 @@ function renderDiarioChart(){
 }
 
 // ── F4.2 · cintura y demás medidas corporales ──
-function evoMedidaSVG(regs,rango,unidad,nombre){
+function evoMedidaSVG(regs,rango,unidad,nombre,Wpx){
   const f2t=f=>new Date(f+'T00:00:00').getTime();
   const minX=f2t(rango.desde), maxX=f2t(rango.hasta), pts=evoEnRango(regs,rango.desde,rango.hasta);
   if(!pts.length) return null;
-  const W=680,H=150,padL=52,padR=10,padT=14,padB=22;
+  const W=Wpx||680,H=150,padL=52,padR=10,padT=14,padB=22;
   let minY=Math.min(...pts.map(p=>p.valor))-0.4, maxY=Math.max(...pts.map(p=>p.valor))+0.4;
   if(maxY-minY<1){ const c=(maxY+minY)/2; minY=c-0.5; maxY=c+0.5; }
   const xS=t=> maxX===minX ? (W-padL-padR)/2+padL : padL+(t-minX)/(maxX-minX)*(W-padL-padR);
@@ -2692,8 +2705,7 @@ function evoMedidaSVG(regs,rango,unidad,nombre){
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${escAttr(nombre)} en ${unidad} del ${rango.desde} al ${rango.hasta}: ${evoPlural(pts.length,'medición','mediciones')}" style="width:100%;height:auto;display:block">
     <line x1="${padL}" y1="${yS(minY+(maxY-minY)/2).toFixed(1)}" x2="${W-padR}" y2="${yS(minY+(maxY-minY)/2).toFixed(1)}" stroke="var(--line)" stroke-dasharray="3,3"/>
     ${union}${dots}
-    <text x="${padL}" y="${H-6}" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${fmtEje(minX)}</text>
-    <text x="${W-padR}" y="${H-6}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${fmtEje(maxX)}</text>
+    ${segEjeX(iso=>xS(f2t(iso)),rango.desde,rango.hasta,W,padL,padR,H-6)}
     <text x="${padL-4}" y="${padT+8}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${yTxt(maxY)}</text>
     <text x="${padL-4}" y="${H-padB}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${yTxt(minY)}</text>
   </svg>`;
@@ -2727,6 +2739,321 @@ function renderEvoMedidas(){
     <p class="evo-note">${texto}</p>
     <p class="evo-note">Cada punto es una medición real; la línea punteada solo une mediciones consecutivas y no representa valores intermedios.</p>
   </div>`;
+}
+
+/* ══════════ F4.3 · SEGUIMIENTO (peso, cintura, calorías, proteínas, pasos, actividad): cálculo ══════════
+   Funciones puras (sin DOM ni estado global; usan evoDia/evoIso de F4.2). Se prueban con tests/seguimiento.test.js.
+   Reglas: un día sin información NUNCA es un 0 ni se rellena; un día incompleto se distingue de uno sin información;
+   no se modifica la entrada; una sola fila por fecha (las repetidas no se suman). */
+/* SEG:START */
+const SEG_MAX_MESES=24, SEG_MIN_MEDIA=3, SEG_MIN_DIAS_SEMANA=4, SEG_MAX_BARRAS_DIARIAS=100;
+const SEG_FECHA=/^\d{4}-\d{2}-\d{2}$/;
+function segNum(v){ if(v==null||v==='') return null; const n=Number(v); return Number.isFinite(n)&&n>=0?n:null; } // mismo criterio que dashNumOrNull
+function segMeses(desde,hasta){
+  const out=[]; let y=+desde.slice(0,4), m=+desde.slice(5,7); const yf=+hasta.slice(0,4), mf=+hasta.slice(5,7);
+  while(y<yf||(y===yf&&m<=mf)){ out.push(y+'-'+String(m).padStart(2,'0')); m++; if(m>12){ m=1; y++; } }
+  return out;
+}
+function segHaceMeses(hoyIso,n){ // mismo día de hace n meses (ajustado a fin de mes), sin contar ese día
+  const p=hoyIso.split('-').map(Number); let y=p[0], m=p[1]-n; while(m<1){ m+=12; y--; }
+  const dm=new Date(Date.UTC(y,m,0)).getUTCDate();
+  return evoIso(evoDia(y+'-'+String(m).padStart(2,'0')+'-'+String(Math.min(p[2],dm)).padStart(2,'0'))+1);
+}
+// Primer día con datos reales, limitado a los últimos maxMeses meses (para no cargar de más). null si no hay datos.
+function segInicio(fechas,hoyIso,maxMeses){
+  const v=(fechas||[]).filter(f=>SEG_FECHA.test(String(f))&&f<=hoyIso).sort();
+  if(!v.length) return {desde:null,recortado:false};
+  const lim=segHaceMeses(hoyIso,maxMeses||SEG_MAX_MESES);
+  return v[0]<lim?{desde:lim,recortado:true}:{desde:v[0],recortado:false};
+}
+function segRango(id,hoyIso,inicioIso){ return id==='todo'?{desde:inicioIso||hoyIso,hasta:hoyIso}:evoRango(id,hoyIso,[]); }
+function segEscalaMax(v){ // máximo «redondo» del eje; las barras siempre parten de 0
+  if(!(v>0)) return 1;
+  const p=Math.pow(10,Math.floor(Math.log10(v))), f=v/p;
+  return ([1,1.2,1.5,2,2.5,3,4,5,6,8,10].find(x=>f<=x+1e-9)||10)*p;
+}
+function segTicks(desde,hasta,max){ // fechas del eje X: todas si caben; si no, equiespaciadas y siempre la última
+  const a=evoDia(desde), b=evoDia(hasta), N=b-a+1, m=Math.max(2,max||5);
+  if(N<=m) return Array.from({length:N},(_,i)=>evoIso(a+i));
+  const step=Math.ceil((N-1)/(m-1)), out=[];
+  for(let d=a;d<=b;d+=step) out.push(d);
+  if(b-out[out.length-1]<step*0.6) out.pop();
+  out.push(b);
+  return out.map(evoIso);
+}
+function segSemana(iso){ const d=evoDia(iso); return d-(((d+3)%7)+7)%7; } // nº de día del lunes de esa semana
+function segPorFecha(filas){ const por={}; (filas||[]).forEach(d=>{ if(d&&SEG_FECHA.test(String(d.fecha))) por[d.fecha]=d; }); return por; } // una fila por fecha: las repetidas no se suman
+
+// Calorías / proteínas CONSUMIDAS. dias: [{fecha,estado,valor}] con estado = el de estadoDiaRegistro
+// (completo | parcial | datos_incompletos | sin_registros | sin_cargar). Solo «completo» entra en la media.
+function segModeloNutricion(dias){
+  const por=segPorFecha(dias), puntos=[], sinCargarFechas=[], n={completo:0,incompleto:0,sinInfo:0,sinCargar:0};
+  Object.keys(por).sort().forEach(f=>{
+    const d=por[f], e=d.estado;
+    if(e==='completo'||e==='parcial'||e==='datos_incompletos'){
+      const v=segNum(d.valor);
+      if(v==null){ n.sinInfo++; return; } // sin cifra fiable: no se dibuja ni se pone a 0
+      const tipo=e==='completo'?'completo':'incompleto'; puntos.push({fecha:f,valor:v,tipo,estado:e}); n[tipo]++;
+    }else if(e==='sin_cargar'){ n.sinCargar++; sinCargarFechas.push(f); }
+    else if(e==='sin_registros') n.sinInfo++;
+  });
+  const comp=puntos.filter(p=>p.tipo==='completo').map(p=>p.valor);
+  return {puntos,n,sinCargarFechas,mediaN:comp.length,minMedia:SEG_MIN_MEDIA,media:comp.length>=SEG_MIN_MEDIA?comp.reduce((a,x)=>a+x,0)/comp.length:null};
+}
+// Pasos reales. dias: [{fecha,pasos}]. null/vacío = sin información (no 0); hoy es un día en curso → «incompleto».
+function segModeloPasos(dias,hoyIso){
+  const por=segPorFecha(dias), puntos=[], n={completo:0,incompleto:0,sinInfo:0,sinCargar:0};
+  Object.keys(por).sort().forEach(f=>{
+    const v=segNum(por[f].pasos);
+    if(v==null){ n.sinInfo++; return; }
+    const tipo=f===hoyIso?'incompleto':'completo'; puntos.push({fecha:f,valor:v,tipo}); n[tipo]++;
+  });
+  const comp=puntos.filter(p=>p.tipo==='completo').map(p=>p.valor);
+  return {puntos,n,sinCargarFechas:[],mediaN:comp.length,minMedia:SEG_MIN_MEDIA,media:comp.length>=SEG_MIN_MEDIA?comp.reduce((a,x)=>a+x,0)/comp.length:null};
+}
+// Actividad real. dias: [{fecha,gym,cardio}] en minutos. Sin gym ni cardio = sin información; 0 = registrado sin actividad.
+// La app NO guarda nº de sesiones ni calorías activas: solo se cuentan minutos y días con entrenamiento (nunca «sesiones»).
+function segModeloActividad(dias,hoyIso){
+  const por=segPorFecha(dias), puntos=[], n={sinInfo:0,diasConRegistro:0,diasEntreno:0,soloUnTipo:0};
+  let minGym=0, minCardio=0;
+  Object.keys(por).sort().forEach(f=>{
+    const g=segNum(por[f].gym), c=segNum(por[f].cardio);
+    if(g==null&&c==null){ n.sinInfo++; return; }
+    const entreno=(g||0)>0||(c||0)>0;
+    puntos.push({fecha:f,gym:g,cardio:c,total:(g||0)+(c||0),entreno,tipo:f===hoyIso?'incompleto':'completo',soloUnTipo:(g==null)!==(c==null)});
+    n.diasConRegistro++; if(entreno) n.diasEntreno++; if((g==null)!==(c==null)) n.soloUnTipo++;
+    minGym+=g||0; minCardio+=c||0;
+  });
+  return {puntos,n,minGym,minCardio};
+}
+// Agrupa por semanas (lunes–domingo) para periodos largos y no saturar la gráfica. modo 'media': media de los días COMPLETOS;
+// 'suma': suma de lo registrado. Una semana sin días informativos = 'sin' (no es 0); con menos de 4 días informativos = 'incompleto'.
+function segAgruparSemanas(puntos,desde,hasta,modo,campos){
+  const a=evoDia(desde), b=evoDia(hasta), mapa={};
+  for(let w=segSemana(desde);w<=b;w+=7){ const d0=Math.max(w,a), d1=Math.min(w+6,b); mapa[w]={dia0:d0,dia1:d1,dias:d1-d0+1,n:0,nInc:0,suma:campos.map(()=>0)}; }
+  puntos.forEach(p=>{
+    const d=evoDia(p.fecha); if(d<a||d>b) return;
+    const g=mapa[segSemana(p.fecha)]; if(!g) return;
+    if(modo==='media'){ if(p.tipo==='completo'){ g.n++; campos.forEach((c,i)=>{ g.suma[i]+=p[c]; }); } else g.nInc++; }
+    else{ g.n++; campos.forEach((c,i)=>{ g.suma[i]+=(p[c]||0); }); }
+  });
+  return Object.keys(mapa).map(Number).sort((x,y)=>x-y).map(w=>{
+    const g=mapa[w], min=Math.min(SEG_MIN_DIAS_SEMANA,g.dias);
+    return {dia0:g.dia0,dia1:g.dia1,dias:g.dias,n:g.n,nInc:g.nInc,valores:campos.map((c,i)=>g.n?(modo==='media'?g.suma[i]/g.n:g.suma[i]):null),tipo:g.n===0?'sin':(g.n<min?'incompleto':'completo')};
+  });
+}
+/* SEG:END */
+
+// ── F4.3 · adaptadores (leen DIARIO / REGISTRO sin modificarlos) ──
+let segPeriodo='30'; // '7' | '30' | '90' | 'todo'
+let _segAnchoPrev=0, _segResizeT=null;
+const _segCola=new Set(); // meses de registro en cola de carga
+function setSegPeriodo(id){ segPeriodo=id; renderSeguimiento(); }
+function segVistaActiva(){ const v=document.getElementById('view-evolucion'); return !!(v&&v.classList.contains('active')); }
+function segRepintarSiActiva(){ if(DATA&&segVistaActiva()) renderSeguimiento(); }
+window.addEventListener('resize',()=>{ clearTimeout(_segResizeT); _segResizeT=setTimeout(()=>{ if(window.innerWidth!==_segAnchoPrev){ _segAnchoPrev=window.innerWidth; segRepintarSiActiva(); } },200); });
+
+function segFechasConDatos(){
+  const f=[];
+  Object.values(DIARIO).forEach(r=>{ if(r&&(r.peso!=null||r.cintura_cm!=null||segNum(r.pasos)!=null||segNum(r.gimnasio_min)!=null||segNum(r.cardio_min)!=null)) f.push(r.fecha); });
+  Object.keys(REGISTRO).forEach(k=>f.push(k.split('|')[0]));
+  return f;
+}
+function segRangoActual(hoy){
+  const ini=segInicio(segFechasConDatos(),hoy,SEG_MAX_MESES);
+  return {rango:segRango(segPeriodo,hoy,ini.desde),recortado:segPeriodo==='todo'&&ini.recortado};
+}
+function segDiasRango(rango){ const out=[]; for(let d=evoDia(rango.desde);d<=evoDia(rango.hasta);d++) out.push(evoIso(d)); return out; }
+// Estado de carga de los registros de comidas del periodo. Solo se piden los meses que faltan; lo ya cargado no se vuelve a pedir.
+function segEstadoCarga(rango){
+  const r={global:null,pend:[],cargando:[],errores:[]};
+  if(LOAD_ERR.registro){ r.global=LOAD_ERR.registro; return r; }
+  segMeses(rango.desde,rango.hasta).forEach(ym=>{
+    const y=+ym.slice(0,4), m=+ym.slice(5,7), ult=isoDate(new Date(y,m,0));
+    const ini=ym+'-01'<rango.desde?rango.desde:ym+'-01', fin=ult>rango.hasta?rango.hasta:ult;
+    if(registroCubreFecha(ini)&&registroCubreFecha(fin)) return;
+    if(_segCola.has(ym)){ r.cargando.push(ym); return; }
+    const st=REG_MESES[ym];
+    if(st===undefined) r.pend.push(ym);
+    else if(st==='cargando') r.cargando.push(ym);
+    else if(st&&st.err) r.errores.push({ym,err:st.err});
+  });
+  return r;
+}
+async function segCargarMeses(yms){
+  const nuevos=yms.filter(m=>!_segCola.has(m)&&REG_MESES[m]===undefined); if(!nuevos.length) return;
+  nuevos.forEach(m=>_segCola.add(m));
+  for(let i=0;i<nuevos.length;i+=6) await Promise.all(nuevos.slice(i,i+6).map(m=>cargarRegistroMes(m)));
+  nuevos.forEach(m=>_segCola.delete(m));
+  segRepintarSiActiva();
+}
+async function segReintentarRegistro(){
+  if(LOAD_ERR.registro) await loadRegistroRango();
+  Object.keys(REG_MESES).forEach(ym=>{ if(REG_MESES[ym]&&REG_MESES[ym].err) delete REG_MESES[ym]; });
+  renderSeguimiento();
+}
+// Consumo real por día con los criterios de F2.5/computeRealDia (sin tocar sus fórmulas). Sin filas ⇒ «sin_registros» (no 0 kcal).
+function segDiasNutricion(rango,hoy){
+  const conFilas=new Set(Object.keys(REGISTRO).map(k=>k.split('|')[0])), out=[];
+  segDiasRango(rango).forEach(f=>{
+    if(f>hoy) return;
+    if(!registroCubreFecha(f)){ out.push({fecha:f,estado:'sin_cargar'}); return; }
+    if(!conFilas.has(f)){ out.push({fecha:f,estado:'sin_registros'}); return; }
+    const ed=estadoDiaRegistro(f), m=menuDelDia(f), r=computeRealDia(m.dia,f,m.dm);
+    out.push({fecha:f,estado:ed.estado,kcal:r.kcal,proteinas:r.proteinas});
+  });
+  return out;
+}
+function segDiasDiario(rango,hoy){
+  return segDiasRango(rango).filter(f=>f<=hoy).map(f=>{ const r=DIARIO[f]; return {fecha:f,pasos:r?r.pasos:null,gym:r?r.gimnasio_min:null,cardio:r?r.cardio_min:null}; });
+}
+
+// ── F4.3 · dibujo ──
+function segFmt(v,d){ return Number(v).toLocaleString('es-ES',{maximumFractionDigits:d||0}); }
+function segEjeX(xOf,desde,hasta,W,padL,padR,y){
+  const ts=segTicks(desde,hasta,Math.max(2,Math.floor((W-padL-padR)/78)));
+  return ts.map((iso,i)=>`<text x="${xOf(iso).toFixed(1)}" y="${y}" text-anchor="${i===0?'start':(i===ts.length-1?'end':'middle')}" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${evoF(iso)}</text>`).join('');
+}
+function segAnchoChart(){
+  const el=document.getElementById('evolucion-content'); let w=el?el.clientWidth:0;
+  const iw=window.innerWidth||360; if(!w) w=Math.min(iw,960)-34;
+  const cols=iw>=900?2:1;
+  return Math.max(260,Math.min(720,Math.floor((w-(cols-1)*14)/cols-34)));
+}
+// Barras SIEMPRE desde 0, una sola unidad por gráfica. cols: [{dia0,dia1,segs:[{v,c}],incompleto,titulo}] · vacios: [nº de día] sin información.
+function segBarrasSVG(o){
+  const W=o.W, H=160, padL=44, padR=8, padT=18, padB=22, pw=W-padL-padR, ph=H-padT-padB;
+  const a=evoDia(o.desde), b=evoDia(o.hasta), N=b-a+1;
+  const yMax=segEscalaMax(Math.max(0,...o.cols.map(c=>c.segs.reduce((s,x)=>s+x.v,0))));
+  const xD=d=>padL+(d-a)/N*pw, yV=v=>padT+ph-v/yMax*ph, base=padT+ph;
+  const grid=[0,yMax/2,yMax].map(v=>`<line x1="${padL}" y1="${yV(v).toFixed(1)}" x2="${W-padR}" y2="${yV(v).toFixed(1)}" stroke="var(--line)" ${v?'stroke-dasharray="3,3"':''}/><text x="${padL-4}" y="${(yV(v)+3).toFixed(1)}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${segFmt(v,yMax<10?1:0)}</text>`).join('');
+  const bars=o.cols.map(c=>{
+    const x0=xD(c.dia0), w=xD(c.dia1+1)-x0, gap=Math.min(2,w*.15), bx=x0+gap, bw=Math.max(1,w-2*gap);
+    const tot=c.segs.reduce((s,x)=>s+x.v,0); let acc=0, rects='';
+    if(tot===0) rects=`<rect x="${bx.toFixed(1)}" y="${(base-1.5).toFixed(1)}" width="${bw.toFixed(1)}" height="1.5" fill="${o.colorBase}"/>`; // cero REGISTRADO (no es un día sin datos)
+    else c.segs.forEach(sg=>{
+      if(!(sg.v>0)) return; const y1=yV(acc+sg.v), y0=yV(acc); acc+=sg.v;
+      rects+=`<rect x="${bx.toFixed(1)}" y="${y1.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0.5,y0-y1).toFixed(1)}" fill="${sg.c}"${c.incompleto?` fill-opacity=".25" stroke="${sg.c}" stroke-width="1.2" stroke-dasharray="3,2"`:''}/>`;
+    });
+    return `<g><title>${escAttr(c.titulo)}</title>${rects}</g>`;
+  }).join('');
+  const vacios=(o.vacios||[]).map(d=>`<circle cx="${xD(d+.5).toFixed(1)}" cy="${base}" r="1.5" fill="var(--ink-soft)" opacity=".45"/>`).join('');
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${escAttr(o.aria)}" style="width:100%;height:auto;display:block">
+    <text x="${padL}" y="11" font-size="10" font-weight="600" fill="var(--ink-soft)" font-family="${EVO_FONT}">${escAttr(o.unidad)}</text>
+    ${grid}${bars}${vacios}
+    ${segEjeX(iso=>xD(evoDia(iso)+.5),o.desde,o.hasta,W,padL,padR,H-6)}
+  </svg>`;
+}
+function segLeyenda(items){
+  const sw=(c,t)=>t==='inc'?`<i class="seg-sw" style="border:1.5px dashed ${c}"></i>`:(t==='dot'?`<i class="seg-sw" style="width:5px;height:5px;border-radius:50%;background:var(--ink-soft);opacity:.5"></i>`:(t==='pt'?`<i class="seg-sw" style="width:7px;height:7px;border-radius:50%;background:var(--ink);opacity:.75"></i>`:`<i class="seg-sw" style="background:${c}"></i>`));
+  return `<div class="seg-leg">${items.map(i=>`<span>${sw(i.c,i.t)}${i.txt}</span>`).join('')}</div>`;
+}
+function segCard(id,titulo,sub,cuerpo){
+  return `<section class="diario-chart-card" aria-labelledby="seg-t-${id}"><h3 class="diario-chart-title" id="seg-t-${id}">${titulo}</h3><div class="diario-chart-sub">${sub}</div>${cuerpo}</section>`;
+}
+function segPeriodoTxt(rango){ return `${evoRangoTxt(rango.desde,rango.hasta)} · ${evoPlural(evoDia(rango.hasta)-evoDia(rango.desde)+1,'día','días')}`; }
+
+// Tarjeta de barras genérica (calorías, proteínas, pasos): usa un modelo de segModelo*()
+function segCardBarras(cfg){
+  const {rango,modelo,W,carga}=cfg, sub=`${cfg.subtitulo} · ${segPeriodoTxt(rango)}`;
+  if(cfg.necesitaRegistro){
+    if(carga.global) return segCard(cfg.id,cfg.titulo,sub,`<div class="diario-chart-empty">No se han podido cargar los registros de comidas (${escAttr(carga.global)}). No se muestran cifras: un fallo de carga no significa que no hayas registrado nada.</div><button type="button" class="seg-retry" onclick="segReintentarRegistro()">Reintentar</button>`);
+    if(carga.cargando.length||carga.pend.length) return segCard(cfg.id,cfg.titulo,sub,`<div class="diario-chart-empty">Cargando registros de comidas de ${evoPlural(carga.cargando.length+carga.pend.length,'mes','meses')}…</div>`);
+  }
+  const aviso=cfg.necesitaRegistro&&carga.errores.length?`<p class="med-warn">No se han podido cargar los registros de ${carga.errores.map(e=>e.ym).join(', ')}. Esos días no se dibujan; no significa que no tengan registros.</p><button type="button" class="seg-retry" onclick="segReintentarRegistro()">Reintentar</button>`:'';
+  const n=modelo.n, u=cfg.unidad, fmt=v=>segFmt(v,cfg.dec);
+  if(!modelo.puntos.length) return segCard(cfg.id,cfg.titulo,sub,`${aviso}<div class="diario-chart-empty">No hay datos de ${cfg.nombre} en este periodo (${evoPlural(n.sinInfo,'día sin información','días sin información')}). No se representan como 0.</div>`);
+  const dias=evoDia(rango.hasta)-evoDia(rango.desde)+1, semanal=dias>SEG_MAX_BARRAS_DIARIAS, color=cfg.color;
+  let cols,vacios;
+  if(!semanal){
+    const con=new Set(modelo.puntos.map(p=>p.fecha)), sc=new Set(modelo.sinCargarFechas);
+    cols=modelo.puntos.map(p=>({dia0:evoDia(p.fecha),dia1:evoDia(p.fecha),segs:[{v:p.valor,c:color}],incompleto:p.tipo==='incompleto',titulo:`${evoF(p.fecha,true)}: ${fmt(p.valor)} ${u} · ${p.tipo==='completo'?'día completo':cfg.textoIncompleto}`}));
+    vacios=segDiasRango(rango).filter(f=>!con.has(f)&&!sc.has(f)).map(evoDia);
+  }else{
+    const bs=segAgruparSemanas(modelo.puntos,rango.desde,rango.hasta,'media',['valor']);
+    cols=bs.filter(g=>g.tipo!=='sin').map(g=>({dia0:g.dia0,dia1:g.dia1,segs:[{v:g.valores[0],c:color}],incompleto:g.tipo==='incompleto',titulo:`Semana del ${evoF(evoIso(g.dia0))} al ${evoF(evoIso(g.dia1),true)}: media ${fmt(g.valores[0])} ${u} en ${evoPlural(g.n,'día completo','días completos')}${g.nInc?` (${g.nInc} incompleto${g.nInc===1?'':'s'} no incluido${g.nInc===1?'':'s'})`:''}${g.tipo==='incompleto'?' · pocos días: media poco representativa':''}`}));
+    vacios=bs.filter(g=>g.tipo==='sin').map(g=>Math.floor((g.dia0+g.dia1)/2));
+  }
+  const svg=segBarrasSVG({W,desde:rango.desde,hasta:rango.hasta,cols,vacios,unidad:u,colorBase:color,aria:`${cfg.titulo}, ${segPeriodoTxt(rango)}: ${evoPlural(modelo.puntos.length,'día con dato','días con datos')}`});
+  const leg=[{c:color,txt:semanal?'media semanal de días completos':cfg.textoCompleto}];
+  if(n.incompleto||(semanal&&cols.some(c=>c.incompleto))) leg.push({c:color,t:'inc',txt:semanal?'semana con menos de 4 días':cfg.textoLeyIncompleto});
+  if(vacios.length) leg.push({t:'dot',txt:semanal?'semana sin información':'día sin información'});
+  const notas=[];
+  notas.push(modelo.media!=null?`${cfg.textoMedia}: <b>${fmt(modelo.media)} ${u}</b> (${evoPlural(modelo.mediaN,'día','días')}).`:`Sin media: hacen falta al menos ${modelo.minMedia} ${cfg.textoMediaDias} (hay ${modelo.mediaN}).`);
+  if(n.incompleto) notas.push(`${evoPlural(n.incompleto,'día incompleto','días incompletos')}: ${cfg.textoNotaIncompleto}`);
+  if(n.sinInfo) notas.push(`${evoPlural(n.sinInfo,'día sin información','días sin información')}: no son 0 ${u}.`);
+  if(semanal) notas.push('Periodo largo: cada barra es una semana (lunes–domingo) para no saturar la gráfica.');
+  if(cfg.nota) notas.push(cfg.nota);
+  return segCard(cfg.id,cfg.titulo,sub,`${aviso}${svg}${segLeyenda(leg)}${notas.map(t=>`<p class="evo-note">${t}</p>`).join('')}`);
+}
+function segCardActividad(rango,hoy,W){
+  const modelo=segModeloActividad(segDiasDiario(rango,hoy),hoy), n=modelo.n, sub=`Minutos de gimnasio y cardio por día · ${segPeriodoTxt(rango)}`;
+  const titulo='Actividad física y entrenamiento (min)';
+  if(!modelo.puntos.length) return segCard('act',titulo,sub,`<div class="diario-chart-empty">No hay actividad registrada en este periodo (${evoPlural(n.sinInfo,'día sin información','días sin información')}). Los días sin registro no se representan como 0 minutos.</div>`);
+  const dias=evoDia(rango.hasta)-evoDia(rango.desde)+1, semanal=dias>SEG_MAX_BARRAS_DIARIAS, CG='var(--green)', CC='var(--gold)';
+  let cols,vacios;
+  if(!semanal){
+    const con=new Set(modelo.puntos.map(p=>p.fecha));
+    cols=modelo.puntos.map(p=>({dia0:evoDia(p.fecha),dia1:evoDia(p.fecha),segs:[{v:p.gym||0,c:CG},{v:p.cardio||0,c:CC}],incompleto:p.tipo==='incompleto',
+      titulo:`${evoF(p.fecha,true)}: gimnasio ${p.gym==null?'sin registrar':segFmt(p.gym)+' min'} · cardio ${p.cardio==null?'sin registrar':segFmt(p.cardio)+' min'}${p.tipo==='incompleto'?' · día en curso':''}`}));
+    vacios=segDiasRango(rango).filter(f=>!con.has(f)).map(evoDia);
+  }else{
+    const bs=segAgruparSemanas(modelo.puntos,rango.desde,rango.hasta,'suma',['gym','cardio']);
+    cols=bs.filter(g=>g.tipo!=='sin').map(g=>({dia0:g.dia0,dia1:g.dia1,segs:[{v:g.valores[0],c:CG},{v:g.valores[1],c:CC}],incompleto:g.tipo==='incompleto',titulo:`Semana del ${evoF(evoIso(g.dia0))} al ${evoF(evoIso(g.dia1),true)}: gimnasio ${segFmt(g.valores[0])} min · cardio ${segFmt(g.valores[1])} min (${evoPlural(g.n,'día con registro','días con registro')})${g.tipo==='incompleto'?' · pocos días: el total puede quedarse corto':''}`}));
+    vacios=bs.filter(g=>g.tipo==='sin').map(g=>Math.floor((g.dia0+g.dia1)/2));
+  }
+  const svg=segBarrasSVG({W,desde:rango.desde,hasta:rango.hasta,cols,vacios,unidad:semanal?'min por semana':'min por día',colorBase:CG,aria:`${titulo}, ${segPeriodoTxt(rango)}: ${evoPlural(n.diasConRegistro,'día con registro','días con registro')}`});
+  const leg=[{c:CG,txt:'gimnasio (min)'},{c:CC,txt:'cardio (min)'}];
+  if(cols.some(c=>c.incompleto)) leg.push({c:CG,t:'inc',txt:semanal?'semana con menos de 4 días registrados':'día en curso'});
+  if(vacios.length) leg.push({t:'dot',txt:semanal?'semana sin información':'día sin información'});
+  const notas=[`Días con entrenamiento: <b>${n.diasEntreno}</b> de ${evoPlural(n.diasConRegistro,'día con registro','días con registro')} · gimnasio ${segFmt(modelo.minGym)} min · cardio ${segFmt(modelo.minCardio)} min (suma de lo registrado).`];
+  if(n.soloUnTipo) notas.push(`En ${evoPlural(n.soloUnTipo,'día','días')} solo se registró un tipo de actividad: el otro no cuenta como 0.`);
+  if(n.sinInfo) notas.push(`${evoPlural(n.sinInfo,'día sin información','días sin información')}: no son 0 minutos.`);
+  if(semanal) notas.push('Periodo largo: cada barra es el total de una semana (lunes–domingo).');
+  notas.push('La app guarda minutos por día: no registra el número de sesiones ni las calorías activas, así que no se muestran ni se estiman.');
+  return segCard('act',titulo,sub,`${svg}${segLeyenda(leg)}${notas.map(t=>`<p class="evo-note">${t}</p>`).join('')}`);
+}
+function segCardPeso(rango,W){
+  const regs=evoRegsPeso(), sub=`Peso puntual, media móvil 7 días y tendencia · ${segPeriodoTxt(rango)}`, titulo='Peso (kg)';
+  const pts=evoEnRango(regs,rango.desde,rango.hasta);
+  if(!pts.length) return segCard('peso',titulo,sub,`<div class="diario-chart-empty">No hay registros de peso en este periodo.${regs.length?` Último registro: ${evoF(regs[regs.length-1].fecha,true)}.`:''}</div>`);
+  const tend=evoTendencia(regs,rango.desde,rango.hasta), svg=pesoChartDiarioSVG(regs,rango,tend,W);
+  const leg=segLeyenda([{c:'var(--ink)',t:'pt',txt:'peso puntual'},{c:'var(--sage)',txt:'media móvil 7 días'},{c:'var(--gold-deep)',t:'inc',txt:'tendencia (media 1.ª mitad → 2.ª)'}]);
+  const notas=[`${evoPlural(pts.length,'registro','registros')} de peso en el periodo.`+(tend.estado==='ok'?'':' Sin tendencia consolidada: faltan registros en el periodo.'),'El eje vertical se ajusta al rango de los datos (no parte de 0). La banda gris marca 7 o más días seguidos sin registro.'];
+  return segCard('peso',titulo,sub,`${svg}${leg}${notas.map(t=>`<p class="evo-note">${t}</p>`).join('')}`);
+}
+function segCardCintura(rango,W){
+  const regs=evoRegsMedida('cintura'), sub=`Mediciones de cintura · ${segPeriodoTxt(rango)}`, titulo='Cintura (cm)';
+  const res=evoResumenSerie(regs,rango.desde,rango.hasta);
+  if(!res.n) return segCard('cin',titulo,sub,`<div class="diario-chart-empty">No hay mediciones de cintura en este periodo.${regs.length?` Última medición: ${evoF(regs[regs.length-1].fecha,true)}.`:''}</div>`);
+  const svg=evoMedidaSVG(regs,rango,'cm','Cintura',W);
+  const txt=res.n===1?`Una sola medición en el periodo (${evoF(res.ultima.fecha,true)}): no se puede comparar.`:`${evoPlural(res.n,'medición','mediciones')}: ${segFmt(res.primera.valor,1)} cm (${evoF(res.primera.fecha)}) → ${segFmt(res.ultima.valor,1)} cm (${evoF(res.ultima.fecha)}) · ${dashFmtDelta(res.delta)} cm. Diferencia entre dos mediciones, no una tendencia.`;
+  return segCard('cin',titulo,sub,`${svg}${segLeyenda([{c:'var(--plum)',txt:'medición real'}])}<p class="evo-note">${txt}</p><p class="evo-note">El eje vertical se ajusta al rango de los datos (no parte de 0). La línea punteada solo une mediciones consecutivas.</p>`);
+}
+
+function renderSeguimientoHtml(){
+  const hoy=evoHoy(), W=segAnchoChart(), ra=segRangoActual(hoy), rango=ra.rango;
+  const cab=`<div class="dash-head"><h2 class="dash-title">Seguimiento</h2><p class="dash-date">Peso, cintura, alimentación y actividad</p></div>
+    <div class="diario-chart-modes" role="group" aria-label="Periodo">${EVO_PERIODOS.map(p=>`<button type="button" class="shop-week-btn ${segPeriodo===p.id?'active':''}" aria-pressed="${segPeriodo===p.id}" onclick="setSegPeriodo('${p.id}')">${p.etiqueta}</button>`).join('')}</div>
+    <p class="evo-note">Periodo mostrado: <b>${segPeriodoTxt(rango)}</b>.${ra.recortado?` Se muestran los últimos ${SEG_MAX_MESES} meses para no cargar registros de más.`:''} Calorías y proteínas son lo <b>realmente registrado como consumido</b>, no el plan del menú.</p>`;
+  if(Object.prototype.hasOwnProperty.call(LOAD_ERR,'diario')) return cab+`<div class="diario-chart-card"><div class="diario-chart-empty">No se han podido cargar los datos del diario. No se muestran cifras de peso, cintura, pasos ni actividad: un fallo de carga no significa que no tengas registros.</div></div>`;
+  const carga=segEstadoCarga(rango), nut=carga.global||carga.cargando.length||carga.pend.length?null:segDiasNutricion(rango,hoy);
+  const mNut=campo=>segModeloNutricion((nut||[]).map(d=>({fecha:d.fecha,estado:d.estado,valor:d[campo]})));
+  const comun={rango,W,carga,necesitaRegistro:true};
+  const kcal=segCardBarras(Object.assign({},comun,{id:'kcal',titulo:'Calorías ingeridas (kcal)',subtitulo:'kcal consumidas por día, según lo registrado',nombre:'calorías',unidad:'kcal',dec:0,color:'var(--gold-deep)',modelo:mNut('kcal'),
+    textoCompleto:'día completo',textoLeyIncompleto:'día incompleto (solo lo registrado)',textoIncompleto:'día incompleto: solo suma lo registrado hasta ahora',textoMedia:'Media de los días completos',textoMediaDias:'días completos',textoNotaIncompleto:'quedan comidas por registrar o con datos incompletos; la cifra es solo lo registrado y no entra en la media.'}));
+  const prot=segCardBarras(Object.assign({},comun,{id:'prot',titulo:'Proteínas consumidas (g)',subtitulo:'g de proteína consumidos por día, según lo registrado',nombre:'proteínas',unidad:'g',dec:0,color:'var(--clay)',modelo:mNut('proteinas'),
+    textoCompleto:'día completo',textoLeyIncompleto:'día incompleto (solo lo registrado)',textoIncompleto:'día incompleto: solo suma lo registrado hasta ahora',textoMedia:'Media de los días completos',textoMediaDias:'días completos',textoNotaIncompleto:'quedan comidas por registrar o con datos incompletos; la cifra es solo lo registrado y no entra en la media.'}));
+  const pasos=segCardBarras({id:'pasos',titulo:'Pasos diarios (pasos)',subtitulo:'pasos registrados por día',nombre:'pasos',unidad:'pasos',dec:0,color:'var(--green)',rango,W,carga,necesitaRegistro:false,modelo:segModeloPasos(segDiasDiario(rango,hoy),hoy),
+    textoCompleto:'día con pasos registrados',textoLeyIncompleto:'hoy (día en curso)',textoIncompleto:'día en curso: los pasos pueden seguir aumentando',textoMedia:'Media de los días registrados (sin hoy)',textoMediaDias:'días registrados',textoNotaIncompleto:'hoy no ha terminado y no entra en la media.'});
+  return cab+`<div class="seg-grid">${segCardPeso(rango,W)}${segCardCintura(rango,W)}${kcal}${prot}${pasos}${segCardActividad(rango,hoy,W)}</div>`;
+}
+function renderSeguimiento(){
+  const el=document.getElementById('evolucion-content');
+  if(!DATA||!el||!segVistaActiva()) return;
+  _segAnchoPrev=window.innerWidth;
+  segCargarMeses(segEstadoCarga(segRangoActual(evoHoy()).rango).pend);
+  el.innerHTML=renderSeguimientoHtml();
 }
 
 // ── Diario · Alimentación del día: PLANIFICADO y CONSUMIDO por separado, comida a comida ──
@@ -3449,6 +3776,7 @@ function showView(name,btn){
   const navBtn=btn||document.querySelector('.nav-btn[data-view="'+name+'"]');
   if(navBtn){ navBtn.classList.add('active'); navBtn.setAttribute('aria-current','page'); }
   if(name==='compra') renderShopping();
+  if(name==='evolucion') renderSeguimiento();
   if(cambia) window.scrollTo(0,0);
 }
 

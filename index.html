@@ -1010,6 +1010,36 @@ button.dc-name:hover{text-decoration-color:var(--green)}
 .ob-main{margin:.25rem 0}
 .ob-v{font-size:1.25rem}
 .ob-n{font-size:.72rem;line-height:1.45;color:var(--ink-soft);margin:.15rem 0 0}
+/* F3.2 · macronutrientes */
+.mf-box{margin-top:.6rem}
+.mf-row{padding:.45rem 0;border-top:1px solid var(--line)}
+.mf-n{font-size:.8rem;font-weight:700}.mf-n small{font-weight:500;color:var(--ink-soft);margin-left:4px}
+.mf-in{display:flex;align-items:center;gap:.4rem;margin:.25rem 0}
+.mf-in select{flex:1;min-width:0}.mf-in input{width:5.5rem}
+.mf-u{font-size:.8rem;color:var(--ink-soft);min-width:1rem}
+.mf-res{font-size:.74rem;color:var(--ink-soft);min-height:1em}
+.mf-bad{color:#a23a2a}
+.mf-sum{border-top:1px solid var(--line);margin-top:.3rem;padding-top:.45rem;font-size:.76rem;line-height:1.5}
+.mf-warn{color:#7a5a12;background:#fbf1d8;border-radius:var(--r-sm);padding:.3rem .5rem;margin-top:.3rem}
+.of-btn{margin-top:.4rem;padding:.35rem .7rem;border:1px solid var(--gold);background:var(--gold-light);color:#7a5a12;border-radius:var(--r-sm);font-size:.74rem;font-weight:700;cursor:pointer}
+.ob-mac{border-top:1px solid var(--line);margin-top:.55rem;padding-top:.5rem}
+.ob-mf{display:flex;justify-content:space-between;gap:.6rem;font-size:.76rem;padding:2px 0}
+.ob-mf span:first-child{color:var(--ink-soft);font-weight:700}
+.ob-w{font-size:.72rem;color:#7a5a12;background:#fbf1d8;border-radius:var(--r-sm);padding:.3rem .5rem;margin:.3rem 0 0}
+/* F3.3 · tipo de día */
+.act-box{margin-top:.6rem}
+.act-set{border-top:1px solid var(--line);margin-top:.6rem;padding-top:.5rem}
+.td-panel{margin:.35rem 0 .2rem}
+.td-row{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem}
+.td-row small{font-size:.68rem;color:var(--ink-soft)}
+.td-chip{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px;border:1.5px solid var(--line)}
+.td-ent{background:var(--sage-light);border-color:var(--sage);color:#3f5c2c}
+.td-des{background:var(--paper);border-color:var(--ink-soft);border-style:dashed;color:var(--ink-soft)}
+.td-gen{background:var(--paper);color:var(--ink-soft)}
+.td-btns{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.35rem}
+.td-b{padding:.3rem .65rem;border:1px solid var(--line);background:var(--paper);border-radius:var(--r-sm);font-size:.72rem;font-weight:700;cursor:pointer;color:var(--ink-soft)}
+.td-b.on{background:var(--gold-light);border-color:var(--gold);color:#7a5a12}
+.td-mini{font-style:normal;font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:10px;border:1px solid var(--line);vertical-align:middle}
 </style>
 </head>
 <body>
@@ -1633,16 +1663,159 @@ function objetivoKcalAuto(f){ // estimación automática (misma fórmula que ya 
   const obj=Math.round(gasto)+Math.round(bal);
   return obj>0?{obj,origen:'calculado',gasto:Math.round(gasto),bal:Math.round(bal)}:null;
 }
-function objetivoKcalFecha(f){ // el objetivo ACTIVO para esa fecha, o null si no hay (no se inventa ni se cambia de origen en silencio)
+function objetivoKcalGeneralFecha(f){ // objetivo de la configuración GENERAL (lógica de F3.1, sin cambios)
   if(objetivoKcalOrigen()==='manual'){ const m=objetivoKcalManual(); return m!=null?{obj:m,origen:'manual'}:null; }
   return objetivoKcalAuto(f);
 }
-// Objetivo de proteína en gramos para una fecha, según g/kg de peso configurado en el perfil.
+// ── Objetivos por tipo de día (F3.3) ──
+// perfil.objetivos_actividad (jsonb): {modo:'unico'|'diferenciado', tipo_dia:'auto'|'manual', desde:'YYYY-MM-DD',
+//   entrenamiento:{kcal,macros}, descanso:{kcal,macros}, manual:{'YYYY-MM-DD':'entrenamiento'|'descanso'}}
+// · kcal vacío = «como el objetivo general»; cada macro puede ser «como el general» o su propio modo (g, %, g/kg, ninguno).
+// · Las fechas ANTERIORES a «desde» siguen usando la configuración general: activar esto no reescribe lo ya vivido.
+// · «Entrenamiento realizado» = minutos de gimnasio o cardio REGISTRADOS en el Diario para esa fecha (mismo criterio que ya usa la app).
+//   La app no tiene entrenamientos planificados ni cancelados: una fecha futura nunca cuenta, y lo no registrado cuenta como descanso.
+// · Nunca se suman kcal de ejercicio al objetivo, y elegir el tipo de un día no toca el registro de actividad.
+const TIPO_DIA_LABEL={general:'Configuración general',entrenamiento:'Entrenamiento',descanso:'Descanso'};
+const RE_FECHA=/^\d{4}-\d{2}-\d{2}$/;
+function actSetNorm(e){
+  e=macrosRaw(e); const k=e.kcal==null||e.kcal===''?NaN:Number(e.kcal);
+  const mr=macrosRaw(e.macros), macros={};
+  MACRO_KEYS.forEach(m=>{ macros[m]=macroNormEntrada(m,mr[m],true)||{modo:'general'}; });
+  return {kcal:Number.isFinite(k)&&k>=500&&k<=10000?Math.round(k):null,macros};
+}
+function actCfgNorm(raw){
+  const r=macrosRaw(raw), mm=macrosRaw(r.manual), manual={};
+  Object.keys(mm).sort().forEach(f=>{ if(RE_FECHA.test(f)&&(mm[f]==='entrenamiento'||mm[f]==='descanso')) manual[f]=mm[f]; });
+  const desde=RE_FECHA.test(r.desde||'')?r.desde:null;
+  return {modo:(r.modo==='diferenciado'&&desde)?'diferenciado':'unico',tipo_dia:r.tipo_dia==='manual'?'manual':'auto',desde,entrenamiento:actSetNorm(r.entrenamiento),descanso:actSetNorm(r.descanso),manual};
+}
+function actParaGuardar(c){
+  const set=x=>({kcal:x.kcal,macros:macrosParaGuardar(x.macros)}), manual={};
+  Object.keys(c.manual).sort().forEach(f=>{ manual[f]=c.manual[f]; });
+  return {modo:c.modo,tipo_dia:c.tipo_dia,desde:c.desde,entrenamiento:set(c.entrenamiento),descanso:set(c.descanso),manual};
+}
+let _actCache={raw:undefined,val:null};
+function actividadCfg(){
+  const raw=PERFIL?PERFIL.objetivos_actividad:null;
+  if(_actCache.val&&_actCache.raw===raw) return _actCache.val;
+  _actCache={raw,val:actCfgNorm(raw)}; return _actCache.val;
+}
+function actividadRegistradaFecha(f){ // solo lo REGISTRADO en esa fecha; un booleano por día aunque haya gimnasio y cardio (o filas repetidas)
+  const row=DIARIO[f]||{}, gym=Number(row.gimnasio_min), card=Number(row.cardio_min);
+  const g=Number.isFinite(gym)&&gym>0?gym:0, c=Number.isFinite(card)&&card>0?card:0;
+  return {entreno:g>0||c>0,gym:g,cardio:c,detalle:[g?'gimnasio '+g+' min':'',c?'cardio '+c+' min':''].filter(Boolean).join(' · ')};
+}
+function tipoDiaFecha(f){ // qué configuración rige en esa fecha y por qué
+  const a=actividadCfg();
+  if(a.modo!=='diferenciado') return {tipo:'general',fuente:'unico',txt:'Un único objetivo para todos los días.'};
+  if(a.desde&&f<a.desde) return {tipo:'general',fuente:'anterior',txt:'Antes del '+fmtFechaLarga(a.desde)+' se mantiene la configuración general.'};
+  if(a.manual[f]) return {tipo:a.manual[f],fuente:'manual',txt:'Elegido por ti para este día (el registro de actividad no cambia).'};
+  if(a.tipo_dia==='manual') return {tipo:'descanso',fuente:'defecto',txt:'Tipo de día manual y no has elegido uno para esta fecha: se usa Descanso.'};
+  if(f>isoDate(new Date())) return {tipo:'descanso',fuente:'futuro',txt:'Fecha futura: una sesión que aún no se ha realizado no cuenta como entrenamiento.'};
+  if(LOAD_ERR.diario||!sb) return {tipo:'descanso',fuente:'sin_datos',txt:'No se ha podido comprobar la actividad registrada; se usa Descanso de forma provisional.'};
+  const act=actividadRegistradaFecha(f);
+  return act.entreno?{tipo:'entrenamiento',fuente:'auto',txt:'Entrenamiento registrado: '+act.detalle+'.'}:{tipo:'descanso',fuente:'auto',txt:'Sin entrenamiento registrado este día.'};
+}
+function objetivoKcalFecha(f){ // el objetivo ACTIVO para esa fecha, o null si no hay (no se inventa ni se cambia de origen en silencio)
+  const t=tipoDiaFecha(f);
+  if(t.tipo==='general') return objetivoKcalGeneralFecha(f);
+  const set=actividadCfg()[t.tipo];
+  if(set.kcal!=null) return {obj:set.kcal,origen:'manual',tipo:t.tipo};
+  const g=objetivoKcalGeneralFecha(f);
+  return g?Object.assign({},g,{tipo:t.tipo,deGeneral:true}):null;
+}
+function macrosCfgFecha(f){ // macros que rigen en esa fecha: los del tipo de día, o los generales donde el tipo diga «como el general»
+  const base=macrosCfgActual(), t=tipoDiaFecha(f);
+  if(t.tipo==='general') return base;
+  const set=actividadCfg()[t.tipo], out={};
+  MACRO_KEYS.forEach(k=>{ const e=set.macros[k]; out[k]=(e&&e.modo!=='general')?e:base[k]; });
+  return out;
+}
+// ── Objetivos de macronutrientes (F3.2) ──
+// Cada macro tiene su propia configuración en perfil.objetivos_macros (jsonb): {proteinas:{modo,valor}, carbos:{…}, grasas:{…}}
+//   modo 'g'   → gramos diarios fijos (valor = g)
+//   modo 'pct' → % de las kcal del objetivo calórico ACTIVO (valor = %); gramos = kcal·%/100 ÷ factor
+//   modo 'gkg' → solo proteínas: g por kg de peso, el ajuste de siempre (perfil.proteina_objetivo_gkg); no se duplica el valor
+//   modo 'none'→ sin objetivo
+// Sin configuración guardada: proteínas conserva su g/kg si lo tenía, y carbos/grasas quedan sin objetivo (no hay valores por defecto).
+// Todos los consumidores (Diario, Dashboard, promedios, formulario) pasan por macroResolver: no hay cálculos duplicados.
+const MACRO_KEYS=['proteinas','carbos','grasas'];
+const MACRO_NOMBRE={proteinas:'Proteínas',carbos:'Carbohidratos',grasas:'Grasas'};
+const MACRO_KCAL_G={proteinas:4,carbos:4,grasas:9};   // factores energéticos habituales (kcal por gramo)
+const MACRO_TOL_KCAL=0.10;                              // diferencia «importante» entre las kcal de los gramos y el objetivo calórico
+const MACRO_MAX_G=1500;
+function mfN(v){ return Number(v).toLocaleString('es-ES',{maximumFractionDigits:1}); }
+function macrosRaw(raw){ // jsonb (objeto) o texto JSON; cualquier otra cosa = sin configuración
+  if(typeof raw==='string'){ try{ raw=JSON.parse(raw); }catch(e){ return {}; } }
+  return raw&&typeof raw==='object'&&!Array.isArray(raw)?raw:{};
+}
+function macroNormEntrada(key,e,permitGeneral){ // entrada válida o null (una entrada corrupta no se interpreta: se ignora)
+  if(!e||typeof e!=='object') return null;
+  if(e.modo==='general') return permitGeneral?{modo:'general'}:null; // «como el objetivo general»: solo en tipos de día
+  if(e.modo==='none') return {modo:'none'};
+  if(e.modo==='gkg') return key==='proteinas'?{modo:'gkg'}:null;
+  if(e.modo==='g'||e.modo==='pct'){
+    const v=Number(e.valor);
+    if(!Number.isFinite(v)||!(v>0)||(e.modo==='pct'&&v>100)||(e.modo==='g'&&v>MACRO_MAX_G)) return null;
+    return {modo:e.modo,valor:v};
+  }
+  return null;
+}
+function macrosCfgDesde(raw,gkgPerfil){
+  const r=macrosRaw(raw), out={};
+  MACRO_KEYS.forEach(k=>{
+    let e=macroNormEntrada(k,r[k]);
+    if(!e) e=(k==='proteinas'&&gkgPerfil!=null)?{modo:'gkg'}:{modo:'none'}; // compatibilidad: el g/kg anterior sigue vigente
+    out[k]=e;
+  });
+  return out;
+}
+function macrosCfgActual(){ return macrosCfgDesde(PERFIL&&PERFIL.objetivos_macros,PERFIL?PERFIL.proteina_objetivo_gkg:null); }
+function macrosParaGuardar(cfg){ const o={}; MACRO_KEYS.forEach(k=>{ const c=cfg[k]||{modo:'none'}; o[k]=(c.modo==='g'||c.modo==='pct')?{modo:c.modo,valor:c.valor}:{modo:c.modo}; }); return o; }
+// Gramos, kcal y % de cada macro a partir de la configuración, el objetivo calórico (kcal) y el peso. Función pura.
+function macroResolver(cfg,kcalObj,peso,gkg){
+  const res={};
+  MACRO_KEYS.forEach(k=>{
+    const c=cfg[k]||{modo:'none'}, F=MACRO_KCAL_G[k];
+    const r={key:k,modo:c.modo,valor:c.valor!=null?c.valor:null,g:null,kcal:null,pct:null,motivo:null};
+    if(c.modo==='g') r.g=c.valor;
+    else if(c.modo==='pct'){ r.pct=c.valor; if(kcalObj!=null&&kcalObj>0) r.g=kcalObj*c.valor/100/F; else r.motivo='sin_kcal'; }
+    else if(c.modo==='gkg'){ r.valor=gkg==null?null:Number(gkg); if(r.valor==null) r.motivo='sin_gkg'; else if(peso==null) r.motivo='sin_peso'; else r.g=r.valor*peso; }
+    if(r.g!=null){ r.kcal=r.g*F; if(c.modo!=='pct'&&kcalObj>0) r.pct=r.kcal/kcalObj*100; }
+    res[k]=r;
+  });
+  return res;
+}
+// Resumen de la distribución: kcal que representan los macros, suma de % y avisos (nunca corrige nada)
+function macrosResumen(res,kcalObj){
+  const act=MACRO_KEYS.filter(k=>res[k].modo!=='none'), calc=act.filter(k=>res[k].g!=null);
+  const kcal=calc.reduce((a,k)=>a+res[k].kcal,0);
+  const todosPct=MACRO_KEYS.every(k=>res[k].modo==='pct');
+  const pctSum=MACRO_KEYS.filter(k=>res[k].modo==='pct').reduce((a,k)=>a+res[k].valor,0);
+  const completaPct=todosPct&&Math.abs(pctSum-100)<=0.05, av=[];
+  if(act.some(k=>res[k].motivo==='sin_kcal')) av.push('Hay macros en porcentaje pero no hay objetivo calórico activo: no se pueden calcular sus gramos.');
+  if(todosPct&&!completaPct) av.push('Los porcentajes suman '+mfN(pctSum)+' %, no 100 %: la distribución '+(pctSum<100?'no está completa':'se pasa del 100 %')+'.');
+  else if(!todosPct&&pctSum>100.05) av.push('Los porcentajes configurados suman '+mfN(pctSum)+' %, más del 100 % de las kcal.');
+  let dif=null;
+  if(!todosPct&&kcalObj>0&&calc.length){
+    dif=kcal-kcalObj;
+    if(calc.length===3&&Math.abs(dif)/kcalObj>MACRO_TOL_KCAL) av.push('Los macros configurados representan '+Math.round(kcal)+' kcal, '+(dif>0?'+':'−')+Math.abs(Math.round(dif))+' kcal ('+mfN(Math.abs(dif)/kcalObj*100)+' %) respecto al objetivo calórico de '+Math.round(kcalObj)+' kcal.');
+  }
+  return {act,calc,kcal,todosPct,pctSum,completaPct,dif,avisos:av,parcial:act.length>0&&act.length<3};
+}
+function objetivoMacroFecha(key,f){ // objetivo ACTIVO de un macro para una fecha (g, kcal, %, modo, motivo si no se puede calcular)
+  const o=objetivoKcalFecha(f);
+  return macroResolver(macrosCfgFecha(f),o?o.obj:null,pesoParaFecha(f),PERFIL?PERFIL.proteina_objetivo_gkg:null)[key];
+}
+function macroDesc(m){
+  if(m.modo==='pct') return mfN(m.valor)+' % de las kcal';
+  if(m.modo==='gkg') return mfN(m.valor)+' g por kg de peso';
+  return 'gramos fijados'+(m.pct!=null?' · '+mfN(m.pct)+' % de las kcal':'');
+}
+// Objetivo de proteína en gramos para una fecha (nombre y contrato anteriores: lo usan Diario, Dashboard y promedios)
 function proteinaObjetivoFecha(fechaISO){
-  if(!PERFIL||PERFIL.proteina_objetivo_gkg==null) return null;
-  const peso=pesoParaFecha(fechaISO);
-  if(peso==null) return null;
-  return PERFIL.proteina_objetivo_gkg*peso;
+  const m=objetivoMacroFecha('proteinas',fechaISO);
+  return m.g!=null?m.g:null;
 }
 
 // Info del ciclo para una fecha: día del ciclo y fase estimada
@@ -1730,6 +1903,153 @@ async function recalibrarGastoSiToca(){
 }
 
 // ── Guardado ──
+// ── Formulario de macronutrientes (F3.2, generalizado en F3.3 para reutilizarlo en entrenamiento/descanso) ──
+function macrosFilasHtml(prefix,cfg,cb,permitGeneral){
+  return MACRO_KEYS.map(k=>{
+    const c=cfg[k]||{modo:permitGeneral?'general':'none'};
+    const ops=(permitGeneral?[['general','Como el objetivo general']]:[]).concat([['none','Sin objetivo'],['g','Gramos al día'],['pct','% de las kcal']],k==='proteinas'?[['gkg','g por kg de peso (el de siempre)']]:[]);
+    return `<div class="mf-row"><div class="mf-n">${MACRO_NOMBRE[k]} <small>${MACRO_KCAL_G[k]} kcal/g</small></div>
+      <div class="mf-in"><select id="${prefix}-${k}-modo" onchange="${cb}">${ops.map(([v,t])=>`<option value="${v}" ${c.modo===v?'selected':''}>${t}</option>`).join('')}</select>
+      <input type="number" step="0.1" min="0" id="${prefix}-${k}-valor" value="${c.valor!=null?c.valor:''}" oninput="${cb}"><span id="${prefix}-${k}-u" class="mf-u"></span></div>
+      <div class="mf-res" id="${prefix}-${k}-res"></div></div>`;
+  }).join('');
+}
+function macrosFormHtml(){
+  return `<div class="of-box mf-box"><div class="of-t">Objetivos de macronutrientes</div>
+    <p class="of-n" style="margin-top:0">Cada macro es independiente: en gramos o como % de las kcal del objetivo calórico activo. «g por kg de peso» usa el campo de proteína de arriba. No se rellena ni corrige nada por su cuenta.</p>
+    ${macrosFilasHtml('pf-mac',macrosCfgActual(),'pfMacrosCambio()',false)}<div id="pf-mac-sum" class="mf-sum"></div></div>`;
+}
+// Lee el formulario. Una entrada incompleta o inválida no entra en cfg (queda como «sin objetivo») y se anota en errs.
+function pfMacrosLeerPref(prefix,permitGeneral){
+  const g=id=>document.getElementById(id), cfg={}, errs=[];
+  MACRO_KEYS.forEach(k=>{
+    const modo=g(prefix+'-'+k+'-modo').value, raw=g(prefix+'-'+k+'-valor').value, nom=MACRO_NOMBRE[k];
+    if(modo==='none'||modo==='gkg'||(permitGeneral&&modo==='general')){ cfg[k]={modo}; return; }
+    const v=raw===''?NaN:Number(raw);
+    let e=null;
+    if(raw==='') e=nom+': indica un valor (o elige «Sin objetivo»).';
+    else if(!Number.isFinite(v)) e=nom+': el valor no es un número válido.';
+    else if(v<0) e=nom+': no puede ser negativo.';
+    else if(v===0) e=nom+': debe ser mayor que 0 (o elige «Sin objetivo»).';
+    else if(modo==='pct'&&v>100) e=nom+': un porcentaje no puede pasar de 100 %.';
+    else if(modo==='g'&&v>MACRO_MAX_G) e=nom+': no puede pasar de '+MACRO_MAX_G+' g al día.';
+    if(e){ errs.push({k,txt:e}); cfg[k]={modo:'none'}; } else cfg[k]={modo,valor:Math.round(v*100)/100};
+  });
+  return {cfg,errs};
+}
+function pfMacrosLeer(){ return pfMacrosLeerPref('pf-mac',false); }
+// Base calórica que usa la vista previa: la que se está escribiendo en el formulario (manual/automática) o, si no, la activa
+function pfKcalPreview(){
+  const f=diarioSelectedFecha, ori=document.querySelector('input[name="pf-obj-origen"]:checked'), ob=document.getElementById('pf-obj-kcal');
+  if(ori&&ori.value==='manual'){ const v=ob&&ob.value!==''?Number(ob.value):NaN; return Number.isFinite(v)&&v>0?{obj:Math.round(v),t:'objetivo manual del formulario'}:null; }
+  if(ori&&ori.value==='auto'){ const a=objetivoKcalAuto(f); return a?{obj:a.obj,t:'estimación automática de este día'}:null; }
+  const o=objetivoKcalGeneralFecha(f); return o?{obj:o.obj,t:o.origen==='manual'?'objetivo manual':'estimación automática'}:null;
+}
+function pfMacrosPintar(prefix,L,res,peso){
+  const g=id=>document.getElementById(id);
+  MACRO_KEYS.forEach(k=>{
+    const modo=g(prefix+'-'+k+'-modo').value, v=g(prefix+'-'+k+'-valor'), r=res[k], er=L.errs.find(e=>e.k===k);
+    const propio=modo==='g'||modo==='pct';
+    v.style.display=propio?'':'none'; g(prefix+'-'+k+'-u').textContent=modo==='pct'?'%':(modo==='g'?'g':'');
+    let t='';
+    if(er) t=`<span class="mf-bad">${escAttr(er.txt)}</span>`;
+    else if(r.modo==='none') t=modo==='general'?'Como el general: sin objetivo.':'';
+    else{
+      const pre=modo==='general'?'Como el general: ':'';
+      if(r.modo==='gkg') t=pre+(r.g!=null?`= <b>${mfN(r.g)} g</b> (${mfN(peso)} kg) · ${mfN(r.kcal)} kcal`:(r.motivo==='sin_peso'?'Registra tu peso para calcular los gramos.':'Indica los g por kg en el campo de proteína.'));
+      else if(r.modo==='pct') t=pre+(r.g!=null?`= <b>${mfN(r.g)} g</b> · ${mfN(r.kcal)} kcal`:'No se pueden calcular los gramos: no hay objetivo calórico.');
+      else t=pre+`${mfN(r.kcal)} kcal${r.pct!=null?' · '+mfN(r.pct)+' % de las kcal':''}`;
+    }
+    g(prefix+'-'+k+'-res').innerHTML=t;
+  });
+}
+function pfMacrosResumenHtml(res,kcalObj,baseTxt,botonNormalizar){
+  const sum=macrosResumen(res,kcalObj), hayPct=MACRO_KEYS.some(k=>res[k].modo==='pct');
+  let h=`<div>Base calórica: ${kcalObj?`<b>${kcalObj} kcal</b> (${baseTxt})`:'<b>no disponible</b>'}.</div>`;
+  h+=`<div>Macros configurados: <b>${sum.act.length} de 3</b> · representan <b>${Math.round(sum.kcal)} kcal</b>${kcalObj&&sum.calc.length?` (${mfN(sum.kcal/kcalObj*100)} % del objetivo)`:''}${sum.parcial?' · solo cuentan los configurados':''}.</div>`;
+  if(hayPct) h+=`<div>Suma de porcentajes: <b>${mfN(sum.pctSum)} %</b> ${sum.todosPct?(sum.completaPct?'· distribución completa ✓':'· distribución incompleta'):'· (se exige 100 % cuando los tres van en %)'}</div>`;
+  h+=sum.avisos.map(t=>`<div class="mf-warn">⚠ ${escAttr(t)}</div>`).join('');
+  if(sum.todosPct&&!sum.completaPct&&sum.pctSum>0&&botonNormalizar) h+=`<button type="button" class="of-btn" onclick="${botonNormalizar}">Ajustar a 100 % (proporcional)</button>`;
+  return h;
+}
+function pfMacrosCambio(){
+  const g=id=>document.getElementById(id); if(!g('pf-mac-proteinas-modo')) return;
+  const L=pfMacrosLeer(), kc=pfKcalPreview(), kcalObj=kc?kc.obj:null, peso=pesoParaFecha(diarioSelectedFecha);
+  const gkgEl=g('pf-proteina'), gkg=gkgEl&&gkgEl.value!==''&&Number(gkgEl.value)>0?Number(gkgEl.value):null;
+  const res=macroResolver(L.cfg,kcalObj,peso,gkg);
+  pfMacrosPintar('pf-mac',L,res,peso);
+  g('pf-mac-sum').innerHTML=pfMacrosResumenHtml(res,kcalObj,kc?kc.t:'',"pfMacrosNormalizar('pf-mac')");
+  if(typeof pfActCambio==='function') pfActCambio();
+}
+// Solo a petición del usuario: escala los tres % proporcionalmente para que sumen 100 (el último absorbe el redondeo)
+function pfMacrosNormalizar(prefix){
+  prefix=prefix||'pf-mac'; const gen=prefix!=='pf-mac';
+  const L=pfMacrosLeerPref(prefix,gen); if(L.errs.length||!MACRO_KEYS.every(k=>L.cfg[k].modo==='pct')) return;
+  const tot=MACRO_KEYS.reduce((a,k)=>a+L.cfg[k].valor,0); if(!(tot>0)) return;
+  const nv={}; let acum=0;
+  MACRO_KEYS.forEach((k,i)=>{ nv[k]=i<2?Math.round(L.cfg[k].valor*100/tot*10)/10:Math.round((100-acum)*10)/10; acum+=nv[k]; });
+  MACRO_KEYS.forEach(k=>{ document.getElementById(prefix+'-'+k+'-valor').value=nv[k]; });
+  if(gen) pfActCambio(); else pfMacrosCambio();
+}
+// ── Bloque «Objetivos por tipo de día» (F3.3) ──
+const ACT_SETS=[['ent','entrenamiento'],['des','descanso']];
+function actFormHtml(){
+  const a=actividadCfg(), dif=a.modo==='diferenciado', hoy=isoDate(new Date());
+  const bloque=([s,tipo])=>{ const c=a[tipo]; return `<div class="act-set"><div class="of-t">${TIPO_DIA_LABEL[tipo]}</div>
+    <div class="rg-field"><label>Objetivo calórico (kcal/día)</label><input type="number" step="10" min="0" id="pf-act-${s}-kcal" value="${c.kcal!=null?c.kcal:''}" placeholder="vacío = como el general" oninput="pfActCambio()"></div>
+    ${macrosFilasHtml('pf-act-'+s+'-mac',c.macros,'pfActCambio()',true)}<div id="pf-act-${s}-sum" class="mf-sum"></div></div>`; };
+  return `<div class="of-box act-box"><div class="of-t">Objetivos por tipo de día</div>
+    <div class="of-opts">
+      <label class="of-opt"><input type="radio" name="pf-act-modo" id="pf-act-modo-unico" value="unico" ${dif?'':'checked'} onchange="pfActCambio()"> <b>Un único objetivo</b><small>la configuración general de arriba, todos los días</small></label>
+      <label class="of-opt"><input type="radio" name="pf-act-modo" id="pf-act-modo-dif" value="diferenciado" ${dif?'checked':''} onchange="pfActCambio()"> <b>Entrenamiento y descanso</b><small>objetivos distintos según el tipo de día</small></label>
+    </div>
+    <div id="pf-act-dif" style="display:${dif?'':'none'}">
+      <div class="of-opts">
+        <label class="of-opt"><input type="radio" name="pf-act-tipo" id="pf-act-tipo-auto" value="auto" ${a.tipo_dia==='auto'?'checked':''}> <b>Automático</b><small>entrenamiento = gimnasio o cardio registrados ese día; una sesión futura no cuenta</small></label>
+        <label class="of-opt"><input type="radio" name="pf-act-tipo" id="pf-act-tipo-manual" value="manual" ${a.tipo_dia==='manual'?'checked':''}> <b>Manual</b><small>eliges el tipo de cada día en el Diario; sin elegir = descanso</small></label>
+      </div>
+      <div class="rg-field"><label>Aplicar desde</label><input type="date" id="pf-act-desde" value="${dif&&a.desde?a.desde:hoy}" oninput="pfActCambio()"></div>
+      <p class="of-n" id="pf-act-desde-n"></p>
+      ${ACT_SETS.map(bloque).join('')}
+      <p class="of-n">Las kcal de ejercicio nunca se suman al objetivo, y elegir el tipo de un día no modifica el registro de actividad.</p>
+    </div></div>`;
+}
+function pfActLeer(){
+  const g=id=>document.getElementById(id), cur=actividadCfg(), errs=[];
+  const modo=(document.querySelector('input[name="pf-act-modo"]:checked')||{}).value==='diferenciado'?'diferenciado':'unico';
+  const tipo_dia=(document.querySelector('input[name="pf-act-tipo"]:checked')||{}).value==='manual'?'manual':'auto';
+  const out={modo,tipo_dia,desde:cur.desde,manual:cur.manual};
+  ACT_SETS.forEach(([s,tipo])=>{
+    const nom=TIPO_DIA_LABEL[tipo], err=[]; let kcal=null;
+    const kv=g('pf-act-'+s+'-kcal').value;
+    if(kv!==''){ const v=Number(kv); if(Number.isFinite(v)&&v>=500&&v<=10000) kcal=Math.round(v); else err.push(nom+': el objetivo calórico debe estar entre 500 y 10.000 kcal, o dejarse vacío (= como el general).'); }
+    const L=pfMacrosLeerPref('pf-act-'+s+'-mac',true); L.errs.forEach(e=>err.push(nom+' · '+e.txt));
+    if(err.length){ if(modo==='diferenciado') errs.push(...err); out[tipo]=cur[tipo]; }   // en «único» un borrador inválido no bloquea: se conserva lo guardado
+    else out[tipo]={kcal,macros:L.cfg};
+  });
+  if(modo==='diferenciado'){ const d=g('pf-act-desde').value; if(RE_FECHA.test(d)&&!isNaN(new Date(d+'T00:00:00'))) out.desde=d; else errs.push('Indica desde qué fecha se aplican los objetivos por tipo de día.'); }
+  return {cfg:out,errs};
+}
+function pfActCambio(){
+  const g=id=>document.getElementById(id); if(!g('pf-act-modo-unico')) return;
+  const dif=(document.querySelector('input[name="pf-act-modo"]:checked')||{}).value==='diferenciado';
+  g('pf-act-dif').style.display=dif?'':'none'; if(!dif) return;
+  const gen=pfMacrosLeer().cfg, peso=pesoParaFecha(diarioSelectedFecha), gkgEl=g('pf-proteina'), gkg=gkgEl&&gkgEl.value!==''&&Number(gkgEl.value)>0?Number(gkgEl.value):null, kcBase=pfKcalPreview();
+  ACT_SETS.forEach(([s,tipo])=>{
+    const kv=g('pf-act-'+s+'-kcal').value; let kc=kcBase;
+    if(kv!==''){ const v=Number(kv); if(Number.isFinite(v)&&v>=500&&v<=10000) kc={obj:Math.round(v),t:'objetivo propio de '+TIPO_DIA_LABEL[tipo].toLowerCase()}; else kc=null; }
+    const L=pfMacrosLeerPref('pf-act-'+s+'-mac',true), cfg={};
+    MACRO_KEYS.forEach(k=>{ cfg[k]=L.cfg[k].modo==='general'?gen[k]:L.cfg[k]; });
+    const res=macroResolver(cfg,kc?kc.obj:null,peso,gkg);
+    pfMacrosPintar('pf-act-'+s+'-mac',L,res,peso);
+    const todosPropios=MACRO_KEYS.every(k=>L.cfg[k].modo==='pct');
+    const kvMal=kv!==''&&!kc?`<div class="mf-warn">⚠ El objetivo calórico debe estar entre 500 y 10.000 kcal, o vacío.</div>`:'';
+    g('pf-act-'+s+'-sum').innerHTML=kvMal+pfMacrosResumenHtml(res,kc?kc.obj:null,kc?(kv!==''?kc.t:kc.t+' · sin kcal propias'):'',todosPropios?"pfMacrosNormalizar('pf-act-"+s+"-mac')":'');
+  });
+  const d=g('pf-act-desde').value, hoy=isoDate(new Date()), n=g('pf-act-desde-n');
+  n.innerHTML=!RE_FECHA.test(d)?'<span class="mf-bad">Indica una fecha.</span>':(d<hoy?'<span class="mf-bad">⚠ Fecha pasada: desde '+fmtFechaLarga(d)+' el Diario mostrará, para los días ya vividos, el objetivo de su tipo de día en vez del general. No cambia ningún registro.</span>':'Antes de esa fecha se mantiene la configuración general: lo ya registrado no cambia.');
+}
+function macroDescCfg(k,c,gkg){ return c.modo==='none'?'sin objetivo':(c.modo==='g'?mfN(c.valor)+' g':(c.modo==='pct'?mfN(c.valor)+' % de las kcal':(gkg!=null?mfN(gkg)+' g por kg':'g por kg'))); }
 async function guardarPerfilBasico(){
   if(!sb) return;
   const altura=parseFloat(document.getElementById('pf-altura').value)||null;
@@ -1758,6 +2078,30 @@ async function guardarPerfilBasico(){
     }
     if(!borra&&previo!=null&&objKcal!==previo&&!confirm('Tu objetivo manual guardado es '+previo+' kcal. ¿Cambiarlo a '+(objKcal==null?'«sin valor»':objKcal+' kcal')+'?')) return;
   }
+  let macCfg;                                   // undefined = el formulario no trae la sección de macros
+  if(document.getElementById('pf-mac-proteinas-modo')){
+    const L=pfMacrosLeer(); if(L.errs.length){ alert(L.errs[0].txt); return; }
+    macCfg=L.cfg;
+    const ant=macrosCfgActual();
+    if(JSON.stringify(macrosParaGuardar(ant))!==JSON.stringify(macrosParaGuardar(macCfg))){
+      if(!perfilTieneColumna('objetivos_macros')){ alert('No se pueden guardar los objetivos de macronutrientes: la tabla «perfil» aún no tiene la columna objetivos_macros. Aplica antes la migración SQL de F3.2 en Supabase. No se ha guardado nada.'); return; }
+      const dif=MACRO_KEYS.filter(k=>ant[k].modo!=='none'&&JSON.stringify(macrosParaGuardar(ant)[k])!==JSON.stringify(macrosParaGuardar(macCfg)[k]));
+      if(dif.length&&!confirm('Vas a cambiar objetivos de macronutrientes ya guardados:\n'+dif.map(k=>'• '+MACRO_NOMBRE[k]+': '+macroDescCfg(k,ant[k],PERFIL&&PERFIL.proteina_objetivo_gkg)+' → '+macroDescCfg(k,macCfg[k],proteinaGkg)).join('\n')+'\n¿Continuar?')) return;
+    }
+  }
+  let actCfg;                                   // undefined = el formulario no trae el bloque de tipos de día
+  if(document.getElementById('pf-act-modo-unico')){
+    const L=pfActLeer(); if(L.errs.length){ alert(L.errs[0]); return; }
+    actCfg=L.cfg;
+    const ant=actividadCfg();
+    if(JSON.stringify(actParaGuardar(ant))!==JSON.stringify(actParaGuardar(actCfg))){
+      if(!perfilTieneColumna('objetivos_actividad')){ alert('No se pueden guardar los objetivos por tipo de día: la tabla «perfil» aún no tiene la columna objetivos_actividad. Aplica antes la migración SQL de F3.3 en Supabase. No se ha guardado nada.'); return; }
+      const msg=[];
+      if(ant.modo==='diferenciado') msg.push('Vas a cambiar la configuración por tipo de día ya guardada. Los días que elegiste a mano se conservan.');
+      if(actCfg.modo==='diferenciado'&&actCfg.desde<isoDate(new Date())) msg.push('La fecha de inicio ('+fmtFechaLarga(actCfg.desde)+') es pasada: los días ya vividos desde entonces mostrarán el objetivo de su tipo de día en lugar del general (no se modifica ningún registro).');
+      if(msg.length&&!confirm(msg.join('\n\n')+'\n\n¿Continuar?')) return;
+    }
+  }
   const cambios={
     altura_cm:altura,fecha_nacimiento:fnac,tmb_manual:tmb,
     peso_objetivo_kg:pesoObjetivo,ritmo_semanal_kg:ritmo,proteina_objetivo_gkg:proteinaGkg
@@ -1766,15 +2110,18 @@ async function guardarPerfilBasico(){
   // así guardar el perfil no falla en una base de datos que todavía no las tenga.
   if(objKcal!==undefined&&(objKcal!==null||perfilTieneColumna('objetivo_kcal'))) cambios.objetivo_kcal=objKcal;
   if(origen!==undefined&&colOrigen) cambios.objetivo_origen=origen;
+  // Los macros solo se escriben si han cambiado (y la columna existe): guardar el perfil sin tocarlos no los modifica
+  if(macCfg!==undefined&&perfilTieneColumna('objetivos_macros')&&JSON.stringify(macrosParaGuardar(macrosCfgActual()))!==JSON.stringify(macrosParaGuardar(macCfg))) cambios.objetivos_macros=macrosParaGuardar(macCfg);
+  if(actCfg!==undefined&&perfilTieneColumna('objetivos_actividad')&&JSON.stringify(actParaGuardar(actividadCfg()))!==JSON.stringify(actParaGuardar(actCfg))) cambios.objetivos_actividad=actParaGuardar(actCfg);
   try{
     const {data,error}=await sb.from('perfil').update(cambios).eq('id',1).select().single();
     if(error){
-      const col=['objetivo_origen','objetivo_kcal'].find(c=>c in cambios&&new RegExp(c,'i').test(error.message||''));
+      const col=['objetivos_actividad','objetivos_macros','objetivo_origen','objetivo_kcal'].find(c=>c in cambios&&new RegExp(c,'i').test(error.message||''));
       if(col) alert('No se pudo guardar: la tabla «perfil» aún no tiene la columna '+col+'. Aplica antes la migración SQL de F3.1 en Supabase. No se ha guardado nada.');
       else alert('No se pudo guardar: '+error.message);
       return;
     }
-    const noConf=!data||typeof data!=='object'||('objetivo_kcal' in cambios&&Number(data.objetivo_kcal||0)!==Number(cambios.objetivo_kcal||0))||('objetivo_origen' in cambios&&data.objetivo_origen!==cambios.objetivo_origen);
+    const noConf=!data||typeof data!=='object'||('objetivo_kcal' in cambios&&Number(data.objetivo_kcal||0)!==Number(cambios.objetivo_kcal||0))||('objetivo_origen' in cambios&&data.objetivo_origen!==cambios.objetivo_origen)||('objetivos_macros' in cambios&&JSON.stringify(macrosParaGuardar(macrosCfgDesde(data.objetivos_macros,data.proteina_objetivo_gkg)))!==JSON.stringify(cambios.objetivos_macros))||('objetivos_actividad' in cambios&&JSON.stringify(actParaGuardar(actCfgNorm(data.objetivos_actividad)))!==JSON.stringify(cambios.objetivos_actividad));
     if(noConf){ alert('La base de datos no ha confirmado los cambios del perfil. No se ha dado nada por guardado; inténtalo de nuevo.'); return; }
     PERFIL=data; closeModal(); renderDiario();
   }catch(e){ alert('No se pudo guardar: '+((e&&e.message)||'error de conexión')); }
@@ -1791,21 +2138,24 @@ function editarPerfilForm(){
     <hr style="border:none;border-top:1px solid var(--line, #e5dede);margin:1rem 0">
     <div class="rg-field"><label>Peso objetivo (kg, opcional)</label><input type="number" step="0.1" id="pf-peso-obj" value="${PERFIL&&PERFIL.peso_objetivo_kg!=null?PERFIL.peso_objetivo_kg:''}" placeholder="Ej: 60"></div>
     <div class="rg-field"><label>Ritmo semanal deseado (kg/semana, opcional)</label><input type="number" step="0.05" id="pf-ritmo" value="${PERFIL&&PERFIL.ritmo_semanal_kg!=null?PERFIL.ritmo_semanal_kg:''}" placeholder="Ej: -0.3 para perder, 0.2 para ganar"></div>
-    <div class="rg-field"><label>Proteína objetivo (g por kg de peso, opcional)</label><input type="number" step="0.1" id="pf-proteina" value="${PERFIL&&PERFIL.proteina_objetivo_gkg!=null?PERFIL.proteina_objetivo_gkg:''}" placeholder="Ej: 1.6"></div>
+    <div class="rg-field"><label>Proteína objetivo (g por kg de peso, opcional)</label><input type="number" step="0.1" id="pf-proteina" value="${PERFIL&&PERFIL.proteina_objetivo_gkg!=null?PERFIL.proteina_objetivo_gkg:''}" placeholder="Ej: 1.6" oninput="pfMacrosCambio()"></div>
     <div class="of-box">
       <div class="of-t">Objetivo calórico diario</div>
       <div class="of-opts">
-        <label class="of-opt"><input type="radio" name="pf-obj-origen" id="pf-obj-origen-manual" value="manual" ${objetivoKcalOrigen()==='manual'?'checked':''}> <b>Manual</b><small>el valor que tú indicas</small></label>
-        <label class="of-opt"><input type="radio" name="pf-obj-origen" id="pf-obj-origen-auto" value="auto" ${objetivoKcalOrigen()==='auto'?'checked':''}> <b>Estimación automática</b><small>gasto estimado del día + ritmo semanal</small></label>
+        <label class="of-opt"><input type="radio" name="pf-obj-origen" id="pf-obj-origen-manual" value="manual" ${objetivoKcalOrigen()==='manual'?'checked':''} onchange="pfMacrosCambio()"> <b>Manual</b><small>el valor que tú indicas</small></label>
+        <label class="of-opt"><input type="radio" name="pf-obj-origen" id="pf-obj-origen-auto" value="auto" ${objetivoKcalOrigen()==='auto'?'checked':''} onchange="pfMacrosCambio()"> <b>Estimación automática</b><small>gasto estimado del día + ritmo semanal</small></label>
       </div>
-      <div class="rg-field"><label>Objetivo manual (kcal/día)</label><input type="number" step="10" min="0" id="pf-obj-kcal" value="${objetivoKcalManual()!=null?objetivoKcalManual():''}" placeholder="kcal por día" oninput="document.getElementById('pf-obj-origen-manual').checked=true"></div>
+      <div class="rg-field"><label>Objetivo manual (kcal/día)</label><input type="number" step="10" min="0" id="pf-obj-kcal" value="${objetivoKcalManual()!=null?objetivoKcalManual():''}" placeholder="kcal por día" oninput="document.getElementById('pf-obj-origen-manual').checked=true;pfMacrosCambio()"></div>
       <p class="of-n">${(()=>{ const a=objetivoKcalAuto(diarioSelectedFecha); return a?`Estimación automática para el día que estás viendo: <b>${a.obj} kcal</b> (gasto ${a.gasto} ${a.bal<=0?'−':'+'} ${Math.abs(a.bal)}). Solo se usa si eliges «Estimación automática».`:'Estimación automática no disponible ahora: '+dashMotivoSinObjetivo(diarioSelectedFecha,true).txt; })()}</p>
       <p class="of-n">Activo ahora: <b>${(()=>{ const o=objetivoKcalFecha(diarioSelectedFecha); return o?o.obj+' kcal · '+(o.origen==='manual'?'manual':'estimación automática'):'ninguno'; })()}</b>. Cambiar de origen no borra el valor manual guardado${perfilTieneColumna('objetivo_origen')?'':' (para eso hace falta la columna <code>objetivo_origen</code>; sin ella, elegir la estimación automática borra el valor manual, previa confirmación)'}.</p>
     </div>
+     ${macrosFormHtml()}
+    ${actFormHtml()}
     <p style="font-size:.8em;opacity:.7">Con el ritmo semanal, el Diario te mostrará tu objetivo de déficit/superávit del día (1kg ≈ 7700kcal) y si vas en línea con él.</p>
     <button class="rg-btn rg-btn-save" style="width:100%" onclick="guardarPerfilBasico()">Guardar</button>
   `;
   document.getElementById('modal').classList.add('open');
+  pfMacrosCambio(); pfActCambio();
 }
 function diarioAutoSave(){ clearTimeout(diarioSaveTimer); diarioSaveTimer=setTimeout(guardarDiarioDia,600); }
 async function guardarDiarioDia(){
@@ -2147,13 +2497,19 @@ function dalOtrosHtml(otros){
 }
 // Comparación con objetivos del día: kcal (función única) y proteína (perfil). Hidratos y grasas no tienen objetivo en la configuración: no se inventan.
 function dalObjetivoHtml(fecha,r,ed){
-  const o=objetivoKcalFecha(fecha), pObj=proteinaObjetivoFecha(fecha), hay=r.nReg>0, prov=ed.estado!=='completo';
+  const o=objetivoKcalFecha(fecha), hay=r.nReg>0, prov=ed.estado!=='completo';
   const cmp=(cons,obj,u)=>{ const d=Math.round(obj)-Math.round(cons); return d>=0?`restan <b>${d} ${u}</b>`:`superado en <b>${-d} ${u}</b>`; };
   const l=[];
-  if(o) l.push(`<div><span>Objetivo calórico <i class="ob-badge ${o.origen==='manual'?'ob-man':'ob-auto'}">${o.origen==='manual'?'Manual':'Estimación automática'}</i></span><b>${o.obj} kcal</b>${hay?` · consumido ${Math.round(r.kcal)} kcal · ${cmp(r.kcal,o.obj,'kcal')}`:' · sin información registrada: no se compara'}</div>`);
+  if(o) l.push(`<div><span>Objetivo calórico <i class="ob-badge ${o.origen==='manual'?'ob-man':'ob-auto'}">${o.origen==='manual'?'Manual':'Estimación automática'}</i>${o.tipo?` <i class="td-mini td-${o.tipo==='entrenamiento'?'ent':'des'}">${TIPO_DIA_LABEL[o.tipo]}</i>`:''}</span><b>${o.obj} kcal</b>${hay?` · consumido ${Math.round(r.kcal)} kcal · ${cmp(r.kcal,o.obj,'kcal')}`:' · sin información registrada: no se compara'}</div>`);
   else l.push(`<div><span>Objetivo calórico</span>sin configurar · <a href="#" onclick="editarPerfilForm();return false;">Configurar objetivos</a></div>`);
-  if(pObj!=null&&Math.round(pObj)>0) l.push(`<div><span>Objetivo de proteína</span><b>${Math.round(pObj)} g</b>${hay?` · consumido ${Math.round(r.proteinas)} g · ${cmp(r.proteinas,pObj,'g')}`:' · sin información registrada'}</div>`);
-  l.push(`<div><span>Hidratos y grasas</span>sin objetivo configurado: se muestran los totales sin comparar</div>`);
+  const NOM={proteinas:'proteína',carbos:'hidratos',grasas:'grasas'}, sin=[];
+  MACRO_KEYS.forEach(k=>{
+    const m=objetivoMacroFecha(k,fecha);
+    if(m.g!=null&&Math.round(m.g)>0) l.push(`<div><span>Objetivo de ${NOM[k]}</span><b>${Math.round(m.g)} g</b> <small>(${macroDesc(m)})</small>${hay?` · consumido ${Math.round(r[k])} g · ${cmp(r[k],m.g,'g')}`:' · sin información registrada'}</div>`);
+    else if(m.modo==='none'){ if(k!=='proteinas') sin.push(k); }
+    else l.push(`<div><span>Objetivo de ${NOM[k]}</span>${m.motivo==='sin_kcal'?mfN(m.valor)+' % de las kcal, pero no hay objetivo calórico activo: sin gramos que comparar':(m.motivo==='sin_peso'?'falta tu peso para calcularlo':'configuración no válida · <a href="#" onclick="editarPerfilForm();return false;">revisar</a>')}</div>`);
+  });
+  if(sin.length) l.push(`<div><span>${sin.map(k=>MACRO_NOMBRE[k]==='Carbohidratos'?'Hidratos':MACRO_NOMBRE[k]).join(' y ')}</span>sin objetivo configurado: se muestran los totales sin comparar</div>`);
   return `<div class="dal-obj">${l.join('')}${hay&&prov?`<p class="dal-obj-n">Comparación provisional: el día no está completo (${DIA_ESTADO_LABEL[ed.estado].toLowerCase()}).</p>`:''}</div>`;
 }
 function renderDiarioAlimentacion(fecha){
@@ -2344,9 +2700,10 @@ function resumenSemana(f){
   const n=incl.length, media=n?Object.fromEntries(NUTR.map(k=>[k,suma[k]/n])):null;
   const objMedio=fn=>{ if(!n) return null; const v=incl.map(e=>fn(e.fecha)); return v.every(x=>x!=null)?v.reduce((a,b)=>a+b,0)/n:null; };
   const oK=objMedio(x=>{ const o=objetivoKcalFecha(x); return o?o.obj:null; });
-  const oP=objMedio(x=>{ const o=proteinaObjetivoFecha(x); return o!=null&&Math.round(o)>0?o:null; });
+  const oMac=k=>objMedio(x=>{ const m=objetivoMacroFecha(k,x); return m.g!=null&&Math.round(m.g)>0?m.g:null; });
+  const oP=oMac('proteinas'), oC=oMac('carbos'), oG=oMac('grasas');
   const excl={}; estados.forEach(e=>{ if(e.estado!=='completo') excl[e.estado]=(excl[e.estado]||0)+1; });
-  return {fechas,estados,n,media,objetivoKcal:oK,objetivoProt:oP,excl,error:err?err.st.err:null,cargando};
+  return {fechas,estados,n,media,objetivoKcal:oK,objetivoProt:oP,objetivoCarbos:oC,objetivoGrasas:oG,excl,error:err?err.st.err:null,cargando};
 }
 function reintentarSemana(f){ fechasSemanaDe(f).forEach(x=>{ if(!registroEnVentana(x)) delete REG_MESES[x.slice(0,7)]; }); fechasSemanaDe(f).forEach(asegurarRegistroFecha); renderDiario(); }
 function renderDiarioSemana(){
@@ -2365,21 +2722,66 @@ function renderDiarioSemana(){
   const oKtxt=objetivoKcalManual()!=null?'objetivo fijado en tu perfil':'sin objetivo calórico configurado';
   return `<div class="diario-semana">${cab}
     <p class="sw-n">${w.n?`Media diaria sobre <b>${w.n}</b> ${w.n===1?'día completo':'días completos'}.`:'Ningún día completo esta semana: no hay promedio (no se rellena con ceros).'}${exTxt?` No cuentan: ${exTxt}.`:''}</p>
-    <div class="sw-grid">${celda('Kcal consumidas','kcal','kcal',w.objetivoKcal,oKtxt)}${celda('Proteínas','proteinas','g',w.objetivoProt,'sin objetivo de proteína')}${celda('Carbohidratos','carbos','g',null,'sin objetivo configurado')}${celda('Grasas','grasas','g',null,'sin objetivo configurado')}</div>
+    <div class="sw-grid">${celda('Kcal consumidas','kcal','kcal',w.objetivoKcal,oKtxt)}${celda('Proteínas','proteinas','g',w.objetivoProt,'sin objetivo de proteína')}${celda('Carbohidratos','carbos','g',w.objetivoCarbos,'sin objetivo configurado')}${celda('Grasas','grasas','g',w.objetivoGrasas,'sin objetivo configurado')}</div>
   </div>`;
 }
 
 // Tarjeta «Objetivo calórico»: qué valor usa la app ahora y de dónde viene (manual ≠ estimación)
+// Elegir (o quitar) el tipo de día de UNA fecha. Solo escribe en perfil.objetivos_actividad: nunca toca registros de actividad ni de comidas.
+async function setTipoDiaManual(fecha,tipo){
+  const a=actividadCfg();
+  if(a.modo!=='diferenciado'||(a.desde&&fecha<a.desde)){ showToast('Esa fecha usa la configuración general: el tipo de día no se aplica.',5000); return; }
+  if(!perfilTieneColumna('objetivos_actividad')){ showToast('Falta la columna objetivos_actividad en «perfil» (migración F3.3). No se ha guardado nada.',7000); return; }
+  try{
+    // se lee la fila actual y se cambia SOLO esa fecha, para no pisar elecciones hechas desde otro dispositivo
+    const cur=await sb.from('perfil').select('objetivos_actividad').eq('id',1).single();
+    if(cur.error) throw cur.error;
+    const fresh=actCfgNorm(cur.data&&cur.data.objetivos_actividad);
+    if(fresh.modo!=='diferenciado'){ showToast('La configuración por tipo de día ha cambiado en otro dispositivo. Recarga la página.',7000); return; }
+    if(tipo) fresh.manual[fecha]=tipo; else delete fresh.manual[fecha];
+    const nuevo=actParaGuardar(fresh);
+    const r=await sb.from('perfil').update({objetivos_actividad:nuevo}).eq('id',1).select().single();
+    if(r.error) throw r.error;
+    if(!r.data||JSON.stringify(actParaGuardar(actCfgNorm(r.data.objetivos_actividad)))!==JSON.stringify(nuevo)){ showToast('La base de datos no ha confirmado el cambio de tipo de día. No se ha dado por guardado.',7000); return; }
+    PERFIL=r.data; renderDiario();
+    showToast(tipo?'Día marcado como '+TIPO_DIA_LABEL[tipo].toLowerCase():'Tipo de día restablecido');
+  }catch(e){ showToast('No se pudo cambiar el tipo de día: '+sbErrTxt(e)+'. No se ha guardado nada.',7000); }
+}
+function tipoDiaChipMini(f){
+  if(actividadCfg().modo!=='diferenciado') return '';
+  const t=tipoDiaFecha(f); if(t.tipo==='general') return '';
+  return ` <i class="td-mini td-${t.tipo==='entrenamiento'?'ent':'des'}" title="${escAttr(TIPO_DIA_LABEL[t.tipo]+(t.fuente==='manual'?' (manual)':''))}">${t.tipo==='entrenamiento'?'E':'D'}${t.fuente==='manual'?'*':''}</i>`;
+}
+function tipoDiaPanelHtml(f){
+  const a=actividadCfg(), t=tipoDiaFecha(f);
+  if(a.modo!=='diferenciado') return `<p class="ob-n">Tipo de día: un único objetivo para todos los días. <a href="#" onclick="editarPerfilForm();return false;">Distinguir entrenamiento y descanso</a></p>`;
+  const cls=t.tipo==='entrenamiento'?'td-ent':(t.tipo==='descanso'?'td-des':'td-gen');
+  let h=`<div class="td-panel"><div class="td-row"><span class="td-chip ${cls}">${TIPO_DIA_LABEL[t.tipo]}${t.fuente==='manual'?' · manual':''}</span><small>${a.tipo_dia==='manual'?'Tipo de día: manual':'Tipo de día: automático'} · desde el ${fmtFechaLarga(a.desde)}</small></div><p class="ob-n">${escAttr(t.txt)}</p>`;
+  if(t.tipo!=='general'){
+    const pin=a.manual[f]||null, b=(v,txt)=>`<button type="button" class="td-b${pin===v?' on':''}" onclick="setTipoDiaManual('${f}',${v?`'${v}'`:'null'})">${txt}</button>`;
+    h+=`<div class="td-btns">${b('entrenamiento','Entrenamiento')}${b('descanso','Descanso')}<button type="button" class="td-b${pin?'':' on'}" onclick="setTipoDiaManual('${f}',null)">${a.tipo_dia==='manual'?'Sin elegir':'Automático'}</button></div>`;
+  }
+  return h+'</div>';
+}
+function macrosCardHtml(f){
+  const o=objetivoKcalFecha(f), kcalObj=o?o.obj:null;
+  const res=macroResolver(macrosCfgFecha(f),kcalObj,pesoParaFecha(f),PERFIL?PERFIL.proteina_objetivo_gkg:null), sum=macrosResumen(res,kcalObj);
+  if(!sum.act.length) return `<div class="ob-mac"><div class="ob-h"><span>Macronutrientes</span><a href="#" onclick="editarPerfilForm();return false;">Configurar</a></div><p class="ob-n">Sin objetivos de proteínas, carbohidratos ni grasas configurados.</p></div>`;
+  const fila=k=>{ const r=res[k]; const txt=r.modo==='none'?'sin objetivo':(r.g!=null?`<b class="mono">${mfN(r.g)} g</b> · ${mfN(r.kcal)} kcal · ${macroDesc(r)}`:(r.motivo==='sin_kcal'?mfN(r.valor)+' % · sin gramos (falta objetivo calórico)':(r.motivo==='sin_peso'?'falta tu peso':'no válido'))); return `<div class="ob-mf"><span>${MACRO_NOMBRE[k]}</span><span>${txt}</span></div>`; };
+  return `<div class="ob-mac"><div class="ob-h"><span>Macronutrientes</span><a href="#" onclick="editarPerfilForm();return false;">Cambiar</a></div>${MACRO_KEYS.map(fila).join('')}
+    <p class="ob-n">Representan <b>${Math.round(sum.kcal)} kcal</b>${kcalObj?` (${mfN(sum.kcal/kcalObj*100)} % del objetivo de ${kcalObj} kcal)`:''}${sum.parcial?' · solo cuentan los macros configurados':''}.</p>${sum.avisos.map(t=>`<p class="ob-w">⚠ ${escAttr(t)}</p>`).join('')}</div>`;
+}
 function renderObjetivoCard(){
   const f=diarioSelectedFecha, o=objetivoKcalFecha(f), man=objetivoKcalManual(), auto=objetivoKcalAuto(f), orig=objetivoKcalOrigen();
   const badge=o?`<i class="ob-badge ${o.origen==='manual'?'ob-man':'ob-auto'}">${o.origen==='manual'?'Manual':'Estimación automática'}</i>`:'';
   const cab=o?`<b class="ob-v mono">${o.obj} kcal</b>${badge}`:`<b class="ob-v">Sin objetivo activo</b>`;
   const sub=o?'':`<p class="ob-n">${orig==='manual'?'Tienes elegido el origen manual pero no hay kcal guardadas.':escAttr(dashMotivoSinObjetivo(f,true).txt)}</p>`;
-  const otras=[
+  const gen=objetivoKcalGeneralFecha(f);
+  const otras=(o&&o.tipo)?[o.deGeneral?'Este tipo de día no tiene kcal propias: usa el objetivo general':'Objetivo general (no se usa en esta fecha): '+(gen?gen.obj+' kcal':'sin objetivo')]:[
     orig==='auto'?(man!=null?`Objetivo manual guardado (no se usa): ${man} kcal`:'Objetivo manual: ninguno guardado'):(auto?`Estimación automática de este día (no se usa): ${auto.obj} kcal`:'Estimación automática: no disponible'),
   ].join('');
   return `<div class="ob-card ${o?(o.origen==='manual'?'is-man':'is-auto'):'is-none'}"><div class="ob-h"><span>Objetivo calórico activo</span><a href="#" onclick="editarPerfilForm();return false;">Cambiar</a></div>
-    <div class="ob-main">${cab}</div>${sub}<p class="ob-n">${otras}. Es el que usan Inicio, el Diario y los promedios.</p></div>`;
+    <div class="ob-main">${cab}</div>${tipoDiaPanelHtml(f)}${sub}<p class="ob-n">${otras}. Es el que usan Inicio, el Diario y los promedios.</p>${macrosCardHtml(f)}</div>`;
 }
 function renderDiarioResumenMes(){
   const y=diarioMonthDate.getFullYear(), m=diarioMonthDate.getMonth();
@@ -2422,7 +2824,7 @@ function renderDiarioMesLista(){
     const ciclo=cicloInfoFecha(fecha);
     const entreno=row&&((row.gimnasio_min>0)||(row.cardio_min>0));
     rows+=`<div class="dm-row ${fecha===diarioSelectedFecha?'sel':''}" onclick="selectDiarioDay('${fecha}')">
-      <span class="dm-d" title="${escAttr(DIA_ESTADO_LABEL[infoC.estado]||'')}">${d}${ciclo&&ciclo.diaCiclo===1?' 🔴':''}${entreno?' 🏋️':''}${infoC.estado==='completo'?' ✓':(infoC.estado==='parcial'||infoC.estado==='datos_incompletos'?' ◐':'')}</span>
+      <span class="dm-d" title="${escAttr(DIA_ESTADO_LABEL[infoC.estado]||'')}">${d}${ciclo&&ciclo.diaCiclo===1?' 🔴':''}${entreno?' 🏋️':''}${tipoDiaChipMini(fecha)}${infoC.estado==='completo'?' ✓':(infoC.estado==='parcial'||infoC.estado==='datos_incompletos'?' ◐':'')}</span>
       <span class="dm-peso">${row&&row.peso!=null?row.peso+'kg':'—'}</span>
       <span class="dm-pasos">${row&&row.pasos!=null?row.pasos:'—'}</span>
       <span class="dm-def ${balance==null?'na':(balance<=0?'pos':'neg')}" ${balance!=null&&infoC.pendientes?'title="Provisional: hay comidas planificadas sin registrar"':''}>${balance==null?'—':(balance<=0?'−':'+')+Math.abs(balance)+' kcal'+(infoC.pendientes?'*':'')}</span>
@@ -4192,7 +4594,7 @@ function dashKcalHtml(f,dd){
     ${dashRingSVG(cons+pendK,cons,o.obj)}
     <div class="kc-stats">
       <div class="kc-row kc-big"><span>Consumidas</span><b>${cons} kcal</b></div>
-      <div class="kc-row"><span>Objetivo ${o.origen==='manual'?'(manual)':'(estimado)'}</span><b>${o.obj} kcal</b></div>
+      <div class="kc-row"><span>Objetivo ${o.origen==='manual'?'(manual)':'(estimado)'}${o.tipo?' · '+TIPO_DIA_LABEL[o.tipo]:''}</span><b>${o.obj} kcal</b></div>
       <div class="kc-row"><span>${pasado?'Superadas':'Restantes'}</span><b>${Math.abs(resta)} kcal</b></div>
     </div>
     ${legend}<p class="kc-note">${baseTxt}</p></div>`;
@@ -4200,7 +4602,7 @@ function dashKcalHtml(f,dd){
 
 // Objetivo diario de cada macro. Solo la proteína tiene objetivo configurable en la app (g por kg de peso).
 function dashObjetivoMacro(key,f){
-  if(key==='proteinas'){ const o=proteinaObjetivoFecha(f); return o!=null&&Math.round(o)>0?Math.round(o):null; }
+  { const m=objetivoMacroFecha(key,f); return m.g!=null&&Math.round(m.g)>0?Math.round(m.g):null; }
   return null;
 }
 function dashRenderMacro(m,dd,f){
@@ -4450,14 +4852,14 @@ async function dashReintentar(){
 }
 // Objetivo de proteína / macros sin objetivo: explica la causa real y ofrece la acción que corresponde
 function dashSinObjetivoMacroHtml(m,f){
-  if(m.key!=='proteinas') return `<p class="dm-none">Todavía no hay objetivo de ${m.nombre.toLowerCase()} en la app: solo se puede configurar el de proteína.</p>`;
-  if(LOAD_ERR.perfil||LOAD_ERR.diario) return `<p class="dm-none">No se ha podido cargar tu ${LOAD_ERR.perfil?'perfil':'diario'}, así que no se puede calcular el objetivo de proteína.</p>`;
-  if(!PERFIL||PERFIL.proteina_objetivo_gkg==null) return `<p class="dm-none">Sin objetivo de proteína: indica tus g por kg de peso en tu perfil.</p><button type="button" class="da-cta" onclick="editarPerfilForm()">Configurar objetivo</button>`;
-  if(pesoParaFecha(f)==null) return `<p class="dm-none">Para calcular el objetivo de proteína necesitas registrar tu peso.</p><button type="button" class="da-cta" onclick="dashRegistrarPeso()">Registrar peso</button>`;
-  return `<p class="dm-none">El objetivo de proteína configurado no es válido. Revísalo en tu perfil.</p><button type="button" class="da-cta" onclick="editarPerfilForm()">Revisar objetivo</button>`;
+  const nom=m.nombre.toLowerCase(), cfgBtn=t=>`<button type="button" class="da-cta" onclick="editarPerfilForm()">${t}</button>`;
+  if(LOAD_ERR.perfil||LOAD_ERR.diario) return `<p class="dm-none">No se ha podido cargar tu ${LOAD_ERR.perfil?'perfil':'diario'}, así que no se puede calcular el objetivo de ${nom}.</p>`;
+  const o=objetivoMacroFecha(m.key,f);
+  if(o.modo==='none') return `<p class="dm-none">Sin objetivo de ${nom}: configúralo en tu perfil (en gramos o como % de las kcal).</p>${cfgBtn('Configurar objetivo')}`;
+  if(o.motivo==='sin_kcal') return `<p class="dm-none">El objetivo de ${nom} es un ${mfN(o.valor)} % de las kcal, pero no hay objetivo calórico activo para calcular los gramos.</p>${cfgBtn('Configurar objetivo calórico')}`;
+  if(o.motivo==='sin_peso') return `<p class="dm-none">Para calcular el objetivo de ${nom} necesitas registrar tu peso.</p><button type="button" class="da-cta" onclick="dashRegistrarPeso()">Registrar peso</button>`;
+  return `<p class="dm-none">El objetivo de ${nom} configurado no es válido. Revísalo en tu perfil.</p>${cfgBtn('Revisar objetivo')}`;
 }
-
-// Registrar sobre datos no cargados podría sobrescribir registros reales (upsert): se bloquea con una explicación
 function dashBloqueoRegistro(){ return bloqueoRegistroFecha(dashFecha); }
 // Reutiliza el modal genérico (el mismo que el perfil) para elegir la comida y abre después el registro existente
 function dashRegistrarComida(){

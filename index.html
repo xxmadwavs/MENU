@@ -1045,6 +1045,32 @@ button.dc-name:hover{text-decoration-color:var(--green)}
 .td-b{padding:.3rem .65rem;border:1px solid var(--line);background:var(--paper);border-radius:var(--r-sm);font-size:.72rem;font-weight:700;cursor:pointer;color:var(--ink-soft)}
 .td-b.on{background:var(--gold-light);border-color:var(--gold);color:#7a5a12}
 .td-mini{font-style:normal;font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:10px;border:1px solid var(--line);vertical-align:middle}
+/* F4.1 · medidas corporales */
+.med-card{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r);padding:.8rem .9rem;margin-bottom:.85rem;box-shadow:var(--shadow)}
+.med-card .ob-h{margin-bottom:.3rem}
+.med-row{padding:.55rem 0;border-top:1px solid var(--line)}
+.med-row label{display:block;font-size:.84rem;font-weight:700;margin-bottom:.25rem}
+.med-row label small{font-weight:600;color:var(--ink-soft)}
+.med-in{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap}
+.med-in input{width:6.5rem;padding:.45rem .55rem;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--paper);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.9rem;min-height:40px}
+.med-in input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px var(--green-light)}
+.med-u{font-size:.8rem;font-weight:700;color:var(--ink-soft);min-width:1.6rem}
+.med-b{min-height:40px;padding:0 .8rem;border:1.5px solid var(--green);border-radius:999px;background:var(--green);color:#fbf6ea;font-family:'Inter',sans-serif;font-size:.76rem;font-weight:700;cursor:pointer}
+.med-b.med-del{background:none;color:var(--clay);border-color:var(--clay)}
+.med-b.med-sec{background:none;color:var(--green)}
+.med-b:disabled{opacity:.5;cursor:default}
+.med-h{font-size:.7rem;color:var(--ink-soft);margin-top:.25rem;line-height:1.4}
+.med-lk{background:none;border:0;padding:0 .4rem 0 0;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;color:var(--green);text-decoration:underline;cursor:pointer;min-height:28px}
+.med-new{border-top:1px dashed var(--line);margin-top:.5rem;padding-top:.6rem}
+.med-new select,.med-new input[type=text]{padding:.45rem .55rem;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;font-size:.84rem;min-height:40px}
+.med-new input[type=text]{width:11rem;max-width:100%}
+.med-warn{font-size:.78rem;line-height:1.5;color:#7a5a12;background:#fbf1d8;border-radius:var(--r-sm);padding:.55rem .7rem;margin:.4rem 0}
+.med-hist{margin-top:.8rem;border-top:1px solid var(--line);padding-top:.6rem}
+.med-hrow{display:block;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-sm);padding:.5rem .65rem;margin-bottom:.35rem;cursor:pointer;font-family:'Inter',sans-serif;color:var(--ink)}
+.med-hrow.sel{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
+.med-hd{display:block;font-size:.7rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:.15rem}
+.med-chip{display:inline-block;margin:2px 8px 2px 0;font-size:.8rem}
+.med-chip b{font-family:'IBM Plex Mono',monospace}
 </style>
 </head>
 <body>
@@ -1382,7 +1408,7 @@ async function loadMenuData(){
 async function loadData(){
   await loadMenuData();
   document.getElementById('today-label').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
-  await Promise.all([loadRegistroRango(), loadIngredientesExtra(), loadPerfil(), loadDiario(), loadCiclos()]);
+  await Promise.all([loadRegistroRango(), loadIngredientesExtra(), loadPerfil(), loadDiario(), loadCiclos(), loadMedidas()]);
   document.getElementById('cal-loading').style.display='none';
   document.getElementById('cal-content').style.display='block';
   renderWeekDots();
@@ -3020,6 +3046,7 @@ function renderDiario(){
     ${renderDiarioChart()}
     ${renderObjetivoCard()}
     ${renderDiarioDayCard()}
+    <div id="med-wrap">${medCardHtml()}</div>
     ${renderDiarioSemana()}
     <div class="week-nav">
       <button onclick="diarioPrevMonth()">‹</button>
@@ -3030,6 +3057,216 @@ function renderDiario(){
     ${renderDiarioMesLista()}
   `;
 }
+
+/* ══════════ F4.1 · MEDIDAS CORPORALES ══════════
+   Peso y cintura NO cambian: siguen en la tabla `diario` (columnas peso y cintura_cm), con su autoguardado y la gráfica de siempre.
+   Las medidas nuevas van en tablas propias (ver F4.1_migracion.sql): medidas_corporales (una fila por fecha+medida SOLO si
+   se ha introducido un valor) y medidas_tipos (nombres de las medidas personalizadas). No se estima ningún valor. */
+const MED_STD=[{clave:'cadera',nombre:'Cadera',unidad:'cm'},{clave:'muslo',nombre:'Muslo',unidad:'cm'},{clave:'brazo',nombre:'Brazo',unidad:'cm'}];
+const MED_RESERVADOS=['peso','cintura'];
+const MED_UNIDADES=['cm','kg','%'];
+const MED_MAX={cm:300,kg:500,'%':100};
+let MEDIDAS={}, MEDIDAS_TIPOS=[], MED_ESTADO={cargado:false,err:null,sinMigracion:false}, MED_DRAFT={}, MED_HIST_N=30, MED_BUSY=false;
+function medKey(f,t){ return f+'|'+t; }
+function medFaltaTabla(m){ return /does not exist|schema cache|could not find the table|relation/i.test(String(m||'')); }
+async function medPaginar(tabla,orden){ // PostgREST corta en 1000 filas por consulta: se pagina para no perder historial
+  let all=[], from=0; const PAGE=1000;
+  for(;;){
+    const {data,error}=await sb.from(tabla).select('*').order(orden,{ascending:true}).range(from,from+PAGE-1);
+    if(error) throw error;
+    all=all.concat(data||[]);
+    if(!data||data.length<PAGE) break;
+    from+=PAGE;
+  }
+  return all;
+}
+async function loadMedidas(){ // nunca lanza y NO usa LOAD_ERR: si falta la migración, el resto de la app no cambia
+  MED_ESTADO={cargado:false,err:null,sinMigracion:false};
+  if(!sb){ MED_ESTADO.err=SIN_BD; return; }
+  try{
+    const tipos=await medPaginar('medidas_tipos','clave');
+    const filas=await medPaginar('medidas_corporales','id');
+    MEDIDAS_TIPOS=tipos.sort((a,b)=>String(a.creado_en||'').localeCompare(String(b.creado_en||''))||String(a.clave).localeCompare(String(b.clave)));
+    MEDIDAS={}; filas.forEach(r=>{ MEDIDAS[medKey(r.fecha,r.tipo)]=r; });
+    MED_ESTADO.cargado=true;
+  }catch(e){ const m=sbErrTxt(e); MED_ESTADO={cargado:false,err:m,sinMigracion:medFaltaTabla(m)}; }
+}
+function medTipoInfo(clave){
+  const s=MED_STD.find(x=>x.clave===clave); if(s) return {clave,nombre:s.nombre,unidad:s.unidad,custom:false,archivada:false};
+  const c=MEDIDAS_TIPOS.find(x=>x.clave===clave);
+  return c?{clave,nombre:c.nombre,unidad:MED_UNIDADES.indexOf(c.unidad)!==-1?c.unidad:'cm',custom:true,archivada:!!c.archivada}:null;
+}
+function medTiposVisibles(){ return MED_STD.map(s=>medTipoInfo(s.clave)).concat(MEDIDAS_TIPOS.filter(c=>!c.archivada).map(c=>medTipoInfo(c.clave))); }
+function medNombreDe(clave){ const i=medTipoInfo(clave); return i?i.nombre:'Medida eliminada ('+clave+')'; }
+function medNombreValido(n,excluirClave){
+  n=String(n||'').trim().replace(/\s+/g,' ');
+  if(!n) return {ok:false,msg:'Escribe un nombre para la medida.'};
+  if(n.length>40) return {ok:false,msg:'El nombre es demasiado largo (máximo 40 caracteres).'};
+  const k=normTxt(n);
+  if(MED_RESERVADOS.indexOf(k)!==-1||MED_STD.some(s=>normTxt(s.nombre)===k)) return {ok:false,msg:'«'+n+'» ya es una medida estándar. Elige otro nombre.'};
+  if(MEDIDAS_TIPOS.some(t=>t.clave!==excluirClave&&normTxt(t.nombre)===k)) return {ok:false,msg:'Ya tienes una medida llamada «'+n+'».'};
+  return {ok:true,nombre:n};
+}
+function medParseValor(txt,unidad){
+  const s=String(txt==null?'':txt).trim().replace(',','.');
+  if(s==='') return {ok:false,msg:'Introduce un valor.'};
+  if(!/^\d+(\.\d{1,2})?$/.test(s)) return {ok:false,msg:'valor no válido: usa un número positivo con hasta 2 decimales.'};
+  const v=Number(s);
+  if(!(v>0)) return {ok:false,msg:'el valor debe ser mayor que 0.'};
+  if(v>MED_MAX[unidad]) return {ok:false,msg:'el valor no puede pasar de '+MED_MAX[unidad]+' '+unidad+'.'};
+  return {ok:true,v};
+}
+function medBloqueo(fecha){
+  if(MED_ESTADO.err) return MED_ESTADO.sinMigracion?'Falta aplicar la migración SQL F4.1: aún no se pueden guardar estas medidas.':'No se han podido cargar las medidas ('+MED_ESTADO.err+'): guardar ahora podría sobrescribir datos. Pulsa «Reintentar».';
+  if(fecha>isoDate(new Date())) return 'No se pueden registrar medidas en una fecha futura.';
+  if(MED_BUSY) return 'Se está guardando: espera un momento.';
+  return null;
+}
+function medDraft(clave,v){ MED_DRAFT[medKey(diarioSelectedFecha,clave)]=v; }
+function medRefresh(){ const w=document.getElementById('med-wrap'); if(w) w.innerHTML=medCardHtml(); }
+function medFmt(v,u){ return fmtN(v)+' '+u; }
+async function medGuardar(clave){
+  const fecha=diarioSelectedFecha, info=medTipoInfo(clave); if(!info) return;
+  const bl=medBloqueo(fecha); if(bl){ showToast(bl,6500); return; }
+  const el=document.getElementById('md-in-'+clave), dk=medKey(fecha,clave);
+  const raw=el?el.value:(MED_DRAFT[dk]!==undefined?MED_DRAFT[dk]:'');
+  const p=medParseValor(raw,info.unidad); if(!p.ok){ showToast(info.nombre+': '+p.msg,5000); return; }
+  const prev=MEDIDAS[dk];
+  if(prev&&Math.abs(Number(prev.valor)-p.v)<0.005){ delete MED_DRAFT[dk]; medRefresh(); showToast('Sin cambios.'); return; }
+  MED_BUSY=true;
+  try{
+    const row={fecha,tipo:clave,valor:p.v,actualizado_en:new Date().toISOString()};
+    const {data,error}=await sb.from('medidas_corporales').upsert(row,{onConflict:'fecha,tipo'}).select().single();
+    if(error){ showToast('No se ha guardado '+info.nombre+': '+sbErrTxt(error),7000); return; }
+    if(!data||data.fecha!==fecha||data.tipo!==clave||Math.abs(Number(data.valor)-p.v)>0.005){ showToast('La base de datos no ha confirmado el guardado de '+info.nombre+'. No se ha dado por guardado.',7000); return; }
+    MEDIDAS[dk]=data; delete MED_DRAFT[dk]; medRefresh();
+    showToast(prev?info.nombre+' actualizado (antes '+medFmt(prev.valor,info.unidad)+')':info.nombre+' guardado: '+medFmt(p.v,info.unidad));
+  }catch(e){ showToast('No se ha guardado '+info.nombre+': '+sbErrTxt(e),7000); }
+  finally{ MED_BUSY=false; }
+}
+async function medQuitar(clave){
+  const fecha=diarioSelectedFecha, info=medTipoInfo(clave), dk=medKey(fecha,clave), reg=MEDIDAS[dk]; if(!info||!reg) return;
+  const bl=medBloqueo(fecha); if(bl){ showToast(bl,6500); return; }
+  if(!confirm('¿Quitar «'+info.nombre+'» ('+medFmt(reg.valor,info.unidad)+') del '+fmtFechaLarga(fecha)+'? Solo se borra esta medida de este día; el resto de tus datos no cambia.')) return;
+  MED_BUSY=true;
+  try{
+    const {data,error}=await sb.from('medidas_corporales').delete().eq('fecha',fecha).eq('tipo',clave).select();
+    if(error){ showToast('No se pudo quitar: '+sbErrTxt(error),7000); return; }
+    if(!Array.isArray(data)||!data.length){ // sin eco del borrado: se comprueba el estado real
+      const chk=await sb.from('medidas_corporales').select('id').eq('fecha',fecha).eq('tipo',clave);
+      if(chk.error){ showToast('No se pudo confirmar el borrado: '+sbErrTxt(chk.error),7000); return; }
+      if(chk.data&&chk.data.length){ showToast('La base de datos no ha borrado la medida (¿faltan permisos?). No se ha quitado nada.',7000); return; }
+    }
+    delete MEDIDAS[dk]; delete MED_DRAFT[dk]; medRefresh(); showToast(info.nombre+' quitada de ese día');
+  }catch(e){ showToast('No se pudo quitar: '+sbErrTxt(e),7000); }
+  finally{ MED_BUSY=false; }
+}
+async function medNuevoTipo(){
+  if(MED_ESTADO.err||MED_BUSY){ showToast(medBloqueo(diarioSelectedFecha)||'Espera un momento.',6500); return; }
+  const nEl=document.getElementById('md-new-nombre'), uEl=document.getElementById('md-new-unidad');
+  const v=medNombreValido(nEl?nEl.value:''); if(!v.ok){ showToast(v.msg,5000); return; }
+  const unidad=uEl&&MED_UNIDADES.indexOf(uEl.value)!==-1?uEl.value:'cm';
+  const clave='x'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+  MED_BUSY=true;
+  try{
+    const {data,error}=await sb.from('medidas_tipos').insert({clave,nombre:v.nombre,unidad}).select().single();
+    if(error){ showToast('No se pudo crear la medida: '+sbErrTxt(error),7000); return; }
+    if(!data||data.clave!==clave||data.nombre!==v.nombre){ showToast('La base de datos no ha confirmado la nueva medida.',7000); return; }
+    MEDIDAS_TIPOS.push(data); medRefresh(); showToast('Medida «'+v.nombre+'» ('+unidad+') creada');
+  }catch(e){ showToast('No se pudo crear la medida: '+sbErrTxt(e),7000); }
+  finally{ MED_BUSY=false; }
+}
+async function medRenombrar(clave){
+  const info=medTipoInfo(clave); if(!info||!info.custom) return; // las medidas estándar no se renombran
+  if(MED_ESTADO.err||MED_BUSY){ showToast(medBloqueo(diarioSelectedFecha)||'Espera un momento.',6500); return; }
+  const nuevo=prompt('Nuevo nombre para «'+info.nombre+'». Sus registros se conservan y pasarán a mostrarse con el nombre nuevo:',info.nombre);
+  if(nuevo===null) return;
+  const v=medNombreValido(nuevo,clave); if(!v.ok){ showToast(v.msg,5000); return; }
+  if(v.nombre===info.nombre) return;
+  MED_BUSY=true;
+  try{
+    const {data,error}=await sb.from('medidas_tipos').update({nombre:v.nombre}).eq('clave',clave).select().single();
+    if(error){ showToast('No se pudo renombrar: '+sbErrTxt(error),7000); return; }
+    if(!data||data.nombre!==v.nombre){ showToast('La base de datos no ha confirmado el cambio de nombre.',7000); return; }
+    const i=MEDIDAS_TIPOS.findIndex(t=>t.clave===clave); if(i>=0) MEDIDAS_TIPOS[i]=data;
+    medRefresh(); showToast('Renombrada a «'+v.nombre+'»');
+  }catch(e){ showToast('No se pudo renombrar: '+sbErrTxt(e),7000); }
+  finally{ MED_BUSY=false; }
+}
+async function medArchivar(clave,archivar){ // nunca se borra una medida personalizada: se oculta y su historial se conserva
+  const info=medTipoInfo(clave); if(!info||!info.custom) return;
+  if(MED_ESTADO.err||MED_BUSY){ showToast(medBloqueo(diarioSelectedFecha)||'Espera un momento.',6500); return; }
+  if(archivar){
+    const n=Object.values(MEDIDAS).filter(r=>r.tipo===clave).length;
+    if(!confirm('¿Ocultar «'+info.nombre+'»? Dejará de aparecer para registrar, pero sus '+n+' registro'+(n===1?'':'s')+' se conserva'+(n===1?'':'n')+' en el historial y podrás restaurarla.')) return;
+  }
+  MED_BUSY=true;
+  try{
+    const {data,error}=await sb.from('medidas_tipos').update({archivada:!!archivar}).eq('clave',clave).select().single();
+    if(error){ showToast('No se pudo cambiar: '+sbErrTxt(error),7000); return; }
+    if(!data||!!data.archivada!==!!archivar){ showToast('La base de datos no ha confirmado el cambio.',7000); return; }
+    const i=MEDIDAS_TIPOS.findIndex(t=>t.clave===clave); if(i>=0) MEDIDAS_TIPOS[i]=data;
+    medRefresh(); showToast(archivar?'«'+info.nombre+'» oculta (historial conservado)':'«'+info.nombre+'» restaurada');
+  }catch(e){ showToast('No se pudo cambiar: '+sbErrTxt(e),7000); }
+  finally{ MED_BUSY=false; }
+}
+function medUltimo(clave,fecha,unidad){ // último valor REAL registrado en otra fecha (no se estima nada)
+  let mejor=null;
+  Object.values(MEDIDAS).forEach(r=>{ if(r.tipo===clave&&r.fecha!==fecha&&(!mejor||r.fecha>mejor.fecha)) mejor=r; });
+  return mejor?'Último registro: '+medFmt(mejor.valor,unidad)+' ('+new Date(mejor.fecha+'T00:00:00').toLocaleDateString('es-ES',{day:'numeric',month:'short',year:'numeric'})+')':'Aún sin registros de esta medida';
+}
+function medIrA(f){
+  if(!RE_FECHA.test(f||'')||f>isoDate(new Date())) return;
+  diarioSelectedFecha=f; const d=new Date(f+'T00:00:00'); diarioMonthDate=new Date(d.getFullYear(),d.getMonth(),1);
+  renderDiario();
+  const c=document.getElementById('med-card'); if(c&&c.scrollIntoView) c.scrollIntoView({block:'start',behavior:'smooth'});
+}
+function medMasHistorial(){ MED_HIST_N+=30; medRefresh(); }
+function medHistorialHtml(){
+  const por={}; const add=(f,o)=>{ (por[f]=por[f]||[]).push(o); };
+  Object.values(DIARIO).forEach(r=>{ if(!r) return; if(r.peso!=null) add(r.fecha,{o:0,n:'Peso',v:medFmt(r.peso,'kg')}); if(r.cintura_cm!=null) add(r.fecha,{o:1,n:'Cintura',v:medFmt(r.cintura_cm,'cm')}); });
+  const orden=MED_STD.map(s=>s.clave).concat(MEDIDAS_TIPOS.map(t=>t.clave));
+  Object.values(MEDIDAS).forEach(r=>{ const i=medTipoInfo(r.tipo), k=orden.indexOf(r.tipo); add(r.fecha,{o:2+(k<0?999:k),n:medNombreDe(r.tipo)+(i&&i.archivada?' (oculta)':''),v:medFmt(r.valor,i?i.unidad:'cm')}); });
+  const fechas=Object.keys(por).sort().reverse(), hoy=isoDate(new Date());
+  let h=`<div class="med-hist"><div class="ob-h"><span>Historial por fecha</span></div>
+    <div class="med-in" style="margin:.35rem 0 .6rem"><label for="md-ir" class="med-u" style="min-width:auto">Ir a la fecha</label><input type="date" id="md-ir" max="${hoy}" value="${escAttr(diarioSelectedFecha)}" onchange="medIrA(this.value)" style="width:auto"></div>`;
+  if(!fechas.length) return h+`<p class="ob-n">Todavía no hay mediciones registradas.</p></div>`;
+  h+=fechas.slice(0,MED_HIST_N).map(f=>{
+    const chips=por[f].sort((a,b)=>a.o-b.o).map(c=>`<span class="med-chip">${escAttr(c.n)} <b>${escAttr(c.v)}</b></span>`).join('');
+    return `<button type="button" class="med-hrow ${f===diarioSelectedFecha?'sel':''}" onclick="medIrA('${f}')"><span class="med-hd">${escAttr(new Date(f+'T00:00:00').toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short',year:'numeric'}))}</span>${chips}</button>`;
+  }).join('');
+  if(fechas.length>MED_HIST_N) h+=`<button type="button" class="med-b med-sec" onclick="medMasHistorial()">Mostrar más fechas (${fechas.length-MED_HIST_N} restantes)</button>`;
+  return h+`<p class="ob-n">Toca una fecha para verla y editarla. Solo aparecen fechas con alguna medición real.</p></div>`;
+}
+function medCardHtml(){
+  const f=diarioSelectedFecha, row=DIARIO[f]||{}, hoy=isoDate(new Date());
+  const peso=row.peso!=null?fmtN(row.peso)+' kg':'—', cin=row.cintura_cm!=null?fmtN(row.cintura_cm)+' cm':'—';
+  let h=`<div class="med-card" id="med-card"><div class="ob-h"><span>Medidas corporales</span><span>${escAttr(fmtFechaLarga(f))}</span></div>
+    <p class="ob-n">Peso (kg): <b>${peso}</b> · Cintura (cm): <b>${cin}</b>. Se editan en los campos de arriba y funcionan igual que siempre. Las medidas de abajo son opcionales e independientes: guarda solo las que midas hoy.</p>`;
+  if(MED_ESTADO.err){
+    h+=MED_ESTADO.sinMigracion
+      ?`<p class="med-warn">Para guardar cadera, muslo, brazo y medidas propias hay que aplicar la migración SQL F4.1 (<code>F4.1_migracion.sql</code>) en Supabase. Hasta entonces, peso y cintura funcionan con normalidad.</p>`
+      :`<p class="med-warn">No se han podido cargar las medidas adicionales (${escAttr(MED_ESTADO.err)}). No se muestran cifras ni se permite guardar, para no sobrescribir datos. <button type="button" class="med-lk" onclick="reintentarMedidas()">Reintentar</button></p>`;
+  }else if(f>hoy){
+    h+=`<p class="med-warn">No se pueden registrar medidas en una fecha futura.</p>`;
+  }else{
+    h+=medTiposVisibles().map(t=>{
+      const k=medKey(f,t.clave), reg=MEDIDAS[k], dr=MED_DRAFT[k], val=dr!==undefined?dr:(reg?fmtN(reg.valor):'');
+      const acc=t.custom?`<div class="med-h"><button type="button" class="med-lk" onclick="medRenombrar('${t.clave}')">Renombrar</button><button type="button" class="med-lk" onclick="medArchivar('${t.clave}',true)">Ocultar</button></div>`:'';
+      return `<div class="med-row"><label for="md-in-${t.clave}">${escAttr(t.nombre)} <small>(${t.unidad})</small></label>
+        <div class="med-in"><input type="text" inputmode="decimal" id="md-in-${t.clave}" value="${escAttr(val)}" placeholder="—" aria-label="${escAttr(t.nombre)} en ${t.unidad}" oninput="medDraft('${t.clave}',this.value)" onkeydown="if(event.key==='Enter')medGuardar('${t.clave}')"><span class="med-u">${t.unidad}</span>
+        <button type="button" class="med-b" onclick="medGuardar('${t.clave}')">${reg?'Actualizar':'Guardar'}</button>${reg?`<button type="button" class="med-b med-del" onclick="medQuitar('${t.clave}')">Quitar</button>`:''}</div>
+        <div class="med-h">${reg?'Registrado este día: '+medFmt(reg.valor,t.unidad)+' · ':'Sin registro este día · '}${escAttr(medUltimo(t.clave,f,t.unidad))}</div>${acc}</div>`;
+    }).join('');
+    h+=`<div class="med-new"><label for="md-new-nombre" class="med-u" style="display:block;margin-bottom:.3rem;min-width:auto">Nueva medida personalizada</label>
+      <div class="med-in"><input type="text" id="md-new-nombre" maxlength="40" placeholder="Ej. Muslo izquierdo"><select id="md-new-unidad" aria-label="Unidad">${MED_UNIDADES.map(u=>`<option value="${u}">${u}</option>`).join('')}</select><button type="button" class="med-b" onclick="medNuevoTipo()">Crear</button></div>
+      <div class="med-h">Cadera, muslo y brazo son estándar y no se renombran. La unidad de una medida propia no se puede cambiar después, para no alterar el significado de sus registros.</div></div>`;
+    const ocultas=MEDIDAS_TIPOS.filter(c=>c.archivada);
+    if(ocultas.length) h+=`<div class="med-h" style="margin-top:.5rem">Ocultas: ${ocultas.map(c=>`${escAttr(c.nombre)} <button type="button" class="med-lk" onclick="medArchivar('${c.clave}',false)">Restaurar</button>`).join(' · ')}</div>`;
+  }
+  return h+medHistorialHtml()+`</div>`;
+}
+async function reintentarMedidas(){ await loadMedidas(); medRefresh(); showToast(MED_ESTADO.err?'Sigue sin cargar: '+MED_ESTADO.err:'Medidas cargadas.',MED_ESTADO.err?6000:2600); }
 
 function getCurrentSemana(){ return SEMANAS[currentWeek % SEMANAS.length]; }
 

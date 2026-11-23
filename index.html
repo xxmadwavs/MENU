@@ -999,6 +999,11 @@ button.dc-name:hover{text-decoration-color:var(--green)}
 .of-opt{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem;font-size:.82rem;padding:.4rem .5rem;border:1px solid var(--line);border-radius:var(--r-sm);cursor:pointer}
 .of-opt small{color:var(--ink-soft);font-size:.7rem}
 .of-n{font-size:.74rem;line-height:1.45;color:var(--ink-soft);margin:.3rem 0 0}
+/* F3.5 · historial de cambios de objetivos */
+.hist-row{padding:.5rem 0;border-top:1px solid var(--line);font-size:.78rem;line-height:1.45}
+.hist-row:first-child{border-top:none}
+.hist-f{font-size:.68rem;color:var(--ink-soft)}
+.hist-v{font-family:'IBM Plex Mono',monospace;font-size:.74rem;overflow-wrap:anywhere}
 .ob-badge{font-style:normal;font-size:.62rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:20px;margin-left:6px;white-space:nowrap}
 .ob-man{background:var(--gold-light);color:#7a5a12;border:1px solid var(--gold)}
 .ob-auto{background:transparent;color:var(--ink-soft);border:1px dashed var(--ink-soft)}
@@ -1586,16 +1591,26 @@ function edadPerfil(){
   if(m<0||(m===0&&hoy.getDate()<nac.getDate())) edad--;
   return edad;
 }
-// Gasto calórico del día SIN el ajuste aprendido (Mifflin-St Jeor + pasos)
-function gastoBaseFecha(fechaISO){
+// ── F3.4 · Gasto energético: definiciones (la fórmula NO cambia respecto a F3.3) ──
+// · TMB: gasto basal. Es la TMB manual del perfil o, si no hay, Mifflin-St Jeor (fórmula mujer) × 1,1.
+// · Gasto estimado: resultado de la fórmula = TMB + pasos + ejercicio (+ ajuste aprendido). Siempre es una estimación.
+// · Gasto del dispositivo (diario.kcal_app): valor que el usuario introduce de su reloj/app; se trata como gasto TOTAL del día
+//   y SUSTITUYE a la fórmula: ese día no se suman pasos, ejercicio ni ajuste aprendido.
+// · Calorías activas: la app no las guarda ni las usa como tal (solo calcula kcal de pasos y ejercicio dentro de la fórmula).
+// · Cálculo automático (perfil.gasto_calculo_auto): si es false, no se estima nada por fórmula ni se recalibra; quedan solo los
+//   valores manuales (kcal del dispositivo de cada día, TMB manual, objetivo manual). Sin la columna, se considera activado.
+function gastoAutoActivo(){ return !(PERFIL&&PERFIL.gasto_calculo_auto===false); }
+// Desglose del gasto por fórmula: mismas entradas y misma aritmética (mismo orden de sumas) que antes de F3.4.
+function gastoDesgloseFecha(fechaISO){
   const peso=pesoParaFecha(fechaISO);
   if(!PERFIL||peso==null) return null;
-  let bmr, factorActividad;
+  let bmr, factorActividad, tmbOrigen;
   if(PERFIL.tmb_manual!=null){
     // TMB confirmada por apps/dispositivos: se usa directamente como base,
     // tal cual (sin recargo extra), sumándole solo pasos y ejercicio registrados.
     bmr=PERFIL.tmb_manual;
     factorActividad=1;
+    tmbOrigen='manual';
   }else{
     const edad=edadPerfil();
     if(!PERFIL.altura_cm||edad==null) return null;
@@ -1603,6 +1618,7 @@ function gastoBaseFecha(fechaISO){
     // Margen del 10% por actividad cotidiana no contada, solo aplica cuando el BMR
     // es una estimación por fórmula (no cuando ya es una TMB real confirmada).
     factorActividad=1.1;
+    tmbOrigen='formula';
   }
   const row=DIARIO[fechaISO];
   const pasos=(row&&row.pasos)||0;
@@ -1613,13 +1629,20 @@ function gastoBaseFecha(fechaISO){
   const cardioMin=(row&&row.cardio_min)||0;
   const kcalGym=gymMin*(6*3.5*peso/200);
   const kcalCardio=cardioMin*(7.5*3.5*peso/200);
-  return bmr*factorActividad+kcalPasos+kcalGym+kcalCardio;
+  return {peso,bmr,factorActividad,tmbOrigen,pasos,kcalPasos,gymMin,cardioMin,kcalGym,kcalCardio,
+          total:bmr*factorActividad+kcalPasos+kcalGym+kcalCardio};
+}
+// Gasto calórico del día SIN el ajuste aprendido (TMB + pasos + ejercicio)
+function gastoBaseFecha(fechaISO){
+  const d=gastoDesgloseFecha(fechaISO);
+  return d?d.total:null;
 }
 // Gasto estimado final: si tienes kcal reales de tu reloj/app ese día, mandan ellas.
 // Si no, se usa la fórmula (base + corrección aprendida de las recalibraciones).
 function gastoEstimadoFecha(fechaISO){
   const row=DIARIO[fechaISO];
   if(row && row.kcal_app!=null) return row.kcal_app;
+  if(!gastoAutoActivo()) return null; // F3.4: cálculo automático desactivado → solo valores manuales
   const base=gastoBaseFecha(fechaISO);
   if(base==null) return null;
   return base+(PERFIL&&PERFIL.ajuste_gasto_kcal||0);
@@ -1627,6 +1650,26 @@ function gastoEstimadoFecha(fechaISO){
 function gastoEsDeApp(fechaISO){
   const row=DIARIO[fechaISO];
   return !!(row && row.kcal_app!=null);
+}
+// F3.4 · De dónde sale el gasto mostrado ese día. tipo: 'dispositivo' | 'estimacion' | 'desactivado' | 'sin_datos'
+function gastoFuenteFecha(fechaISO){
+  if(gastoEsDeApp(fechaISO)) return {tipo:'dispositivo',etiqueta:'Dispositivo / app',txt:'Gasto total del día que introdujiste de tu reloj o app. Sustituye a la estimación: no se suman pasos, ejercicio ni ajuste aprendido.'};
+  if(!gastoAutoActivo()) return {tipo:'desactivado',etiqueta:'Cálculo automático desactivado',txt:'Sin kcal de dispositivo para este día y con el cálculo automático desactivado, no hay gasto.'};
+  const d=gastoDesgloseFecha(fechaISO);
+  if(!d) return {tipo:'sin_datos',etiqueta:'Sin datos',txt:'Faltan datos para estimar el gasto.'};
+  const aj=(PERFIL&&PERFIL.ajuste_gasto_kcal)||0;
+  const tmb=d.tmbOrigen==='manual'?'TMB manual':'TMB por fórmula (Mifflin-St Jeor × 1,1)';
+  return {tipo:'estimacion',etiqueta:'TMB y estimación',txt:'Estimación: '+tmb+' + pasos + ejercicio'+(aj?' + ajuste aprendido ('+(aj>0?'+':'')+Math.round(aj)+' kcal)':'')+'.'};
+}
+// F3.4 · Avisos de posible mezcla o solapamiento de fuentes (solo informan; no cambian ningún valor)
+function gastoAvisosFecha(fechaISO){
+  const av=[], row=DIARIO[fechaISO], d=gastoDesgloseFecha(fechaISO);
+  if(gastoEsDeApp(fechaISO)){
+    if(d&&Number(row.kcal_app)<d.bmr) av.push('El valor del dispositivo ('+Math.round(row.kcal_app)+' kcal) es menor que tu TMB ('+Math.round(d.bmr)+' kcal): parece calorías activas y no el gasto total. Se usa tal cual, pero el balance de este día puede salir muy por encima de lo real.');
+  }else if(gastoAutoActivo()&&d&&d.pasos>0&&d.cardioMin>0){
+    av.push('Pasos y cardio se suman en la estimación. Si tu cardio (caminar, correr) ya cuenta dentro de tus pasos, esa parte se contabiliza dos veces; la app no puede comprobarlo.');
+  }
+  return av;
 }
 // balance<0 → déficit (bien) · balance>0 → superávit
 function balanceFecha(fechaISO){
@@ -1865,6 +1908,7 @@ async function recalibrarDuracionCiclo(){
 // contra lo que predecía el déficit registrado, y ajusta ajuste_gasto_kcal poco a poco.
 async function recalibrarGastoSiToca(){
   if(!sb||!PERFIL) return;
+  if(!gastoAutoActivo()) return; // F3.4: con el cálculo automático desactivado no se aprende ni se escribe ningún ajuste
   if(LOAD_ERR.perfil||LOAD_ERR.diario||LOAD_ERR.registro||LOAD_ERR.datos) return; // con datos incompletos no se recalibra ni se escribe en el perfil
   const hoy=isoDate(new Date());
   if(PERFIL.ultima_recalibracion){
@@ -2050,6 +2094,106 @@ function pfActCambio(){
   n.innerHTML=!RE_FECHA.test(d)?'<span class="mf-bad">Indica una fecha.</span>':(d<hoy?'<span class="mf-bad">⚠ Fecha pasada: desde '+fmtFechaLarga(d)+' el Diario mostrará, para los días ya vividos, el objetivo de su tipo de día en vez del general. No cambia ningún registro.</span>':'Antes de esa fecha se mantiene la configuración general: lo ya registrado no cambia.');
 }
 function macroDescCfg(k,c,gkg){ return c.modo==='none'?'sin objetivo':(c.modo==='g'?mfN(c.valor)+' g':(c.modo==='pct'?mfN(c.valor)+' % de las kcal':(gkg!=null?mfN(gkg)+' g por kg':'g por kg'))); }
+// ── F3.5 · Historial de cambios de objetivos ──
+// No existía ningún historial previo que reutilizar: se usa una tabla nueva, perfil_historial (solo inserción; ver F3.5_migracion.sql).
+// Un cambio solo se da por registrado cuando la base de datos devuelve las filas insertadas. Si la tabla no existe o la escritura falla,
+// se avisa y el perfil ya guardado no se toca. Los cambios anteriores a la existencia del historial no se pueden reconstruir.
+// La recalibración automática (ajuste_gasto_kcal) y los datos del Diario (incluidas las kcal de dispositivo de cada día) no se registran aquí.
+const HIST_TABLA='perfil_historial';
+const HIST_TIPO_LABEL={objetivo_calorico:'Objetivo calórico',macros:'Objetivo de macros',modo_macros:'Modo de macros (g / %)',objetivos_entrenamiento:'Objetivos de entrenamiento',objetivos_descanso:'Objetivos de descanso',tipo_de_dia:'Configuración por tipo de día',tipo_dia_manual:'Tipo de día elegido a mano',calculo_automatico:'Cálculo automático del gasto',fuente_gasto:'Fuente del gasto'};
+function histNum(v){ if(v==null||v==='') return null; const n=Number(v); return Number.isFinite(n)?n:null; }
+function histKcalManual(p){ const n=histNum(p&&p.objetivo_kcal); return n!=null&&n>0?Math.round(n):null; }
+function histOrigen(p){ const o=p&&p.objetivo_origen; if(o==='manual'||o==='auto') return o; return histKcalManual(p)!=null?'manual':'auto'; }
+function histMacroVal(e,gkg){ // {modo[,valor]} comparable y legible
+  if(!e) return null;
+  if(e.modo==='g'||e.modo==='pct') return {modo:e.modo,valor:e.valor};
+  if(e.modo==='gkg') return {modo:'gkg',valor:histNum(gkg)};
+  return {modo:e.modo};
+}
+// Función pura: diferencias entre dos filas de perfil (antes / después, ya confirmada la segunda por la base de datos)
+function histDiff(antes,despues){
+  const A=antes||{}, D=despues||{}, out=[];
+  const nz=v=>v===undefined?null:v;
+  const add=(tipo,campo,a,n)=>{ if(JSON.stringify(nz(a))!==JSON.stringify(nz(n))) out.push({tipo,campo,valor_anterior:nz(a),valor_nuevo:nz(n)}); };
+  add('objetivo_calorico','objetivo_kcal',histKcalManual(A),histKcalManual(D));
+  add('objetivo_calorico','objetivo_origen',histOrigen(A),histOrigen(D));
+  add('objetivo_calorico','ritmo_semanal_kg',histNum(A.ritmo_semanal_kg),histNum(D.ritmo_semanal_kg));
+  const ma=macrosCfgDesde(A.objetivos_macros,A.proteina_objetivo_gkg), md=macrosCfgDesde(D.objetivos_macros,D.proteina_objetivo_gkg);
+  MACRO_KEYS.forEach(k=>{
+    const a=histMacroVal(ma[k],A.proteina_objetivo_gkg), n=histMacroVal(md[k],D.proteina_objetivo_gkg);
+    add(a&&n&&a.modo!==n.modo?'modo_macros':'macros',k,a,n);
+  });
+  const aa=actCfgNorm(A.objetivos_actividad), ad=actCfgNorm(D.objetivos_actividad);
+  add('tipo_de_dia','modo',aa.modo,ad.modo);
+  add('tipo_de_dia','tipo_dia',aa.tipo_dia,ad.tipo_dia);
+  add('tipo_de_dia','desde',aa.desde,ad.desde);
+  [['entrenamiento','objetivos_entrenamiento'],['descanso','objetivos_descanso']].forEach(([t,tipo])=>{
+    add(tipo,'kcal',aa[t].kcal,ad[t].kcal);
+    MACRO_KEYS.forEach(k=>{
+      const a=histMacroVal(aa[t].macros[k]), n=histMacroVal(ad[t].macros[k]), cm=a&&n&&a.modo!==n.modo;
+      add(cm?'modo_macros':tipo,(cm?t+'.':'')+k,a,n);
+    });
+  });
+  Array.from(new Set(Object.keys(aa.manual).concat(Object.keys(ad.manual)))).sort().forEach(f=>add('tipo_dia_manual',f,aa.manual[f]||null,ad.manual[f]||null));
+  add('calculo_automatico','gasto_calculo_auto',A.gasto_calculo_auto!==false,D.gasto_calculo_auto!==false);
+  const fu=p=>({fuente:histNum(p.tmb_manual)!=null?'manual':'formula',tmb_manual:histNum(p.tmb_manual)});
+  add('fuente_gasto','tmb_manual',fu(A),fu(D));
+  return out;
+}
+async function histRegistrar(entradas){
+  if(!entradas||!entradas.length) return {ok:true,n:0};
+  if(!sb) return {ok:false,motivo:SIN_BD};
+  try{
+    const {data,error}=await sb.from(HIST_TABLA).insert(entradas.map(e=>({tipo:e.tipo,campo:e.campo,valor_anterior:e.valor_anterior,valor_nuevo:e.valor_nuevo}))).select();
+    if(error) throw error;
+    if(!Array.isArray(data)||data.length!==entradas.length) throw new Error('la base de datos no devolvió todas las filas insertadas');
+    return {ok:true,n:data.length};
+  }catch(e){ return {ok:false,motivo:sbErrTxt(e)}; }
+}
+async function histRegistrarCambio(antes,despues){
+  let r;
+  try{ r=await histRegistrar(histDiff(antes,despues)); }catch(e){ r={ok:false,motivo:(e&&e.message)||'error desconocido'}; }
+  if(!r.ok) showToast('El cambio se ha guardado en tu perfil, pero NO se ha podido registrar en el historial: '+r.motivo+(/perfil_historial|schema cache|does not exist|relation/i.test(r.motivo)?' (¿falta aplicar la migración SQL de F3.5?)':'')+'.',9000);
+  return r;
+}
+function histFmt(tipo,campo,v){
+  if(v==null) return tipo==='tipo_dia_manual'?'sin elegir (automático)':'sin valor';
+  const mac=x=>x.modo==='g'?mfN(x.valor)+' g':x.modo==='pct'?mfN(x.valor)+' % de las kcal':x.modo==='gkg'?(x.valor!=null?mfN(x.valor)+' g por kg':'g por kg'):x.modo==='general'?'como el general':'sin objetivo';
+  if(tipo==='objetivo_calorico'){ if(campo==='objetivo_kcal') return v+' kcal'; if(campo==='objetivo_origen') return v==='manual'?'manual':'estimación automática'; if(campo==='ritmo_semanal_kg') return v+' kg/semana'; }
+  if(tipo==='macros'||tipo==='modo_macros'||tipo==='objetivos_entrenamiento'||tipo==='objetivos_descanso'){ if(campo==='kcal') return v+' kcal'; if(typeof v==='object') return mac(v); }
+  if(tipo==='tipo_de_dia'){ if(campo==='modo') return v==='diferenciado'?'entrenamiento y descanso':'un único objetivo'; if(campo==='tipo_dia') return v==='manual'?'manual':'automático'; return String(v); }
+  if(tipo==='tipo_dia_manual') return TIPO_DIA_LABEL[v]||String(v);
+  if(tipo==='calculo_automatico') return v?'activado':'desactivado';
+  if(tipo==='fuente_gasto') return v.fuente==='manual'?'TMB manual ('+v.tmb_manual+' kcal)':'TMB por fórmula';
+  return typeof v==='object'?JSON.stringify(v):String(v);
+}
+async function histAbrir(){
+  document.getElementById('modal-title').textContent='Historial de cambios de objetivos';
+  const body=document.getElementById('modal-body');
+  const volver='<button type="button" class="of-btn" style="margin-top:.8rem" onclick="editarPerfilForm()">Volver al perfil</button>';
+  body.innerHTML='<p class="of-n">Cargando…</p>'; document.getElementById('modal').classList.add('open');
+  if(!sb){ body.innerHTML='<p class="of-n">No se puede leer el historial: '+escAttr(SIN_BD)+'.</p>'+volver; return; }
+  try{
+    const {data,error}=await sb.from(HIST_TABLA).select('*').order('id',{ascending:false}).limit(200);
+    if(error) throw error;
+    const filas=(data||[]).slice().sort((a,b)=>String(b.creado_en).localeCompare(String(a.creado_en))||(a.id-b.id));
+    if(!filas.length){ body.innerHTML='<p class="of-n">Todavía no hay cambios registrados. El historial solo recoge los cambios hechos desde que existe: los anteriores no se pueden reconstruir.</p>'+volver; return; }
+    body.innerHTML='<p class="of-n">Últimos '+filas.length+' cambios registrados (más recientes primero).</p>'+filas.map(r=>{
+      const f=new Date(r.creado_en), fs=isNaN(f)?escAttr(r.creado_en):f.toLocaleString('es-ES',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+      const campo=r.tipo==='tipo_dia_manual'&&RE_FECHA.test(r.campo)?fmtFechaLarga(r.campo):r.campo;
+      return `<div class="hist-row"><div class="hist-f">${fs}</div><div><b>${escAttr(HIST_TIPO_LABEL[r.tipo]||r.tipo)}</b> · ${escAttr(campo)}</div><div class="hist-v">${escAttr(histFmt(r.tipo,r.campo,r.valor_anterior))} → ${escAttr(histFmt(r.tipo,r.campo,r.valor_nuevo))}</div></div>`;
+    }).join('')+volver;
+  }catch(e){
+    const m=sbErrTxt(e);
+    body.innerHTML='<p class="of-n">No se ha podido leer el historial: '+escAttr(m)+'.'+(/perfil_historial|schema cache|does not exist|relation/i.test(m)?' Es probable que falte aplicar la migración SQL de F3.5: hasta entonces los cambios no se registran.':'')+'</p>'+volver;
+  }
+}
+// Porcentajes de un conjunto de macros: solo si los tres van en %, deben sumar 100. Devuelve la suma si no cuadra (o null).
+function pctNoCuadra(cfg){
+  if(!cfg||!MACRO_KEYS.every(k=>cfg[k]&&cfg[k].modo==='pct')) return null;
+  const t=MACRO_KEYS.reduce((a,k)=>a+cfg[k].valor,0);
+  return Math.abs(t-100)>0.05?t:null;
+}
 async function guardarPerfilBasico(){
   if(!sb) return;
   const altura=parseFloat(document.getElementById('pf-altura').value)||null;
@@ -2086,6 +2230,8 @@ async function guardarPerfilBasico(){
     if(JSON.stringify(macrosParaGuardar(ant))!==JSON.stringify(macrosParaGuardar(macCfg))){
       if(!perfilTieneColumna('objetivos_macros')){ alert('No se pueden guardar los objetivos de macronutrientes: la tabla «perfil» aún no tiene la columna objetivos_macros. Aplica antes la migración SQL de F3.2 en Supabase. No se ha guardado nada.'); return; }
       const dif=MACRO_KEYS.filter(k=>ant[k].modo!=='none'&&JSON.stringify(macrosParaGuardar(ant)[k])!==JSON.stringify(macrosParaGuardar(macCfg)[k]));
+      const t0=pctNoCuadra(macCfg);
+      if(t0!=null&&!confirm('Los tres macros están en % y suman '+mfN(t0)+' %, no 100 %: la distribución '+(t0<100?'queda incompleta':'se pasa del 100 %')+'. No se corrige nada por su cuenta.\n\n¿Guardar igualmente?')) return;
       if(dif.length&&!confirm('Vas a cambiar objetivos de macronutrientes ya guardados:\n'+dif.map(k=>'• '+MACRO_NOMBRE[k]+': '+macroDescCfg(k,ant[k],PERFIL&&PERFIL.proteina_objetivo_gkg)+' → '+macroDescCfg(k,macCfg[k],proteinaGkg)).join('\n')+'\n¿Continuar?')) return;
     }
   }
@@ -2096,11 +2242,19 @@ async function guardarPerfilBasico(){
     const ant=actividadCfg();
     if(JSON.stringify(actParaGuardar(ant))!==JSON.stringify(actParaGuardar(actCfg))){
       if(!perfilTieneColumna('objetivos_actividad')){ alert('No se pueden guardar los objetivos por tipo de día: la tabla «perfil» aún no tiene la columna objetivos_actividad. Aplica antes la migración SQL de F3.3 en Supabase. No se ha guardado nada.'); return; }
+      const tAct=actCfg.modo==='diferenciado'?ACT_SETS.map(([s2,t2])=>[t2,pctNoCuadra(actCfg[t2].macros)]).filter(x=>x[1]!=null):[];
+      if(tAct.length&&!confirm(tAct.map(x=>TIPO_DIA_LABEL[x[0]]+': los tres macros están en % y suman '+mfN(x[1])+' %, no 100 %.').join('\n')+'\nNo se corrige nada por su cuenta.\n\n¿Guardar igualmente?')) return;
       const msg=[];
       if(ant.modo==='diferenciado') msg.push('Vas a cambiar la configuración por tipo de día ya guardada. Los días que elegiste a mano se conservan.');
       if(actCfg.modo==='diferenciado'&&actCfg.desde<isoDate(new Date())) msg.push('La fecha de inicio ('+fmtFechaLarga(actCfg.desde)+') es pasada: los días ya vividos desde entonces mostrarán el objetivo de su tipo de día en lugar del general (no se modifica ningún registro).');
       if(msg.length&&!confirm(msg.join('\n\n')+'\n\n¿Continuar?')) return;
     }
+  }
+  const gaEl=document.querySelector('input[name="pf-gasto-auto"]:checked');   // null = el formulario no trae este bloque
+  let gastoAuto;
+  if(gaEl&&perfilTieneColumna('gasto_calculo_auto')){
+    gastoAuto=gaEl.value==='si';
+    if(gastoAuto!==gastoAutoActivo()&&!gastoAuto&&!confirm('Vas a desactivar el cálculo automático del gasto.\n\nSe dejará de estimar el gasto por fórmula, de recalibrarlo y de calcular el objetivo automático. Se conservan tu TMB manual, las kcal de dispositivo de cada día, tu objetivo manual y el ajuste aprendido guardado. No se modifica ningún dato histórico.\n\n¿Continuar?')) return;
   }
   const cambios={
     altura_cm:altura,fecha_nacimiento:fnac,tmb_manual:tmb,
@@ -2110,20 +2264,22 @@ async function guardarPerfilBasico(){
   // así guardar el perfil no falla en una base de datos que todavía no las tenga.
   if(objKcal!==undefined&&(objKcal!==null||perfilTieneColumna('objetivo_kcal'))) cambios.objetivo_kcal=objKcal;
   if(origen!==undefined&&colOrigen) cambios.objetivo_origen=origen;
+  if(gastoAuto!==undefined&&gastoAuto!==gastoAutoActivo()) cambios.gasto_calculo_auto=gastoAuto;
   // Los macros solo se escriben si han cambiado (y la columna existe): guardar el perfil sin tocarlos no los modifica
   if(macCfg!==undefined&&perfilTieneColumna('objetivos_macros')&&JSON.stringify(macrosParaGuardar(macrosCfgActual()))!==JSON.stringify(macrosParaGuardar(macCfg))) cambios.objetivos_macros=macrosParaGuardar(macCfg);
   if(actCfg!==undefined&&perfilTieneColumna('objetivos_actividad')&&JSON.stringify(actParaGuardar(actividadCfg()))!==JSON.stringify(actParaGuardar(actCfg))) cambios.objetivos_actividad=actParaGuardar(actCfg);
   try{
     const {data,error}=await sb.from('perfil').update(cambios).eq('id',1).select().single();
     if(error){
-      const col=['objetivos_actividad','objetivos_macros','objetivo_origen','objetivo_kcal'].find(c=>c in cambios&&new RegExp(c,'i').test(error.message||''));
+      const col=['objetivos_actividad','objetivos_macros','objetivo_origen','objetivo_kcal','gasto_calculo_auto'].find(c=>c in cambios&&new RegExp(c,'i').test(error.message||''));
       if(col) alert('No se pudo guardar: la tabla «perfil» aún no tiene la columna '+col+'. Aplica antes la migración SQL de F3.1 en Supabase. No se ha guardado nada.');
       else alert('No se pudo guardar: '+error.message);
       return;
     }
-    const noConf=!data||typeof data!=='object'||('objetivo_kcal' in cambios&&Number(data.objetivo_kcal||0)!==Number(cambios.objetivo_kcal||0))||('objetivo_origen' in cambios&&data.objetivo_origen!==cambios.objetivo_origen)||('objetivos_macros' in cambios&&JSON.stringify(macrosParaGuardar(macrosCfgDesde(data.objetivos_macros,data.proteina_objetivo_gkg)))!==JSON.stringify(cambios.objetivos_macros))||('objetivos_actividad' in cambios&&JSON.stringify(actParaGuardar(actCfgNorm(data.objetivos_actividad)))!==JSON.stringify(cambios.objetivos_actividad));
+    const noConf=!data||typeof data!=='object'||('objetivo_kcal' in cambios&&Number(data.objetivo_kcal||0)!==Number(cambios.objetivo_kcal||0))||('objetivo_origen' in cambios&&data.objetivo_origen!==cambios.objetivo_origen)||('gasto_calculo_auto' in cambios&&(data.gasto_calculo_auto===false)!==(cambios.gasto_calculo_auto===false))||('objetivos_macros' in cambios&&JSON.stringify(macrosParaGuardar(macrosCfgDesde(data.objetivos_macros,data.proteina_objetivo_gkg)))!==JSON.stringify(cambios.objetivos_macros))||('objetivos_actividad' in cambios&&JSON.stringify(actParaGuardar(actCfgNorm(data.objetivos_actividad)))!==JSON.stringify(cambios.objetivos_actividad));
     if(noConf){ alert('La base de datos no ha confirmado los cambios del perfil. No se ha dado nada por guardado; inténtalo de nuevo.'); return; }
-    PERFIL=data; closeModal(); renderDiario();
+    const antesPerfil=PERFIL; PERFIL=data; closeModal(); renderDiario();
+    await histRegistrarCambio(antesPerfil,data); // F3.5: solo se da por registrado si la base de datos lo confirma
   }catch(e){ alert('No se pudo guardar: '+((e&&e.message)||'error de conexión')); }
 }
 // Reabre el formulario de altura/fecha/TMB/objetivos para poder corregirlo más adelante
@@ -2135,6 +2291,14 @@ function editarPerfilForm(){
     <div class="rg-field"><label>Fecha de nacimiento</label><input type="date" id="pf-fnac" value="${PERFIL&&PERFIL.fecha_nacimiento?PERFIL.fecha_nacimiento:''}"></div>
     <div class="rg-field"><label>TMB manual (kcal/día, opcional)</label><input type="number" id="pf-tmb" value="${PERFIL&&PERFIL.tmb_manual!=null?PERFIL.tmb_manual:''}" placeholder="Ej: 1448"></div>
     <p style="font-size:.8em;opacity:.7">Si rellenas la TMB, se usará esa cifra tal cual como base (en vez de calcularla con la fórmula), sumándole luego pasos y ejercicio. Déjala vacía para volver a calcularla por fórmula.</p>
+    <div class="of-box">
+      <div class="of-t">Cálculo automático del gasto</div>
+      <div class="of-opts">
+        <label class="of-opt"><input type="radio" name="pf-gasto-auto" id="pf-gasto-auto-si" value="si" ${gastoAutoActivo()?'checked':''} ${perfilTieneColumna('gasto_calculo_auto')?'':'disabled'}> <b>Activado</b><small>gasto estimado = TMB + pasos + ejercicio (+ ajuste aprendido)</small></label>
+        <label class="of-opt"><input type="radio" name="pf-gasto-auto" id="pf-gasto-auto-no" value="no" ${gastoAutoActivo()?'':'checked'} ${perfilTieneColumna('gasto_calculo_auto')?'':'disabled'}> <b>Desactivado</b><small>solo valores manuales: kcal de tu app/reloj de cada día</small></label>
+      </div>
+      <p class="of-n">Desactivarlo no borra nada: se conservan tu TMB manual, las kcal de dispositivo de cada día, tu objetivo manual y el ajuste aprendido guardado, y se deja de recalibrar. Sin gasto no hay balance ni objetivo automático para los días sin kcal de dispositivo.${perfilTieneColumna('gasto_calculo_auto')?'':' <b>Para usar este interruptor hace falta la columna <code>gasto_calculo_auto</code> (migración SQL de F3.4).</b>'}</p>
+    </div>
     <hr style="border:none;border-top:1px solid var(--line, #e5dede);margin:1rem 0">
     <div class="rg-field"><label>Peso objetivo (kg, opcional)</label><input type="number" step="0.1" id="pf-peso-obj" value="${PERFIL&&PERFIL.peso_objetivo_kg!=null?PERFIL.peso_objetivo_kg:''}" placeholder="Ej: 60"></div>
     <div class="rg-field"><label>Ritmo semanal deseado (kg/semana, opcional)</label><input type="number" step="0.05" id="pf-ritmo" value="${PERFIL&&PERFIL.ritmo_semanal_kg!=null?PERFIL.ritmo_semanal_kg:''}" placeholder="Ej: -0.3 para perder, 0.2 para ganar"></div>
@@ -2152,6 +2316,7 @@ function editarPerfilForm(){
      ${macrosFormHtml()}
     ${actFormHtml()}
     <p style="font-size:.8em;opacity:.7">Con el ritmo semanal, el Diario te mostrará tu objetivo de déficit/superávit del día (1kg ≈ 7700kcal) y si vas en línea con él.</p>
+    <button type="button" class="of-btn" style="margin-bottom:.6rem" onclick="histAbrir()">Ver historial de cambios de objetivos</button>
     <button class="rg-btn rg-btn-save" style="width:100%" onclick="guardarPerfilBasico()">Guardar</button>
   `;
   document.getElementById('modal').classList.add('open');
@@ -2584,7 +2749,7 @@ function renderDiarioDayCard(){
   const proteinaObj=proteinaObjetivoFecha(fecha);
 
   let macrosHtml;
-  const tieneDatosBase=PERFIL&&(PERFIL.tmb_manual!=null||(PERFIL.altura_cm&&PERFIL.fecha_nacimiento));
+  const tieneDatosBase=!gastoAutoActivo()||(PERFIL&&(PERFIL.tmb_manual!=null||(PERFIL.altura_cm&&PERFIL.fecha_nacimiento)));
   if(!tieneDatosBase){
     macrosHtml=`<div class="diario-setup">
       <p>Para calcular tu gasto automático necesito tu altura y fecha de nacimiento, o directamente tu TMB si ya la conoces (solo una vez):</p>
@@ -2606,10 +2771,14 @@ function renderDiarioDayCard(){
     }
     // Nota del ajuste aprendido por recalibración, si ya existe.
     let ajusteNote='';
-    if(!gastoEsDeApp(fecha) && PERFIL.ajuste_gasto_kcal){
+    if(!gastoEsDeApp(fecha) && gastoAutoActivo() && PERFIL.ajuste_gasto_kcal){
       const base=PERFIL.tmb_manual!=null?'tu TMB manual':'la fórmula';
       ajusteNote=`<div class="ddc-nota-sutil">Ajuste aprendido: ${PERFIL.ajuste_gasto_kcal>0?'+':''}${Math.round(PERFIL.ajuste_gasto_kcal)}kcal vs ${base} (según tu evolución real de peso)</div>`;
     }
+    // F3.4: fuente del gasto utilizado y avisos de posible mezcla/solapamiento de fuentes
+    const fte=gastoFuenteFecha(fecha);
+    const fuenteNote=`<div class="ddc-nota-sutil"><b>Fuente del gasto:</b> ${escAttr(fte.etiqueta)}. ${escAttr(fte.txt)}${fte.tipo==='dispositivo'?'':' Es una estimación, no una medición.'}</div>`
+      +gastoAvisosFecha(fecha).map(t=>`<div class="ddc-nota-sutil">⚠ ${escAttr(t)}</div>`).join('');
     // Línea de objetivo de déficit/superávit, si hay ritmo semanal configurado.
     let objetivoLine='';
     if(objetivo!=null && balance!=null){
@@ -2619,16 +2788,16 @@ function renderDiarioDayCard(){
     macrosHtml=`
       <div class="ddc-mini-stats">
         <div class="dms-item"><span class="dms-l">Consumidas (registradas)</span><span class="dms-v mono">${info.hayRegistro?Math.round(cons)+' kcal':'—'}</span></div>
-        <div class="dms-item"><span class="dms-l">${gastoLabel}</span><span class="dms-v mono">${gasto!=null?Math.round(gasto):'—'} kcal</span></div>
+        <div class="dms-item"><span class="dms-l">${gastoLabel}</span><span class="dms-v mono">${gasto!=null?(gastoEsDeApp(fecha)?'':'≈ ')+Math.round(gasto):'—'} kcal</span></div>
         <div class="dms-item"><span class="dms-l">Objetivo calórico</span><span class="dms-v mono">${objetivoKcalFecha(fecha)?objetivoKcalFecha(fecha).obj+' kcal':'—'}</span></div>
       </div>
-      ${pesoNote}${ajusteNote}
+      ${pesoNote}${ajusteNote}${fuenteNote}
       <div style="text-align:right;margin-top:2px"><a href="#" onclick="editarPerfilForm();return false;" style="font-size:.8em;opacity:.65">✏️ editar altura / fecha / TMB / objetivos</a></div>
       ${balance!=null?`<div class="ddc-balance-hero ${heroCls}">
-        <span class="dbh-label">${esDeficit?'Déficit':'Superávit'}</span>
-        <span class="dbh-value">${Math.abs(balance)} kcal</span>
+        <span class="dbh-label">${esDeficit?'Déficit':'Superávit'} (estimado)</span>
+        <span class="dbh-value">≈ ${Math.abs(balance)} kcal</span>
       </div>${incompletosFecha(fecha)?`<div class="ddc-nota-sutil">Provisional: hay alimentos registrados sin todos sus datos nutricionales; el consumo real puede ser mayor.</div>`:''}${info.pendientes?`<div class="ddc-nota-sutil">Provisional: ${info.pendientes} comida${info.pendientes===1?'':'s'} planificada${info.pendientes===1?'':'s'} sin registrar no cuenta${info.pendientes===1?'':'n'} como consumida${info.pendientes===1?'':'s'}.</div>`:''}${objetivoLine}`
-        :`<div class="diario-no-gasto">${gasto==null?'Añade tus datos para ver el balance del día.':(info.sinCargar?'Los registros de esta fecha aún no están cargados: no se calcula el balance.':'Sin información de comidas registrada: no se calcula el balance (no registrar no equivale a no haber comido).')}</div>`}
+        :`<div class="diario-no-gasto">${gasto==null?(gastoAutoActivo()?'Añade tus datos para ver el balance del día.':'Cálculo automático del gasto desactivado: introduce las kcal de tu app/reloj de este día para ver el balance.'):(info.sinCargar?'Los registros de esta fecha aún no están cargados: no se calcula el balance.':'Sin información de comidas registrada: no se calcula el balance (no registrar no equivale a no haber comido).')}</div>`}
       <div class="ddc-mini-stats" style="margin-top:.5rem">
         <div class="dms-item"><span class="dms-l">Proteína</span><span class="dms-v mono">${info.hayRegistro?Math.round(proteinaCons)+'g':'—'}${proteinaObj!=null?(info.hayRegistro?' / ':' · objetivo ')+Math.round(proteinaObj)+'g':''}</span></div>
       </div>
@@ -2674,7 +2843,8 @@ function renderDiarioDayCard(){
         <option value="5" ${row.energia===5?'selected':''}>😄 Con energía</option>
       </select>
     </div>
-    <div class="rg-field"><label>Kcal según tu app/reloj (opcional)</label><input type="number" step="1" id="dd-kcalapp" value="${row.kcal_app!=null?row.kcal_app:''}" placeholder="Si lo rellenas, sustituye a la estimación" oninput="diarioAutoSave()"></div>
+    <div class="rg-field"><label>Gasto total del día según tu app/reloj (kcal, opcional)</label><input type="number" step="1" id="dd-kcalapp" value="${row.kcal_app!=null?row.kcal_app:''}" placeholder="Si lo rellenas, sustituye a la estimación" oninput="diarioAutoSave()">
+      <p class="of-n">Introduce el gasto TOTAL del día (reposo + actividad), no solo las calorías activas. Con este valor no se suman los pasos ni el ejercicio de ese día.</p></div>
     <button class="btn-regla" onclick="registrarInicioRegla('${fecha}')">🌸 Hoy empezó la regla</button>
     ${renderDiarioAlimentacion(fecha)}
     ${macrosHtml}
@@ -2743,8 +2913,10 @@ async function setTipoDiaManual(fecha,tipo){
     const r=await sb.from('perfil').update({objetivos_actividad:nuevo}).eq('id',1).select().single();
     if(r.error) throw r.error;
     if(!r.data||JSON.stringify(actParaGuardar(actCfgNorm(r.data.objetivos_actividad)))!==JSON.stringify(nuevo)){ showToast('La base de datos no ha confirmado el cambio de tipo de día. No se ha dado por guardado.',7000); return; }
+    const antesPerfil=Object.assign({},PERFIL,{objetivos_actividad:cur.data.objetivos_actividad});
     PERFIL=r.data; renderDiario();
     showToast(tipo?'Día marcado como '+TIPO_DIA_LABEL[tipo].toLowerCase():'Tipo de día restablecido');
+    await histRegistrarCambio(antesPerfil,r.data);
   }catch(e){ showToast('No se pudo cambiar el tipo de día: '+sbErrTxt(e)+'. No se ha guardado nada.',7000); }
 }
 function tipoDiaChipMini(f){
@@ -2827,7 +2999,7 @@ function renderDiarioMesLista(){
       <span class="dm-d" title="${escAttr(DIA_ESTADO_LABEL[infoC.estado]||'')}">${d}${ciclo&&ciclo.diaCiclo===1?' 🔴':''}${entreno?' 🏋️':''}${tipoDiaChipMini(fecha)}${infoC.estado==='completo'?' ✓':(infoC.estado==='parcial'||infoC.estado==='datos_incompletos'?' ◐':'')}</span>
       <span class="dm-peso">${row&&row.peso!=null?row.peso+'kg':'—'}</span>
       <span class="dm-pasos">${row&&row.pasos!=null?row.pasos:'—'}</span>
-      <span class="dm-def ${balance==null?'na':(balance<=0?'pos':'neg')}" ${balance!=null&&infoC.pendientes?'title="Provisional: hay comidas planificadas sin registrar"':''}>${balance==null?'—':(balance<=0?'−':'+')+Math.abs(balance)+' kcal'+(infoC.pendientes?'*':'')}</span>
+      <span class="dm-def ${balance==null?'na':(balance<=0?'pos':'neg')}" ${balance!=null?`title="${infoC.pendientes?'Provisional: hay comidas planificadas sin registrar. ':''}Balance estimado${gastoEsDeApp(fecha)?' con el gasto de tu app/reloj':''}"`:''}>${balance==null?'—':'≈'+(balance<=0?'−':'+')+Math.abs(balance)+' kcal'+(infoC.pendientes?'*':'')}</span>
     </div>`;
   }
   return `<div class="dm-list">${rows}</div>`;
@@ -4539,6 +4711,7 @@ function dashMotivoSinObjetivo(f,soloAuto){
   if(LOAD_ERR.diario) return {txt:'No se ha podido cargar tu diario, así que no se puede estimar tu gasto ni el objetivo. Pulsa «Reintentar».',cta:false};
   if(objetivoBalanceDia()==null) return {txt:'Indica tu ritmo semanal deseado o un objetivo calórico diario para ver la comparación.',cta:true};
   if(gastoEstimadoFecha(f)==null){
+    if(!gastoAutoActivo()) return {txt:'El cálculo automático del gasto está desactivado y este día no tiene kcal de app/reloj, así que no hay estimación automática del objetivo. Puedes fijar un objetivo manual.',cta:true};
     return pesoParaFecha(f)==null
       ? {txt:'Registra tu peso en el Diario para estimar tu gasto y calcular el objetivo.',cta:false,peso:true}
       : {txt:'Faltan tu altura y fecha de nacimiento (o tu TMB) para estimar el gasto y calcular el objetivo.',cta:true};

@@ -527,7 +527,27 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .diario-chart-title{font-family:'Fraunces',serif;font-style:italic;font-size:.95rem;font-weight:600;color:var(--green-deep);margin-bottom:.3rem}
 .diario-chart-sub{font-size:.68rem;color:var(--ink-soft);margin-bottom:.5rem}
 .diario-chart-empty{text-align:center;padding:1.6rem 1rem;color:var(--ink-soft);font-size:.82rem}
-.diario-chart-modes{display:flex;gap:6px;margin-bottom:.55rem}
+.diario-chart-modes{display:flex;gap:6px;margin-bottom:.55rem;flex-wrap:wrap}
+/* F4.2 · evolución corporal */
+.evo-cap{font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:.1rem 0 .35rem}
+.evo-tiles{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:.2rem 0 .85rem}
+.evo-tile{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-sm);padding:.55rem .65rem;min-width:0}
+.evo-tl{font-size:.62rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)}
+.evo-tv{font-family:'IBM Plex Mono',monospace;font-size:1.2rem;font-weight:700;line-height:1.25;color:var(--ink);margin-top:2px;overflow-wrap:anywhere}
+.evo-tv small{font-size:.76rem;font-weight:600;color:var(--ink-soft)}
+.evo-tv.none{color:var(--ink-soft)}
+.evo-td{font-size:.68rem;color:var(--ink-soft);line-height:1.4;margin-top:3px;overflow-wrap:anywhere}
+.evo-leg{display:flex;flex-direction:column;gap:.35rem;margin:.6rem 0 .2rem;font-size:.7rem;color:var(--ink-soft);line-height:1.4}
+.evo-leg>span{display:flex;gap:.5rem;align-items:flex-start}
+.evo-k{flex:0 0 26px;height:12px;margin-top:2px;position:relative}
+.evo-k::after{content:'';position:absolute;left:0;right:0;top:50%;transform:translateY(-50%)}
+.evo-k.k-dot::after{left:9px;right:9px;height:8px;border-radius:50%;background:var(--ink);opacity:.75}
+.evo-k.k-ma::after{height:0;border-top:3px solid var(--sage)}
+.evo-k.k-tr::after{height:0;border-top:3px dashed var(--gold-deep)}
+.evo-k.k-gap::after{height:12px;background:var(--line);opacity:.7}
+.evo-note{font-size:.72rem;color:var(--ink-soft);line-height:1.45;margin:.45rem 0 0}
+.evo-note b{color:var(--ink)}
+.evo-chips{display:flex;gap:6px;flex-wrap:wrap;margin:.2rem 0 .6rem}
 
 .diario-setup{background:var(--sage-light);border:1px dashed var(--sage);border-radius:var(--r-sm);padding:.85rem;font-size:.8rem;color:var(--ink);margin-bottom:.85rem}
 .diario-setup p{margin-bottom:.6rem;color:var(--green-deep);font-weight:600}
@@ -1314,8 +1334,8 @@ let CICLOS=[];    // [{fecha_inicio,notas}]
 let diarioMonthDate=new Date(); diarioMonthDate.setDate(1); diarioMonthDate.setHours(0,0,0,0);
 let diarioSelectedFecha=isoDate(new Date());
 let diarioSaveTimer=null;
-let diarioChartMode='todo'; // 'todo' | 'mes' | 'anio' — rango mostrado en el gráfico de peso
-let diarioChartYear=new Date().getFullYear();
+let evoPeriodo='30'; // F4.2 · '7' | '30' | '90' | 'todo' — periodo de la gráfica de peso, la tendencia y las medidas
+let evoMedidaSel='cintura'; // F4.2 · medida mostrada en la gráfica de medidas corporales
 
 function isoDate(d){
   const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
@@ -2403,32 +2423,140 @@ function diarioNextMonth(){
 
 // ── Gráfico de peso: línea continua de TODO el historial, con sombreado ──
 // ── de fase lútea, para que el "reset" mensual no la corte nunca.        ──
-function pesoChartDiarioSVG(minX,maxX){
-  const puntos=Object.values(DIARIO).filter(r=>r.peso!=null).filter(r=>{
-    const t=new Date(r.fecha+'T00:00:00').getTime(); return t>=minX&&t<=maxX;
-  }).sort((a,b)=>a.fecha<b.fecha?-1:1);
-
-  // Serie diaria continua (arrastrando el último peso conocido, incluso de antes del rango)
-  // para poder calcular una media móvil de 7 días que suavice el ruido de agua/ciclo.
-  const serieDiaria=[];
-  for(let t=minX;t<=maxX;t+=86400000){
-    const info=pesoInfoFecha(isoDate(new Date(t)));
-    if(info) serieDiaria.push({t,peso:info.peso});
-  }
-  if(!serieDiaria.length) return null;
-  const ventana=7;
-  const media7=serieDiaria.map((d,i)=>{
-    const desde=Math.max(0,i-ventana+1);
-    const slice=serieDiaria.slice(desde,i+1).map(x=>x.peso);
-    return {t:d.t,peso:slice.reduce((a,b)=>a+b,0)/slice.length};
+/* ══════════ F4.2 · EVOLUCIÓN CORPORAL: cálculo ══════════
+   Funciones puras (sin DOM ni estado global): se prueban con tests/evolucion.test.js, que extrae este bloque tal cual.
+   Entrada: [{fecha:'YYYY-MM-DD', valor:número}]. No modifican la entrada y NUNCA rellenan días sin registro:
+   los días sin dato no cuentan ni como cero ni como el último valor conocido. */
+/* EVO:START */
+const EVO_MIN_MEDIA7=3, EVO_MIN_MEDIA30=5, EVO_MIN_TEND_MITAD=3, EVO_UMBRAL_ESTABLE_SEM=0.15, EVO_HUECO_DIAS=7;
+const EVO_PERIODOS=[{id:'7',etiqueta:'7 días'},{id:'30',etiqueta:'30 días'},{id:'90',etiqueta:'3 meses'},{id:'todo',etiqueta:'Todo el historial'}];
+function evoDia(iso){ const p=String(iso).split('-'); return Math.round(Date.UTC(+p[0],+p[1]-1,+p[2])/86400000); } // nº de día, sin efecto de horario de verano
+function evoIso(n){ return new Date(n*86400000).toISOString().slice(0,10); }
+// Solo valores reales: fecha válida, número finito y > 0 (un 0 nunca es un peso ni una medida), sin fechas futuras; una fila por fecha.
+function evoLimpiar(filas,hoyIso){
+  const por={};
+  (filas||[]).forEach(r=>{
+    if(!r||r.valor==null||r.valor==='') return;
+    const v=Number(r.valor);
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(String(r.fecha))||!Number.isFinite(v)||v<=0) return;
+    if(hoyIso&&r.fecha>hoyIso) return;
+    por[r.fecha]=v;
   });
+  return Object.keys(por).sort().map(f=>({fecha:f,valor:por[f]}));
+}
+function evoRango(id,hoyIso,regs){
+  const hoy=evoDia(hoyIso);
+  if(id==='7') return {desde:evoIso(hoy-6),hasta:hoyIso};
+  if(id==='30') return {desde:evoIso(hoy-29),hasta:hoyIso};
+  if(id==='90'){ // mismo día 3 meses atrás (ajustado a fin de mes), sin contar ese día
+    const p=hoyIso.split('-').map(Number); let y=p[0], m=p[1]-3; if(m<1){ m+=12; y--; }
+    const dm=new Date(Date.UTC(y,m,0)).getUTCDate();
+    const ancla=evoDia(y+'-'+String(m).padStart(2,'0')+'-'+String(Math.min(p[2],dm)).padStart(2,'0'));
+    return {desde:evoIso(ancla+1),hasta:hoyIso};
+  }
+  return {desde:regs&&regs.length?regs[0].fecha:hoyIso,hasta:hoyIso}; // 'todo': desde el primer registro real hasta hoy
+}
+function evoEnRango(regs,desde,hasta){ return regs.filter(r=>r.fecha>=desde&&r.fecha<=hasta); }
+function evoUltimo(regs,hoyIso){
+  const u=regs.length?regs[regs.length-1]:null;
+  return u?{fecha:u.fecha,valor:u.valor,dias:evoDia(hoyIso)-evoDia(u.fecha)}:null;
+}
+// Media de los registros reales del periodo. estado: 'ok' | 'insuficiente' (hay datos pero menos de minRegs) | 'vacio'.
+function evoMedia(regs,desde,hasta,minRegs){
+  const e=evoEnRango(regs,desde,hasta);
+  const base={desde,hasta,n:e.length,minRegs,dias:evoDia(hasta)-evoDia(desde)+1,media:null,primero:e.length?e[0].fecha:null,ultimo:e.length?e[e.length-1].fecha:null};
+  if(!e.length) return Object.assign(base,{estado:'vacio'});
+  if(e.length<minRegs) return Object.assign(base,{estado:'insuficiente'});
+  return Object.assign(base,{estado:'ok',media:e.reduce((a,r)=>a+r.valor,0)/e.length});
+}
+// Media móvil de 7 días naturales (el día y los 6 anteriores) calculada SOLO con registros reales, en las fechas que tienen registro.
+// Una ventana con menos de minRegs registros no produce punto.
+function evoMediaMovil(regs,minRegs){
+  const min=minRegs||EVO_MIN_MEDIA7, dias=regs.map(r=>evoDia(r.fecha)), out=[]; let ini=0;
+  for(let i=0;i<regs.length;i++){
+    while(dias[ini]<dias[i]-6) ini++;
+    let suma=0; for(let j=ini;j<=i;j++) suma+=regs[j].valor;
+    const n=i-ini+1;
+    if(n>=min) out.push({fecha:regs[i].fecha,dia:dias[i],valor:suma/n,n});
+  }
+  return out;
+}
+// Tendencia: media de la 1.ª mitad del periodo frente a la media de la 2.ª mitad (solo registros reales).
+// Es «consolidada» solo con al menos EVO_MIN_TEND_MITAD registros en cada mitad; dos pesajes aislados nunca la forman.
+function evoTendencia(regs,desde,hasta){
+  const a=evoDia(desde), b=evoDia(hasta), N=b-a+1, corte=a+Math.floor(N/2);
+  const mitad=(d0,d1)=>{
+    const e=regs.filter(r=>{ const d=evoDia(r.fecha); return d>=d0&&d<=d1; });
+    return {desde:evoIso(d0),hasta:evoIso(d1),n:e.length,
+      media:e.length?e.reduce((x,r)=>x+r.valor,0)/e.length:null,
+      dia:e.length?e.reduce((x,r)=>x+evoDia(r.fecha),0)/e.length:null};
+  };
+  const p1=mitad(a,corte-1), p2=mitad(corte,b);
+  const base={dias:N,minPorMitad:EVO_MIN_TEND_MITAD,primera:p1,segunda:p2};
+  if(N<2||p1.n<EVO_MIN_TEND_MITAD||p2.n<EVO_MIN_TEND_MITAD) return Object.assign(base,{estado:'insuficiente'});
+  const delta=p2.media-p1.media, porSemana=delta/((N/2)/7); // distancia entre los centros de las dos mitades = N/2 días
+  return Object.assign(base,{estado:'ok',delta,porSemana,direccion:Math.abs(porSemana)<EVO_UMBRAL_ESTABLE_SEM?'estable':(delta<0?'baja':'alza')});
+}
+// Tramos del periodo sin ningún registro durante al menos minDias días seguidos (incluye el inicio y el final del periodo).
+function evoHuecos(fechas,desde,hasta,minDias){
+  const min=minDias||EVO_HUECO_DIAS, a=evoDia(desde), b=evoDia(hasta), out=[];
+  const ds=fechas.map(evoDia).filter(d=>d>=a&&d<=b).sort((x,y)=>x-y);
+  let prev=a-1;
+  ds.concat([b+1]).forEach(d=>{ const len=d-prev-1; if(len>=min) out.push({desde:evoIso(prev+1),hasta:evoIso(d-1),dias:len}); prev=d; });
+  return out;
+}
+// Medidas sueltas (cintura, cadera…): primera y última medición del periodo. Con 2+ es una diferencia entre dos mediciones, no una tendencia.
+function evoResumenSerie(regs,desde,hasta){
+  const e=evoEnRango(regs,desde,hasta);
+  if(!e.length) return {n:0,primera:null,ultima:null,delta:null};
+  const p=e[0], u=e[e.length-1];
+  return {n:e.length,primera:p,ultima:u,delta:e.length>=2?u.valor-p.valor:null};
+}
+/* EVO:END */
 
-  const W=680,H=170,padL=34,padR=10,padT=14,padB=22;
-  const pesos=puntos.map(p=>p.peso).concat(media7.map(p=>p.peso));
+// ── F4.2 · adaptadores (leen DIARIO / MEDIDAS sin modificarlos) y formato ──
+function evoHoy(){ return isoDate(new Date()); }
+function evoRegsPeso(){ return evoLimpiar(Object.values(DIARIO).map(r=>r?{fecha:r.fecha,valor:r.peso}:null),evoHoy()); }
+function evoRegsMedida(clave){
+  if(clave==='cintura') return evoLimpiar(Object.values(DIARIO).map(r=>r?{fecha:r.fecha,valor:r.cintura_cm}:null),evoHoy());
+  return evoLimpiar(Object.values(MEDIDAS).filter(r=>r&&r.tipo===clave).map(r=>({fecha:r.fecha,valor:r.valor})),evoHoy());
+}
+function evoF(iso,conAnio){ return new Date(iso+'T00:00:00').toLocaleDateString('es-ES',conAnio?{day:'numeric',month:'short',year:'numeric'}:{day:'numeric',month:'short'}); }
+function evoRangoTxt(a,b){
+  if(a===b) return evoF(a,true);
+  return a.slice(0,4)===b.slice(0,4)?evoF(a)+' – '+evoF(b,true):evoF(a,true)+' – '+evoF(b,true);
+}
+function evoCuando(dias){ return dias===0?'hoy':(dias===1?'ayer':'hace '+dias+' días'); }
+function evoPlural(n,s,p){ return n+' '+(n===1?s:p); }
+function evoPeriodoEtiqueta(){ const p=EVO_PERIODOS.find(x=>x.id===evoPeriodo); return p?p.etiqueta.toLowerCase():''; }
+function evoDiaMs(dia){ const f=Math.floor(dia); return new Date(evoIso(f)+'T00:00:00').getTime()+(dia-f)*86400000; }
+const EVO_FONT='IBM Plex Mono,monospace';
+
+function pesoChartDiarioSVG(regs,rango,tend){
+  const f2t=f=>new Date(f+'T00:00:00').getTime();
+  const minX=f2t(rango.desde), maxX=f2t(rango.hasta);
+  const puntos=evoEnRango(regs,rango.desde,rango.hasta);
+  if(!puntos.length) return null;
+  // Media móvil 7 días: solo con pesos reales de cada ventana (no se arrastra ningún valor a los días sin registro).
+  const media7=evoMediaMovil(regs).filter(p=>p.fecha>=rango.desde&&p.fecha<=rango.hasta);
+  const tendOk=tend&&tend.estado==='ok';
+  const huecos=evoHuecos(puntos.map(p=>p.fecha),rango.desde,rango.hasta);
+
+  const W=680,H=170,padL=48,padR=10,padT=14,padB=22;
+  const pesos=puntos.map(p=>p.valor).concat(media7.map(p=>p.valor));
+  if(tendOk) pesos.push(tend.primera.media,tend.segunda.media);
   let minY=Math.min(...pesos)-0.4, maxY=Math.max(...pesos)+0.4;
   if(maxY-minY<1){ const c=(maxY+minY)/2; minY=c-0.5; maxY=c+0.5; }
   const xScale=t=> maxX===minX ? (W-padL-padR)/2+padL : padL+(t-minX)/(maxX-minX)*(W-padL-padR);
   const yScale=v=> H-padB-(v-minY)/(maxY-minY)*(H-padT-padB);
+
+  // días sin registro (≥ 7 seguidos): banda gris con rótulo; el resto de días sueltos sin dato simplemente no tienen punto
+  const bandas=huecos.map(h=>{
+    const x1=xScale(f2t(h.desde)), x2=xScale(f2t(h.hasta));
+    const w=Math.max(x2-x1,2);
+    return `<rect x="${x1.toFixed(1)}" y="${padT}" width="${w.toFixed(1)}" height="${H-padT-padB}" fill="var(--line)" opacity=".55"/>`+
+      (w>70?`<text x="${(x1+w/2).toFixed(1)}" y="${(padT+(H-padT-padB)/2).toFixed(1)}" text-anchor="middle" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">sin registros</text>`:'');
+  }).join('');
 
   // sombreado de fase lútea por ciclo
   let shading='';
@@ -2444,125 +2572,160 @@ function pesoChartDiarioSVG(minX,maxX){
       if(x2>x1) shading+=`<rect x="${x1.toFixed(1)}" y="${padT}" width="${(x2-x1).toFixed(1)}" height="${H-padT-padB}" fill="var(--berry-light)" opacity=".6"/>`;
     });
   }
-  // Puntos crudos: puntitos finos (ruido diario), sin conectar con línea gruesa.
-  const rawDots=puntos.map(p=>{
-    const t=new Date(p.fecha+'T00:00:00').getTime();
-    return `<circle cx="${xScale(t).toFixed(1)}" cy="${yScale(p.peso).toFixed(1)}" r="1.6" fill="var(--ink-soft)" opacity=".45"/>`;
-  }).join('');
-  // Media móvil 7 días: la línea principal, más gruesa y suave.
-  const mediaPath=media7.map((p,i)=>`${i===0?'M':'L'}${xScale(p.t).toFixed(1)},${yScale(p.peso).toFixed(1)}`).join(' ');
+  // Peso puntual: un punto por día con registro (la medición real).
+  const rawDots=puntos.map(p=>`<circle cx="${xScale(f2t(p.fecha)).toFixed(1)}" cy="${yScale(p.valor).toFixed(1)}" r="2.8" fill="var(--ink)" opacity=".75"/>`).join('');
+  // Media móvil: línea continua; se corta cuando entre dos registros hay más de 6 días (las ventanas ya no se solapan).
+  const tramos=[]; media7.forEach(p=>{ const t=tramos[tramos.length-1]; if(t&&p.dia-t[t.length-1].dia<=6) t.push(p); else tramos.push([p]); });
+  const mediaSvg=tramos.map(t=>t.length>1
+    ?`<path d="${t.map((p,i)=>`${i===0?'M':'L'}${xScale(f2t(p.fecha)).toFixed(1)},${yScale(p.valor).toFixed(1)}`).join(' ')}" fill="none" stroke="var(--sage)" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>`
+    :`<circle cx="${xScale(f2t(t[0].fecha)).toFixed(1)}" cy="${yScale(t[0].valor).toFixed(1)}" r="2.6" fill="var(--sage)"/>`).join('');
+  // Tendencia: segmento discontinuo entre la media de la 1.ª mitad y la de la 2.ª (extremos huecos = medias, no mediciones).
+  let tendSvg='';
+  if(tendOk){
+    const x1=xScale(evoDiaMs(tend.primera.dia)), y1=yScale(tend.primera.media), x2=xScale(evoDiaMs(tend.segunda.dia)), y2=yScale(tend.segunda.media);
+    tendSvg=`<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="var(--gold-deep)" stroke-width="2.6" stroke-dasharray="8,5" stroke-linecap="round"/>`+
+      `<circle cx="${x1.toFixed(1)}" cy="${y1.toFixed(1)}" r="3.6" fill="var(--paper-raised)" stroke="var(--gold-deep)" stroke-width="2"/><circle cx="${x2.toFixed(1)}" cy="${y2.toFixed(1)}" r="3.6" fill="var(--paper-raised)" stroke="var(--gold-deep)" stroke-width="2"/>`;
+  }
   const dots=CICLOS.map(c=>{
     const t=new Date(c.fecha_inicio+'T00:00:00').getTime();
     if(t<minX||t>maxX) return '';
     return `<circle cx="${xScale(t).toFixed(1)}" cy="${padT+4}" r="3" fill="var(--berry)"/>`;
   }).join('');
   const fmtEje=d=>new Date(d).toLocaleDateString('es-ES',{day:'numeric',month:'short'});
-  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block">
+  const yTxt=v=>v.toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1})+' kg';
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Peso en kilogramos del ${rango.desde} al ${rango.hasta}: ${evoPlural(puntos.length,'registro','registros')}" style="width:100%;height:auto;display:block">
+    ${bandas}
     ${shading}
     <line x1="${padL}" y1="${yScale(minY+ (maxY-minY)/2).toFixed(1)}" x2="${W-padR}" y2="${yScale(minY+(maxY-minY)/2).toFixed(1)}" stroke="var(--line)" stroke-dasharray="3,3"/>
     ${rawDots}
-    <path d="${mediaPath}" fill="none" stroke="var(--sage)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+    ${mediaSvg}
+    ${tendSvg}
     ${dots}
-    <text x="${padL}" y="${H-6}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${fmtEje(minX)}</text>
-    <text x="${W-padR}" y="${H-6}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${fmtEje(maxX)}</text>
-    <text x="${padL}" y="${padT+8}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${maxY.toFixed(1)}</text>
-    <text x="${padL}" y="${H-padB}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${minY.toFixed(1)}</text>
+    <text x="${padL}" y="${H-6}" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${fmtEje(minX)}</text>
+    <text x="${W-padR}" y="${H-6}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${fmtEje(maxX)}</text>
+    <text x="${padL-4}" y="${padT+8}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${yTxt(maxY)}</text>
+    <text x="${padL-4}" y="${H-padB}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${yTxt(minY)}</text>
   </svg>`;
 }
 
-// Vista anual: media de peso por mes (línea con huecos en los meses sin datos).
-function pesoChartAnualSVG(year){
-  const W=680,H=170,padL=34,padR=10,padT=14,padB=26;
-  const meses=[];
-  for(let m=0;m<12;m++){
-    const entradas=Object.values(DIARIO).filter(r=>{
-      if(r.peso==null) return false;
-      const d=new Date(r.fecha+'T00:00:00');
-      return d.getFullYear()===year && d.getMonth()===m;
-    });
-    meses.push({m,avg:entradas.length?entradas.reduce((a,b)=>a+b.peso,0)/entradas.length:null,n:entradas.length});
-  }
-  const conDato=meses.filter(d=>d.avg!=null);
-  if(!conDato.length) return null;
-  const pesos=conDato.map(d=>d.avg);
-  let minY=Math.min(...pesos)-0.4, maxY=Math.max(...pesos)+0.4;
-  if(maxY-minY<1){ const c=(maxY+minY)/2; minY=c-0.5; maxY=c+0.5; }
-  const xScale=m=>padL+(m+0.5)/12*(W-padL-padR);
-  const yScale=v=>H-padB-(v-minY)/(maxY-minY)*(H-padT-padB);
-  let path='',started=false;
-  meses.forEach(d=>{
-    if(d.avg==null){ started=false; return; }
-    path+=(started?'L':'M')+xScale(d.m).toFixed(1)+','+yScale(d.avg).toFixed(1)+' ';
-    started=true;
-  });
-  const dots=conDato.map(d=>`<circle cx="${xScale(d.m).toFixed(1)}" cy="${yScale(d.avg).toFixed(1)}" r="2.8" fill="var(--sage)"/>`).join('');
-  const labels=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-  const xLabels=meses.map(d=>`<text x="${xScale(d.m).toFixed(1)}" y="${H-8}" text-anchor="middle" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${labels[d.m]}</text>`).join('');
-  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block">
-    <line x1="${padL}" y1="${yScale(minY+(maxY-minY)/2).toFixed(1)}" x2="${W-padR}" y2="${yScale(minY+(maxY-minY)/2).toFixed(1)}" stroke="var(--line)" stroke-dasharray="3,3"/>
-    <path d="${path.trim()}" fill="none" stroke="var(--sage)" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
-    ${dots}
-    ${xLabels}
-    <text x="${padL}" y="${padT+8}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${maxY.toFixed(1)}</text>
-    <text x="${padL}" y="${H-padB}" font-size="9" fill="var(--ink-soft)" font-family="IBM Plex Mono,monospace">${minY.toFixed(1)}</text>
-  </svg>`;
-}
+function setEvoPeriodo(id){ evoPeriodo=id; renderDiario(); }
+function setEvoMedida(c){ evoMedidaSel=c; const w=document.getElementById('evo-med-wrap'); if(w) w.innerHTML=renderEvoMedidas(); }
 
-function pesoChartSVG(){
-  if(diarioChartMode==='mes'){
-    const y=diarioMonthDate.getFullYear(), m=diarioMonthDate.getMonth();
-    const inicio=new Date(y,m,1).getTime();
-    const hoy=new Date(); hoy.setHours(0,0,0,0);
-    const esMesActual=y===hoy.getFullYear()&&m===hoy.getMonth();
-    const fin=esMesActual?hoy.getTime():new Date(y,m+1,0).getTime();
-    return pesoChartDiarioSVG(inicio,fin);
-  }
-  if(diarioChartMode==='anio'){
-    return pesoChartAnualSVG(diarioChartYear);
-  }
-  // 'todo': todo el histórico disponible
-  const puntos=Object.values(DIARIO).filter(r=>r.peso!=null);
-  if(!puntos.length) return null;
-  const fechas=puntos.map(p=>new Date(p.fecha+'T00:00:00').getTime());
-  return pesoChartDiarioSVG(Math.min(...fechas),Math.max(...fechas));
+function evoPeriodoBtns(){
+  return `<div class="diario-chart-modes" role="group" aria-label="Periodo">${EVO_PERIODOS.map(p=>`<button type="button" class="shop-week-btn ${evoPeriodo===p.id?'active':''}" aria-pressed="${evoPeriodo===p.id}" onclick="setEvoPeriodo('${p.id}')">${p.etiqueta}</button>`).join('')}</div>`;
 }
-
-function setDiarioChartMode(mode){ diarioChartMode=mode; renderDiario(); }
-function diarioChartPrevYear(){ diarioChartYear--; renderDiario(); }
-function diarioChartNextYear(){ if(diarioChartYear<new Date().getFullYear()) diarioChartYear++; renderDiario(); }
+function evoTile(titulo,valor,unidad,detalle){
+  return `<div class="evo-tile"><div class="evo-tl">${titulo}</div><div class="evo-tv ${valor==='—'?'none':''}">${valor}${valor!=='—'&&unidad?`<small> ${unidad}</small>`:''}</div><div class="evo-td">${detalle}</div></div>`;
+}
+function evoTileMedia(titulo,m){
+  const rg=evoRangoTxt(m.desde,m.hasta);
+  if(m.estado==='ok') return evoTile(titulo,dashFmtPeso(m.media,1),'kg',`${evoPlural(m.n,'registro','registros')} entre ${evoRangoTxt(m.primero,m.ultimo)} · periodo ${rg}`);
+  if(m.estado==='vacio') return evoTile(titulo,'—','',`Sin registros de peso en el periodo ${rg}.`);
+  return evoTile(titulo,'—','',`Datos insuficientes: ${m.n} de ${m.minRegs} registros necesarios en el periodo ${rg}. No se calcula una media.`);
+}
+function evoTileTendencia(t){
+  const tit='Tendencia · '+evoPeriodoEtiqueta();
+  const r1=evoRangoTxt(t.primera.desde,t.primera.hasta), r2=evoRangoTxt(t.segunda.desde,t.segunda.hasta);
+  if(t.estado!=='ok') return evoTile(tit,'—','',`Sin tendencia consolidada: hacen falta al menos ${t.minPorMitad} pesos en cada mitad del periodo (hay ${t.primera.n} y ${t.segunda.n}). Comparar dos pesajes sueltos no es una tendencia.`);
+  const txt=t.direccion==='estable'?'Estable':(t.direccion==='baja'?'A la baja':'Al alza');
+  return evoTile(tit,`${txt}`,'',`${dashFmtDelta(t.delta)} kg entre la media de ${r1} (${evoPlural(t.primera.n,'registro','registros')}, ${dashFmtPeso(t.primera.media,1)} kg) y la de ${r2} (${evoPlural(t.segunda.n,'registro','registros')}, ${dashFmtPeso(t.segunda.media,1)} kg)`);
+}
 
 function renderDiarioChart(){
-  const svg=pesoChartSVG();
-  const mode=diarioChartMode;
-  const modesHtml=`<div class="diario-chart-modes">
-    <button class="shop-week-btn ${mode==='mes'?'active':''}" onclick="setDiarioChartMode('mes')">Mes</button>
-    <button class="shop-week-btn ${mode==='anio'?'active':''}" onclick="setDiarioChartMode('anio')">Año</button>
-    <button class="shop-week-btn ${mode==='todo'?'active':''}" onclick="setDiarioChartMode('todo')">Todo</button>
-  </div>`;
-  let subnav='';
-  if(mode==='mes'){
-    const hoy=new Date(); hoy.setHours(0,0,0,0);
-    const esMesActual=diarioMonthDate.getFullYear()===hoy.getFullYear()&&diarioMonthDate.getMonth()===hoy.getMonth();
-    const mesLabel=diarioMonthDate.toLocaleDateString('es-ES',{month:'long',year:'numeric'});
-    subnav=`<div class="week-nav" style="margin-bottom:.5rem">
-      <button onclick="diarioPrevMonth()">‹</button>
-      <div class="week-nav-center"><span class="week-nav-label" style="text-transform:capitalize">${mesLabel}</span></div>
-      <button onclick="diarioNextMonth()" ${esMesActual?'disabled':''}>›</button>
-    </div>`;
-  }else if(mode==='anio'){
-    subnav=`<div class="week-nav" style="margin-bottom:.5rem">
-      <button onclick="diarioChartPrevYear()">‹</button>
-      <div class="week-nav-center"><span class="week-nav-label">${diarioChartYear}</span></div>
-      <button onclick="diarioChartNextYear()" ${diarioChartYear>=new Date().getFullYear()?'disabled':''}>›</button>
-    </div>`;
+  const titulo='<div class="diario-chart-title">Evolución del peso</div>';
+  if(Object.prototype.hasOwnProperty.call(LOAD_ERR,'diario')){
+    return `<div class="diario-chart-card">${titulo}<div class="diario-chart-empty">No se han podido cargar los datos del diario. No se muestran cifras de peso: un fallo de carga no significa que no tengas registros.</div></div>`;
   }
-  const emptyMsg=mode==='mes'?'No hay registros de peso este mes.':mode==='anio'?'No hay registros de peso este año.':'Registra tu peso unos días para ver la tendencia aquí.';
+  const hoy=evoHoy(), regs=evoRegsPeso();
+  if(!regs.length) return `<div class="diario-chart-card">${titulo}<div class="diario-chart-empty">Registra tu peso unos días para ver la tendencia aquí.</div></div>`;
+  const hoyN=evoDia(hoy);
+  const ult=evoUltimo(regs,hoy);
+  const m7=evoMedia(regs,evoIso(hoyN-6),hoy,EVO_MIN_MEDIA7);
+  const m30=evoMedia(regs,evoIso(hoyN-29),hoy,EVO_MIN_MEDIA30);
+  const rango=evoRango(evoPeriodo,hoy,regs), tend=evoTendencia(regs,rango.desde,rango.hasta);
+  const svg=pesoChartDiarioSVG(regs,rango,tend);
+  const maOk=evoMediaMovil(regs).some(p=>p.fecha>=rango.desde&&p.fecha<=rango.hasta);
+  const rg=evoRangoTxt(rango.desde,rango.hasta);
+  const tiles=`<div class="evo-tiles">
+    ${evoTile('Último peso registrado',dashFmtPeso(ult.valor),'kg',`${evoF(ult.fecha,true)} · ${evoCuando(ult.dias)}`)}
+    ${evoTileMedia('Media últimos 7 días',m7)}
+    ${evoTileMedia('Media último mes (30 días)',m30)}
+    ${evoTileTendencia(tend)}
+  </div>`;
+  const notas=[];
+  if(!maOk) notas.push('No hay media móvil en este periodo: necesita al menos '+EVO_MIN_MEDIA7+' pesos dentro de una ventana de 7 días.');
+  if(tend.estado!=='ok') notas.push('No se dibuja la tendencia: faltan registros en el periodo.');
+  const leyenda=`<div class="evo-leg">
+    <span><i class="evo-k k-dot"></i><span><b>Peso puntual</b> (kg): lo que pesaste ese día, un punto por día con registro.</span></span>
+    <span><i class="evo-k k-ma"></i><span><b>Media móvil 7 días</b>: suaviza las oscilaciones diarias; usa solo los pesos registrados en esos 7 días (mínimo ${EVO_MIN_MEDIA7}) y se corta donde hay huecos.</span></span>
+    <span><i class="evo-k k-tr"></i><span><b>Tendencia</b>: une la media de la 1.ª mitad del periodo con la de la 2.ª (extremos huecos = medias, no mediciones).</span></span>
+    <span><i class="evo-k k-gap"></i><span>Banda gris: 7 o más días seguidos sin registro. Los días sin registro no cuentan como cero ni se rellenan.</span></span>
+    ${CICLOS.length?'<span><i class="evo-k"></i><span>🌸 sombreado = fase lútea estimada · • = inicio de ciclo</span></span>':''}
+  </div>`;
   return `<div class="diario-chart-card">
-    <div class="diario-chart-title">Evolución del peso</div>
-    ${modesHtml}
-    ${subnav}
-    <div class="diario-chart-sub">${mode==='anio'?'media de peso por mes':'línea = media móvil 7 días · puntos tenues = peso real de cada día'}${CICLOS.length&&mode!=='anio'?' · 🌸 sombreado = fase lútea estimada · • = inicio de ciclo':''}</div>
-    ${svg?svg:`<div class="diario-chart-empty">${emptyMsg}</div>`}
+    ${titulo}
+    <div class="evo-cap">Periodo (gráficas y tendencia)</div>
+    ${evoPeriodoBtns()}
+    ${tiles}
+    <div class="diario-chart-sub">Peso (kg) · ${rg}</div>
+    ${svg?svg:`<div class="diario-chart-empty">No hay registros de peso entre ${rg}. Último registro: ${evoF(ult.fecha,true)} (${evoCuando(ult.dias)}).</div>`}
+    ${notas.map(n=>`<p class="evo-note">${n}</p>`).join('')}
+    ${leyenda}
+  </div>`;
+}
+
+// ── F4.2 · cintura y demás medidas corporales ──
+function evoMedidaSVG(regs,rango,unidad,nombre){
+  const f2t=f=>new Date(f+'T00:00:00').getTime();
+  const minX=f2t(rango.desde), maxX=f2t(rango.hasta), pts=evoEnRango(regs,rango.desde,rango.hasta);
+  if(!pts.length) return null;
+  const W=680,H=150,padL=52,padR=10,padT=14,padB=22;
+  let minY=Math.min(...pts.map(p=>p.valor))-0.4, maxY=Math.max(...pts.map(p=>p.valor))+0.4;
+  if(maxY-minY<1){ const c=(maxY+minY)/2; minY=c-0.5; maxY=c+0.5; }
+  const xS=t=> maxX===minX ? (W-padL-padR)/2+padL : padL+(t-minX)/(maxX-minX)*(W-padL-padR);
+  const yS=v=>H-padB-(v-minY)/(maxY-minY)*(H-padT-padB);
+  const xy=p=>`${xS(f2t(p.fecha)).toFixed(1)},${yS(p.valor).toFixed(1)}`;
+  const union=pts.length>1?`<path d="${pts.map((p,i)=>(i?'L':'M')+xy(p)).join(' ')}" fill="none" stroke="var(--plum)" stroke-width="1.4" stroke-dasharray="2,4" stroke-linecap="round" opacity=".7"/>`:'';
+  const dots=pts.map(p=>`<circle cx="${xS(f2t(p.fecha)).toFixed(1)}" cy="${yS(p.valor).toFixed(1)}" r="3.6" fill="var(--plum)"/>`).join('');
+  const fmtEje=d=>new Date(d).toLocaleDateString('es-ES',{day:'numeric',month:'short'});
+  const yTxt=v=>v.toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1})+' '+unidad;
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${escAttr(nombre)} en ${unidad} del ${rango.desde} al ${rango.hasta}: ${evoPlural(pts.length,'medición','mediciones')}" style="width:100%;height:auto;display:block">
+    <line x1="${padL}" y1="${yS(minY+(maxY-minY)/2).toFixed(1)}" x2="${W-padR}" y2="${yS(minY+(maxY-minY)/2).toFixed(1)}" stroke="var(--line)" stroke-dasharray="3,3"/>
+    ${union}${dots}
+    <text x="${padL}" y="${H-6}" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${fmtEje(minX)}</text>
+    <text x="${W-padR}" y="${H-6}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${fmtEje(maxX)}</text>
+    <text x="${padL-4}" y="${padT+8}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${yTxt(maxY)}</text>
+    <text x="${padL-4}" y="${H-padB}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${yTxt(minY)}</text>
+  </svg>`;
+}
+function renderEvoMedidas(){
+  const titulo='<div class="diario-chart-title">Evolución de cintura y otras medidas</div>';
+  if(Object.prototype.hasOwnProperty.call(LOAD_ERR,'diario')){
+    return `<div class="diario-chart-card">${titulo}<div class="diario-chart-empty">No se han podido cargar los datos del diario, así que no se muestra la cintura.</div></div>`;
+  }
+  const hoy=evoHoy();
+  let series=[{clave:'cintura',nombre:'Cintura',unidad:'cm'}];
+  if(MED_ESTADO.cargado) series=series.concat(medTiposVisibles().map(t=>({clave:t.clave,nombre:t.nombre,unidad:t.unidad})));
+  series=series.map(s=>Object.assign({},s,{regs:evoRegsMedida(s.clave)})).filter(s=>s.regs.length);
+  const aviso=MED_ESTADO.cargado?'':(MED_ESTADO.sinMigracion
+    ?'<p class="med-warn">Cadera, muslo, brazo y medidas propias no están disponibles hasta aplicar la migración SQL F4.1; aquí solo puede aparecer la cintura.</p>'
+    :`<p class="med-warn">No se han podido cargar las medidas adicionales${MED_ESTADO.err?' ('+escAttr(MED_ESTADO.err)+')':''}. Aquí solo puede aparecer la cintura; que no se muestren no significa que no existan.</p>`);
+  if(!series.length) return `<div class="diario-chart-card">${titulo}${aviso}<div class="diario-chart-empty">Aún no hay mediciones de cintura ni de otras medidas. Se registran en el día, en «Medidas corporales».</div></div>`;
+  const sel=series.find(s=>s.clave===evoMedidaSel)||series[0];
+  const chips=`<div class="evo-chips" role="group" aria-label="Medida">${series.map(s=>`<button type="button" class="shop-week-btn ${s.clave===sel.clave?'active':''}" aria-pressed="${s.clave===sel.clave}" data-c="${escAttr(s.clave)}" onclick="setEvoMedida(this.dataset.c)">${escAttr(s.nombre)}</button>`).join('')}</div>`;
+  const rango=evoRango(evoPeriodo,hoy,sel.regs), rg=evoRangoTxt(rango.desde,rango.hasta);
+  const res=evoResumenSerie(sel.regs,rango.desde,rango.hasta), ult=evoUltimo(sel.regs,hoy), u=sel.unidad;
+  const v=x=>medFmt(x,u);
+  let texto;
+  if(res.n===0) texto=`Sin mediciones de ${escAttr(sel.nombre.toLowerCase())} en ${rg}. Última medición: <b>${v(ult.valor)}</b> (${evoF(ult.fecha,true)}, ${evoCuando(ult.dias)}).`;
+  else if(res.n===1) texto=`Una sola medición en ${rg}: <b>${v(res.ultima.valor)}</b> (${evoF(res.ultima.fecha,true)}). Con una no se puede comparar.`;
+  else texto=`Primera y última medición de ${rg} (${evoPlural(res.n,'medición','mediciones')}): <b>${v(res.primera.valor)}</b> (${evoF(res.primera.fecha)}) → <b>${v(res.ultima.valor)}</b> (${evoF(res.ultima.fecha)}) · ${dashFmtDelta(res.delta)} ${u}. Es la diferencia entre dos mediciones, no una tendencia.`;
+  const svg=evoMedidaSVG(sel.regs,rango,u,sel.nombre);
+  return `<div class="diario-chart-card">${titulo}${aviso}${chips}
+    <div class="diario-chart-sub">${escAttr(sel.nombre)} (${u}) · ${rg}</div>
+    ${svg||''}
+    <p class="evo-note">${texto}</p>
+    <p class="evo-note">Cada punto es una medición real; la línea punteada solo une mediciones consecutivas y no representa valores intermedios.</p>
   </div>`;
 }
 
@@ -3044,6 +3207,7 @@ function renderDiario(){
   asegurarRegistroFecha(isoDate(new Date(diarioMonthDate.getFullYear(),diarioMonthDate.getMonth()+1,0)));
   el.innerHTML=`
     ${renderDiarioChart()}
+    <div id="evo-med-wrap">${renderEvoMedidas()}</div>
     ${renderObjetivoCard()}
     ${renderDiarioDayCard()}
     <div id="med-wrap">${medCardHtml()}</div>
@@ -3123,7 +3287,7 @@ function medBloqueo(fecha){
   return null;
 }
 function medDraft(clave,v){ MED_DRAFT[medKey(diarioSelectedFecha,clave)]=v; }
-function medRefresh(){ const w=document.getElementById('med-wrap'); if(w) w.innerHTML=medCardHtml(); }
+function medRefresh(){ const w=document.getElementById('med-wrap'); if(w) w.innerHTML=medCardHtml(); const e=document.getElementById('evo-med-wrap'); if(e) e.innerHTML=renderEvoMedidas(); }
 function medFmt(v,u){ return fmtN(v)+' '+u; }
 async function medGuardar(clave){
   const fecha=diarioSelectedFecha, info=medTipoInfo(clave); if(!info) return;

@@ -474,6 +474,12 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .rg-man-n{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
 .rg-man-n label{font-size:.6rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;display:flex;flex-direction:column;gap:2px}
 .rg-man-h{font-size:.68rem;color:var(--ink-soft);margin-top:.35rem}
+.rg-bib{margin-top:.45rem;display:flex;flex-wrap:wrap;gap:.4rem .6rem;align-items:center}
+.rg-bib-btn{font:inherit;font-size:.72rem;font-weight:600;padding:.3rem .75rem;border-radius:999px;border:1px solid var(--line);background:var(--paper-raised);color:var(--ink);cursor:pointer}
+.rg-bib-btn:disabled{opacity:.6;cursor:default}
+.rg-bib-msg{font-size:.7rem;line-height:1.4;color:var(--ink-soft)}
+.rg-bib-msg.ok{color:var(--green)}
+.rg-bib-msg.error{color:#9b3b2e}
 .rg-tot-nota{font-size:.72rem;color:#7a5a12;margin:-.5rem 0 .8rem;min-height:0}
 .dal-head{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.55rem}
 .dal-head .dal-h{margin-bottom:0}
@@ -536,6 +542,23 @@ header h1{font-size:1.28rem;font-weight:600;color:#fbf6ea;letter-spacing:.01em;l
 .seg-leg>span{display:inline-flex;align-items:center;gap:.35rem}
 .seg-sw{display:inline-block;width:14px;height:10px;border-radius:2px;flex:none}
 .seg-retry{margin-top:.4rem;font:inherit;font-size:.72rem;font-weight:600;padding:.3rem .7rem;border-radius:999px;border:1px solid var(--line);background:var(--paper-raised);color:var(--ink);cursor:pointer}
+/* F4.5 · ciclo y recalibraciones */
+.seg-stack{display:grid;grid-template-columns:minmax(0,1fr);gap:.85rem;margin-top:.85rem}
+.seg-stack .diario-chart-card{margin-bottom:0;min-width:0}
+.seg-vacio{text-align:center;padding:1.2rem 1rem;color:var(--ink-soft);font-size:.82rem}
+.rec-item{border:1px solid var(--line);border-radius:var(--r-sm);background:var(--paper);margin-top:.5rem}
+.rec-item>summary{cursor:pointer;padding:.55rem .7rem;display:flex;flex-wrap:wrap;gap:.2rem .7rem;align-items:baseline;font-size:.8rem;list-style:none}
+.rec-item>summary::-webkit-details-marker{display:none}
+.rec-f{font-weight:700}
+.rec-v{font-family:'IBM Plex Mono',monospace;font-size:.76rem}
+.rec-b{font-size:.6rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.1rem .45rem;border-radius:999px;border:1px solid var(--line);color:var(--ink-soft)}
+.rec-body{padding:.1rem .8rem .8rem;font-size:.76rem;line-height:1.5}
+.rec-body h4{font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:.7rem 0 .25rem}
+.rec-body ul{margin:0;padding-left:1.1rem}
+.rec-wrap{overflow-x:auto}
+.rec-tabla{width:100%;border-collapse:collapse;font-size:.68rem;font-family:'IBM Plex Mono',monospace}
+.rec-tabla th,.rec-tabla td{padding:.2rem .4rem;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.rec-tabla th:first-child,.rec-tabla td:first-child{text-align:left}
 /* F4.2 · evolución corporal */
 .evo-cap{font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:.1rem 0 .35rem}
 .evo-tiles{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:.2rem 0 .85rem}
@@ -1997,12 +2020,23 @@ async function recalibrarGastoSiToca(){
   const deficitEstimadoAcum=puntos.reduce((s,p)=>s+(p.gastoBase+(PERFIL.ajuste_gasto_kcal||0)-p.kcalCons),0);
   const errorKcal=(-cambioKcalReal)-deficitEstimadoAcum;
   const correccionDiaria=errorKcal/puntos.length;
+  const ajusteAnterior=PERFIL.ajuste_gasto_kcal||0, ultimaAnterior=PERFIL.ultima_recalibracion||null; // F4.5: solo para el historial
   let nuevoAjuste=(PERFIL.ajuste_gasto_kcal||0)+correccionDiaria*0.5; // aplicar solo la mitad, para suavizar
+  const ajusteSinTope=nuevoAjuste; // F4.5: solo para el historial
   nuevoAjuste=Math.max(-500,Math.min(500,nuevoAjuste));
 
   try{
-    await sb.from('perfil').update({ajuste_gasto_kcal:nuevoAjuste,ultima_recalibracion:hoy}).eq('id',1);
+    const {error}=await sb.from('perfil').update({ajuste_gasto_kcal:nuevoAjuste,ultima_recalibracion:hoy}).eq('id',1);
+    if(error) throw error; // F4.5: antes un fallo del update pasaba inadvertido y el perfil en memoria divergía de la base de datos
     PERFIL.ajuste_gasto_kcal=nuevoAjuste; PERFIL.ultima_recalibracion=hoy;
+    // F4.5 · Historial: registra el ajuste YA aplicado (valor anterior/nuevo, datos usados y método). Nunca lanza ni deshace el ajuste.
+    await recalRegistrar({fecha:hoy,valorAnterior:ajusteAnterior,valorNuevo:nuevoAjuste,ultimaAnterior,datos:{
+      ventana:{desde:ventana[0],hasta:ventana[ventana.length-1]},parametros:REC_PARAMS,formula:REC_METODO_TXT,
+      dias_usados:puntos.length,dias_lutea:puntos.filter(p=>p.lutea).length,
+      puntos:puntos.map(p=>({fecha:p.fecha,peso:Number(p.peso),lutea:!!p.lutea,gasto_base:p.gastoBase,kcal_consumidas:p.kcalCons})),
+      ajuste_previo_usado:ajusteAnterior,mitad,peso_inicial:pesoIni,peso_final:pesoFin,cambio_peso_kg:pesoFin-pesoIni,cambio_kcal_real:cambioKcalReal,
+      deficit_estimado_acum:deficitEstimadoAcum,error_kcal:errorKcal,correccion_diaria:correccionDiaria,factor_aplicado:0.5,
+      ajuste_sin_tope:ajusteSinTope,tope_kcal:500,tope_aplicado:ajusteSinTope!==nuevoAjuste}});
   }catch(e){ console.warn('No se pudo recalibrar el gasto:',e); }
 }
 
@@ -3046,14 +3080,271 @@ function renderSeguimientoHtml(){
     textoCompleto:'día completo',textoLeyIncompleto:'día incompleto (solo lo registrado)',textoIncompleto:'día incompleto: solo suma lo registrado hasta ahora',textoMedia:'Media de los días completos',textoMediaDias:'días completos',textoNotaIncompleto:'quedan comidas por registrar o con datos incompletos; la cifra es solo lo registrado y no entra en la media.'}));
   const pasos=segCardBarras({id:'pasos',titulo:'Pasos diarios (pasos)',subtitulo:'pasos registrados por día',nombre:'pasos',unidad:'pasos',dec:0,color:'var(--green)',rango,W,carga,necesitaRegistro:false,modelo:segModeloPasos(segDiasDiario(rango,hoy),hoy),
     textoCompleto:'día con pasos registrados',textoLeyIncompleto:'hoy (día en curso)',textoIncompleto:'día en curso: los pasos pueden seguir aumentando',textoMedia:'Media de los días registrados (sin hoy)',textoMediaDias:'días registrados',textoNotaIncompleto:'hoy no ha terminado y no entra en la media.'});
-  return cab+`<div class="seg-grid">${segCardPeso(rango,W)}${segCardCintura(rango,W)}${kcal}${prot}${pasos}${segCardActividad(rango,hoy,W)}</div>`;
+  return cab+`<div class="seg-grid">${segCardPeso(rango,W)}${segCardCintura(rango,W)}${kcal}${prot}${pasos}${segCardActividad(rango,hoy,W)}</div>
+    <div class="seg-stack">${segCardCiclo(rango,hoy,segAnchoAncho())}${recalCardHtml()}</div>`;
 }
 function renderSeguimiento(){
   const el=document.getElementById('evolucion-content');
   if(!DATA||!el||!segVistaActiva()) return;
   _segAnchoPrev=window.innerWidth;
   segCargarMeses(segEstadoCarga(segRangoActual(evoHoy()).rango).pend);
+  recalCargar(); // F4.5: una sola lectura del historial al abrir la sección (se recarga tras revertir)
   el.innerHTML=renderSeguimientoHtml();
+}
+
+/* ══════════ F4.5 · CICLO COMO CONTEXTO TEMPORAL: cálculo ══════════
+   Funciones puras (usan evoDia/evoIso de F4.2). Solo LEEN las fechas de inicio registradas; no escriben nada.
+   Distinción: REGISTRADO = fechas de inicio introducidas · CALCULADA = fase de un día ya vivido, deducida de la duración media ·
+   PREVISTA = lo mismo para días que aún no han llegado · ESTIMADA = fecha del próximo inicio y día de ovulación. Nada de esto es un dato confirmado. */
+/* CIC:START */
+function cicInicios(filas){ return Array.from(new Set((filas||[]).map(c=>c&&c.fecha_inicio).filter(f=>/^\d{4}-\d{2}-\d{2}$/.test(String(f))))).sort(); }
+// Misma regla que cicloInfoFecha: ovulación = mitad del ciclo ±1 día; después, lútea.
+function cicFaseDeDia(diaCiclo,dur){ const mid=Math.round(dur/2); return diaCiclo>=mid-1&&diaCiclo<=mid+1?'ovulacion':(diaCiclo>mid+1?'lutea':'folicular'); }
+function cicDia(inicios,dur,iso,hoyIso){
+  let ult=null; for(const i of inicios){ if(i<=iso) ult=i; else break; }
+  if(!ult) return {fase:null,clase:'sin_dato'};                                   // antes del primer inicio registrado
+  const diaCiclo=evoDia(iso)-evoDia(ult)+1, hayPosterior=inicios.some(i=>i>iso);
+  if(!hayPosterior&&diaCiclo-1>=dur) return {fase:null,clase:'sin_inicio',diaCiclo,inicio:ult}; // pasó la duración media sin nuevo inicio registrado
+  return {fase:cicFaseDeDia(diaCiclo,dur),clase:iso<=hoyIso?'calculada':'prevista',diaCiclo,inicio:ult};
+}
+// Tramos consecutivos con la misma fase y clase: [{desde,hasta,fase,clase}]
+function cicSegmentos(inicios,dur,desde,hasta,hoyIso){
+  const out=[]; for(let d=evoDia(desde);d<=evoDia(hasta);d++){
+    const iso=evoIso(d), x=cicDia(inicios,dur,iso,hoyIso), u=out[out.length-1];
+    if(u&&u.fase===x.fase&&u.clase===x.clase&&evoDia(u.hasta)===d-1) u.hasta=iso; else out.push({desde:iso,hasta:iso,fase:x.fase,clase:x.clase});
+  }
+  return out;
+}
+function cicProximo(inicios,dur,hoyIso){ // ESTIMACIÓN: último inicio registrado + duración media (redondeada)
+  if(!inicios.length) return null;
+  const u=inicios[inicios.length-1], fecha=evoIso(evoDia(u)+Math.round(dur));
+  return {desde:u,fecha,dias:Math.round(dur),yaPasada:fecha<=hoyIso,enDias:evoDia(fecha)-evoDia(hoyIso)};
+}
+function cicLongitudes(inicios){ const o=[]; for(let i=1;i<inicios.length;i++) o.push({desde:inicios[i-1],hasta:inicios[i],dias:evoDia(inicios[i])-evoDia(inicios[i-1])}); return o; } // dato derivado de dos inicios registrados
+function cicDuracionUsada(nInicios,perfilDur){ const v=Number(perfilDur); return Number.isFinite(v)&&v>0?{valor:v,origen:nInicios>=2?'registrada':'defecto'}:{valor:28,origen:'defecto'}; }
+/* CIC:END */
+
+/* ══════════ F4.5 · RECALIBRACIÓN DEL GASTO: descripción, historial y reversión (cálculo puro) ══════════
+   El mecanismo EXISTENTE es recalibrarGastoSiToca (no se ha modificado su fórmula). Estas constantes solo DESCRIBEN lo que hace;
+   tests/recalibracion.test.js comprueba que coinciden con los números del código para que la descripción no se desincronice. */
+/* REC:START */
+const REC_METODO_ID='recalibracion_semanal_v1';
+const REC_PARAMS={ventana_dias:14,min_dias:8,intervalo_dias:7,kcal_por_kg:7700,factor_aplicado:0.5,tope_kcal:500,peso_dia_lutea:0.4};
+const REC_METODO_TXT='Cada 7 días o más, con los días de los últimos 14 que tengan peso, comidas completas y gasto base (mínimo 8), se compara la media de peso de la 1.ª mitad con la de la 2.ª (los días de fase lútea estimada pesan 0,4 y el resto 1). Cambio observado = Δpeso × 7700 kcal/kg; error = (−cambio observado) − déficit estimado acumulado; corrección diaria = error ÷ nº de días; ajuste nuevo = ajuste anterior + corrección diaria × 0,5, limitado a ±500 kcal/día.';
+function recalNum(v){ if(v==null||v==='') return null; const n=Number(v); return Number.isFinite(n)?n:null; }
+// Filas válidas, una por id, de la más antigua a la más reciente. No modifica la entrada.
+function recalNormalizar(filas){
+  const por={};
+  (filas||[]).forEach(r=>{
+    if(!r) return; const id=recalNum(r.id), a=recalNum(r.valor_anterior), n=recalNum(r.valor_nuevo);
+    if(id==null||a==null||n==null||(r.tipo!=='recalibracion'&&r.tipo!=='reversion')||!/^\d{4}-\d{2}-\d{2}/.test(String(r.fecha))) return;
+    por[id]=Object.assign({},r,{id,valor_anterior:a,valor_nuevo:n,diferencia:n-a,fecha:String(r.fecha).slice(0,10),revierte_id:r.revierte_id==null?null:recalNum(r.revierte_id)});
+  });
+  return Object.keys(por).map(Number).sort((x,y)=>x-y).map(k=>por[k]);
+}
+// Más reciente primero; marca las recalibraciones que ya tienen una reversión.
+function recalLinea(filas){
+  const f=recalNormalizar(filas), rev=new Set(f.filter(r=>r.tipo==='reversion'&&r.revierte_id!=null).map(r=>r.revierte_id));
+  return f.slice().reverse().map(r=>({fila:r,revertida:r.tipo==='recalibracion'&&rev.has(r.id)}));
+}
+// ¿Es SEGURO revertir? Mismas condiciones que impone la función SQL (que es la que decide de verdad, de forma atómica).
+// perfil: {ok, ajuste, ultima}. Devuelve {ok, motivos[], fila}.
+function recalPuedeRevertir(filas,perfil,id){
+  const f=recalNormalizar(filas), fila=f.find(r=>r.id===id);
+  if(!fila) return {ok:false,motivos:['El ajuste no está en el historial cargado.']};
+  if(fila.tipo!=='recalibracion') return {ok:false,motivos:['Es una reversión: no se puede revertir otra vez.'],fila};
+  if(f.some(r=>r.tipo==='reversion'&&r.revierte_id===id)) return {ok:false,motivos:['Ya se revirtió.'],fila};
+  const motivos=[];
+  if(f[f.length-1].id!==id) motivos.push('Hay ajustes posteriores en el historial: revertir este sobrescribiría cambios más recientes.');
+  if(!perfil||!perfil.ok) motivos.push('No se han podido leer los datos del perfil, así que no se puede comprobar que sea seguro.');
+  else{
+    if(Math.abs((recalNum(perfil.ajuste)||0)-fila.valor_nuevo)>0.01) motivos.push('El ajuste actual del perfil ('+(recalNum(perfil.ajuste)||0)+' kcal/día) ya no coincide con el que dejó este ajuste ('+fila.valor_nuevo+').');
+    if((perfil.ultima||null)!==fila.fecha) motivos.push('La fecha de la última recalibración del perfil ('+(perfil.ultima||'sin fecha')+') no coincide con la de este ajuste: puede haber una recalibración sin registrar.');
+  }
+  return {ok:motivos.length===0,motivos,fila};
+}
+function recalFmt(v,d){ const n=Number(v), t=Math.abs(n).toLocaleString('es-ES',{minimumFractionDigits:d||0,maximumFractionDigits:d==null?0:d}); return (n<0&&/[1-9]/.test(t)?'−':'')+t; }
+function recalSigno(v,d){ const n=Number(v), t=recalFmt(Math.abs(n),d); return (/[1-9]/.test(t)?(n>0?'+':'−'):'')+t; }
+// Por qué se produjo un ajuste: solo reformula los números guardados (sin atribuir causas al cuerpo ni al ciclo).
+function recalExplicar(fila,fFecha){
+  const ff=typeof fFecha==='function'?fFecha:(x=>x);
+  const d=fila&&fila.datos; if(!d||typeof d!=='object') return null;
+  const n=k=>recalNum(d[k]); const need=['dias_usados','peso_inicial','peso_final','cambio_kcal_real','deficit_estimado_acum','error_kcal','correccion_diaria','factor_aplicado','ajuste_sin_tope'];
+  if(need.some(k=>n(k)==null)) return null;
+  const L=[];
+  const rg=d.ventana&&d.ventana.desde?` entre el ${ff(d.ventana.desde)} y el ${ff(d.ventana.hasta)}`:'';
+  L.push(`Se usaron ${n('dias_usados')} días${rg} con peso, comidas completas y gasto base.`);
+  L.push(`Media de peso (ponderada) de la 1.ª mitad: ${recalFmt(n('peso_inicial'),2)} kg; de la 2.ª: ${recalFmt(n('peso_final'),2)} kg → ${recalSigno(n('peso_final')-n('peso_inicial'),2)} kg, equivalente a ${recalSigno(n('cambio_kcal_real'))} kcal (× ${recalFmt(REC_PARAMS.kcal_por_kg)} kcal/kg).`);
+  L.push(`El déficit estimado acumulado en esos días era ${recalSigno(n('deficit_estimado_acum'))} kcal. Diferencia entre lo observado y lo estimado: ${recalSigno(n('error_kcal'))} kcal, es decir ${recalSigno(n('correccion_diaria'),1)} kcal/día.`);
+  const cf=n('correccion_diaria')*n('factor_aplicado'), paso=`Se aplicó la fracción ${recalFmt(n('factor_aplicado'),1)} de esa corrección: ${recalFmt(fila.valor_anterior,1)} ${cf<0?'−':'+'} ${recalFmt(Math.abs(cf),1)} = ${recalFmt(n('ajuste_sin_tope'),1)} kcal/día`;
+  L.push(d.tope_aplicado?`${paso}, limitado al máximo de ±${recalFmt(recalNum(d.tope_kcal)||REC_PARAMS.tope_kcal)} → ${recalFmt(fila.valor_nuevo,1)} kcal/día.`:`${paso}.`);
+  const lu=recalNum(d.dias_lutea); if(lu>0) L.push(`${lu} de esos días estaban en fase lútea estimada y contaron con peso ${recalFmt(REC_PARAMS.peso_dia_lutea,1)} en las medias de peso. Es un supuesto del método, no una medición ni una conclusión sobre tu cuerpo.`);
+  return L;
+}
+// Qué cambia al revertir (para comprobarlo antes y mostrarlo en la confirmación). ctx: {diasAfectados, objetivoAuto, calculoAuto, hoy}
+function recalEfectos(fila,ctx){
+  const dif=fila.valor_anterior-fila.valor_nuevo, L=[];
+  L.push(`Se modifica 1 valor del perfil: el ajuste de gasto aprendido pasa de ${recalFmt(fila.valor_nuevo,1)} a ${recalFmt(fila.valor_anterior,1)} kcal/día (${recalSigno(dif,1)} kcal/día).`);
+  L.push(`El gasto estimado de los ${ctx.diasAfectados} días con registros que no tienen kcal de dispositivo (también los pasados) cambia ${recalSigno(dif,1)} kcal/día, y con él sus balances.`);
+  L.push(ctx.objetivoAuto?`Tu objetivo calórico automático cambia ${recalSigno(dif,1)} kcal/día (y los macros que se calculan a partir de él).`:'Usas objetivo calórico manual: no cambia.');
+  if(!ctx.calculoAuto) L.push('El cálculo automático del gasto está desactivado: ahora mismo el ajuste no se está usando.');
+  L.push('No se modifica ningún peso, actividad, comida ni fecha del ciclo.');
+  L.push(`La fecha de última recalibración pasará a ${ctx.hoy}: la recalibración automática no volverá a ejecutarse hasta el ${evoIso(evoDia(ctx.hoy)+REC_PARAMS.intervalo_dias)} (si no, deshacería la reversión al abrir la app).`);
+  L.push('El ajuste original y esta reversión quedan en el historial.');
+  return L;
+}
+/* REC:END */
+
+// ── F4.5 · Ciclo: tarjeta ──
+function segAnchoAncho(){ const el=document.getElementById('evolucion-content'); let w=el?el.clientWidth:0; if(!w) w=Math.min(window.innerWidth||360,960)-34; return Math.max(260,Math.min(900,Math.floor(w-34))); }
+const CIC_COL={folicular:'var(--green)',ovulacion:'var(--gold)',lutea:'var(--berry)'};
+const CIC_NOM={folicular:'folicular',ovulacion:'ovulación (estimada)',lutea:'lútea'};
+function cicSVG(o){
+  const W=o.W, H=200, padL=46, padR=8, sy=8, sh=16, wt=50, wb=172, pw=W-padL-padR;
+  const a=evoDia(o.desde), b=evoDia(o.hasta), N=b-a+1, xD=d=>padL+(d-a)/N*pw, hoyD=evoDia(o.hoy);
+  const pts=o.pesos, vs=pts.map(p=>p.valor); let minY=vs.length?Math.min(...vs)-0.4:0, maxY=vs.length?Math.max(...vs)+0.4:1; if(maxY-minY<1){ const c=(maxY+minY)/2; minY=c-.5; maxY=c+.5; }
+  const yS=v=>wb-(v-minY)/(maxY-minY)*(wb-wt);
+  let strip='', fondo='';
+  o.segs.forEach(s=>{
+    const x=xD(evoDia(s.desde)), w=Math.max(1,xD(evoDia(s.hasta)+1)-x), rg=evoRangoTxt(s.desde,s.hasta);
+    if(s.clase==='sin_dato') return;
+    let fill,fo,extra='',tit;
+    if(s.clase==='sin_inicio'){ fill='var(--ink-soft)'; fo=.14; extra=' stroke="var(--ink-soft)" stroke-width="1" stroke-dasharray="3,2"'; tit=`${rg}: pasó la duración media sin un nuevo inicio registrado; la fase no se calcula`; }
+    else if(s.clase==='prevista'){ fill=s.fase==='lutea'?'var(--berry-light)':CIC_COL[s.fase]; fo=s.fase==='lutea'?.9:.22; extra=` stroke="${CIC_COL[s.fase]}" stroke-width="1.2" stroke-dasharray="3,2"`; tit=`${rg}: fase ${CIC_NOM[s.fase]} PREVISTA (aún no ha llegado; no es un dato)`; }
+    else { fill=s.fase==='lutea'?'var(--berry-light)':CIC_COL[s.fase]; fo=s.fase==='lutea'?.9:.3; tit=`${rg}: fase ${CIC_NOM[s.fase]} CALCULADA con la duración media (no registrada)`; }
+    strip+=`<g><title>${escAttr(tit)}</title><rect x="${x.toFixed(1)}" y="${sy}" width="${w.toFixed(1)}" height="${sh}" fill="${fill}" fill-opacity="${fo}"${extra}/>${w>70?`<text x="${(x+w/2).toFixed(1)}" y="${sy+11}" text-anchor="middle" font-size="9" fill="var(--ink)" font-family="${EVO_FONT}">${s.clase==='sin_inicio'?'sin inicio registrado':(CIC_NOM[s.fase]+(s.clase==='prevista'?' · prevista':''))}</text>`:''}</g>`;
+    fondo+=`<rect x="${x.toFixed(1)}" y="${wt-4}" width="${w.toFixed(1)}" height="${wb-wt+8}" fill="${s.clase==='sin_inicio'?'var(--ink-soft)':fill}" fill-opacity="${s.clase==='sin_inicio'?.05:(s.fase==='lutea'?.35:.1)*(s.clase==='prevista'?.7:1)}"/>`;
+  });
+  let prev=''; if(o.hasta>o.hoy){ const x=xD(hoyD+1); prev=`<g><title>${escAttr('A la derecha de esta línea: días que aún no han llegado (previsión, no datos)')}</title><line x1="${x.toFixed(1)}" y1="${sy}" x2="${x.toFixed(1)}" y2="${wb+4}" stroke="var(--ink-soft)" stroke-dasharray="1,3"/></g>${(W-padR-x)>64?`<text x="${(x+3).toFixed(1)}" y="${wb+14}" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">previsión →</text>`:''}`; }
+  let lines='', lastX=-99;
+  o.inicios.filter(i=>i>=o.desde&&i<=o.hasta).forEach(i=>{
+    const x=xD(evoDia(i)); lines+=`<g><title>${escAttr('Inicio de ciclo REGISTRADO: '+evoF(i,true))}</title><line x1="${x.toFixed(1)}" y1="${sy-3}" x2="${x.toFixed(1)}" y2="${wb}" stroke="var(--ink)" stroke-width="1.3"/><circle cx="${x.toFixed(1)}" cy="${sy-3}" r="3" fill="var(--ink)"/></g>`;
+    if(x-lastX>46){ lines+=`<text x="${(x+4).toFixed(1)}" y="${sy+sh+13}" font-size="9" fill="var(--ink)" font-family="${EVO_FONT}">${evoF(i)}</text>`; lastX=x; }
+  });
+  if(o.prox&&o.prox.fecha>=o.desde&&o.prox.fecha<=o.hasta){
+    const x=xD(evoDia(o.prox.fecha)), izq=x>W-90;
+    lines+=`<g><title>${escAttr('Inicio ESTIMADO (último inicio + duración media): '+evoF(o.prox.fecha,true)+'. No está registrado.')}</title><line x1="${x.toFixed(1)}" y1="${sy-3}" x2="${x.toFixed(1)}" y2="${wb}" stroke="var(--ink)" stroke-width="1.3" stroke-dasharray="4,3"/><circle cx="${x.toFixed(1)}" cy="${sy-3}" r="3.2" fill="var(--paper-raised)" stroke="var(--ink)" stroke-width="1.5"/></g><text x="${(izq?x-4:x+4).toFixed(1)}" y="${sy+sh+25}" text-anchor="${izq?'end':'start'}" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">≈ ${evoF(o.prox.fecha)} (estimado)</text>`;
+  }
+  const dots=pts.map(p=>{ const f=cicDia(o.inicios,o.dur,p.fecha,o.hoy); const ctx=f.fase?`día ${f.diaCiclo} del ciclo, fase ${CIC_NOM[f.fase]} calculada`:'sin fase calculada ese día'; return `<g><title>${escAttr(evoF(p.fecha,true)+': '+recalFmt(p.valor,1)+' kg · '+ctx)}</title><circle cx="${xD(evoDia(p.fecha)+.5).toFixed(1)}" cy="${yS(p.valor).toFixed(1)}" r="${pts.length>120?1.8:2.8}" fill="var(--ink)" opacity=".75"/></g>`; }).join('');
+  const yTxt=v=>recalFmt(v,1)+' kg';
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${escAttr('Fases calculadas del ciclo, inicios registrados y peso real, del '+o.desde+' al '+o.hasta)}" style="width:100%;height:auto;display:block">
+    ${fondo}${strip}${prev}${lines}${dots}
+    ${vs.length?`<text x="${padL-4}" y="${wt+3}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${yTxt(maxY)}</text><text x="${padL-4}" y="${wb}" text-anchor="end" font-size="9" fill="var(--ink-soft)" font-family="${EVO_FONT}">${yTxt(minY)}</text>`:`<text x="${(padL+pw/2).toFixed(1)}" y="${((wt+wb)/2).toFixed(1)}" text-anchor="middle" font-size="10" fill="var(--ink-soft)" font-family="${EVO_FONT}">sin registros de peso en el periodo</text>`}
+    ${segEjeX(iso=>xD(evoDia(iso)+.5),o.desde,o.hasta,W,padL,padR,H-4)}
+  </svg>`;
+}
+function segCardCiclo(rango,hoy,W){
+  const titulo='Ciclo como contexto temporal', id='ciclo';
+  if(Object.prototype.hasOwnProperty.call(LOAD_ERR,'ciclos')) return segCard(id,titulo,'Fases del ciclo junto al peso',`<div class="seg-vacio">No se han podido cargar los datos del ciclo. No se muestran fases: un fallo de carga no significa que no tengas inicios registrados.</div>`);
+  const inicios=cicInicios(CICLOS);
+  if(!inicios.length) return segCard(id,titulo,'Fases del ciclo junto al peso',`<div class="seg-vacio">Aún no hay inicios de ciclo registrados. Se registran desde el Diario («Hoy empezó la regla»); sin ellos no se calcula ninguna fase.</div>`);
+  const du=cicDuracionUsada(inicios.length,PERFIL&&PERFIL.duracion_ciclo_media), dur=du.valor, prox=cicProximo(inicios,dur,hoy);
+  const ext=prox&&prox.fecha>hoy&&prox.enDias<=21?prox.fecha:null, hasta=ext&&ext>rango.hasta?ext:rango.hasta; // la previsión solo se dibuja si está a ≤ 21 días
+  const r={desde:rango.desde,hasta};
+  const segs=cicSegmentos(inicios,dur,r.desde,r.hasta,hoy), pesos=evoEnRango(evoRegsPeso(),r.desde,r.hasta);
+  const svg=cicSVG({W,desde:r.desde,hasta:r.hasta,hoy,segs,inicios,prox,dur,pesos});
+  const sw=(c,o,dash)=>`<i class="seg-sw" style="background:${c};opacity:${o};${dash?`border:1.5px dashed ${dash};background:transparent;opacity:1`:''}"></i>`;
+  const leg=`<div class="seg-leg"><span><i class="seg-sw" style="width:2px;height:12px;background:var(--ink)"></i>inicio de ciclo <b>registrado</b></span><span><i class="seg-sw" style="width:2px;height:12px;border-left:2px dashed var(--ink)"></i>inicio <b>estimado</b> (no registrado)</span><span>${sw('var(--green)',.3)}folicular</span><span>${sw('var(--gold)',.3)}ovulación estimada</span><span>${sw('var(--berry-light)',.9)}lútea</span><span>${sw('',1,'var(--ink-soft)')}fase <b>prevista</b> / sin inicio registrado</span><span><i class="seg-sw" style="width:7px;height:7px;border-radius:50%;background:var(--ink);opacity:.75"></i>peso real</span></div>`;
+  const enR=inicios.filter(i=>i>=rango.desde&&i<=rango.hasta), lon=cicLongitudes(inicios).slice(-3);
+  const notas=[`<b>Registrado:</b> ${enR.length?`inicios de ciclo en el periodo: ${enR.map(i=>evoF(i,true)).join(', ')}.`:'ningún inicio de ciclo en este periodo (último registrado: '+evoF(inicios[inicios.length-1],true)+').'}`];
+  if(lon.length) notas.push(`<b>Duración real</b> entre inicios registrados: ${lon.map(l=>`${l.dias} días (${evoF(l.desde)} → ${evoF(l.hasta)})`).join(' · ')}.`);
+  notas.push(`<b>Calculado:</b> las fases no se registran; se calculan con una duración media de ${recalFmt(dur,1)} días (${du.origen==='registrada'?`media de tus ${inicios.length-1} ciclos registrados`:'valor por defecto: aún no hay 2 inicios registrados'}). La ovulación se estima en la mitad del ciclo ±1 día.`);
+  if(prox) notas.push(prox.yaPasada?`<b>Estimado:</b> con esa duración, el siguiente inicio se esperaba el ${evoF(prox.fecha,true)} y no hay ninguno registrado. Puede que falte registrarlo o que el ciclo se haya alargado; mientras tanto no se calcula fase.`:`<b>Previsión:</b> próximo inicio ≈ ${evoF(prox.fecha,true)} (último inicio + ${prox.dias} días). No es un dato registrado.`);
+  notas.push('Las bandas solo muestran en qué fase calculada cae cada fecha. Que un peso coincida con una fase no significa que la fase lo explique: el peso varía por muchos motivos y esta vista no atribuye ninguna subida ni bajada al ciclo. El eje del peso se ajusta a los datos (no parte de 0).');
+  return segCard(id,titulo,`Fases calculadas, inicios registrados y peso real · ${segPeriodoTxt(rango)}${r.hasta>rango.hasta?` · más la previsión hasta el ${evoF(r.hasta,true)}`:''}`,`${svg}${leg}${notas.map(t=>`<p class="evo-note">${t}</p>`).join('')}`);
+}
+
+// ── F4.5 · Recalibración del gasto: estado, carga, registro y reversión ──
+let RECAL={estado:'sin_cargar',filas:[],err:null,sinMigracion:false,cargando:false,logError:null,abiertos:new Set()};
+function recalPerfilEstado(){ return {ok:!!PERFIL&&!LOAD_ERR.perfil,ajuste:PERFIL?(PERFIL.ajuste_gasto_kcal||0):0,ultima:PERFIL&&PERFIL.ultima_recalibracion?String(PERFIL.ultima_recalibracion).slice(0,10):null}; }
+async function recalCargar(forzar){
+  if(RECAL.cargando) return; if(!forzar&&RECAL.estado!=='sin_cargar') return;
+  RECAL.cargando=true; RECAL.estado='cargando';
+  if(!sb){ RECAL.estado='error'; RECAL.err=SIN_BD; RECAL.sinMigracion=false; RECAL.cargando=false; return; }
+  try{
+    const {data,error}=await sb.from('recalibraciones_gasto').select('*').order('id',{ascending:false}).limit(200);
+    if(error) throw error;
+    RECAL.filas=recalNormalizar(data||[]); RECAL.estado='ok'; RECAL.err=null; RECAL.sinMigracion=false;
+  }catch(e){ const m=sbErrTxt(e); RECAL.estado='error'; RECAL.err=m; RECAL.sinMigracion=medFaltaTabla(m); RECAL.filas=[]; }
+  RECAL.cargando=false; segRepintarSiActiva();
+}
+// Registra una recalibración YA aplicada al perfil. Nunca lanza ni deshace el ajuste: si falla, el ajuste queda aplicado y se avisa.
+async function recalRegistrar(rec){
+  try{
+    if(!sb) throw new Error(SIN_BD);
+    const {data,error}=await sb.from('recalibraciones_gasto').insert({fecha:rec.fecha,tipo:'recalibracion',valor_anterior:rec.valorAnterior,valor_nuevo:rec.valorNuevo,ultima_recalibracion_anterior:rec.ultimaAnterior,metodo:REC_METODO_ID,datos:rec.datos}).select();
+    if(error) throw error;
+    if(!Array.isArray(data)||data.length!==1) throw new Error('la base de datos no devolvió la fila insertada');
+    RECAL.estado='sin_cargar'; RECAL.logError=null; return {ok:true};
+  }catch(e){
+    const m=sbErrTxt(e), falta=medFaltaTabla(m); RECAL.logError=m;
+    if(!falta) showToast('El ajuste del gasto se ha aplicado, pero NO se ha podido registrar en el historial: '+m+'.',9000);
+    return {ok:false,motivo:m,sinMigracion:falta};
+  }
+}
+function recalDiasAfectados(){ return Object.values(DIARIO).filter(r=>r&&r.fecha&&!gastoEsDeApp(r.fecha)&&gastoBaseFecha(r.fecha)!=null).length; }
+async function recalRevertir(id){
+  const chk=recalPuedeRevertir(RECAL.filas,recalPerfilEstado(),id);
+  if(!chk.ok){ alert('No se puede revertir este ajuste:\n\n'+chk.motivos.join('\n')); return; }
+  if(!sb){ alert('No se puede revertir: '+SIN_BD); return; }
+  const hoy=isoDate(new Date());
+  const efectos=recalEfectos(chk.fila,{diasAfectados:recalDiasAfectados(),objetivoAuto:objetivoKcalOrigen()==='auto',calculoAuto:gastoAutoActivo(),hoy});
+  if(!confirm('¿Revertir el ajuste del '+chk.fila.fecha+'?\n\n'+efectos.map(x=>'• '+x).join('\n'))) return;
+  try{
+    const {data,error}=await sb.rpc('revertir_recalibracion_gasto',{p_id:id,p_fecha:hoy});
+    if(error) throw error;
+    const row=Array.isArray(data)?data[0]:data;
+    if(!row||row.tipo!=='reversion'||Number(row.revierte_id)!==id) throw new Error('la base de datos no confirmó la reversión');
+    PERFIL.ajuste_gasto_kcal=Number(row.valor_nuevo); PERFIL.ultima_recalibracion=String(row.fecha).slice(0,10);
+    showToast('Ajuste revertido: el gasto aprendido vuelve a '+recalFmt(PERFIL.ajuste_gasto_kcal,1)+' kcal/día. El historial conserva ambos cambios.',7000);
+    renderDiario();
+  }catch(e){
+    const m=sbErrTxt(e);
+    alert('No se ha revertido nada.\n\n'+m+(/revertir_recalibracion_gasto|schema cache|could not find the function|does not exist/i.test(m)?'\n\n(¿Falta aplicar la migración SQL F4.5?)':''));
+  }
+  await recalCargar(true);
+}
+function recalToggle(id,abierto){ if(abierto) RECAL.abiertos.add(id); else RECAL.abiertos.delete(id); }
+function recalFilaHtml(it,filas,perfil){
+  const r=it.fila, esRev=r.tipo==='reversion', badge=esRev?'Reversión':(it.revertida?'Revertida':'Recalibración');
+  const resumen=`<summary><span class="rec-f">${evoF(r.fecha,true)}</span><span class="rec-v">${recalFmt(r.valor_anterior,1)} → ${recalFmt(r.valor_nuevo,1)} kcal/día</span><span class="rec-v">(${recalSigno(r.diferencia,1)})</span><span class="rec-b">${badge}</span></summary>`;
+  let cuerpo='';
+  if(esRev){
+    cuerpo=`<p>Revirtió el ajuste n.º ${r.revierte_id}${r.datos&&r.datos.fecha_recalibracion?' del '+evoF(r.datos.fecha_recalibracion,true):''}: el ajuste de gasto aprendido volvió de ${recalFmt(r.valor_anterior,1)} a ${recalFmt(r.valor_nuevo,1)} kcal/día. El ajuste original sigue en el historial.</p>
+      <p>La fecha de última recalibración del perfil se fijó en ${evoF(r.fecha,true)}${r.ultima_recalibracion_anterior?' (antes: '+evoF(String(r.ultima_recalibracion_anterior).slice(0,10),true)+')':''}, de modo que la recalibración automática no vuelve a ejecutarse hasta pasados ${REC_PARAMS.intervalo_dias} días.</p>`;
+  }else{
+    const ex=recalExplicar(r,x=>evoF(x,true)), d=r.datos||{}, pts=Array.isArray(d.puntos)?d.puntos:[];
+    cuerpo+=`<h4>Por qué se produjo</h4>${ex?`<ul>${ex.map(x=>`<li>${escAttr(x)}</li>`).join('')}</ul>`:'<p>Este registro no conserva los datos necesarios para explicarlo.</p>'}`;
+    cuerpo+=`<h4>Datos utilizados</h4>${pts.length?`<div class="rec-wrap"><table class="rec-tabla"><thead><tr><th>Fecha</th><th>Peso (kg)</th><th>Fase lútea est.</th><th>Gasto base (kcal)</th><th>Consumidas (kcal)</th></tr></thead><tbody>${pts.map(p=>`<tr><td>${escAttr(evoF(p.fecha))}</td><td>${recalFmt(p.peso,1)}</td><td>${p.lutea?'sí':'no'}</td><td>${recalFmt(p.gasto_base)}</td><td>${recalFmt(p.kcal_consumidas)}</td></tr>`).join('')}</tbody></table></div><p class="evo-note">Gasto base = TMB + pasos + ejercicio, sin el ajuste. Ajuste previo usado en el déficit: ${recalFmt(recalNum(d.ajuste_previo_usado)==null?r.valor_anterior:d.ajuste_previo_usado,1)} kcal/día.</p>`:'<p>No se conservaron los días utilizados.</p>'}`;
+    cuerpo+=`<h4>Método</h4><p><b>${escAttr(r.metodo)}</b>. ${escAttr(d.formula||(r.metodo===REC_METODO_ID?REC_METODO_TXT:'Descripción no disponible.'))}</p>`;
+    if(!it.revertida){
+      const c=recalPuedeRevertir(filas,perfil,r.id);
+      cuerpo+=`<h4>Revertir</h4>`+(c.ok?`<p>Se puede revertir con seguridad: es el último ajuste, el valor actual del perfil coincide con el que dejó y no hay recalibraciones sin registrar.</p><button type="button" class="of-btn" onclick="recalRevertir(${r.id})">Revertir este ajuste…</button>`:`<p class="evo-note">No se puede revertir ahora: ${c.motivos.map(escAttr).join(' ')}</p>`);
+    }else cuerpo+=`<h4>Revertir</h4><p class="evo-note">Ya se revirtió; la reversión aparece como otra entrada del historial.</p>`;
+  }
+  return `<details class="rec-item" ${RECAL.abiertos.has(r.id)?'open':''} ontoggle="recalToggle(${r.id},this.open)">${resumen}<div class="rec-body">${cuerpo}</div></details>`;
+}
+function recalCardHtml(){
+  const titulo='Recalibraciones del gasto energético', id='recal', sub='Ajuste aprendido del gasto, con historial y posibilidad de revertir';
+  const perfil=recalPerfilEstado();
+  if(!perfil.ok) return segCard(id,titulo,sub,`<div class="seg-vacio">No se han podido cargar los datos del perfil. No se muestra el ajuste: un fallo de carga no significa que no exista.</div>`);
+  const aj=perfil.ajuste;
+  let h=`<p class="evo-note">La recalibración <b>sí existe</b> y se ejecuta sola al abrir la app, como mucho una vez cada ${REC_PARAMS.intervalo_dias} días. No reacciona a un peso suelto: necesita al menos ${REC_PARAMS.min_dias} días de los últimos ${REC_PARAMS.ventana_dias} con peso, comidas completas y gasto base. ${escAttr(REC_METODO_TXT)}</p>
+    <p class="evo-note"><b>Ajuste vigente:</b> ${aj?recalSigno(aj,1)+' kcal/día':'ninguno (0 kcal/día)'} · <b>última recalibración:</b> ${perfil.ultima?evoF(perfil.ultima,true):'nunca'}.${gastoAutoActivo()?'':' El cálculo automático del gasto está desactivado: no se recalibra y el ajuste no se usa.'}</p>`;
+  if(RECAL.estado==='sin_cargar'||RECAL.estado==='cargando') h+=`<p class="evo-note">Leyendo el historial de ajustes…</p>`;
+  else if(RECAL.estado==='error'){
+    h+=RECAL.sinMigracion
+      ?`<p class="med-warn"><b>No hay historial de ajustes.</b> Hasta ahora la app solo guardaba el valor actual y la fecha de la última recalibración: no el valor anterior, ni los datos usados, ni el método. Esos ajustes pasados no se pueden reconstruir ni revertir. Para guardar los próximos hay que aplicar la migración SQL F4.5 (no se ha ejecutado); mientras tanto la recalibración sigue funcionando igual, sin historial.</p>`
+      :`<p class="med-warn">No se ha podido leer el historial: ${escAttr(RECAL.err)}. Esto no significa que no existan ajustes.</p><button type="button" class="seg-retry" onclick="recalCargar(true).then(()=>renderSeguimiento())">Reintentar</button>`;
+  }else{
+    const linea=recalLinea(RECAL.filas);
+    if(!linea.length) h+=`<p class="evo-note">Todavía no hay ajustes en el historial: solo recoge los aplicados desde que existe.${(aj||perfil.ultima)?' El ajuste vigente es anterior al historial: no se conserva su valor previo ni los datos usados, así que no se puede explicar ni revertir.':''}</p>`;
+    else{
+      h+=`<p class="evo-note">${linea.length} ${linea.length===1?'entrada':'entradas'} (más reciente primero). Los ajustes anteriores al historial no se guardaron y no pueden consultarse. Nada se borra: una reversión es otra entrada.</p>`+linea.map(it=>recalFilaHtml(it,RECAL.filas,perfil)).join('');
+    }
+  }
+  if(RECAL.logError&&!RECAL.sinMigracion&&RECAL.estado!=='error') h+=`<p class="med-warn">El último ajuste automático se aplicó pero no se pudo registrar en el historial (${escAttr(RECAL.logError)}).</p>`;
+  return segCard(id,titulo,sub,h);
 }
 
 // ── Diario · Alimentación del día: PLANIFICADO y CONSUMIDO por separado, comida a comida ──
@@ -3326,7 +3617,7 @@ function renderDiarioDayCard(){
       <div class="ddc-date">${label}</div>
       <button onclick="diarioNextDay()" ${esHoy?'style="visibility:hidden"':''}>›</button>
     </div>
-    ${ciclo?`<span class="cycle-badge">${ciclo.emoji} Día ${ciclo.diaCiclo} del ciclo · fase ${ciclo.fase}</span>`:''}
+    ${ciclo?`<span class="cycle-badge" title="Día calculado desde el último inicio registrado. La fase se calcula con la duración media del ciclo: no es un dato registrado ni explica por sí sola el peso de ese día.">${ciclo.emoji} Día ${ciclo.diaCiclo} del ciclo · fase ${ciclo.fase} (calculada)</span>`:''}
     <div class="ddc-track-card">
       <div class="ddc-track-item">
         <span class="dti-icon">⚖️</span>
@@ -4726,6 +5017,58 @@ function rgUpdateExtra(idx,field,val){
   }
   updateRgTotalsDisplay();
 }
+/* ══════════ Guardar un alimento manual en la biblioteca (tabla `ingredientes` de Supabase) ══════════
+   Hasta ahora la app solo LEÍA esa tabla (loadIngredientesExtra) y nunca escribía en ella: un alimento nuevo quedaba solo en el registro.
+   Formato de la biblioteca: nombre + unidad con su cantidad de referencia («100 g») + los 4 valores PARA esa cantidad (igual que un alimento manual). */
+/* BIB:START */
+function bibEntradaDesdeManual(e,catalogo,columnas){
+  const nombre=String((e&&e.nombre)||'').trim();
+  if(!nombre) return {error:'Falta el nombre del alimento.'};
+  let cant=numDeTexto(e.cantidad!==undefined?e.cantidad:''), uni=String(e.unidad||'').trim();
+  if(e.cantidad===undefined&&e.cantidad_real){ const p=parseRef(e.cantidad_real); if(p){ cant=p.cant; uni=p.unidad; } } // registro antiguo: cantidad y unidad en un solo texto
+  if(!(cant>0)||!uni) return {error:'Indica la cantidad y la unidad a las que corresponden los valores (por ejemplo 100 g): así se guarda en la biblioteca.'};
+  const NOM={kcal:'kcal',proteinas:'proteínas',carbos:'carbohidratos',grasas:'grasas'};
+  const faltan=NUTR.filter(k=>e[k]===null||e[k]===undefined||e[k]===''||!isFinite(Number(e[k]))||Number(e[k])<0);
+  if(faltan.length) return {error:'Faltan valores nutricionales ('+faltan.map(k=>NOM[k]).join(', ')+'). En la biblioteca no se guardan valores a medias ni estimados.'};
+  const unidad=cant+' '+uni, ref=parseRef(unidad);
+  const duplicado=(catalogo||[]).find(i=>{ const a=parseRef(i.unidad); return normTxt(i.nombre)===normTxt(nombre)&&a&&ref&&a.cant===ref.cant&&a.unidad===ref.unidad; });
+  if(duplicado) return {duplicado};
+  let row={nombre,unidad}; NUTR.forEach(k=>{ row[k]=r2(Number(e[k])); });
+  if(Array.isArray(columnas)&&columnas.length){ const f={}; Object.keys(row).forEach(k=>{ if(k==='nombre'||columnas.indexOf(k)!==-1) f[k]=row[k]; }); row=f; } // solo columnas que la tabla ya tiene
+  return {row};
+}
+function bibGuardadaOk(data,row){ // ¿la fila que devuelve la base de datos es la enviada?
+  if(!data||typeof data!=='object'||Array.isArray(data)||data.id==null) return false;
+  if(data.nombre!==row.nombre) return false;
+  return NUTR.every(k=>!(k in row)||Math.abs(Number(data[k])-Number(row[k]))<=0.51);
+}
+/* BIB:END */
+const RG_BIB=new WeakMap(); // alimento manual → {estado:'guardando'|'ok'|'error'|'dup', msg}
+function rgBibHtml(e,idx){
+  const st=RG_BIB.get(e)||{};
+  const btn=st.estado==='ok'?'':`<button type="button" class="rg-bib-btn" onclick="rgGuardarEnBiblioteca(${idx})" ${st.estado==='guardando'?'disabled':''}>${st.estado==='guardando'?'Guardando…':'Guardar en la biblioteca'}</button>`;
+  return `<div class="rg-bib">${btn}${st.msg?`<div class="rg-bib-msg ${st.estado}" role="status">${escAttr(st.msg)}</div>`:''}</div>`;
+}
+async function rgGuardarEnBiblioteca(idx){
+  const s=rgState, e=s&&s.extras[idx]; if(!e) return;
+  const st=RG_BIB.get(e)||{}; if(st.estado==='guardando'||st.estado==='ok') return;
+  const fin=(estado,msg)=>{ RG_BIB.set(e,{estado,msg}); if(rgState===s) renderRgModalBody(); else showToast(msg,6000); };
+  if(!sb){ fin('error','No se puede guardar en la biblioteca: '+SIN_BD+'. El alimento sigue en esta comida.'); return; }
+  const v=bibEntradaDesdeManual(e,catalogoIngredientes(),INGREDIENTES_EXTRA.length?Object.keys(INGREDIENTES_EXTRA[0]):null);
+  if(v.error){ fin('error',v.error); return; }
+  if(v.duplicado){ fin('dup','Ya está en la biblioteca con esa cantidad ('+v.duplicado.nombre+' · '+v.duplicado.unidad+'): búscalo en «Ingrediente» para añadirlo.'); return; }
+  RG_BIB.set(e,{estado:'guardando'}); if(rgState===s) renderRgModalBody();
+  try{
+    const {data,error}=await sb.from('ingredientes').insert(v.row).select().single();
+    if(error) throw error;
+    if(!bibGuardadaOk(data,v.row)) throw new Error('la base de datos no confirmó el ingrediente guardado');
+    INGREDIENTES_EXTRA.push(data);
+    fin('ok','Guardado en la biblioteca: ya aparece al buscar ingredientes.');
+  }catch(err){
+    const m=sbErrTxt(err);
+    fin('error','No se ha guardado en la biblioteca: '+m+(/row-level security|permission denied/i.test(m)?' (la tabla ingredientes no permite insertar con la clave actual: falta una política de inserción en Supabase)':'')+'. El alimento sigue en esta comida.');
+  }
+}
 function rgUpdateLibreNombre(val){ rgState.libreNombre=val; }
 
 // Panel «Añadir a esta comida»: receta · ingrediente · manual
@@ -4861,6 +5204,7 @@ function rgManualHtml(e,idx){
       <label>Grasa g<input type="number" min="0" step="any" inputmode="decimal" placeholder="—" value="${v(e.grasas)}" oninput="rgUpdateExtra(${idx},'grasas',this.value)"></label>
     </div>
     <div class="rg-man-h">Valores para la cantidad indicada. Deja vacío lo que no sepas: no se estima.</div>
+    ${rgBibHtml(e,idx)}
   </div>`;
 }
 function rgAddPanelHtml(){
@@ -4898,7 +5242,7 @@ function rgAddPanelHtml(){
         <button type="button" class="rg-btn rg-btn-save" onclick="rgConfirmarAdd()">${rep?'Cambiar por este ingrediente':'Añadir ingrediente a la comida'}</button></div>`;
     }
   }else if(m==='manual'){
-    panel+=`<div class="rg-add-sel"><span class="rg-add-ref">Para alimentos que no están en la biblioteca. Solo se guarda en este registro; no se crea ningún ingrediente en la biblioteca.</span>
+    panel+=`<div class="rg-add-sel"><span class="rg-add-ref">Para alimentos que no están en la biblioteca. Se guarda en este registro; si quieres reutilizarlo, pulsa «Guardar en la biblioteca» en el propio alimento.</span>
       <button type="button" class="rg-btn rg-btn-save" onclick="rgAddManual()">+ Añadir alimento manual</button></div>`;
   }
   if(rep) return `<div class="rg-add"><div class="rg-add-h-row"><div class="rg-add-h">Cambiar «${escAttr(rep.nombre||'—')}» por…</div><button type="button" class="rg-add-cancel" onclick="rgCancelarCambio()">Cancelar</button></div>${panel}</div>`;
@@ -5046,7 +5390,7 @@ async function saveRegistro(){
   }finally{ s.ocupado=false; body.classList.remove('rg-saving'); }
   if(fallo){ if(rgState===s) rgError(fallo); else showToast(fallo,7000); return; }
   REGISTRO[regKey(s.fecha,s.tipo)]=guardada;
-  // Los alimentos manuales quedan SOLO en este registro: no se crean ingredientes en la biblioteca.
+  // Los alimentos manuales quedan en este registro; solo pasan a la biblioteca si se pulsa «Guardar en la biblioteca» (rgGuardarEnBiblioteca).
   if(rgState===s) closeRgModal();
   renderCal();
   renderDiario();
